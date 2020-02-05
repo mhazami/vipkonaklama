@@ -1187,7 +1187,7 @@ header.main_header_area.headerstyle-2 {
     }
 }
 
-@media (max-width: 735px) {
+@media (max-width: 768px) {
     .header-content {
         display: none;
     }
@@ -1429,7 +1429,6 @@ section.banner.banner-style-1 .swiper-content {
     .banner-roomtype {
         padding: 0px !important;
         font-size: 12px;
-        height: 85px;
     }
 
         .banner-roomtype .roomtype-item {
@@ -1453,7 +1452,7 @@ section.banner.banner-style-1 .swiper-content {
     .banner-roomtype {
         padding: 0px !important;
         font-size: 10px;
-        height: 80px;
+        height: auto;
     }
 
         .banner-roomtype .roomtype-item {
@@ -1495,7 +1494,7 @@ section.banner.banner-style-1 .swiper-content {
     .banner-roomtype {
         padding: 0px !important;
         font-size: 8px;
-        height: 80px;
+        height: auto;
     }
 
         .banner-roomtype .roomtype-item {
@@ -1520,7 +1519,7 @@ section.banner.banner-style-1 .swiper-content {
         position: absolute;
         width: 100%;
         bottom: 0;
-        height: 65px;
+        height: auto;
         background: #00000060;
         z-index: 1;
         font-size: 8px;
@@ -1564,7 +1563,7 @@ section.banner.banner-style-1 .swiper-content {
     .banner-roomtype {
         padding: 0px !important;
         font-size: 8px;
-        height: 80px;
+        height: auto;
     }
 
     .banner-form {
@@ -1605,7 +1604,7 @@ section.banner.banner-style-1 .swiper-content {
     .banner-roomtype .roomtype-row {
         display: flex;
         width: 100%;
-        height: 50px;
+        /* height: 50px; */
     }
 
 div.roomtype-row > :first-child {
@@ -1640,7 +1639,7 @@ span.btn-select {
     font-size: 16px;
     padding: 0 5px !important;
     display: inline-block;
-    width: 70px;
+    width: auto;
     border: 1px solid #ccc;
     position: relative;
     top: -10px;
@@ -2093,10 +2092,11 @@ form style 1
     }
 }
 
-@media (max-width: 735px) {
+@media (max-width: 768px) {
     .banner-form {
         position: relative;
-        background: #242424;
+        transform: translateY(75px);
+        background: rgba(30, 30, 30, 0.9098039215686274);
     }
 
     .form-content {
@@ -3083,10 +3083,11 @@ section.reviews {
     bottom: 30px;
 }
 
-@media (max-width: 567px) {
+@media (max-width: 768px) {
     .swiper-content, .slider {
         display: none;
     }
+
 
     .header_menu .navbar.navbar-default {
         background: #1f1d26;
@@ -5340,10 +5341,10 @@ section.menu.lunch {
 
     .res-item a {
         display: inline-block;
-        height: 40px;
-        width: 40px;
+        height: 60px;
+        width: 60px;
         background: #e7f2fd;
-        font-size: 19px;
+        font-size: 30px;
         line-height: 1.6;
         border-radius: 50%;
         border: 4px solid #f8f9fa;
@@ -5765,19 +5766,13 @@ section.menu.lunch {
 
 @media (max-width: 567px) {
     .reservation-links-content {
-        display: flex;
+        display: inline-block;
     }
 
     .res-item {
         width: 100%;
         margin-bottom: 15px;
     }
-        .res-item p {
-            font-size: 10px;
-            line-height: 1.5;
-            color: #666;
-            margin-bottom: 15px;
-        }
 
         .res-item a {
             margin-bottom: 15px;
@@ -5836,12 +5831,6 @@ section.menu.lunch {
     .success-content {
         width: 100%;
         padding: 0;
-    }
-    .footer-top {
-        padding: 20px 0 95px;
-    }
-    .footer-logo {
-        padding-bottom: 50px;
     }
 }
 
@@ -8579,7 +8568,25 @@ section.events .meta span {
     }
 }
 
+.roomtype-item p {
+    text-align: left;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+@media(min-width:768px) {
+    .roomtype-item p {
+        text-align: center;
+        padding: 7px 10px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 400;
+    }
+}
+
 @media (max-width: 768px) {
+
 
     .banner-roomtype .roomtype-row {
         height: auto;
@@ -8621,6 +8628,7 @@ section.events .meta span {
         background: #fe4e37;
         float: left;
         margin: 0 6px;
+        padding: 6px 8px !important;
         box-shadow: none;
         border-radius: 3px;
     }
