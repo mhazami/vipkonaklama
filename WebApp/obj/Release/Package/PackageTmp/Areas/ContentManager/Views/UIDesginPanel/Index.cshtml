@@ -1,0 +1,390 @@
+﻿@using Radyn.Common.DataStructure
+@using Radyn.ContentManager.Definition
+@using Radyn.FileManager
+@using Radyn.WebApp.AppCode.Security
+@model Radyn.ContentManager.DataStructure.HtmlDesgin
+@{
+    ViewBag.Title = "طراحی";
+    Layout = "~/Areas/ContentManager/Views/Shared/DesigneLayout.cshtml";
+}
+@section Head{
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SetLanguage('@SessionParameters.Culture');
+
+            var $sticky = $('.sticky');
+            var $stickyrStopper = $('.sticky-stopper');
+            if (!!$sticky.offset()) { // make sure ".sticky" element exists
+
+                var generalSidebarHeight = $sticky.innerHeight();
+                var stickyTop = $sticky.offset().top;
+                var stickOffset = 0;
+                var stickyStopperPosition = $stickyrStopper.offset().top;
+                var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
+                var diff = stopPoint + stickOffset;
+
+                $(window).scroll(function() { // scroll event
+                    var windowTop = $(window).scrollTop(); // returns number
+
+                    if (stopPoint < windowTop) {
+                        $sticky.css({ position: 'absolute', top: diff });
+                    } else if (stickyTop < windowTop + stickOffset) {
+                        $sticky.css({ position: 'fixed', top: stickOffset });
+                    } else {
+                        $sticky.css({ position: 'absolute', top: 'initial' });
+                    }
+                });
+
+            }
+
+            $(".menu-user")
+                .click(function() {
+                });
+            $('body')
+                .on('click',
+                    function() {
+                        $(".menu-user").removeClass("open");
+                    });
+            $(".menu-user")
+                .on('click',
+                    function(event) {
+                        $(".menu-user").toggleClass("open");
+                        event.stopPropagation();
+                    });
+        });
+
+        function SetLanguage(culture) {
+            $("#LanguageId").val(culture);
+            $("#langdisplay").html('');
+            if (culture == 'fa-IR') {
+                $("#langdisplay").html('پارسی');
+            }
+            if (culture == 'en-US') {
+                $("#langdisplay").html('انگلیسی');
+            }
+
+            GetDesignAndLoad();
+        }
+
+        function GetDesignAndLoad() {
+            $("#divInnerHtml").html("");
+            var culture = $("#LanguageId").val();
+            $.get("@Url.Content("~/ContentManager/UIDesginPanel/GetDesginHtml")",
+                { Id: '@Model.Id', culture: culture, date: new Date().getTime() },
+                function(data) {
+                    if (data != "") {
+                        $("#divInnerHtml").html(data);
+                        $("#divInnerHtml").slideDown();
+                    }
+
+                }).complete(function() {
+                AssginNameDesign();
+            });
+        }
+
+        function LookUpHtml(partialid, PartialTypeId) {
+
+
+            ShowModal("@Url.Content("~/ContentManager/UIDesginPanel/LookUpHtml")",
+                { partialId: partialid, type: PartialTypeId });
+        }
+
+
+        function GetContentManagerPartialList() {
+            var culture = $("#LanguageId").val();
+            $("#ContentmanagerPartialList").html("");
+            $.get("@Url.Content("~/ContentManager/UIDesginPanel/GetOperationPartialList")",
+                {
+                    OperationId: null,
+                    PartialTypeId: '@Enums.PartialTypes.ContentManager',
+                    culture: culture,
+                    date: new Date().getTime()
+                },
+                function(data) {
+                    if (data != "") {
+                        $("#ContentmanagerPartialList").html(data);
+                        $("#ContentmanagerPartialList").slideDown();
+                    }
+
+                });
+        }
+
+        function GetOperationPartialList() {
+            var culture = $("#LanguageId").val();
+            var OperationId = $("#OperationId").val();
+            $("#OperationPartialList").html("");
+            $.get("@Url.Content("~/ContentManager/UIDesginPanel/GetOperationPartialList")",
+                {
+                    OperationId: OperationId,
+                    PartialTypeId: '@Enums.PartialTypes.Modual',
+                    culture: culture,
+                    date: new Date().getTime()
+                },
+                function(data) {
+                    if (data != "") {
+                        $("#OperationPartialList").html(data);
+                        $("#OperationPartialList").slideDown();
+                    }
+
+                });
+        }
+
+
+        function AssginNameDesign() {
+            $.get("@Url.Content("~/ContentManager/UIDesginPanel/AssginNameHtml")",
+                { Id: '@Model.Id', date: new Date().getTime() },
+                function(data) {
+                    if (data != null) {
+                        for (var i = 0; i < data.length; i++) {
+                            var element = $("[customId=" + data[i].customid + "]");
+                            if (element != undefined) {
+                                element.append(data[i].title);
+                                element.addClass("undefault");
+                                element.droppable({
+                                    drop: function(event, ui) {
+                                        var statusId = $(this).attr("customId");
+                                        var clone = $(ui.draggable).clone();
+                                        var Id = clone.attr("Id");
+                                        SaveDesignDrag(Id, statusId);
+
+                                    },
+                                    over: function() {
+                                        $(this).addClass("drag");
+                                        $(this).removeClass("undefault");
+                                        var DragedcustomId = $(this).attr("customId");
+                                        var value = $("#DragedItem").val();
+                                        if (DragedcustomId != "" && value != "") {
+                                            var elemet = $("#Order_" + DragedcustomId + "_" + value);
+                                            if (elemet != undefined) {
+                                                elemet.html(
+                                                    '<div class="element-drag"><i class="fal fa-plus"></i> </div>');
+                                            }
+
+                                        }
+
+                                    },
+                                    out: function() {
+                                        $(this).removeClass("drag");
+                                        $(this).addClass("undefault");
+                                        var DragedcustomId = $(this).attr("customId");
+                                        $("[Id^='Order_" + DragedcustomId + "_']").each(function() {
+                                            $(this).html("");
+                                        });
+
+
+                                    }
+
+                                });
+
+
+                            }
+
+                        }
+                    }
+                });
+        }
+
+        function SaveDesignDrag(partialid, divname) {
+            debugger;
+            if (partialid != "") {
+
+                $.post("@Url.Content("~/ContentManager/UIDesginPanel/SaveDesign")",
+                    {
+                        partialId: partialid,
+                        customId: divname,
+                        htmlId: '@Model.Id',
+                        position: $("#DragedItem").val(),
+                        date: new Date().getTime()
+                    },
+                    function(data) {
+                    }).complete(function() {
+                    GetDesignAndLoad();
+                });
+            }
+        }
+
+        function Deletepartial(partialid, divname) {
+            if (confirm("@Resources.Common.Are_You_Soure_For_Delete")) {
+                $.post("@Url.Content("~/ContentManager/UIDesginPanel/ClearDesign")",
+                    { partialId: partialid, customId: divname, htmlId: '@Model.Id', date: new Date().getTime() },
+                    function(data) {
+                    }).complete(function() {
+                    GetDesignAndLoad();
+                });
+            }
+
+
+        }
+
+        function LookUpEdit(partialid, customId) {
+            ShowModal("@Url.Content("~/ContentManager/UIDesginPanel/GetModifyPartialLoad")",
+                { partialId: partialid, customId: customId, htmlId: '@Model.Id', date: new Date().getTime() });
+
+        }
+
+        function SwapControl(partialid, divname, type) {
+            $.post("@Url.Content("~/ContentManager/UIDesginPanel/SwapPartial")",
+                {
+                    partialId: partialid,
+                    customId: divname,
+                    htmlId: '@Model.Id',
+                    type: type,
+                    date: new Date().getTime()
+                },
+                function(data) {
+                }).complete(function() {
+                GetDesignAndLoad();
+            });
+        }
+
+        function GetOrder(partialid, customId) {
+            var object = $("#" + partialid + "_" + customId + "_Customorder").val();
+            if (object == "") {
+                alert('@Resources.FormGenerator.PleaseEnterOrderNumber');
+            }
+            $.post("@Url.Content("~/ContentManager/UIDesginPanel/CustomeSwap")",
+                {
+                    partialId: partialid,
+                    customId: customId,
+                    htmlId: '@Model.Id',
+                    getorder: object,
+                    date: new Date().getTime()
+                },
+                function(data) {
+                }).complete(function() {
+                GetDesignAndLoad();
+            });
+        }
+
+
+        function visible(item) {
+            var f1 = item.id.split("row_");
+            $("#menu_" + f1[1]).css('display', 'inline');
+
+        }
+
+        function HideMenu(item) {
+            var f1 = item.id.split("row_");
+            $("#menu_" + f1[1]).css('display', 'none');
+
+
+        }
+
+
+        function GetDragedItem(order) {
+            $("#DragedItem").val(order);
+
+
+        }
+    </script>
+    <style>
+      
+    </style>
+
+
+
+}
+@section PageTitle{
+    طراحی
+}
+<input type="hidden" id="DragedcustomId" name="DragedcustomId" />
+<input type="hidden" id="DragedItem" name="DragedItem" />
+<input type="hidden" id="LanguageId" name="LanguageId" />
+
+<div class="html-design">
+    <div class="innerhtml-menu">
+        <a href="#" class="icon-nav aside-control"><i class="fas fa-angle-left"></i></a>
+        <div class="aside-page open-nav">
+
+            <div class="header-aside-menu">
+                <ul>
+                    <li>
+                        <a href="#"><i class="fas fa-th-large"></i></a>
+                    </li>
+                    <li class="panel-language">
+                        <div class="change-langage menu-user">
+                            <a id="langdisplay">
+
+                            </a>
+                            <ul class="user-panel">
+
+                                <li>
+                                    <table border="0" cellpadding="2" cellspacing="2" dir="rtl">
+                                        <tbody>
+                                            <tr>
+                                                @foreach (var item in (List<Language>)ViewBag.LanguageList)
+                                                {
+                                                    <td class="language-btns" style="text-align: Right; padding: auto">
+                                                        <div align="center" style="text-decoration:none;color:white;">
+                                                            <table cellpadding="0" border="0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <a onclick="SetLanguage('@item.Id')"><img src="@(FileManagerContants.FileHandlerRoot+@item.LogoId)" align="absmiddle" border="0"></a>
+                                                                        </td>
+                                                                        <td><a onclick="SetLanguage('@item.Id')">@item.DisplayName</a></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                }
+
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </li>
+
+                    <li>
+                        <a href="@Url.Content("~/Security/User/Menu?oid=" + Radyn.WebApp.AppCode.Constants.Constants.WebDesignOperationId)"><i class="fas fa-home-lg-alt"></i></a>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-box">
+                <div class="tab-box-head">
+                    <div class="accordion-tab active  " onclick="SlideAccordion(this, 'OperationPartial'); GetOperationPartialList();">
+                        ماژول ها
+                    </div>
+                    <div class="accordion-tab " onclick="SlideAccordion(this, 'Contentmanager'); GetContentManagerPartialList();">
+                        کنترل محتوا
+                    </div>
+                </div>
+                <div class="panel-content visible setting-aside" id="OperationPartial">
+                    <div id="DivOperation">
+                        <div class="table-row-cap">
+                            ماژول
+                        </div>
+                        <div class="table-row-item">
+                            @Html.DropDownList("OperationId", (SelectList)ViewBag.OperationList, "", new { onchange = "GetOperationPartialList();" })
+                        </div>
+                    </div>
+                    <div id="OperationPartialList" class="fit horizontal-row "></div>
+                </div>
+                <div class="panel-content " id="Contentmanager">
+                    <div id="ContentmanagerPartialList" class="fit horizontal-row "></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="divInnerHtml" class="html-page fit innerhtml">
+    </div>
+
+
+
+
+
+</div>
+
+

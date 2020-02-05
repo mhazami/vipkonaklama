@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+@section Head
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetListItemView('@ViewBag.jsonvalue');
+        });
+        function ControlItemList(value, controlvalue) {
+            $.get("@Url.Content("~/FormGenerator/DesignForm/GetListItemControlPanel")", { jsonvalue: value, value: controlvalue, multiselect: '@ViewBag.multiselect', date: new Date().getTime() }, function (data) {
+                $("#DivListItemControlList").html(data).slideDown("slow");;
+            });
+        }
+        function GetListItemView(value) {
+            $.get("@Url.Content("~/FormGenerator/DesignForm/GeneratListItemHtml")", { jsonvalue: value, date: new Date().getTime() }, function (data) {
+                $("#DivtListItemControlView").html(data).slideDown("slow");;
+            }).complete(function () {
+                ControlItemList(value);
+            });
+        }
+
+
+    </script>
+}
+@section PageAction
+{
+    <p>
+    </p>
+}
+
+<table class="fit" style="direction: @Resources.Design.Direction">
+    
+    <tr>
+
+        <td class="width50percent" valign="top">
+            <div id="DivListItemControlList">
+            </div>
+
+        </td>
+        <td class="rt-separator"></td>
+        <td class="width50percent" valign="top">
+            <div id="DivtListItemControlView" class="table">
+            </div>
+
+        </td>
+    </tr>
+</table>
+
+

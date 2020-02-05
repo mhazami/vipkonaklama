@@ -1,0 +1,37 @@
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+@model Radyn.Slider.DataStructure.Slide
+@{
+    ViewBag.Title = Resources.Common.Delete;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+
+}
+@section PageTitle
+{
+    @Resources.Common.Delete
+}
+@section PageAction
+{
+    <div class="button-div">
+        @{ Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("WebDesignSlide").Area("Slider").Text(Resources.Common.Delete).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+    <div class="button-div">
+    @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebDesignSlide").Area("Slider").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div">
+        @{ Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("WebDesignSlide").Area("Slider").Text(Resources.Common.Delete).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+    <div class="button-div">
+    @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebDesignSlide").Area("Slider").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    Html.RenderAction("GetDetails", "Slide", new { Id = ViewBag.Id, area = "Slider" });
+}
+

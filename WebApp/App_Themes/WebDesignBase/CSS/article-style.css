@@ -1,0 +1,232 @@
+﻿/* .ui-design, body .ui-sheet { */
+/*     background-color: #fafafa; */
+/* } */
+/* */
+/* .main { */
+/*     margin: 0 auto; */
+/*     padding: 15px; */
+/* } */
+/* */
+/* .article-box { */
+/*     background-color: #fff; */
+/*     margin: 20px auto; */
+/*     border: 1px solid #e6e6e6; */
+/*     border-radius: 4px; */
+/* } */
+/* */
+/* .article-title { */
+/*     width: 100%; */
+/*     border-bottom: 1px solid #efefef; */
+/*     text-align: center; */
+/* } */
+/* */
+/*     .article-title > h2 { */
+/*         line-height: 70px; */
+/*         margin: 0; */
+/*         font-size: 30px; */
+/*         text-align: right; */
+/*         color: #3d588a; */
+/*         line-height: normal; */
+/*         padding: 20px; */
+/*         text-shadow: none; */
+/*     } */
+/* */
+/* .article-abstract { */
+/*     float: right; */
+/*     width: 100%; */
+/*     padding: 0 30px; */
+/*     line-height: 1.7; */
+/*     overflow: hidden; */
+/*     border-bottom: 1px solid #efefef; */
+/* } */
+/* */
+/*     .article-abstract span { */
+/*         font-family: Verdana !important; */
+/*         color: #8a8a8a; */
+/*         font-weight: 400; */
+/*     } */
+/* */
+/*     .article-abstract > span { */
+/*         max-height: 240px; */
+/*         display: block; */
+/*         overflow: hidden; */
+/*     } */
+/* */
+/*         .article-abstract > span p { */
+/*             padding: 0 30px; */
+/*             background-color: #fff !important; */
+/*             padding: 0 10px; */
+/*         } */
+/* */
+/*     .article-abstract span.view-more, .view-more { */
+/*         font-style: normal; */
+/*         position: relative; */
+/*         text-align: right; */
+/*         width: auto; */
+/*         padding: 14px; */
+/*         min-height: inherit; */
+/*         max-height: inherit !important; */
+/*         display: inline-block; */
+/*         color: #d0d0d0; */
+/*         float: right; */
+/*         font-size: 13px; */
+/*     } */
+/* */
+/*         .view-more:after { */
+/*             content: ""; */
+/*             width: 20px; */
+/*             height: 2px; */
+/*             background-color: #d0d0d0; */
+/*             position: absolute; */
+/*             top: 50%; */
+/*             transform: translateY(-50%); */
+/*             left: -15px; */
+/*         } */
+/* */
+/*       */
+/* */
+/* .show-article ~ .view-more:before { */
+/*     display: none; */
+/* } */
+/* */
+/* .article-abstract > i:hover { */
+/*     cursor: pointer; */
+/* } */
+/* */
+/* .show-article { */
+/*     transition: all .5s ease; */
+/*     max-height: none !important; */
+/*     display: inline !important; */
+/* } */
+/* */
+/* .comment-controls { */
+/*     width: 100%; */
+/*     float: right; */
+/*     padding: 11px 35px 14px 35px; */
+/* } */
+/* */
+/*     .comment-controls > .controls { */
+/*         float: left; */
+/*         width: 100%; */
+/*         text-align: right; */
+/*         color: #8a8a8a; */
+/*     } */
+/* */
+/*         .comment-controls > .controls > span { */
+/*             line-height: 50px; */
+/*             padding: 10px; */
+/*         } */
+/* */
+/*         .comment-controls > .controls > svg { */
+/*             font-size: 25px; */
+/*             margin: 10px 10px 10px 10px; */
+/*         } */
+/* */
+/*     .comment-controls > .like-counter { */
+/*         float: right; */
+/*         font-weight: 700; */
+/*         margin-right: 15px; */
+/*         font-size: 15px; */
+/*     } */
+/* */
+/* .like-counter > span { */
+/* } */
+/* */
+/* .liked { */
+/*     color: #71d5f6 !important; */
+/* } */
+/* */
+/* .comment-controls > .controls > svg:hover { */
+/*     cursor: pointer; */
+/* } */
+/* */
+/* .comment-box { */
+/*     width: 100%; */
+/*     padding: 15px 35px 0px 35px; */
+/*     overflow: hidden; */
+/*     border-top: 1px solid #efefef; */
+/* } */
+/* */
+/*     .comment-box > .default-comment { */
+/*         max-height: 62px; */
+/*         float: right; */
+/*         overflow: hidden; */
+/*         width: 100%; */
+/*     } */
+/* */
+/*     .comment-box .comment { */
+/*         clear: both; */
+/* */
+/*     } */
+/* */
+/*         .comment-box .comment > span { */
+/*             white-space: pre; */
+/*             font-weight: bold; */
+/*             float: right; */
+/*             padding: 0 10px; */
+/*         } */
+/* */
+/*             .comment-box .comment > span::after { */
+/*                 content: ' :'; */
+/*                 width: 5px; */
+/*                 height: 5px; */
+/*             } */
+/* */
+/*         .comment-box .comment > p { */
+/*             color: #848484; */
+/*             float: right; */
+/*             padding: 0 10px; */
+/*             display: inline-block; */
+/*         } */
+/* */
+/*     .comment-box > i { */
+/*         display: block; */
+/*         text-align: left; */
+/*         margin: 10px 0; */
+/*     } */
+/* */
+/*         .comment-box > i:hover { */
+/*             cursor: pointer; */
+/*         } */
+/* */
+/* /*.comment::before { */
+/*                 content: ''; */
+/*                 width: 0; */
+/*                 height:0; */
+/*                 clear: both; */
+/*             }*/ */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/* @media (min-width: 768px) { */
+/*     .ui-design .ui-content-nav .container { */
+/*         width: 750px; */
+/*     } */
+/* } */
+/* */
+/* @media (min-width: 992px) { */
+/*     .ui-design .ui-content-nav .container { */
+/*         width: 970px; */
+/*     } */
+/* } */
+/* */
+/* @media (min-width: 1200px) { */
+/*     .ui-design .ui-content-nav .container { */
+/*         width: 1170px; */
+/*     } */
+/* } */
+/* */
+/* @media (min-width: 1300px) { */
+/*     .ui-design .ui-content-nav .container { */
+/*         width: 1205px; */
+/*     } */
+/* } */
+/* */
+/* .ui-content-nav .container > .row > div[class^="col"] { */
+/*     float: none; */
+/*     margin: auto; */
+/*     display: block; */
+/* } */

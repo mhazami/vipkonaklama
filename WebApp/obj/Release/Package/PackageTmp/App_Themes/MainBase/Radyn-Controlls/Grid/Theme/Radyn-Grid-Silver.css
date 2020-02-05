@@ -1,0 +1,146 @@
+﻿/*--GridView-BY-Table-*/
+.radyn_grid td {
+    text-align: center !important;
+    border: 1px solid #dddddd;
+    color: #8c8c8c;
+    font-size: 13px;
+}
+
+
+.radyn_grid table tr:nth-child(odd) {
+    background-color: #F8F9FD;
+}
+
+.radyn_grid table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.radyn_grid table tr:hover {
+    background-color: /*#F5BD22;*/ #dff2fe;
+}
+
+.radyn_grid td {
+    vertical-align: middle !important;
+}
+
+.radyn_grid th {
+    border: 1px solid #e9e9e9;
+    border-top: none;
+    border-bottom: none;
+    text-align: center;
+    padding: 12px!important;
+    font-weight: 500;
+    vertical-align: middle !important;
+    font-size: 14px;
+    background-color: #7EACC6 !important;
+    color: #ffffff;
+}
+
+
+.table_info {
+    text-align: right;
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    margin: 0;
+}
+
+.radyn_grid {
+    position: relative;
+    padding-bottom: 60px;
+    margin-bottom: 20px;
+}
+
+.paginate_buttons {
+    bottom: -15px;
+    position: absolute;
+    right: 15px;
+}
+
+.paginate_buttons, .table_info {
+    border: none;
+    width: 93%;
+    font-size: 12px;
+    color: #7e7e7e;
+}
+
+    .paginate_buttons ul li {
+        background: #B9BBBA;
+    }
+
+        .paginate_buttons ul li:hover, .paginate_buttons ul li.active {
+            background-color: #5b5b5b;
+        }
+
+            .paginate_buttons ul li:hover, #active, .paginate_buttons ul li:hover a, #active a {
+                color: #ffffff;
+            }
+
+    .paginate_buttons ul.card-action-btn li a {
+        color: #fff !important;
+    }
+
+    .paginate_buttons ul li a {
+        color: #000000;
+    }
+
+/*Grid-Guid*/
+.grid-guid {
+    min-height: 30px;
+}
+
+.grid-guid-title {
+    border: 1px solid #cccccc;
+    color: #333333;
+    padding: 0px 10px;
+    border-bottom: 25px solid #cccccc;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    height: 0;
+    border-radius: 15px 15px 0px 0;
+    font-weight: 600;
+}
+
+.grid-guid ul {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    /**/
+}
+
+    .grid-guid ul li {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        color: #444444;
+        /*border: 1px solid rgba(0,0,0,0.1);*/
+        list-style: none;
+        padding: 5px 10px;
+        background-color: #f5f5f5;
+        background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
+        background-image: -moz-linear-gradient(top,#f5f5f5,#f1f1f1);
+        background-image: -ms-linear-gradient(top,#f5f5f5,#f1f1f1);
+        background-image: -o-linear-gradient(top,#f5f5f5,#f1f1f1);
+        background-image: linear-gradient(top,#f5f5f5,#f1f1f1);
+        border: 1px solid #dcdcdc;
+    }
+
+        .grid-guid ul li img {
+            vertical-align: middle;
+        }
+
+/*FILTER*/
+.fa.fa-filter {
+    background-image: url("/Content/2013.2.611/Metro/sprite.png");
+}
+
+.dropdown-menu {
+    background-color: #ffffff;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 0 3px rgba(0, 0, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+.filter_type_item.active, .filter_type_item:hover {
+    background-color: rgba(0, 0, 0, 0.12);
+}

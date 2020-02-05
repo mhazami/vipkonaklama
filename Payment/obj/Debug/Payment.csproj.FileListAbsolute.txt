@@ -1,0 +1,13 @@
+E:\Online-WorkSpace\vipkonaklama\Payment\obj\Debug\Payment.csprojAssemblyReference.cache
+E:\Online-WorkSpace\vipkonaklama\Payment\obj\Debug\Radyn.Payment.Resources.Payment.resources
+E:\Online-WorkSpace\vipkonaklama\Payment\obj\Debug\Radyn.Payment.Resources.Payment.fa-IR.resources
+E:\Online-WorkSpace\vipkonaklama\Payment\obj\Debug\Payment.csproj.GenerateResource.cache
+E:\Online-WorkSpace\vipkonaklama\Payment\obj\Debug\Payment.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Payment.dll.config
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Payment.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Payment.pdb
+E:\Online-WorkSpace\vipkonaklama\lib\fa-IR\Radyn.Payment.resources.dll
+E:\Online-WorkSpace\vipkonaklama\Payment\obj\Debug\fa-IR\Radyn.Payment.resources.dll
+E:\Online-WorkSpace\vipkonaklama\Payment\obj\Debug\Payment.csproj.CopyComplete
+E:\Online-WorkSpace\vipkonaklama\Payment\obj\Debug\Radyn.Payment.dll
+E:\Online-WorkSpace\vipkonaklama\Payment\obj\Debug\Radyn.Payment.pdb

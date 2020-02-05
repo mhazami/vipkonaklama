@@ -1,0 +1,49 @@
+﻿@using Radyn.Article.DataStructure
+@using Radyn.Web.Mvc;
+@using Radyn.Utility
+@model IEnumerable<Article>
+    @{
+        ViewBag.Title = @Resources.Common.List + " " + @Resources.Article.ArticleName;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.Article.ArticleName
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+            @{
+                Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Articles").Area("Articles").Text(Resources.Common.Create + " " + Resources.Article.ArticleName).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();
+            }
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue">
+            <i class="fas fa-plus"></i>
+            @{
+                Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Articles").Area("Articles").Text(Resources.Common.Create + " " + Resources.Article.ArticleName).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();
+            }
+        </div>
+    }
+        <div class="radynForm">
+            @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width: 98%; margin: 0auto" }).Columns(columns =>
+                 {
+                     columns.Template(article => article.Title).Title(Resources.Article.ArticleTitle).Width(250).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(article => article.ArticleCategory!=null?article.ArticleCategory.Title:"").Title("دسته بندی مقاله").Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(article => article.PublishDate).Title(Resources.Article.ArticlePublishDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(article => article.VisitCount).Title(Resources.Article.ArticleVisitCount).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(article => article.Enable?"فعال":"غیر فعال").Title("وضعیت").Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(article => article.Order).Title("ترتیب").Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(article => 
+                                                 "<a style='cursor: pointer;' href=" + Url.Content("~/Articles/Articles/Details") + "?Id=" + article.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | " +
+                                                 "<a href=" + Url.Content("~/Articles/Articles/Edit") + "?Id=" + article.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> |" +
+                                                 "<a href=" + Url.Content("~/Articles/Articles/Delete") + "?Id=" + article.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a> ").Width(300).Encode(false);
+                 })
+                .Sortable(sorting => sorting.Enabled(true))
+                .Pageable(paging => paging.Enabled(true))
+                .Filterable(filtering => filtering.Enabled(true))
+                .Render();}
+        </div>

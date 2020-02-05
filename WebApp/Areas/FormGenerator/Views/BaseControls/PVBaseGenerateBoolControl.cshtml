@@ -1,0 +1,58 @@
+﻿@model Radyn.FormGenerator.ControlFactory.Base.BoolControl
+@Html.ValidationSummary(true)
+<div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.FormGenerator.Title
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Caption)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.FormGenerator.TextAlign
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.DropDownListFor(model => model.TextAlign, (SelectList)ViewBag.BoolTextAlign, new { })
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.FormGenerator.Text
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.TextBoxFor(model => model.Text)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.FormGenerator.AllowPrint
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.AllowPrint, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.AllowPrint, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    @{
+        Html.RenderAction("BaseGenerateControl", new { Id = Model.Id, formId = ViewBag.formId, culture = ViewBag.culture });
+    }
+</div>

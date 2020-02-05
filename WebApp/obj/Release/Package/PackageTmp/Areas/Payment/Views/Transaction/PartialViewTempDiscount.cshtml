@@ -1,0 +1,70 @@
+﻿@using Radyn.FileManager
+@using Radyn.Payment.DataStructure
+@using Radyn.Utility
+@model IEnumerable<TempDiscount>
+    @if (Model.Any())
+    {
+        <div id="DivDiscount" class="internal-grid-control">
+            <div class="gv-table" style="width: 500px; margin-top: 15px;">
+                <div class="gv-row gv-header">
+                    <div style="width: 5%" class="gv-cell ">
+                        <div class="cell-item">
+                            #
+                        </div>
+                    </div>
+                    <div style="width: 35%" class="gv-cell ">
+                        <div class="cell-item">
+                            @Resources.Payment.DiscountType
+                        </div>
+                    </div>
+                    <div style="width: 30%" class="gv-cell ">
+                        <div class="cell-item">
+                            @Resources.Payment.DiscountValue
+                        </div>
+                    </div>
+                    <div style="width: 30%" class="gv-cell gv-cell-last">
+                        <div class="cell-item">
+                            @Resources.Payment.AttachFile
+                        </div>
+                    </div>
+                </div>
+                <div class="gv-content">
+                    @{
+                        int count = 0;
+                        foreach (var discountType in Model)
+                        {
+                            count++;
+                            <div class="gv-row gv-row-style">
+                                <div style="width: 5%" class="gv-cell " title="@discountType.DiscountType.Remark">
+                                    <div class="cell-item">
+                                        @count.ToString()
+                                    </div>
+                                </div>
+                                <div style="width: 35%" class="gv-cell ">
+                                    <div class="cell-item">
+                                        @discountType.DiscountType.Title
+                                    </div>
+                                </div>
+                                <div style="width: 30%" class="gv-cell ">
+                                    <div class="cell-item">
+                                        @(discountType.DiscountType.IsPercent ? discountType.DiscountType.ValidValue + "%" : discountType.DiscountType.ValidValue.ToDecimal().ToString("n0") + " " + discountType.DiscountType.CurrencyType.ToEnum<Radyn.Common.Definition.Enums.CurrencyType>().GetDescriptionInLocalization())
+                                    </div>
+                                </div>
+                                <div style="display: @(discountType.DiscountType.ForceAttach ? "inline" : "none"); width: 30%" class="gv-cell gv-cell-last">
+                                    <div class="cell-item">
+                                        @if (discountType.AttachId.HasValue)
+                                        {
+                                            <img src="/Areas/Payment/Content/Images/go-bottom.png" height="20" width="20" style="cursor: pointer" onclick="window.open('@(FileManagerContants.FileHandlerRoot + discountType.AttachId + "?dl=true")')" />
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="gv-row  gv-footer" style="height: 25px">
+                </div>
+
+            </div>
+        </div>
+    }

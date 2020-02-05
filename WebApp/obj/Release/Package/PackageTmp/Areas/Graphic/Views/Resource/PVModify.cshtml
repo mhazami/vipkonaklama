@@ -1,0 +1,71 @@
+﻿@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@using Radyn.Web.Mvc.Utility
+
+@model Radyn.Graphic.DataStructure.Resource
+
+
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Common.Language
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.DropDownListFor(model => model.LanuageId, (SelectList)ViewBag.LanguageList)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Graphic.Type
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.DropDownListFor(model => model.Type, (SelectList)ViewBag.Types)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Graphic.Order
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.Order)
+        </div>
+    </div>
+</div>
+<div class="item-row fit">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Graphic.Text
+        </div>
+    </div>
+    <div class="table-row-item width80percent">
+        <div class="item">
+            @Html.TextAreaFor(model => model.Text)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap table-c-fit">
+        <div class="item">
+            @Resources.Graphic.File
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @{
+                Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "FileId", fileid = Model.FileId, fileName = "ResourceFile" });
+
+            }
+
+        </div>
+    </div>
+</div>

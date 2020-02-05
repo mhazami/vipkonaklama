@@ -1,0 +1,22 @@
+﻿@model Radyn.News.DataStructure.NewsComment
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+
+@section Head
+{
+
+}
+
+
+
+@using (Html.BeginForm())
+{
+
+    
+    <div class="radynForm">
+        @{ Html.RenderAction("Details", "Comments", new {area = "Comments", id = @Model.CommentId});}
+    </div>
+
+}

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{189D7172-B237-4AFA-A5AA-105AA7693637}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.FileManager</RootNamespace>
+    <AssemblyName>Radyn.FileManager</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Web.Mvc, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Web.Mvc.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Web.Mvc.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\FileBO.cs" />
+    <Compile Include="BO\FolderBO.cs" />
+    <Compile Include="BO\WebDesignFolderBO.cs" />
+    <Compile Include="CacheManager\FileCacheManager.cs" />
+    <Compile Include="Control\FileBuilder.cs" />
+    <Compile Include="Control\ImageBuilder.cs" />
+    <Compile Include="DAL\FileDA.cs" />
+    <Compile Include="DAL\FolderDA.cs" />
+    <Compile Include="DAL\WebDesignFolderDA.cs" />
+    <Compile Include="DataStructure\WebDesignFolder.cs" />
+    <Compile Include="Facade\Interface\IWebDesignFolderFacade.cs" />
+    <Compile Include="Facade\WebDesignFolderFacade.cs" />
+    <Compile Include="FileManageBaseFacade.cs" />
+    <Compile Include="Control\HtmlHelperExtention.cs" />
+    <Compile Include="DataStructure\File.cs" />
+    <Compile Include="DataStructure\Folder.cs" />
+    <Compile Include="Facade\FileFacade.cs" />
+    <Compile Include="Facade\FolderFacade.cs" />
+    <Compile Include="Facade\Interface\IFileFacade.cs" />
+    <Compile Include="Facade\Interface\IFolderFacade.cs" />
+    <Compile Include="FileManagerContants.cs" />
+    <Compile Include="Handler\FileHandler.cs" />
+    <Compile Include="Handler\FileRouteHandler.cs" />
+    <Compile Include="FileManagerComponent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\FileManager.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FileManager.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\FileManager.fa-IR.resx" />
+    <EmbeddedResource Include="Resources\FileManager.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FileManager.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

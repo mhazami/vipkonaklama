@@ -1,0 +1,103 @@
+﻿@model Radyn.EnterpriseNode.DataStructure.RealEnterpriseNode
+@if (Model != null)
+{
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.Gender
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @(Model.Gender.HasValue && Model.Gender.Value ? Resources.EnterPriseNode.Male : Resources.EnterPriseNode.Female)&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.FirstName
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Model.FirstName&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.LastName
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Model.LastName&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.FatherName
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Model.FatherName&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.BirthDate
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @String.Format("{0:g}", Model.BirthDate)&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.IDNumber
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Model.IDNumber&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.NationalCode
+
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Model.NationalCode
+
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.ForeignCode
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Model.ForeignCode
+                </div>
+            </div>
+        </div>
+    
+}

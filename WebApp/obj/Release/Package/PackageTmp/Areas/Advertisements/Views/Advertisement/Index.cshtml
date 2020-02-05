@@ -1,0 +1,60 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@using Radyn.Web.Mvc.Utility
+@model IEnumerable<Radyn.Advertisements.DataStructure.Advertisement>
+    @{
+        ViewBag.Title = "تبلیغات";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+@section Head{}
+@section PageTitle
+{
+    @Resources.Advertisement.Advertisements
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-blue i-add">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Advertisement").Area("Advertisements").Text(Resources.Common.Create).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-blue i-add">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Advertisement").Area("Advertisements").Text(Resources.Common.Create).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+  
+}
+            
+    <div class="radynForm">
+
+                @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                          {
+                              columns.Template(advertisement => advertisement.Title).Title(Resources.Advertisement.Title).Width(350).HeaderHtmlAttributes(new { style = "text-align:center" });
+                              columns.Template(advertisement => advertisement.SectionPosition.Title).Title(Resources.Advertisement.AdvertisementPositionId).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                              columns.Template(advertisement => advertisement.FromDate).Title(Resources.Advertisement.AdvertisementFromDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                              columns.Template(advertisement => advertisement.ToDate).Title(Resources.Advertisement.AdvertisementToDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                              columns.Template(advertisement => advertisement.AdvertisementType.Type).Title(Resources.Advertisement.AdvertisementTypeId).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                              columns.Template(advertisement => advertisement.Enable ? Resources.Common.Enable : Resources.Common.Disable).Title(Resources.Common.Status).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                              columns.Template(resource =>
+                                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Advertisements/advertisement/Details?Id=" + resource.Id) + "'>" +
+                                  " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Advertisements/advertisement/Edit?Id=" + resource.Id) + "'> " +
+                                  " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a>  |"+
+                                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Advertisements/advertisement/Delete?Id=" + resource.Id) + "'>" +
+                                  " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a>  ").Width(300).Filterable(false).Encode(false);
+
+                          })
+
+                        .Sortable(sorting => sorting.Enabled(true))
+                        .Pageable(paging => paging.Enabled(true))
+                        .Filterable(filtering => filtering.Enabled(true))
+                        //.Footer(true)
+                        .Render();}
+
+
+  
+
+                @{Html.RadynAction("RenderAdvertisement", "advertisement", new { area = "Advertisements", keyword = "Top" });}
+
+    </div>

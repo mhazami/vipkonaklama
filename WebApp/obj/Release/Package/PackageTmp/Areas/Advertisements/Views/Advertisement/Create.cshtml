@@ -1,0 +1,216 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@using Radyn.Web.Mvc.Utility
+@model Radyn.Advertisements.DataStructure.Advertisement
+@{
+    ViewBag.Title = "درج تبلیغات";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#TextPanel").hide();
+        });
+
+
+        function Show(drp) {
+            if (drp.selectedIndex == 0 || drp.selectedIndex == 2) {
+                $("#FilePanel").slideDown('slow').show('slow');
+                $("#TextPanel").slideUp('slow').hide('slow');
+            } else {
+
+                $("#FilePanel").slideDown('slow').hide('slow');
+                $("#TextPanel").slideUp('slow').show('slow');
+            };
+        }
+
+
+    </script>
+}
+
+@section PageTitle
+{
+    @Resources.Advertisement.Advertisements @Resources.Common.New
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Advertisement").Area("Advertisements").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Advertisement").Area("Advertisements").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Advertisement").Area("Advertisements").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Advertisement").Area("Advertisements").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <div class="radynForm">
+        @Html.ValidationSummary(true)
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.Title
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBoxFor(model => model.Title, new { })
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementTypeId
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DropDownListFor(model => model.TypeId, (SelectList)ViewBag.AdvertisementType, new { onchange = "Show(this)" })
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementPositionId
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DropDownListFor(model => model.PositionId, (SelectList)ViewBag.AdvertisementSectionPosition)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementFromDate
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item date-picker">
+                    @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.FromDate).Render();}
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementToDate
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item date-picker">
+                    @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.ToDate).Render();}
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementFileId
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @{
+                        Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "FileId", fileid = Model.FileId, fileName = "upFile" });
+
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementText
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextAreaFor(model => model.Text)
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementNavigateUrl
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBoxFor(model => model.NavigateUrl)
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.News.Enabled
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.RadioButtonFor(model => model.Enable, true)@Resources.Common.Enable
+                    @Html.RadioButtonFor(model => model.Enable, false)@Resources.Common.Disable
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementHeight
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBoxFor(model => model.Height)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.Advertisementwidth
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBoxFor(model => model.width)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.TimeOut
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBoxFor(model => model.Timeout)
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}
+

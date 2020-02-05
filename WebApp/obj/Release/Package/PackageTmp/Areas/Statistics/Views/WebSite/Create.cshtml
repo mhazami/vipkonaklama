@@ -1,0 +1,64 @@
+@using Radyn.Web.Mvc;
+@model Radyn.Statistics.DataStructure.WebSite
+@{
+    ViewBag.Title = @Resources.Common.Create + " " + @Resources.Statistics.WebSite;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Statistics.WebSite @Resources.Common.New
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebSite").Area("Statistics").Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebSite").Area("Statistics").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebSite").Area("Statistics").Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebSite").Area("Statistics").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Statistics.WebSite
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.EditorFor(model => model.Url)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Statistics.Title
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBox("WebSiteTitle", Model.Title)
+                </div>
+            </div>
+        </div>
+        @{
+            Html.RenderAction("GenerateEnterpriseNodeModify", "EnterPriseNode", new { Area = "EnterpriseNode", state = "Create", id = Guid.NewGuid(), ShowParent = false, ShowPicture = false });
+        }
+    </div>
+}

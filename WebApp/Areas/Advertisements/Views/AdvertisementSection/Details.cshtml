@@ -1,0 +1,55 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc
+@model Radyn.Advertisements.DataStructure.Section
+@{
+    ViewBag.Title = @Resources.Common.Edit;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Advertisement.Section
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@section PageActionDown
+{
+  
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("AdvertisementSection").Area("Advertisements").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <div class="radynForm">
+        @Html.ValidationSummary()
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.Title
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Title, new { })
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.KeyWord
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DisplayFor(model => model.KeyWord, new { })
+                </div>
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.Id)
+
+    </div>
+
+}

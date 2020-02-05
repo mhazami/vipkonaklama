@@ -1,0 +1,97 @@
+﻿@using Radyn.FileManager
+@model Radyn.Slider.DataStructure.SlideItem
+@if (Model != null)
+{
+    <div class="radynForm">
+        <div id="GalleryContent">
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Slider.Title
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(m => m.Title)
+
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Enable
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @(Model.Enabled ? Resources.Common.Enable : Resources.Common.Disable)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Slider.NavigateUrl
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.DisplayFor(x => x.NavigateUrl)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Slider.Order
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.DisplayFor(x => x.Order)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Slider.StartDate
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.StartDate)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Slider.ExpireDate
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.FinishDate)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.Slider.Photo
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @if (!string.IsNullOrEmpty(Model.ImageId))
+                    {
+                        <img src="@FileManagerContants.FileHandlerRoot@Model.ImageId" style="cursor: pointer" onclick="window.open('@(FileManagerContants.FileHandlerRoot + Model.ImageId + "?dl=true")')" width="70" height="50" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,71 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.ContentManager.DataStructure.MenuHtml>
+    @{
+        ViewBag.Title = Resources.ContentManager.HtmlList;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
+    @section Head{
+    }
+    @section PageTitle
+{
+        @Resources.ContentManager.HtmlList
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/ContentManager/WebDesignMenuHtml/Create")).Text(Resources.ContentManager.NewHtml).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render(); }
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/ContentManager/WebDesignMenuHtml/Create")).Text(Resources.ContentManager.NewHtml).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render(); }
+        </div>
+    }
+    <div class="radynForm">
+        <div class="grid-guid">
+            <div class="grid-guid-title">
+                @Resources.Common.Help &nbsp; @Resources.Common.List
+            </div>
+            <ul>
+                <li>
+                    <img src="/Content/Images/Design.png">
+                    @Resources.ContentManager.DesigneLayout
+                </li>
+                <li>
+                    <img src="/Content/Images/details.png">
+                    @Resources.Common.Detail
+                </li>
+                <li>
+                    <img src="/Content/Images/Delete-Close.png">
+                    @Resources.Common.Delete
+                </li>
+                <li>
+                    <img src="/Content/Images/edit.png">
+                    @Resources.Common.Edit
+                </li>
+            </ul>
+        </div>
+        <div class="fit">
+            @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                {
+                    columns.Template(desgin => desgin.Title).Title(Resources.Common.Title).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(container => 
+                    "<a style='cursor: pointer;'  href='" + Url.Content("/ContentManager/WebDesignMenuHtml/Details?Id=" + container.Id) + "'>" +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                    "<a style='cursor: pointer;'  href='" + Url.Content("/ContentManager/WebDesignMenuHtml/Edit?Id=" + container.Id) + "'> " +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='/Content/Images/edit.png' />" + "</a> | " +
+                    "<a style='cursor: pointer;'  href='" + Url.Content("/ContentManager/WebDesignMenuHtml/Delete?Id=" + container.Id) + "'>" +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+                })
+                                                  //            
+                                                  .Sortable(sorting => sorting.Enabled(true))
+                                                  .Pageable(paging => paging.Enabled(true))
+                                                  .Filterable(filtering => filtering.Enabled(true))
+                      //            .Footer(true)
+                      .Render();}
+        </div>
+    </div>

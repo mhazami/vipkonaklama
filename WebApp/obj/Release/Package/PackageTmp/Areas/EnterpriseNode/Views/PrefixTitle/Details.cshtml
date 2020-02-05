@@ -1,0 +1,37 @@
+@using Radyn.Web.Mvc;
+@model Radyn.EnterpriseNode.DataStructure.PrefixTitle
+@{
+    ViewBag.Title = Resources.Common.Detail;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head{}
+@section PageTitle{@Resources.Common.Detail}
+@section PageAction {
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/EnterpriseNode/PrefixTitle/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/EnterpriseNode/PrefixTitle/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@if (Model != null)
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.Title
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Title)
+                </div>
+            </div>
+        </div>
+    </div>
+}

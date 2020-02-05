@@ -1,0 +1,82 @@
+﻿@model Radyn.Article.DataStructure.ArticleResource
+
+@if (Model != null)
+{
+    @Html.ValidationSummary(true)
+    <div class="table">
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Article.ArticleCategoryTitle
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DisplayFor(m => m.Title)
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Article.ArticleResourceWebAddress
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DisplayFor(model => model.WebAddress)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Article.ArticleResourcePublishDate
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DisplayFor(model => model.PublishDateResource)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Article.ArticleResourcePublisher
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Publisher)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Article.ArticleResourceLanguage
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Language)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Article.ArticleResourceAuther
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Auther)
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

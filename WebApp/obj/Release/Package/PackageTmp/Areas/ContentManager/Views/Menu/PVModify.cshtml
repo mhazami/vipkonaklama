@@ -1,0 +1,107 @@
+﻿@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.Areas.Common.Component
+@using Radyn.WebApp.Areas.ContentManager.Componenet
+
+@model Radyn.ContentManager.DataStructure.Menu
+
+
+<input type="hidden" id="lang" />
+<div class="radynForm">
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Title
+            </div>
+        </div>
+        <div class="table-row-item table-fit">
+            <div class="item">
+                @{
+
+                    @*<input value="@Model.Text" id="Text" name="Text"/>*@
+                    Html.LanguageContentTextBoxFor(Model, x => x.Text);
+                }
+            </div>
+        </div>
+    </div>
+    <div class="item-row ">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Security.MenuParentId
+            </div>
+        </div>
+        <div class="table-row-item table-fit">
+            <div id="parentMenu" class="table-row-item select-row tree-col">
+                <div class="item">
+                    @{ Html.SearchParentInMenuTree(Model, model => model.ParentId, (string)ViewBag.MenuUrl);}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Security.MenuOrder
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Order)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Enable
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+                @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Link
+            </div>
+        </div>
+        <div class="table-row-item table-fit">
+            <div class="item">
+                @Html.TextBoxFor(model => model.Link, new { })
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Direction
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.IsVertical, false)@Resources.ContentManager.Horizontal
+                @Html.RadioButtonFor(model => model.IsVertical, true)@Resources.ContentManager.Vertical
+            </div>
+        </div>
+    </div>
+
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Picture:
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @{
+                    Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", fileName = "Image" });
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

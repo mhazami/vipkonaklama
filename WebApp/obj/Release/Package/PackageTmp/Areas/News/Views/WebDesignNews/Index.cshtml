@@ -1,0 +1,82 @@
+﻿@using Radyn.News.DataStructure
+@using Radyn.News.Tools
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@using Radyn.WebApp.AppCode.Security
+
+@model IEnumerable<News>
+    @{
+        ViewBag.Title = Resources.News.NewsList;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
+    @section Head{
+
+    }
+    @section PageTitle
+{
+        @Resources.News.NewsList
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/News/WebDesignNews/Create")).Text(Resources.News.NewNews).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render(); }
+        </div>
+
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/News/WebDesignNews/Create")).Text(Resources.News.NewNews).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render(); }
+
+        </div>
+    }
+    <div class="radynForm">
+        <div class="grid-guid">
+            <div class="grid-guid-title">
+                @Resources.Common.Help
+            </div>
+            <ul>
+                <li>
+                    <img src="/Content/Images/details.png">
+                    @Resources.Common.Detail
+                </li>
+                <li>
+                    <img src="/Content/Images/edit.png">
+                    @Resources.Common.Edit
+                </li>
+
+            </ul>
+        </div>
+        <div class="fit">
+            @{Html.Radyn().Grid(Model).Name("RadynGrid").Columns(columns =>
+                    {
+                        columns.Template(news => news.GetNewsContent(SessionParameters.Culture).Title1).Title(Resources.News.NewsTitle).Width(350).HeaderHtmlAttributes(new { style = "text-align:center" });
+                        columns.Template(news => news.PublishDate).Title(Resources.News.NewsPublishDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                        columns.Template(news => news.PublishTime).Title(Resources.News.NewsPublishTime).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                        columns.Template(news => news.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(Resources.News.NewsEnabled).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                        columns.Template(news =>
+                              "<a style='cursor: pointer;'  href='" + Url.Content("~/News/WebDesignNews/Details?Id=" + news.Id) + "'>" +
+                            " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                            "<a style='cursor: pointer;'  href='" + Url.Content("~/News/WebDesignNews/Edit?Id=" + news.Id) + "'> " +
+                            " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                            "<a style='cursor: pointer;'  href='" + Url.Content("~/News/WebDesignNews/Delete?Id=" + news.Id) + "'> " +
+                            " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a>  ").Width(300).Filterable(false).Encode(false);
+
+                    })
+                          //
+                          .Sortable(sorting => sorting.Enabled(true))
+                          .Pageable(paging => paging.Enabled(true))
+                          .Filterable(filtering => filtering.Enabled(true))
+                          //.Misc(x => x.ShowDebug(true))
+                          //.Footer(true)
+                          .Render();
+            }
+        </div>
+    </div>
+
+
+
+
+
+    

@@ -1,0 +1,74 @@
+﻿@using Radyn.Web.Mvc.Utility
+
+@model Radyn.Common.DataStructure.Country
+<script type="text/javascript">
+    $(document).ready(function () {
+        IpList();
+    });
+    function IpList() {
+        $("#DivIP").html("");
+        $("#DivIPList").html("");
+        $.get("/Common/Country/GetIpList", {hiddenEdit:false, date: new Date().getTime() }, function (data) {
+            $("#DivIPList").html(data).slideDown("slow");
+            
+        });
+    }
+</script>
+<div class="radynForm">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.CommonComponent.Name
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.EditorFor(model => model.Name)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.CommonComponent.Culture
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.DropDownListFor(model => model.LanguageId, (SelectList)ViewBag.LanguageList)
+            </div>
+        </div>
+    </div>
+    @*<div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.CommonComponent.PhoneCode
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.EditorFor(model => model.PhoneCode)
+            </div>
+        </div>
+    </div>*@
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.CommonComponent.Image
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+
+                @{
+                    Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "Image", fileid = Model.Image, showimage = true, fileName = "UpFileImage" });
+                }
+
+
+            </div>
+        </div>
+    </div>
+    <div id="DivIPList"></div>
+</div>
+
+

@@ -1,0 +1,54 @@
+﻿@using Radyn.Web.Mvc.Utility
+@model Radyn.ContentManager.DataStructure.ContentContent
+<div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Title
+            </div>
+        </div>
+      
+       
+        <div class="table-row-item table-c-fit" >
+            <div class="item">
+                @Html.DisplayFor(model => model.Title, new { })
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Subject
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Subject, new { })
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit" style="display: none">
+        <div class="table-row-cap table-c-auto">
+            <div class="item">
+                @Resources.ContentManager.Abstract
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit table-fit table-c-auto">
+            <div class="item">
+                @{Html.HtmlEncoder(Model.Abstract);}
+            </div>
+        </div>
+    </div>
+    <div class="item-row full_width">
+        <div class="table-row-cap table-c-auto">
+            <div class="item">
+                @Resources.ContentManager.Content
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit table-fit table-c-auto">
+            <div class="item">
+                @{Html.HtmlEncoder(Model.Text);}
+            </div>
+        </div>
+    </div>
+</div>

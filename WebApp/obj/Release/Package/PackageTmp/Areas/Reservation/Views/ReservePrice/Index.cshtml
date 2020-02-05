@@ -1,0 +1,38 @@
+@using Radyn.Utility;
+@using Radyn.Web.Mvc;
+@model IEnumerable<ReservePrice>
+@{
+    ViewBag.Title = Resources.Reservation.ReservePriceList;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle {@Resources.Reservation.ReservePriceList }
+@section PageAction {
+    <div class="button-div m-btn i-save">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Create")).Text(Resources.Reservation.ReservePriceNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div m-btn i-save">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Create")).Text(Resources.Reservation.ReservePriceNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+    </div>
+}
+<div class="radynForm">
+
+    @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width: 98%; margin: 0auto" }).Columns(columns =>
+          {
+              columns.Template(reservePrice => reservePrice.Title).Title(Resources.Reservation.Title).Width(120).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(reservePrice => (reservePrice.ReserveType != Radyn.Reservation.Enum.ReserveType.None ? reservePrice.ReserveType.GetDescriptionInLocalization() : "")).Title(Resources.Reservation.Title).Width(120).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(reservePrice => reservePrice.RoomType.Title).Title(Resources.Reservation.RoomType).Width(120).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(reservePrice => reservePrice.DayType.GetDescriptionInLocalization()).Title(Resources.Reservation.DayType).Width(120).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(reservePrice => reservePrice.FromHour.GetDescriptionInLocalization()).Title(Resources.Reservation.FromHour).Width(120).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(reservePrice => reservePrice.ToHour.GetDescriptionInLocalization()).Title(Resources.Reservation.ToHour).Width(120).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(reservePrice => reservePrice.PerDayPrice).Title(Resources.Reservation.PerDayPrice).Width(120).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(reservePrice => "<a style='cursor: pointer;' href=" + Url.Content("~/Reservation/reservePrice/Details") + "?Id=" + reservePrice.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/reservePrice/Edit") + "?Id=" + reservePrice.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/reservePrice/Delete") + "?Id=" + reservePrice.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(100).Encode(false).Filterable(false);
+          })
+                            .Sortable(sorting => sorting.Enabled(true))
+                            .Pageable(paging => paging.Enabled(true))
+                            .Filterable(filtering => filtering.Enabled(true))
+                            .Render();}
+
+</div>

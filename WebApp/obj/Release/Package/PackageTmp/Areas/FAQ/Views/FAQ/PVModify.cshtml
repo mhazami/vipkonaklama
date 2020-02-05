@@ -1,0 +1,58 @@
+﻿@using Radyn.Web.Mvc;
+
+@model  Radyn.FAQ.DataStructure.FAQ
+<script type="text/javascript">
+    $(document).ready(function () {
+        FAQContent();
+    });
+    function changeCulture() {
+        var culid = document.getElementById("LanguageId").value;
+        $.get("@Url.Content("~/FAQ/FAQContent/ChangeCulture")", { state: "Modify", faqId: '@Model.Id', langid: culid, id: new Date().getTime() }, function (data) {
+            $("#FAQContent").html(data);
+
+        });
+    }
+    function FAQContent() {
+        $.get("@Url.Content("~/FAQ/FAQContent/Modify")", { state: "Modify", faqId: '@Model.Id', id: new Date().getTime() }, function (data) {
+            $("#FAQContent").html(data);
+
+        });
+    }
+
+</script>
+@Html.ValidationSummary(true)
+<div class="radynForm">
+    <div id="FAQContent">
+    </div>
+    <div class="item-row" >
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.FAQ.CreateDate
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item date-picker">
+                @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.CreateDate).Render();}
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.FAQ.Thumbnail
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @{
+                    Html.RenderAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "ThumbnailId", fileid = Model.ThumbnailId, fileName = "Image" });
+
+                }
+               
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

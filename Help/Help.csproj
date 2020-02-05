@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FA0B0F59-3C1C-4AF6-8D6E-FE243BAF526A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.Help</RootNamespace>
+    <AssemblyName>Radyn.Help</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\HelpMenuBO.cs" />
+    <Compile Include="DataStructure\HelpMenu.cs" />
+    <Compile Include="DA\HelpMenuDA.cs" />
+    <Compile Include="Facade\HelpMenuFacade.cs" />
+    <Compile Include="Facade\Interface\IHelpMenuFacade.cs" />
+    <Compile Include="HelpFacade.cs" />
+    <Compile Include="BO\HelpBO.cs" />
+    <Compile Include="BO\HelpContentBO.cs" />
+    <Compile Include="BO\HelpReationCollectionBO.cs" />
+    <Compile Include="BO\HelpRelationBO.cs" />
+    <Compile Include="DataStructure\Help.cs" />
+    <Compile Include="DataStructure\HelpContent.cs" />
+    <Compile Include="DataStructure\HelpReationCollection.cs" />
+    <Compile Include="DataStructure\HelpRelation.cs" />
+    <Compile Include="DA\HelpContentDA.cs" />
+    <Compile Include="DA\HelpDA.cs" />
+    <Compile Include="DA\HelpReationCollectionDA.cs" />
+    <Compile Include="DA\HelpRelationDA.cs" />
+    <Compile Include="Facade\HelpContentFacade.cs" />
+    <Compile Include="Facade\HelpFacade.cs" />
+    <Compile Include="Facade\HelpReationCollectionFacade.cs" />
+    <Compile Include="Facade\HelpRelationFacade.cs" />
+    <Compile Include="Facade\Interface\IHelpContentFacade.cs" />
+    <Compile Include="Facade\Interface\IHelpFacade.cs" />
+    <Compile Include="Facade\Interface\IHelpReationCollectionFacade.cs" />
+    <Compile Include="Facade\Interface\IHelpRelationFacade.cs" />
+    <Compile Include="HelpComponent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Extentions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileManager\FileManager.csproj">
+      <Project>{189D7172-B237-4AFA-A5AA-105AA7693637}</Project>
+      <Name>FileManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security\Security.csproj">
+      <Project>{35aea767-a451-4bcd-a8f5-e0e412686279}</Project>
+      <Name>Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

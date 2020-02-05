@@ -1,0 +1,103 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc
+@{
+    ViewBag.Title = @Resources.Help.CreateHelpRelation;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head
+{
+   
+  
+    <script type="text/javascript">
+        $(function () {
+            ShowRelatedHelp();
+        });
+
+        var orginalHelpId = '@Request.QueryString["helpId"]';
+        function ShowRelatedHelp() {
+            var sourceHelpId = $('#sourceHelpId').val();
+            if (sourceHelpId != null && sourceHelpId != "0")
+                $.get("/Help/Help/GetRelatedHelpInAddRelation", { sourceHelpId: sourceHelpId, id: new Date().getTime() }, function (data) {
+                    if (data != null) {
+                        $("#partialShowRelatedHelp").html(data);
+                        $("#partialShowRelatedHelp").slideDown();
+                    }
+                        
+                });
+        }
+
+        function showHelpData() {
+            var helpId = $('#destinationHelpId').val();
+            if (helpId == orginalHelpId)
+                return;
+            if (helpId != null && helpId != "0")
+                $.get("/Help/Help/GetHelpInformation", { helpId: helpId, id: new Date().getTime() }, function (data) {
+                    $("#partialHelpInformation").append(data);
+                });
+        }
+
+        function addHelpRelation() {
+            var destinationHelpId = $('#destinationHelpId').val();
+            var sourceHelpId = $('#sourceHelpId').val();
+            if (destinationHelpId != null && destinationHelpId != "0" && sourceHelpId != null && sourceHelpId != "0")
+                $.post("/Help/Help/AddHelpRelation", $('form[action="/Banking/Loan/CreateLoan"]').serialize(), function (data) {
+                    ShowRadynMessage();
+                });
+            }
+       
+
+        function clearText() {
+            $('input').val('');
+        }
+    </script>
+}
+@using (Html.BeginForm("CreateHelpRelation", "Help", new { area = "Help" }))
+{
+    <table  border="0" cellpadding="2" cellspacing="2" align="center" dir="@Resources.Common.Direction" style="text-align:@Resources.Common.Aligment;">
+        <tr>
+            <td>
+                <table border="0" cellpadding="0" cellspacing="0" dir="@Resources.Common.Direction" style="text-align:@Resources.Common.Aligment;">
+                    <tr>
+                        <td class="EditRow" style="width: 128px;">
+                            @Resources.Help.HelpDefaultTitle
+                        </td>
+                        <td class="EditFiled" style="width: 300px;" colspan="3">
+                            <div dir="@Resources.Common.Direction" style="border: solid 1px grey; width: 265px;height:27px;vertical-align: top;">
+                                <span>
+                                    <input type="hidden" id="sourceHelpId" name="sourceHelpId" value="@ViewBag.HelpId"/>
+                                    <input type="hidden" id="destinationHelpId" name="DestinationHelpId" />
+                                    <input type="text" id="txtHelpId" style="font-family: tahoma; font-size: 12px;" name="txtHelpId"
+                                        style="font-family: Arial; font-size: 16px; background-color: white; font-weight: bold;
+                                        border: solid white 1px; width: 180px; height: 23px;" /></span> <span>
+                                            <img src="/Content/Images/eraser.png" style="alignment-baseline: middle; cursor: pointer;"
+                                                onclick="clearText();" width="23" height="23" /></span>
+                                <img src="/Content/Images/search_button.png" style="alignment-baseline: middle; cursor: pointer;"
+                                    onclick="ShowModalWithReturnValue('/Help/Help/Search','destinationHelpId','txtHelpId');showHelpData();" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="partialShowRelatedHelp">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="partialHelpInformation">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @{Html.Radyn().ImageActionLink().Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl("/Content/Images/Buttoms/Save-Button.jpg").ImageHeight("35").ImageWidth("90").Submit().Render();}
+            </td>
+           <td>
+                @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Help").Area("Help").Align(ImageActionLink.Alignment.Left).ImageUrl("/Content/Images/Buttoms/Cancel-Button.jpg").ImageHeight("35").ImageWidth("90").ImagePosition(ImageActionLink.Position.Right).Render();}
+            </td>
+              </tr>
+    </table>
+}

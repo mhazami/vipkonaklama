@@ -1,0 +1,9 @@
+﻿@using Radyn.FormGenerator.Tools
+@using Radyn.WebApp.Areas.FormGenerator.Tools
+@model Radyn.WebDesign.DataStructure.UserForms
+
+
+@{
+    Html.FormGenerator(Model.FormId, Model.GetType().Name, (string)ViewBag.RefId,(FormState)ViewBag.formState);
+}
+

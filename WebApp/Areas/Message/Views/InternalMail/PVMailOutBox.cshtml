@@ -1,0 +1,24 @@
+﻿@using Radyn.Web.Mvc
+
+@model IEnumerable<Radyn.Message.DataStructure.MailBox>
+ 
+
+<div>
+    @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+        {
+            columns.Template(mailBox => "<a style='cursor: pointer;'  onclick=\"GetMailView('" + mailBox.MailId + "');\"  > " + mailBox.MailInfo.Subject + "</a> ").Title(Resources.Message.Subject).HeaderHtmlAttributes(new { style = "text-align:center" }).Width(200);
+            columns.Template(mailBox =>mailBox.MailInfo.ToNames).Title(@Resources.Message.To).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(mailBox => mailBox.MailInfo.EmailDateTime).Title(@Resources.Message.Date).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(mailBox => "<input type='checkbox' class='checkboxGroups' onclick=\"AddToDeleteMessage();\"  alt='" + Resources.Common.Select + "' style='cursor: pointer' value='" + mailBox.Id + "'  id='CheckSelect-" + mailBox.Id + "' name='CheckSelect-" + mailBox.Id + "' />").Title("<input type='checkbox' class='checkboxGroups'  onclick='SelectAllForDelete();' style='cursor: pointer'   id='CheckSelectAll' name='CheckSelectAll' />").Width(60).HeaderHtmlAttributes(new { style = "text-align:center;height:30px" });
+
+
+        })
+
+            .Sortable(sorting => sorting.Enabled(true))
+            .Pageable(paging => paging.Enabled(false))
+            .Filterable(filtering => filtering.Enabled(true))
+            //.Footer(true)
+            .Render();}
+</div>
+                     
+

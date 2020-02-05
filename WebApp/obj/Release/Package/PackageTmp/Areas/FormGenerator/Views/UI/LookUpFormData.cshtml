@@ -1,0 +1,25 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.WebApp.Areas.FormGenerator.Tools
+@model Radyn.FormGenerator.DataStructure.FormData
+@{
+    ViewBag.Title = Resources.FormGenerator.Form ;
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+
+}
+@section Head{}
+@section PageActionDown
+{
+<div class="button-div m-btn waves-red i-return">
+    @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Close).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImageHeight("25").ImageWidth("25").ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Close_thisModal();" }).Render();}
+</div>
+
+}
+@section PageAction
+{
+<div class="button-div m-btn waves-red i-return">
+    @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Close).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImageHeight("25").ImageWidth("25").ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Close_thisModal();" }).Render();}
+</div>
+}
+@{
+    Html.FormDataView((string)ViewBag.refId, (string)ViewBag.objectname);
+}

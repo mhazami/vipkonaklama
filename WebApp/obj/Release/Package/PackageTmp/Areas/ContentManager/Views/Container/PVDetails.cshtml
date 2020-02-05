@@ -1,0 +1,31 @@
+﻿@model  Radyn.ContentManager.DataStructure.Container
+
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.ContentManager.Title
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Title)
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap table-c-double">
+                <div class="item">
+                    @Resources.ContentManager.Html
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit table-c-auto table-fit">
+                <div class="item">
+                     @Html.DisplayFor( x => x.Html)
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+

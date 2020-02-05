@@ -1,0 +1,26 @@
+﻿@using Radyn.FileManager
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.UI
+@model Radyn.Slider.DataStructure.Slide
+@{
+    if (Model != null)
+    {
+        if (Model.HeightSlide != null && Model.HeightSlide != 0)
+        {
+            Html.Radyn().SlideShow().ID((string)ViewBag.Id).SliderComponentType().CycleTimeOut(Model.SlidItemTimeOut * 1000).CycleDelay(4).CycleSync(true).CycleFxType(Model.EffectType.ToEnum<SlideShow.CycleFXType>())
+                .Slides(list => list.AddRange(Model.SlideItems.Select(slideItem => string.IsNullOrEmpty(slideItem.NavigateUrl) ? "<img src=\"" + FileManagerContants.FileHandlerRoot + slideItem.ImageId + " \"  width=\"100%\" height=\""+Model.HeightSlide+"px\" alt=\" " + slideItem.Title + " \"    />" : "<img src=\"" + FileManagerContants.FileHandlerRoot + slideItem.ImageId + " \"  width=\"100%\" height=\"" + Model.HeightSlide+"px\" alt=\" " + slideItem.Title + " \"   onclick=\"window.open('http://" + slideItem.NavigateUrl + "')\"  />"))).Render();
+        }
+        else
+        {
+            Html.Radyn().SlideShow().ID((string)ViewBag.Id).SliderComponentType().CycleTimeOut(Model.SlidItemTimeOut * 1000).CycleDelay(4).CycleSync(true).CycleFxType(Model.EffectType.ToEnum<SlideShow.CycleFXType>())
+                .Slides(list => list.AddRange(Model.SlideItems.Select(slideItem => string.IsNullOrEmpty(slideItem.NavigateUrl) ? "<img src=\"" + FileManagerContants.FileHandlerRoot + slideItem.ImageId + " \"  width=\"100%\"  alt=\" " + slideItem.Title + " \"    />" : "<img src=\"" + FileManagerContants.FileHandlerRoot + slideItem.ImageId + " \"  width=\"100%\" alt=\" " + slideItem.Title + " \"   onclick=\"window.open('http://" + slideItem.NavigateUrl + "')\"  />"))).Render();
+        }
+
+    }
+}
+<script>
+    $(document).ready(function () {
+        $("#StoreBigerSlideShow > img").addClass("img-responsive-test");
+    });
+</script>

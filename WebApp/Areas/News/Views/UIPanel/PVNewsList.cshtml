@@ -1,0 +1,67 @@
+﻿@using Radyn.FileManager
+@using Radyn.Utility
+@using Radyn.WebApp.AppCode.Security
+@model List<Radyn.News.DataStructure.News>
+    @{
+        ViewBag.Title = Resources.Common.NewsList;
+        Layout = "~/Views/Shared/User_Layout.cshtml";
+    }
+    @section Head{
+        <script type="text/javascript">
+            function NewsClick(id, title) {
+                window.location = "@Url.Content("~/News/UIPanel/NewsView?id=")" + id + '/' + title;
+
+            }
+
+        </script>
+    }
+    <div class="container-hd widget">
+        <div class="container-header widget-title">
+            <div class="container-header-item">
+                <img src="/Content/Images/news.png" />
+                @Resources.Common.NewsList
+            </div>
+        </div>
+        <div class="container-box widget-content">
+            <div class="news-list">
+                @foreach (var news in Model)
+                {
+                    if (!string.IsNullOrEmpty(news.NewsContent.Title1))
+                    {
+                        <div class="news-list-box">
+                            @if (news.ThumbnailId.HasValue)
+                            {
+                                <a style="text-decoration: none;" href="@Url.Content("~/News/UIPanel/NewsView?id="+news.Id)">
+                                    @{ Html.RadynFile().Image().ID(news.ThumbnailId.Value).Height(70).Width(100).Style("border: solid 1px grey;").Alt(news.NewsContent.Title1).Render(); }
+                                </a>
+                            }
+                            <div class="news-box-content">
+                                <div class="news-list-title">
+                                    <a style="text-decoration: none;" href="@Url.Content("~/News/UIPanel/NewsView?id="+news.Id)">
+                                        @news.NewsContent.Title1
+                                    </a>
+                                </div>
+                                <br />
+                                <div class="news-list-lead">
+                                    @news.NewsContent.Lead
+                                    <small onclick="window.open('@Url.Content("~/News/UIPanel/NewsView?id="+news.Id)')">@Resources.Common.MoreInfo ...</small>
+                                    <br />
+                                    <span>
+
+                                        @if (news.PublishDate != null && !string.IsNullOrEmpty(news.PublishDate.Trim()))
+                                        {
+                                            @news.PublishDate.GetCultureDate(SessionParameters.Culture)
+
+                                        }
+                                        @*@news.PublishDate*@
+                                    </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>

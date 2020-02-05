@@ -1,0 +1,91 @@
+﻿@model List<Radyn.FormGenerator.ControlFactory.Base.ListItem>
+    <script type="text/javascript">
+        function visible(item) {
+            $("div[name='menu']").css('display', 'none');
+            $("div[id *='" + item.id + "'] > div").css('display', 'inline');
+        }
+        function HideMenu(item) {
+            $("div[id *='" + item.id + "'] > div[name='menu']").css('display', 'none');
+        }
+
+        function DeleteLisItemControl(value) {
+            if (confirm('@Resources.Common.Are_You_Soure_For_Delete')) {
+                $.get("@Url.Content("~/FormGenerator/DesignForm/DeleteListItemControl")", { jsonvalue: '@ViewBag.jsonvalue', value: value, date: new Date().getTime() }, function (data) {
+                    if (data.Result != false) {
+                        GetListItemView(data.Value);
+
+
+                    }
+                });
+            }
+
+        }
+        function SwapListItemControl(id, type) {
+            $.get("@Url.Content("~/FormGenerator/DesignForm/SwapListItemControl")", { jsonvalue: '@ViewBag.jsonvalue', Id: id, type: type, date: new Date().getTime() }, function (data) {
+                if (data.Result != false) {
+                    GetListItemView(data.Value);
+                }
+            });
+        }
+    </script>
+
+    <div>
+
+
+        @foreach (var item in Model)
+        {
+            <div class="fit edit-item" id="row-@item.Value" onmouseover="visible(this);" onmouseout="HideMenu(this);">
+                <div class="table-row-item width24percent ">
+                    <div class="item">
+                        @item.Text
+                    </div>
+                </div>
+                <div class="table-row-item width24percent ">
+                    <div class="item">
+                        @item.Value
+
+                    </div>
+                </div>
+                <div class="table-row-item width24percent ">
+                    <div class="item">
+                        @(item.Enable ? Resources.Common.Enable : Resources.Common.Disable)
+
+                    </div>
+                </div>
+                <div class="table-row-item width24percent">
+                    <div class="item">
+                        @(item.Selected ? Resources.FormGenerator.Selected : Resources.FormGenerator.UnSelected )
+
+                    </div>
+                </div>
+                <div class="fgitem width50percent edit-item-box" name="menu">
+                    <ul>
+                        <li class="hint--top" data-hint="@Resources.Common.Edit">
+                            <a href="#" onclick=" ControlItemList('@ViewBag.jsonvalue','@item.Value')">
+                                <img align="absmiddle" src="@Url.Content("~/Content/Images/edit-white.png")" />
+                            </a>
+                        </li>
+                        <li class="hint--top" data-hint="@Resources.Common.Delete">
+                            <a href="#" onclick=" DeleteLisItemControl('@item.Value')">
+                                <img align="absmiddle" src="@Url.Content("~/Content/Images/Delete-Close-white.png")" />
+                            </a>
+                        </li>
+                        <li class="hint--top" data-hint="@Resources.FormGenerator.Down">
+                            <a href="#" onclick=" SwapListItemControl('@item.Value','Down')">
+                                <img align="absmiddle" src="@Url.Content("~/Content/Images/down-arrow-white.png")" />
+                            </a>
+                        </li>
+                        <li class="hint--top" data-hint="@Resources.FormGenerator.Up">
+                            <a href="#" onclick=" SwapListItemControl('@item.Value','Up')">
+                                <img align="absmiddle" src="@Url.Content("~/Content/Images/up-arrow-white.png")" />
+
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        }
+
+    </div>
+

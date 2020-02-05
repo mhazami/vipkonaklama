@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Radyn.Comments.DataStructure.Comment>
+
+
+
+    <div class="comment-box">
+
+        <div class="item-row fit">
+            @{ Html.RenderAction("Create", "NewsComment", new { area = "News", neswId = (int)ViewBag.NewsId });}
+        </div>
+
+
+        @{
+            foreach (var comment in Model)
+            {
+                <div class="comment-box">
+                    <div class="comment-content">
+                        <div class="comment-sender">
+                            @comment.SenderName
+                        </div>
+                        <div class="comment-body">
+                            @comment.Content
+                        </div>
+                    </div>
+                    <span onclick="getPartial('/Comments/Comments/GetReplies', {commentId:@comment.Id},'div-reply')"></span>
+                    <div id="div-reply"></div>
+                </div>
+            }
+        }
+
+
+    </div>

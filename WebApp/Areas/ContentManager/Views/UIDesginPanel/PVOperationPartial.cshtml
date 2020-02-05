@@ -1,0 +1,44 @@
+﻿@using Radyn.FileManager
+@using Radyn.Utility
+@model List<Radyn.ContentManager.DataStructure.Partials>
+    <script>
+        $(function () {
+            $("[nnameitem^='divPartialsitem-']").each(function () {
+                $(this).draggable({
+                    revert: true,
+                    helper: 'clone',
+                    drag: function () {    
+                    }
+                });
+
+            });
+        });
+
+
+
+    </script>
+
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <div  id="@item.StringId"  nnameitem="divPartialsitem-@item.StringId">
+                    <img onclick="LookUpHtml('@item.StringId','@item.Type')" src="@(!string.IsNullOrEmpty(item.Image) && item.Image.ToGuid() != Guid.Empty ? FileManagerContants.FileHandlerRoot + item.Image : "/App_Themes/Xbines/Images/puzzle-img.png")" alt="Alternate Text" />
+                    <p>
+                        @item.Title
+                    </p>
+
+                </div>
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+ 

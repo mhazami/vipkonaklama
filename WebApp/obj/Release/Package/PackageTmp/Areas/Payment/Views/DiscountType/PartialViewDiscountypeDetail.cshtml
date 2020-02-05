@@ -1,0 +1,79 @@
+﻿@model Radyn.Payment.DataStructure.DiscountType
+
+<div class="radynForm">
+    <div class="fit">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.Title
+                </div>
+            </div>
+            <div class="table-row-item table-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Title)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.DiscountValue
+                </div>
+            </div>
+            <div class="table-row-item table-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.ValidValue, new { })
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Enable
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @(Model.Enabled ? @Resources.Common.Enable : @Resources.Common.Disable)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.IsPercent
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @(Model.IsPercent ? @Resources.Common.Yes : @Resources.Common.No)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.ForceAttach
+                </div>
+            </div>
+            <div class="table-row-item " >
+                <div class="item">
+                    @(Model.ForceAttach ? @Resources.Common.Yes : @Resources.Common.No)
+                </div>
+            </div>
+        </div>
+        <div class="item-row" >
+            <div class="table-row-cap ">
+                <div class="item">
+                    @Resources.Payment.Remark
+                </div>
+            </div>
+           <div class="table-row-item table-fit">
+                <div class="item">
+                    @Html.DisplayFor(user => user.Remark)
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

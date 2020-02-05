@@ -1,0 +1,107 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.Utility
+
+@model Radyn.WebDesign.DataStructure.Resource 
+
+
+
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.WebDesign.Type
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.DropDownListFor(model => model.Type, (SelectList)ViewBag.Types)
+        </div>
+    </div>
+</div>
+<div class="item-row ">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.WebDesign.Title
+        </div>
+    </div>
+    <div class="table-row-item table-fit">
+        <div class="item">
+
+            @Html.EditorFor(x => x.Title)
+
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.WebDesign.Order
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.Order)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Common.Enable
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+            @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap table-c-fit">
+        <div class="item">
+            @Resources.WebDesign.File
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+
+            @{
+                Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "FileId", fileid = Model.FileId.ToGuid(), fileName = "ResourceFile" });
+            }
+
+        </div>
+    </div>
+</div>
+<div class="item-row fit">
+    <div class="table-row-cap">
+        <div class="item">
+            Text
+        </div>
+    </div>
+    <div class="table-row-item ">
+        <div class="item">
+            @Html.TextAreaFor(model => model.Text)
+        </div>
+    </div>
+</div>
+
+
+<div class="item-row  fit" dir="@Resources.Design.Direction">
+    <div class="table-row-item table-c-fit">
+        @foreach (var item in (IEnumerable<KeyValuePair<byte, string>>) ViewBag.UseLayouts)
+        {
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        <div style="float: right">
+                            @{Html.Radyn().CheckBox().ID("SelectType-" + item.Key).Text(item.Value).Name("SelectType-" + item.Key).Value(item.Key.ToString()).Checked(string.IsNullOrEmpty(Model.UseLayoutId) ? false : Model.UseLayoutId.Split(',').Contains(item.Key.ToString())).Render(); }
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

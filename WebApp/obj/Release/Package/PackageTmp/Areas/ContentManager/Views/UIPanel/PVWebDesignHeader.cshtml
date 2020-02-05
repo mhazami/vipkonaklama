@@ -1,0 +1,13 @@
+﻿@model Radyn.WebDesign.DataStructure.Configuration
+<div>
+  
+    @{
+        if (ViewBag.Id != null)
+        {
+            Html.RenderAction("ViewPartial", "Content", new { area = "ContentManager", Id = ViewBag.Id });
+
+        }
+    }
+
+
+</div>

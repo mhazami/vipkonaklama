@@ -1,0 +1,66 @@
+﻿@using Radyn.FileManager
+@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.Utility
+
+@model  Radyn.FileManager.DataStructure.File
+
+
+<script type="text/javascript">
+        function ModifyFile() {
+
+
+            $.post("/FileManager/Folder/FileModify", $('form[action^="/FileManager/Folder/LookUPFileModify"]').serialize(), function (data) {
+                if (data != "false") {
+                    GetFiles('@ViewBag.FolderId');
+                }
+                ShowRadynMessage();
+            });
+
+        }
+</script>
+
+
+
+@using (Html.BeginForm("LookUPFileModify", "Folder"))
+{
+    <div class="radynForm content-form-modal not-drag">
+    <input type="hidden" value="@ViewBag.FolderId" name="FolderId" id="FolderId" />
+    <input type="hidden" value="@Model.Id" name="FileId" id="FileId" />
+
+        <div class="table-row-roller">
+            <div class="item">
+                @Resources.FileManager.Folder @ViewBag.FolderName
+            </div>
+        </div>
+        <div class="fit">
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.FileManager.FileName
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit table-fit">
+                <div class="item">
+                    @Html.TextBoxFor(x => x.FileName, new { })
+
+                    @{
+                        Html.RadynAction("MultiFileUploader", "FileUpload", new { area = "FileManager", fileName = "File" });
+
+                    }
+                    @if (Model.Id != Guid.Empty)
+                    {
+
+                        Html.RadynFile().Image().ID(Model.Id).Download().Render();
+
+                    }
+                </div>
+            </div>
+        </div>
+
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "ModifyFile();" }).Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Close_thisModal();" }).Render();}
+    </div>
+    </div>
+}

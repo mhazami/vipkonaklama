@@ -1,0 +1,53 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp
+
+@model Radyn.Article.DataStructure.ArticleFileAttachment
+<script>
+    function AddArticleAttachment() {
+
+        RadynPostForm("@Url.Content("~/Articles/ArticleAttachment/GetArticleAttachmentModify")","@Url.Content("~/Articles/ArticleAttachment/GetArticleAttachmentModify")", function (data2) {
+            if (data2 != "false") {
+                GetArticleAttachmentList();
+                GetArticleAttachmentModify('@Guid.NewGuid()','@PageMode.Create');
+            }
+        });
+
+
+
+    }
+
+
+</script>
+
+    @Html.HiddenFor(x => x.ArticleId)
+    @Html.Hidden("ModelFileId",Model.FileId)
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.Article.ArticleThumbnailId
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @{
+                    Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "FileId", fileid = Model.FileId, fileName = "File" });
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+
+<div class="item-row fit">
+    <div class="button-div m-btn waves-green">
+        @{ Html.Radyn().ImageActionLink().Text(Resources.Common.Save).OtherAttribute(new { onclick = "AddArticleAttachment();" }).Render(); }
+        <i class="fas fa-save"></i>
+    </div>
+
+</div>
+
+
+
+

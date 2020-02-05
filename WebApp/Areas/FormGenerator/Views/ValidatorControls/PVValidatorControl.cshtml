@@ -1,0 +1,34 @@
+﻿@model Radyn.FormGenerator.ControlFactory.Base.ValidatorControl
+<input type="hidden" value="@Model.ControlToValidate" id="ControlToValidate" name="ControlToValidate" />
+<input type="hidden" value="@Model.Id" id="ValidateId" name="ValidateId" />
+@Html.ValidationSummary(true)
+<div class="fit">
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.FormGenerator.ErrorMessage
+            </div>
+        </div>
+        <div class="table-row-item table-fit  ">
+            <div class="item">
+                @Html.EditorFor(model => model.ErrorMessage)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.FormGenerator.Group
+            </div>
+        </div>
+        <div class="table-row-item table-fit ">
+            <div class="item">
+                @Html.TextBoxFor(model => model.Group)
+            </div>
+        </div>
+    </div>
+    @{
+        Html.RenderAction("BaseValidatorGenerateControl", new { Id = ViewBag.Id, jsonvalue = ViewBag.jsonvalue });
+    }
+</div>
+

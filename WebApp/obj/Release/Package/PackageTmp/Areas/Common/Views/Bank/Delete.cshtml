@@ -1,0 +1,60 @@
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@model Radyn.Common.DataStructure.Bank
+@{
+    ViewBag.Title = Resources.Common.Delete;
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+                @Resources.Common.DeleteMessage
+}
+@section PageAction
+{
+<div class="button-div m-btn waves-green i-check">
+    @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("Bank").Area("Common").Text(@Resources.Common.Yes).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+</div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Bank").Area("Common").Text(@Resources.Common.No).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-check">
+        @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("Bank").Area("Common").Text(@Resources.Common.Yes).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Bank").Area("Common").Text(@Resources.Common.No).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+                    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                                @Resources.CommonComponent.BankTitle
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                                @Html.DisplayFor(model => model.Title)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                                    @Resources.CommonComponent.BankEnabled
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @(Model.Enabled ? @Resources.Common.Enable : @Resources.Common.Disable)
+                </div>
+            </div>
+        </div>
+    </div>
+}

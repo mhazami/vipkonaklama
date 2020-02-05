@@ -1,0 +1,36 @@
+@using Radyn.Web.Mvc;
+@model Radyn.Payment.DataStructure.Account
+@{
+    ViewBag.Title = @Resources.Common.Create + " " + @Resources.Payment.Account;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Payment.Account @Resources.Common.New
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("PaymentAccount").Area("Payment").Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("PaymentAccount").Area("Payment").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("PaymentAccount").Area("Payment").Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("PaymentAccount").Area("Payment").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    {
+        Html.RenderAction("PaymentAccountModify", "PaymentAccount", new { area = "Payment" });
+    }
+}

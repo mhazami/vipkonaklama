@@ -1,0 +1,14 @@
+﻿@using Radyn.WebApp.AppCode.Security
+
+
+@model IEnumerable<Radyn.Security.DataStructure.Menu>
+    @{ Html.GenerateMenuHorizontalVertical(Model, "MenuId-" + (string)ViewBag.MenuElementId);}
+    @*<script>
+        $('.dropdown-btn').click(function () {
+            $(this).toggleClass("active-drop");
+            $(this).siblings().toggleClass('change-visible');
+            return false;
+
+        });
+    </script>*@
+

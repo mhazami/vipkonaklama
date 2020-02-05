@@ -1,0 +1,59 @@
+﻿@using Radyn.FileManager
+@model IEnumerable<dynamic>
+    @{
+        ViewBag.Title = ViewBag.OpTitle;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head
+{
+
+    }
+    <script>
+        $(document)
+            .ready(function () {
+                $(".c-widget-head").removeClass();
+                $(".c-widget-content").removeClass();
+                $(".c-widget-footer").removeClass();
+            });
+    </script>
+    <style>
+        .c-widget {
+            border: none;
+        }
+
+        .innerRL .c-widget {
+            background-color: #f2f2f3!important;
+            box-shadow: none !important;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <div>
+        @if (Model != null)
+        {
+            foreach (var menu in Model)
+            {
+
+                <a href="@(Url.Content("~"+menu.Url))" class="d-item-menu-main d-item-menu d-item d-item-menu hint--top">
+                    <div class="d-item-bg">
+                        @if (menu.ImageId != null)
+                        {
+                            Html.RadynFile().Image().ID((Guid)menu.ImageId).Render();
+                            <span dir="rtl">
+                                @menu.Title
+                            </span>
+                        }
+                        else
+                        {
+                            <img src="/App_Themes/RadynBase/Images/default-Img.png" />
+                            <span dir="rtl">
+                                @menu.Title
+                            </span>
+                        }
+                    </div>
+                </a>
+            }
+        }
+
+
+    </div>

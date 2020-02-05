@@ -1,0 +1,42 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.Utility
+@{
+    ViewBag.Title = @Resources.Common.Create + " " + @Resources.News.NewsNews;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@section Head{
+    <script type="text/javascript">
+         $("#DivItem").html("");
+         $.get("/News/News/GetModify", { Id: '@ViewBag.Id', date: new Date().getTime() }, function (data) {
+            $("#DivItem").html(data).hide();
+            $("#DivItem").slideDown();
+         });
+    </script>
+}
+@section PageTitle
+{
+    @Resources.News.NewsNews @Resources.Common.New
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{ Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebDesignNews").Area("News").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebDesignNews").Area("News").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{ Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebDesignNews").Area("News").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebDesignNews").Area("News").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <div id="DivItem"></div>
+}

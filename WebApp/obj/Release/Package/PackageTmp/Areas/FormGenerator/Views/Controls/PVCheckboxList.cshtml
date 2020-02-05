@@ -1,0 +1,50 @@
+﻿@model Radyn.FormGenerator.ControlFactory.Controls.CheckBoxList
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.FormGenerator.TextAlign
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.DropDownListFor(model => model.TextAlign, (SelectList)ViewBag.CheckBoxTextAlign, new { })
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.FormGenerator.RepeatDirection
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.DropDownListFor(model => model.RepeatDirection, (SelectList)ViewBag.RepeatDirections)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.FormGenerator.RepeatColumns
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.RepeatColumns)
+        </div>
+    </div>
+</div>
+<div>
+    <div class="fit">
+        @{
+            Html.RenderAction("GenerateValidator", "ValidatorControls", new { Id = Model.Id, formId = ViewBag.formId, culture = ViewBag.culture });
+        }
+    </div>
+    <div>
+        @{
+            Html.RenderAction("BaseGenerateListControl", "BaseControls", new { Id = Model.Id, formId = ViewBag.formId, culture = ViewBag.culture });
+        }
+    </div>
+</div>
+

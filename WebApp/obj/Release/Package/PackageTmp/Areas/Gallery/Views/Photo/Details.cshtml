@@ -1,0 +1,80 @@
+﻿@using Radyn.Gallery.DataStructure
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+@using Radyn.WebApp.Areas.Common.Component
+@model Photo
+@{
+    ViewBag.Title = Resources.Gallery1._Photo + " " + Resources.Common.Detail;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Gallery1._Photo @Resources.Common.Detail
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-red i-delete">
+        @{Html.Radyn().ImageActionLink().ActionName("Delete", new { GId = Request.QueryString["GId"] }).ControllerName("Photo").Area("Gallery").Text(@Resources.Common.Delete).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index", new { GId = Request.QueryString["GId"], externalurl = ViewBag.externalurl }).ControllerName("Photo").Area("Gallery").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-red i-delete">
+        @{Html.Radyn().ImageActionLink().ActionName("Delete", new { GId = Request.QueryString["GId"] }).ControllerName("Photo").Area("Gallery").Text(@Resources.Common.Delete).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index", new { GId = Request.QueryString["GId"], externalurl = ViewBag.externalurl }).ControllerName("Photo").Area("Gallery").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+
+    <div class="radynForm">
+        <div class="fit item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Gallery1.Title
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @{
+                        Html.LanguageContentDisplayFor(Model, m => m.Title);
+                    }
+                </div>
+            </div>
+        </div>
+       
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Gallery1.UploadDate
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.UploadDate)
+                </div>
+            </div>
+        </div>
+        
+        <div class="item-row" style="display: @(Model.PicFile != null ? "inline" : "none")">
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.Gallery1._Photo
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    <div id="Img">
+                        <img src="@Radyn.FileManager.FileManagerContants.FileHandlerRoot@Model.PicFile" width="150" height="100" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

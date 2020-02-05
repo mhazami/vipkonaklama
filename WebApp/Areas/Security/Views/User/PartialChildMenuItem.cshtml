@@ -1,0 +1,15 @@
+﻿@using Menu = Radyn.Security.DataStructure.Menu
+@model IEnumerable<Menu>
+<ul class="sub-level">
+    @foreach (var menu in Model)
+    {
+        <li>
+            <a href="@menu.Url">@menu.Title</a>
+            @if (menu.Menu1.Any())
+            {
+                Html.RenderAction("GenerateChildMenu", "User", new { area = "Security", child = menu.Menu1 });
+            }
+        </li>
+    }
+
+</ul>

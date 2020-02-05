@@ -1,0 +1,22 @@
+﻿@using Radyn.Web.Mvc.Utility
+@model Radyn.Help.DataStructure.Help
+<table>
+    <tr>
+        <th class="EditRow" style="text-align: center;">
+            @Resources.Help.HelpDefaultTitle
+        </th>
+        <th class="EditRow" style="text-align: center;">
+            @Resources.Help.HelpDefaultConent
+        </th>
+    </tr>
+    <tr>
+        <td  style="display: none"><input name="HelpId" value="@Model.Id"></input> 
+        </td>
+        <td class="EditRow" style="text-align: center;">@Model.DefaultTitle
+        </td>
+        <td class="EditRow" style="width: 334px; height: 50px; overflow-y: scroll; overflow-x: scroll;
+            display: block; text-align: center;"> @{Html.HtmlEncoder(Model.DefaultConent);
+                }
+        </td>
+    </tr>
+</table>

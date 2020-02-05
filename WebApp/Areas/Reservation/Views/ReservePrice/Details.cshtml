@@ -1,0 +1,98 @@
+@using Radyn.Web.Mvc;
+@using Radyn.Utility;
+@model ReservePrice
+@{
+    ViewBag.Title = Resources.Common.Detail;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle{@Resources.Common.Detail}
+@section PageAction {
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@if (Model != null)
+{
+    <div class="radynForm">
+        <div class="radynForm">
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.RoomType
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.RoomType.Title)
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.Title
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.Title)
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.FromHour
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Model.FromHour.GetDescriptionInLocalization()
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.ToHour
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Model.ToHour.GetDescriptionInLocalization()
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.DayType
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Model.DayType.GetDescriptionInLocalization()
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.PerDayPrice
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.PerDayPrice)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

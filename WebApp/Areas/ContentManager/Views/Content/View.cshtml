@@ -1,0 +1,32 @@
+﻿@using Radyn.Web.Mvc.Utility
+@model Radyn.ContentManager.DataStructure.Content
+@{
+    ViewBag.Title = ViewBag.Title;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+@section Head{
+
+}
+@{
+    <div class="internal-page-head">
+        <div class="text-header">
+            <div >
+                <h3>
+                    @{
+                        Html.HtmlEncoder((string)ViewBag.Title);
+                    }
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="internal-page-content">
+        <p>
+            @{
+                Html.HtmlEncoder((string)ViewBag.Html);
+            }
+        </p>
+    </div>
+
+
+
+}

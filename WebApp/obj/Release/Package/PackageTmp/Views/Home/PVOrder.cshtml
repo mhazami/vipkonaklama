@@ -1,0 +1,100 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.AppCode
+@using Radyn.WebApp.AppCode.Security
+@using Radyn.WebApp.Areas.WebDesign.Tools
+@using Radyn.WebDesign.Definition
+
+@model Radyn.Reservation.DataStructure.Order
+
+
+<form action="/Home/Order" method="post">
+    <input type="hidden" value="@Model.RoomTypeId" name="RoomTypeId" />
+    <div class="radynForm">
+        <div class="fit">
+
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.EntryDate
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item date-picker">
+                        @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.EntryDate).Render();}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.EntryTime
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item date-picker">
+                        @Html.DropDownListFor(model => model.EntryTime, (SelectList)ViewBag.Time)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fit">
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.ExitDate
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item date-picker">
+                        @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.ExitDate).Render();}
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.ExitTime
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.DropDownListFor(model => model.ExitTime, (SelectList)ViewBag.Time)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fit">
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.ReserveType
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.DropDownListFor(model => model.ReserveTypeId, (SelectList)ViewBag.ReserveType, "", new { type = "number" })
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.PersonCount
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.TextBoxFor(model => model.PersonCount, new { type = "number" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-div m-btn waves-green i-save">
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Home/Order")).Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+        </div>
+    </div>
+</form>

@@ -1,0 +1,656 @@
+﻿@import url('../../../AppCode/Fonts/Yekan/stylesheet.css');
+
+body {
+    margin: 0;
+    font-family: Verdana !important;
+}
+
+.content {
+    direction: ltr; /* در فایل های ایمپورت شده مشکل ایجاد میکند*/
+}
+
+.ui-widget {
+    font-family: Verdana;
+}
+
+.d-item-menu span, .d-item-menu p {
+    text-align: right;
+    margin-right: 15px;
+}
+
+.r-item-box img {
+    float: left;
+}
+
+
+
+.radynbar {
+    float: left;
+    margin-left: 10px;
+    text-align: left;
+}
+
+    .radynbar h3 {
+        float: left;
+    }
+
+    .radynbar select {
+        float: right;
+        text-align: left;
+    }
+
+    .radynbar img.congbimg {
+        float: left;
+    }
+
+.content, .header, .v-line, .big-pane, .navbar,
+.child-pane, .navbar button, .navbar-item,
+.navbar-item-img, .navbar-item-p, ul.top-level,
+ul.sub-level li, .footer, .page-caption span,
+.page-caption p, .innerRL, .inner-lookup,
+.c-widget, .c-widget-content, .c-widget-head span,
+.c-widget-head p, .c-widget-footer span {
+    float: left;
+}
+
+.tabs-page > div {
+    float: left;
+    width: 100%;
+}
+
+.radynbar-menu {
+    float: right;
+    margin-right: 20px;
+}
+
+.topbar {
+    float: right;
+}
+
+.c-widget-head span, .c-widget-footer span {
+    background-position: 26px 98px;
+}
+
+.child-pane {
+    left: 0;
+}
+
+.d-item p {
+    font-size: 15px;
+}
+
+.navbar button, .navbar-item-img, .navbar-item-p {
+    margin-left: 15px;
+}
+/*MENU*/
+.nav-operation, #nav {
+    float: left;
+    direction: ltr;
+}
+
+.nav-operation-item img, .nav-operation-item:hover img,
+.nav-Gmenu-item img, .nav-Gmenu-item:hover img {
+    float: left;
+    border-style: none none solid solid;
+}
+
+.nav-operationText {
+    float: left;
+    margin-left: 5px;
+}
+
+li:hover .sub-level {
+    left: 75px;
+}
+/*VERTICAL-MENU*/
+#sidebar-wrapper {
+    float: left;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    border-right: solid 1px #d8d8d8;
+}
+
+#page-content-wrapper {
+    float: left;
+    margin-left: 50PX;
+}
+
+
+#Menu li[name="submenuItem"] img {
+    padding: 5px 5px 5px 0;
+}
+/*VERTICAL-MENU*/
+/*CONTAINER*/
+.page-caption, .c-widget .c-widget-head, .c-widget-footer {
+    padding: 0 0 0 2%;
+    float: left;
+}
+
+.c-widget .c-widget-head, ul.sub-level li span {
+    padding: 0 0 0 2%;
+}
+
+.c-widget .c-widget-head, .c-widget-footer {
+    padding: 0;
+    margin: 0;
+}
+
+.grid-guid {
+    direction: ltr;
+    width: 99%;
+}
+
+.radyn_grid table {
+    direction: ltr;
+}
+
+.grid-guid ul li {
+    float: left;
+}
+
+.grid-guid-title {
+    float: left;
+}
+
+.paginate_buttons {
+    margin-left: 10px;
+    float: left;
+}
+
+.big-pane .page-align .paginate_buttons {
+    float: left;
+    margin-left: 0px !important;
+    margin-right: 0 !important;
+    border-width: 0 0px 1px 0;
+    border-style: none none solid none;
+    width: 51.9% !important;
+}
+
+@media (max-width: 1356px) {
+    .big-pane .table_info {
+        margin-right: 1.57% !important;
+    }
+}
+
+@media (max-width: 1120px) {
+    .big-pane .table_info {
+        margin-right: 1.49% !important;
+    }
+}
+
+
+.table_info {
+    float: left;
+    direction: ltr;
+    text-align: left;
+}
+
+
+.paginate_buttons, .table_info {
+    float: right;
+    right: auto;
+    left: 20px;
+}
+
+
+
+    .paginate_buttons ul {
+        float: left !important;
+    }
+
+        .paginate_buttons ul li {
+            float: left;
+        }
+/*END-Container*/
+/*FOOTER*/
+.radyn-Resources {
+    float: left;
+}
+
+    .radyn-Resources img {
+        float: left;
+    }
+
+    .radyn-Resources a p {
+        float: left;
+        margin-left: 5px;
+    }
+/*END-FOOTER*/
+
+/*OperatitonPanel*/
+.d-item {
+    margin-left: 13px;
+    float: left;
+}
+
+    .d-item img {
+        margin: 10px 0 0 10px;
+    }
+
+
+    .d-item-menu .d-item-bg img, .d-item img {
+        margin-top: 30px;
+        float: none;
+        left: 13px;
+        margin: auto;
+    }
+
+@media (max-width: 980px) {
+    .open-nav ~ #page-content-wrapper .d-item-menu.d-item-menu span, .d-item-menu.d-item-menu-main p {
+        font-size: 14px;
+        float: right;
+        text-align: right;
+    }
+}
+
+@media (max-width: 768px) {
+    .open-nav ~ #page-content-wrapper .d-item-menu.d-item-menu span, .d-item-menu.d-item-menu-main p {
+        width: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .navigation-menu.open-nav .icon-upper {
+        margin-left: 76% !important;
+    }
+}
+
+.d-item-menu span {
+    float: right;
+    left: auto !important;
+    right: 13px;
+}
+
+.radynbar h3 {
+    width: auto;
+}
+/*-------------Form-------------*/
+/*--DataEntryForm--*/
+.radynForm, .table-half {
+    direction: ltr;
+    text-align: left;
+    float: left;
+}
+
+
+.table-row-cap, .table-row-item, .table-row-point, .table-row-roller, .table-row-empty {
+    float: left;
+    margin-right: .5%;
+    text-align: left;
+    direction: ltr;
+}
+
+.dropdown-menu {
+    float: left;
+    text-align: left;
+}
+
+.table-row-roller {
+    margin-left: 0;
+}
+
+.button-div {
+    float: left;
+    margin-left: 10px;
+}
+
+/*--END-DataEntryForm--*/
+/*--GridView--*/
+/*.gv-table {
+    direction: ltr;
+}
+
+.gv-row {
+    float: left;
+}
+
+.gv-cell {
+    float: left;
+    border-width: 0 1px 0 0;
+    border-style: none solid none none;
+    border-color: #A4ABB2;
+}
+
+.gv-cell-last {
+    border: none;
+}
+
+.radyn_grid-footer {
+    border-width: 0 0 1px 1px;
+    border-style: none none solid solid;
+}
+
+.table_info {
+    border-width: 0 1px 0 1px;
+    border-style: none solid none solid;
+    text-align: right;
+}
+
+.paginate_buttons, .table_info {
+    float: left;
+}
+
+    .paginate_buttons ul li {
+        float: left;
+    }
+
+.gv-icon {
+    float: left;
+}
+
+.gv-status {
+    border-right-style: solid;
+    border-right-width: 1px;
+    float: left;
+}
+
+.gv-pager {
+    float: left;
+}
+
+.gv-link {
+    float: left;
+}
+
+.gv-numeric {
+    float: left;
+}
+
+.gv-arrow-first {
+    background-position: -48px -192px;
+}
+
+    .gv-arrow-first:hover {
+        background-position: -48px -224px;
+    }
+
+.gv-arrow-last {
+    background-position: 0 -192px;
+}
+
+    .gv-arrow-last:hover {
+        background-position: 0 -224px;
+    }
+
+.gv-arrow-prev {
+    background-position: -32px -192px;
+}
+
+    .gv-arrow-prev:hover {
+        background-position: -32px -224px;
+    }
+
+.gv-arrow-next {
+    background-position: -16px -208px;
+}
+
+    .gv-arrow-next:hover {
+        background-position: -16px -224px;
+    }
+
+.grid-guid, .grid-guid-title, .grid-guid ul, .grid-guid ul li {
+    float: left;
+}
+
+.grid-guid {
+    direction: ltr;
+    text-align: left;
+}*/
+/*--END-GridView--*/
+.page-align {
+    float: left !important;
+}
+
+.page-invertalign {
+    float: right;
+}
+
+.fit {
+    float: left;
+}
+
+.top-menu-icon {
+    float: left;
+}
+
+.page-action-title {
+    float: left;
+}
+/*--------------END-Form---------------*/
+/*  L  O  G  I  N  */
+
+.login-container, .login-header, .login-data-row,
+.login-data-row-item, .login-data-row-item input,
+.login-data-row, .login-main, .login-avatar {
+    /*float: left;*/
+}
+
+    .login-data-row-item input {
+        text-align: left;
+    }
+
+    .login-data-row-item p {
+        direction: ltr;
+        float: left;
+    }
+
+/* E  N  D -- L  O  G  I  N  */
+.ContexMenu {
+    text-align: left;
+}
+/*Form Generator*/
+.fgitem {
+    right: 5px;
+}
+
+    .fgitem, .fgitem ul, .fgitem ul li {
+        float: left;
+    }
+
+/*INTERNALMAIL*/
+.nav-mail-item span, .nav-mail-item:hover span {
+    float: left;
+    border-style: none none solid solid;
+}
+
+.nav-mailText {
+    float: left;
+    margin-left: 5px;
+}
+/*EDITOR*/
+.editortype {
+    float: left;
+}
+
+    .editortype:first-child {
+        border-radius: 3px 0px 0px 3px;
+        -moz-border-radius: 3px 0px 0px 3px;
+        -webkit-border-radius: 3px 0px 0px 3px;
+    }
+
+    .editortype:last-child {
+        border-radius: 0px 3px 3px 0px;
+        -moz-border-radius: 0px 3px 3px 0px;
+        -webkit-border-radius: 0px 3px 3px 0px;
+    }
+
+    .editortype p {
+        float: left;
+        margin-left: 2px;
+    }
+
+    .editortype img {
+        float: left;
+    }
+
+.text-align {
+    text-align: left;
+}
+/*ToggleArrow*/
+.arrow {
+    float: left;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    margin: 0 3px;
+}
+
+.item {
+    margin: 4px 3px;
+}
+
+.table-row-item {
+    height: auto;
+    min-height: 33px;
+}
+
+.width-datepicker img {
+    margin: 3px;
+    vertical-align: middle;
+}
+
+.user-panel {
+    right: 0;
+    left: -85px;
+}
+
+    .user-panel h2 {
+        right: 5px;
+        left: auto;
+    }
+
+.navigation-menu {
+    left: 0 !important;
+}
+
+#page-content-wrapper {
+    float: right !important;
+}
+
+.icon-close, .icon-close:hover, .icon-close:focus {
+    left: auto;
+    right: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+span.icon-nav {
+    right: 6px;
+    left: auto;
+}
+
+.img-nav {
+    border-left: none;
+    border-right: 1px solid #939598;
+}
+
+.navigation-menu.open-nav .icon-upper {
+    float: right;
+    right: 21%;
+    left: auto;
+}
+
+.list-nav span {
+    margin-left: 10px;
+}
+/*.dropdown-btn  , .dropdown-btn a{
+    margin-left: 41px; 
+}*/
+.nav-panel > li {
+    float: left;
+}
+/*.dropdown-container li a {
+    margin-left: 44px;
+}*/
+.navigation-menu .list-nav li .dropdown-btn a {
+    margin-left: 41px;
+}
+
+@media (min-width: 1400px) {
+    .navigation-menu.open-nav .icon-upper {
+        right: 14% !important;
+        left: auto !important;
+        top: 18px !important;
+    }
+}
+
+@media (min-width: 1550px) {
+
+
+    .navigation-menu.open-nav .icon-upper {
+        right: 8% !important;
+        left: auto !important;
+        top: 18px !important;
+    }
+}
+
+.list-nav span {
+    margin-left: 10px;
+}
+
+.ui-tabs-nav {
+    float: left;
+}
+
+.d-item p {
+    font-size: 16px !important;
+    right: 15px;
+    left: auto !important;
+    position: absolute;
+    text-align: right !important;
+}
+
+.big-pane .item > div {
+    float: left !important;
+}
+
+.c-widget-lookup .table-row-cap .item > div {
+    float: left !important;
+}
+
+.logonav span {
+    font-size: 25px;
+    font-weight: 400;
+    left: -16px;
+    top: -8px !important;
+}
+
+.jstree-container-ul li {
+    text-align: left;
+}
+
+.dropdown-btn.active .icon-upper, .dropdown-btn.active-drop .icon-upper {
+    -webkit-transform: rotate(90deg) translate(-3px, 3px);
+    margin-left: 7%;
+    transform: rotate(90deg) translate(-3px, 3px);
+    top: 14px;
+}
+
+.search-align {
+    float: left;
+}
+
+.users-page .table-row-cap .item > div, .users-page .table-row-item .item > div {
+    float: left !important;
+}
+.user-panel-info .userinfo > b {
+    text-align: left
+}
+.liner-div {
+    margin-left: -47px !important;
+    transform: skew(35deg) !important;
+}
+.userinfo span div {
+    text-align: left!important
+}
+.liner-div img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 30px;
+}

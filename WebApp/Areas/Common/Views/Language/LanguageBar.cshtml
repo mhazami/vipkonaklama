@@ -1,0 +1,51 @@
+﻿@using Radyn.Web.Mvc;
+@using Resources
+@model IEnumerable<dynamic>
+
+    @if (Model!=null&&Model.Count() > 1)
+    {
+
+        <div class="change-langage menu-user">
+            <a class="hint--bottom" data-hint="@Resources.Common.ChangeLanguage">
+                <img src="@Url.Content("~/Content/Images/worlwide.png")" />
+            </a>
+
+            <ul class="user-panel">
+
+                <h2></h2>
+                <li>
+                    <table border="0" cellpadding="2" cellspacing="2" dir="@Common.Direction">
+                        <tr>
+
+                            @if (Model.Any())
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <td class="language-btns" style="text-align: @Common.Aligment; padding: auto">
+                                        @{
+                                            if (((bool)item.ShowLogo))
+                                            {
+                                                Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Common/Language/SetLanguage?culture=" + (string)item.Id)).ImageUrl(Radyn.FileManager.FileManagerContants.FileHandlerRoot + (Guid)item.LogoId).Text((string)item.DisplayName).Style("text-decoration:none;color:white;").Render();
+                                            }
+                                            else
+                                            {
+                                                Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Common/Language/SetLanguage?culture=" + (string)item.Id)).ImageWidth("0px").Text((string)item.DisplayName).Style("text-decoration:none;color:white;").Render();
+                                            }
+
+
+                                        }
+
+                                    </td>
+                                                }
+                                            }
+
+                        </tr>
+                    </table>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+                                            }

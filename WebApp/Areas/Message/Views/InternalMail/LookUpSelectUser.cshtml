@@ -1,0 +1,89 @@
+﻿@using Radyn.Web.Mvc
+@model IEnumerable<Radyn.Message.Tools.ModelView.InternalMailSelectUser>
+@{
+    ViewBag.Title = Resources.Common.Search;
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+
+}
+@section Head{
+    <script type="text/javascript">
+        function Selectandclose() {
+            var id = "";
+            var Name = "";
+            $("[id^=SelectedUser-]").each(function () {
+                if ($(this).attr('checked') == "checked") {
+                    if (id != "") id += ",";
+                    id += $(this).attr('Id').substring(13);
+                    if (Name != "") Name += ",";
+                    Name += $(this).attr('Name').substring(13);
+                }
+            });
+            showModalReturn(id, Name);
+        }
+        function SearchUser() {
+            $("#divSearchload").show();
+            $("#DivSearchResult").html("");
+            var currentUserId = $("#UserId").val();
+            var selectedId = $("#SelectedId").val();
+            var txtSearch = $("#txtSearch").val();
+            $.get("/Message/InternalMail/GetUsers", { userId: currentUserId, selected: selectedId, searchvalue: txtSearch, date: new Date().getTime() }, function(data) {
+                if (data != "false") {
+                    $("#DivSearchResult").html(data).slideDown("slow");;
+                }
+             
+            }).complete(function() {
+                $("#divSearchload").hide();
+            });
+        }
+
+        $(document).ready(function() {
+            SearchUser();
+        });
+    </script>
+}
+@section PageAction
+{
+    <div class="button-div">
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Select).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Select.png")).ImageHeight("25").ImageWidth("25").ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Selectandclose();" }).Render();}
+
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div">
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Select).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Select.png")).ImageHeight("25").ImageWidth("25").ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Selectandclose();" }).Render();}
+
+    </div>
+
+}
+
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="SelectedId" id="SelectedId" value="@ViewBag.Values" />
+    <input type="hidden" name="UserId" id="UserId" value="@ViewBag.UserId" />
+    <div class="fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Security.UserName
+            </div>
+        </div>
+        <div class="table-row-item table-fit ">
+            <div class="item">
+                <div class="width80percent page-align">
+                    @Html.TextBox("txtSearch")
+                </div>
+                <div class="width13percent page-align" id="BtnSearch">
+                    @{Html.Radyn().ImageActionLink().Text(Resources.Common.Search).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/search_button.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "SearchUser();" }).Render();}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="fit" id="divSearchload">
+        <img id="loading" src="@Url.Content("~/Content/Images/Gif/loading2.gif")" alt="" />
+    </div>
+    <div id="DivSearchResult">
+        
+    </div>
+}

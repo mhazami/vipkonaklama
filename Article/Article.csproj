@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{49D57698-98E2-46A5-A7E7-43A52A0C6121}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.Article</RootNamespace>
+    <AssemblyName>Radyn.Article</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArticleComponent.cs" />
+    <Compile Include="BO\ArticleBO.cs" />
+    <Compile Include="BO\ArticleCategoryBO.cs" />
+    <Compile Include="BO\ArticleCommentBO.cs" />
+    <Compile Include="BO\ArticleFileAttachmentBO.cs" />
+    <Compile Include="BO\ArticleResourceBO.cs" />
+    <Compile Include="BO\ArticleResourcesBO.cs" />
+    <Compile Include="DataStructure\Article.cs" />
+    <Compile Include="DataStructure\ArticleCategory.cs" />
+    <Compile Include="DataStructure\ArticleComment.cs" />
+    <Compile Include="DataStructure\ArticleFileAttachment.cs" />
+    <Compile Include="DataStructure\ArticleResource.cs" />
+    <Compile Include="DataStructure\ArticleResources.cs" />
+    <Compile Include="DA\ArticleCategoryDA.cs" />
+    <Compile Include="DA\ArticleCommentDA.cs" />
+    <Compile Include="DA\ArticleDA.cs" />
+    <Compile Include="DA\ArticleFileAttachmentDA.cs" />
+    <Compile Include="DA\ArticleResourceDA.cs" />
+    <Compile Include="DA\ArticleResourcesDA.cs" />
+    <Compile Include="ArticleBaseFacade.cs" />
+    <Compile Include="Facade\ArticleCategoryFacade.cs" />
+    <Compile Include="Facade\ArticleCommentFacade.cs" />
+    <Compile Include="Facade\ArticleFacade.cs" />
+    <Compile Include="Facade\ArticleFileAttachmentFacade.cs" />
+    <Compile Include="Facade\ArticleResourceFacade.cs" />
+    <Compile Include="Facade\ArticleResourcesFacade.cs" />
+    <Compile Include="Facade\Interface\IArticleCategoryFacade.cs" />
+    <Compile Include="Facade\Interface\IArticleCommentFacade.cs" />
+    <Compile Include="Facade\Interface\IArticleFacade.cs" />
+    <Compile Include="Facade\Interface\IArticleFileAttachmentFacade.cs" />
+    <Compile Include="Facade\Interface\IArticleResourceFacade.cs" />
+    <Compile Include="Facade\Interface\IArticleResourcesFacade.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\ModelView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Comment\Comments.csproj">
+      <Project>{7bd38c1c-392d-4ce7-b631-2f29ddea6d3e}</Project>
+      <Name>Comments</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{3b7185a9-70d1-4cbe-9835-88944bf9384c}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseNode\EnterpriseNode.csproj">
+      <Project>{46953ce7-5185-464d-9db4-3bcb91bd04a6}</Project>
+      <Name>EnterpriseNode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileManager\FileManager.csproj">
+      <Project>{189d7172-b237-4afa-a5aa-105aa7693637}</Project>
+      <Name>FileManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

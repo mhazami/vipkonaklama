@@ -1,0 +1,1899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Address" xml:space="preserve">
+    <value>آدرس</value>
+  </data>
+  <data name="Agencies" xml:space="preserve">
+    <value>نمایندگی ها</value>
+  </data>
+  <data name="AverageSlideId" xml:space="preserve">
+    <value>اسلایدر متوسط</value>
+  </data>
+  <data name="BigSlideId" xml:space="preserve">
+    <value>اسلاید بزرگ</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>شهر</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>نام شرکت</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>تنظیمات</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>ادامه</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>ایمیل</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>فکس</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>فایل</value>
+  </data>
+  <data name="FooterId" xml:space="preserve">
+    <value>پایین صفحه</value>
+  </data>
+  <data name="HeaderId" xml:space="preserve">
+    <value>بالا صفحه</value>
+  </data>
+  <data name="InstallPath" xml:space="preserve">
+    <value>مسیر نصب</value>
+  </data>
+  <data name="IntroPage" xml:space="preserve">
+    <value>صفحه ورود</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>زبان</value>
+  </data>
+  <data name="MaxNewsShow" xml:space="preserve">
+    <value>تعدا اخبار صفحه اول</value>
+  </data>
+  <data name="MiniSlideId" xml:space="preserve">
+    <value>اسلایدر کوچک</value>
+  </data>
+  <data name="NewResource" xml:space="preserve">
+    <value>NewResource</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>ترتیب</value>
+  </data>
+  <data name="PersonFullName" xml:space="preserve">
+    <value>نام و نام خانوادگی</value>
+  </data>
+  <data name="PleaseConfigThisWebSite" xml:space="preserve">
+    <value>تنظیمات وب سایت انجام نشده است</value>
+  </data>
+  <data name="PleasesetpathWebSiteontheManagementWebSite" xml:space="preserve">
+    <value>لطفا مسیر وب سایت را در قسمت مدیریت وب سایت تنظیم نمایید</value>
+  </data>
+  <data name="Resource" xml:space="preserve">
+    <value>Resource</value>
+  </data>
+  <data name="ResourceList" xml:space="preserve">
+    <value>لیست Resource</value>
+  </data>
+  <data name="suggestions" xml:space="preserve">
+    <value>پیشنهادات و انتقادات</value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value>تلفن</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>متن ارسالی</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>عنوان</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>نوع</value>
+  </data>
+  <data name="UseFor" xml:space="preserve">
+    <value>استفاده در</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>بیشتر بخوانید</value>
+  </data>
+  <data name="WebSite" xml:space="preserve">
+    <value>وب سایت</value>
+  </data>
+  <data name="WebSiteArchiveNews" xml:space="preserve">
+    <value>آرشیو اخبار</value>
+  </data>
+  <data name="WebSiteGallery" xml:space="preserve">
+    <value>گالری وب سایت</value>
+  </data>
+  <data name="WebSiteIsDisable" xml:space="preserve">
+    <value>این وی سایت غیر فعال است</value>
+  </data>
+  <data name="WebSiteNews" xml:space="preserve">
+    <value>اخبار سایت</value>
+  </data>
+  <data name="Award" xml:space="preserve">
+    <value>افتخارات</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>رویدادنگاری</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>ادامه</value>
+  </data>
+  <data name="Rial" xml:space="preserve">
+    <value>ریال</value>
+  </data>
+  <data name="Sitemap" xml:space="preserve">
+    <value>نقشه سایت</value>
+  </data>
+  <data name="SelectedProducts" xml:space="preserve">
+    <value>محصولات برگزیده</value>
+  </data>
+  <data name="Magnify" xml:space="preserve">
+    <value>بزرگنمایی</value>
+  </data>
+  <data name="Container" xml:space="preserve">
+    <value>قالب</value>
+  </data>
+  <data name="Html" xml:space="preserve">
+    <value>Html</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>وب سایت مورد نظر در این آدرس غیر فعال است</value>
+  </data>
+  <data name="NotConfig" xml:space="preserve">
+    <value>تنظیمات وب سایت انجام نشده است ،لطفا به صفحه ی تنظیمات مراجعه نمایید</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>آدرس مورد نظر یافت نشد</value>
+  </data>
+  <data name="NotRegistered" xml:space="preserve">
+    <value>وب سایت مورد نظر در این آدرس ثبت نشده است</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>درباره ما</value>
+  </data>
+  <data name="AbstarctDes" xml:space="preserve">
+    <value>توضیحات مختصر</value>
+  </data>
+  <data name="AccessDeny" xml:space="preserve">
+    <value>عدم دسترسی</value>
+  </data>
+  <data name="AccessToUserImportDataFromExcel" xml:space="preserve">
+    <value>دسترسی ورود اطلاعات از اکسل در بخش کاربران دارد؟</value>
+  </data>
+  <data name="ActiviyDescription" xml:space="preserve">
+    <value>حوزه فعالیت</value>
+  </data>
+  <data name="Address1" xml:space="preserve">
+    <value>آدرس</value>
+  </data>
+  <data name="Advertising" xml:space="preserve">
+    <value>تبلیغات</value>
+  </data>
+  <data name="Affiliation" xml:space="preserve">
+    <value>افیلیشن(وابستگی سازمانی)</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>همه</value>
+  </data>
+  <data name="AllArticleCount" xml:space="preserve">
+    <value>کل {0}  </value>
+  </data>
+  <data name="AllDays" xml:space="preserve">
+    <value>همه روزها</value>
+  </data>
+  <data name="AllowSentOrginalWhileAbstractDeny" xml:space="preserve">
+    <value>اگر چکیده تایید نشد اصل {0}  دریافت شود؟</value>
+  </data>
+  <data name="AllowUserPrintCard" xml:space="preserve">
+    <value> کاربر مجوز چاپ کارت دارد؟</value>
+  </data>
+  <data name="AllowUserPrintCertification" xml:space="preserve">
+    <value>کاربر مجوز چاپ گواهی دارد؟</value>
+  </data>
+  <data name="AllUsers" xml:space="preserve">
+    <value>همه کاربران</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>مبلغ</value>
+  </data>
+  <data name="Anotherlinkinactivation" xml:space="preserve">
+    <value>در یافت مجدد لینک فعال سازی</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>تایید بررسی</value>
+  </data>
+  <data name="AreYouSureGenerateUser" xml:space="preserve">
+    <value>برای تولید و ذخیره مهمان مطمئن هستید؟</value>
+  </data>
+  <data name="AreYouSureLoginRefereePanel" xml:space="preserve">
+    <value>برای ورود به پنل داور مطمئن هستید؟</value>
+  </data>
+  <data name="AreYouSureLoginUserPanel" xml:space="preserve">
+    <value>برای ورود به پنل کاربر مطمئن هستید؟</value>
+  </data>
+  <data name="AscendingDescending" xml:space="preserve">
+    <value>صعودی-نزولی</value>
+  </data>
+  <data name="AskForBackUp" xml:space="preserve">
+    <value>درخواست پشتیبانی</value>
+  </data>
+  <data name="Attachment" xml:space="preserve">
+    <value>پیوست</value>
+  </data>
+  <data name="AttachmentForUser" xml:space="preserve">
+    <value>فایل پیوست برای کاربر</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>پیوست ها</value>
+  </data>
+  <data name="AttachReferee" xml:space="preserve">
+    <value>اجازه به داور برای پیوست فایل؟</value>
+  </data>
+  <data name="AttachRefereeFile" xml:space="preserve">
+    <value>فرم داوری {0} </value>
+  </data>
+  <data name="Attendance" xml:space="preserve">
+    <value>حضور و غیاب</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>نویسنده</value>
+  </data>
+  <data name="AuthorDirectorAddedThisArticle" xml:space="preserve">
+    <value>نویسنده مسئول در این {0} وجود دارد</value>
+  </data>
+  <data name="AutoAssigneReferee" xml:space="preserve">
+    <value>تعیین خودکار داور برای {0} </value>
+  </data>
+  <data name="AverageSlideId1" xml:space="preserve">
+    <value>اسلاید متوسط</value>
+  </data>
+  <data name="BackgroundColor" xml:space="preserve">
+    <value>رنگ پشت زمینه سایت</value>
+  </data>
+  <data name="BackgroundImage" xml:space="preserve">
+    <value>عکس پشت زمینه سایت</value>
+  </data>
+  <data name="BankId" xml:space="preserve">
+    <value>بانک</value>
+  </data>
+  <data name="BaseCapacity" xml:space="preserve">
+    <value>ظرفیت اولیه</value>
+  </data>
+  <data name="BaseSetting" xml:space="preserve">
+    <value>تنظیمات پایه</value>
+  </data>
+  <data name="BigSlideId1" xml:space="preserve">
+    <value>اسلاید بزرگ</value>
+  </data>
+  <data name="CalculatePoints" xml:space="preserve">
+    <value>محاسبه ی امتیاز</value>
+  </data>
+  <data name="CanUserDeleteArticle" xml:space="preserve">
+    <value>کاربر مجاز به حذف {0} می باشد؟</value>
+  </data>
+  <data name="CanUserSelect" xml:space="preserve">
+    <value>کاربر میتواند انتخاب کند</value>
+  </data>
+  <data name="CanUserViewFile" xml:space="preserve">
+    <value>کابر بتواند فایل را دانلود کند</value>
+  </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>ظرفیت</value>
+  </data>
+  <data name="Capicity" xml:space="preserve">
+    <value>ظرفیت</value>
+  </data>
+  <data name="Captcha" xml:space="preserve">
+    <value>کد امنیتی</value>
+  </data>
+  <data name="Card" xml:space="preserve">
+    <value>کارت</value>
+  </data>
+  <data name="Cartabl" xml:space="preserve">
+    <value>کارتابل</value>
+  </data>
+  <data name="CatalogFileId" xml:space="preserve">
+    <value>پیوست کاتالوگ</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>گروه</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>تغییر رمز </value>
+  </data>
+  <data name="ChartReport" xml:space="preserve">
+    <value>گزارشات نموداری</value>
+  </data>
+  <data name="ChatReport" xml:space="preserve">
+    <value>گزارش چت</value>
+  </data>
+  <data name="ClickForRgisterNewAuthor" xml:space="preserve">
+    <value>برای ثبت نویسنده جدید کلیک نمایید</value>
+  </data>
+  <data name="ClickForViewAndDownloadyourCard" xml:space="preserve">
+    <value>برای مشاهده و دریافت کارت خود  کلیک نمایید</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>بسته</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>کد</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>توضیحات</value>
+  </data>
+  <data name="CommentofReferee" xml:space="preserve">
+    <value>نظر داور</value>
+  </data>
+  <data name="CommentUser" xml:space="preserve">
+    <value>نظر</value>
+  </data>
+  <data name="CompleteRegisterMessage" xml:space="preserve">
+    <value>تبریک می گوییم،&lt;br/&gt;&lt;p&gt;مراحل ثبت نام شما تکمیل گردید.&lt;/p&gt;&lt;p&gt;برای ادامه دکمه تایید را فشار دهید.&lt;/p&gt;</value>
+  </data>
+  <data name="Configuration1" xml:space="preserve">
+    <value>تنظیمات</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>تایید </value>
+  </data>
+  <data name="ConfirmAdmin" xml:space="preserve">
+    <value>تایید مدیر شده است؟</value>
+  </data>
+  <data name="Confirmedthepresence" xml:space="preserve">
+    <value>تایید حضور</value>
+  </data>
+  <data name="ContactUsForm" xml:space="preserve">
+    <value>فرم تماس با ما</value>
+  </data>
+  <data name="Continue1" xml:space="preserve">
+    <value>ادامه...</value>
+  </data>
+  <data name="CopyToClipboard" xml:space="preserve">
+    <value>کپی در کلیپ بورد</value>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>هزینه</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>تعداد</value>
+  </data>
+  <data name="CustomMessage" xml:space="preserve">
+    <value>متن دلخواه ارسال پیام</value>
+  </data>
+  <data name="CustomMessageNew" xml:space="preserve">
+    <value>متن دلخواه جدید</value>
+  </data>
+  <data name="Dataformatisnotcorrect" xml:space="preserve">
+    <value>فرمت اطلاعات صحیح نمیباشد</value>
+  </data>
+  <data name="DateOfOkAbstract" xml:space="preserve">
+    <value>تاریخ تایید چکیده</value>
+  </data>
+  <data name="DateOfOkArticle" xml:space="preserve">
+    <value>تاریخ تایید اصل</value>
+  </data>
+  <data name="DateOfSendingAbstract" xml:space="preserve">
+    <value>تاریخ ارسال چکیده</value>
+  </data>
+  <data name="DateOfSendingArticle" xml:space="preserve">
+    <value>تاریخ ارسال {0}</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>روزهای </value>
+  </data>
+  <data name="DefaultHtml" xml:space="preserve">
+    <value>Html</value>
+  </data>
+  <data name="DefaultMenuHtml" xml:space="preserve">
+    <value>قالب منو ها</value>
+  </data>
+  <data name="DelCongress" xml:space="preserve">
+    <value>حذف </value>
+  </data>
+  <data name="DeleteFromNewsLetter" xml:space="preserve">
+    <value>انصراف</value>
+  </data>
+  <data name="DeleteGalleryAlarm" xml:space="preserve">
+    <value>این گالری دارای {0} عکس میباشد در صورت حذف عکس های این گالری نیز حذف خواهند شد</value>
+  </data>
+  <data name="DeleteHtml" xml:space="preserve">
+    <value>حذف Html</value>
+  </data>
+  <data name="Descending" xml:space="preserve">
+    <value>نزولی</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>توضیحات</value>
+  </data>
+  <data name="DescriptionForUser" xml:space="preserve">
+    <value>توضیحات برای اطلاع کاربر</value>
+  </data>
+  <data name="Design" xml:space="preserve">
+    <value>طراحی</value>
+  </data>
+  <data name="DiscountCount" xml:space="preserve">
+    <value>تعداد مجاز استفاده از تخفیف برای هر کاربر</value>
+  </data>
+  <data name="DiscountType" xml:space="preserve">
+    <value>نوع تخفیف</value>
+  </data>
+  <data name="DiscountUsage" xml:space="preserve">
+    <value>محل استفاده تخفیف</value>
+  </data>
+  <data name="DiscountValue" xml:space="preserve">
+    <value>درصد تخفیف</value>
+  </data>
+  <data name="DoConfirm" xml:space="preserve">
+    <value>تایید شود</value>
+  </data>
+  <data name="DocumentsForDownload" xml:space="preserve">
+    <value>اسناد قابل دانلود</value>
+  </data>
+  <data name="DontConfirm" xml:space="preserve">
+    <value>عدم تایید شود</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>دانلود</value>
+  </data>
+  <data name="DownloadZip" xml:space="preserve">
+    <value>دانلود همه {0}  به صورت فایل فشرده</value>
+  </data>
+  <data name="DownloadZipFile" xml:space="preserve">
+    <value>دانلود همه {0} </value>
+  </data>
+  <data name="Editcongress" xml:space="preserve">
+    <value>ویرایش </value>
+  </data>
+  <data name="EditFormat" xml:space="preserve">
+    <value>ویرایش قالب</value>
+  </data>
+  <data name="EditHtml" xml:space="preserve">
+    <value>ویرایش Html</value>
+  </data>
+  <data name="EditNews" xml:space="preserve">
+    <value>ویرایش خبر</value>
+  </data>
+  <data name="EditPivot" xml:space="preserve">
+    <value>ویرایش محور</value>
+  </data>
+  <data name="Email1" xml:space="preserve">
+    <value>ایمیل</value>
+  </data>
+  <data name="EmailBody" xml:space="preserve">
+    <value>متن ایمیل</value>
+  </data>
+  <data name="EmailRegisterInCongress" xml:space="preserve">
+    <value>ثبت ایمیل</value>
+  </data>
+  <data name="EmailRepeatAndEmailInNotEqual" xml:space="preserve">
+    <value>ایمیل  و تکرار آن برابر نمیباشد</value>
+  </data>
+  <data name="EmailRepeatIsNotValid" xml:space="preserve">
+    <value>تکرار ایمیل معتبر نمیباشد</value>
+  </data>
+  <data name="EmailTitle" xml:space="preserve">
+    <value>عنوان ایمیل</value>
+  </data>
+  <data name="Enabel" xml:space="preserve">
+    <value>فعال</value>
+  </data>
+  <data name="EnableArticleComment" xml:space="preserve">
+    <value>نظر کاربران برای مقالات دریافت شود؟</value>
+  </data>
+  <data name="EnableSSL" xml:space="preserve">
+    <value>EnableSSL</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>تاریخ پایان</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>خطا</value>
+  </data>
+  <data name="ErrorInDetele" xml:space="preserve">
+    <value>خطا در حذف اطلاعات</value>
+  </data>
+  <data name="ErrorInInsertComment" xml:space="preserve">
+    <value>خطا در ثبت نظر</value>
+  </data>
+  <data name="ErrorInPayment" xml:space="preserve">
+    <value>خطایی در پرداخت رخ داده است</value>
+  </data>
+  <data name="ErrorInSendMessage" xml:space="preserve">
+    <value>خطایی در ارسال پیام ها وجود دارد</value>
+  </data>
+  <data name="ErrorInUpdateComments" xml:space="preserve">
+    <value>خطا در تایید نظرات کاربران</value>
+  </data>
+  <data name="Errorrecordingvirtualpathinformation" xml:space="preserve">
+    <value>خطا در ثبت اطلاعات مسیر مجازی</value>
+  </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>گرفتن خروجی اکسل</value>
+  </data>
+  <data name="FaxNumber" xml:space="preserve">
+    <value>شماره فکس</value>
+  </data>
+  <data name="File1" xml:space="preserve">
+    <value>فایل</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>نام فایل</value>
+  </data>
+  <data name="FinalState" xml:space="preserve">
+    <value>وضعیت نهایی</value>
+  </data>
+  <data name="Footer" xml:space="preserve">
+    <value>پا صفحه صفحات سایت</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>رمز عبور را فراموش کرده ام!</value>
+  </data>
+  <data name="FormSetting" xml:space="preserve">
+    <value>تنظیمات فرم ها</value>
+  </data>
+  <data name="ForRegiterUser" xml:space="preserve">
+    <value>برای ثبت نام کاربر فعال باشد؟</value>
+  </data>
+  <data name="ForWorkShop" xml:space="preserve">
+    <value>برای کارگاه فعال باشد؟</value>
+  </data>
+  <data name="FreeCapicity" xml:space="preserve">
+    <value>ظرفیت خالی</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>از</value>
+  </data>
+  <data name="FromContentManager" xml:space="preserve">
+    <value>کنترل محتوا</value>
+  </data>
+  <data name="FromUploader" xml:space="preserve">
+    <value>آپلود کردن فایل</value>
+  </data>
+  <data name="GalleryPhoto" xml:space="preserve">
+    <value>عکس های گالری</value>
+  </data>
+  <data name="GenerateNewGuest" xml:space="preserve">
+    <value>تولید مهمان</value>
+  </data>
+  <data name="GroupEmailInterval" xml:space="preserve">
+    <value>فاصله برای ارسال ایمیل گروهی (ثانیه)</value>
+  </data>
+  <data name="GroupRegisterDiscount" xml:space="preserve">
+    <value>تخفیفات گروهی</value>
+  </data>
+  <data name="GroupRegisterDiscountNew" xml:space="preserve">
+    <value>تخفیف ثبت نام گروهی جدید</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>مهمان</value>
+  </data>
+  <data name="HallMap" xml:space="preserve">
+    <value>نقشه سالن ها</value>
+  </data>
+  <data name="HasUserForms" xml:space="preserve">
+    <value>تخصیص فرم به کاربر فعال باشد؟</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>سر صفحه اول سایت</value>
+  </data>
+  <data name="HoldingDays" xml:space="preserve">
+    <value>تعداد روزهای  برگزاری </value>
+  </data>
+  <data name="HomaAlias" xml:space="preserve">
+    <value>مسیر مجازی</value>
+  </data>
+  <data name="HomaLogo" xml:space="preserve">
+    <value>لوگو</value>
+  </data>
+  <data name="HomaNotFound" xml:space="preserve">
+    <value>وب سایت در مسیر مورد نظر یافت نشد</value>
+  </data>
+  <data name="HomaOrgianalposter" xml:space="preserve">
+    <value>فایل اصلی پوستر( با حجم بالا ) </value>
+  </data>
+  <data name="HomaPoster" xml:space="preserve">
+    <value>پوستر با حجم کم ( برای نمایش در صفحه اول )</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>صفحه اصلی</value>
+  </data>
+  <data name="IgnoreSelect" xml:space="preserve">
+    <value>نادیده گرفتن انتخاب</value>
+  </data>
+  <data name="ImportFromExcel" xml:space="preserve">
+    <value>ورود اطلاعات از اکسل</value>
+  </data>
+  <data name="ImportFromXml" xml:space="preserve">
+    <value>ورود اطلاعات از xml</value>
+  </data>
+  <data name="InformSetting" xml:space="preserve">
+    <value>اطلاع رسانی ها</value>
+  </data>
+  <data name="InFromType" xml:space="preserve">
+    <value>نوع ارسال</value>
+  </data>
+  <data name="InsertAds" xml:space="preserve">
+    <value>درج تبلیغات</value>
+  </data>
+  <data name="InstallPath1" xml:space="preserve">
+    <value>مسیر</value>
+  </data>
+  <data name="IntroductionPage" xml:space="preserve">
+    <value>صفحه پیش نمایش </value>
+  </data>
+  <data name="IsDirector" xml:space="preserve">
+    <value>نویسنده مسئول است؟</value>
+  </data>
+  <data name="IsPrecent" xml:space="preserve">
+    <value>درصدی است</value>
+  </data>
+  <data name="IsPresent" xml:space="preserve">
+    <value>تایید حضور در کارگاه</value>
+  </data>
+  <data name="IsScrollSupporter" xml:space="preserve">
+    <value>قسمت حامیان Scroll داشته باشد</value>
+  </data>
+  <data name="IsScrollVip" xml:space="preserve">
+    <value>قسمت میهمان ویژه Scroll داشته باشد؟</value>
+  </data>
+  <data name="IsShare" xml:space="preserve">
+    <value>به اشتراک گذاشته شود؟</value>
+  </data>
+  <data name="IsSpecialReferee" xml:space="preserve">
+    <value>دبیر تخصصی است؟</value>
+  </data>
+  <data name="IsValidFinal" xml:space="preserve">
+    <value>تایید نهایی</value>
+  </data>
+  <data name="IsValidPayment" xml:space="preserve">
+    <value>تایید مبلغ پرداختی</value>
+  </data>
+  <data name="JudgeAssigned" xml:space="preserve">
+    <value>داور انتخاب شده</value>
+  </data>
+  <data name="JudgeNotAssigned" xml:space="preserve">
+    <value>داور انتخاب نشده</value>
+  </data>
+  <data name="KeyWord" xml:space="preserve">
+    <value>کلید واژه</value>
+  </data>
+  <data name="KeywordArticle" xml:space="preserve">
+    <value>کلید واژه مقاله</value>
+  </data>
+  <data name="Language1" xml:space="preserve">
+    <value>زبان</value>
+  </data>
+  <data name="LastArticles" xml:space="preserve">
+    <value>آخرین {0} </value>
+  </data>
+  <data name="ListGroupRegisterDiscount" xml:space="preserve">
+    <value>لیست تخفیف ثبت نام گروهی </value>
+  </data>
+  <data name="ListOfAticlesThat" xml:space="preserve">
+    <value>لیست {0} که</value>
+  </data>
+  <data name="ListOfAuthors" xml:space="preserve">
+    <value>لیست نویسندگان</value>
+  </data>
+  <data name="LName" xml:space="preserve">
+    <value>نام خانوادگی</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>مکان</value>
+  </data>
+  <data name="LoginAndRegistration" xml:space="preserve">
+    <value>ورود و ثبت نام</value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>لوگو</value>
+  </data>
+  <data name="MailFrom" xml:space="preserve">
+    <value>MailFrom</value>
+  </data>
+  <data name="MailHost" xml:space="preserve">
+    <value>MailHost</value>
+  </data>
+  <data name="MailPassword" xml:space="preserve">
+    <value>MailPassword</value>
+  </data>
+  <data name="MailPort" xml:space="preserve">
+    <value>MailPort</value>
+  </data>
+  <data name="MailSentMessage" xml:space="preserve">
+    <value>آدرس پست الکترونیکی شما با موفقیت ثبت و لینک فعال سازی به ایمیل شما ارسال شد. لطفا به ایمیل خود مراجعه کنید و بر روی لینک فعال سازی کلیک کنید.&lt;br/&gt;&lt;p style='color:red'&gt;توجه&lt;/p&gt;در صورتی که ایمیل به Inbox شما ارسال نشده است به بخش Spam ویا Bulk ایمیل خود مراجعه فرمایید.&lt;div style='float:left;'&gt;با تشکر&lt;/div&gt;</value>
+  </data>
+  <data name="MailSetting" xml:space="preserve">
+    <value>تنظیمات ایمیل</value>
+  </data>
+  <data name="MailUserName" xml:space="preserve">
+    <value>MailUserName</value>
+  </data>
+  <data name="MaxArticleCountShow" xml:space="preserve">
+    <value>تعداد عناوین {0} در صفحه</value>
+  </data>
+  <data name="MaxArticlePerUser" xml:space="preserve">
+    <value>تعداد {0} ی که کاربران مجازند ارسال کنند</value>
+  </data>
+  <data name="MaxBoothOfficerCount" xml:space="preserve">
+    <value>ماکزیموم تعداد غرفه داران</value>
+  </data>
+  <data name="MaxBoothPerUser" xml:space="preserve">
+    <value>حداکثر غرفه رزرو توسط کاربر</value>
+  </data>
+  <data name="MaxFileLength" xml:space="preserve">
+    <value>حداکثر فایل مجاز</value>
+  </data>
+  <data name="MaxHotelPerUser" xml:space="preserve">
+    <value>تعداد مجاز رزرو اسکان برای هر کاربر</value>
+  </data>
+  <data name="Maximumallowed" xml:space="preserve">
+    <value>تعداد مجاز</value>
+  </data>
+  <data name="MaximumNumberAllowed" xml:space="preserve">
+    <value>تعداد کلمات اصل {0} از حداکثر تعداد  مجاز بیشتر است</value>
+  </data>
+  <data name="MaxNewsCountToShow" xml:space="preserve">
+    <value>تعداد عناوین اخبار در صفحه اول</value>
+  </data>
+  <data name="MaxWorkShopPerUser" xml:space="preserve">
+    <value>تعداد مجاز ثبت نام هر کاربر در کارگاه</value>
+  </data>
+  <data name="Menus" xml:space="preserve">
+    <value>منوها</value>
+  </data>
+  <data name="MerchantId" xml:space="preserve">
+    <value>کد فروشنده</value>
+  </data>
+  <data name="MerchantKey" xml:space="preserve">
+    <value>کلید خصوصی پذیرنده</value>
+  </data>
+  <data name="MerchantPrivateKey" xml:space="preserve">
+    <value>کلید خصوصی پذیرنده</value>
+  </data>
+  <data name="MerchantPublicKey" xml:space="preserve">
+    <value>کلید عمومی پذیرنده</value>
+  </data>
+  <data name="MessageBody" xml:space="preserve">
+    <value>متن پیام</value>
+  </data>
+  <data name="MessageSucceedSend" xml:space="preserve">
+    <value>پیام مورد نظر با موفقیت ارسال شد</value>
+  </data>
+  <data name="MessageTitle" xml:space="preserve">
+    <value>عنوان پیام</value>
+  </data>
+  <data name="MessageType" xml:space="preserve">
+    <value>نوع پیام</value>
+  </data>
+  <data name="MinAbstractWordCount" xml:space="preserve">
+    <value>حداقل تعداد کلمات چکیده</value>
+  </data>
+  <data name="MinArticleWordCount" xml:space="preserve">
+    <value>حداقل تعداد کلمات اصل {0} چقدر باشد؟</value>
+  </data>
+  <data name="MinimumNumberAllowed" xml:space="preserve">
+    <value>تعداد کلمات اصل {0} از حداقل تعداد  مجاز کمتر است</value>
+  </data>
+  <data name="MinimumNumberOfWords" xml:space="preserve">
+    <value>حداقل تعداد کلمات اصل {0}</value>
+  </data>
+  <data name="MinimumPasswordCharacter" xml:space="preserve">
+    <value>تعداد حروف رمز عبور حداقل باید 6 کاراکتر باشد</value>
+  </data>
+  <data name="MiniSlideId1" xml:space="preserve">
+    <value>اسلاید کوچک</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>موبایل</value>
+  </data>
+  <data name="MobileNumberIsNotValid" xml:space="preserve">
+    <value>شماره همراه وارد شده صحیح نمیباشد</value>
+  </data>
+  <data name="ModuleContainer" xml:space="preserve">
+    <value>قالب پیش فرض ماژول ها</value>
+  </data>
+  <data name="MultiLanguage" xml:space="preserve">
+    <value>موارد چند زبانه</value>
+  </data>
+  <data name="MultiLanguageArticle" xml:space="preserve">
+    <value>{0} به صورت چند زبانه دریافت میشود؟</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>جدید</value>
+  </data>
+  <data name="NewBooth" xml:space="preserve">
+    <value>غرفه جدید</value>
+  </data>
+  <data name="NewBoothCategory" xml:space="preserve">
+    <value>دسته بندی غرفه جدید</value>
+  </data>
+  <data name="NewCategory" xml:space="preserve">
+    <value>گروه جدید</value>
+  </data>
+  <data name="NewCongressLanuage" xml:space="preserve">
+    <value>زبان جدید</value>
+  </data>
+  <data name="NewContent" xml:space="preserve">
+    <value>محتوای جدید</value>
+  </data>
+  <data name="NewContent1" xml:space="preserve">
+    <value>محتوا جدید</value>
+  </data>
+  <data name="Newformat" xml:space="preserve">
+    <value>قالب جدید</value>
+  </data>
+  <data name="NewGallery" xml:space="preserve">
+    <value>گالری جدید</value>
+  </data>
+  <data name="NewGallery1" xml:space="preserve">
+    <value>گالری جدید</value>
+  </data>
+  <data name="NewHtml" xml:space="preserve">
+    <value>Html جدید</value>
+  </data>
+  <data name="NewNews" xml:space="preserve">
+    <value>خبر جدید</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>رمز جدید</value>
+  </data>
+  <data name="NewPasswordRepeat" xml:space="preserve">
+    <value>تکرار رمز جدید</value>
+  </data>
+  <data name="Newpivot" xml:space="preserve">
+    <value>محور جدید</value>
+  </data>
+  <data name="NewRefree" xml:space="preserve">
+    <value>داور جدید</value>
+  </data>
+  <data name="NewResource1" xml:space="preserve">
+    <value>NewResource</value>
+  </data>
+  <data name="NewTopic" xml:space="preserve">
+    <value>New Topic</value>
+  </data>
+  <data name="NewUser" xml:space="preserve">
+    <value>کاربر جدید</value>
+  </data>
+  <data name="NewWorkshoop" xml:space="preserve">
+    <value>کارگاه جدید</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>هیچکدام</value>
+  </data>
+  <data name="NoRezerved" xml:space="preserve">
+    <value>رزرو نشده</value>
+  </data>
+  <data name="NoSelectedBoothItem" xml:space="preserve">
+    <value>هیچ غرفه ای جهت رزرو انتخاب نشده است</value>
+  </data>
+  <data name="NotConfirmedMessage" xml:space="preserve">
+    <value>آدرس پست الکترونیکی شما قبلا ثبت شده است ولی تاکنون فعال نشده است. درصورتی که مایل به دریافت مجدد لینک فعال سازی می باشید بر روی لینک زیر کلیک نمایید</value>
+  </data>
+  <data name="NotUseQuotationInAbstract" xml:space="preserve">
+    <value>لطفا در خلاصه {0} از  کوتیشن ( ' ) استفاده نکنید!</value>
+  </data>
+  <data name="NoUserPayment" xml:space="preserve">
+    <value>پرداختی انجام نشده است</value>
+  </data>
+  <data name="No_Added_Payment_photoId" xml:space="preserve">
+    <value>تصویر پرداخت وجود ندارد</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>شماره</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>رمز فعلی</value>
+  </data>
+  <data name="OldPasswordIsWrong" xml:space="preserve">
+    <value>رمز عبور فعلی درست نیست</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>باز</value>
+  </data>
+  <data name="OperationForms" xml:space="preserve">
+    <value>عملیات فرم ها</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>یا</value>
+  </data>
+  <data name="Order1" xml:space="preserve">
+    <value>ترتیب</value>
+  </data>
+  <data name="Org" xml:space="preserve">
+    <value>سازمان</value>
+  </data>
+  <data name="OrgCity" xml:space="preserve">
+    <value>شهرسازمان</value>
+  </data>
+  <data name="OrginalFile" xml:space="preserve">
+    <value>پیوست اصل {0}</value>
+  </data>
+  <data name="OrginalFinishDate" xml:space="preserve">
+    <value>تاریخ پایان دریافت اصل {0} </value>
+  </data>
+  <data name="OrginalSentDateIsEnd" xml:space="preserve">
+    <value>تاریخ ارسال اصل {0} به پایان رسیده است</value>
+  </data>
+  <data name="OrginalStartDate" xml:space="preserve">
+    <value>تاریخ شروع دریافت اصل {0} </value>
+  </data>
+  <data name="OrginalStartDateNoStart" xml:space="preserve">
+    <value>تاریخ دریافت اصل {0}  آغاز نشده است</value>
+  </data>
+  <data name="OrgProvince" xml:space="preserve">
+    <value>استان سازمان</value>
+  </data>
+  <data name="OwnerPhotoId" xml:space="preserve">
+    <value>تصویر مسئول غرفه</value>
+  </data>
+  <data name="ParticipationType" xml:space="preserve">
+    <value>نوع ثبت نام </value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>رمز عبور</value>
+  </data>
+  <data name="PasswordSuccedChanged" xml:space="preserve">
+    <value>رمز عبور با موفقیت تغییر یافت</value>
+  </data>
+  <data name="Password_and_Repeat_Not_Equal" xml:space="preserve">
+    <value>رمز ورود و تکرار آن برابر نیست</value>
+  </data>
+  <data name="PayAndDiscountSetting" xml:space="preserve">
+    <value>تنظیمات پرداخت و تخفیف ها</value>
+  </data>
+  <data name="PayConfirm" xml:space="preserve">
+    <value>تایید پرداخت</value>
+  </data>
+  <data name="PayDate" xml:space="preserve">
+    <value>تاریخ پرداخت</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>پرداخت</value>
+  </data>
+  <data name="PaymentPhotoDes" xml:space="preserve">
+    <value>توضیح فیش پرداختی</value>
+  </data>
+  <data name="PaymentPhotoId" xml:space="preserve">
+    <value>تصویر فیش پرداختی</value>
+  </data>
+  <data name="PaymentStatus" xml:space="preserve">
+    <value>وضعیت پرداخت</value>
+  </data>
+  <data name="PaymentSuccessMessage" xml:space="preserve">
+    <value>پرداخت با موفقیت انجام شد</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>نوع پرداخت</value>
+  </data>
+  <data name="People" xml:space="preserve">
+    <value>نفر</value>
+  </data>
+  <data name="PercentageOfParticipation" xml:space="preserve">
+    <value>درصد مشارکت</value>
+  </data>
+  <data name="Pivot" xml:space="preserve">
+    <value>محور</value>
+  </data>
+  <data name="PivotCategory" xml:space="preserve">
+    <value>گروه محور</value>
+  </data>
+  <data name="PivotCategorylist" xml:space="preserve">
+    <value>لیست گروه محور</value>
+  </data>
+  <data name="PivotCategoryNew" xml:space="preserve">
+    <value>تعیرف گروه محور</value>
+  </data>
+  <data name="Pivotlist" xml:space="preserve">
+    <value>محورها</value>
+  </data>
+  <data name="PivotNew" xml:space="preserve">
+    <value>محور جدید</value>
+  </data>
+  <data name="PleaseClickOnArticleTitleForjudgment" xml:space="preserve">
+    <value>برای داوری لطفا بر روی عنوان {0} کلیک شود</value>
+  </data>
+  <data name="PleaseConfigThisCongress" xml:space="preserve">
+    <value>تنظیمات انجام نشده است</value>
+  </data>
+  <data name="PleaseEnterAbstract" xml:space="preserve">
+    <value>لطفا چکیده {0} را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterAbstractFile" xml:space="preserve">
+    <value>لطفا فایل چکیده {0} را پیوست کنید</value>
+  </data>
+  <data name="PleaseEnterAddress" xml:space="preserve">
+    <value>لطفا آدرس خود را وارد کنید</value>
+  </data>
+  <data name="Pleaseenteraminimumorauthorforthearticle" xml:space="preserve">
+    <value>لطفا حداقل یک نویسنده برای {0} وارد کنید</value>
+  </data>
+  <data name="PleaseEnterArticleOrginalText" xml:space="preserve">
+    <value>لطفا متن اصل {0} را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterArticlePaymentType" xml:space="preserve">
+    <value>نوع پرداخت {0} را انتخاب کنید</value>
+  </data>
+  <data name="PleaseEnterArticlePivot" xml:space="preserve">
+    <value>لطفا گروه {0} را انتخاب کنید</value>
+  </data>
+  <data name="PleaseEnterArticleTitle" xml:space="preserve">
+    <value>لطفا عنوان {0} را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterAuthorName" xml:space="preserve">
+    <value>لطفا نام نویسنده را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterBoothOfficer" xml:space="preserve">
+    <value>لطفا مسئول غرفه را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterBoothOwnerTitle" xml:space="preserve">
+    <value>لطفا نام مسئول غرفه را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterBoothTitle" xml:space="preserve">
+    <value>لطفا عنوان غرفه را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterCity" xml:space="preserve">
+    <value>لطفا نام شهر محل سکونت خود را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterCountOfGuest" xml:space="preserve">
+    <value>لطفا تعداد مهمان را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterCountry" xml:space="preserve">
+    <value>لطفا  نام کشور خود را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterEmailRepeat" xml:space="preserve">
+    <value>لطفا تکرار ایمیل را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterRightNationalCode" xml:space="preserve">
+    <value>لطفا کد ملی را به صورت صحیح وارد کنید</value>
+  </data>
+  <data name="PleaseEnterStudyDegree" xml:space="preserve">
+    <value>لطفا مدرک تحصیلی راوارد کنید</value>
+  </data>
+  <data name="PleaseEnterStudyField" xml:space="preserve">
+    <value>لطفا رشته تحصیلی را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterTheAuthorContributionPercentage" xml:space="preserve">
+    <value>لطفا درصد مشارکت نویسنده را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterTheTextOfTheArticle" xml:space="preserve">
+    <value>لطفا متن اصل {0} را وارد نمایید</value>
+  </data>
+  <data name="PleaseEnterUserId" xml:space="preserve">
+    <value>لطفا کد کاربر را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterUserPaymentType" xml:space="preserve">
+    <value>نوع پرداخت انتخاب نشده است</value>
+  </data>
+  <data name="PleaseEnterYourComment" xml:space="preserve">
+    <value>لطفا نظر خود را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterYourEmail" xml:space="preserve">
+    <value>لطفا ایمیل خود را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterYourMobileNumber" xml:space="preserve">
+    <value>لطفا شماره تلفن همراه خود را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterYourName" xml:space="preserve">
+    <value>لطفا نام خود را وارد کنید</value>
+  </data>
+  <data name="PleaseEnterYourNationalCode" xml:space="preserve">
+    <value>لطفا کد ملی صاحب مسئول غرفه را وارد کنید</value>
+  </data>
+  <data name="PleaseInsertUserName" xml:space="preserve">
+    <value>لطفا نام کاربری را وارد کنید</value>
+  </data>
+  <data name="PleaseSelectChipFood" xml:space="preserve">
+    <value>لطفا نوع ژتون را انتخاب کنید</value>
+  </data>
+  <data name="PleaseSelectCongress" xml:space="preserve">
+    <value>لطفا وب سایت مورد نظر را انتخاب نمایید</value>
+  </data>
+  <data name="PleaseSelectSendType" xml:space="preserve">
+    <value>لطفا نوع ارسال را انتخاب کنید</value>
+  </data>
+  <data name="PleaseSelectUser" xml:space="preserve">
+    <value>لطفا عضوی را برای ارسال انتخاب کنید</value>
+  </data>
+  <data name="PleaseSelectUserForReservChair" xml:space="preserve">
+    <value>لطفا کابری را جهت رزرو صندلی انتخاب کنید</value>
+  </data>
+  <data name="PleaseSeprateWithComma" xml:space="preserve">
+    <value>(با کاراکتر کاما  از هم جدا کنید)</value>
+  </data>
+  <data name="PleasesetpathCongressontheManagementConference" xml:space="preserve">
+    <value>لطفا مسیر وب سایت را در قسمت مدیریت همایش تنظیم نمایید</value>
+  </data>
+  <data name="PleaseTypeYourAnswer" xml:space="preserve">
+    <value>لطفا پاسخ خود را وارد کنید</value>
+  </data>
+  <data name="PleaseUpLoadOrgianlFile" xml:space="preserve">
+    <value>لطفا فایل اصل را آپلود کنید</value>
+  </data>
+  <data name="Please_Enter_Comment" xml:space="preserve">
+    <value>لطفا عبارت روبرو را وارد نمایید</value>
+  </data>
+  <data name="Please_Enter_NationalCode" xml:space="preserve">
+    <value>لطفا کد ملی خود را وارد کنید</value>
+  </data>
+  <data name="Please_Enter_Password" xml:space="preserve">
+    <value>رمز ورود را وارد کنید</value>
+  </data>
+  <data name="Please_Enter_Password_Repeat" xml:space="preserve">
+    <value>تکرار رمز ورود را وارد کنید</value>
+  </data>
+  <data name="Please_Enter_Rezerv_DayCount" xml:space="preserve">
+    <value>لطفا تعداد روز های رزرو را وارد کنید</value>
+  </data>
+  <data name="Please_Enter_YourGender" xml:space="preserve">
+    <value>لطفا جنسیت خود را انتخاب کنید</value>
+  </data>
+  <data name="Please_Enter_YourLastName" xml:space="preserve">
+    <value>لطفا نام خانوادگی خود را وارد کنید</value>
+  </data>
+  <data name="Please_Enter_YourMobile" xml:space="preserve">
+    <value>لطفا شماره همراه خود را وارد کنید</value>
+  </data>
+  <data name="Please_Enter_YourName" xml:space="preserve">
+    <value>لطفا نام خود را وارد کنید</value>
+  </data>
+  <data name="Please_wait" xml:space="preserve">
+    <value>لطفا صبر کنید</value>
+  </data>
+  <data name="PlesaetryIn" xml:space="preserve">
+    <value>لطفا مجددا در</value>
+  </data>
+  <data name="Point" xml:space="preserve">
+    <value>امتیاز</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>کد پستی</value>
+  </data>
+  <data name="PresentDate" xml:space="preserve">
+    <value>تاریخ سخنرانی</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>پیش نمایش</value>
+  </data>
+  <data name="Printable" xml:space="preserve">
+    <value>قابل چاپ بر روی کارت شرکت کننده</value>
+  </data>
+  <data name="PrintArticlesAbstract" xml:space="preserve">
+    <value>چاپ خلاصه {0} </value>
+  </data>
+  <data name="PrintUserMiniCard" xml:space="preserve">
+    <value>چاپ کارت گردنی</value>
+  </data>
+  <data name="PrintUserMiniCardList" xml:space="preserve">
+    <value>چاپ لیست کارت گردنی</value>
+  </data>
+  <data name="PrintWorkshop" xml:space="preserve">
+    <value>چاپ لیست کارگاه</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>برنامه</value>
+  </data>
+  <data name="PublishDate" xml:space="preserve">
+    <value>تاریخ انتشار</value>
+  </data>
+  <data name="Reciver" xml:space="preserve">
+    <value>گیرنده</value>
+  </data>
+  <data name="RecoverPassword" xml:space="preserve">
+    <value>بازیابی رمز عبور</value>
+  </data>
+  <data name="Refer" xml:space="preserve">
+    <value>مراجعه کنید</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>بروز رسانی</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>ثبت نام</value>
+  </data>
+  <data name="RegisterDate" xml:space="preserve">
+    <value>تاریخ ثبت</value>
+  </data>
+  <data name="RegisterEmailConfirm" xml:space="preserve">
+    <value>ایمیل ثبت نام به کاربر ارسال شود؟</value>
+  </data>
+  <data name="RegisterForReservBooth" xml:space="preserve">
+    <value>برای رزرو غرفه باید کابر ثبت نام کند؟</value>
+  </data>
+  <data name="RegisterGroup" xml:space="preserve">
+    <value>ثبت نام گروهی</value>
+  </data>
+  <data name="RegisterInNewsLetter" xml:space="preserve">
+    <value>عضویت در خبرنامه</value>
+  </data>
+  <data name="RegistrationStatus" xml:space="preserve">
+    <value>وضعیت ثبت نام</value>
+  </data>
+  <data name="Rejection" xml:space="preserve">
+    <value>رد</value>
+  </data>
+  <data name="Remark" xml:space="preserve">
+    <value>توضیحات کامل</value>
+  </data>
+  <data name="RemindabsctractWorkCountNotAllowed1" xml:space="preserve">
+    <value>تعداد کلمات  چکیده بیشتر از اندازه مجاز میباشد</value>
+  </data>
+  <data name="RemoveData" xml:space="preserve">
+    <value>آیا میخواهید اطلاعات زیر حذف شوند؟</value>
+  </data>
+  <data name="RemoveFromDashboard" xml:space="preserve">
+    <value>حذف از کارتابل داور</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>تکرار رمز عبور</value>
+  </data>
+  <data name="ReportResetFactory" xml:space="preserve">
+    <value>بازگردانی گزارشات به تنظیمات اولیه</value>
+  </data>
+  <data name="RequireArticleTypeForCertificate" xml:space="preserve">
+    <value>آیا نوع پذیرش برای دریافت گواهی مقالات اجباری می باشد؟</value>
+  </data>
+  <data name="RerzervCount" xml:space="preserve">
+    <value>تعداد رزرو شده</value>
+  </data>
+  <data name="ReservCapacity" xml:space="preserve">
+    <value>ظرفیت رزرو</value>
+  </data>
+  <data name="Reserve" xml:space="preserve">
+    <value>رزرو</value>
+  </data>
+  <data name="ReserveBoothNew" xml:space="preserve">
+    <value>رزرو غرفه جدید</value>
+  </data>
+  <data name="ReserveHotelNew" xml:space="preserve">
+    <value>رزرو هتل جدید</value>
+  </data>
+  <data name="ReserveWorkShopNew" xml:space="preserve">
+    <value>رزرو کارگاه جدید</value>
+  </data>
+  <data name="Resource1" xml:space="preserve">
+    <value>Resource</value>
+  </data>
+  <data name="ResourceList1" xml:space="preserve">
+    <value>لیست Resource</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>رزومه</value>
+  </data>
+  <data name="ResumeDownload" xml:space="preserve">
+    <value>دانلود رزومه</value>
+  </data>
+  <data name="Rezerved" xml:space="preserve">
+    <value>رزرو شده</value>
+  </data>
+  <data name="RezervList" xml:space="preserve">
+    <value>لیست رزرو</value>
+  </data>
+  <data name="RezervStatus" xml:space="preserve">
+    <value>وضعیت رزرو</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>سمت</value>
+  </data>
+  <data name="SampleFile" xml:space="preserve">
+    <value>فایل نمونه</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>ذخیره</value>
+  </data>
+  <data name="SaveAndcontinue" xml:space="preserve">
+    <value>ذخیره و ادامه</value>
+  </data>
+  <data name="SaveDate" xml:space="preserve">
+    <value>تاریخ ثبت</value>
+  </data>
+  <data name="SaveTime" xml:space="preserve">
+    <value>زمان ثبت</value>
+  </data>
+  <data name="ScoreSum" xml:space="preserve">
+    <value>جمع امتیاز</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>جستجو</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>نتایج جستجو</value>
+  </data>
+  <data name="SearchValue" xml:space="preserve">
+    <value>مقدار مورد جستجو</value>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>بخش</value>
+  </data>
+  <data name="SelectChair" xml:space="preserve">
+    <value>انتخاب صندلی</value>
+  </data>
+  <data name="SelectedSupportType" xml:space="preserve">
+    <value>حامی منتخب جهت نمایش</value>
+  </data>
+  <data name="SelectFromList" xml:space="preserve">
+    <value>انتخاب از لیست</value>
+  </data>
+  <data name="SelectSupportTypeforMainPage" xml:space="preserve">
+    <value>تعیین نوع حمایت فعال در صفحه اول سایت</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>ارسال</value>
+  </data>
+  <data name="SendArticle" xml:space="preserve">
+    <value>ارسال {0}</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>فرستنده</value>
+  </data>
+  <data name="SendInformToReferee" xml:space="preserve">
+    <value>آیا به داور اطلاع رسانی شود</value>
+  </data>
+  <data name="SendInternalMessage" xml:space="preserve">
+    <value>ارسال به صندوق پیام</value>
+  </data>
+  <data name="SendNewArticle" xml:space="preserve">
+    <value>ارسال {0} جدید</value>
+  </data>
+  <data name="SendORGArticle" xml:space="preserve">
+    <value>ارسال اصل {0}</value>
+  </data>
+  <data name="SentArticleSpecialReferee" xml:space="preserve">
+    <value>ارسال {0} به دبیر تخصصی فعال باشد؟</value>
+  </data>
+  <data name="SentForUserNew" xml:space="preserve">
+    <value>ارسال به اعضای خبر نامه</value>
+  </data>
+  <data name="SentToReferee" xml:space="preserve">
+    <value>ارسال به داور</value>
+  </data>
+  <data name="ShoudBeUserPaymentApprovedForUserCardPrint" xml:space="preserve">
+    <value>آیا برای چاپ کارت حتما باید کاربر تایید پرداخت شده باشد؟</value>
+  </data>
+  <data name="ShowSlide" xml:space="preserve">
+    <value>نمایش اسلاید ها</value>
+  </data>
+  <data name="ShowType" xml:space="preserve">
+    <value>نحوه نمایش</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>ثبت نام</value>
+  </data>
+  <data name="SimilarUser" xml:space="preserve">
+    <value>کاربران یکسان</value>
+  </data>
+  <data name="Siteadmin" xml:space="preserve">
+    <value>مدیر سامانه</value>
+  </data>
+  <data name="SMS" xml:space="preserve">
+    <value>پیامک</value>
+  </data>
+  <data name="SMSAccountCredit" xml:space="preserve">
+    <value>اعتبار حساب پیامک</value>
+  </data>
+  <data name="SMSAccountNumber" xml:space="preserve">
+    <value>شماره حساب کاربری ارسال پیامک</value>
+  </data>
+  <data name="SMSAccountpassword" xml:space="preserve">
+    <value>رمز عبور حساب کاربری پیامک</value>
+  </data>
+  <data name="SMSAccountUserName" xml:space="preserve">
+    <value>نام کاربری  حساب کاربری پیامک</value>
+  </data>
+  <data name="SMSBody" xml:space="preserve">
+    <value>متن پیامک</value>
+  </data>
+  <data name="SMSSetting" xml:space="preserve">
+    <value>تنظیمات حساب کاربری پیامک</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>ترتیب</value>
+  </data>
+  <data name="SortAccordingTo" xml:space="preserve">
+    <value>مرتب سازی براساس</value>
+  </data>
+  <data name="SortUser" xml:space="preserve">
+    <value>مرتب سازی براساس</value>
+  </data>
+  <data name="SpecialGuests" xml:space="preserve">
+    <value>مهمانان ویژه</value>
+  </data>
+  <data name="SQLCommandPrompt" xml:space="preserve">
+    <value>خط فرمان SQL</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>تاریخ شروع</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>وضعیت</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="StudyDegree" xml:space="preserve">
+    <value>مدرک تحصیلی</value>
+  </data>
+  <data name="StudyDescription" xml:space="preserve">
+    <value>زمینه تخصصی</value>
+  </data>
+  <data name="StudyField" xml:space="preserve">
+    <value>رشته تحصیلی</value>
+  </data>
+  <data name="SubGallery" xml:space="preserve">
+    <value>گالری زیر دستی</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>موضوع</value>
+  </data>
+  <data name="SubscribeComplete" xml:space="preserve">
+    <value>تکمیل مراحل ثبت نام</value>
+  </data>
+  <data name="SubscribeToNewsletter" xml:space="preserve">
+    <value>عضویت در خبرنامه</value>
+  </data>
+  <data name="SuccedEnterToCongress" xml:space="preserve">
+    <value>شما با موفقیت وارد وب سایت  {0} شدید </value>
+  </data>
+  <data name="SuccedInformationSend" xml:space="preserve">
+    <value>اطلاعات با موفقیت ارسال شد</value>
+  </data>
+  <data name="SuccesfullyDetele" xml:space="preserve">
+    <value>اطلاعات با موفقیت حذف شد</value>
+  </data>
+  <data name="SuccesfullyUpdate" xml:space="preserve">
+    <value>اطلاعات با موفقیت ذخیره شد</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>حامی</value>
+  </data>
+  <data name="SupportList" xml:space="preserve">
+    <value>لیست حامیان</value>
+  </data>
+  <data name="SupportNew" xml:space="preserve">
+    <value>حامی جدید</value>
+  </data>
+  <data name="SupportType" xml:space="preserve">
+    <value>نوع حمایت</value>
+  </data>
+  <data name="SupportTypeList" xml:space="preserve">
+    <value>لیست نوع حمایت</value>
+  </data>
+  <data name="SupportTypeNew" xml:space="preserve">
+    <value>نوع حمایت جدید</value>
+  </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>استاد</value>
+  </data>
+  <data name="TeacherList" xml:space="preserve">
+    <value>لیست اساتید</value>
+  </data>
+  <data name="TeacherNew" xml:space="preserve">
+    <value>استاد جدید</value>
+  </data>
+  <data name="TerminalId" xml:space="preserve">
+    <value>شماره ترمینال برای پرداخت اینترنتی</value>
+  </data>
+  <data name="TerminalPassword" xml:space="preserve">
+    <value>رمز عبور ترمینال پرداخت اینترنتی</value>
+  </data>
+  <data name="TerminalUserName" xml:space="preserve">
+    <value>نام کاربری ترمینال پرداخت اینترنتی</value>
+  </data>
+  <data name="Text1" xml:space="preserve">
+    <value>متن</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>قالب گرافیکی</value>
+  </data>
+  <data name="ThisArticleHasNotBeenSelectedForRemoval" xml:space="preserve">
+    <value>{0} برای حذف انتخاب نشده است</value>
+  </data>
+  <data name="ThisArticleNotHaveDirectorAuthor" xml:space="preserve">
+    <value>لطفا یک نویسنده مسئول وارد کنید</value>
+  </data>
+  <data name="ThisBoothIsRezerved" xml:space="preserve">
+    <value>رزرو شده</value>
+  </data>
+  <data name="ThisHotelRezervedAreYouSureDelete" xml:space="preserve">
+    <value>برای حذف مطمئن هستید ؟در صورت حذف تمام رزرو های این هتل حذف خواهد شد</value>
+  </data>
+  <data name="ThisUseralreadybeenapprovedInCongress" xml:space="preserve">
+    <value>این شخص قبلا تایید حضورش  ثبت شده است</value>
+  </data>
+  <data name="Thisvirtualpathhasalreadybeenadded" xml:space="preserve">
+    <value>این مسیر مجازی قبلا اضافه شده است</value>
+  </data>
+  <data name="ThisWorkShopRezervedAreYouSureDelete" xml:space="preserve">
+    <value>برای حذف مطمئن هستید ؟در صورت حذف تمام رزروهای این کارگاه حذف خواهد شد</value>
+  </data>
+  <data name="Thumbnail" xml:space="preserve">
+    <value>پیوست</value>
+  </data>
+  <data name="Title1" xml:space="preserve">
+    <value>عنوان</value>
+  </data>
+  <data name="TitleArticle" xml:space="preserve">
+    <value>عنوان {0}</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>تا</value>
+  </data>
+  <data name="TopicList" xml:space="preserve">
+    <value>Topic List</value>
+  </data>
+  <data name="TotalPercentage" xml:space="preserve">
+    <value>مجموع درصد مشارکت نویسندگان نمیتواند بیشتر از 100 درصد باشد</value>
+  </data>
+  <data name="TrackingOrders" xml:space="preserve">
+    <value>پیگیری سفارشات</value>
+  </data>
+  <data name="Type1" xml:space="preserve">
+    <value>نوع</value>
+  </data>
+  <data name="UIDesigneConfig" xml:space="preserve">
+    <value>تنظیمات ظاهری</value>
+  </data>
+  <data name="UnValid_Enter_Email" xml:space="preserve">
+    <value>ایمیل وارد شده معتبر نمیباشد</value>
+  </data>
+  <data name="UseFor1" xml:space="preserve">
+    <value>استفاده در</value>
+  </data>
+  <data name="UseGroupRegisterDiscount" xml:space="preserve">
+    <value>از تخفیف ثبت نام گروهی استفاده کرده است</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>کاربر</value>
+  </data>
+  <data name="UserArticleAbstractNotDesgineInCongress" xml:space="preserve">
+    <value>خلاصه {0}  برای این کنگره طراحی نشده است</value>
+  </data>
+  <data name="UserBoothReserveInformType" xml:space="preserve">
+    <value>نوع اطلاع رسانی رزرو غرفه</value>
+  </data>
+  <data name="UserCardNotDesgineInCongress" xml:space="preserve">
+    <value>کارت طراحی نشده است</value>
+  </data>
+  <data name="UserCode" xml:space="preserve">
+    <value>کد کاربری</value>
+  </data>
+  <data name="UserEditProfile" xml:space="preserve">
+    <value>ویرایش اطلاعات کاربری</value>
+  </data>
+  <data name="UserForm" xml:space="preserve">
+    <value>فرم کاربر</value>
+  </data>
+  <data name="UserHotelReserveInformType" xml:space="preserve">
+    <value>نوع اطلاع رسانی رزرو هتل</value>
+  </data>
+  <data name="UserInform" xml:space="preserve">
+    <value>پنل ارسال ایمیل و پیامک</value>
+  </data>
+  <data name="UserInFormationForm" xml:space="preserve">
+    <value>فرم اطلاعات کاربر</value>
+  </data>
+  <data name="Userlist" xml:space="preserve">
+    <value>لیست کاربران</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>نام کاربری</value>
+  </data>
+  <data name="UserNameIsRepeate" xml:space="preserve">
+    <value>این کاربر قبلا در سیستم ثبت شده است </value>
+  </data>
+  <data name="UserNameIsWrong" xml:space="preserve">
+    <value>نام کاربری اشتباه است</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>کاربری با این مشخصات یافت نشد</value>
+  </data>
+  <data name="UserPanel" xml:space="preserve">
+    <value>پنل کاربری</value>
+  </data>
+  <data name="UserPaymentTypeList" xml:space="preserve">
+    <value>لیست نوع پرداخت کاربر</value>
+  </data>
+  <data name="UserPaymentTypeNew" xml:space="preserve">
+    <value>نوع پرداخت جدید</value>
+  </data>
+  <data name="UserRegisterAmount" xml:space="preserve">
+    <value>مبلغ ثبت نام هر کاربر</value>
+  </data>
+  <data name="UserRegisterInformType" xml:space="preserve">
+    <value>نوع اطلاع رسانی ثبت نام کاربر</value>
+  </data>
+  <data name="UserRegisterPayment" xml:space="preserve">
+    <value>پرداخت هزینه ثبت نام و تعیین نوع حضور</value>
+  </data>
+  <data name="UserWorkShopReserveInformType" xml:space="preserve">
+    <value>نوع اطلاع رسانی رزرو کارگاه</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>مقدار</value>
+  </data>
+  <data name="ViewAll1" xml:space="preserve">
+    <value>بیشتر بخوانید</value>
+  </data>
+  <data name="ViewAllComment" xml:space="preserve">
+    <value>مشاهده همه نظرات</value>
+  </data>
+  <data name="ViewAllUser" xml:space="preserve">
+    <value>نمایش همه کاربران</value>
+  </data>
+  <data name="ViewArticle" xml:space="preserve">
+    <value>مشاهده {0}</value>
+  </data>
+  <data name="ViewHallMap" xml:space="preserve">
+    <value>مشاهده نقشه سالن</value>
+  </data>
+  <data name="ViewProfile" xml:space="preserve">
+    <value>مشاهده پروفایل</value>
+  </data>
+  <data name="ViewState" xml:space="preserve">
+    <value>وضعیت نمایش</value>
+  </data>
+  <data name="Vip" xml:space="preserve">
+    <value>میهمان ویژه</value>
+  </data>
+  <data name="VipList" xml:space="preserve">
+    <value>لیست مهمانان ویژه</value>
+  </data>
+  <data name="VipNew" xml:space="preserve">
+    <value>میهمان ویژه جدید</value>
+  </data>
+  <data name="VirtualDirectory" xml:space="preserve">
+    <value>مسیر مجازی</value>
+  </data>
+  <data name="Visited" xml:space="preserve">
+    <value>مشاهده شده</value>
+  </data>
+  <data name="WaitForAnswer" xml:space="preserve">
+    <value>منتظر پاسخ</value>
+  </data>
+  <data name="WaitForAnswerCount" xml:space="preserve">
+    <value> منتظر پاسخ </value>
+  </data>
+  <data name="WebStatistics" xml:space="preserve">
+    <value>کد های آمار بازدید</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>وزن</value>
+  </data>
+  <data name="WhentheCongressisover" xml:space="preserve">
+    <value>زمان برگزاری وب سایت به پایان رسیده است</value>
+  </data>
+  <data name="WordCount" xml:space="preserve">
+    <value>تعدا کلمات</value>
+  </data>
+  <data name="Wsp1" xml:space="preserve">
+    <value>رمز اول وب سرویس</value>
+  </data>
+  <data name="Wsp2" xml:space="preserve">
+    <value>رمز دوم وب سرویس</value>
+  </data>
+  <data name="Youarenotallowedtosubmitanarticleonthisdate" xml:space="preserve">
+    <value>شما در این تاریخ مجاز به ارسال {0} نمی باشید</value>
+  </data>
+  <data name="YouCanAddarticleCountOnly" xml:space="preserve">
+    <value>شما میتوانید این تعداد {0} ارسال کنید:</value>
+  </data>
+  <data name="YouCanNotAddArticle" xml:space="preserve">
+    <value>سقف مجاز تعداد {0}  پر شده است</value>
+  </data>
+  <data name="YouCanNotEditArticle" xml:space="preserve">
+    <value>شما اجاره ویرایش این {0} را ندارید</value>
+  </data>
+  <data name="YoucannotSendthearticlebecauseyouhavebeenrefusedAbstracts" xml:space="preserve">
+    <value>شما مجاز به ارسال اصل {0} نیستید زیرا چکیده {0} شما تایید نشده است</value>
+  </data>
+  <data name="YouCanNotSentAbstactArticle" xml:space="preserve">
+    <value>شما مجاز به ارسال چکیده {0} نمیباشید</value>
+  </data>
+  <data name="YouCanNotSentOrginalArticle" xml:space="preserve">
+    <value>شما مجاز به ارسال اصل {0} نمیباشید</value>
+  </data>
+  <data name="YouCanNotUseDiscoutOverThanMax" xml:space="preserve">
+    <value>شما نمیتوانید بیشتر از تعداد مجاز از تخفیف استفاده کنید</value>
+  </data>
+  <data name="YouCanRegisterOneDirectorAuthor" xml:space="preserve">
+    <value>شما فقط میتوانید یک نویسنده مسئول ثبت کنید</value>
+  </data>
+  <data name="YouCanRegisterOnlyOneHotel" xml:space="preserve">
+    <value>شما تنها میتوانید در یک هتل ثبت نام کنید</value>
+  </data>
+  <data name="YouCanRegisterOnlyOneWorkShop" xml:space="preserve">
+    <value>شما تنها میتوانید در یک کارگاه ثبت نام کنید</value>
+  </data>
+  <data name="YouhavealreadyregisteredCongress" xml:space="preserve">
+    <value>ایمیل شما قبلا ثبت شده است</value>
+  </data>
+  <data name="YouNotAddedArticle" xml:space="preserve">
+    <value>شما تا کنون هیچ {0} ای ارسال نکرده اید</value>
+  </data>
+  <data name="YouNotRezervedHotel" xml:space="preserve">
+    <value>شما تا کنون هیچ هتلی را رزرو نکرده اید</value>
+  </data>
+  <data name="YouNotRezervedWorkShops" xml:space="preserve">
+    <value>شما تا کنون هیچ کارگاهی را رزرو نکرده اید</value>
+  </data>
+  <data name="YouonceLikedThisIdea" xml:space="preserve">
+    <value>شما یکبار این ایده را پسند کرده اید</value>
+  </data>
+  <data name="YourEmailRegisteredInCongressNewsLetter" xml:space="preserve">
+    <value>ایمیل شما قبلا در خبر نامه ثبت شده است</value>
+  </data>
+  <data name="YourEmailSuccedDeleteInNewsLetter" xml:space="preserve">
+    <value>ایمیل شما با موفقیت از خبر نامه حذف شد</value>
+  </data>
+  <data name="YourEmailSuccedRegisterInNewsLetter" xml:space="preserve">
+    <value>ایمیل شما با موفقیت در خبرنامه ثبت شد</value>
+  </data>
+  <data name="YourRezervedBooth" xml:space="preserve">
+    <value>غرفه های رزرو شده شما</value>
+  </data>
+  <data name="YourRezervedHotels" xml:space="preserve">
+    <value>لیست هتل های رزرو شده شما</value>
+  </data>
+  <data name="YourRezervedWorkShops" xml:space="preserve">
+    <value>لیست کارگا های رزرو شده شما</value>
+  </data>
+  <data name="YourSendedArticles" xml:space="preserve">
+    <value>لیست {0}  ارسالی شما</value>
+  </data>
+  <data name="YourUserNameDeletedPleaseRegisterAgain" xml:space="preserve">
+    <value>نام کاربری شمااز سیستم حذف شده است لطفا دوباره ثبت نام کنید</value>
+  </data>
+  <data name="You_Succes_Enter_Your_Account" xml:space="preserve">
+    <value>شما با موفقیت وارد پنل خود شدید</value>
+  </data>
+  <data name="CertificatePassword" xml:space="preserve">
+    <value>رمز عبور فایل گواهی</value>
+  </data>
+  <data name="CertificatePath" xml:space="preserve">
+    <value>مسیر فایل گواهی</value>
+  </data>
+  <data name="HasFinancialOperation" xml:space="preserve">
+    <value>آیا عملیات مالی دارد؟</value>
+  </data>
+  <data name="WebSiteAlias" xml:space="preserve">
+    <value>مسیر مجازی</value>
+  </data>
+  <data name="CompanyNameOrOrganization" xml:space="preserve">
+    <value>نام سازمان یا شرکت</value>
+  </data>
+  <data name="InternalNumber" xml:space="preserve">
+    <value>شماره داخلی</value>
+  </data>
+  <data name="SuggestMeetingTime" xml:space="preserve">
+    <value>پیشنهاد تاریخ و ساعت جلسه</value>
+  </data>
+  <data name="TelNum" xml:space="preserve">
+    <value>شماره تماس</value>
+  </data>
+</root>

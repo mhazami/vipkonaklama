@@ -1,0 +1,17 @@
+﻿@using Radyn.ContentManager.Definition
+@using Radyn.Web.Mvc.Utility
+@model Radyn.ContentManager.DataStructure.Partials
+@if (Model.Type == Enums.PartialTypes.ContentManager)
+{
+    Html.HtmlEncoder(Model.Html);
+}
+else
+{
+    this.Html.RadynRenderActionUrl(Model.Url);
+}
+
+
+
+
+
+

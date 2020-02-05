@@ -1,0 +1,25 @@
+﻿@using Radyn.WebApp.AppCode;
+@using Radyn.Web.Mvc.Utility;
+<div id="Div@(ViewBag.FormId)">
+    @if (ViewBag.addformtag == true)
+    {
+
+        <form action="@ViewBag.Viewurl" method="post">
+            @{
+                @Html.AntiForgeryToken()
+                Html.PrepareModel();
+                Html.HtmlEncoder((string)ViewBag.Html);
+            }
+        </form>
+
+    }
+    else
+    {
+
+
+        Html.HtmlEncoder((string)ViewBag.Html);
+
+    }
+
+    <script>setTimeout(function() {}, 1);</script>
+</div>

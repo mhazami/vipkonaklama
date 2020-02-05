@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head
+{
+
+    <script type="text/javascript">
+
+        function GetMenus() {
+            $.get("@Url.Content("~/ContentManager/WebDesignMenu/GetMenu")", { id: new Date().getTime() }, function (data) {
+                if (data != "") {
+                    $("#DiveMenu").hide();
+                    $("#DiveMenu").html(data);
+                    $("#DiveMenu").slideDown();
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            GetMenus();
+        });
+    </script>
+}
+<div>
+    <div id="DiveMenu">
+    </div>
+   
+</div>

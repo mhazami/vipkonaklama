@@ -1,0 +1,49 @@
+﻿<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        function postRefIdToCallBack() {
+
+            var form = document.createElement("form");
+            var hiddenFieldMesage = document.createElement("input");
+            var hiddenFieldRescode = document.createElement("input");
+            var hiddenFieldrefId = document.createElement("input");
+
+            hiddenFieldMesage.setAttribute("name", "message");
+            hiddenFieldMesage.setAttribute("Id", "message");
+            hiddenFieldMesage.setAttribute("value", '@ViewBag.message');
+            form.appendChild(hiddenFieldMesage);
+            hiddenFieldRescode.setAttribute("name", "ResCode");
+            hiddenFieldRescode.setAttribute("Id", "ResCode");
+            hiddenFieldRescode.setAttribute("value", '@ViewBag.resCode');
+            form.appendChild(hiddenFieldRescode);
+            hiddenFieldrefId.setAttribute("name", "refId");
+            hiddenFieldrefId.setAttribute("Id", "refId");
+            hiddenFieldrefId.setAttribute("value", '@ViewBag.refId');
+            form.appendChild(hiddenFieldrefId);
+
+            form.setAttribute("method", "POST");
+            form.setAttribute("action", "@ViewBag.url");
+            form.setAttribute("target", "_self");
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+        if ('@ViewBag.url') {
+            postRefIdToCallBack();
+        }
+
+    </script>
+
+</body>
+</html>
+
+
+
+

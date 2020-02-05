@@ -1,0 +1,43 @@
+﻿@model Radyn.FormGenerator.ControlFactory.Validator.CompareValidator
+@Html.ValidationSummary(true)
+<div class="item-row">
+    <div class="table-row-cap ">
+        <div class="item">
+            @Resources.FormGenerator.OtherPropertyName
+        </div>
+    </div>
+    <div class="table-row-item table-fit ">
+        <div class="item">
+            @Html.EditorFor(model => model.Comparevalue)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap ">
+        <div class="item">
+            @Resources.FormGenerator.Operator
+        </div>
+    </div>
+    <div class="table-row-item table-fit ">
+        <div class="item">
+            @Html.DropDownListFor(model => model.Operator, (SelectList)ViewBag.ValidationOperators)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap ">
+        <div class="item">
+            @Resources.FormGenerator.DataType
+        </div>
+    </div>
+    <div class="table-row-item table-fit ">
+        <div class="item">
+            @Html.DropDownListFor(model => model.DataType, (SelectList)ViewBag.ValidationDataTypes)
+        </div>
+    </div>
+</div>
+<div>
+    @{
+        Html.RenderAction("GetValidatorControl", "ValidatorControls", new { Id = ViewBag.Id, jsonvalue = ViewBag.jsonvalue });
+    }
+</div>

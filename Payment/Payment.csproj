@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D3F8D1A7-7EB1-49AD-BF12-123B32EA554B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.Payment</RootNamespace>
+    <AssemblyName>Radyn.Payment</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.EnterpriseNode, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.EnterpriseNode.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.FileManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.FileManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\AccountBO.cs" />
+    <Compile Include="BO\DiscountTypeAutoCodeBO.cs" />
+    <Compile Include="BO\DiscountTypeBO.cs" />
+    <Compile Include="BO\DiscountTypeSectionBO.cs" />
+    <Compile Include="BO\TempBO.cs" />
+    <Compile Include="BO\TempDiscountBO.cs" />
+    <Compile Include="BO\TransactionBO.cs" />
+    <Compile Include="BO\TransactionDiscountBO.cs" />
+    <Compile Include="BO\WebDesignAccountBO.cs" />
+    <Compile Include="BO\WebDesignDiscountTypeBO.cs" />
+    <Compile Include="DataStructure\Account.cs" />
+    <Compile Include="DataStructure\DiscountType.cs" />
+    <Compile Include="DataStructure\DiscountTypeAutoCode.cs" />
+    <Compile Include="DataStructure\DiscountTypeSection.cs" />
+    <Compile Include="DataStructure\Temp.cs" />
+    <Compile Include="DataStructure\TempDiscount.cs" />
+    <Compile Include="DataStructure\Transaction.cs" />
+    <Compile Include="DataStructure\TransactionDiscount.cs" />
+    <Compile Include="DataStructure\WebDesignAccount.cs" />
+    <Compile Include="DataStructure\WebDesignDiscountType.cs" />
+    <Compile Include="DA\AccountDA.cs" />
+    <Compile Include="DA\DiscountTypeAutoCodeDA.cs" />
+    <Compile Include="DA\DiscountTypeDA.cs" />
+    <Compile Include="DA\DiscountTypeSectionDA.cs" />
+    <Compile Include="DA\TempDA.cs" />
+    <Compile Include="DA\TempDiscountDA.cs" />
+    <Compile Include="DA\TransactionDA.cs" />
+    <Compile Include="DA\TransactionDiscountDA.cs" />
+    <Compile Include="DA\WebDesignAccountDA.cs" />
+    <Compile Include="DA\WebDesignDiscountTypeDA.cs" />
+    <Compile Include="Facade\AccountFacade.cs" />
+    <Compile Include="Facade\DiscountTypeAutoCodeFacade.cs" />
+    <Compile Include="Facade\DiscountTypeFacade.cs" />
+    <Compile Include="Facade\DiscountTypeSectionFacade.cs" />
+    <Compile Include="Facade\Interface\IAccountFacade.cs" />
+    <Compile Include="Facade\Interface\IDiscountTypeAutoCodeFacade.cs" />
+    <Compile Include="Facade\Interface\IDiscountTypeFacade.cs" />
+    <Compile Include="Facade\Interface\IDiscountTypeSectionFacade.cs" />
+    <Compile Include="Facade\Interface\ITempDiscountFacade.cs" />
+    <Compile Include="Facade\Interface\ITempFacade.cs" />
+    <Compile Include="Facade\Interface\ITransactionDiscountFacade.cs" />
+    <Compile Include="Facade\Interface\ITransactionFacade.cs" />
+    <Compile Include="Facade\Interface\IWebDesignAccountFacade.cs" />
+    <Compile Include="Facade\Interface\IWebDesignDiscountTypeFacade.cs" />
+    <Compile Include="Facade\TempDiscountFacade.cs" />
+    <Compile Include="Facade\TempFacade.cs" />
+    <Compile Include="Facade\TransactionDiscountFacade.cs" />
+    <Compile Include="Facade\TransactionFacade.cs" />
+    <Compile Include="Facade\WebDesignAccountFacade.cs" />
+    <Compile Include="Facade\WebDesignDiscountTypeFacade.cs" />
+    <Compile Include="PaymentBaseFacade.cs" />
+    <Compile Include="Resources\Payment.Designer.cs">
+      <DependentUpon>Payment.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Tools\Constants.cs" />
+    <Compile Include="Tools\Enums.cs" />
+    <Compile Include="PaymentComponenets.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Extentions.cs" />
+    <Compile Include="Tools\ModelView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Payment.fa-IR.resx" />
+    <EmbeddedResource Include="Resources\Payment.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Payment.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

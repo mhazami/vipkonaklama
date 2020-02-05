@@ -1,0 +1,159 @@
+﻿@using Radyn.FileManager
+@using Radyn.Message.Tools
+@using Radyn.Web.Mvc
+
+@model Radyn.Message.DataStructure.MailInfo
+<script type="text/javascript">
+    function GetUsers(itemname) {
+        var item = document.getElementById(itemname).value;
+        var FromId = document.getElementById("FromId").value;
+        ShowModalWithReturnValue("/Message/InternalMail/LookUpSelectUser?userId=" + FromId + "&value=" + item, itemname, itemname + "Names");
+    }
+
+    function itemClick(id, title, itemname) {
+        $("#" + itemname + "Result").html("");
+        var value = $("#" + itemname + "Title").val();
+        var outstr = "";
+        var valuesplite = value.split(',');
+        if (valuesplite.length > 0) {
+            for (var xx in valuesplite.length - 1) {
+                outstr += xx;
+                outstr += ",";
+            }
+        }
+        outstr += title + ",";
+        $("#" + itemname + "Names").val(outstr);
+        $("#" + itemname + "Title").val(outstr);
+        var valueId = $("#" + itemname);
+        if (valueId != "") valueId += ",";
+        valueId += id;
+        $("#" + itemname).val(valueId);
+
+    }
+
+    function autocompleteTextArea(itemname) {
+
+        var itemId = document.getElementById(itemname).value;
+        var item = document.getElementById(itemname + "Names").value;
+        var fromId = document.getElementById("FromId").value;
+        if (item != "" && item.length > 2) {
+            $.getJSON("/Message/InternalMail/GetModify", { userId: fromId, selected: itemId, searchvalue: item, date: new Date().getTime() }, function (data) {
+                $("#" + itemname + "Result").html(data).slideDown("slow");;
+            });
+
+        }
+    }
+</script>
+@{Html.Radyn().Theme("RadynEditor").Render(); }
+@using (Html.BeginForm())
+{
+
+    if (Model != null)
+    {
+        <input type="hidden" value="@Model.Id" id="Id" name="Id" />
+        <input type="hidden" value="@Model.FromId" name="FromId" id="FromId" />
+        <div id="divfix">
+            <div class="item-row fit">
+                <div class="table-row-cap ">
+                    <div class="item">
+                        <a style="cursor: pointer" onclick=" GetUsers('To'); ">@Resources.Message.To</a>
+                    </div>
+                </div>
+                <div class="table-row-item table-fit ">
+                    <div class="item" id="ToSearchResult">
+                        @Html.TextAreaFor(x => x.ToNames)
+                        <input type="hidden" value="@Model.To" name="To" id="To" />
+                    </div>
+                    <div id="ToResult"></div>
+                </div>
+            </div>
+            <div class="item-row fit">
+                <div class="table-row-cap ">
+                    <div class="item">
+                        <a style="cursor: pointer" onclick=" GetUsers('Bcc'); ">@Resources.Message.BCC</a>
+                    </div>
+                </div>
+                <div class="table-row-item table-fit ">
+                    <div class="item">
+                        @Html.TextAreaFor(x => x.BccNames, new { })
+                        <input type="hidden" value="@Model.Bcc" name="Bcc" id="Bcc" />
+                    </div>
+                </div>
+            </div>
+            <div class="item-row fit">
+                <div class="table-row-cap ">
+                    <div class="item">
+                        <a style="cursor: pointer" onclick=" GetUsers('Cc'); ">@Resources.Message.CC</a>
+                    </div>
+                </div>
+                <div class="table-row-item table-fit ">
+                    <div class="item">
+                        @Html.TextAreaFor(x => x.CcNames, new { })
+                        <input type="hidden" value="@Model.Cc" name="Cc" id="Cc" />
+                    </div>
+                </div>
+            </div>
+            <div class="item-row fit" id="DivEmailTitle">
+                <div class="table-row-cap ">
+                    <div class="item">
+                        @Resources.Message.EmailTitle
+                    </div>
+                </div>
+                <div class="table-row-item table-fit ">
+                    <div class="item ">
+                        @Html.TextAreaFor(user => user.Subject, new { })
+                    </div>
+                </div>
+            </div>
+            <div class="item-row fit" id="DivEmailBody">
+                <div class="table-row-cap" style="height: 256px;">
+                    <div class="item">
+                        @Resources.Message.EmailBody
+                    </div>
+                </div>
+                <div class="table-row-item table-c-auto table-fit">
+                    <div class="item" style="height: 350px">
+                        @Html.TextAreaFor(x => x.Body)
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="item-row fit">
+                <div class="table-row-cap ">
+                    <div class="item">
+                        @Resources.Message.Attachments
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @{
+                            Html.RenderAction("MultiFileUploader", "FileUpload", new { area = "FileManager", fileName = "MailAttachment" });
+
+                        }
+
+                    </div>
+                </div>
+                <div class="fit item">
+                    @if (Model.Attachments.Any())
+                    {
+                        foreach (var variable in Model.Attachments)
+                        {
+                            <div class="width10percent">
+                                <a href="@(FileManagerContants.FileHandlerRoot + variable.AttachId + "?dl=true")">@variable.AttachFile.FileName</a>
+
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="button-div">
+                @{Html.Radyn().ButtonActionLink().ActionName("ComposeMail").ControllerName("InternalMail").Area("Message").Callback().CallbackType(ButtonActionLink.CallbackType.post).CallbackReturnFunction("function(data){if(data!='false'){GetSection('" + Enums.MailSection.OutBox + "',document.getElementById('FromId').value);} ShowRadynMessage();}").Serialize("/Message/InternalMail/GetModify", false).ID("BtnSend").Text(Resources.Message.SendMail).Render();}
+            </div>
+            <div class="button-div">
+                @{Html.Radyn().ButtonActionLink().ActionName("SaveMail").ControllerName("InternalMail").Area("Message").Callback().CallbackType(ButtonActionLink.CallbackType.post).CallbackReturnFunction("function(data){if(data!='false'){GetSection('" + Enums.MailSection.Draft + "',document.getElementById('FromId').value);} ShowRadynMessage();}").Serialize("/Message/InternalMail/GetModify", false).ID("BtnSave").Text(Resources.Common.Save).Render();}
+            </div>
+        </div>
+    }
+}

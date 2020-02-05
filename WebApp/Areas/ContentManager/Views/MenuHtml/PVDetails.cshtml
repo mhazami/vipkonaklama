@@ -1,0 +1,85 @@
+﻿@model Radyn.ContentManager.DataStructure.MenuHtml
+<div class="radynForm">
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Title
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayTextFor(x => x.Title)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Enable
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.Enabled ? @Resources.Common.Enable : @Resources.Common.Disable)
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                MasterBody Html
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item" style="height: 100px;">
+                @Html.DisplayFor(x => x.MasterBody)
+
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item" >
+                RootBody Html
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item" style="height: 100px;">
+                @Html.DisplayFor(x => x.RootMenuBody)
+
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-item" >
+            <div class="item">
+                HasChildBody Html
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item" style="height: 100px;">
+                @Html.DisplayFor(x => x.HasChildBody)
+
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-item" >
+            <div class="item">
+                ChildMenuBody Html
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item" style="height: 100px;">
+                @Html.DisplayFor(x => x.ChildMenuBody)
+
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+
+
+
+

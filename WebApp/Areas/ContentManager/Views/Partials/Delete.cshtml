@@ -1,0 +1,37 @@
+@using Radyn.Web.Mvc;
+@model Radyn.ContentManager.DataStructure.Partials
+@{
+    ViewBag.Title = @Resources.Common.Delete + " " + @Resources.ContentManager.Partials;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.DeleteMessage
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-red i-check">
+        @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("Partials").Area("ContentManager").Text(@Resources.Common.Yes).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-green i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Partials").Area("ContentManager").Text(@Resources.Common.No).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-red i-check">
+        @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("Partials").Area("ContentManager").Text(@Resources.Common.Yes).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-green i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Partials").Area("ContentManager").Text(@Resources.Common.No).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    Html.RenderAction("GetDetail", "Partials", new { area = "ContentManager", Id = ViewBag.Id });
+}
+

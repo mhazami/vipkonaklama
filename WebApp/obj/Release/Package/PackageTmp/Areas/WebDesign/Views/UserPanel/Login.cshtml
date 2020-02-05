@@ -1,0 +1,100 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.WebApp.AppCode.Security
+
+@{
+    ViewBag.Title = Resources.Security.Login;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+@section Head{
+
+}
+<div class="container-hd">
+
+    <div class="container-box">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div align="center">
+                <font color="red">@ViewBag.Message</font>
+            </div>
+            <div class="login-container-bg">
+                <div class="login-container">
+                    <div class="login-header">
+                        <p>@Resources.Common.LogIn @Resources.WebDesign.User</p>
+                    </div>
+                    <div class="login-main">
+                        <span class="login-avatar">
+                            <img src="/Content/Images/avatar-001.jpg" />
+                        </span>
+                        <div class="login-data-row input-row">
+                            <div class="login-data-row-item">
+                                <label>
+                                    @Resources.Security.UserUsername
+                                    <small>*</small>
+                                </label>
+                                <input name="username" id="usernamelabel" type="text" placeholder=" @Resources.WebDesign.UserName" />
+
+                                @{Html.Radyn().Validator().ID("username").GroupName("g1").Render(); }
+
+                            </div>
+                        </div>
+
+                        <div class="login-data-row">
+                            <div class="login-data-row-item">
+                                <label>
+                                    @Resources.Security.UserPassword
+                                    <small>*</small>
+                                </label>
+                                <input name="password" id="passwordlabel" type="password" placeholder=" @Resources.Security.UserPassword" />
+                                @{ Html.Radyn().Validator().ID("password").GroupName("g1").Render(); }
+
+                            </div>
+                        </div>
+                        @if (SessionParameters.HasLoginPasswordError)
+                        {
+
+                            <div class="login-data-row  input-row">
+                                <div class="login-data-row-item">
+                                    <div>
+                                        <label>
+
+                                        </label>
+                                        <div class="captcha-control">
+                                            @{Html.Radyn().Captcha().Render();}
+                                        </div>
+                                        <input type="text" name="captch" placeholder="@Resources.WebDesign.Captcha" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="login-data-row full-width">
+                            <div class="login-data-row-item">
+
+                                @{Html.Radyn().ButtonActionLink().Submit().ValidationGroup("g1").ID("button-yellow").Text(Resources.Common.LogIn).Render(); }
+                              
+                              
+                            </div>
+                        </div>
+                        <div class="login-data-row full-width">
+                            <div class="text-button-login">
+                                <a href="/WebDesign/UserPanel/Subscribe">ثبت نام
+                                   
+                                    </a>
+                                <span>
+                                    /
+                                </span>
+                                <a href="@Url.Content("~/WebDesign/UserPanel/ForgotPassword")">
+                                    @Resources.Security.ForgotPassword
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>

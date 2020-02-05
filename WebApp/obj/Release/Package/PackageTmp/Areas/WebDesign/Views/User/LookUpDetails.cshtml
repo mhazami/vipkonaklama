@@ -1,0 +1,25 @@
+﻿@using Radyn.Web.Mvc;
+@model Radyn.Payment.DataStructure.Transaction
+@{
+    ViewBag.Title = Resources.Common.Detail;
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+@section Head{}
+@section PageAction
+{
+    <div class="button-div">
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Close).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Close_thisModal();" }).Render(); }
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div">
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Close).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Close_thisModal();" }).Render(); }
+    </div>
+
+}
+
+@{
+    Html.RenderAction("GetDetails", "User", new { area = "WebDesign", Id = ViewBag.Id });
+}

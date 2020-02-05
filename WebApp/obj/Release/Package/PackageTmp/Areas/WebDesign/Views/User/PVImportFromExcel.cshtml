@@ -1,0 +1,176 @@
+﻿@using Radyn.Framework
+@using Radyn.Web.Mvc
+@model Dictionary<Radyn.WebDesign.DataStructure.User, List<string>>
+<script type="text/javascript">
+    function DeleteUser(Id) {
+        if (confirm('@Resources.Common.Are_You_Soure_For_Delete')) {
+            $.get("@Url.Content("~/WebDesign/User/RemoveUser")", { Id: Id, id: new Date().getTime() }, function (data) {
+                if (data == "true") {
+                    var value = 0;
+                    var count = $("#CountData").html();
+                    if (count != "")
+                        value = parseInt(count);
+                    $("#" + Id).slideUp('slow');
+                    $("#CountData").html(value - 1);
+                }
+                ShowRadynMessage();
+            });
+        }
+
+
+    }
+
+    function SelectForupdate(Id) {
+        Id = Id.trim();
+        var object = $("#" + Id).css('background-color');
+        if ($("#Checkselect-" + Id).attr('checked') == 'checked') {
+            if (object == 'rgb(255, 0, 0)')
+                $("#" + Id).css('background', 'yellow');
+            else $("#" + Id).css('background', 'none');
+        } else {
+           
+            if (object == 'rgb(255, 255, 0)')
+                $("#" + Id).css('background', 'red');
+            else $("#" + Id).css('background', 'none');
+           
+        }
+       
+    }
+    $(document).ready(function () {
+        HidePostBackLoader();
+        try {
+            $("#CountData").html('@Model.Count()');
+            
+
+        } catch (e) {
+
+        }
+        
+        
+    });
+  
+</script>
+@if (Model.Any())
+{
+    <div>
+        <div class="gv-table width98percent page-align" style="margin-top: 20px;">
+            <div class="gv-row gv-header">
+                <div class="gv-cell" style="width: 5%">
+                    <div class="cell-item">
+                        @Resources.Common.Select
+                    </div>
+                </div>
+                 <div class="gv-cell width30percent">
+                    <div class="cell-item">
+                        @Resources.EnterPriseNode.Email
+                    </div>
+                </div>
+                <div class="gv-cell width13percent">
+                    <div class="cell-item">
+                        @Resources.EnterPriseNode.FirstName
+                    </div>
+                </div>
+                <div class="gv-cell width18percent">
+                    <div class="cell-item">
+                        @Resources.EnterPriseNode.LastName
+                    </div>
+                </div>
+               
+                <div class="gv-cell width10percent">
+                    <div class="cell-item">
+                        @Resources.EnterPriseNode.Gender
+                    </div>
+                </div>
+                <div class="gv-cell width13percent">
+                    <div class="cell-item">
+                        @Resources.EnterPriseNode.NationalCode
+                    </div>
+                </div>
+               
+                <div class="gv-cell gv-cell-last width10percent">
+                    <div class="cell-item">
+                    </div>
+                </div>
+
+            </div>
+            <div class="gv-content">
+                @{
+    int count = 0;
+    foreach (var keyValuePair in Model)
+    {
+        count++;
+                    <div class="gv-row gv-row-style" id="@keyValuePair.Key.Id" style="background:@(!keyValuePair.Value.Any() ? "none" : "red")" title="@(Resources.WebDesign.Mobile+" "+":"+" "+keyValuePair.Key.EnterpriseNode.Cellphone+"\n"+ Resources.WebDesign.Address + " " + ":" + " " + keyValuePair.Key.EnterpriseNode.Address)">
+                        <div class="gv-cell" style="width: 5%">
+                            <div class="cell-item">
+                                @if (keyValuePair.Value.Count == 0 || (keyValuePair.Key.State == ObjectState.Dirty&&keyValuePair.Value.Count==1))
+                                {
+                                    <input type="checkbox" @(keyValuePair.Key.State == ObjectState.Dirty ? "" : "checked=\"checked\"") id="Checkselect-@keyValuePair.Key.Id" onclick="SelectForupdate('@keyValuePair.Key.Id')" name="Checkselect" value="@keyValuePair.Key.Id"/>
+                                }
+                            </div>
+                        </div>
+                          <div class="gv-cell width30percent">
+                            <div class="cell-item">
+                                @keyValuePair.Key.EnterpriseNode.Email
+                            </div>
+                        </div>
+                        <div class="gv-cell width13percent">
+                            <div class="cell-item">
+                                @keyValuePair.Key.EnterpriseNode.RealEnterpriseNode.FirstName
+                            </div>
+                        </div>
+                        <div class="gv-cell width18percent">
+                            <div class="cell-item">
+                                @keyValuePair.Key.EnterpriseNode.RealEnterpriseNode.LastName
+                            </div>
+                        </div>
+                      
+                        <div class="gv-cell width10percent">
+                            <div class="cell-item">
+                                @(keyValuePair.Key.EnterpriseNode.RealEnterpriseNode.Gender.HasValue ? (keyValuePair.Key.EnterpriseNode.RealEnterpriseNode.Gender.Value == true ? "مرد" : "زن") : "")
+                            </div>
+                        </div>
+                        <div class="gv-cell width13percent">
+                            <div class="cell-item">
+                                @keyValuePair.Key.EnterpriseNode.RealEnterpriseNode.NationalCode
+                            </div>
+                        </div>
+                        
+                        <div class="gv-cell gv-cell-last width10percent" >
+                            <div class="cell-item">
+                                <div class="page-align">
+                                    <div style="float: right">
+                                          @if (keyValuePair.Value.Any())
+                                    {
+                                    {Html.Radyn().ImageActionLink().Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/details.png")).ImageHeight("15").ImageWidth("15").ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "alert('" + string.Join("-", keyValuePair.Value) + "');", title = "" + string.Join("-", keyValuePair.Value) + "" }).Render(); }
+
+
+                                        }
+                                    </div>
+                                    <div style="float: right">
+                                    @{Html.Radyn().ImageActionLink().Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImageHeight("15").ImageWidth("15").ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "DeleteUser('" + keyValuePair.Key.Id + "')" }).Render(); }
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+    }
+                }
+            </div>
+            <div class="gv-row  gv-footer" style="height: 25px">
+                @Resources.Common.Count:
+                <span id="CountData"></span>
+            </div>
+
+        </div>
+    </div>
+}
+else
+{
+
+    <div class="fit">
+        @Resources.WebDesign.Dataformatisnotcorrect
+    </div>
+}
+

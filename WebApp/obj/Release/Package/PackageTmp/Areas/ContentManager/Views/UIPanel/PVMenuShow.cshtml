@@ -1,0 +1,62 @@
+﻿@using Radyn.ContentManager.DataStructure
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.Areas.ContentManager.Tools
+@model IEnumerable<Radyn.ContentManager.DataStructure.Menu>
+
+    @if (ViewBag.MenuHtml != null)
+    {
+
+        Html.HtmlEncoder(Model.GenerateMenuWithDynamicHtml((MenuHtml)ViewBag.MenuHtml));
+
+
+
+    }
+    else
+    {
+        <script type="text/javascript">
+
+            (function ($) {
+                $.fn.textWidth = function () {
+                    $body = $('body');
+                    $this = $(this);
+                    $text = $this.text();
+                    if ($text == '') $text = $this.val();
+                    var calc = '<div style="clear:both;display:block;visibility:hidden;"><span style="width;inherit;margin:0;font-family:' + $this.css('font-family') + ';font-size:' + $this.css('font-size') + ';font-weight:' + $this.css('font-weight') + '">' + $text + '</span></div>';
+                    $body.append(calc);
+                    var width = $('body').find('span:last').width();
+                    $body.find('span:last').parent().remove();
+                    return width;
+                };
+            })(jQuery);
+
+            $(function () {
+                $(".childUl > li").not("ul").each(function (el) {
+
+                    //                alert($(this).text().length);
+                    //var newWidth = ($(this).first().text().length * 7.5) + "px";
+
+                    var parentUl = $(this).parents("ul:first");
+                    var newWidth = $(this).textWidth() * 1.5;
+
+                    //calculate li width without ul width (remove children ul)
+                    if ($(this).find("ul").length > 0) {
+                        var newObj = $(this).clone();
+                        newObj.find("ul").remove();
+                        newWidth = newObj.textWidth() * 1.5;
+                    }
+
+                    var text = $(this).text();
+
+                    // 
+                    if (parentUl.width() < newWidth) {
+                        parentUl.width(newWidth);
+                    }
+
+                });
+            });
+        </script>
+
+        Html.HtmlEncoder(Model.GenerateMenuHorizontalHtml());
+
+    }
+

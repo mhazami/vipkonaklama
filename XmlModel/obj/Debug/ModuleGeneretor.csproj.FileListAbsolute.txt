@@ -1,0 +1,6 @@
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.ModuleGeneretor.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.ModuleGeneretor.pdb
+E:\Online-WorkSpace\vipkonaklama\XmlModel\obj\Debug\ModuleGeneretor.csprojAssemblyReference.cache
+E:\Online-WorkSpace\vipkonaklama\XmlModel\obj\Debug\ModuleGeneretor.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\XmlModel\obj\Debug\Radyn.ModuleGeneretor.dll
+E:\Online-WorkSpace\vipkonaklama\XmlModel\obj\Debug\Radyn.ModuleGeneretor.pdb

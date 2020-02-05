@@ -1,0 +1,38 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.Utility
+@model Radyn.ContentManager.DataStructure.Menu
+@{
+    ViewBag.Title = Resources.ContentManager.MenuList;
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+@section Head
+{
+    <script type="text/javascript">
+        function ModifyMenu() {
+            $.post("@Url.Content("~/ContentManager/WebDesignMenu/ModifyMenu")", $('form[action^="@Url.Content("~/ContentManager/WebDesignMenu/PartialViewModifyMenu")"]').serialize(), function (data) {
+                if (data != "") {
+
+                    ShowRadynMessage();
+                }
+                ShowRadynMessage();
+            });
+        }
+    </script>
+}
+
+    <input value="@ViewBag.id" type="hidden" name="menuid" id="menuid"/>
+    <input value="@ViewBag.state" type="hidden" name="menuState" id="menuState"/>
+@{
+    Html.RadynAction("GetDetails", "Menu", new { area = "ContentManager", Id = ViewBag.Id });
+}
+
+    @if (ViewBag.state == "Delete")
+    {
+    <div class="button-div">
+      @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Delete).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Callback().CallbackType(ImageActionLink.CallbackType.Script).CallbackReturnFunction("ModifyMenu();").ImageWidth("15").ImageHeight("20").Render(); }
+    </div>
+    }
+    <div class="button-div">
+         @{Html.Radyn().ImageActionLink().Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Buttoms/Cancel-Button.jpg")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Close_thisModal();" }).ImageWidth("95").ImageHeight("30").Render(); }
+    </div>
+    

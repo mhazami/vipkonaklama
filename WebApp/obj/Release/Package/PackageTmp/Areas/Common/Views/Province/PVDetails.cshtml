@@ -1,0 +1,32 @@
+﻿@model Radyn.Common.DataStructure.Province
+
+@if (Model != null)
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.CommonComponent.Title
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Title)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.CommonComponent.Country
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Country.Name)
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,725 @@
+﻿@using System.Web.Mvc.Html
+@using Radyn.Web.Mvc.Utility
+@model Radyn.WebDesign.DataStructure.Configuration
+
+<script>
+    $(document).ready(function() {
+        $("#BankId").on("change",
+            function() {
+                onBankIdChanged();
+            });
+        onBankIdChanged();
+    });
+        function onBankIdChanged() {
+        var bankId = $("#BankId").attr("value");
+
+        if (bankId == "7") {
+            if ($("#merchant_id_section").length > 0) {
+                $("#merchant_id_section").hide();
+            }
+            if ($("#terminal_id_section").length > 0) {
+                $("#terminal_id_section").show();
+            }
+            if ($("#terminal_username_section").length > 0) {
+                $("#terminal_username_section").show();
+            }
+            if ($("#terminal_password_section").length > 0) {
+                $("#terminal_password_section").show();
+            }
+            if ($("#certificate_path_section").length > 0) {
+                $("#certificate_path_section").show();
+            }
+            if ($("#certificate_pass_section").length > 0) {
+                $("#certificate_pass_section").show();
+            }
+            if ($("#merchant_public_key_section").length > 0) {
+                $("#merchant_public_key_section").hide();
+            }
+            if ($("#merchant_private_key_section").length > 0) {
+                $("#merchant_private_key_section").hide();
+            }
+        } else if (bankId == "8") {//iranKish
+            if ($("#merchant_id_section").length > 0) {
+                $("#merchant_id_section").show();
+            }
+            if ($("#terminal_id_section").length > 0) {
+                $("#terminal_id_section").hide();
+            }
+            if ($("#terminal_username_section").length > 0) {
+                $("#terminal_username_section").hide();
+            }
+            if ($("#terminal_password_section").length > 0) {
+                $("#terminal_password_section").hide();
+            }
+            if ($("#certificate_path_section").length > 0) {
+                $("#certificate_path_section").hide();
+            }
+            if ($("#certificate_pass_section").length > 0) {
+                $("#certificate_pass_section").hide();
+            }
+            if ($("#merchant_public_key_section").length > 0) {
+                $("#merchant_public_key_section").hide();
+            }
+            if ($("#merchant_private_key_section").length > 0) {
+                $("#merchant_private_key_section").show();
+            }
+        } else if (bankId == "9") { //mabna
+
+            if ($("#merchant_id_section").length > 0) {
+                $("#merchant_id_section").show();
+            }
+            if ($("#terminal_id_section").length > 0) {
+                $("#terminal_id_section").show();
+            }
+            if ($("#terminal_username_section").length > 0) {
+                $("#terminal_username_section").hide();
+            }
+            if ($("#terminal_password_section").length > 0) {
+                $("#terminal_password_section").hide();
+            }
+            if ($("#certificate_path_section").length > 0) {
+                $("#certificate_path_section").hide();
+            }
+            if ($("#certificate_pass_section").length > 0) {
+                $("#certificate_pass_section").hide();
+            }
+            if ($("#merchant_public_key_section").length > 0) {
+                $("#merchant_public_key_section").show();
+                $("#merchant_public_key_section .item-title").text("@Resources.WebDesign.MerchantPublicKey");
+
+            }
+            if ($("#merchant_private_key_section").length > 0) {
+                $("#merchant_private_key_section").show();
+                $("#merchant_private_key_section .item-title").text("@Resources.WebDesign.MerchantPrivateKey");
+
+            }
+        } else if (bankId == "10") { //ghavamin
+
+            if ($("#merchant_id_section").length > 0) {
+                $("#merchant_id_section").show();
+            }
+            if ($("#terminal_id_section").length > 0) {
+                $("#terminal_id_section").hide();
+            }
+            if ($("#terminal_username_section").length > 0) {
+                $("#terminal_username_section").hide();
+            }
+            if ($("#terminal_password_section").length > 0) {
+                $("#terminal_password_section").hide();
+            }
+            if ($("#certificate_path_section").length > 0) {
+                $("#certificate_path_section").hide();
+            }
+            if ($("#certificate_pass_section").length > 0) {
+                $("#certificate_pass_section").hide();
+            }
+            if ($("#merchant_public_key_section").length > 0) {
+                $("#merchant_public_key_section").show();
+                $("#merchant_public_key_section .item-title").text("@Resources.WebDesign.Wsp1");
+            }
+            if ($("#merchant_private_key_section").length > 0) {
+                $("#merchant_private_key_section").show();
+                $("#merchant_private_key_section .item-title").text("@Resources.WebDesign.Wsp2");
+            }
+        } else if (bankId === "11") {
+            if ($("#merchant_id_section").length > 0) {
+                $("#merchant_id_section").show();
+            }
+            if ($("#terminal_id_section").length > 0) {
+                $("#terminal_id_section").hide();
+            }
+            if ($("#terminal_username_section").length > 0) {
+                $("#terminal_username_section").hide();
+            }
+            if ($("#terminal_password_section").length > 0) {
+                $("#terminal_password_section").hide();
+            }
+            if ($("#certificate_path_section").length > 0) {
+                $("#certificate_path_section").hide();
+            }
+            if ($("#certificate_pass_section").length > 0) {
+                $("#certificate_pass_section").hide();
+            }
+            if ($("#merchant_public_key_section").length > 0) {
+                $("#merchant_public_key_section").hide();
+            }
+            if ($("#merchant_private_key_section").length > 0) {
+                $("#merchant_private_key_section").hide();
+            }
+        } else {
+            if ($("#merchant_id_section").length > 0) {
+                $("#merchant_id_section").hide();
+            }
+            if ($("#terminal_id_section").length > 0) {
+                $("#terminal_id_section").show();
+            }
+            if ($("#terminal_username_section").length > 0) {
+                $("#terminal_username_section").show();
+            }
+            if ($("#terminal_password_section").length > 0) {
+                $("#terminal_password_section").show();
+            }
+            if ($("#certificate_path_section").length > 0) {
+                $("#certificate_path_section").hide();
+            }
+            if ($("#certificate_pass_section").length > 0) {
+                $("#certificate_pass_section").hide();
+            }
+            if ($("#merchant_public_key_section").length > 0) {
+                $("#merchant_public_key_section").hide();
+            }
+            if ($("#merchant_private_key_section").length > 0) {
+                $("#merchant_private_key_section").hide();
+            }
+        }
+    }
+</script>
+
+<div class="radynForm">
+    <div class="fit slides-open">
+        <div class="fit item-row ">
+            <div class="table-row-roller cursor-pointer" onclick="slide('Basic-Settings');">
+                <div class="item">
+                    @Resources.WebDesign.BaseSetting
+                    <span class="arrow toButton Basic-Settings"></span>
+                </div>
+            </div>
+            <div class="fit advanceSetting" id="Basic-Settings">
+                <div class="item-row">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.WebDesign.MaxNewsShow
+                        </div>
+                    </div>
+                    <div class="table-row-item">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.MaxNewsShow, new { })
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="item-row">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.WebDesign.IntroPage  @Resources.WebDesign.Address
+                        </div>
+                    </div>
+                    <div class="table-row-item">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.IntroPageUrl)
+                        </div>
+                    </div>
+                </div>  
+                
+                <div class="item-row">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.WebDesign.IntroPage
+                        </div>
+                    </div>
+                    <div class="table-row-item">
+                        <div class="item">
+                            @Html.DropDownListFor(model => model.IntroPageId, (SelectList)ViewBag.Contents, "")
+                        </div>
+                    </div>
+                </div>
+         
+                <div class="item-row">
+                    <div class="table-row-cap  ">
+                        <div class="item">
+                            کامنت برای مقالات فعال است؟
+                        </div>
+                    </div>
+                    <div class="table-row-item drp">
+                        <div class="item">
+                            @Html.RadioButtonFor(model => model.EnableArticleComment, true)@Resources.Common.Yes
+                            @Html.RadioButtonFor(model => model.EnableArticleComment, false)@Resources.Common.No
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-row">
+                    <div class="table-row-cap  ">
+                        <div class="item">
+                            کامنت برای اخبار فعال است؟
+                        </div>
+                    </div>
+                    <div class="table-row-item drp">
+                        <div class="item">
+                            @Html.RadioButtonFor(model => model.EnableNewsComment, true)@Resources.Common.Enable
+                            @Html.RadioButtonFor(model => model.EnableNewsComment, false)@Resources.Common.Disable
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.HasFinancialOperation
+                        </div>
+                    </div>
+                    <div class="table-row-item drp ">
+                        <div class="item">
+                            @Html.RadioButtonFor(model => model.HasFinancialOperation, true)@Resources.Common.Yes
+                            @Html.RadioButtonFor(model => model.HasFinancialOperation, false)@Resources.Common.No
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fit item-row">
+            <div class="table-row-roller cursor-pointer" onclick="slide('Basic-UIDesigneConfig');">
+                <div class="item">
+                    @Resources.WebDesign.UIDesigneConfig
+                    <span class="arrow toButton Basic-UIDesigneConfig"></span>
+                </div>
+            </div>
+            <div class="fit advanceSetting" id="Basic-UIDesigneConfig">
+                <div class="item-row">
+                    <div class="table-row-cap  ">
+                        <div class="item">
+                            html منوها
+                        </div>
+                    </div>
+                    <div class="table-row-item">
+                        <div class="item">
+                            @Html.DropDownListFor(model => model.DefaultMenuHtmlId, (SelectList)ViewBag.MenuHtmls, "")
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.WebDesign.Html
+                        </div>
+                    </div>
+                    <div class="table-row-item">
+                        <div class="item">
+                            @Html.DropDownListFor(model => model.DefaultHTMLID, (SelectList)ViewBag.Html, "")
+                        </div>
+                    </div>
+                </div>
+                
+               
+                
+                <div class="item-row">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.WebDesign.HeaderId
+                        </div>
+                    </div>
+                    <div class="table-row-item">
+                        <div class="item">
+                            @Html.DropDownListFor(model => model.HeaderId, (SelectList)ViewBag.Contents, "")
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.WebDesign.FooterId
+                        </div>
+                    </div>
+                    <div class="table-row-item">
+                        <div class="item">
+                            @Html.DropDownListFor(model => model.FooterId, (SelectList)ViewBag.Contents, "")
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item-row">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.WebDesign.Container
+                        </div>
+                    </div>
+                    <div class="table-row-item">
+                        <div class="item">
+                            @Html.DropDownListFor(model => model.DefaultContainerID, (SelectList)ViewBag.Container, "")
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            Fav Icon
+                        </div>
+                    </div>
+                    <div class="table-row-item drp width18percent">
+                        <div class="item">
+                            @{
+                                Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "FavIcon", fileid = Model.FavIcon, showimage = true, fileName = "UpFileFavIcon" });
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row fit">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.WebStatistics
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextAreaFor(model => model.WebStatistics)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="fit item-row">
+            <div class="table-row-roller cursor-pointer" onclick="slide('Basic-Email');">
+                <div class="item">
+                    @Resources.WebDesign.MailSetting
+                    <span class="arrow toButton Basic-Email"></span>
+                </div>
+            </div>
+            <div class="fit advanceSetting" id="Basic-Email">
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.MailHost
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.MailHost, new { })
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.MailUserName
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.MailUserName, new { })
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.MailPassword
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.PasswordFor(model => model.MailPassword)
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.MailFrom
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.MailFrom, new { })
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.MailPort
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.MailPort, new { })
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap  font10">
+                        <div class="item">
+                            @Resources.WebDesign.EnableSSL
+                        </div>
+                    </div>
+                    <div class="table-row-item drp ">
+                        <div class="item">
+                            @Html.RadioButtonFor(model => model.EnableSSL, true)@Resources.Common.Yes
+                            @Html.RadioButtonFor(model => model.EnableSSL, false)@Resources.Common.No
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap  font10">
+                        <div class="item">
+                            @Resources.WebDesign.GroupEmailInterval
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.GroupEmailInterval)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fit item-row">
+            <div class="table-row-roller cursor-pointer" onclick="slide('Basic-Message');">
+                <div class="item">
+                    @Resources.WebDesign.SMSSetting
+                    <span class="arrow toButton Basic-Message"></span>
+                </div>
+            </div>
+            <div class="fit advanceSetting" id="Basic-Message">
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.SMSAccountNumber
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.SMSAccountId, new { })
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.SMSAccountUserName
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.SMSAccountUserName, new { })
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.SMSAccountpassword
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.PasswordFor(model => model.SMSAccountPassword)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="fit item-row">
+            <div class="table-row-roller cursor-pointer" onclick="slide('Basic-CRMService');">
+                <div class="item">
+                    تنظیمات سرویس CRM
+                    <span class="arrow toButton Basic-CRMService"></span>
+                </div>
+            </div>
+            <div class="fit advanceSetting" id="Basic-CRMService">
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                           نام کاربری
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.CRMServiceUserName, new { })
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            رمز عبور
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.PasswordFor(model => model.CRMServicePassword, new { })
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                           مسیر سرویس
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.CRMServiceUrl)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="fit item-row">
+            <div class="table-row-roller cursor-pointer" onclick="slide('Basic-Information');">
+                <div class="item">
+                    @Resources.WebDesign.InformSetting
+                    <span class="arrow toButton Basic-Information"></span>
+                </div>
+            </div>
+            <div class="fit advanceSetting" id="Basic-Information">
+
+
+                <div class="item-row">
+                    <div class="table-row-cap  font10">
+                        <div class="item">
+                            @Resources.WebDesign.UserRegisterInformType
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.DropDownListFor(model => model.UserRegisterInformType, (SelectList)ViewBag.InformTypes, Resources.WebDesign.None)
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="fit item-row">
+            <div class="table-row-roller cursor-pointer" onclick="slide('Basic-Payment');">
+                <div class="item">
+                    @Resources.WebDesign.PayAndDiscountSetting
+                    <span name="Basic-Payment" class="arrow toButton Basic-Payment"></span>
+                </div>
+            </div>
+            <div class="fit advanceSetting" id="Basic-Payment">
+                <div class="item-row">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.DiscountCount
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.DisscountCount, new { })
+                        </div>
+                    </div>
+                </div>
+               <div class="item-row" id="merchant_id_section">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.MerchantId
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.MerchantId, new { })
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row" id="terminal_id_section">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.TerminalId
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.TerminalId, new { })
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row" id="terminal_username_section">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.TerminalUserName
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.TerminalUserName, new { })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-row" id="merchant_public_key_section" style="clear: both;">
+                    <div class="table-row-cap">
+                        <div class="item  item-title">
+                            @*@Resources.WebDesign.MerchantPublicKey*@
+                        </div>
+                    </div>
+                    <div class="table-row-item table-fit drp">
+                        <div class="item">
+                            @Html.TextAreaFor(model => model.MerchantPublicKey, new { })
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row" id="merchant_private_key_section">
+                    <div class="table-row-cap">
+                        <div class="item  item-title">
+                            @*@Resources.WebDesign.MerchantPrivateKey*@
+                        </div>
+                    </div>
+                    <div class="table-row-item table-fit drp">
+                        <div class="item">
+                            @Html.TextAreaFor(model => model.MerchantPrivateKey, new { })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-row" id="terminal_password_section">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.WebDesign.TerminalPassword
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.PasswordFor(model => model.TerminalPassword)
+                        </div>
+                    </div>
+                </div>
+                <div class="item-row" id="certificate_path_section">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            CertificatePath
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.TextBoxFor(model => model.CertificatePath, new { })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-row" id="certificate_pass_section">
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            CertificatePassword
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @Html.PasswordFor(model => model.CertificatePassword)
+                        </div>
+                    </div>
+                </div>
+@*                 <div> *@
+@*                     @{ *@
+@*                         Html.RenderAction("GetPayTypes", "Transaction", new { area = "Payment", value = Model.PaymentType }); *@
+@*                     } *@
+@*                 </div> *@
+                @*<div>
+                        @{
+                            Html.RenderAction("GenerateConfigDiscountSection", "DiscountType", new { area = "WebDesign" });
+                        }
+                    </div>*@
+            </div>
+        </div>
+    </div>
+</div>

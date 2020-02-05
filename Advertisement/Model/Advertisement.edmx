@@ -1,0 +1,828 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AdvertisementsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="AdvertisementsModelStoreContainer">
+          <EntitySet Name="Advertisement" EntityType="AdvertisementsModel.Store.Advertisement" store:Type="Tables" Schema="Advertisement" />
+          <EntitySet Name="AdvertisementAttribute" EntityType="AdvertisementsModel.Store.AdvertisementAttribute" store:Type="Tables" Schema="Advertisement" />
+          <EntitySet Name="AdvertisementHistory" EntityType="AdvertisementsModel.Store.AdvertisementHistory" store:Type="Tables" Schema="Advertisement" />
+          <EntitySet Name="AdvertisementSection" EntityType="AdvertisementsModel.Store.AdvertisementSection" store:Type="Tables" Schema="Advertisement" />
+          <EntitySet Name="AdvertisementSectionPosition" EntityType="AdvertisementsModel.Store.AdvertisementSectionPosition" store:Type="Tables" Schema="Advertisement" />
+          <EntitySet Name="AdvertisementType" EntityType="AdvertisementsModel.Store.AdvertisementType" store:Type="Tables" Schema="Advertisement" />
+          <EntitySet Name="Tariff" EntityType="AdvertisementsModel.Store.Tariff" store:Type="Tables" Schema="Advertisement" />
+          <EntitySet Name="TariffClass" EntityType="AdvertisementsModel.Store.TariffClass" store:Type="Tables" Schema="Advertisement" />
+          <EntitySet Name="TariffClassHistory" EntityType="AdvertisementsModel.Store.TariffClassHistory" store:Type="Tables" Schema="Advertisement" />
+          <EntitySet Name="TariffDefinitionClass" EntityType="AdvertisementsModel.Store.TariffDefinitionClass" store:Type="Tables" Schema="Advertisement" />
+          <AssociationSet Name="FK_Advertisement_AdvertisementSectionPosition" Association="AdvertisementsModel.Store.FK_Advertisement_AdvertisementSectionPosition">
+            <End Role="AdvertisementSectionPosition" EntitySet="AdvertisementSectionPosition" />
+            <End Role="Advertisement" EntitySet="Advertisement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Advertisement_AdvertisementType" Association="AdvertisementsModel.Store.FK_Advertisement_AdvertisementType">
+            <End Role="AdvertisementType" EntitySet="AdvertisementType" />
+            <End Role="Advertisement" EntitySet="Advertisement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertisementHistory_Advertisement" Association="AdvertisementsModel.Store.FK_AdvertisementHistory_Advertisement">
+            <End Role="Advertisement" EntitySet="Advertisement" />
+            <End Role="AdvertisementHistory" EntitySet="AdvertisementHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertisementHistory_AdvertisementHistory" Association="AdvertisementsModel.Store.FK_AdvertisementHistory_AdvertisementHistory">
+            <End Role="TariffClassHistory" EntitySet="TariffClassHistory" />
+            <End Role="AdvertisementHistory" EntitySet="AdvertisementHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertisementSectionPosition_AdvertisementSection" Association="AdvertisementsModel.Store.FK_AdvertisementSectionPosition_AdvertisementSection">
+            <End Role="AdvertisementSection" EntitySet="AdvertisementSection" />
+            <End Role="AdvertisementSectionPosition" EntitySet="AdvertisementSectionPosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertisemetAttribute_Advertisement" Association="AdvertisementsModel.Store.FK_AdvertisemetAttribute_Advertisement">
+            <End Role="Advertisement" EntitySet="Advertisement" />
+            <End Role="AdvertisementAttribute" EntitySet="AdvertisementAttribute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertisemetAttribute_Advertisement1" Association="AdvertisementsModel.Store.FK_AdvertisemetAttribute_Advertisement1">
+            <End Role="Advertisement" EntitySet="Advertisement" />
+            <End Role="AdvertisementAttribute" EntitySet="AdvertisementAttribute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertisemetAttribute_Tariff" Association="AdvertisementsModel.Store.FK_AdvertisemetAttribute_Tariff">
+            <End Role="Tariff" EntitySet="Tariff" />
+            <End Role="AdvertisementAttribute" EntitySet="AdvertisementAttribute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tariff_TariffClass" Association="AdvertisementsModel.Store.FK_Tariff_TariffClass">
+            <End Role="TariffClass" EntitySet="TariffClass" />
+            <End Role="Tariff" EntitySet="Tariff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TariffClass_AdvertisementSectionPosition" Association="AdvertisementsModel.Store.FK_TariffClass_AdvertisementSectionPosition">
+            <End Role="AdvertisementSectionPosition" EntitySet="AdvertisementSectionPosition" />
+            <End Role="TariffClass" EntitySet="TariffClass" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Advertisement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="PositionId" Type="int" Nullable="false" />
+          <Property Name="FromDate" Type="char" MaxLength="10" />
+          <Property Name="ToDate" Type="char" MaxLength="10" />
+          <Property Name="ClickCount" Type="int" Nullable="false" />
+          <Property Name="VisitCount" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="FileId" Type="uniqueidentifier" />
+          <Property Name="NavigateUrl" Type="nvarchar" Nullable="false" MaxLength="400" />
+          <Property Name="Enable" Type="bit" Nullable="false" />
+          <Property Name="Height" Type="smallint" Nullable="false" />
+          <Property Name="width" Type="smallint" Nullable="false" />
+          <Property Name="Text" Type="ntext" />
+          <Property Name="Timeout" Type="int" />
+        </EntityType>
+        <EntityType Name="AdvertisementAttribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TariffId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" />
+          <Property Name="Orientation" Type="bit" Nullable="false" />
+          <Property Name="AdvertisemntId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdvertisementHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AdvertisementId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FromDate" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="ToDate" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="ClickCount" Type="int" Nullable="false" />
+          <Property Name="VisiteCount" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="TarrifClassHistoryId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdvertisementSection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="KeyWord" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AdvertisementSectionPosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="KeyWord" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SectionId" Type="int" Nullable="false" />
+          <Property Name="AdsShowCount" Type="int" Nullable="false" />
+          <Property Name="Orientation" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdvertisementType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tariff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TariffClassId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DayCount" Type="int" />
+          <Property Name="ClickCount" Type="int" />
+          <Property Name="VisitCount" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Price" Type="decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TariffClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PerVisit" Type="int" />
+          <Property Name="PerClick" Type="int" />
+          <Property Name="PerDay" Type="int" />
+          <Property Name="Price" Type="decimal" Nullable="false" />
+          <Property Name="SectionPositionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TariffClassHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PositionId" Type="int" Nullable="false" />
+          <Property Name="PerDay" Type="int" Nullable="false" />
+          <Property Name="PerClick" Type="int" Nullable="false" />
+          <Property Name="PerVisite" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" />
+          <Property Name="HistoryDate" Type="char" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TariffDefinitionClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PerVisit" Type="int" Nullable="false" />
+          <Property Name="PerClick" Type="int" Nullable="false" />
+          <Property Name="PerDay" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" />
+          <Property Name="SectionPositionId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Advertisement_AdvertisementSectionPosition">
+          <End Role="AdvertisementSectionPosition" Type="AdvertisementsModel.Store.AdvertisementSectionPosition" Multiplicity="1" />
+          <End Role="Advertisement" Type="AdvertisementsModel.Store.Advertisement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertisementSectionPosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Advertisement">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Advertisement_AdvertisementType">
+          <End Role="AdvertisementType" Type="AdvertisementsModel.Store.AdvertisementType" Multiplicity="1" />
+          <End Role="Advertisement" Type="AdvertisementsModel.Store.Advertisement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertisementType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Advertisement">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertisementHistory_Advertisement">
+          <End Role="Advertisement" Type="AdvertisementsModel.Store.Advertisement" Multiplicity="1" />
+          <End Role="AdvertisementHistory" Type="AdvertisementsModel.Store.AdvertisementHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advertisement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdvertisementHistory">
+              <PropertyRef Name="AdvertisementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertisementHistory_AdvertisementHistory">
+          <End Role="TariffClassHistory" Type="AdvertisementsModel.Store.TariffClassHistory" Multiplicity="1" />
+          <End Role="AdvertisementHistory" Type="AdvertisementsModel.Store.AdvertisementHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TariffClassHistory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdvertisementHistory">
+              <PropertyRef Name="TarrifClassHistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertisementSectionPosition_AdvertisementSection">
+          <End Role="AdvertisementSection" Type="AdvertisementsModel.Store.AdvertisementSection" Multiplicity="1" />
+          <End Role="AdvertisementSectionPosition" Type="AdvertisementsModel.Store.AdvertisementSectionPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertisementSection">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdvertisementSectionPosition">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertisemetAttribute_Advertisement">
+          <End Role="Advertisement" Type="AdvertisementsModel.Store.Advertisement" Multiplicity="1" />
+          <End Role="AdvertisementAttribute" Type="AdvertisementsModel.Store.AdvertisementAttribute" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Advertisement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdvertisementAttribute">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertisemetAttribute_Advertisement1">
+          <End Role="Advertisement" Type="AdvertisementsModel.Store.Advertisement" Multiplicity="1" />
+          <End Role="AdvertisementAttribute" Type="AdvertisementsModel.Store.AdvertisementAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advertisement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdvertisementAttribute">
+              <PropertyRef Name="AdvertisemntId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertisemetAttribute_Tariff">
+          <End Role="Tariff" Type="AdvertisementsModel.Store.Tariff" Multiplicity="1" />
+          <End Role="AdvertisementAttribute" Type="AdvertisementsModel.Store.AdvertisementAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tariff">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdvertisementAttribute">
+              <PropertyRef Name="TariffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tariff_TariffClass">
+          <End Role="TariffClass" Type="AdvertisementsModel.Store.TariffClass" Multiplicity="1" />
+          <End Role="Tariff" Type="AdvertisementsModel.Store.Tariff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TariffClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tariff">
+              <PropertyRef Name="TariffClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TariffClass_AdvertisementSectionPosition">
+          <End Role="AdvertisementSectionPosition" Type="AdvertisementsModel.Store.AdvertisementSectionPosition" Multiplicity="1" />
+          <End Role="TariffClass" Type="AdvertisementsModel.Store.TariffClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertisementSectionPosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TariffClass">
+              <PropertyRef Name="SectionPositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdvertisementsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="AdvertisementsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Advertisements" EntityType="AdvertisementsModel.Advertisement" />
+          <EntitySet Name="AdvertisementAttributes" EntityType="AdvertisementsModel.AdvertisementAttribute" />
+          <EntitySet Name="AdvertisementHistories" EntityType="AdvertisementsModel.AdvertisementHistory" />
+          <EntitySet Name="AdvertisementSections" EntityType="AdvertisementsModel.AdvertisementSection" />
+          <EntitySet Name="AdvertisementSectionPositions" EntityType="AdvertisementsModel.AdvertisementSectionPosition" />
+          <EntitySet Name="AdvertisementTypes" EntityType="AdvertisementsModel.AdvertisementType" />
+          <EntitySet Name="Tariffs" EntityType="AdvertisementsModel.Tariff" />
+          <EntitySet Name="TariffClasses" EntityType="AdvertisementsModel.TariffClass" />
+          <EntitySet Name="TariffClassHistories" EntityType="AdvertisementsModel.TariffClassHistory" />
+          <EntitySet Name="TariffDefinitionClasses" EntityType="AdvertisementsModel.TariffDefinitionClass" />
+          <AssociationSet Name="FK_Advertisement_AdvertisementSectionPosition" Association="AdvertisementsModel.FK_Advertisement_AdvertisementSectionPosition">
+            <End Role="AdvertisementSectionPosition" EntitySet="AdvertisementSectionPositions" />
+            <End Role="Advertisement" EntitySet="Advertisements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Advertisement_AdvertisementType" Association="AdvertisementsModel.FK_Advertisement_AdvertisementType">
+            <End Role="AdvertisementType" EntitySet="AdvertisementTypes" />
+            <End Role="Advertisement" EntitySet="Advertisements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertisementHistory_Advertisement" Association="AdvertisementsModel.FK_AdvertisementHistory_Advertisement">
+            <End Role="Advertisement" EntitySet="Advertisements" />
+            <End Role="AdvertisementHistory" EntitySet="AdvertisementHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertisemetAttribute_Advertisement" Association="AdvertisementsModel.FK_AdvertisemetAttribute_Advertisement">
+            <End Role="Advertisement" EntitySet="Advertisements" />
+            <End Role="AdvertisementAttribute" EntitySet="AdvertisementAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertisemetAttribute_Advertisement1" Association="AdvertisementsModel.FK_AdvertisemetAttribute_Advertisement1">
+            <End Role="Advertisement" EntitySet="Advertisements" />
+            <End Role="AdvertisementAttribute" EntitySet="AdvertisementAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertisemetAttribute_Tariff" Association="AdvertisementsModel.FK_AdvertisemetAttribute_Tariff">
+            <End Role="Tariff" EntitySet="Tariffs" />
+            <End Role="AdvertisementAttribute" EntitySet="AdvertisementAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertisementHistory_AdvertisementHistory" Association="AdvertisementsModel.FK_AdvertisementHistory_AdvertisementHistory">
+            <End Role="TariffClassHistory" EntitySet="TariffClassHistories" />
+            <End Role="AdvertisementHistory" EntitySet="AdvertisementHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertisementSectionPosition_AdvertisementSection" Association="AdvertisementsModel.FK_AdvertisementSectionPosition_AdvertisementSection">
+            <End Role="AdvertisementSection" EntitySet="AdvertisementSections" />
+            <End Role="AdvertisementSectionPosition" EntitySet="AdvertisementSectionPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TariffClass_AdvertisementSectionPosition" Association="AdvertisementsModel.FK_TariffClass_AdvertisementSectionPosition">
+            <End Role="AdvertisementSectionPosition" EntitySet="AdvertisementSectionPositions" />
+            <End Role="TariffClass" EntitySet="TariffClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tariff_TariffClass" Association="AdvertisementsModel.FK_Tariff_TariffClass">
+            <End Role="TariffClass" EntitySet="TariffClasses" />
+            <End Role="Tariff" EntitySet="Tariffs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Advertisement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PositionId" Nullable="false" />
+          <Property Type="String" Name="FromDate" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ToDate" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="ClickCount" Nullable="false" />
+          <Property Type="Int32" Name="VisitCount" Nullable="false" />
+          <Property Type="Int32" Name="TypeId" Nullable="false" />
+          <Property Type="Guid" Name="FileId" />
+          <Property Type="String" Name="NavigateUrl" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Enable" Nullable="false" />
+          <Property Type="Int16" Name="Height" Nullable="false" />
+          <Property Type="Int16" Name="width" Nullable="false" />
+          <Property Type="String" Name="Text" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Timeout" />
+          <NavigationProperty Name="AdvertisementSectionPosition" Relationship="AdvertisementsModel.FK_Advertisement_AdvertisementSectionPosition" FromRole="Advertisement" ToRole="AdvertisementSectionPosition" />
+          <NavigationProperty Name="AdvertisementType" Relationship="AdvertisementsModel.FK_Advertisement_AdvertisementType" FromRole="Advertisement" ToRole="AdvertisementType" />
+          <NavigationProperty Name="AdvertisementHistories" Relationship="AdvertisementsModel.FK_AdvertisementHistory_Advertisement" FromRole="Advertisement" ToRole="AdvertisementHistory" />
+          <NavigationProperty Name="AdvertisementAttribute" Relationship="AdvertisementsModel.FK_AdvertisemetAttribute_Advertisement" FromRole="Advertisement" ToRole="AdvertisementAttribute" />
+          <NavigationProperty Name="AdvertisementAttributes" Relationship="AdvertisementsModel.FK_AdvertisemetAttribute_Advertisement1" FromRole="Advertisement" ToRole="AdvertisementAttribute" />
+        </EntityType>
+        <EntityType Name="AdvertisementAttribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Guid" Name="TariffId" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Boolean" Name="Orientation" Nullable="false" />
+          <Property Type="Guid" Name="AdvertisemntId" Nullable="false" />
+          <NavigationProperty Name="Advertisement" Relationship="AdvertisementsModel.FK_AdvertisemetAttribute_Advertisement" FromRole="AdvertisementAttribute" ToRole="Advertisement" />
+          <NavigationProperty Name="Advertisement1" Relationship="AdvertisementsModel.FK_AdvertisemetAttribute_Advertisement1" FromRole="AdvertisementAttribute" ToRole="Advertisement" />
+          <NavigationProperty Name="Tariff" Relationship="AdvertisementsModel.FK_AdvertisemetAttribute_Tariff" FromRole="AdvertisementAttribute" ToRole="Tariff" />
+        </EntityType>
+        <EntityType Name="AdvertisementHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Guid" Name="AdvertisementId" Nullable="false" />
+          <Property Type="String" Name="FromDate" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ToDate" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="ClickCount" Nullable="false" />
+          <Property Type="Int32" Name="VisiteCount" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="TarrifClassHistoryId" Nullable="false" />
+          <NavigationProperty Name="Advertisement" Relationship="AdvertisementsModel.FK_AdvertisementHistory_Advertisement" FromRole="AdvertisementHistory" ToRole="Advertisement" />
+          <NavigationProperty Name="TariffClassHistory" Relationship="AdvertisementsModel.FK_AdvertisementHistory_AdvertisementHistory" FromRole="AdvertisementHistory" ToRole="TariffClassHistory" />
+        </EntityType>
+        <EntityType Name="AdvertisementSection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KeyWord" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AdvertisementSectionPositions" Relationship="AdvertisementsModel.FK_AdvertisementSectionPosition_AdvertisementSection" FromRole="AdvertisementSection" ToRole="AdvertisementSectionPosition" />
+        </EntityType>
+        <EntityType Name="AdvertisementSectionPosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KeyWord" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SectionId" Nullable="false" />
+          <Property Type="Int32" Name="AdsShowCount" Nullable="false" />
+          <Property Type="Boolean" Name="Orientation" Nullable="false" />
+          <NavigationProperty Name="Advertisements" Relationship="AdvertisementsModel.FK_Advertisement_AdvertisementSectionPosition" FromRole="AdvertisementSectionPosition" ToRole="Advertisement" />
+          <NavigationProperty Name="AdvertisementSection" Relationship="AdvertisementsModel.FK_AdvertisementSectionPosition_AdvertisementSection" FromRole="AdvertisementSectionPosition" ToRole="AdvertisementSection" />
+          <NavigationProperty Name="TariffClasses" Relationship="AdvertisementsModel.FK_TariffClass_AdvertisementSectionPosition" FromRole="AdvertisementSectionPosition" ToRole="TariffClass" />
+        </EntityType>
+        <EntityType Name="AdvertisementType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Advertisements" Relationship="AdvertisementsModel.FK_Advertisement_AdvertisementType" FromRole="AdvertisementType" ToRole="Advertisement" />
+        </EntityType>
+        <EntityType Name="Tariff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Guid" Name="TariffClassId" Nullable="false" />
+          <Property Type="Int32" Name="DayCount" />
+          <Property Type="Int32" Name="ClickCount" />
+          <Property Type="Int32" Name="VisitCount" />
+          <Property Type="String" Name="Description" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="AdvertisementAttributes" Relationship="AdvertisementsModel.FK_AdvertisemetAttribute_Tariff" FromRole="Tariff" ToRole="AdvertisementAttribute" />
+          <NavigationProperty Name="TariffClass" Relationship="AdvertisementsModel.FK_Tariff_TariffClass" FromRole="Tariff" ToRole="TariffClass" />
+        </EntityType>
+        <EntityType Name="TariffClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PerVisit" />
+          <Property Type="Int32" Name="PerClick" />
+          <Property Type="Int32" Name="PerDay" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="SectionPositionId" Nullable="false" />
+          <NavigationProperty Name="AdvertisementSectionPosition" Relationship="AdvertisementsModel.FK_TariffClass_AdvertisementSectionPosition" FromRole="TariffClass" ToRole="AdvertisementSectionPosition" />
+          <NavigationProperty Name="Tariffs" Relationship="AdvertisementsModel.FK_Tariff_TariffClass" FromRole="TariffClass" ToRole="Tariff" />
+        </EntityType>
+        <EntityType Name="TariffClassHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="PositionId" Nullable="false" />
+          <Property Type="Int32" Name="PerDay" Nullable="false" />
+          <Property Type="Int32" Name="PerClick" Nullable="false" />
+          <Property Type="Int32" Name="PerVisite" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="HistoryDate" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="AdvertisementHistories" Relationship="AdvertisementsModel.FK_AdvertisementHistory_AdvertisementHistory" FromRole="TariffClassHistory" ToRole="AdvertisementHistory" />
+        </EntityType>
+        <EntityType Name="TariffDefinitionClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PerVisit" Nullable="false" />
+          <Property Type="Int32" Name="PerClick" Nullable="false" />
+          <Property Type="Int32" Name="PerDay" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="SectionPositionId" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Advertisement_AdvertisementSectionPosition">
+          <End Type="AdvertisementsModel.AdvertisementSectionPosition" Role="AdvertisementSectionPosition" Multiplicity="1" />
+          <End Type="AdvertisementsModel.Advertisement" Role="Advertisement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertisementSectionPosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Advertisement">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Advertisement_AdvertisementType">
+          <End Type="AdvertisementsModel.AdvertisementType" Role="AdvertisementType" Multiplicity="1" />
+          <End Type="AdvertisementsModel.Advertisement" Role="Advertisement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertisementType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Advertisement">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertisementHistory_Advertisement">
+          <End Type="AdvertisementsModel.Advertisement" Role="Advertisement" Multiplicity="1" />
+          <End Type="AdvertisementsModel.AdvertisementHistory" Role="AdvertisementHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advertisement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdvertisementHistory">
+              <PropertyRef Name="AdvertisementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertisemetAttribute_Advertisement">
+          <End Type="AdvertisementsModel.Advertisement" Role="Advertisement" Multiplicity="1" />
+          <End Type="AdvertisementsModel.AdvertisementAttribute" Role="AdvertisementAttribute" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Advertisement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdvertisementAttribute">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertisemetAttribute_Advertisement1">
+          <End Type="AdvertisementsModel.Advertisement" Role="Advertisement" Multiplicity="1" />
+          <End Type="AdvertisementsModel.AdvertisementAttribute" Role="AdvertisementAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advertisement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdvertisementAttribute">
+              <PropertyRef Name="AdvertisemntId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertisemetAttribute_Tariff">
+          <End Type="AdvertisementsModel.Tariff" Role="Tariff" Multiplicity="1" />
+          <End Type="AdvertisementsModel.AdvertisementAttribute" Role="AdvertisementAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tariff">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdvertisementAttribute">
+              <PropertyRef Name="TariffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertisementHistory_AdvertisementHistory">
+          <End Type="AdvertisementsModel.TariffClassHistory" Role="TariffClassHistory" Multiplicity="1" />
+          <End Type="AdvertisementsModel.AdvertisementHistory" Role="AdvertisementHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TariffClassHistory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdvertisementHistory">
+              <PropertyRef Name="TarrifClassHistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertisementSectionPosition_AdvertisementSection">
+          <End Type="AdvertisementsModel.AdvertisementSection" Role="AdvertisementSection" Multiplicity="1" />
+          <End Type="AdvertisementsModel.AdvertisementSectionPosition" Role="AdvertisementSectionPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertisementSection">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdvertisementSectionPosition">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TariffClass_AdvertisementSectionPosition">
+          <End Type="AdvertisementsModel.AdvertisementSectionPosition" Role="AdvertisementSectionPosition" Multiplicity="1" />
+          <End Type="AdvertisementsModel.TariffClass" Role="TariffClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertisementSectionPosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TariffClass">
+              <PropertyRef Name="SectionPositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tariff_TariffClass">
+          <End Type="AdvertisementsModel.TariffClass" Role="TariffClass" Multiplicity="1" />
+          <End Type="AdvertisementsModel.Tariff" Role="Tariff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TariffClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tariff">
+              <PropertyRef Name="TariffClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdvertisementsModelStoreContainer" CdmEntityContainer="AdvertisementsEntities">
+          <EntitySetMapping Name="Advertisements">
+            <EntityTypeMapping TypeName="AdvertisementsModel.Advertisement">
+              <MappingFragment StoreEntitySet="Advertisement">
+                <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="NavigateUrl" ColumnName="NavigateUrl" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="VisitCount" ColumnName="VisitCount" />
+                <ScalarProperty Name="ClickCount" ColumnName="ClickCount" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdvertisementAttributes">
+            <EntityTypeMapping TypeName="AdvertisementsModel.AdvertisementAttribute">
+              <MappingFragment StoreEntitySet="AdvertisementAttribute">
+                <ScalarProperty Name="AdvertisemntId" ColumnName="AdvertisemntId" />
+                <ScalarProperty Name="Orientation" ColumnName="Orientation" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TariffId" ColumnName="TariffId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdvertisementHistories">
+            <EntityTypeMapping TypeName="AdvertisementsModel.AdvertisementHistory">
+              <MappingFragment StoreEntitySet="AdvertisementHistory">
+                <ScalarProperty Name="TarrifClassHistoryId" ColumnName="TarrifClassHistoryId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="VisiteCount" ColumnName="VisiteCount" />
+                <ScalarProperty Name="ClickCount" ColumnName="ClickCount" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="AdvertisementId" ColumnName="AdvertisementId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdvertisementSections">
+            <EntityTypeMapping TypeName="AdvertisementsModel.AdvertisementSection">
+              <MappingFragment StoreEntitySet="AdvertisementSection">
+                <ScalarProperty Name="KeyWord" ColumnName="KeyWord" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdvertisementSectionPositions">
+            <EntityTypeMapping TypeName="AdvertisementsModel.AdvertisementSectionPosition">
+              <MappingFragment StoreEntitySet="AdvertisementSectionPosition">
+                <ScalarProperty Name="Orientation" ColumnName="Orientation" />
+                <ScalarProperty Name="AdsShowCount" ColumnName="AdsShowCount" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="KeyWord" ColumnName="KeyWord" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdvertisementTypes">
+            <EntityTypeMapping TypeName="AdvertisementsModel.AdvertisementType">
+              <MappingFragment StoreEntitySet="AdvertisementType">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tariffs">
+            <EntityTypeMapping TypeName="AdvertisementsModel.Tariff">
+              <MappingFragment StoreEntitySet="Tariff">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="VisitCount" ColumnName="VisitCount" />
+                <ScalarProperty Name="ClickCount" ColumnName="ClickCount" />
+                <ScalarProperty Name="DayCount" ColumnName="DayCount" />
+                <ScalarProperty Name="TariffClassId" ColumnName="TariffClassId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TariffClasses">
+            <EntityTypeMapping TypeName="AdvertisementsModel.TariffClass">
+              <MappingFragment StoreEntitySet="TariffClass">
+                <ScalarProperty Name="SectionPositionId" ColumnName="SectionPositionId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PerDay" ColumnName="PerDay" />
+                <ScalarProperty Name="PerClick" ColumnName="PerClick" />
+                <ScalarProperty Name="PerVisit" ColumnName="PerVisit" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TariffClassHistories">
+            <EntityTypeMapping TypeName="AdvertisementsModel.TariffClassHistory">
+              <MappingFragment StoreEntitySet="TariffClassHistory">
+                <ScalarProperty Name="HistoryDate" ColumnName="HistoryDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PerVisite" ColumnName="PerVisite" />
+                <ScalarProperty Name="PerClick" ColumnName="PerClick" />
+                <ScalarProperty Name="PerDay" ColumnName="PerDay" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TariffDefinitionClasses">
+            <EntityTypeMapping TypeName="AdvertisementsModel.TariffDefinitionClass">
+              <MappingFragment StoreEntitySet="TariffDefinitionClass">
+                <ScalarProperty Name="SectionPositionId" ColumnName="SectionPositionId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PerDay" ColumnName="PerDay" />
+                <ScalarProperty Name="PerClick" ColumnName="PerClick" />
+                <ScalarProperty Name="PerVisit" ColumnName="PerVisit" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Advertisement">
+        <EntityTypeShape EntityType="AdvertisementsModel.Advertisement" Width="1.5" PointX="5.25" PointY="4.625" Height="4.8648079427083344" />
+        <EntityTypeShape EntityType="AdvertisementsModel.AdvertisementAttribute" Width="1.5" PointX="9.75" PointY="8.125" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="AdvertisementsModel.AdvertisementHistory" Width="1.5" PointX="7.5" PointY="5.5" Height="3.1340950520833317" />
+        <EntityTypeShape EntityType="AdvertisementsModel.AdvertisementSection" Width="1.5" PointX="0.75" PointY="6.125" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="AdvertisementsModel.AdvertisementSectionPosition" Width="1.5" PointX="3" PointY="5.625" Height="2.7494921875000022" />
+        <EntityTypeShape EntityType="AdvertisementsModel.AdvertisementType" Width="1.5" PointX="3" PointY="3.25" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="AdvertisementsModel.Tariff" Width="1.5" PointX="7.5" PointY="11.125" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="AdvertisementsModel.TariffClass" Width="1.5" PointX="5.25" PointY="11.25" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="AdvertisementsModel.TariffClassHistory" Width="1.5" PointX="5.25" PointY="0.75" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="AdvertisementsModel.TariffDefinitionClass" Width="1.5" PointX="7.75" PointY="1.375" Height="2.3648893229166674" />
+        <AssociationConnector Association="AdvertisementsModel.FK_Advertisement_AdvertisementSectionPosition" >
+          <ConnectorPoint PointX="4.5" PointY="6.9997460937500016" />
+          <ConnectorPoint PointX="5.25" PointY="6.9997460937500016" />
+        </AssociationConnector>
+        <AssociationConnector Association="AdvertisementsModel.FK_Advertisement_AdvertisementType" >
+          <ConnectorPoint PointX="4.5" PointY="4.8456835937500031" />
+          <ConnectorPoint PointX="4.875" PointY="5.2206835937500031" />
+          <ConnectorPoint PointX="4.875" PointY="4.2500000000000009" />
+          <ConnectorPoint PointX="5.2499999999999991" PointY="4.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="AdvertisementsModel.FK_AdvertisementHistory_Advertisement" >
+          <ConnectorPoint PointX="6.75" PointY="7.0670475260416659" />
+          <ConnectorPoint PointX="7.5" PointY="7.0670475260416659" />
+        </AssociationConnector>
+        <AssociationConnector Association="AdvertisementsModel.FK_AdvertisemetAttribute_Advertisement" >
+          <ConnectorPoint PointX="6.75" PointY="9.0932014973958335" />
+          <ConnectorPoint PointX="9.75" PointY="9.0932014973958335" />
+        </AssociationConnector>
+        <AssociationConnector Association="AdvertisementsModel.FK_AdvertisemetAttribute_Advertisement1" >
+          <ConnectorPoint PointX="6.75" PointY="8.8323982747395817" />
+          <ConnectorPoint PointX="9.75" PointY="8.8323982747395817" />
+        </AssociationConnector>
+        <AssociationConnector Association="AdvertisementsModel.FK_AdvertisemetAttribute_Tariff" >
+          <ConnectorPoint PointX="9" PointY="12.595896809895834" />
+          <ConnectorPoint PointX="10.5" PointY="12.595896809895834" />
+          <ConnectorPoint PointX="10.5" PointY="10.682190755208332" />
+        </AssociationConnector>
+        <AssociationConnector Association="AdvertisementsModel.FK_AdvertisementHistory_AdvertisementHistory" >
+          <ConnectorPoint PointX="6.75" PointY="1.03125" />
+          <ConnectorPoint PointX="7.59375" PointY="1.03125" />
+          <ConnectorPoint PointX="7.59375" PointY="5.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="AdvertisementsModel.FK_AdvertisementSectionPosition_AdvertisementSection" >
+          <ConnectorPoint PointX="2.25" PointY="7.0189925130208337" />
+          <ConnectorPoint PointX="3" PointY="7.0189925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="AdvertisementsModel.FK_TariffClass_AdvertisementSectionPosition" >
+          <ConnectorPoint PointX="3.75" PointY="8.3744921875000031" />
+          <ConnectorPoint PointX="3.75" PointY="12.624746093749998" />
+          <ConnectorPoint PointX="5.25" PointY="12.624746093749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="AdvertisementsModel.FK_Tariff_TariffClass" >
+          <ConnectorPoint PointX="6.75" PointY="12.624746093749998" />
+          <ConnectorPoint PointX="7.5" PointY="12.624746093749998" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

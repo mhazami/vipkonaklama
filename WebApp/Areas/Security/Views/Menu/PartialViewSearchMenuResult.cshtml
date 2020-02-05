@@ -1,0 +1,94 @@
+﻿@using Radyn.Utility
+@model IEnumerable<Radyn.Security.DataStructure.Menu>
+<script type="text/javascript">
+    function SelectMenu(id, text) {
+        showModalReturn(id, text);
+    }
+
+</script>
+<div>
+    <div class="gv-table" style="width: 700px; margin-top: 15px;">
+        <div class="gv-row gv-header">
+            <div style="width: 30px;" class="gv-cell ">
+                <div class="cell-item">
+                    #
+                </div>
+            </div>
+            <div style="width: 150px;" class="gv-cell">
+                <div class="cell-item">
+                    @Resources.Security.MenuTitle
+                </div>
+            </div>
+            <div style="width: 150px;" class="gv-cell  ">
+                <div class="cell-item">
+                    @Resources.Security.MenuUrl
+
+                </div>
+            </div>
+            <div style="width: 150px;" class="gv-cell  ">
+                <div class="cell-item">
+                    @Resources.Security.MenuParentId
+                </div>
+            </div>
+            <div style="width: 100px;" class="gv-cell">
+                <div class="cell-item">
+                    @Resources.Security.MenuDisplay
+                </div>
+            </div>
+            <div style="width: 100px;" class="gv-cell gv-cell-last ">
+                <div class="cell-item">
+                    @Resources.Common.Enable
+                </div>
+            </div>
+        </div>
+        <div class="gv-content">
+            @{
+                int count = 0;
+                foreach (var item in Model)
+                {
+                    count++;
+
+                <div class="gv-row gv-row-style" title="@item.Url" style="cursor: pointer" onclick="SelectMenu('@item.Id','@item.Title')">
+                    <div style="width: 30px; text-align: center" class="gv-cell ">
+                        <div class="cell-item">
+                            @count.ToString()
+                        </div>
+                    </div>
+                    <div style="width: 150px;" class="gv-cell">
+                        <div class="cell-item">
+                            @item.Title
+                        </div>
+                    </div>
+
+                    <div style="width: 150px;" class="gv-cell">
+                        <div class="cell-item">
+                            @item.Url.Trancate(30)
+                        </div>
+                    </div>
+                    <div style="width: 150px;" class="gv-cell">
+                        <div class="cell-item">
+                            @(item.ParentId.HasValue ? item.ParentMenu.Title : "")
+                        </div>
+                    </div>
+
+                    <div style="width: 100px;" class="gv-cell">
+                        <div class="cell-item">
+                            @(item.Display ? Resources.Common.Yes : Resources.Common.No)
+                        </div>
+                    </div>
+                    <div style="width: 100px;" class="gv-cell gv-cell-last ">
+                        <div class="cell-item">
+                            @(item.Enabled ? Resources.Common.Yes : Resources.Common.No)
+                        </div>
+                    </div>
+                </div>
+
+                }
+            }
+        </div>
+        <div class="gv-row  gv-footer" style="height: 25px">
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,29 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@{
+    ViewBag.Title = "جزئیات ویژگی";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.Detail
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("ArticleResource").Area("Articles").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("ArticleResource").Area("Articles").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    Html.RenderAction("GetDetail", "ArticleResource", new { area = "Articles", Id = ViewBag.Id });
+}

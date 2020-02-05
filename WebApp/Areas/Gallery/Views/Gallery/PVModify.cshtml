@@ -1,0 +1,117 @@
+﻿@using Radyn.FileManager
+@using Radyn.Gallery.DataStructure
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.Areas.Common.Component
+
+
+@model Gallery
+
+<div class="radynForm">
+    <div id="GalleryContent">
+    </div>
+    <div class="item-row fit">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Gallery1.Title
+                </div>
+            </div>
+            <div class="table-row-item table-fit">
+                <div class="item">
+                    @{
+                        Html.LanguageContentTextBoxFor(Model, m => m.Title);
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Gallery1.Order
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.EditorFor(x => x.Order)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Gallery1.State
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(m => m.Enabled, true)   @Resources.Gallery1.Active
+                @Html.RadioButtonFor(m => m.Enabled, false)  @Resources.Gallery1.DeActive
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Gallery1.ParentGalley
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.DropDownListFor(model => model.ParentGallery, (SelectList)TempData["ParentGallery"], "")
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap table-c-fit">
+            <div class="item">
+                @Resources.Gallery1._Photo
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @{
+                    Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "Thumbnail", showimage = true, fileid = Model.Thumbnail, fileName = "Image" });
+
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="item-row">
+        <div class="table-row-cap table-c-fit">
+            <div class="item">
+                @Resources.Gallery1.Photos
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit ">
+            <div class="item">
+                @if (ViewBag.PhotoList != null)
+                {
+                    foreach (var variable in (List<Photo>)ViewBag.PhotoList)
+                    {
+                        if (variable.PicFile != Guid.Empty)
+                        {
+                            <img src="@FileManagerContants.FileHandlerRoot@variable.PicFile" style="cursor: pointer" onclick="window.open('@(FileManagerContants.FileHandlerRoot +variable.PicFile + "?dl=true")')" width="50" height="50" />
+                        }
+                    }
+                }
+                @{
+                    Html.RadynAction("MultiFileUploader", "FileUpload", new { area = "FileManager", fileName = "PhotoList" });
+                }
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,53 @@
+﻿@using Radyn.FileManager
+@model Radyn.Common.DataStructure.Country
+
+@if (Model != null)
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.CommonComponent.Name
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.CommonComponent.Culture
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Language.DisplayName)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.CommonComponent.Image
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @if (Model.Image != null)
+                    {
+                        <img src="@FileManagerContants.FileHandlerRoot@Model.Image" style="cursor: pointer" onclick="window.open('@(FileManagerContants.FileHandlerRoot + Model.Image + "?dl=true")')" width="70" height="50"/>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="radynForm">
+        @{
+            Html.RenderAction("GetIpListByCountryId","Country",new {area="Common",countryId=Model.Id});
+        }
+    </div>
+}

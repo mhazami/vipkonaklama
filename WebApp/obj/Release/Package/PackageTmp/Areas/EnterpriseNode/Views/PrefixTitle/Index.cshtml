@@ -1,0 +1,33 @@
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.EnterpriseNode.DataStructure.PrefixTitle>
+    @{
+        ViewBag.Title = Resources.EnterPriseNode.PrefixTitleList;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    @section Head{}
+    @section PageTitle {@Resources.EnterPriseNode.PrefixTitleList }
+    @section PageAction {
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/EnterpriseNode/PrefixTitle/Create")).Text(Resources.EnterPriseNode.PrefixTitleNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+        </div>
+    }
+    @section PageActionDown {
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/EnterpriseNode/PrefixTitle/Create")).Text(Resources.EnterPriseNode.PrefixTitleNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+        </div>
+    }
+    <div class="radynForm">
+        @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+              {
+                  columns.Template(prefixTitle => prefixTitle.Title).Title(Resources.EnterPriseNode.Title).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(prefixTitle => "<a style='cursor: pointer;'  href=" + Url.Content("~/EnterpriseNode/prefixTitle/Details") + "?Id=" + prefixTitle.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | <a style='cursor: pointer;'  href=" + Url.Content("~/EnterpriseNode/prefixTitle/Edit") + "?Id=" + prefixTitle.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | <a style='cursor: pointer;'  href=" + Url.Content("~/EnterpriseNode/prefixTitle/Delete") + "?Id=" + prefixTitle.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(300).Encode(false);
+              })
+
+              .Sortable(sorting => sorting.Enabled(true))
+              .Pageable(paging => paging.Enabled(true))
+              .Filterable(filtering => filtering.Enabled(true))
+              //.Footer(true)
+              .Render();}
+    </div>

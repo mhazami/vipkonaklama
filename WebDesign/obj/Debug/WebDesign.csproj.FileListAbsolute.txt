@@ -1,0 +1,12 @@
+E:\Online-WorkSpace\vipkonaklama\WebDesign\obj\Debug\WebDesign.csprojAssemblyReference.cache
+E:\Online-WorkSpace\vipkonaklama\WebDesign\obj\Debug\Radyn.WebDesign.Resources.WebDesign.resources
+E:\Online-WorkSpace\vipkonaklama\WebDesign\obj\Debug\Radyn.WebDesign.Resources.WebDesign.fa-IR.resources
+E:\Online-WorkSpace\vipkonaklama\WebDesign\obj\Debug\WebDesign.csproj.GenerateResource.cache
+E:\Online-WorkSpace\vipkonaklama\WebDesign\obj\Debug\WebDesign.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.WebDesign.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.WebDesign.pdb
+E:\Online-WorkSpace\vipkonaklama\lib\fa-IR\Radyn.WebDesign.resources.dll
+E:\Online-WorkSpace\vipkonaklama\WebDesign\obj\Debug\fa-IR\Radyn.WebDesign.resources.dll
+E:\Online-WorkSpace\vipkonaklama\WebDesign\obj\Debug\WebDesign.csproj.CopyComplete
+E:\Online-WorkSpace\vipkonaklama\WebDesign\obj\Debug\Radyn.WebDesign.dll
+E:\Online-WorkSpace\vipkonaklama\WebDesign\obj\Debug\Radyn.WebDesign.pdb

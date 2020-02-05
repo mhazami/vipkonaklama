@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Radyn.Comments.DataStructure.Comment>
+
+    
+    
+    
+    @{
+        foreach (var comment in Model)
+        {
+            <div>
+                @comment.SenderName
+            </div>
+            <div>
+                @comment.Content
+            </div>
+        }
+    }

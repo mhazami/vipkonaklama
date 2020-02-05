@@ -1,0 +1,88 @@
+﻿/*.ui-pane-child-box, .ui-congress-big-pane {
+    width: 100%;
+}*/
+
+.container-box {
+    padding: 2%;
+    text-align: justify;
+    width: 100%;
+}
+
+.ui-content-nav .container-box {
+    width: 100%;
+    padding: 10px;
+}
+
+.ui-content-nav .ui-pane-box .container-box {
+    padding: 1%;
+    text-align: justify;
+    width: 100%;
+}
+
+/*@media (min-width: 768px) {
+    .ui-sheet {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .ui-sheet {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .ui-sheet {
+        width: 1170px;
+    }
+}*/
+/*
+.ui-small-pane {
+    width: 100%;
+}
+
+.ui-congress-big-pane, .ui-pane-child-box {
+    margin-right: 0;
+    margin-left: 0;
+}*/
+
+/*.ui-pane-child-box {
+    margin-right: 0;
+    margin-left: 0;
+}*/
+
+.innerRL {
+    width: 100%;
+    padding: 0 .5%;
+}
+
+.page-caption, .c-widget,
+.c-widget .c-widget-head,
+.page-caption, .c-widget-footer {
+    width: 100%;
+}
+/*InternalMail*/
+.nav-mail-item span {
+    width: 39px !important;
+    height: 39px !important;
+}
+
+.nav-mail-item {
+    line-height: 39px !important;
+}
+
+/*Last ADD*/
+
+.ui-top-bar {
+    width: 100%;
+    padding: 0 5px;
+}
+
+.ui-h-menu {
+    width: 100%;
+}
+
+.ui-small-pane {
+    margin-left: -2px;
+    margin-right: -2px;
+}

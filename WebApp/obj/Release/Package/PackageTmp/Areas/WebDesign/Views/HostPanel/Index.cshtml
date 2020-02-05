@@ -1,0 +1,61 @@
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.Utility
+@{
+    ViewBag.Title = "";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script>
+      
+       
+        function UploadPackage() {
+            $.post("@Url.Content("~/WebDesign/HostPanel/Index")", $('form[action^="@Url.Content("~/WebDesign/HostPanel")"]').serialize(), function (data) {
+                if (data != "false") {
+                    
+                }
+            });
+            ShowRadynMessage();
+        }
+    </script>
+}
+@section PageTitle
+{
+   
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{ Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "UploadPackage()" }).Render(); }
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{ Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "UploadPackage()" }).Render(); }
+    </div>
+}
+@using (Html.BeginForm())
+{
+    
+    <div class="item-row">
+        <div class="table-row-cap table-c-fit">
+            <div class="item">
+                @Resources.WebDesign.File
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+
+                @{
+                    Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "PackagefileId",  fileName = "Packagefile" });
+                }
+
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,214 @@
+﻿@using Radyn.EnterpriseNode.Tools
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp
+@using Radyn.WebApp.AppCode
+@using Radyn.WebApp.AppCode.Security
+@model Radyn.PhoneBook.DataStructure.Person
+
+<script type="text/javascript">
+
+
+
+    $(function() {
+
+        EnterpriseNodeTypechange();
+        changeOffice();
+    });
+
+
+    function changeOffice() {
+        var office = $('#OfficeId').val();
+        $('#DepartmentId').html("");
+        $.get('/PhoneBook/Department/GetDepartment',
+            { officeId: office },
+            function (data) {
+                $('#DepartmentId').append($('<option>').attr('value', ""));
+                for (var i = 0; i < data.length; i++) {
+                    var op = $('<option>').attr('value', data[i].id).text(data[i].title);
+                    if ('@Model.DepartmentId' == data[i].id)
+                        op.attr("selected", "selected");
+                    $('#DepartmentId').append(op);
+                }
+            });
+    }
+
+    function EnterpriseNodeTypechange() {
+        var value = $("#EnterpriseNodeTypeId").val();
+        if (value != "" && value != undefined) {
+            if (value == '@(Enums.EnterpriseNodeType.RealEnterPriseNode)') {
+                $("#div-PersonRealData").fadeIn();
+                $("#div-PersonlegalData").fadeOut();
+            } else {
+                $("#div-PersonRealData").fadeOut();
+                $("#div-PersonlegalData").fadeIn();
+            }
+
+
+        } else {
+            $("#div-PersonRealData").fadeOut();
+            $("#div-PersonlegalData").fadeOut();
+        }
+    }
+
+
+</script>
+
+@{
+    Html.PrepareModel();
+}
+@Html.ValidationSummary(true)
+<div class="radynForm">
+
+
+    @if (this.Html.GetPageMode() == PageMode.Create)
+    {
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    نوع
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DropDownListFor(model => model.EnterpriseNode.EnterpriseNodeTypeId, (SelectList)ViewBag.EnterpriseNodeType, "", new { @class = "form-control", id = "EnterpriseNodeTypeId", onchange = "EnterpriseNodeTypechange();" })
+                </div>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        @Html.HiddenFor(x => x.EnterpriseNode.EnterpriseNodeTypeId, new { id = "EnterpriseNodeTypeId" })
+
+
+
+    }
+
+    <div id="div-PersonlegalData">
+        @if (Model.EnterpriseNode.LegalEnterpriseNode != null)
+        {
+            <div class="fit item-detail">
+                <fieldset>
+                    <legend>اطلاعات سازمانی</legend>
+                    @{ Html.RadynAction("GenerateLegalInfo", "EnterpriseNode", new { area = "EnterpriseNode", legalEnterpriseNode = Model.EnterpriseNode.LegalEnterpriseNode, pageMode = PageMode.Edit }); }
+                </fieldset>
+            </div>
+
+
+
+        }
+    </div>
+
+    <div id="div-PersonRealData">
+        @if (Model.EnterpriseNode.RealEnterpriseNode != null)
+        {
+            <div class="fit item-detail">
+                <fieldset>
+                    <legend>اطلاعات شخص</legend>
+                    @{ Html.RadynAction("GenerateRealInfo", "EnterpriseNode", new { area = "EnterpriseNode", realEnterpriseNode = Model.EnterpriseNode.RealEnterpriseNode, pageMode = PageMode.Edit }); }
+                </fieldset>
+            </div>
+
+
+        }
+    </div>
+    <div class="fit item-detail">
+        <fieldset>
+            <legend>اطلاعات تماس</legend>
+            @{ Html.RadynAction("GetEnterpriseNodeInfo", "EnterpriseNode", new { area = "EnterpriseNode", enterpriseNode = Model.EnterpriseNode, pageMode = PageMode.Edit }); }
+        </fieldset>
+    </div>
+    <div class="fit item-detail">
+        <fieldset>
+            <legend>اطلاعات پرسنلی</legend>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.PhoneBook.JobTitle
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.TextBoxFor(model => model.JopTitle, new { })
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.PhoneBook.PersoneliCode
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.TextBoxFor(model => model.PersoneliCode, new { })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Common.Enable
+                    </div>
+                </div>
+                <div class="table-row-item drp">
+                    <div class="item">
+                        @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+                        @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+                    </div>
+                </div>
+            </div>
+
+        
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @SessionParameters.PhoneBookConfiguration.OfficeName
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.DropDownListFor(model => model.OfficeId, (SelectList)ViewBag.OfficeList, "", new { onchange = "changeOffice()" })
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @SessionParameters.PhoneBookConfiguration.DepartmentName
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        <select id="DepartmentId" name="DepartmentId"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="item-row fit">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.PhoneBook.Remark
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.TextAreaFor(model => model.Remark, new { })
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    @{
+        Html.RadynAction("GetIndex", "PersonPhone", new { area = "PhoneBook", personId = Model.Id, status = this.Html.GetPageMode() });
+    }
+
+    @{
+        Html.RadynAction("GetIndex", "PersonAddress", new { area = "PhoneBook", personId = Model.Id, status = this.Html.GetPageMode() });
+    }
+
+
+
+</div>

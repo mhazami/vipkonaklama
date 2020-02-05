@@ -1,0 +1,73 @@
+@using Radyn.Common.Definition
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Payment.DataStructure.DiscountType>
+    @{
+        ViewBag.Title = Resources.Payment.DiscountTypeList;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+
+    @section PageTitle
+{
+
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Payment/WebDesignDiscountType/Create")).Text(Resources.Payment.DiscountTypeNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render(); }
+
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Payment/WebDesignDiscountType/Create")).Text(Resources.Payment.DiscountTypeNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render(); }
+        </div>
+
+    }
+    <div class="radynForm">
+        <div class="grid-guid">
+            <div class="grid-guid-title">
+                @Resources.Common.Help
+            </div>
+            <ul>
+                <li>
+                    <img src="/Content/Images/details.png">
+                    @Resources.Common.Detail
+                </li>
+                <li>
+                    <img src="/Content/Images/Delete-Close.png">
+                    @Resources.Common.Delete
+                </li>
+                <li>
+                    <img src="/Content/Images/edit.png">
+                    @Resources.Common.Edit
+                </li>
+            </ul>
+        </div>
+        <div class="fit">
+            @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                  {
+                      columns.Template(articleType => articleType.Title).Title(Resources.Payment.Title).Width(200).HeaderHtmlAttributes(new { style = "text-align:center" });
+                      columns.Template(discountType => discountType.IsPercent ? discountType.ValidValue + "%" : discountType.ValidValue.ToDecimal().ToString("n0") + " " + discountType.CurrencyType.ToEnum<Enums.CurrencyType>().GetDescriptionInLocalization()).Title(@Resources.Payment.DiscountValue).Width(150).HeaderHtmlAttributes(new { style = "text-align:center" });
+                      columns.Template(articleType => articleType.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(Resources.Common.Enable).Width(60).HeaderHtmlAttributes(new { style = "text-align:center" });
+                      columns.Template(articleType => articleType.ForceAttach ? Resources.Common.Yes : Resources.Common.No).Title(Resources.Payment.ISForceAttachFile).Width(60).HeaderHtmlAttributes(new { style = "text-align:center" });
+                      columns.Template(content =>
+                      "<a style='cursor: pointer;'  href='" + Url.Content("~/Payment/WebDesignDiscountType/Details?Id=" + content.Id) + "'>" +
+                      " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                      "<a style='cursor: pointer;'  href='" + Url.Content("~/Payment/WebDesignDiscountType/Edit?Id=" + content.Id) + "'> " +
+                      " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                      "<a style='cursor: pointer;'  href='" + Url.Content("~/Payment/WebDesignDiscountType/Delete?Id=" + content.Id) + "'>" +
+                      " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+                  })
+                          //
+                          .Sortable(sorting => sorting.Enabled(true))
+                          .Pageable(paging => paging.Enabled(true))
+                          .Filterable(filtering => filtering.Enabled(true))
+                          //            .Footer(true)
+                          .Render();}
+        </div>
+    </div>

@@ -1,0 +1,83 @@
+@using Radyn.Web.Mvc;
+@model Radyn.ContentManager.DataStructure.Section
+@{
+    ViewBag.Title = @Resources.Common.Detail + " " + @Resources.ContentManager.Section;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.Detail @Resources.ContentManager.Section
+}
+@section PageAction
+{
+<div class="button-div m-btn waves-red i-return">
+    @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Section").Area("ContentManager").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+</div>
+}
+@section PageActionDown
+{
+<div class="button-div m-btn waves-red i-return">
+    @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Section").Area("ContentManager").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+</div>
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.ContentManager.Title
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Title)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            @if (Model.ParentSectionId != null)
+            {
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.ContentManager.SectionParent
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.ParentSection.Title)
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.ContentManager.ISMenu
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @(Model.IsMenu ? @Resources.Common.Yes : @Resources.Common.No)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            @if (Model.MenuId != null)
+            {
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Security.Menu
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.Menu.Text)
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

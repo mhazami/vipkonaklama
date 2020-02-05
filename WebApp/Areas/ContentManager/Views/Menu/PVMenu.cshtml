@@ -1,0 +1,95 @@
+﻿<script type="text/javascript">
+
+    function MenuTreeView_onSelect(e) {
+        var treeview = $(this).data('tTreeView');
+        var nodeText = treeview.getItemValue(e.item);
+        $("#MenuId").val(nodeText);
+
+    }
+
+    function ModifyMenuItem(state, id) {
+
+        if (state == "Create" & id == "") id = '@Guid.NewGuid()';
+                if (id == "" & state == "") {
+                    ShowRadynMessage("آیتمی انتخاب نشده است");
+                }
+                if (state != "" & id != "") {
+                    GetMenuModal(state, id);
+                };
+                ShowRadynMessage();
+    }
+
+       
+
+    function GetMenuModal(state,Id) {
+        $("#DivShowModal").html("");
+        $.get("/ContentManager/Menu/PartialViewModifyMenu", { state: state, id: Id }, function (data) {
+
+            if (data != "") {
+                $("#DivShowModal").html(data);
+                $("#DivShowModal").dialog({
+                    show: {
+                        effect: "slideDown",
+                        duration: 300
+                    },
+                    hide: {
+                        effect: "slideUp",
+                        duration: 300
+                    },
+                    resizable: true,
+                    width: "80%",
+                    aria: false,
+                    modal: true
+                });
+               
+            }
+            ShowRadynMessage();
+        });
+    }
+
+    function CloseModal() {
+        $("#DivShowModal").html("");
+        $('#DivShowModal').dialog('close');
+    }
+    function selectitem(id, text) {
+        if (id != "" & text != "") {
+            showModalReturn(id, text);
+        } else {
+            ShowRadynMessage("آیتمی انتخاب نشده است");
+        }
+    }
+    function GetAllMenu() {
+      
+        var menuId = "@ViewBag.menuId";
+        var cngressId = '@ViewBag.HomaId';
+
+        $.get("/ContentManager/Menu/GetPVMenuTree", { id: menuId, congressId: cngressId }, function (data) {
+
+            if (data != "") {
+              
+                $("#outputPanel").hide();
+                $("#outputPanel").html(data);
+                $("#outputPanel").slideDown();
+                CloseModal();
+                
+            }
+            ShowRadynMessage();
+        });
+    }
+    $(document).ready(
+        function () {
+
+            GetAllMenu();
+        }
+    );
+
+</script>
+
+<div class="t-rtl">
+    <input type="hidden" id="txtContenet" />
+   
+    <div class="table" style="overflow-y: auto;" id="outputPanel">
+    </div>
+   
+</div>
+<div id="DivShowModal"   style="width: 100% !important"></div>

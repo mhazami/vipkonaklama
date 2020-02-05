@@ -1,0 +1,38 @@
+﻿<script type="text/javascript">
+    function GetValidatorList() {
+        var value = $("#ValidatorValue-" + '@ViewBag.Id').val();
+        ShowModalWithReturnValue("/FormGenerator/DesignForm/LookupValidatorDesign?value=" + value + "&formId=" + '@ViewBag.formId', "ValidatorValue-" + '@ViewBag.Id', "ValidatorValue-" + '@ViewBag.Id');
+        ValidationCount();
+    }
+    $(document).ready(function () {
+        ValidationCount();
+    });
+
+    function ValidationCount() {
+        var value = $("#ValidatorValue-"+ '@ViewBag.Id').val();
+        $.get("/FormGenerator/DesignForm/GetValidatorControlCount", { value: value, date: new Date().getTime() }, function (data) {
+            if (data.Added) {
+                $("#ImgGetValidationValues").attr('src', '/Areas/FormGenerator/Content/Images/validation.png');
+                $("#DivValidationCount").html("(" + data.CountItem + ")");
+            } else {
+                $("#ImgGetValidationValues").attr('src', '/Areas/FormGenerator/Content/Images/validation-empty.png');
+                $("#DivValidationCount").html("(" + data.CountItem + ")");
+
+            }
+        });
+    }
+</script>
+<div class="fit item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.FormGenerator.Validation
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            <input id="ValidatorValue-@ViewBag.Id" name="ValidatorValue-@ViewBag.Id" type="hidden" value="@ViewBag.ValidatorItems" />
+            <img onclick="GetValidatorList()" id="ImgGetValidationValues" style="float: right; cursor: pointer" />
+            <div style="float: right; font-weight: bold" id="DivValidationCount"></div>
+        </div>
+    </div>
+</div>

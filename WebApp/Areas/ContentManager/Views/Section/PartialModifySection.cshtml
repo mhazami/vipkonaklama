@@ -1,0 +1,181 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.Areas.ContentManager.Componenet
+
+@model Radyn.ContentManager.DataStructure.Section
+@{
+    ViewBag.Title = Resources.Security.MenuName + " " + Resources.Common.New;
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+@section Head
+{
+
+    <script type="text/javascript">
+        function ModifySection() {
+            $.post("/ContentManager/Section/ModifySection", $('form[action="/ContentManager/Section/ModifySection"]').serialize(), function (data) {
+                if (data != "") {
+                    ShowRadynMessage();
+                }
+                ShowRadynMessage();
+            });
+        }
+        $(document).ready(function () {
+            var ismenu = '@Model.IsMenu';
+            if (ismenu == "False") {
+                $("#IsmenuDive").html("");
+                $("#IsmenuDive").hide();
+                document.getElementById("ChekForIsmenu").checked = false;
+                document.getElementById("TxtIsMenu").value = false;
+            }
+            else {
+                $("#IsmenuDive").html("<tr><td class='EditRow'>" + '@Resources.Security.Menu' + "</td><td class='EditFiled'>" + '@{ Html.SearchParentInMenuTree(Model, model => model.MenuId);}' + "</td></tr>");
+                $("#IsmenuDive").slideDown('normal');
+                document.getElementById("ChekForIsmenu").checked = true;
+                document.getElementById("TxtIsMenu").value = true;
+            }
+        });
+
+        function ChekIsmenu(checkbox) {
+
+            if (checkbox.checked) {
+                $("#IsmenuDive").html("<tr><td class='EditRow'>" + '@Resources.Security.Menu' + "</td><td class='EditFiled'>" + '@{ Html.SearchParentInMenuTree(Model, model => model.MenuId);}' + "</td></tr>");
+                $("#IsmenuDive").slideDown('normal');
+                document.getElementById("TxtIsMenu").value = true;
+
+            }
+            else {
+
+                $("#IsmenuDive").html("");
+                $("#IsmenuDive").slideUp('normal');
+                $("#IsmenuDive").hide();
+                document.getElementById("TxtIsMenu").value = false;
+
+            }
+
+        }
+
+    </script>
+}
+@using (Html.BeginForm("ModifySection", "Section"))
+{
+    <table cellpadding="0" cellspacing="0" align="center" style="text-align: @Resources.Common.Aligment; border: solid 1px grey; padding: 2px 2px 2px 2px;">
+        <tr>
+            <input value="@Request.QueryString["id"]" type="hidden" name="Sectionid" id="Sectionid" />
+            <input value="@Request.QueryString["state"]" type="hidden" name="SectionState" id="SectionState" />
+            @switch (@Request.QueryString["state"])
+            {
+                case "Create":
+                    <td class="DEheader">
+                        @Resources.Security.MenuName @Resources.Common.New
+                    </td>
+                    <td>
+                        <div class="button-div m-btn waves-green i-save">
+                            @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Create).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Callback().CallbackType(ImageActionLink.CallbackType.Script).CallbackReturnFunction("ModifySection();").ImageWidth("15").ImageHeight("20").Render();}
+                        </div>
+                    </td>
+                    break;
+                case "Edit":
+                    <td class="DEheader">
+                        @Resources.Security.MenuName @Resources.Common.Edit
+                    </td>
+                    <td>
+                        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Edit).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/edit.png")).ImagePosition(ImageActionLink.Position.Right).Callback().CallbackType(ImageActionLink.CallbackType.Script).CallbackReturnFunction("ModifySection();").ImageWidth("15").ImageHeight("20").Render();}
+                    </td>
+                    break;
+                case "Delete":
+                    <td class="DEheader">
+                        @Resources.Security.MenuName @Resources.Common.Delete
+                    </td>
+                    <td>
+                        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Delete).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Callback().CallbackType(ImageActionLink.CallbackType.Script).CallbackReturnFunction("ModifySection();").ImageWidth("15").ImageHeight("20").Render();}
+                    </td>
+                    break;
+            }
+        </tr>
+        <tr>
+            <td colspan="3">
+                @Html.ValidationSummary(true)
+                <table border="0" cellpadding="2" cellspacing="2" width="400" style='padding: 4px 4px 4px 4px; direction: @Resources.Common.Direction; text-align: @Resources.Common.Aligment;'>
+                    <tr>
+                        <td class="EditRow">
+                            @Resources.ContentManager.Title
+                        </td>
+                        <td class="EditFiled">
+                            @Html.EditorFor(model => model.Title)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="EditRow">
+                            @Resources.ContentManager.SectionParent
+                        </td>
+                        <td class="EditFiled">
+                            @{ Html.SearchParentInSectionTree(Model, model => model.ParentSectionId);}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="EditRow">
+                            @Resources.ContentManager.ISMenu
+                        </td>
+                        <td class="EditFiled">
+                            <input type="checkbox" name="ChekForIsmenu" id="ChekForIsmenu" onclick="ChekIsmenu(this);" />
+                            <input type="hidden" id="TxtIsMenu" name="TxtIsMenu" />
+                        </td>
+                    </tr>
+                    <tr id="IsmenuDive"></tr>
+                    <tr>
+                        <td class="EditRow">
+                            @Resources.Common.Enable
+                        </td>
+                        <td class="EditFiled">
+                            @Html.RadioButtonFor(model => model.IsMenu, true)@Resources.Common.Yes
+                            @Html.RadioButtonFor(model => model.IsMenu, false)@Resources.Common.No
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="EditRow" style="text-align: @Resources.Common.Aligment;">
+                            @Resources.EnterPriseNode.Picture:
+                        </td>
+                        <td class="EditFiled" style="text-align: @Resources.Common.Aligment;">
+                            @{
+                                Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", fileName = "upPhoto" });
+
+                            }
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            @switch (@Request.QueryString["state"])
+            {
+                case "Create":
+                    <td class="DEheader">
+                        @Resources.Security.MenuName @Resources.Common.New
+                    </td>
+                    <td>
+                        <div class="button-div m-btn waves-green i-save">
+                            @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Create).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Callback().CallbackType(ImageActionLink.CallbackType.Script).CallbackReturnFunction("ModifySection();").ImageWidth("15").ImageHeight("20").Render();}
+                        </div>
+                    </td>
+                    break;
+                case "Edit":
+                    <td class="DEheader">
+                        @Resources.Security.MenuName @Resources.Common.Edit
+                    </td>
+                    <td>
+                        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Edit).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/edit.png")).ImagePosition(ImageActionLink.Position.Right).Callback().CallbackType(ImageActionLink.CallbackType.Script).CallbackReturnFunction("ModifySection();").ImageWidth("15").ImageHeight("20").Render();}
+                    </td>
+                    break;
+                case "Delete":
+                    <td class="DEheader">
+                        @Resources.Security.MenuName @Resources.Common.Delete
+                    </td>
+                    <td>
+                        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Delete).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Callback().CallbackType(ImageActionLink.CallbackType.Script).CallbackReturnFunction("ModifySection();").ImageWidth("15").ImageHeight("20").Render();}
+                    </td>
+                    break;
+            }
+        </tr>
+    </table>
+}

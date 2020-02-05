@@ -1,0 +1,72 @@
+﻿@using Radyn.Gallery.DataStructure
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+
+@model List<Photo>
+    @{
+        ViewBag.Title = Resources.Gallery1.Photos;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Gallery1.Photos
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create", new { GId = Request.QueryString["GId"], externalurl = ViewBag.externalurl }).ControllerName("Photo").Area("Gallery").Text(Resources.Gallery1._Photo + " " + Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+        <div class="button-div m-btn waves-purple i-list">
+            @if (string.IsNullOrEmpty(ViewBag.externalurl))
+            {
+                Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Gallery").Area("Gallery").Text(Resources.Common.List + " " + Resources.Gallery1.Galleryname).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();
+            }
+            else
+            {
+                Html.Radyn().ImageActionLink().Text(Resources.Common.List + " " + Resources.Gallery1.Galleryname).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "window.location='" + ViewBag.externalurl + "';" }).Render();
+            }
+
+
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create", new { GId = Request.QueryString["GId"], externalurl = ViewBag.externalurl }).ControllerName("Photo").Area("Gallery").Text(Resources.Gallery1._Photo + " " + Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+        <div class="button-div m-btn waves-purple i-list">
+            @if (string.IsNullOrEmpty(ViewBag.externalurl))
+            {
+                Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Gallery").Area("Gallery").Text(Resources.Common.List + " " + Resources.Gallery1.Galleryname).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();
+            }
+            else
+            {
+                Html.Radyn().ImageActionLink().Text(Resources.Common.List + " " + Resources.Gallery1.Galleryname).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "window.location='" + ViewBag.externalurl + "';" }).Render();
+            }
+        </div>
+    }
+    <div class="radynForm">
+        @*Content*@
+        @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                  {
+                      columns.Template(photo => photo.Title).Title(@Resources.Gallery1.Title).Width(300).HeaderHtmlAttributes(new { style = "text-align:center" });
+                      columns.Template(photo => photo.UploadDate).Title(@Resources.Gallery1.UploadDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                      columns.Template(photo => "<img alt='" + photo.Title + "' src='" + Radyn.FileManager.FileManagerContants.FileHandlerRoot + "" + photo.PicFile + "' height='50' width='50'/>").Title(@Resources.Gallery1.Thumbnail).Width(100);
+                      columns.Template(photo =>
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Gallery/Photo/Details?Id=" + photo.Id + "&GId=" + Request.QueryString["GId"] + "&externalurl=" + ViewBag.externalurl) + "'>" +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Gallery/Photo/Edit?Id=" + photo.Id + "&GId=" + Request.QueryString["GId"] + "&externalurl=" + ViewBag.externalurl) + "'> " +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Gallery/Photo/Delete?Id=" + photo.Id + "&GId=" + Request.QueryString["GId"] + "&externalurl=" + ViewBag.externalurl) + "'>" +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+                  })
+
+                                         .Sortable(sorting => sorting.Enabled(true))
+                                         .Pageable(paging => paging.Enabled(true))
+                                         .Filterable(filtering => filtering.Enabled(true))
+                                         //.Footer(true)
+                                         .Render();}
+        @{ Html.RenderAction("GetNewImageSlider", new { galleryId = Request.QueryString["GId"], Time = DateTime.Now.ToString() }); }
+    </div>

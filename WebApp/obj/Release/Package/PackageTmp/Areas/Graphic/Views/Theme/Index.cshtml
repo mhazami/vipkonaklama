@@ -1,0 +1,52 @@
+@using Radyn.Web.Mvc;
+
+@model List<Radyn.Graphic.DataStructure.Theme>
+    @{
+        ViewBag.Title = Resources.Common.List + " " + Resources.Graphic.Theme;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
+    @section Head{}
+
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.Graphic.Theme
+
+
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Theme").Area("Graphic").Text(Resources.Graphic.Theme + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render();}
+
+        </div>
+
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Theme").Area("Graphic").Text(@Resources.Graphic.Theme + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render();}
+
+        </div>
+
+    }
+
+    @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+          {
+              columns.Template(homa => homa.Title).Title(Resources.Graphic.Title).Width(250).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(homa => homa.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(@Resources.Common.Enable).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(resource =>
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Graphic/Theme/Details?Id=" + resource.Id) + "'>" +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Graphic/Theme/Edit?Id=" + resource.Id) + "'> " +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Graphic/Theme/Delete?Id=" + resource.Id) + "'>" +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+          })
+
+              .Sortable(sorting => sorting.Enabled(true))
+              .Pageable(paging => paging.Enabled(true))
+              .Filterable(filtering => filtering.Enabled(true))
+              //.Footer(true)
+              .Render();}

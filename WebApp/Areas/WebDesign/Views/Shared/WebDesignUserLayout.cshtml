@@ -1,0 +1,213 @@
+﻿@using Radyn.FileManager
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.AppCode.Security
+@using Radyn.WebApp.Areas.EnterpriseNode.ExtentionTools
+@using Radyn.WebApp.Areas.WebDesign.Tools
+@using Radyn.WebDesign.Definition
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+@section Head{
+
+    @{Html.Radyn().Theme("WebDesignBase").Render(); }
+    @{Html.Radyn().Theme("MainBase").Render(); }
+    @{Html.Radyn().Theme("Common").Render();}
+
+
+    <!-- Start----Runtime-->
+    @{Html.HtmlEncoder(AppExtention.GetWebSiteResources(Enums.UseLayout.WebDesignUserLayout)); }
+    <!-- END----Runtime-->
+
+    
+    @RenderSection("Head")
+}
+@using (Html.BeginForm())
+{
+
+    <div class="ui-sheet user-page">
+        <div class="ui-top-bar">
+            <div>
+                @{
+                    Html.RenderAction("CultureBar", "Language", new { area = "WebDesign" });
+                }
+            </div>
+        </div>
+      <div class="content">
+            <div class="row">
+                <div class="menus-box">
+                    <div class="first-menu">
+                        <a class="menu-control d-item user-d-item" href="#">
+                            <i class="fal fa-long-arrow-right"></i>
+                        </a>
+                        <a href="@Url.Content("~/WebDesign/UserPanel/Home")" class="d-item  user-d-item hint--bottom home-item" data-hint="@Resources.Common.Home">
+                            <i class="fas fa-home"></i>
+                        </a>
+                        @if (SessionParameters.WebDesignUser != null)
+                        {
+                            <a href="@Url.Content("~/WebDesign/UserPanel/Logout")" class="d-item user-d-item hint--bottom logout-item" data-hint="@Resources.Security.Logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </a>
+
+                        }
+                        @* < <a href="@Url.Content("~/WebDesign/UserPanel/Home")" class="d-item  user-d-item hint--bottom home-item" data-hint="@Resources.Common.Home"> *@
+                            @* <i class="fas fa-home"></i> *@
+                        @* </a> *@
+
+                    </div>
+                    <div class="second-menu open-menu">
+                        @if (SessionParameters.WebDesignUser != null)
+                        {
+                            <div class="userloggedbase ui-theme">
+                                <div class="userloggedinfo user-panel-info">
+                                    <div class="user-menu-panel-header">
+                                        <ul>
+                                            <li>
+                                                <a class="menu-control" href="#"><i class="fal fa-long-arrow-right"></i></a>
+                                            </li>
+                                            <li>
+                                                <img src="~/App_Themes/Xbines/Images/logo-CmsSoft.png" />
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="userloggedimg">
+                                        @if (SessionParameters.WebDesignUser.EnterpriseNode != null && SessionParameters.WebDesignUser.EnterpriseNode.PictureId.HasValue)
+                                        {
+                                            Html.RadynFile().Image().ID((Guid)SessionParameters.WebDesignUser.EnterpriseNode.PictureId).Render();
+                                        }
+                                        else
+                                        {
+                                            if (SessionParameters.WebDesignUser.EnterpriseNode != null && SessionParameters.WebDesignUser.EnterpriseNode.RealEnterpriseNode != null && SessionParameters.WebDesignUser.EnterpriseNode.RealEnterpriseNode.Gender != null)
+                                            {
+                                                if (SessionParameters.WebDesignUser.EnterpriseNode.RealEnterpriseNode.Gender == true)
+                                                {
+                                                    <img src="/Areas/WebDesign/Content/Images/anonymous-user-male.png" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="/Areas/WebDesign/Content/Images/anonymous-user-female.png" />
+                                                }
+                                            }
+                                        }
+                                        <div>
+                                            <span>
+                                                @SessionParameters.WebDesignUser.EnterpriseNode.EnterpriseNodeTitle()
+                                                <small>
+                                                    @(SessionParameters.WebDesignUser.EnterpriseNode != null ? SessionParameters.WebDesignUser.EnterpriseNode.Email : "")
+                                                </small>
+                                                <small>
+                                                    @Resources.WebDesign.RegistrationStatus :
+                                                    @(((Enums.UserStatus)SessionParameters.WebDesignUser.Status).GetDescriptionInLocalization())
+                                                </small>
+                                            </span>
+                                        </div>
+                                        <span></span>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        }
+                        <div class="list-menu-item">
+                            <span> منو ها</span>
+                            @{
+                                
+                                if (SessionParameters.WebDesignUser != null)
+                                {
+                                    <a href="@Url.Content("~/Message/InternalMail/Index?userId=" + SessionParameters.WebDesignUser.Id)" class="d-item  user-d-item ">
+                                        <span class="title-row">
+                                            @Resources.Message.SMS
+                                        </span>
+                                        <i class="fas fa-envelope"></i>
+                                        @if (ViewBag.UnreadInboxCount != null && ViewBag.UnreadInboxCount > 0)
+                                        {
+                                            <span class="r-badge">
+                                                <span class="r-badgewait">
+                                                    @ViewBag.UnreadInboxCount
+                                                </span>
+                                            </span>
+                                        }
+                                    </a>
+                                    <a href="@Url.Content("~/WebDesign/UserPanel/EditInfoUser")" class="d-item user-d-item ">
+                                        <span class="title-row">
+                                            @Resources.WebDesign.UserEditProfile
+                                        </span>
+                                        <i class="fas fa-user-edit"></i>
+                                    </a>
+                                    <a href="@Url.Content("~/WebDesign/UserPanel/ChangePassword")" class="d-item user-d-item ">
+                                        <span class="title-row">
+                                            @Resources.WebDesign.ChangePassword
+                                        </span>
+                                        <i class="fas fa-unlock-alt"></i>
+                                    </a>
+                                    if (SessionParameters.CurrentWebSite.Configuration.HasFinancialOperation)
+                                    {
+                                        <a href="@Url.Content("~/WebDesign/UserPanel/UserTemps")" class="d-item user-d-item ">
+                                            <div class="d-item-bg">
+                                                <span class="title-row">
+                                                    @Resources.Payment.Transactions
+                                                </span>
+
+                                              
+                                                <i class="fas fa-paste"></i>
+
+                                            </div>
+                                        </a>
+                                    }
+                                    
+                                }
+                            }
+
+                            
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="header-content-box">
+
+                    </div>
+                    <div class="big-pane fit">
+                        <div class="page-caption">
+                            <span></span>
+                            <h2>
+                                @RenderSection("PageTitle", false)
+                            </h2>
+                        </div>
+                        <div class="c-widget">
+                            <div class="c-widget-head">
+                                <span></span>
+                                @RenderSection("PageAction", false)
+
+                            </div>
+                            <div class="c-widget-content">
+
+                                @if (this.Context.Items["radynHelp"] != null)
+                                {
+                                    Html.HtmlEncoder(this.Context.Items["radynHelp"].ToString());
+                                }
+
+                                @RenderBody()
+                                @{Html.Radyn().Message().Render(); }
+                            </div>
+                            <div class="c-widget-footer">
+                                <span></span>
+                                @RenderSection("PageActionDown", false)
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+}

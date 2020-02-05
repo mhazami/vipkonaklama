@@ -1,0 +1,90 @@
+@using Radyn.Help.DataStructure
+@using Radyn.Web.Mvc;
+@using Radyn.Web.Mvc.Utility
+@model HelpContent
+@{
+    ViewBag.Title = @Resources.Common.Detail + " " + @Resources.Help.HelpName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.Detail @Resources.Help.HelpContentName
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index", new { helpId = Request.QueryString["helpId"] }).ControllerName("HelpContent").Area("Help").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index", new { helpId = Request.QueryString["helpId"] }).ControllerName("HelpContent").Area("Help").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <table cellpadding="0" cellspacing="0" align="center" dir="@Resources.Common.Direction" style="text-align:@Resources.Common.Aligment;border: solid 1px grey;padding: 2px 2px 2px 2px;">
+        <tr>
+            <td class="DEheader"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table border="0" cellpadding="2" cellspacing="2" width="400" style='padding: 4px 4px 4px 4px;direction:@Resources.Common.Direction ;text-align:@Resources.Common.Aligment;'>
+                    <tr>
+                        <td class="EditRow">
+                            @Resources.Help.HelpTitle
+                        </td>
+                        <td class="EditFiled">
+                            @Html.DisplayFor(model => model.Title)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="EditRow">
+                            @Resources.Help.HelpConent
+                        </td>
+                        <td class="EditFiled">
+                            @{Html.HtmlEncoder(Model.Content);}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="EditRow">
+                            @Resources.Common.Language
+                        </td>
+                        <td class="EditFiled">
+                            @Model.Language.DisplayName
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="DEheader"></td>
+            <td></td>
+            <td>
+                @{Html.Radyn().ImageActionLink().ActionName("Index", new { helpId = Request.QueryString["helpId"] }).ControllerName("HelpContent").Area("Help").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+            </td>
+        </tr>
+    </table>
+}

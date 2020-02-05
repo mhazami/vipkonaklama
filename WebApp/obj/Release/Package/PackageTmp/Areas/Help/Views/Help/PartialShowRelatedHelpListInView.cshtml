@@ -1,0 +1,54 @@
+﻿@using Radyn.Help.DataStructure
+@using Radyn.Utility
+@using Radyn.Web.Mvc.Utility
+@model IEnumerable<Help>
+<script type="text/javascript">
+
+    function GetRowData(helpid) {
+        if (helpid != "") {
+            GetItem(helpid);
+
+        }
+    }
+
+</script>
+
+<table border="0" cellpadding="2" cellspacing="2" width="100%" style='padding: 4px 4px 4px 4px;direction:@Resources.Common.Direction ;text-align:@Resources.Common.Aligment;'>
+    <tr>
+        <td>@Resources.Help.Get_RalatedHelpCollection</td>
+    </tr>
+    
+    <tr>
+        <th class="EditFiled">
+            @Resources.Common.GridRow
+        </th>
+        <th class="EditFiled">
+            @Resources.Help.HelpDefaultTitle
+        </th>
+        <th class="EditFiled">
+            @Resources.Help.HelpDefaultConent
+        </th>
+    </tr>
+
+    @foreach (var help in Model)
+    {
+                
+        <tr id="@help.Id" onclick=" GetRowData('@help.Id')">
+            <td class="EditFiled" style="cursor: pointer">
+                @((Model.ToList().IndexOf(help) + 1).ToString().ConvertNumLa2Fa())
+            </td>
+            <td class="EditFiled" style="cursor: pointer">
+                @help.DefaultTitle
+            </td>
+            <td class="EditFiled" style="cursor: pointer">
+                @{Html.HtmlEncoder(help.DefaultConent);
+                }
+            </td>
+            <td class="EditFiled" onclick=" GetRowData('@help.Id')">
+                <img src="/Content/Images/up.png" alt=" @Resources.Common.View" style="cursor: pointer;"/>
+            </td>
+        </tr>
+                
+    }
+</table>
+

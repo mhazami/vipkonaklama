@@ -1,0 +1,48 @@
+@using Radyn.EnterpriseNode.Tools
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Statistics.DataStructure.WebSite>
+    @{
+        ViewBag.Title = @Resources.Common.List + " " + @Resources.Statistics.WebSite;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.Statistics.WebSite
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebSite").Area("Statistics").Text(@Resources.Statistics.WebSite + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebSite").Area("Statistics").Text(@Resources.Statistics.WebSite + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+
+    @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+          {
+              columns.Template(webSite => webSite.Url).Title(@Resources.Statistics.Url).Width(150).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(webSite => webSite.Title).Title(@Resources.Statistics.Title).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(webSite => webSite.EnterpriseNode.Title()).Title(@Resources.Statistics.Owner).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(webSite => webSite.RegisterDate).Title(@Resources.Statistics.RegisterDate).Width(50).HeaderHtmlAttributes(new { style = "text-align:center" });
+
+              columns.Template(resource =>
+                      "<a style='cursor: pointer;'  href='" + Url.Content("~/Statistics/WebSite/Details?Id=" + resource.Id) + "'>" +
+                      " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                      "<a style='cursor: pointer;'  href='" + Url.Content("~/Statistics/WebSite/Edit?Id=" + resource.Id) + "'> " +
+                      " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                      "<a style='cursor: pointer;'  href='" + Url.Content("~/Statistics/WebSite/Delete?Id=" + resource.Id) + "'>" +
+                      " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+          })
+
+        .Sortable(sorting => sorting.Enabled(true))
+        .Pageable(paging => paging.Enabled(true))
+        .Filterable(filtering => filtering.Enabled(true))
+        //.Footer(true)
+        .Render();}

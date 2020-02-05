@@ -1,0 +1,27 @@
+﻿@using Radyn.FileManager
+@using Radyn.Web.Mvc;
+@using Radyn.WebApp
+@using Radyn.WebApp.AppCode
+@model IEnumerable<Radyn.Article.DataStructure.ArticleFileAttachment>
+<div class="fit">
+    @{Html.Radyn().Grid(Model).Name("ArticleAttachmentGrid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+        {
+            columns.Template(bank => bank.File.FileName).Title("نام فایل").Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(ArticleAttachment => 
+                  (this.Html.GetModifyBehavior()!=ModifyBehavior.DependedModify? "<a  style=\"cursor: pointer\"    href='" + FileManagerContants.FileHandlerRoot + ArticleAttachment.FileId+ "/" + DateTime.Now.Ticks + "?dl=true" + "'   ><img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Attach.png") + "' /></a> | " : "")
+               +  ((this.Html.GetControllerStatus() == PageMode.Details) ? "" : (
+                "<a style='cursor: pointer;'  onclick=\"GetArticleAttachmentModify('" + ArticleAttachment.FileId + "','" + PageMode.Edit + "')\" >" +
+                " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                "<a style='cursor: pointer;'  onclick=\"DeleteArticleAttachment('" + ArticleAttachment.FileId + "')\">" +
+                " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> "))).Width(300).Filterable(false);
+
+        })
+
+                      .Sortable(sorting => sorting.Enabled(true))
+                      .Pageable(paging => paging.Enabled(true))
+                      .Filterable(filtering => filtering.Enabled(true))
+                    //.Footer(true)
+                    .Render();}
+
+
+</div>

@@ -1,0 +1,56 @@
+﻿@using Radyn.Web.Mvc;
+
+@using Menu = Radyn.ContentManager.DataStructure.Menu
+@model System.Collections.Generic.IEnumerable<Radyn.ContentManager.DataStructure.Menu>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MenuTree').on('changed.jstree', function (e, data) {
+               if (data.selected.length > 0) {
+                    document.getElementById('TxtSelectedItemid').value = data.node.li_attr.id;
+                    document.getElementById('TxtSelectedItemtext').value = data.node.li_attr.title;
+                } else {
+                    document.getElementById('TxtSelectedItemid').value = "";
+                    document.getElementById('TxtSelectedItemtext').value = "";
+                }
+            });
+        });
+    </script>
+
+    <table border='0' cellpadding='0' cellspacing='2' width="400px">
+
+        <tr>
+            <input type="hidden" id="TxtSelectedItemid" name="TxtSelectedItemid" />
+            <input type="hidden" id="TxtSelectedItemtext" name="TxtSelectedItemtext" />
+            <td style='width: 150px;' id="id3">
+                <h3>
+                    @Resources.Common.List @Resources.Security.MenuName
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                @{
+                    Html.Radyn().TreeView<Menu>().ShowLines(true).Name("MenuTree")
+                        .BindTo(Model,
+                            map => map
+                            .Id(x => x.Id)
+                            .Parent(x => x.ParentId)
+                            .Text(menu => string.IsNullOrEmpty(menu.Text) ? " " : menu.Text)
+                            .Icon(menu => menu.IsVertical ? Url.Content("~/Content/Images/vertical.png") : Url.Content("~/Content/Images/horizontal.png"))
+                            .ListItemAttribute(x => x
+                            .Add("title", menu => menu.Text)
+                            .Add("align", menu => "right")
+                            )
+                        ).Render();
+                }
+
+
+                @{ Html.Radyn().ContextMenu().Selector("div").AddItem("انتخاب", "onclick:function selectmenu() {selectitem(document.getElementById('TxtSelectedItemid').value,document.getElementById('TxtSelectedItemtext').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'")
+                   .AddItem("ایجاد", "onclick:function selectmenu() {ModifyMenuItem('Create',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'")
+                   .AddItem("ویرایش", "onclick:function selectmenu() {ModifyMenuItem('Edit',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'")
+                   .AddItem("حذف", "onclick:function selectmenu() {ModifyMenuItem('Delete',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'").Render();}
+            </td>
+        </tr>
+    </table>

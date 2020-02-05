@@ -1,0 +1,41 @@
+﻿@using Radyn.News.DataStructure
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model News
+@{
+    ViewBag.Title = @Resources.Common.Edit + " " + @Resources.News.NewsNews;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+
+}
+@section PageTitle
+{
+    @Resources.Common.Edit @Resources.News.NewsCategoryTitle
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("News").Area("News").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/edit.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("News").Area("News").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("News").Area("News").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/edit.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("News").Area("News").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    Html.RenderAction("GetModify", "News", new { area = "News", Id = ViewBag.Id });
+}

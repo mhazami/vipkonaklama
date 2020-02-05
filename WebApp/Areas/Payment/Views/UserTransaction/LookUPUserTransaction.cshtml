@@ -1,0 +1,33 @@
+﻿@model Radyn.Payment.DataStructure.Temp
+@{
+    ViewBag.Title = @Resources.Common.List + " " + @Resources.Payment.Pay;
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+        $(document).ready(function () {
+                $("#DivUserTemp").html("");
+                $.get("@Url.Content("~/Payment/UserTransaction/GenerateUserTransaction")", { userId: '@ViewBag.userId', callbackurl: '@ViewBag.callbackurl', value: '@ViewBag.value', postdataUrl: '@ViewBag.postdataUrl', date: new Date().getTime() }, function (data) {
+                    $("#DivUserTemp").html(data).slideDown("slow");;
+
+                });
+        });
+    </script>
+
+}
+@section PageAction
+{
+
+}
+@section PageActionDown
+{
+
+   
+
+}
+@*ClassName=    gv-row-style-alt   *@
+<div class="table" id="DivUserTemp">
+</div>
+
+
+

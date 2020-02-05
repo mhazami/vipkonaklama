@@ -1,0 +1,43 @@
+﻿@using Radyn.Payment.DataStructure
+@using Radyn.Web.Mvc;
+@model IEnumerable<DiscountTypeSection>
+@Html.ValidationSummary(true)
+<div>
+    <input type="hidden" name="DiscountTypeId" value="@ViewBag.Dicounttype" id="DiscountTypeId" />
+    @{
+        <div class="fit">
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.Payment.DiscountType
+                </div>
+            </div>
+            <div class="table-row-item  drp">
+                <div class="item">
+                    <div class=" table-c-fit" >
+                        <div class="table-row-point">
+                            <div class="item">
+                                @Resources.WebDesign.DiscountUsage
+                            </div>
+                        </div>
+                        <div class="table-row-item ">
+                            <div class="item radio-box">
+                                @foreach (var statu in (List<KeyValuePair<byte, string>>)ViewBag.EnumsSource)
+                                {
+                                    <div class="width33percent page-align">
+                                        @{Html.Radyn().CheckBox().ID("Section-" + (Guid)ViewBag.Dicounttype).Value(statu.Key.ToString()).Checked(Model.Any(section => section.DiscountTypeId == (Guid)ViewBag.Dicounttype && section.Section == statu.Key)).Text(statu.Value).Name("Section-" + (Guid)ViewBag.Dicounttype).Enabled(!(bool)ViewBag.Readonly).Render(); }
+                                    </div>
+                                  
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    }
+
+</div>
+
+
+

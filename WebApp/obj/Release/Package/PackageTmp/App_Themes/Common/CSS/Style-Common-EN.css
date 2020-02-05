@@ -1,0 +1,125 @@
+﻿.innerhtml {
+    float: right !important;
+}
+
+.innerhtml-menu, .aside-page {
+    right: auto;
+    left: 0
+}
+
+.setting-aside .table-row-cap {
+    text-align: left;
+}
+
+.aside-control {
+    right: -25px;
+    border-radius: 0 3px 3px 0;
+    left: auto;
+}
+
+body, * {
+    direction: ltr !important;
+}
+
+.design_layout .close-nav {
+    transform: translateX(-100%);
+}
+
+.design_layout .aside-control svg {
+    transform: rotate(0);
+}
+
+.design_layout .close-nav .aside-control svg {
+    transform: rotate(180deg);
+}
+
+
+.innerhtml .fgitem ul {
+    border-radius: 0 0 5px 0;
+    padding: 0 5px 0 2px;
+    left: auto;
+    right: 0;
+}
+
+.fgitem, .fgitem ul, .fgitem ul li {
+    float: right !important;
+}
+
+.horizontal-row, .horizontal-row * {
+    direction: rtl !important
+}
+
+
+
+/* User Panel */
+.flip-button-fix {
+    left: auto;
+    right: 40px;
+}
+
+.flip-button {
+    left: auto;
+    right: 50px;
+}
+
+.second-menu {
+    margin-right: 0;
+    margin-left: 17%;
+}
+
+.user-menu-panel-header ul li:first-child {
+    right: auto;
+    left: 15px;
+}
+
+.second-menu.close-menu {
+    transform: translateX(-100%);
+}
+
+.closed-menu .first-menu .menu-control {
+    right: auto;
+    left: 100%
+}
+
+    .closed-menu .first-menu .menu-control svg {
+        transform: rotate(0);
+    }
+
+.menu-control svg {
+    transform: rotate(180deg);
+}
+
+.user-page .content-box {
+    float: right;
+}
+
+.list-menu-item > span {
+    float: left;
+}
+
+.user-d-item {
+    text-align: left;
+}
+
+.list-menu-item .user-d-item:before {
+    right: auto;
+    left: 15px;
+}
+
+.user-page .d-item svg {
+    float: left;
+}
+
+.userloggedimg img {
+    float: left;
+}
+.userloggedimg {
+    text-align: left;
+    padding: 0 0 0 12px;
+}
+    .userloggedimg > div {
+        text-align: left;
+        float: left;
+        padding: 0 13px 10px 15px;
+    }
+        /* User Panel */

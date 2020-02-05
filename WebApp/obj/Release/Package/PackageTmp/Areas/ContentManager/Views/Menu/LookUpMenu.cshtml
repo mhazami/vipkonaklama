@@ -1,0 +1,62 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+@section Head
+{ 
+     
+    <script type="text/javascript">
+
+
+        function ModifyMenuItem(state, id) {
+
+            if (state == "Create" & id == "") id = '@Guid.NewGuid()';
+            if (id == "" & state == "") {
+                ShowRadynMessage("آیتمی انتخاب نشده است");
+            }
+            if (state != "" & id != "") {
+                GetMenuModal(state, id);
+            };
+            ShowRadynMessage();
+        }
+
+        function selectitem(id, text) {
+            if (id != "" & text != "") {
+                showModalReturn(id, text);
+            } else {
+                ShowRadynMessage("آیتمی انتخاب نشده است");
+            }
+        }
+
+        function GetMenuModal(state, Id) {
+            ShowModal("/ContentManager/Menu/PartialViewModifyMenu", { state: state, id: Id });
+           
+        }
+        
+        function GetAllMenu() {
+            $.get("/ContentManager/Menu/GetMenuTree", { date: new Date().getTime() }, function (data) {
+                if (data != "") {
+                 
+                    $("#outputPanel").hide();
+                    $("#outputPanel").html(data);
+                    $("#outputPanel").slideDown();
+                   
+                    
+                }
+                ShowRadynMessage();
+            });
+        }
+        $(document).ready(
+            function () {
+                GetAllMenu();
+            }
+        );
+    </script>
+}
+<div class="t-rtl">
+    <input type="hidden" id="txtContenet" />
+    <div class="table" style="height: 500px; overflow-y: auto;" id="outputPanel">
+    </div>
+   
+</div>
+<div id="DivShowModal"   style="width: 100% !important"></div>

@@ -1,0 +1,67 @@
+﻿@model Radyn.ContentManager.DataStructure.DefaultHtmlDesgin
+@Html.ValidationSummary(true)
+<div>
+    <div class="item-row ">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Title
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.TextBoxFor(model => model.Title)
+
+            </div>
+        </div>
+    </div>
+  
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Enable
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+                @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+            </div>
+        </div>
+    </div>
+    <div class="item-row file-upload">
+        <div class="table-row-cap ">
+            <div class="item">
+                تصویر
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                  
+
+                @{
+                    Html.RenderAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "Image", fileid = Model.Image, fileName = "Image" });
+
+                }
+
+
+                @if (Model == null || string.IsNullOrEmpty(Model.Image))
+                {
+                    <input type="hidden" id="Image" name="Image" value="" />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Html
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.TextAreaFor(x => x.Body, new { style = "height:500px;" })
+            </div>
+        </div>
+    </div>
+
+</div>

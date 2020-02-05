@@ -1,0 +1,86 @@
+﻿<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        function postRefId() {
+
+            var form = document.createElement("form");
+
+
+
+            var merchantCode = document.createElement("input");
+            merchantCode.setAttribute("name", "merchantCode");
+            merchantCode.setAttribute("Id", "merchantCode");
+            merchantCode.setAttribute("value", '@ViewBag.merchantCode');
+            form.appendChild(merchantCode);
+
+
+            var terminalCode = document.createElement("input");
+            terminalCode.setAttribute("name", "terminalCode");
+            terminalCode.setAttribute("Id", "terminalCode");
+            terminalCode.setAttribute("value", '@ViewBag.terminalCode');
+            form.appendChild(terminalCode);
+
+            var amount = document.createElement("input");
+            amount.setAttribute("name", "amount");
+            amount.setAttribute("Id", "amount");
+            amount.setAttribute("value", '@ViewBag.amount');
+            form.appendChild(amount);
+
+            var redirectAddress = document.createElement("input");
+            redirectAddress.setAttribute("name", "redirectAddress");
+            redirectAddress.setAttribute("Id", "redirectAddress");
+            redirectAddress.setAttribute("value", '@ViewBag.redirectAddress');
+            form.appendChild(redirectAddress);
+
+
+            var invoiceNumber = document.createElement("input");
+            invoiceNumber.setAttribute("name", "invoiceNumber");
+            invoiceNumber.setAttribute("Id", "invoiceNumber");
+            invoiceNumber.setAttribute("value", '@ViewBag.invoiceNumber');
+            form.appendChild(invoiceNumber);
+
+            var invoiceDate = document.createElement("input");
+            invoiceDate.setAttribute("name", "invoiceDate");
+            invoiceDate.setAttribute("Id", "invoiceDate");
+            invoiceDate.setAttribute("value", '@ViewBag.invoiceDate');
+            form.appendChild(invoiceDate);
+
+            var action = document.createElement("input");
+            action.setAttribute("name", "action");
+            action.setAttribute("Id", "action");
+            action.setAttribute("value", '@ViewBag.action');
+            form.appendChild(action);
+
+            var sign = document.createElement("input");
+            sign.setAttribute("name", "sign");
+            sign.setAttribute("Id", "sign");
+            sign.setAttribute("value", '@ViewBag.sign');
+            form.appendChild(sign);
+
+            var timeStamp = document.createElement("input");
+            timeStamp.setAttribute("name", "timeStamp");
+            timeStamp.setAttribute("Id", "timeStamp");
+            timeStamp.setAttribute("value", '@ViewBag.timeStamp');
+            form.appendChild(timeStamp);
+
+            form.setAttribute("Id", "form1");
+            form.setAttribute("method", "POST");
+            form.setAttribute("action", "https://pep.shaparak.ir/gateway.aspx");
+            form.setAttribute("target", "_self");
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+        postRefId();
+    </script>
+</body>
+</html>
+
+

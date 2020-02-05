@@ -1,0 +1,175 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp
+@using Radyn.WebApp.AppCode
+@using Radyn.WebApp.AppCode.Security
+@model Radyn.Article.DataStructure.Article
+@{Html.Radyn().Theme("RadynEditor").Render();}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#Text').summernote({
+
+            lang: '@SessionParameters.Culture',
+            focus: true,
+            elementname: 'Text',
+            height: 250,
+            codemirror: {
+                theme: 'united'
+            }
+        });
+    });
+
+
+
+</script>
+@{
+    Html.PrepareModel();
+}
+
+
+
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Article.ArticleTitle
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.TextBoxFor(model => model.Title, new { })
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Article.ArticleCategoryName
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.DropDownListFor(model => model.ArticleCategoryId, (SelectList)ViewBag.ArticleCategory)
+        </div>
+    </div>
+</div>
+<div class="fit item-row">
+    <div class="table-row-cap  ">
+        <div class="item">
+            @Resources.Article.ArticleAbstract
+        </div>
+    </div>
+    <div class="table-row-item table-fit">
+        <div class="item">
+            @Html.TextAreaFor(x => x.Abstract, new { height = "222px" })
+        </div>
+    </div>
+</div>
+<div class="fit item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Article.ArticleText
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.TextAreaFor(x => x.Text)
+
+        </div>
+    </div>
+</div>
+<div class=" item-row fit">
+    <div class="table-row-cap ">
+        <div class="item">
+           @Resources.Article.Keywords
+        </div>
+    </div>
+    <div class="table-row-item table-fit">
+        <div class="item">
+            @Html.TextAreaFor(x => x.Keyword)
+        </div>
+    </div>
+</div>
+@Html.ValidationSummary(true)
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Article.ArticlePublishDate
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item date-picker">
+            @{
+                Html.Radyn().PersianDateTimePickerFor(Model, model => model.PublishDate).Render();
+            }
+
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+           @Resources.News.NewsPropertyOrder
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.TextBoxFor(model => model.Order, new { })
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Article.Status
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.RadioButtonFor(model => model.Enable, true)    @Resources.Article.Enabel
+            @Html.RadioButtonFor(model => model.Enable, false)  @Resources.Article.Disabel
+        </div>
+    </div>
+</div>
+
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Article.Comment
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.RadioButtonFor(model => model.GetComment, true)@Resources.Common.Yes
+            @Html.RadioButtonFor(model => model.GetComment, false)@Resources.Common.No
+        </div>
+    </div>
+</div>
+
+
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Article.ArticleThumbnailId
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @{
+                Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "ThumbnailId", fileid = Model.ThumbnailId, fileName = "Image" });
+            }
+
+
+
+        </div>
+    </div>
+</div>
+<div id="div-ItemProperty" style="float: right; width: 100%">
+    @{
+        Html.RadynAction("Index", "ArticleAttachment", new { area = "Articles", articleId = Model.Id, behavior = this.Html.GetPageMode() == PageMode.Create ? ModifyBehavior.DependedModify : ModifyBehavior.SelfModify });
+    }
+</div>
+
+
+
+

@@ -1,0 +1,67 @@
+﻿@model Radyn.FormGenerator.ControlFactory.Base.Control
+@Html.ValidationSummary(true)
+<input type="hidden" name="Id" id="Id" value="@Model.Id"/>
+
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+              @Resources.FormGenerator.CssClass
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.CssClass)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+              @Resources.FormGenerator.Height
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.Height)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+              @Resources.FormGenerator.Width
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.Width)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Common.Enable
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.RadioButtonFor(model => model.Enable, true)@Resources.Common.Enable
+            @Html.RadioButtonFor(model => model.Enable, false)@Resources.Common.Disable
+        </div>
+    </div>
+</div>
+
+<div class="item-row fit">
+    <div class="table-row-cap ">
+        <div class="item">
+              @Resources.FormGenerator.Description
+        </div>
+    </div>
+    <div class="table-row-item table-fit ">
+        <div class="item">
+            @Html.TextAreaFor(model => model.Description)
+        </div>
+    </div>
+</div>
+

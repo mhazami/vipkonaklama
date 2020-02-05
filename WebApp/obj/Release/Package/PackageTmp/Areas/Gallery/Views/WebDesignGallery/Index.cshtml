@@ -1,0 +1,58 @@
+﻿@using Radyn.Gallery.Tools
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Gallery.DataStructure.Gallery>
+    @{
+        ViewBag.Title = Resources.WebDesign.WebSiteGallery;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
+    @section Head{
+    }
+    @section PageTitle
+{
+        @Resources.WebDesign.WebSiteGallery
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+            @{ Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebDesignGallery").Area("Gallery").Text(Resources.Gallery1.NewGallery).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render(); }
+        </div>
+
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+            @{ Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebDesignGallery").Area("Gallery").Text(Resources.Gallery1.NewGallery).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render(); }
+        </div>
+    }
+<div class="radynForm">
+    <div class="fit">
+        @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+            {
+                columns.Template(gallery => gallery.Title).Title(Resources.Gallery1.Title).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(gallery => gallery.CreateDate).Title(Resources.Gallery1.CreateDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(gallery => gallery.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(Resources.Gallery1.State).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(gallery => gallery.ParentGallery.HasValue ? gallery.Parent.Title : "").Title(Resources.Gallery1.ParentGalley).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(gallery => "<img atr='" + gallery.Title + "' src='" + Radyn.FileManager.FileManagerContants.FileHandlerRoot + "" + gallery.Thumbnail + "' height='50' width='80'/>").Title(@Resources.Gallery1.Thumbnail).Width(100);
+                columns.Template(gallery =>
+                    "<a style='cursor: pointer;'  href='/Gallery/WebDesignGallery/Details?Id=" + gallery.Id + "'>" +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='/Content/Images/details.png' />" + "</a> | " +
+                    "<a style='cursor: pointer;'  href='/Gallery/WebDesignGallery/Delete?Id=" + gallery.Id + "'>" +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='/Content/Images/Delete-Close.png' />" + "</a> | " +
+                    "<a style='cursor: pointer;'  href='/Gallery/WebDesignGallery/Edit?Id=" + gallery.Id + "'> " +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='/Content/Images/edit.png' />" + "</a> |  " +
+                    "<a style='cursor: pointer;'  href='/Gallery/Photo/Index?GId=" + gallery.Id + "&externalurl=/Gallery/WebDesignGallery/Index'  > " +
+                    " <img width='18' align='absmiddle' title='" + Resources.Gallery1.Photos + "' src='/Areas/Common/Content/Images/gallery.png' />" + "</a> " +
+                    (!@gallery.HasChild() ? "" :
+                        " | <a style='cursor: pointer;'  href='/Gallery/WebDesignGallery/Index?parentId=" + gallery.Id + " '> " +
+                        " <img width='18' align='absmiddle' title='" + Resources.Gallery1.SubGalleries + "' src='/Content/Images/sub-gallery.png' />" + "</a> ")).Width(300).Encode(false);
+            })
+          .Sortable(sorting => sorting.Enabled(true))
+          .Pageable(paging => paging.Enabled(true))
+          .Filterable(filtering => filtering.Enabled(true))
+          .Footer(false).Render();
+        }
+    </div>
+    </div>

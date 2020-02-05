@@ -1,0 +1,48 @@
+﻿@using Radyn.News.Tools
+@using Radyn.WebApp.AppCode.Security
+@using Radyn.Utility
+@model List<Radyn.News.DataStructure.News>
+@{
+    ViewBag.Title = Resources.News.NewsList;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+        function NewsClick(id, title) {
+            window.location = '/News/News/NewsView/' + id + '/' + title;
+         
+        }
+        
+    </script>
+}
+@if (Model.Count > 0)
+{
+    <table border="0" cellpadding="4" width="600px" cellspacing="4" align="center">
+
+        <tr>
+            <td class="EditRow">#</td>
+            <td class="EditRow">@Resources.News.NewsContentTitle1</td>
+            <td class="EditRow">@Resources.News.NewsContentLead</td>
+         
+        </tr>
+        @{
+            int index = 0;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td class="EditFiled">@index</td>
+                    <td class="EditFiled">
+                        <a target="_blank" href="/News/News/NewsView?Id=@item.Id" >@item.GetNewsContent(SessionParameters.Culture).Title1</a>
+                    </td>
+                    <td class="EditFiled">@item.GetNewsContent(SessionParameters.Culture).Lead.Trancate(300)</td>
+
+                </tr>
+                index++;
+            }
+        }
+
+
+    </table>
+}
+else
+{@Resources.Common.No_results_found}

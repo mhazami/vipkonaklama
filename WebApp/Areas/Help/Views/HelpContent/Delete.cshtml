@@ -1,0 +1,65 @@
+@using Radyn.Help.DataStructure
+@using Radyn.Web.Mvc;
+@using Radyn.Web.Mvc.Utility
+@model HelpContent
+@{
+    ViewBag.Title = @Resources.Common.Delete + " " + @Resources.Help.HelpContentName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@using (Html.BeginForm())
+{
+    <table cellpadding="0" cellspacing="0" align="center" dir="@Resources.Common.Direction" style="text-align:@Resources.Common.Aligment;border: solid 1px grey;padding: 2px 2px 2px 2px;">
+        <tr>
+            <td class="DEheader">
+                @Resources.Common.DeleteMessage
+            </td>
+            <td>
+                @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("HelpContent").Area("Help").Text(@Resources.Common.Yes).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").ImageHeight("20").Render();}
+            </td>
+            <td>
+                @{Html.Radyn().ImageActionLink().ActionName("Index", new { helpId = Request.QueryString["helpId"] }).ControllerName("HelpContent").Area("Help").Text(@Resources.Common.No).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+            </td>
+            <tr>
+                <td colspan="3">
+                    @Html.ValidationSummary(true)
+                    <table border="0" cellpadding="2" cellspacing="2" width="400" style="padding: 4px 4px 4px 4px;">
+                        <tr>
+                            <td class="EditRow">
+                                @Resources.Help.HelpTitle
+                            </td>
+                            <td class="EditFiled">
+                                @Html.DisplayFor(model => model.Title)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="EditRow">
+                                @Resources.Help.HelpConent
+                            </td>
+                            <td class="EditFiled">
+                                @{ Html.HtmlEncoder(Model.Content); }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="EditRow">
+                                @Resources.Common.Language
+                            </td>
+                            <td class="EditFiled">
+                                @Model.Language.DisplayName
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="DEheader">
+                </td>
+                <td>
+                    @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("HelpContent").Area("Help").Text(@Resources.Common.Yes).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").ImageHeight("20").Render();}
+                </td>
+                <td>
+                    @{Html.Radyn().ImageActionLink().ActionName("Index", new { helpId = Request.QueryString["helpId"] }).ControllerName("HelpContent").Area("Help").Text(@Resources.Common.No).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+                </td>
+            </tr>
+    </table>
+}

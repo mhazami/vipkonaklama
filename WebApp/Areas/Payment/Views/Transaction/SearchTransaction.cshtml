@@ -1,0 +1,64 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.Web.Mvc.Utility
+@model Radyn.Payment.DataStructure.Temp
+@{
+    ViewBag.Title = @Resources.Common.Create + " " + @Resources.Payment.Pay;
+    Layout = "~/Areas/WebDesign/Views/Shared/WebDesignUserLayout.cshtml";
+
+}
+@section Head{
+    <script>
+
+        function SearchTransaction() {
+            var trackingOrders = $("#NumTrackingOrders").val();
+            ShowPostBackLoader();
+            $.post("@Url.Content("~/Payment/Transaction/SearchTransActionResult")", { TrackingOrders: trackingOrders }, function (data) {
+                HidePostBackLoader();
+                $("#DivTransactionResult").html(data);
+                $("#DivTransactionResult").fadeIn();
+
+            });
+        }
+    </script>
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-blue i-search">
+
+
+
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Search).Align(ImageActionLink.Alignment.Left).ImagePosition(ImageActionLink.Position.Right).ImageUrl("/Content/Images/icon-search.png").ImageWidth("25").ImageHeight("25").OtherAttribute(new { onclick = "SearchTransaction();" }).Render();}
+    </div>
+
+
+    
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-blue i-search">
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Search).Align(ImageActionLink.Alignment.Left).ImagePosition(ImageActionLink.Position.Right).ImageUrl("/Content/Images/icon-search.png").ImageWidth("25").ImageHeight("25").OtherAttribute(new { onclick = "SearchTransaction();" }).Render();}
+    </div>
+    @*<div class="button-div">
+            @{Html.Radyn().ImageActionLink().Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).NavigateUrl(Url.Content("~" + Model.CallBackUrl)).Render();}
+        </div>*@
+}
+
+<div class="radynForm users-page full-size">
+    <div class="item-input">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Payment.TrackYourOrderNum
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.TextBox("NumTrackingOrders")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="DivTransactionResult" class="transaction-result" style="display: none"></div>

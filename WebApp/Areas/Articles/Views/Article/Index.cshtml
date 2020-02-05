@@ -1,0 +1,89 @@
+﻿@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.AppCode.Security
+@model Radyn.Article.DataStructure.Article
+@{
+    ViewBag.Title = Model != null ? Model.Title : Model.Article.ArticlesName;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+
+@section Head{
+    <meta name="description" content="@Model.Abstract">
+}
+
+@if (Model != null)
+{
+    <div class="news-content ">
+
+        <div class="internal-page-content news-view article-view">
+            
+            <div class="news-content-text col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                <img @(!Model.ThumbnailId.HasValue ? "class=default" : "") src="@(Model.ThumbnailId.HasValue ? Radyn.FileManager.FileManagerContants.FileHandlerRoot + Model.ThumbnailId + "/" + DateTime.Now.Ticks : "/Content/Images/no-image.jpg")"/>
+
+                <div class="article-box" style="border: none;">
+                    <div class="category-name">
+                        <a href="" >
+                            @Model.ArticleCategory.Title
+                        </a>
+                    </div>
+                    <div class="article-box-head">
+                     
+                        <h1>
+                            @Model.Title
+                        </h1>
+                    </div>
+                    <div class="article-box-lead">
+                        @{Html.HtmlEncoder(Model.Abstract);}
+                    </div>
+                </div>
+                <div class="article-text">
+                    @{Html.HtmlEncoder(Model.Text);}
+                </div>
+            </div>
+            <div class="aside-news col-lg-3 col-sm-4 col-md-4 col-xs-12">
+                <div class="aside-news-item">
+                    <div class="aside-news-item-head">
+                        <h3>
+                            @Resources.Article.Keywords
+                        </h3>
+                    </div>
+                    <div class="aside-news-item-content">
+                        <ul>
+                            @if (!string.IsNullOrEmpty(Model.Keyword))
+                            {
+                                var split = Model.Keyword.Split(',');
+                                <li>
+                                    @foreach (var value in split)
+                                    {
+                                        <span>
+                                            <a href="/Articles/ArticleList/@(Model.ArticleCategory.Title+"?keyword="+value)">@value</a>
+                                        </span>
+                                    }
+                                </li>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            @if (Model.GetComment && SessionParameters.CurrentWebSite.Configuration.EnableArticleComment)
+            {
+                <div class="comments-area">
+                    <h3>@Resources.Article.YorumYap</h3>
+
+                    @{Html.RadynAction("ShowArticleComment", "ArticleComment", new {area = "Articles", newsId = Model.Id});}
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+}
+

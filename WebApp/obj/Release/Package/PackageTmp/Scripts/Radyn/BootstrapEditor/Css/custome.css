@@ -1,0 +1,9 @@
+
+.btn-default {
+    border-color: #333d50 !important;
+    background-color: #3f4d66 !important;
+}
+
+    .btn-default:hover, .btn-default:focus {
+        background-color: #333d50 !important;
+    }

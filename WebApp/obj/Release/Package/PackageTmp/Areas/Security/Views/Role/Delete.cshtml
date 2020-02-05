@@ -1,0 +1,68 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@model Radyn.Security.DataStructure.Role
+@{
+    ViewBag.Title = @Resources.Common.Delete + " " + @Resources.Security.RoleName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.DeleteMessage
+
+}
+@section PageAction
+{
+<div class="button-div m-btn waves-red i-delete">
+    @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("Role").Area("Security").Text(Resources.Common.Yes).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+
+</div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Role").Area("Security").Text(Resources.Common.No).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-red i-delete">
+        @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("Role").Area("Security").Text(Resources.Common.Yes).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Role").Area("Security").Text(Resources.Common.No).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.RoleName
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.RoleIsAdmin
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @(Model.IsAdmin ? @Resources.Common.Yes : @Resources.Common.No)
+                </div>
+            </div>
+        </div>
+    </div>
+}

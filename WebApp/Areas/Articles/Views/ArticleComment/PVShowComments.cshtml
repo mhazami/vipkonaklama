@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Radyn.Comments.DataStructure.Comment>
+    
+
+
+
+<button id="btn-comment" class="btn btn-default">ثبت نظر</button>
+
+@{ Html.RenderAction("Create", "ArticleComment", new {area = "Articles", articleId = (int) ViewBag.ArticleId});}
+
+@{
+    foreach (var comment in Model)
+    {
+        <div class="comment-box">
+            <div class="comment-content">
+                <div class="comment-sender">
+                    @comment.SenderName
+                </div>
+                <div class="comment-body">
+                    @comment.Content
+                </div>
+            </div>
+
+        </div>
+    }
+}

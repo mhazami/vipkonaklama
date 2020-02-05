@@ -1,0 +1,52 @@
+﻿@using Radyn.Article.DataStructure
+@using Radyn.Web.Mvc;
+@using Radyn.Utility
+@model Article
+@{
+    ViewBag.Title = @Resources.Common.Delete + " " + @Resources.Article.ArticleName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.Delete @Resources.Article.ArticleName
+}
+@section PageAction
+{
+<div class="button-div">
+    @{
+        Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("Articles").Area("Articles").Text(@Resources.Common.Delete).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();
+    }
+    
+</div>
+<div class="button-div m-btn waves-red">
+    <i class="fas fa-undo-alt"></i>
+    @{
+        Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Articles").Area("Articles").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();
+    }
+    
+</div>
+}
+@section PageActionDown
+{
+<div class="button-div">
+    @{
+        Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("Articles").Area("Articles").Text(@Resources.Common.Delete).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();
+    }
+    
+</div>
+<div class="button-div m-btn waves-red">
+    <i class="fas fa-undo-alt"></i>
+    @{
+        Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Articles").Area("Articles").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();
+    }
+    
+</div>
+}
+
+
+@using (Html.BeginForm())
+{
+    Html.RenderAction("GetDetails", "Articles", new { area = "Articles", Id = ViewBag.Id });
+}

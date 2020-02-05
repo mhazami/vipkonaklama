@@ -1,0 +1,63 @@
+﻿@model Radyn.Payment.DataStructure.Temp
+<script type="text/javascript">
+    function PostData() {
+        
+        var value = document.getElementById("postdataUrl").value;
+        var url = value != "" ? value : "/Payment/UserTransaction/AddUserTemp";
+        var object = '@Url.Content("~")';
+        if (object == "/") object = "";
+        $.post(object + url, $("form[action^='@Url.Content("~/Payment/UserTransaction/GetUserTemp")']").serialize(), function (data) {
+            if (data != "false") {
+                GetList();
+            }
+            ShowRadynMessage();
+        });
+    }
+</script>
+@using (Html.BeginForm("GetUserTemp", "UserTransaction", new { area = "Payment" }))
+{
+    <input type="hidden" name="postdataUrl" id="postdataUrl" value="@ViewBag.postdataUrl" />
+    <input type="hidden" name="callbackurl" id="callbackurl" value="@ViewBag.callbackurl" />
+    <input type="hidden" name="UserId" id="UserId" value="@ViewBag.userId" />
+    <input type="hidden" name="Id" id="Id" value="@Model.Id" />
+    <div class="radynForm">
+        <div class="item-input fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.Amount
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    <div style="float: right;">
+                        @Html.EditorFor(x => x.Amount)
+                    </div>
+                    <div style="float: right; margin-right: 4px">
+                        @Html.DropDownListFor(model => model.CurrencyType, (SelectList)ViewBag.CurrencyEnums)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item-input fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.Description
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.TextAreaFor(x => x.Description)
+                </div>
+            </div>
+        </div>
+        <div class="button-div m-btn waves-green"> <i class="fas fa-save"></i>
+            <a onclick="PostData()">@Resources.Common.Save</a>
+            <i class="fas fa-save"></i>
+        </div>
+        <div class="button-div m-btn waves-red"><i class="fas fa-undo-alt"></i>
+            <a onclick="GetList()">@Resources.Common.Cancel</a>
+            <i class="fas fa-undo"></i>
+        </div>
+    </div>
+
+}

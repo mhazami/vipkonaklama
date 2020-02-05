@@ -1,0 +1,54 @@
+﻿@using Radyn.Gallery.DataStructure
+@model List<Photo>
+    <link href="@Url.Content("/Areas/Gallery/SlideShow/CSS/jquery.ad-gallery.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("/Areas/Gallery/SlideShow/Script/jquery.ad-gallery.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            var galleries = $('.ad-gallery').adGallery();
+            $('#switch-effect').change(
+                function () {
+                    galleries[0].settings.effect = $(this).val();
+                    return false;
+                }
+            );
+            $('#toggle-slideshow').click(
+                function () {
+                    galleries[0].slideshow.toggle();
+                    return false;
+                }
+            );
+            $('#toggle-description').click(
+                function () {
+                    if (!galleries[0].settings.description_wrapper) {
+                        galleries[0].settings.description_wrapper = $('#descriptions');
+                    } else {
+                        galleries[0].settings.description_wrapper = false;
+                    }
+                    return false;
+                }
+            );
+        });
+
+    </script>
+
+
+<div id="container">
+    <div class="ad-nav">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <a class="image-item-gallery" data-caption="@item.DescriptionField" data-fancybox="gallery" href="@Radyn.FileManager.FileManagerContants.FileHandlerRoot@item.PicFile">
+                    <img src="@Radyn.FileManager.FileManagerContants.FileHandlerRoot@item.PicFile" width="100" height="100" />
+                    <span>
+                        @item.DescriptionField
+                    </span>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+

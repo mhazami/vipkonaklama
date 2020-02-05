@@ -1,0 +1,79 @@
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+@model Radyn.Slider.DataStructure.Slide
+<script type="text/javascript">
+
+    function GetSlideShow() {
+        $("#ShowSlideItems").html("");
+        var value = '@Model.EffectType';
+        var slidItemTimeOut = '@Model.SlidItemTimeOut';
+        ShowModal("@Url.Content("~/Slider/Slide/ShowSliderItems")",
+            { Id: '@Model.Id', effecttype: value, timeout: slidItemTimeOut, date: new Date().getTime() });
+
+
+    }
+
+</script>
+
+<div id="ShowSlideItems">
+</div>
+
+<div id="GalleryContent">
+</div>
+<div class="fit item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Slider.Title
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            <div style="float: right">
+                @Html.DisplayFor(m => m.Title)
+            </div>
+            <div style="float: left">
+                <div class="m-btn waves-yellow icon-btn i-eye ">
+                    @{Html.Radyn().ImageActionLink().Align(Resources.Design.Align.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/form-view.png")).ImagePosition(Resources.Design.Align.ToEnum<ImageActionLink.Position>()).OtherAttribute(new { @style = "font-size:13px; float:left;", onclick = "GetSlideShow();" }).Render(); }
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Slider.EffectType
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Model.EffectType
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Slider.SlidItemTimeOut
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.SlidItemTimeOut) @Resources.Slider.Second
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Common.Enable
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @(Model.Enabled ? Resources.Common.Enable : Resources.Common.Disable)
+        </div>
+    </div>
+</div>

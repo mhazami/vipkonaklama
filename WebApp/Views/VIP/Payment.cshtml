@@ -1,0 +1,133 @@
+﻿@model Radyn.Reservation.DataStructure.Order
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_ReservationLayout.cshtml";
+}
+
+
+<section class="breadcrumb-outer">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>REZERVASYON</h2>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">ANA SAYFA</a></li>
+                    <li class="breadcrumb-item" aria-current="page">KONTROL ET</li>
+                    <li class="breadcrumb-item active" aria-current="page">Ödeme</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<form method="post" action="/VIP/Payment">
+    <section class="content reservation-main">
+        <div class="container">
+            <div class="reservation-links text-center">
+                <h2 class="mar-bottom-60 text-capitalize">Ödeme</h2>
+                <div class="reservation-links-content">
+                    <div class="res-item">
+                        <a href="availability.html" class="active"><i class="fa fa-check"></i></a>
+                        <p>Rezervasyon Talep Et</p>
+                    </div>
+                    <div class="res-item">
+                        <a href="/VIP/GetCustomerInfo?orderId=@Model.Id" class="active"><i class="fa fa-check"></i></a>
+                        <p>Rezervasyon tamamlandı</p>
+                    </div>
+                    <div class="res-item">
+                        <a href="#" class="active">3</a>
+                        <p>Ödeme</p>
+                    </div>
+                    <div class="res-item">
+                        <a href="#">4</a>
+                        <p>Onayla</p>
+                    </div>
+                </div>
+            </div>
+            <div class="booking">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="booking-content">
+                            <input type="hidden" value="@Model.Id" name="Id"/>
+                            <div class="card-info mar-top-50">
+                                <div class="form-title">
+                                    <span>2</span>
+                                    <h4 class="mar-bottom-30">ödeme Bilgileri</h4>
+                                </div>
+
+                                <div class="row">
+                                    @{
+                                        foreach (KeyValuePair<string, string> item in (List<KeyValuePair<string, string>>)ViewBag.PaymentType)
+                                        {
+                                            <div class="col-md-6">
+                                                <div class="form-group radio-group">
+                                                    <input name="PaymentType" @(item.Key == (Radyn.Reservation.Enum.PaymentType.Cash).ToString() ? "checked":"") value="@item.Key" type="radio">@item.Value @*Kredi Kartı ile*@
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                  
+                                    <div id="paymentform">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" placeholder="Kart Tipi">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" placeholder="Kart Numarası">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" placeholder="Kart Sahibinin Adı">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" placeholder="CVC">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <input type="text" placeholder="Vade Ayı">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <input type="text" placeholder="Son kullanma tarihi">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mar-top-15">
+                                        <div class="form-group mar-bottom-30">
+
+                                            <input type="checkbox"> Hükümlere ve koşullara katılıyorum
+                                        </div>
+                                        <div class="card-btn">
+                                            <input type="submit" class="btn btn-orange" value="Kayıt Etmek" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</form>
+
+<script>
+    $(function () {
+        $('input[name="PaymentType"]').on('change', function () {
+            if ($(this).val() == "Cash") {
+                $('#paymentform').hide('slow');
+            } else if ($(this).val() == "Credit") {
+                $('#paymentform').show('slow');
+            }
+        })
+    })
+</script>

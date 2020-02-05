@@ -1,0 +1,27 @@
+@using Radyn.Web.Mvc;
+@using Radyn.WebApp.Areas.Common.Component
+@model  Radyn.ContentManager.DataStructure.Container
+@{
+    ViewBag.Title = @Resources.Common.Detail + " " + @Resources.ContentManager.Container;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.Detail @Resources.ContentManager.Container}
+@section PageAction
+{
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Container").Area("ContentManager").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Container").Area("ContentManager").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    Html.RenderAction("GetDetail", "Container", new { area = "ContentManager", Id = ViewBag.Id });
+}

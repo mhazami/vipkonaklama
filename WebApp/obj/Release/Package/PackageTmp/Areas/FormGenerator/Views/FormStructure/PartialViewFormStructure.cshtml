@@ -1,0 +1,38 @@
+﻿@using System.Web.Mvc.Html
+@using Radyn.Web.Mvc;
+@model Radyn.FormGenerator.DataStructure.FormStructure
+
+@using (Html.BeginForm("GetFormStructure", "FormStructure", new { area = "FormGenerator" }))
+{
+   <input type="hidden" value="@Model.Id" name="formId" id="formId" />
+     <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.FormGenerator.Name
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.EditorFor(model => model.Name)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Enable
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.RadioButtonFor(model => model.Enable, true)@Resources.Common.Enable
+                    @Html.RadioButtonFor(model => model.Enable, false)@Resources.Common.Disable
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button-div m-btn waves-green i-save">
+         @{Html.Radyn().ImageActionLink().ActionName("ModifyFormStructure").ControllerName("FormStructure").Area("FormGenerator").Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).Callback().CallbackType(ImageActionLink.CallbackType.post).CallbackReturnFunction(" function (data){if(data!='false') {GetForms();} ShowRadynMessage(); } ").ImagePosition(ImageActionLink.Position.Right).Serialize("/FormGenerator/FormStructure/GetFormStructure", false).Render();}
+     </div>
+}

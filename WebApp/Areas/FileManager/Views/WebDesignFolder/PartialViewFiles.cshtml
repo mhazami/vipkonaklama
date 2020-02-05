@@ -1,0 +1,99 @@
+﻿@using Radyn.FileManager
+@using Radyn.Utility
+@model List<Radyn.FileManager.DataStructure.File>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#DivPathFolder").hide();
+        });
+        function GetPath(id, status) {
+            
+            var path = '';
+            $("#DivPathFolder").show();
+            if (status === 'path') {
+                $("#path").val('@Resources.FileManager.Path');
+                path = 'http://' + '@HttpContext.Current.Request.Url.Authority' + '@Radyn.Web.Mvc.UI.Application.CurrentApplicationPath' + '@FileManagerContants.FileHandlerRoot' + id;
+                $("#pathdownload").val(path);
+            }
+            if (status === 'download') {
+                $("#path").val('@Resources.FileManager.DownloadPath');
+                path = 'http://' + '@HttpContext.Current.Request.Url.Authority' + '@Radyn.Web.Mvc.UI.Application.CurrentApplicationPath' + '@FileManagerContants.FileHandlerRoot' + id + '?dl=true';
+                $("#pathdownload").val(path);
+            }
+
+        }
+        function DeleteFile(id) {
+            if (confirm('@Resources.Common.Are_You_Soure_For_Delete')) {
+                $.get("@Url.Content("~/FileManager/Folder/DeleteFile")", { Id: id, date: new Date().getTime() }, function (data) {
+                    if (data != "false") {
+                        GetFiles('@ViewBag.FolderId');
+                    }
+                    ShowRadynMessage();
+                });
+            }
+
+        }
+
+        function ClearPath() {
+            $("#DivPathFolder").hide();
+        }
+    </script>
+
+    <div class="gv-table fit">
+        <div class="gv-row gv-header">
+            <div class="gv-cell" style="width: 30%">
+                <div class="cell-item">
+                    @Resources.FileManager.File
+                </div>
+            </div>
+            <div class="gv-cell width18percent">
+                <div class="cell-item">
+                    @Resources.FileManager.SavaDate
+                </div>
+            </div>
+           
+        </div>
+        <div class="gv-content">
+            @{
+                int count = 0;
+                foreach (var valuePair in Model)
+                {
+                    count++;
+                    var i = count % 2;
+                    <div class="@(i == 0 ? "gv-row gv-row-style" : "gv-row gv-row-style gv-row-style-alt")">
+                        <div style="text-align: center; width: 30%" class="gv-cell">
+                            <div class="cell-item">
+                                <a style="cursor: pointer" href="@(FileManagerContants.FileHandlerRoot + "/" + DateTime.Now.Ticks + valuePair.Id + "?dl=true")">@valuePair.FullName</a>
+                            </div>
+                        </div>
+                        <div class="gv-cell width18percent">
+                            <div class="cell-item">
+                                @valuePair.SaveDate.ShamsiDate()
+                            </div>
+                        </div>
+                       <div class="gv-cell gv-cell-last width30percent">
+                            <div class="cell-item">
+                                <a style="cursor: pointer" onclick="GetFilesModal('@valuePair.Id','@ViewBag.FolderId')">@Resources.Common.Edit</a> |
+                                <a style="cursor: pointer" onclick="DeleteFile('@valuePair.Id')">@Resources.Common.Delete</a>|
+
+                                <a style="cursor: pointer" onclick="GetPath('@valuePair.Id','path')">@Resources.FileManager.Path</a> |
+                                <a style="cursor: pointer" onclick="GetPath('@valuePair.Id','download');">@Resources.FileManager.DownloadPath</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <div class="gv-row  gv-footer" style="height: 25px">
+            <div id="DivPathFolder" >
+                <div class="col-md-3 divpathfolder-title"  >
+                    <input type="text" id="path" style="" />
+
+                </div>
+                <div class="divpathfolder-content">
+                    <input type="text" id="pathdownload" />
+                    <img src="~/App_Themes/icon-delete.png" width="20" height="20" onclick="ClearPath();" />
+                </div>
+            </div>
+        </div>
+
+    </div>

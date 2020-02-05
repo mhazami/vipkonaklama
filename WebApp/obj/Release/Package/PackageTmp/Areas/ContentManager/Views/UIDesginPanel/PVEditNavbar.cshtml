@@ -1,0 +1,40 @@
+﻿<div class="fgitem width80percent" name="menu_@(ViewBag.CustomId+"_"+ViewBag.PartialId+"_"+ViewBag.htmlId)" Id="menu_@(ViewBag.CustomId+"_"+ViewBag.PartialId+"_"+ViewBag.htmlId)">
+
+    <ul>
+        <li class="hint--top edit-icon" data-hint="@Resources.Common.Edit">
+            <a href="#" onclick="LookUpEdit('@ViewBag.PartialId', '@ViewBag.CustomId')">
+                <img align="absmiddle" src="@Url.Content("~/Content/Images/edit-white.png")" />
+            </a>
+        </li>
+        <li class="hint--top delete-icon" data-hint="@Resources.Common.Delete">
+            <a href="#" onclick="Deletepartial('@ViewBag.PartialId', '@ViewBag.CustomId')">
+                <img align="absmiddle" src="@Url.Content("~/Content/Images/Delete-Close-white.png")" />
+            </a>
+        </li>
+        <li class="hint--top" data-hint="@Resources.FormGenerator.Down">
+            <a href="#" onclick="SwapControl('@ViewBag.PartialId', '@ViewBag.CustomId', 'Down')">
+                <img align="absmiddle" src="@Url.Content("~/Content/Images/down-arrow-white.png")" />
+            </a>
+        </li>
+        <li class="hint--top" data-hint="@Resources.FormGenerator.Up">
+            <a href="#" onclick="SwapControl('@ViewBag.PartialId', '@ViewBag.CustomId', 'Up')">
+                <img align="absmiddle" src="@Url.Content("~/Content/Images/up-arrow-white.png")" />
+
+            </a>
+        </li>
+        <li class="hint--top" data-hint="@Resources.FormGenerator.Up">
+            @Html.TextBox(((string)ViewBag.PartialId + "_" + (string)ViewBag.CustomId) + "_Customorder", "", new { Id = ((string)ViewBag.PartialId + "_" + (string)ViewBag.CustomId) + "_Customorder" })
+        </li>
+        <li class="hint--top" data-hint="@Resources.FormGenerator.GotoOrder">
+            <a href="#" onclick="GetOrder('@ViewBag.PartialId', '@ViewBag.CustomId')">
+                <img align="absmiddle" src="@Url.Content("~/Content/Images/go-icon.png")" />
+
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+
+
+

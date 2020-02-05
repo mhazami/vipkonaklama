@@ -1,0 +1,45 @@
+﻿@model Radyn.Comments.DataStructure.Comment
+
+
+
+
+<div class="item-row">
+
+    <div class="table-row-item table-fit">
+        <div class="item">
+            @Html.TextBoxFor(model => model.SenderName, new { placeholder = @Resources.Comment.Name })
+        </div>
+    </div>
+
+</div>
+
+<div class="item-row">
+
+    <div class="table-row-item table-fit">
+        <div class="item">
+            @Html.TextBoxFor(model => model.SenderEmail, new { placeholder = @Resources.Comment.Email })
+        </div>
+    </div>
+
+</div>
+
+
+<div class="item-row">
+
+    <div class="table-row-item table-fit">
+        <div class="item">
+            @Html.TextBoxFor(model => model.Subject, new { placeholder = @Resources.Comment.Subject })
+        </div>
+    </div>
+
+</div>
+
+<div class="item-row">
+
+    <div class="table-row-item table-fit">
+        <div class="item">
+            @Html.TextBoxFor(model => model.Content, new { placeholder = @Resources.Comment.Message })
+        </div>
+    </div>
+
+</div>

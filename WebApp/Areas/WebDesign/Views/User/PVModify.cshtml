@@ -1,0 +1,240 @@
+﻿@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp
+@using Radyn.WebApp.AppCode
+@using Radyn.WebApp.Areas.FormGenerator.Tools
+@using Radyn.WebApp.Areas.WebDesign.Tools
+
+@model Radyn.WebDesign.DataStructure.User
+<input type="hidden" value="@Model.Id" name="Id" id="Id" />
+@{
+    Html.PrepareModel();
+}
+
+    <div class="users-page full-size">
+
+    @if (this.Html.GetPageMode()!=PageMode.Create)
+    {
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.WebDesign.UserCode
+                </div>
+            </div>
+            <div class="table-row-item readonly">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Number)
+                </div>
+            </div>
+        </div>
+    }
+    <div class="item-input">
+        <div class="table-row-cap">
+            <div class="item">
+                <div style="float: right;color: red">
+                    *
+                </div>
+                <div style="float: right">
+                    @Resources.WebDesign.UserName
+                </div>
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Username)
+            </div>
+        </div>
+    </div>
+    @if (ViewBag.showpassword)
+    {
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    <div style="float: right;color: red">
+                        *
+                    </div>
+                    <div style="float: right">
+                        @Resources.WebDesign.Password
+                    </div>
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.PasswordFor(model => model.Password)
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    <div style="float: right;color: red">
+                        *
+                    </div>
+                    <div style="float: right">
+                        @Resources.WebDesign.RepeatPassword
+                    </div>
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.Password("RepeatPassword")
+                </div>
+            </div>
+        </div>
+    }
+    <div id="divEnterpriseNodeModify">
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    <div style="float: right;color: red">
+                        *
+                    </div>
+                    <div style="float: right">
+                        @Resources.EnterPriseNode.PrefixTitle
+                    </div>
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DropDownList("PrefixTitleId", (SelectList)ViewBag.PrefixTitleList, "")
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    <div style="float: right;color: red">
+                        *
+                    </div>
+                    <div style="float: right">
+                        @Resources.EnterPriseNode.FirstName
+                    </div>
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBox("FirstName", Model.EnterpriseNode.RealEnterpriseNode.FirstName)
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    <div style="float: right;color: red">
+                        *
+                    </div>
+                    <div style="float: right">
+                        @Resources.EnterPriseNode.LastName
+                    </div>
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBox("LastName", Model.EnterpriseNode.RealEnterpriseNode.LastName)
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    <div style="float: right;color: red">
+                        *
+                    </div>
+                    <div style="float: right">
+                        @Resources.EnterPriseNode.Gender
+                    </div>
+                </div>
+            </div>
+            <div class="table-row-item drp ">
+                <div class="item">
+                    @Html.RadioButton("Gender", true, Model.EnterpriseNode.RealEnterpriseNode.Gender != null && (bool)Model.EnterpriseNode.RealEnterpriseNode.Gender) @Resources.EnterPriseNode.Male
+                    @Html.RadioButton("Gender", false, Model.EnterpriseNode.RealEnterpriseNode.Gender != null && (bool)!Model.EnterpriseNode.RealEnterpriseNode.Gender)@Resources.EnterPriseNode.Female
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    <div style="float: right;color: red">
+                        *
+                    </div>
+                    <div style="float: right">
+                        @Resources.EnterPriseNode.NationalCode
+                    </div>
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBox("NationalCode", Model.EnterpriseNode.RealEnterpriseNode.NationalCode != null ? Model.EnterpriseNode.RealEnterpriseNode.NationalCode.Trim() : "")
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    <div style="float: right;color: red">
+                        *
+                    </div>
+                    <div style="float: right">
+                        @Resources.EnterPriseNode.Email
+                    </div>
+                </div>
+            </div>
+            @if (Model != null && string.IsNullOrEmpty(Model.EnterpriseNode.Email))
+            {
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.TextBox("Email")
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="table-row-item readonly">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.EnterpriseNode.Email)
+                        <input type="hidden" name="Email" id="Email" value="@Model.EnterpriseNode.Email" />
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    <div style="float: right;color: red">
+                        *
+                    </div>
+                    <div style="float: right">
+                        @Resources.EnterPriseNode.Cellphone
+                    </div>
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBox("Cellphone", Model.EnterpriseNode.Cellphone)
+                </div>
+            </div>
+        </div>
+        <div class="item-input file-upload">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.Picture
+                    <span>
+                        @Resources.EnterPriseNode.MaxFileLength (200KB)
+                    </span>
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit ">
+                <div class="item">
+                    @{
+                        Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "PictureId", showimage = true, fileid = Model.EnterpriseNode.PictureId, fileName = "Image" });
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-generator">
+        @{
+            Html.FormGenerator(AppExtention.WebSiteMoudelName + "-/WebDesign/Userpanel/Complete", Model.GetType().Name, Model.Id.ToString());
+        }
+    </div>
+</div>

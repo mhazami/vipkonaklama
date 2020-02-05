@@ -1,0 +1,50 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.WebApp
+@model Radyn.PhoneBook.DataStructure.PersonPhone
+<script type="text/javascript">
+    function PostPhoneData() {
+        $.post("/PhoneBook/PersonPhone/AddPhone", $('form[action^="/PhoneBook/PersonPhone/AddPhone"]').serialize(), function (data) {
+            if (data != "false") {
+                $("#divPersonphone").html("");
+                GetPhoneList();
+            }
+            ShowRadynMessage();
+        });
+    }
+</script>
+@Html.HiddenFor(x => x.PersonId)
+<div class="fit">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.PhoneBook.TelNumber
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.TextBoxFor(model => model.TelNumber, new { })
+
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.PhoneBook.PhoneType
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item drp">
+                @Html.DropDownListFor(model => model.PhoneTypeId, (SelectList)ViewBag.PhoneType)
+            </div>
+        </div>
+    </div>
+<div class="item-row fit">
+    <div class="button-div m-btn waves-green i-save">
+        @{ Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "PostPhoneData();" }).Render(); }
+    </div>
+    </div>
+
+
+
+</div>

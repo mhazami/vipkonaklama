@@ -1,0 +1,56 @@
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+
+@model IEnumerable<Radyn.Slider.DataStructure.Slide>
+@{
+    ViewBag.Title = Resources.Slider.SliderList;
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+   @Resources.Slider.SliderList
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+        @{ Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebDesignSlide").Area("Slider").Text(Resources.Slider.SliderNew).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render(); }
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+        @{ Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebDesignSlide").Area("Slider").Text(Resources.Slider.SliderNew).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render(); }
+
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <div class="radynForm">
+        <div class="fit">
+            @{
+                Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                {
+                    columns.Template(slide => slide.Title).Title(Resources.Slider.Title).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(slide => slide.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(Resources.Common.Enable).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(resource =>
+                        "<a style='cursor: pointer;'  href='" + Url.Content("~/Slider/SlideItem/Index?slideId=" + resource.Id + "&externalurl=" + Url.Content("~/Slider/WebDesignSlide/Index")) + "'>" +
+                        " <img width='18' align='absmiddle' title='" + Resources.Slider.SlideItem + "' src='" + Url.Content("/Content/Images/gallery.png") + "' />" + "</a> | " +
+                    "<a style='cursor: pointer;'  href='" + Url.Content("~/Slider/WebDesignSlide/Details?Id=" + resource.Id) + "'>" +
+                             " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                             "<a style='cursor: pointer;'  href='" + Url.Content("~/Slider/WebDesignSlide/Edit?Id=" + resource.Id) + "'> " +
+                             " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                             "<a style='cursor: pointer;'  href='" + Url.Content("~/Slider/WebDesignSlide/Delete?Id=" + resource.Id) + "'> " +
+                             " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a>").Width(300).Filterable(false).Encode(false);
+                })
+  .Sortable(sorting => sorting.Enabled(true))
+  .Pageable(paging => paging.Enabled(true))
+  .Filterable(filtering => filtering.Enabled(true))
+  .Footer(false).Render();}
+
+        </div>
+    </div>
+     
+}
+

@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "دفترچه تلفن";
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+@section Head{
+    <script>
+
+        $(function () {
+            $('#txtSerachPerson').focus();
+            $('#txtSerachPerson').on('input',
+                function () {
+                    var value = $(this).val();
+                    if (value != "" && value != undefined && value.length > 2)
+                    {
+                        ShowPostBackLoader();
+                        $("#div-table-person").html("");
+                        $.post("@Url.Content("~/PhoneBook/UIPanel/GetIndex")", { txtsearch: $(this).val() }, function (data) {
+                            if (data != "false") {
+                                $("#div-table-person").html(data);
+                                $("#div-table-person").slideDown();
+
+                            }
+                            ShowRadynMessage();
+                        }).complete(function () {
+                            HidePostBackLoader();
+
+                        });
+
+
+
+                    } else {
+                        $("#div-table-person").html("");
+                    }
+                });
+        })
+    </script>
+
+}
+
+
+
+<div class="phone-book-box user-panel">
+    <div class="header-contacts">
+        <div class="container">
+            <ul>
+                <li>
+                    <i class="fas fa-address-book"></i>
+                </li>
+                <li>
+                    <span>مخاطبین</span>
+                </li>
+
+            </ul>
+
+            <div class="search-box">
+                <div class="search-box-input">
+                    @Html.TextBox("txtSerachPerson")
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="content-search">
+            <div id="div-table-person">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

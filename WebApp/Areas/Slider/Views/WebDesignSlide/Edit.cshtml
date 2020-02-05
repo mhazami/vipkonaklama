@@ -1,0 +1,50 @@
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+@model Radyn.Slider.DataStructure.Slide
+@{
+    ViewBag.Title = Resources.Common.Edit;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+
+}
+@section PageTitle
+{
+    @Resources.Common.Edit
+}
+@section PageAction
+{
+<div class="button-div m-btn waves-green">
+    <i class="fas fa-save"></i>
+    @{ Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("WebDesignSlide").Area("Slider").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+</div>
+    <div class="button-div">
+    @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebDesignSlide").Area("Slider").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{ Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("WebDesignSlide").Area("Slider").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+    <div class="button-div">
+    @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebDesignSlide").Area("Slider").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    Html.RenderAction("GetModify", "Slide", new {Id = ViewBag.Id, area = "Slider"});
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.WebDesign.UseFor
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.DropDownList("Selected", (SelectList)ViewBag.Sliders, "")
+            </div>
+        </div>
+    </div>
+}

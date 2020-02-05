@@ -1,0 +1,12 @@
+E:\Online-WorkSpace\vipkonaklama\FormGenerator\obj\Debug\FormGenerator.csprojAssemblyReference.cache
+E:\Online-WorkSpace\vipkonaklama\FormGenerator\obj\Debug\Radyn.FormGenerator.Resources.FormGenerator.resources
+E:\Online-WorkSpace\vipkonaklama\FormGenerator\obj\Debug\Radyn.FormGenerator.Resources.FormGenerator.fa-IR.resources
+E:\Online-WorkSpace\vipkonaklama\FormGenerator\obj\Debug\FormGenerator.csproj.GenerateResource.cache
+E:\Online-WorkSpace\vipkonaklama\FormGenerator\obj\Debug\FormGenerator.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.FormGenerator.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.FormGenerator.pdb
+E:\Online-WorkSpace\vipkonaklama\lib\fa-IR\Radyn.FormGenerator.resources.dll
+E:\Online-WorkSpace\vipkonaklama\FormGenerator\obj\Debug\fa-IR\Radyn.FormGenerator.resources.dll
+E:\Online-WorkSpace\vipkonaklama\FormGenerator\obj\Debug\FormGenerator.csproj.CopyComplete
+E:\Online-WorkSpace\vipkonaklama\FormGenerator\obj\Debug\Radyn.FormGenerator.dll
+E:\Online-WorkSpace\vipkonaklama\FormGenerator\obj\Debug\Radyn.FormGenerator.pdb

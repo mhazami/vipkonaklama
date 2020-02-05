@@ -1,0 +1,83 @@
+﻿@using Radyn.Help.DataStructure
+
+@using Radyn.Web.Mvc;
+@model Help
+@{
+    ViewBag.Title = @Resources.Common.Edit + " " + @Resources.Help.HelpName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.Edit @Resources.Help.HelpName
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("Help").Area("Help").Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Help").Area("Help").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("Help").Area("Help").Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Help").Area("Help").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@{Html.Radyn().Theme("RadynEditor").Render(); }
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Help.HelpDefaultTitle
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.EditorFor(model => model.DefaultTitle)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Status
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+                    @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap table-c-auto">
+                <div class="item">
+                    @Resources.Help.HelpDefaultConent
+                </div>
+            </div>
+            <div class="table-row-item table-c-auto table-fit">
+                <div class="item">
+
+                    @{
+                        Html.Radyn().EditorbootstrapFor(Model, i => i.DefaultConent).Render();
+                    }
+                    
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

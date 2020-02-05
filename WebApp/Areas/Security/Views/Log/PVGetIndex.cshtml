@@ -1,0 +1,36 @@
+﻿@using Radyn.Framework
+@using Radyn.Web.Mvc
+@model IEnumerable<Tracker>
+
+
+
+    <div class="radynForm">
+        @{Html.Radyn().Grid(Model).Name("LogGrid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+              {
+                  columns.Template(x => x.ObjectName).Title(@Resources.Security.TableName).Width(250).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(x => x.FieldDesc).Title(Resources.Security.Title).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(x =>(x.OldVal == Guid.Empty.ToString()) ? "" : x.OldVal).Title("از");
+                  columns.Template(x =>  (x.NewValue == Guid.Empty.ToString()) ? "" : x.NewValue).Title("به");
+                  columns.Template(x => x.IpAddress).Title(Resources.Security.IPAddress).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(x => x.UserName).Title(Resources.Security.User).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(x => x.Date).Title(Resources.Security.Date).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(x => x.Time).Title(Resources.Security.Time).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(x => x.Operation).Title(Resources.Security.Operation).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+
+
+
+                
+              })
+
+                                          .Sortable(sorting => sorting.Enabled(true))
+                                          .Pageable(paging => paging.Enabled(true))
+                                          .Filterable(filtering => filtering.Enabled(true))
+                                          //.Footer(true)
+                                          .Render();
+        }
+    </div>
+
+
+
+
+

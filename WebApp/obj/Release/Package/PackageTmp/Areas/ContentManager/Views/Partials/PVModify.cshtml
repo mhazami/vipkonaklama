@@ -1,0 +1,89 @@
+﻿@model Radyn.ContentManager.DataStructure.Partials
+@Html.ValidationSummary(true)
+<div >
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Title
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Title)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Enable
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+                @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Url
+            </div>
+        </div>
+        <div class="table-row-item table-fit">
+            <div class="item">
+                @Html.EditorFor(model => model.Url)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Operation
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.DropDownListFor(content => content.OperationId, (SelectList)ViewBag.Operations)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Container
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.DropDownListFor(content => content.ContainerId, (SelectList)ViewBag.Containers, "")
+            </div>
+        </div>
+    </div>
+    <div class="item-row file-upload">
+        <div class="table-row-cap ">
+            <div class="item">
+                تصویر پیش فرض
+              
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                  
+
+                @{
+                    Html.RenderAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "Image", fileid = Model.Image, fileName = "ImagePartials" });
+
+                }
+
+
+                @if (Model == null || string.IsNullOrEmpty(Model.Image))
+                {
+                    <input type="hidden" id="Image" name="Image" value="" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

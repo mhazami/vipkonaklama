@@ -1,0 +1,114 @@
+@using Radyn.Security.DataStructure
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@using Radyn.Web.Mvc.Utility
+
+@model Operation
+@{
+    ViewBag.Title = @Resources.Common.Edit + " " + @Resources.Security.OperationName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.Edit @Resources.Security.Operation
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("Operation").Area("Security").Text(@Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Operation").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("Operation").Area("Security").Text(@Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Operation").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+
+}
+
+@using (Html.BeginForm())
+{
+
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.OperationTitle
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.EditorFor(model => model.Title)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.MenuOrder
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.EditorFor(model => model.Order)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.OperationEnabled
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+                    @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Status
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.RadioButtonFor(model => model.Expand, true)@Resources.Common.Open
+                    @Html.RadioButtonFor(model => model.Expand, false)@Resources.Common.Close
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.Security.OprationIcon
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @{
+                        Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "LogoId", showimage = true, fileid = Model.LogoId, fileName = "OprationIcon" });
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

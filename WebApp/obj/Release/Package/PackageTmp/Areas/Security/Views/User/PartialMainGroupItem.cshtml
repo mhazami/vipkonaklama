@@ -1,0 +1,78 @@
+﻿@using Radyn.FileManager
+@model IEnumerable<dynamic>
+    <script type="text/javascript">
+        function ExpandGroup(groupId) {
+            var val = $("#Group-" + groupId).attr("opid");
+            $.get("@Url.Content("~/Security/User/GetOperationMenuByGroup")", { operationId: val, groupId: groupId, id: new Date().getTime() }, function (data) {
+                if (data != "") {
+                    $("#navg-" + groupId).hide();
+                    $("#navg-" + groupId).html(data);
+                    $("#navg-" + groupId).hide();
+                    $("#navg-" + groupId).slideDown(800);
+                }
+                else {
+                    ShowRadynMessage();
+                }
+            });
+        }
+        function GetGroupNull() {
+
+            $.get("@Url.Content("~/Security/User/GetOperationMenuNoGroup")", { operationId: '@ViewBag.OpId', id: new Date().getTime() }, function (data) {
+                if (data != "") {
+                    $("#DivMenuWithoutGroup").hide();
+                    $("#DivMenuWithoutGroup").html(data);
+                    $("#DivMenuWithoutGroup").hide();
+                    $("#DivMenuWithoutGroup").slideDown(800);
+                }
+                else {
+                    ShowRadynMessage();
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            GetGroupNull();
+            $("[id^='Group-']").click(function (e) {
+                //stop run other function
+                e.stopImmediatePropagation();
+                var id = $(this).attr("id").replace("Group-", "");
+                if ($('#navg-' + id).is(":hidden")) {
+                    ExpandGroup(id);
+                }
+                else {
+                    $('#navg-' + id).slideUp(700);
+                }
+            });
+        });
+
+    </script>
+    @foreach (var menuGroup in Model)
+    {
+        <ul id='Group-@menuGroup.Id' class="list-nav main-nav" opid="@menuGroup.OperationId">
+            <li>
+                <a href="">
+
+                    <div class="img-nav">
+                        @if (menuGroup.ImageId != null)
+                        {
+                            Html.RadynFile().Image().ID((Guid)menuGroup.ImageId).Render();
+                        }
+                        else
+                        {
+                            <img />
+                        }
+                    </div>
+                    <span>
+                        @menuGroup.Name
+                    </span>
+                </a>
+            </li>
+            <li id="navg-@menuGroup.Id" opid="@menuGroup.OperationId" style="display: none">
+            </li>
+        </ul>
+
+    }
+    <div id="DivMenuWithoutGroup">
+
+    </div>
+

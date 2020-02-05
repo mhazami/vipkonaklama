@@ -1,0 +1,100 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.Utility
+@using Radyn.WebApp.Areas.WebDesign.Tools
+@{
+    ViewBag.Title = Resources.Common.Edit;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@section Head{
+    <script type="text/javascript">
+
+        $(document)
+            .ready(function () {
+                ChangeForUser('@ViewBag.IsForUser');
+                $("#UseFor").val('@AppExtention.WebSiteMoudelName' + '-' + '@ViewBag.url');
+
+
+            });
+
+        function ChangeForUser(r) {
+            var val = "";
+            if (r === "True" || r === "False") {
+                val = r;
+            } else {
+                val = r.defaultValue;
+            }
+
+            if (val === "True") {
+                $("#DivDrpUrl").fadeOut();
+                $("#Selected").val("");
+            } else if (val === "False") {
+
+                $("#DivDrpUrl").fadeIn();
+            }
+        }
+
+
+    </script>
+
+}
+@section PageTitle
+{
+    @Resources.Common.Edit
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{ Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("WebDesignForms").Area("FormGenerator").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebDesignForms").Area("FormGenerator").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{ Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("WebDesignForms").Area("FormGenerator").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebDesignForms").Area("FormGenerator").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+<div class="radynForm">
+    @using (Html.BeginForm())
+    {
+
+        Html.RenderAction("FormStructureModify", "FormStructure", new { Id = ViewBag.Id, area = "FormGenerator", menuurl = "/ContentManager/WebDesignMenu/LookUpMenu" });
+        <div class="item-row" id="DivDrpUrl">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.WebDesign.UseFor
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DropDownList("Selected", (SelectList)ViewBag.Datas, Resources.WebDesign.None)
+                </div>
+            </div>
+
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    تخصیص به کاربر
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+
+                    @Html.RadioButton("ForUser", true, ((bool)ViewBag.IsForUser), new { @onchange = "ChangeForUser(this)" })@Resources.Common.Yes
+                    @Html.RadioButton("ForUser", false, ((bool)ViewBag.IsForUser) == false, new { @onchange = "ChangeForUser(this)" })@Resources.Common.No
+                </div>
+            </div>
+        </div>
+    }
+</div>

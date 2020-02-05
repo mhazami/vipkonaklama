@@ -1,0 +1,117 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc
+@model Radyn.Payment.DataStructure.Transaction
+@{
+    ViewBag.Title = @Resources.Payment.TransactionResult;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head
+{}
+@Html.ValidationSummary(true)
+<div class="radynForm">
+    <div class="fit">
+        <div class="radynForm">
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.TransactionResult
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @ViewBag.Message
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.TransactionCode
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Model.RefId
+                    </div>
+                </div>
+            </div>
+            @if (Model.SaleReferenceId!=null)
+            {
+                <div class="item-row">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.Payment.SaleRefrence
+                        </div>
+                    </div>
+                    <div class="table-row-item">
+                        <div class="item">
+                            @Model.SaleReferenceId
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.SaleTrackingId!=null)
+            {
+                <div class="item-row">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.Payment.SaleTracking
+                        </div>
+                    </div>
+                    <div class="table-row-item">
+                        <div class="item">
+                            @Model.SaleTrackingId
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.OnlineBankId.HasValue)
+            {
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.Bank
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @(Model.OnlineBankId.ToString().ToEnum<Radyn.PaymentGateway.Tools.Enums.Bank>().GetDescription())
+                    </div>
+                </div>
+            </div>
+            }
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.PayerTitle
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.PayerName, new { style = "width:250px" })
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Common.Total @Resources.Payment.Amount
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Model.Amount.ToString("n0") @(((Radyn.Common.Definition.Enums.CurrencyType)Model.CurrencyType).GetDescriptionInLocalization())
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="fit">
+        <div class="button-div leftFloat">
+            @{Html.Radyn().ImageActionLink().Text(@Resources.Payment.Continue).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("/Areas/Payment/Content/Images/continue.png")).ImagePosition(ImageActionLink.Position.Right).NavigateUrl(Url.Content("~" + Model.CallBackUrl)).Render();}
+        </div>
+    </div>
+</div>
+

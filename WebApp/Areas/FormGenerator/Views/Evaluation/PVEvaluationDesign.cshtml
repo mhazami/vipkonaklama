@@ -1,0 +1,110 @@
+﻿@model Radyn.FormGenerator.DataStructure.FormEvaluation
+<script type="text/javascript">
+    $(document).ready(function () {
+        GenerateValues(false, "@Model.ControlId");
+    });
+    function GenerateValues(isnew, controlId) {
+        debugger;
+        $("#" + "DivValues-" + controlId).html("");
+        var calAhp = $("#CalAHP").val();
+        var count = null;
+        var minScale = null;
+        var maxScale = null;
+        if (calAhp == "True") {
+            count = $("#" + "OpinionCount-" + controlId).val();
+            minScale = $("#" + "MinScale-" + controlId).val();
+            maxScale = $("#" + "MaxScale-" + controlId).val();
+        }
+        $.get('/FormGenerator/Evaluation/GenerateEvaluation', { Id: controlId, count: count, minvalue: minScale, maxvalue: maxScale, newGenerate: isnew, culture:'@ViewBag.Langid', date: new Date().getTime() }, function (data) {
+            if (data != "false") {
+                $("#" + "DivValues-" + controlId).html(data).hide();
+                $("#" + "DivValues-" + controlId).fadeIn("slow");
+            }
+
+        });
+    }
+
+</script>
+
+
+<input type="hidden" name="ControlId" id="ControlId" value="@Model.ControlId" />
+<input type="hidden" name="CalAHP" id="CalAHP" value="@ViewBag.CalAHP.ToString()" />
+<div class="fitper">
+    <div class="fitpx" style="display: none">
+        <div class="form-column">
+            <div class="item">
+                وزن:
+            </div>
+        </div>
+        <div class="form-column-item">
+            <div class="item drp" style="font-weight: 600;width: 150px" id="Weight-@Model.ControlId">
+                @Model.Weight
+            </div>
+        </div>
+    </div>
+    @if (ViewBag.CalAHP)
+    {
+        <div class="fitpx">
+            <div class="form-column">
+                <div class="item">
+                    تعداد نظرات:
+                </div>
+            </div>
+            <div class="form-column-item">
+                <div class="item">
+                    @Html.TextBox("OpinionCount-" + Model.ControlId, Model.OpinionCount, new { Id = "OpinionCount-" + Model.ControlId })
+                </div>
+            </div>
+        </div>
+        if (ViewBag.FromScale)
+        {
+            <div>
+                <div class="fitper">
+                    <div class="form-column">
+                        <div class="item">
+                            رنج پایین:
+                        </div>
+                    </div>
+                    <div class="form-column-item">
+                        <div class="item">
+                            @Html.TextBox("MinScale-" + Model.ControlId, Model.MinScale, new { Id = "MinScale-" + Model.ControlId })
+                        </div>
+                    </div>
+                </div>
+                <div class="fitper">
+                    <div class="form-column">
+                        <div class="item">
+                            رنج بالا:
+                        </div>
+                    </div>
+                    <div class="form-column-item">
+                        <div class="item">
+                            @Html.TextBox("MaxScale-" + Model.ControlId, Model.MaxScale, new { Id = "MaxScale-" + Model.ControlId })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div>
+            <div class="form-column">
+                <div class="item">
+                    نظرات:
+                </div>
+            </div>
+            <div class="form-column-item">
+                <div class="item form-button">
+                    <input type="button" onclick="GenerateValues(true,'@Model.ControlId') " value="تولید نظرات" />
+                </div>
+            </div>
+            <div id="DivValues-@Model.ControlId">
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div id="DivValues-@Model.ControlId">
+        </div>
+    }
+</div>
+

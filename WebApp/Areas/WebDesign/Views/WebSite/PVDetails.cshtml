@@ -1,0 +1,47 @@
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp
+@model Radyn.WebDesign.DataStructure.WebSite
+
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="fit item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.WebDesign.Title
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(x => x.Title)
+
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.WebDesign.InstallPath
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.InstallPath)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Enable
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @(Model.Enabled ? @Resources.Common.Enable : @Resources.Common.Disable)
+                </div>
+            </div>
+        </div>
+    </div>
+@{
+    Html.RadynAction("GetIndex", "WebSiteAlias", new { area = "WebDesign", WebSiteId = Model.Id, status = PageMode.Details });
+}

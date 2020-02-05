@@ -1,0 +1,32 @@
+@using Radyn.Web.Mvc;
+@model Radyn.Common.DataStructure.Country
+@{
+    ViewBag.Title = Resources.Common.Delete;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle{
+    @Resources.Common.Delete
+}
+@section PageAction {
+    <div class="button-div m-btn waves-red i-delete">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Delete).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Common/Country/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div m-btn waves-red i-delete">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Delete).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Common/Country/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    Html.RenderAction("GetDetail", "Country", new { area = "Common", Id = ViewBag.Id });
+
+}
+

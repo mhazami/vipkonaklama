@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{46953CE7-5185-464D-9DB4-3BCB91BD04A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.EnterpriseNode</RootNamespace>
+    <AssemblyName>Radyn.EnterpriseNode</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\EnterpriseNodeBO.cs" />
+    <Compile Include="BO\EnterpriseNodeTypeBO.cs" />
+    <Compile Include="BO\LegalEnterpriseNodeBO.cs" />
+    <Compile Include="BO\PrefixTitleBO.cs" />
+    <Compile Include="BO\RealEnterpriseNodeBO.cs" />
+    <Compile Include="CacheManager.cs" />
+    <Compile Include="DAL\PrefixTitleDA.cs" />
+    <Compile Include="DataStructure\PrefixTitle.cs" />
+    <Compile Include="EnterpriseNodeBaseFacade.cs" />
+    <Compile Include="DAL\EnterpriseNodeDA.cs" />
+    <Compile Include="DAL\EnterpriseNodeTypeDA.cs" />
+    <Compile Include="DAL\LegalEnterpriseNodeDA.cs" />
+    <Compile Include="DAL\RealEnterpriseNodeDA.cs" />
+    <Compile Include="DataStructure\EnterpriseNode.cs" />
+    <Compile Include="DataStructure\EnterpriseNodeType.cs" />
+    <Compile Include="DataStructure\LegalEnterpriseNode.cs" />
+    <Compile Include="DataStructure\RealEnterpriseNode.cs" />
+    <Compile Include="EnterpriseNodeComponent.cs" />
+    <Compile Include="Facade\Interface\IPrefixTitleFacade.cs" />
+    <Compile Include="Facade\PrefixTitleFacade.cs" />
+    <Compile Include="Resources\EnterpriseNode.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnterpriseNode.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Enums.cs" />
+    <Compile Include="Facade\EnterpriseNodeFacade.cs" />
+    <Compile Include="Facade\EnterpriseNodeTypeFacade.cs" />
+    <Compile Include="Facade\Interface\IRealEnterpriseNodeFacade.cs" />
+    <Compile Include="Facade\Interface\ILegalEnterpriseNodeFacade.cs" />
+    <Compile Include="Facade\Interface\IEnterpriseNodeFacade.cs" />
+    <Compile Include="Facade\Interface\IEnterpriseNodeTypeFacade.cs" />
+    <Compile Include="Facade\LegalEnterpriseNodeFacade.cs" />
+    <Compile Include="Facade\RealEnterpriseNodeFacade.cs" />
+    <Compile Include="Tools\Extentions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{3B7185A9-70D1-4CBE-9835-88944BF9384C}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileManager\FileManager.csproj">
+      <Project>{189D7172-B237-4AFA-A5AA-105AA7693637}</Project>
+      <Name>FileManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\EnterpriseNode.fa-IR.resx" />
+    <EmbeddedResource Include="Resources\EnterpriseNode.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnterpriseNode.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

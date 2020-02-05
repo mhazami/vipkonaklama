@@ -1,0 +1,70 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.WebApp
+@model Radyn.WebDesign.DataStructure.User
+@{
+    ViewBag.Title = Resources.WebDesign.SubscribeComplete;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+        function CompleteUser() {
+            ShowPostBackLoader();
+                var pathname = window.location.pathname; // Returns path only
+                $.post("@Url.Content("~/WebDesign/UserPanel/Complete")", $('form[action^="' + pathname + '"]').serialize(), function (data) {
+                if (data != "false") {
+
+                }
+                ShowRadynMessage();
+            }).complete(function () {
+                HidePostBackLoader();
+            });
+
+        }
+        $(document).ready(function () {
+            getPartial("@Url.Content("~/WebDesign/User/GetModify")", {Id: '@ViewBag.Id', status: '@PageMode.Edit' }, "DivItem");
+           
+
+        });
+    </script>
+}
+<div class="container-hd users-page">
+    <div class="widget">
+
+
+        <div class="container-header widget-title">
+            <div class="container-header-item">
+                <span>@Resources.WebDesign.User @Resources.Common.New</span>
+
+            </div>
+        </div>
+        <div class="container-box widget-content">
+            @using (Html.BeginForm())
+            {
+                <div id="DivItem"></div>
+                <div>
+                    <div class="table-row-cap ">
+                        <div class="item">
+                            @Resources.Common.PleaseEnterTheText
+                        </div>
+                    </div>
+                    <div class="table-row-item ">
+                        <div class="item">
+                            @{Html.Radyn().Captcha().Render(); }
+                            <div class="fit">
+                                <input type="text" class="captcha" name="captch" value="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fit">
+
+                    <div class="button" id="BtnSave">
+                        <input type="button" class="btn-save" onclick="CompleteUser();" value="@Resources.Common.Save" />
+                    </div>
+                </div>
+
+                                }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,143 @@
+﻿@using Radyn.News.DataStructure
+@using Radyn.Web.Mvc;
+@using Radyn.Web.Mvc.Utility
+
+@model News
+@*<script src="~/Scripts/jquery-1.10.1.min.js"></script>*@
+<script type="text/javascript">
+    function changeCulture() {
+        var culid = document.getElementById("LanguageId").value;
+        $.get("/News/NewsContent/ChangeCulture", { newsid: '@Model.Id', langid: culid, date: new Date().getTime() }, function (data) {
+            $("#NewsContent").html(data);
+
+        });
+    }
+    $.get("/News/NewsContent/Modify", { state: "Modify", newsid: '@Model.Id', date: new Date().getTime() }, function (data) {
+        $("#NewsContent").html(data);
+
+    });
+
+    @*$.get("/News/NewsProperty/Modify", { state: "Modify", newsid: '@Model.Id', id: new Date().getTime() }, function (data) {
+        $("#NewsProperty").html(data);
+    });*@
+
+
+
+</script>
+
+<style>
+    body {
+        background-color: #FDFDFD;
+        color: #000000;
+        font-family: Vazir;
+        font-size: 12px;
+    }
+</style>
+<div class="radynForm">
+    <div id="NewsContent">
+    </div>
+    <div id="NewsProperty">
+    </div>
+    <div class="item-row fit">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.News.NewsThumbnailId
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @{
+                        Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "ThumbnailId", fileid = Model.ThumbnailId, fileName = "NewsImage" });
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-row-roller " onclick="slide('Advanced-Settings');">
+        <div class="item">
+            تنظیمات
+        </div>
+    </div>
+    <div class="accordion-content" id="Advanced-Settings">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.News.NewsPublishDate
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item date-picker">
+                    @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.PublishDate).Render();}
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.News.NewsPublishTime
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBoxFor(model => model.PublishTime, new { })
+                </div>
+            </div>
+        </div>
+        <div class="item-row" style="display: none">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.News.NewsNewsCategoryId
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DropDownListFor(model => model.NewsCategoryId, (SelectList)ViewBag.NewsCategory)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.News.Enabled
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+                    @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.News.Pined
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.RadioButtonFor(model => model.Pined, true)@Resources.Common.Yes
+                    @Html.RadioButtonFor(model => model.Pined, false)@Resources.Common.No
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    کامنت
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.RadioButtonFor(model => model.GetComment, true)@Resources.Common.Enable
+                    @Html.RadioButtonFor(model => model.GetComment, false)@Resources.Common.Disable
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,24 @@
+﻿@using Radyn.Gallery.DataStructure
+@model Gallery
+@{
+    ViewBag.Title = ViewBag.Category;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+@section Head{
+}
+<div class="internal-page-head">
+    <div class="text-header">
+        <div>
+            <h3>  @ViewBag.Category</h3>
+        </div>
+    </div>
+</div>
+
+
+<div class="internal-page-content galley-form">
+    <div id="myGallery" class="spacegallery">
+        @{
+            Html.RenderAction("GetNewImageSlider", "Photo", new { galleryId = Model.Id, area = "Gallery" });
+        }
+    </div>
+</div>

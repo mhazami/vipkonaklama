@@ -1,0 +1,37 @@
+﻿@using Radyn.FileManager
+@using Radyn.Web.Mvc.Utility
+@model Radyn.News.DataStructure.News
+@{
+    ViewBag.Title = Model.NewsContent.Title1;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+@section Head{}
+<div class="container-hd" >
+    
+    <div class="container-box" style="padding: 0">
+        <div class="news-content" style="min-height: 600px;">
+            <div class="article-board">
+                @if (Model.ThumbnailId.HasValue)
+                {
+                    Html.RadynFile().Image().ID(Model.ThumbnailId.Value).Height(160).Width(240).OtherAttribute(new { style = "float:right; margin-left:10px;" }).Render();
+                }
+                <div class="article-box" style="border: none;">
+                    <div class="article-box-title">
+                        @Model.NewsContent.Title1
+                     
+                    </div>
+                    <br />
+                    <div class="article-box-lead">
+                        @Model.NewsContent.Lead
+                    </div>
+                    <br />
+                    <div class="article-text">
+                        @{Html.HtmlEncoder(Model.NewsContent.Body);}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,147 @@
+﻿@using Radyn.Utility
+@model Radyn.Payment.DataStructure.DiscountType
+           <script type="text/javascript">
+    $(document).ready(function() {
+        AutoCodeGenerateChange('@Model.IsAutoCode');
+    });
+    function AutoCodeGenerateChange(value) {
+        if (value == "True") {
+            GetModelAuotoCode();
+        } else {
+            GetFixCode();
+        }
+    }
+
+    function GetFixCode() {
+        $("#DivAutoCode").hide();
+        $("#DivFixCode").show();
+        $("#CodeList").html("");
+    }
+    function GetModelAuotoCode() {
+        $("#DivAutoCode").show();
+        $("#DivFixCode").hide();
+        $("#CodeList").html("");
+        $.get("/Payment/DiscountType/GetModelAuotocode", { discounttypeId:'@Model.Id',  date: new Date().getTime() }, function (data) {
+            if (data != "false") {
+                $("#CodeList").html(data).slideDown("slow");;
+            }
+        });
+    }
+</script>
+    <div class="fit">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.Title
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(m => m.Title);
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.DiscountValue
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Model.ValidValue @(Model.IsPercent?"%":Model.CurrencyType.ToEnum<Radyn.Common.Definition.Enums.CurrencyType>().GetDescriptionInLocalization())
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Enable
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit drp">
+                <div class="item">
+                    @(Model.Enabled ? @Resources.Common.Enable : @Resources.Common.Disable)
+                </div>
+            </div>
+        </div>
+         <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.EffectType
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @(Model.IsPercent ? @Resources.Payment.Percent : @Resources.Payment.AmontValue)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.ISForceAttachFile
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @(Model.ForceAttach ? @Resources.Common.Yes : @Resources.Common.No)
+                </div>
+            </div>
+        </div>
+     
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.AuotoCode
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit drp">
+                <div class="item">
+                    @(Model.IsAutoCode ? @Resources.Common.Yes : @Resources.Common.No)
+                </div>
+            </div>
+        </div>
+        <div class="item-row full_width">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.Remark
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(user => user.Remark, new { style = "min-height: 90px" })
+                </div>
+            </div>
+        </div>
+        <div id="DivFixCode">
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.Code
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.Code, new { })
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.Capacity
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.Capacity, new { })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="DivAutoCode">
+            <div id="CodeList"></div>
+        </div>
+
+</div>

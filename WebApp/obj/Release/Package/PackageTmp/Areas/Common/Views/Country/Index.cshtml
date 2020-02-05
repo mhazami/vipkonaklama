@@ -1,0 +1,31 @@
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Common.DataStructure.Country>
+    @{
+        ViewBag.Title = Resources.CommonComponent.CountryList;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle {@Resources.CommonComponent.CountryList }
+    @section PageAction {
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Common/Country/Create")).Text(Resources.CommonComponent.CountryNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render(); }
+        </div>
+    }
+    @section PageActionDown {
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Common/Country/Create")).Text(Resources.CommonComponent.CountryNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render(); }
+        </div>
+    }
+    @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+          {
+              columns.Template(country => country.Name).Title(Resources.CommonComponent.Name).Width(300).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(country => country.Language.DisplayName).Title(Resources.Common.Language).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(country => "<a style='cursor: pointer;'  href=" + Url.Content("~/Common/country/Details") + "?Id=" + country.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | <a style='cursor: pointer;'  href=" + Url.Content("~/Common/country/Edit") + "?Id=" + country.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | <a style='cursor: pointer;'  href=" + Url.Content("~/Common/country/Delete") + "?Id=" + country.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(300).Encode(false);
+          })
+
+        .Sortable(sorting => sorting.Enabled(true))
+        .Pageable(paging => paging.Enabled(true))
+        .Filterable(filtering => filtering.Enabled(true))
+        //.Footer(true)
+        .Render();}

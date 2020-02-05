@@ -1,0 +1,109 @@
+﻿@using Radyn.Web.Mvc
+
+@model Radyn.ContentManager.DataStructure.ContentContent
+<style>
+    .t-editor .t-html {
+        background-image: url('@Url.Content("~/Content/Images/insert-html-icon.png") ');
+    }
+</style>
+<style type="text/css">
+
+    .html-view .t-button-wrapper {
+        padding: .5em 0;
+    }
+
+    #htmlCancel {
+        float: right;
+    }
+
+    .textarea {
+        border-width: 1px;
+        border-style: solid;
+    }
+
+        .textarea textarea {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font: normal 12px Consolas,Courier New,monospace;
+            width: 100%;
+            height: 300px;
+        }
+</style>
+
+@{Html.Radyn().Theme("RadynEditor").Render(); }
+
+<div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsContentLanguageId
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.DropDownListFor(model => model.LanguageId, (SelectList)ViewBag.Lanuages, new { onchange = "changeCulture();" })
+            </div>
+        </div>
+    </div>
+
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Title
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.TextBoxFor(model => model.Title, new { @onchange = "fillFields()" })
+            </div>
+        </div>
+    </div>
+
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Subject
+            </div>
+        </div>
+        <div class="table-row-item table-fit">
+            <div class="item">
+                @Html.TextBoxFor(model => model.Subject, new { })
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit" style="display: none">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Abstract
+            </div>
+        </div>
+        <div class="table-row-item table-fit table-c-auto">
+            <div class="item">
+
+                @Html.TextAreaFor(x => x.Abstract)
+
+            </div>
+        </div>
+    </div>
+    <div class="item-row full_width">
+        <div class="table-row-cap table-c-auto">
+            <div class="item">
+                @Resources.ContentManager.Content
+            </div>
+        </div>
+        <div class="table-row-item table-fit table-c-auto">
+            <div class="item">
+                @{
+                    Html.Radyn().EditorbootstrapFor(Model, i => i.Text).Render();
+                }
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@* attach handler for html viewer *@
+
+

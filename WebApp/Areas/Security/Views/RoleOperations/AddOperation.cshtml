@@ -1,0 +1,57 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@model Radyn.Security.DataStructure.Operation
+@{
+    ViewBag.Title = @Resources.Common.Create + " " + @Resources.Security.MenuName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Security.OperationName @Resources.Common.New
+}
+@section PageAction
+{
+<div class="button-div m-btn waves-green i-save">
+    @{Html.Radyn().ImageActionLink().ActionName("AddOperation", new { roleId = Request.QueryString["roleId"] }).ControllerName("RoleOperations").Area("Security").Text(@Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+
+</div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index", new { roleId = Request.QueryString["roleId"] }).ControllerName("RoleOperations").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("AddOperation", new { roleId = Request.QueryString["roleId"] }).ControllerName("RoleOperations").Area("Security").Text(@Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index", new { roleId = Request.QueryString["roleId"] }).ControllerName("RoleOperations").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.OperationName
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DropDownListFor(model => model.Id, (SelectList)ViewBag.Operation)
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}

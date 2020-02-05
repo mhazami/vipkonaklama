@@ -1,0 +1,136 @@
+﻿@using Radyn.FileManager
+@using Radyn.FormGenerator.Tools
+@using Radyn.WebApp.Areas.FormGenerator.Tools
+@using Radyn.WebApp.Areas.WebDesign.Tools
+@model Radyn.WebDesign.DataStructure.User
+<input type="hidden" value="@Model.Id" name="UserId" id="UserId" />
+<div class="users-page full-size detail">
+    <div class="item-input">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.WebDesign.Number
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Number)
+            </div>
+        </div>
+    </div>
+    <div class="item-input">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.WebDesign.UserName
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Username)
+            </div>
+        </div>
+    </div>
+    <div id="divEnterpriseNodeModify">
+        @if (Model.EnterpriseNode.PrefixTitleId.HasValue)
+        {
+            <div class="item-input">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.EnterPriseNode.PrefixTitle
+
+                    </div>
+                </div>
+                <div class="table-row-item readonly">
+                    <div class="item">
+                        @Model.EnterpriseNode.PrefixTitle.Title
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.FirstName
+
+                </div>
+            </div>
+            <div class="table-row-item readonly">
+                <div class="item">
+                    @Model.EnterpriseNode.RealEnterpriseNode.FirstName
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.LastName
+                </div>
+            </div>
+            <div class="table-row-item readonly">
+                <div class="item">
+                    @Model.EnterpriseNode.RealEnterpriseNode.LastName
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.Gender
+
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit drp">
+                <div class="item">
+                    @((Model.EnterpriseNode.RealEnterpriseNode.Gender.HasValue && (bool)Model.EnterpriseNode.RealEnterpriseNode.Gender) ? Resources.EnterPriseNode.Male : Resources.EnterPriseNode.Female)
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.Email
+                </div>
+            </div>
+            <div class="table-row-item readonly">
+                <div class="item">
+                    <span>
+                        @Model.EnterpriseNode.Email)
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.Cellphone
+                </div>
+            </div>
+            <div class="table-row-item readonly">
+                <div class="item">
+                    @Model.EnterpriseNode.Cellphone)
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.EnterPriseNode.Picture
+                </div>
+            </div>
+            <div class="table-row-item readonly">
+                <div class="item">
+
+                    @if (Model.EnterpriseNode.PictureId.HasValue)
+                    {
+                        Html.RadynFile().Image().ID(Model.EnterpriseNode.PictureId.Value).Height(50).Width(50).OtherAttribute(new { style = "cursor: pointer", onclick = "window.location='" + FileManagerContants.FileHandlerRoot + Model.EnterpriseNode.PictureId + "?dl=true" + "';" }).Render();
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-generator-view">
+        @{
+            Html.FormGenerator(AppExtention.WebSiteMoudelName + "-/WebDesign/Userpanel/Complete", Model.GetType().Name, Model.Id.ToString(), FormState.DetailsMode);
+        }
+    </div>
+</div>
+

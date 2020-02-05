@@ -1,0 +1,22 @@
+﻿@using Radyn.FAQ.DataStructure
+@model IEnumerable<FAQ>
+@{
+    ViewBag.Title = Resources.FAQ.FAQList;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+@section Head{}
+<div class="internal-page-head">
+
+
+    <div class="text-header">
+        <div class="  col-lg-12 col-sm-12 col-xs-12">
+
+            <h3>FAQ</h3>
+        </div>
+
+    </div>
+</div>
+<div class="internal-page-content ">
+    @{Html.RenderAction("FAQSearchableList", new { Date = DateTime.Now });}
+</div>
+

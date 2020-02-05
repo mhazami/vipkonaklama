@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <items itemName="RadynMailTemplate">
+    <value>
+      <![CDATA[
+     <table border="0" cellpadding="4" cellspacing="4" width="800px" align="center" dir="rtl" style="font-size: 12px;
+    font-family: tahoma; border: solid 1px red; background-color: #fbf9fa;">
+    <tr >
+        <td style="width: 400px;text-align:right;">
+          <img src="http://radyn.ir/App_Themes/Rdn_RedWhite/Images/MasterDesign/RadynTitle.jpg" width="385" height="32"/>
+        </td>
+        <td style="width: 150px;text-align:left;"><img src="http://radyn.ir/App_Themes/Rdn_RedWhite/Images/MasterDesign/RadynLogo.jpg" width="274" height="88"/>    </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="background-color: #f7f5f5; color: darkblue; font-weight: bold;">
+            <div style="font-family:tahoma;width: 80%; text-align: justify;" align="center">
+                   موضوع :<MessageSubject>
+          </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="background-color: white; color: #2d2c2c;text-align: center;">
+            <div style="font-family:tahoma;font-size:12px;width: 80%; text-align: justify;" align="center">
+                <MessageBody>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style=" text-align: center;" colspan="2">
+            <a href="http://www.radyn.ir" target="_blank">www.radyn.ir</a>
+        </td>
+    </tr>
+</table>
+      ]]>
+    </value>
+  </items>
+
+</root>

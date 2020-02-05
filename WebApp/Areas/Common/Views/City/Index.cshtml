@@ -1,0 +1,48 @@
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Common.DataStructure.City>
+    @{
+        ViewBag.Title = @Resources.Common.List + " " + @Resources.CommonComponent.City;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.CommonComponent.City
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("City").Area("Common").Text(@Resources.CommonComponent.City + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("City").Area("Common").Text(@Resources.CommonComponent.City + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    <div class="radynForm">
+        @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                {
+                    columns.Template(bank => bank.Title).Title(@Resources.CommonComponent.CityName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(bank => bank.ProvinceId != 0 ? bank.Province.Title : "").Title(@Resources.CommonComponent.Province).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(bank => bank.Enable ? @Resources.Common.Enable : @Resources.Common.Disable).Title(@Resources.CommonComponent.BankEnabled).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(currency =>
+                        "<a style='cursor: pointer;'  href='" + Url.Content("~/Common/City/Details?Id=" + currency.Id) + "'>" +
+                        " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                        "<a style='cursor: pointer;'  href='" + Url.Content("~/Common/City/Edit?Id=" + currency.Id) + "'> " +
+                        " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                        "<a style='cursor: pointer;'  href='" + Url.Content("~/Common/City/Delete?Id=" + currency.Id) + "'>" +
+                        " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+                })
+
+              .Sortable(sorting => sorting.Enabled(true))
+              .Pageable(paging => paging.Enabled(true))
+              .Filterable(filtering => filtering.Enabled(true))
+              //.Footer(true)
+              .Render();}
+
+    </div>

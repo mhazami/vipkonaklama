@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+@section Head
+{
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        GetValidatorListView('@ViewBag.jsonvalue', '@ViewBag.formId');
+    });
+    function ControlValidatorList(value,formId) {
+        $.get("@Url.Content("~/FormGenerator/DesignForm/GetVaidatorControlPanel")", { jsonvalue: value, formId: formId,  date: new Date().getTime() }, function (data) {
+            $("#DivValidatorControlList").html(data).slideDown("slow");;
+        });
+    }
+        function GetValidatorListView(value,formId) {
+            $.get("@Url.Content("~/FormGenerator/DesignForm/GeneratVaidatorHtml")", { jsonvalue: value, formId: formId, date2: new Date().getTime() }, function (data) {
+                $("#DivValidatorView").html(data).slideDown("slow");;
+            }).complete(function () {
+                ControlValidatorList(value, formId);
+            });
+        }
+
+
+    </script>
+}
+@section PageAction
+{
+    <p>
+    </p>
+}
+
+<table class="fit" style="direction: @Resources.Design.Direction">
+    
+    <tr>
+
+        <td class="width50percent" valign="top">
+            <div id="DivValidatorControlList">
+            </div>
+
+        </td>
+        <td class="rt-separator"></td>
+        <td class="width50percent" valign="top">
+            <div id="DivValidatorView" class="table">
+            </div>
+
+        </td>
+    </tr>
+</table>
+
+

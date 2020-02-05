@@ -1,0 +1,76 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.WebApp
+@model Radyn.WebDesign.DataStructure.User
+
+<script type="text/javascript">
+    function CompleteUser() {
+        ShowPostBackLoader();
+        var pathname = window.location.pathname; // Returns path only
+        $.post("@Url.Content("~/WebDesign/UserPanel/CompleteWithOutEmail")", $('form[action="' + pathname + '"]').serialize(), function (data) {
+            if (data != "false") {
+                window.location = '@Url.Content("~/WebDesign/UserPanel/Home")';
+            } else {
+                RefreshCaptcha();
+            }
+            ShowRadynMessage();
+        }).complete(function () {
+            HidePostBackLoader();
+        });
+
+    }
+    $(document).ready(function () {
+        ShowPostBackLoader();
+        getPartial("@Url.Content("~/WebDesign/User/GetModify")", {status: '@PageMode.Create' }, "DivItem");
+
+    });
+</script>
+<div>
+    <div class="internal-page-head">
+        <div class="text-header">
+            <div>
+                <h3>  @Resources.WebDesign.User @Resources.Common.New</h3>
+            </div>
+        </div>
+    </div>
+    <div class="internal-page-content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="fit">
+                @Html.ValidationSummary(true)
+                <div class="">
+                    <div id="DivItem"></div>
+                    <div class="fit">
+                        <div class="item-input">
+                            <div class="table-row-cap ">
+                                <div class="item">
+                                    @Resources.Common.PleaseEnterTheText
+                                </div>
+                            </div>
+                            <div class="table-row-item captcha-box">
+                                <div class="captcha-control">
+                                    @{Html.Radyn().Captcha().Render();}
+                                </div>
+                                <input type="text" class="captcha" name="captch" value="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fit">
+                        <div class="item-input">
+                            <div class="login-data-row">
+                                <div class="login-data-row-item" id="BtnSave">
+                                    <input type="button" value="@Resources.Common.Register" onclick="CompleteUser();">
+                                </div>
+                               
+                            </div>
+                            <p>قبلا ثبت نام کرده اید ؟
+                                <a href="/WebDesign/UserPanel/Login">وارد شوید</a>
+                            </p>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,156 @@
+﻿@using Radyn.FileManager
+@model IEnumerable<dynamic>
+    @{
+        ViewBag.Title = ViewBag.OpTitle;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head
+    {
+
+        <script>
+
+
+            function GetMenuList(oId) {
+                $("#tabs-" + oId).html("");
+                $.get("@Url.Content("~/Security/User/GetMenuByGroup")",
+                    { groupId: oId, OpId: '@ViewBag.OpId', date: new Date().getTime() },
+                    function(data) {
+                        if (data != "false") {
+                            $("[id^='tabs-']").html("");
+
+                            $("#tabs-" + oId).html(data).slideDown("slow");;
+                        }
+                    });
+            }
+
+            $(document)
+                .ready(function() {
+                    $("[id^='atag-']")
+                        .click(function() {
+                            var id = $(this).attr("id").replace("atag-", "");
+                            GetMenuList(id);
+                        });
+                });
+            $(document)
+                .ready(function() {
+                    var id = @ViewBag.GroupMenuId;
+                    if (id != null) {
+                        GetMenuList(id);
+                    }
+                });
+            $(function() {
+
+                //            TAB
+                $("#tabs")
+                    .tabs({
+                        collapsible: true
+                    });
+                //            TAB
+
+                //            PageLayout
+                $(".innerRL").removeClass();
+                $(".page-caption").removeClass();
+                //                $(".c-widget").removeClass();
+                $(".c-widget-head").removeClass();
+                $(".c-widget-content").removeClass();
+                $(".c-widget-footer").removeClass();
+            });
+            //            PageLayout
+        </script>
+        <style>
+            /*Radyn*/
+            .c-widget-content {
+                padding: 0 0 15px;
+                background: #F2F2F3;
+            }
+
+            .c-widget-head span, .c-widget-footer span {
+                display: none;
+            }
+            /*Radyn*/
+            /*JQueryUI*/
+
+            .ui-widget-content {
+                border: 0;
+            }
+
+            .ui-tabs .ui-tabs-panel {
+                padding: 0;
+            }
+
+            .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+                border-radius: 0;
+            }
+
+            .c-widget {
+                padding-top: 0;
+                background-color: transparent !important;
+                box-shadow: none;
+                border: none !important;
+            }
+
+            body {
+                background-color: #f2f2f3 !important;
+            }
+
+
+            .ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl,
+            .ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+                border-radius: 0;
+                background: #F2F2F3;
+            }
+
+            .ui-tabs .ui-tabs-nav li {
+                margin: 0 -1px;
+            }
+
+                .ui-tabs .ui-tabs-nav li.ui-tabs-active {
+                    border-top: 5px solid #066AD3;
+                }
+
+            .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+                border-top: 5px solid #dadada;
+            }
+
+            .title-page-main {
+                color: #888888;
+                text-shadow: none;
+                font-size: 25px;
+                font-weight: 500;
+                margin: 25px 0 33px 0;
+                margin-right: 22px;
+            }
+            /*JQueryUI*/
+        </style>
+
+    }
+    <h4 class="title-page-main"> سامانه CMS</h4>
+    <div id="tabs">
+        <ul>
+            @foreach (var menuGroup in Model)
+            {
+                <li class="page-align">
+                    <a Id="atag-@menuGroup.Id" href="#tabs-@menuGroup.Id" class="itemtab">
+                        @if (menuGroup.ImageId != null)
+                        {
+                            Html.RadynFile().Image().ID(((Guid)menuGroup.ImageId)).Render();
+                        }
+                        @menuGroup.Name
+                    </a>
+                </li>
+            }
+
+
+        </ul>
+        @foreach (var menuGroup in Model)
+        {
+            <div id="tabs-@menuGroup.Id">
+
+            </div>
+
+        }
+
+
+    </div>
+
+

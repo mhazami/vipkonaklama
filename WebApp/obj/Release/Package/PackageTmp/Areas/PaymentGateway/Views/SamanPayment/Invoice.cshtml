@@ -1,0 +1,49 @@
+﻿<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        function postRefId() {
+
+            var form = document.createElement("form");
+            var hiddenFieldMesage = document.createElement("input");
+            var hiddenFieldRescode = document.createElement("input");
+            var hiddenFieldrefId = document.createElement("input");
+            var hiddenFieldSaleRefrence = document.createElement("input");
+            hiddenFieldMesage.setAttribute("name", "MID");
+            hiddenFieldMesage.setAttribute("Id", "MID");
+            hiddenFieldMesage.setAttribute("value", '@ViewBag.MID');
+
+            hiddenFieldRescode.setAttribute("name", "Amount");
+            hiddenFieldRescode.setAttribute("Id", "Amount");
+            hiddenFieldRescode.setAttribute("value", '@ViewBag.Amount');
+
+            hiddenFieldrefId.setAttribute("name", "RedirectURL");
+            hiddenFieldrefId.setAttribute("Id", "RedirectURL");
+            hiddenFieldrefId.setAttribute("value", '@ViewBag.RedirectURL');
+
+            hiddenFieldSaleRefrence.setAttribute("Id", "ResNum");
+            hiddenFieldSaleRefrence.setAttribute("name", "ResNum");
+            hiddenFieldSaleRefrence.setAttribute("value", '@ViewBag.ResNum');
+
+            form.appendChild(hiddenFieldRescode);
+            form.appendChild(hiddenFieldMesage);
+            form.appendChild(hiddenFieldrefId);
+            form.appendChild(hiddenFieldSaleRefrence);
+            form.setAttribute("method", "POST");
+            form.setAttribute("action", "https://sep.shaparak.ir/Payment.aspx");
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+            postRefId();
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,125 @@
+﻿.radyn_grid th {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.radyn_grid table {
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+    margin: 0 !important;
+}
+
+.radyn_grid td {
+    padding: 6px 12px;
+}
+
+.table-condensed {
+    margin-right: .5% !important;
+}
+
+.paginate_buttons.card-action {
+    margin-bottom: 5px;
+}
+
+.paginate_buttons {
+    width: 49.92%;
+}
+
+.table_info {
+    width: 47.5%;
+    padding: 5px .42%;
+}
+
+.paginate_buttons ul {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+    .paginate_buttons ul li {
+        cursor: pointer;
+        list-style-type: none;
+        min-width: 25px;
+        padding: 5px;
+        transition: all 200ms ease 0s;
+    }
+
+        .paginate_buttons ul li:hover, #active {
+            transition: 200ms;
+        }
+
+            .paginate_buttons ul li:hover, #active, .paginate_buttons ul li:hover a, #active a {
+                transition: 200ms;
+            }
+
+        .paginate_buttons ul li a {
+            text-decoration: none;
+            transition: 200ms;
+        }
+
+/*FILTER*/
+.dropdown-menu {
+    display: none;
+}
+
+.fa.fa-filter {
+    background-position: -3px -240px;
+    height: 16px;
+    margin-top: 3px;
+    width: 16px;
+}
+
+.dropdown {
+    position: absolute;
+    z-index: 1;
+}
+
+.dropdown-menu {
+    margin-top: 24px;
+    min-width: 120px;
+    padding: 0;
+    width: 100%;
+}
+
+    li.dropdown, .dropdown-menu li {
+        list-style: none;
+    }
+
+.filter_type_item {
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+.filter_textbox.form-control {
+    padding: 0;
+    float: left;
+    height: 28px;
+    width: calc(97% - 40px);
+    border: 1px solid #ddd;
+}
+
+.dropdown-toggle.text-default {
+    position: relative;
+    display: block;
+    padding: 0;
+    padding-top: 5px;
+}
+
+.radyn_grid .dropdown-toggle > * {
+    width: 15px;
+}
+
+@media(max-width: 1200px) {
+    .filter_textbox.form-control {
+        width: 60%;
+    }
+}
+
+.radyn_grid .dropdown-menu > .active > a, .radyn_grid .dropdown-menu > .active > a:focus, .radyn_grid .dropdown-menu > .active > a:hover {
+    background-color: transparent !important;
+}
+
+.radyn_grid .dropdown-menu > li > a:focus, .radyn_grid .dropdown-menu > li > a:hover {
+    background-color: transparent !important;
+}

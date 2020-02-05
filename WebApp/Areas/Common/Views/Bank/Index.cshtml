@@ -1,0 +1,67 @@
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Common.DataStructure.Bank>
+    @{
+        ViewBag.Title = @Resources.Common.List + " " + @Resources.CommonComponent.BankName;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.CommonComponent.BankName
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Bank").Area("Common").Text(@Resources.CommonComponent.BankName + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Bank").Area("Common").Text(@Resources.CommonComponent.BankName + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    <div class="radynForm">
+        <div class="grid-guid">
+            <div class="grid-guid-title">
+                @Resources.Common.Help
+            </div>
+            <ul>
+                <li>
+                    <img src="/Content/Images/details.png">
+                    @Resources.Common.Detail
+                </li>
+                <li>
+                    <img src="/Content/Images/Delete-Close.png">
+                    @Resources.Common.Delete
+                </li>
+                <li>
+                    <img src="/Content/Images/edit.png">
+                    @Resources.Common.Edit
+                </li>
+            </ul>
+        </div>
+        <div class="fit">
+            @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                  {
+                      columns.Template(bank => bank.Title).Title(Resources.CommonComponent.BankTitle).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                      columns.Template(bank => bank.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(Resources.CommonComponent.BankEnabled).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                      columns.Template(bank =>
+                          "<a style='cursor: pointer;'  href='" + Url.Content("~/Common/Bank/Details?Id=" + bank.Id) + "'>" +
+                          " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                          "<a style='cursor: pointer;'  href='" + Url.Content("~/Common/Bank/Edit?Id=" + bank.Id) + "'> " +
+                          " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                          "<a style='cursor: pointer;'  href='" + Url.Content("~/Common/Bank/Delete?Id=" + bank.Id) + "'>" +
+                          " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+                  })
+                          //
+                          .Sortable(sorting => sorting.Enabled(true))
+                          .Pageable(paging => paging.Enabled(true))
+                          .Filterable(filtering => filtering.Enabled(true))
+                          //            .Footer(true)
+                          .Render();}
+        </div>
+    </div>

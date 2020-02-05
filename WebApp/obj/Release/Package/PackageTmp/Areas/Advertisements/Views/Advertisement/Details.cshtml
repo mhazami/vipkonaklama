@@ -1,0 +1,181 @@
+﻿@using Radyn.FileManager
+@using Radyn.Web.Mvc.Utility
+@model Radyn.Advertisements.DataStructure.Advertisement
+@{
+    ViewBag.Title = Resources.Common.Detail + " " + Resources.Advertisement.Advertisements;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+
+        $(document).ready(
+            function Show() {
+                if (@Model.TypeId==9 || @Model.TypeId==12) {
+
+                    if(@Model.TypeId==12) {
+                        $("#imageDiv").show('slow');
+                    }else {
+                        $("#flashDiv").show('slow');
+                    }
+                }
+            }
+
+        );
+
+
+
+    </script>
+}
+
+@using (Html.BeginForm())
+{
+
+    @Html.ValidationSummary(true)
+
+    <div class="radynForm">
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementPositionId
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit ">
+                <div class="item">
+                    @Html.DisplayFor(model => model.SectionPosition.Title)
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementFromDate
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit ">
+                <div class="item">
+                    @Html.DisplayFor(model => model.FromDate)
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementToDate
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit ">
+                <div class="item">
+                    @Html.DisplayFor(model => model.ToDate)
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementTypeId
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.AdvertisementType.Type)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap ">
+                <div class="item">
+                    @Resources.News.NewsThumbnailId
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+
+                    @if (Model.FileId.HasValue)
+                    {
+                        Html.RadynFile().Image().ID(Model.FileId.Value).DeleteButtonVisible("FileId").Height(98).Width(146).Download().Render();
+
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementText
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @{ Html.HtmlEncoder(Model.Text); }
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementNavigateUrl
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.NavigateUrl)
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementEnable
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit ">
+                <div class="item">
+                    @(Model.Enable ? Resources.Common.Enable : Resources.Common.Disable)
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.AdvertisementHeight
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Height)
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.Advertisementwidth
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.width)
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Advertisement.TimeOut
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Timeout)
+                </div>
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.Id)
+    </div>
+
+
+}
+

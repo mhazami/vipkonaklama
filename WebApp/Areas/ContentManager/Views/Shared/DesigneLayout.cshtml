@@ -1,0 +1,55 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.Utility
+
+
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+@section Head{
+    @{Html.Radyn().Theme("MainBase").Render();}
+    @{Html.Radyn().Theme("Common").Render();}
+    <script src="~/App_Themes/Xbines/Scripts/navbar.js"></script>
+    @RenderSection("Head")
+
+    <link href="/Scripts/Radyn/RadynMenu/css/MainMenu.css" rel="stylesheet" />
+    <link href="/Scripts/Radyn/RadynMenu/css/MainMenu-@(Resources.Design.Direction).css" rel="stylesheet" />
+
+
+}
+
+@using (Html.BeginForm())
+{
+    @*    <div class="sheet">*@
+
+
+
+    <div style="display:none">
+        @RenderSection("PageTitle", false)
+
+
+
+    </div>
+
+
+    <div class="design_layout">
+
+        @if (this.Context.Items["radynHelp"] != null)
+        {
+            Html.HtmlEncoder(this.Context.Items["radynHelp"].ToString());
+        }  @RenderBody()
+    </div>
+
+
+
+    @RenderSection("PageAction", false)
+    @RenderSection("PageActionDown", false)
+    <div class="footer">
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("form").attr("enctype", "multipart/form-data");
+
+        });
+    </script>
+}
+

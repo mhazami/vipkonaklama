@@ -1,0 +1,28 @@
+﻿@using Radyn.Web.Mvc.Utility
+@model Radyn.FAQ.DataStructure.FAQContent
+<div class="fit">
+    <div class="table-row-cap table-c-auto">
+        <div class="item">
+            @Resources.FAQ.Question
+        </div>
+    </div>
+    <div class="table-row-item table-fit table-c-auto">
+        <div class="item">
+            @Html.DisplayFor(x=>x.Question)
+        </div>
+    </div>
+</div>
+<div class="fit">
+    <div class="table-row-cap table-c-auto">
+        <div class="item">
+            @Resources.FAQ.Answer
+        </div>
+    </div>
+    <div class="table-row-item table-fit table-c-auto">
+        <div class="item">
+            @{
+                Html.HtmlEncoder(Model.Answer);
+            }
+        </div>
+    </div>
+</div>

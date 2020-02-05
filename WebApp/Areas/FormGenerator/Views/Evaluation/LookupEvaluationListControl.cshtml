@@ -1,0 +1,82 @@
+﻿@using Radyn.Web.Mvc
+@model Dictionary<string,string>
+    @{
+        ViewBag.Title = "LookupAdminDesign";
+        Layout = "~/Views/Shared/LookUpLayout.cshtml";
+    }
+    @section Head
+ {
+
+        <script type="text/javascript">
+            function PostData() {
+                $.post("/FormGenerator/Evaluation/SetEvaluationListControl", $('form[action^="/FormGenerator/Evaluation/LookupEvaluationListControl"]').serialize(), function (data) {
+                    for (var item in data) {
+                        $("#" + "Weight-" + data[item].controlId).html(data[item].value);
+                    }
+                    ShowRadynMessage();
+                });
+                ShowRadynMessage();
+            }
+
+        </script>
+    }
+    @section PageAction
+{
+
+    }
+
+    @using (Html.BeginForm())
+    {
+
+        <input type="hidden" value="@ViewBag.FromScale" name="FromScale" id="FromScale" />
+        <div class="MasterInnerContent">
+            <div class="MasterInnerContentHeader">
+            </div>
+            <div class="MasterInnerContentMain">
+                <div class="forms">
+                    <table class="fitper" dir="rtl">
+
+                        @{
+                            short index = 0;
+                            var list = Model.ToList();
+
+                            for (int r = -1; r < (list.Count() - 1) / 2; r++)
+                            {
+                                <tr class="fitper">
+                                    @for (int c = 0; c < 2; c++)
+                                    {
+                                        if (index < list.Count)
+                                        {
+                                            <td>
+                                                @list[index].Value:
+                                            </td>
+                                            <td>
+                                                @{
+                                                    Html.RenderAction("GetEvaluationDesign", "Evaluation", new { area = "FormGenerator", Id = list[index].Key, fromScale = ViewBag.FromScale });
+                                                }
+                                            </td>
+                                        }
+                                        index++;
+                                    }
+                                </tr>
+                            }
+                        }
+                    </table>
+                    <div class="item-row fit">
+
+
+                        <div class="button-div m-btn waves-green i-save">
+                            @{
+                                Html.Radyn().ImageActionLink().Text("محاسبه و ذخیره").OtherAttribute(new { onclick = "PostData();" }).Render();
+                            }
+                        </div>
+                        <div class="button-div m-btn waves-red i-return">
+                            @{
+                                Html.Radyn().ImageActionLink().Text("بستن فرم").OtherAttribute(new { onclick = "Close_thisModal()" }).Render();
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }

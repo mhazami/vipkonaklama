@@ -1,0 +1,47 @@
+﻿
+@using Radyn.Web.Mvc
+@model IEnumerable<Radyn.FileManager.DataStructure.File>
+    @{
+        ViewBag.Title = @Resources.Common.Index;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    @section Head{}
+
+    @section PageTitle
+{
+        @Resources.Common.List
+
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create", new { folderId = Request.QueryString["FolderId"] }).ControllerName("File").Area("FileManager").Text(@Resources.FileManager.File + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Folder").Area("FileManager").Text(Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create", new { folderId = Request.QueryString["FolderId"] }).ControllerName("File").Area("FileManager").Text(@Resources.FileManager.File + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Folder").Area("FileManager").Text(Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+
+    @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+          {
+              columns.Template(file => file.FileName).Title(@Resources.FileManager.FileName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(file => file.ContentType).Title(@Resources.FileManager.FileName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(file => file.SaveDate).Title(@Resources.FileManager.SavaDate).Width(80).HeaderHtmlAttributes(new { style = "text-align:center" });
+
+          })
+
+        .Sortable(sorting => sorting.Enabled(true))
+        .Pageable(paging => paging.Enabled(true))
+        .Filterable(filtering => filtering.Enabled(true))
+        //.Footer(true)
+        .Render();}

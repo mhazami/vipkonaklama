@@ -1,0 +1,200 @@
+﻿@model Radyn.Reservation.DataStructure.Order
+@{
+    ViewBag.Title = "GetCustomerInfo";
+    Layout = "~/Views/Shared/_ReservationLayout.cshtml";
+}
+<section class="breadcrumb-outer">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>REZERVASYON</h2>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">ANA SAYFA</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">KONTROL ET</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<form method="post" action="/VIP/GetCustomerInfo">
+    <section class="content reservation-main">
+        <div class="container">
+            <div class="reservation-links text-center">
+                <h2 class="mar-bottom-60 text-capitalize">REZERVASYON YAP</h2>
+                <div class="reservation-links-content">
+                    <div class="res-item">
+                        <a href="#" class="active"><i class="fa fa-check"></i></a>
+                        <p>Rezervasyon Talep Et</p>
+                    </div>
+                    <div class="res-item">
+                        <a href="#" class="active">2</a>
+                        <p>Rezervasyon tamamlandı</p>
+                    </div>
+
+                    <div class="res-item">
+                        <a href="#">3</a>
+                        <p>Ödeme</p>
+                    </div>
+                    <div class="res-item">
+                        <a href="#">4</a>
+                        <p>Onayla</p>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-form form-style-1">
+                <div class="form-content">
+                    <div class="table-item">
+                        <div class="form-group">
+                            <div class="date-range-inner-wrapper">
+                                <input id="date-range2" name="EntryDate" class="form-control" value="@(Model.EntryDate!=null?Model.EntryDate.GetDateString():"Giriş")">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" value="@Model.Id" name="Id" />
+                    <div class="table-item">
+                        <div class="form-group form-icon">
+                            <div class="date-range-inner-wrapper">
+                                <input id="date-range3" name="ExitDate" class="form-control" value="@(Model.ExitDate!=null?Model.ExitDate.GetDateString():"Çikiş")">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-item">
+                        <div class="form-group form-icon">
+                            @Html.DropDownListFor(model => model.RoomTypeId, (SelectList)ViewBag.RoomType)
+                        </div>
+                    </div>
+
+
+                    <div class="table-item">
+                        <div class="form-group form-icon">
+                            @Html.DropDownListFor(model => model.ReserveType, (SelectList)ViewBag.ReserveType)
+                        </div>
+                    </div>
+                    <div class="table-item">
+                        <div class="form-btn">
+                            <input class="btn btn-orange" onclick="getTotalPrice()" type="button" value="Fiyatı Hesapla" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="calendar-range">
+                <div class="date-range-inner-wrapper">
+                    <input id="date-range12" class="form-control hidden">
+                    <div id="date-range12-container"></div>
+                </div>
+            </div>
+            <div class="booking">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="booking-content">
+                            <div class="booking-image">
+                                <img src="images/detail-slider/slider1.jpg" alt="image">
+                                <div class="booking-title">
+                                    <div class="title-left">
+                                        <h3>Oda tipi</h3>
+                                        <div class="rating">
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="title-right pull-right">
+                                        <div class="title-price">
+                                            <h4 class="pad-top-15" id="txt-totalprice">@Model.TotalPrice</h4>
+                                            <input type="hidden" name="TotalPrice" id="TotalPrice" value="@Model.TotalPrice" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="personal-info mar-top-50">
+                                <div class="form-title">
+                                    <span>1</span>
+                                    <h4 class="mar-bottom-30">Kişisel bilgi</h4>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="FirstName" value="@Model.Customer.FirstName" placeholder="İsim">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="LastName" value="@Model.Customer.LastName" placeholder="Soyadı">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" name="Email" value="@Model.Customer.Email" placeholder="E-posta">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="PhoneNumber" value="@Model.Customer.PhoneNumber" placeholder="Telefon">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group mar-0">
+                                            <textarea name="Description" placeholder="İleti">@Model.Description</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mar-top-15">
+
+                                        <div class="form-btn">
+                                            <input type="submit" disable="disable" value="Kayıt Etmek" class="btn btn-orange" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+</form>
+
+<script>
+    function getTotalPrice() {
+        debugger;
+        var startdate = $('#date-range2').val();
+        var enddate = $('#date-range3').val();
+        var reserveType = $('#ReserveType').val();
+        var roomTypeId = $('#RoomTypeId').val();
+        $.get('/vip/GetTotalPrice', { startdate: startdate, enddate: enddate, reserveType: reserveType, roomTypeId: roomTypeId }, function (data) {
+            if (data.status == "OK") {
+                $('#txt-totalprice').text(data.price);
+                $('#TotalPrice').text(data.price);
+            } else {
+                $('#txt-totalprice').text(data.status).css('color', '#da5252');
+                $('#TotalPrice').text("0");
+                $('input[type="submit"]').each(function () {
+                    $(this).attr('disable', 'disable');
+                })
+            }
+
+        })
+    }
+
+    $(function () {
+        $('#date-range2').on('input', getTotalPrice);
+
+    })
+</script>

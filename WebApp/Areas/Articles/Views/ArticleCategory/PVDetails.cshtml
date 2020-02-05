@@ -1,0 +1,76 @@
+﻿@using Radyn.Web.Mvc.Utility
+@model Radyn.Article.DataStructure.ArticleCategory
+
+@if (Model != null)
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Article.ArticleCategoryTitle
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Title)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Article.Status
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @(Model.Enable ? Resources.Article.Enabel : Resources.Article.Disabel)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    ترتیب نمایش
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Order, new { })
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Article.ArticleCategoryParentId
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @(Model.ParentCategory != null ? Model.ParentCategory.Title : "")
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.Article.ArticleThumbnailId
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @if (Model.FileId.HasValue)
+                    {
+
+                        Html.RadynAction("FileUploaderViewMode", "FileUpload", new { area = "FileManager", filePropName = "FileId", fileid = Model.FileId, fileName = "File" });
+
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

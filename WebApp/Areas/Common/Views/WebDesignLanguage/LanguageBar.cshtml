@@ -1,0 +1,25 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.Common.DataStructure
+@using Resources
+@model IEnumerable<Language>
+@if (Model.Count() > 1)
+{
+    <table border="0" cellpadding="2" cellspacing="2" dir="@Common.Direction">
+        <tr>
+            <td style="text-align:@Common.Aligment;">
+                @Common.Language :
+            </td>
+            @if (Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                <td style="text-align:@Common.Aligment ;">
+                    @(item.ShowLogo ? Html.Radyn().ImageActionLink().ControllerName("Language").ActionName("SetLanguage", new { culture = item.Id }).Area("Common").ImageUrl(Radyn.FileManager.FileManagerContants.FileHandlerRoot + item.LogoId).Text(item.DisplayName).Style("text-decoration:none;color:white;") : Html.Radyn().ImageActionLink().ControllerName("Language").ActionName("SetLanguage", new { culture = item.Id }).Area("Common").Text(item.DisplayName).Style("text-decoration:none;color:white;"))
+                </td>
+                }
+            }
+
+        </tr>
+    </table>
+
+}

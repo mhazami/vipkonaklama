@@ -1,0 +1,125 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.WebApp.AppCode.Security
+@model Radyn.News.DataStructure.NewsContent
+<style type="text/css">
+
+    .t-editor .t-html {
+        background-image: url('@Url.Content("~/Content/Images/insert-html-icon.png") ');
+    }
+    .html-view .t-button-wrapper {
+        padding: .5em 0;
+    }
+    #htmlCancel {
+        float: right;
+    }
+    .textarea {
+        border-width: 1px;            border-style: solid;
+    }
+    .textarea textarea {
+        margin: 0;             padding: 0;             border: 0;             font: normal 12px Consolas,Courier New,monospace;             width: 100%;             height: 300px;
+    }
+</style>
+
+@{Html.Radyn().Theme("RadynEditor").Render();}
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsContentLanguageId
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.DropDownListFor(model => model.LanguageId, (SelectList)ViewBag.Lanuages, new { onchange = "changeCulture();" })
+        </div>
+    </div>
+</div>
+<div class="item-row" style="display: none">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsContentOverTitle
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.TextBoxFor(model => model.OverTitle, new { })
+        </div>
+    </div>
+</div>
+<div class="item-row fit">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsTitle
+        </div>
+    </div>
+    <div class="table-row-item table-fit">
+        <div class="item">
+            @Html.TextBoxFor(model => model.Title1, new { })
+        </div>
+    </div>
+</div>
+<div class="item-row" style="display: none">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsContentTitle2
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.TextBoxFor(model => model.Title2, new { })
+        </div>
+    </div>
+</div>
+<div class="item-row fit">
+    <div class="table-row-cap ">
+        <div class="item">
+            @Resources.News.NewsContentLead
+        </div>
+    </div>
+    <div class="table-row-item table-fit ">
+        <div class="item">
+            @Html.TextAreaFor(model => model.Lead, new { @row = 20, @col = 40 })
+        </div>
+    </div>
+</div>
+<div class="item-row fit" style="display: none">
+    <div class="table-row-cap ">
+        <div class="item">
+            @Resources.News.NewsContentSutitr
+        </div>
+    </div>
+    <div class="table-row-item  table-fit">
+        <div class="item">
+            @Html.TextAreaFor(model => model.Sutitr, new { @row = 20, @col = 40 })
+        </div>
+    </div>
+</div>
+<div class="item-row fit">
+    <div class="table-row-cap" >
+        <div class="item" >
+            @Resources.News.NewsContentBody
+        </div>
+    </div>
+    <div class="table-row-item" >
+        <div class="item">
+            @Html.TextAreaFor(x => x.Body)
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Body').summernote({
+
+            lang: '@SessionParameters.Culture',
+            focus: true,
+            elementname: 'Body',
+            height: 250,
+            codemirror: {
+                theme: 'united'
+            }
+        });
+
+
+    });
+
+
+</script>

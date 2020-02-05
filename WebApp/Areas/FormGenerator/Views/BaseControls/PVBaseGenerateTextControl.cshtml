@@ -1,0 +1,34 @@
+﻿@model Radyn.FormGenerator.ControlFactory.Base.TextControl
+@Html.ValidationSummary(true)
+<div class="fit">
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.FormGenerator.Title
+            </div>
+        </div>
+        <div class="table-row-item table-fit ">
+            <div class="item">
+                @Html.EditorFor(model => model.Caption)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.FormGenerator.Text
+            </div>
+        </div>
+        <div class="table-row-item table-fit ">
+            <div class="item">
+                @Html.TextBoxFor(model => model.Text)
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    @{
+        Html.RenderAction("BaseGenerateControl", new { Id = Model.Id, formId = ViewBag.formId, culture = ViewBag.culture });
+    }
+</div>

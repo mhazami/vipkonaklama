@@ -1,0 +1,1794 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AbstractSended" xml:space="preserve">
+    <value>Abstract uploaded</value>
+  </data>
+  <data name="AbtractConfirm" xml:space="preserve">
+    <value>Abstract Confirmation</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="AfterFinalState" xml:space="preserve">
+    <value>After arbitration</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="AllsingleCertificate" xml:space="preserve">
+    <value>One certification for all users</value>
+  </data>
+  <data name="Article" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="ArticleChangeStatusEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your article with Subject {2} chenged to {4} state.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;Regards&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="ArticleChangeStatusSMS" xml:space="preserve">
+    <value>Dear User {1}, Your article with code {2} chenged to {3} state</value>
+  </data>
+  <data name="ArticleCode" xml:space="preserve">
+    <value>ArticleCode</value>
+  </data>
+  <data name="ArticleInsertEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1} 
+&lt;/div&gt;
+&lt;div&gt;
+ Your Article with Subject {2} submitted successfully.
+&lt;/div&gt;
+&lt;div&gt;
+   For more information contact us.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="ArticleInsertSMS" xml:space="preserve">
+    <value>Dear user {1}, your article with code {2} successfully submitted.
+{0}</value>
+  </data>
+  <data name="ArticlePaymentEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your payment with Subject {2} successfully done.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us.
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+Thanks.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="ArticlePaymentSMS" xml:space="preserve">
+    <value>Dear user  {1}, the payment of your article  with code {2}  successfully done.</value>
+  </data>
+  <data name="ArticleSended" xml:space="preserve">
+    <value>Article Sended</value>
+  </data>
+  <data name="ArticleStatus" xml:space="preserve">
+    <value>Article Status</value>
+  </data>
+  <data name="ArticleTitle" xml:space="preserve">
+    <value>Article Title</value>
+  </data>
+  <data name="ArticleUpdateEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your article with Subject {2} was successfully edited.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+    Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="ArticleUpdateSMS" xml:space="preserve">
+    <value>Dear user {1} your article with code {2} was successfully edited.</value>
+  </data>
+  <data name="Ascending" xml:space="preserve">
+    <value>Ascending</value>
+  </data>
+  <data name="BeforSendArticle" xml:space="preserve">
+    <value>Before arbitration</value>
+  </data>
+  <data name="booth" xml:space="preserve">
+    <value>booth</value>
+  </data>
+  <data name="BoothChangeStatusEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your booth {2} reservation changed to {4} state. 
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="BoothChangeStatusSMS" xml:space="preserve">
+    <value>Dear user {1}, your booth {2} reservation changed to {3} state.</value>
+  </data>
+  <data name="BoothCode" xml:space="preserve">
+    <value>Booth Code</value>
+  </data>
+  <data name="BoothInsertEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your booth reservation with title {2} was successfully registered.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;</value>
+  </data>
+  <data name="BoothInsertSMS" xml:space="preserve">
+    <value>Dear user {1}, your booth {2} reservation was successfully registered.</value>
+  </data>
+  <data name="BoothOfficerCard" xml:space="preserve">
+    <value>Officer Booth Code {0}</value>
+  </data>
+  <data name="BoothOfficerCountismorethantheallowednumber" xml:space="preserve">
+    <value>Booth Officer Count is more than the allowed number</value>
+  </data>
+  <data name="BoothPaymentEmail" xml:space="preserve">
+    <value>&lt;div style='float:left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0} 
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your booth reservation fee with title {2} was successfully paid.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="BoothPaymentSMS" xml:space="preserve">
+    <value>Dear user {1}, your booth {2} reservation fee was successfully paid.</value>
+  </data>
+  <data name="BoothUpdateEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your booth reservation with name {2} was successfully updated.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;</value>
+  </data>
+  <data name="BoothUpdateSMS" xml:space="preserve">
+    <value>Dear user {2}, your booth {2} reservation was successfully edited.</value>
+  </data>
+  <data name="Both" xml:space="preserve">
+    <value>Both</value>
+  </data>
+  <data name="Capacityisnotenough" xml:space="preserve">
+    <value>Capacity is not enough</value>
+  </data>
+  <data name="ChartArticleByDay" xml:space="preserve">
+    <value>{0} per day </value>
+  </data>
+  <data name="ChartArticleByMoth" xml:space="preserve">
+    <value>{0} per month</value>
+  </data>
+  <data name="ChartArticleByPivot" xml:space="preserve">
+    <value>
+{0} by pivot</value>
+  </data>
+  <data name="ChartArticleByStatus" xml:space="preserve">
+    <value>{0} by state</value>
+  </data>
+  <data name="ChartArticleByType" xml:space="preserve">
+    <value>{0} by type</value>
+  </data>
+  <data name="ChartCash" xml:space="preserve">
+    <value>Finacial Report</value>
+  </data>
+  <data name="ChartCashByDay" xml:space="preserve">
+    <value>Finacial report in month</value>
+  </data>
+  <data name="ChartCashBymoth" xml:space="preserve">
+    <value>Finacial report in year</value>
+  </data>
+  <data name="ChartHotelByStatus" xml:space="preserve">
+    <value>Accomodation by state</value>
+  </data>
+  <data name="ChartHotelUser" xml:space="preserve">
+    <value>Accomodation by reservation state</value>
+  </data>
+  <data name="ChartPivotCategory" xml:space="preserve">
+    <value>Accomodation by Pivot Category</value>
+  </data>
+  <data name="ChartUserRegisterByDay" xml:space="preserve">
+    <value>Users registeration per day</value>
+  </data>
+  <data name="ChartUserRegisterByMoth" xml:space="preserve">
+    <value>Users registeration per month</value>
+  </data>
+  <data name="ChartUserRegisterByRegisterType" xml:space="preserve">
+    <value>Users registeration by type</value>
+  </data>
+  <data name="ChartUserRegisterByStatus" xml:space="preserve">
+    <value>Users registeration by state</value>
+  </data>
+  <data name="ChartViewsNumberByDay" xml:space="preserve">
+    <value>Chart Views Number By Day</value>
+  </data>
+  <data name="ChartViewsNumberByMonth" xml:space="preserve">
+    <value>Chart Views Number By Month</value>
+  </data>
+  <data name="ChartViewsNumberByYear" xml:space="preserve">
+    <value>Chart Views Number By Year</value>
+  </data>
+  <data name="ChartWorkShopByStatus" xml:space="preserve">
+    <value>Workshops by state</value>
+  </data>
+  <data name="ChartWorkShopUser" xml:space="preserve">
+    <value>Workshops by reservation</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ConfirmandEdit" xml:space="preserve">
+    <value>Confirm and Edit</value>
+  </data>
+  <data name="ConFirmReferee" xml:space="preserve">
+    <value>ConFirm Referee</value>
+  </data>
+  <data name="CongressAddress" xml:space="preserve">
+    <value>Congress Address</value>
+  </data>
+  <data name="Congresshasnotdonesetting" xml:space="preserve">
+    <value>Congress not adjusted.</value>
+  </data>
+  <data name="CongressRefereeLayout" xml:space="preserve">
+    <value>CongressRefereeLayout</value>
+  </data>
+  <data name="CongressTitle" xml:space="preserve">
+    <value>Congress Title</value>
+  </data>
+  <data name="CongressUserLayout" xml:space="preserve">
+    <value>CongressUserLayout</value>
+  </data>
+  <data name="CssFile" xml:space="preserve">
+    <value>CssFile</value>
+  </data>
+  <data name="CssFile1" xml:space="preserve">
+    <value>CssFile</value>
+  </data>
+  <data name="DateOfLastFlowChanges" xml:space="preserve">
+    <value>DateOfLastFlowChanges</value>
+  </data>
+  <data name="DateOfOkAbstract" xml:space="preserve">
+    <value>DateOfOkAbstract</value>
+  </data>
+  <data name="DateOfOkArticle" xml:space="preserve">
+    <value>Date Of Ok {0}</value>
+  </data>
+  <data name="DateOfSendingAbstract" xml:space="preserve">
+    <value>DateOfSendingAbstract</value>
+  </data>
+  <data name="DateOfSendingArticle" xml:space="preserve">
+    <value>Date Of Sending {0}</value>
+  </data>
+  <data name="Denial" xml:space="preserve">
+    <value>Denial</value>
+  </data>
+  <data name="DenialAbstarct" xml:space="preserve">
+    <value>Denial Abstarct</value>
+  </data>
+  <data name="DenialPay" xml:space="preserve">
+    <value>Denial Pay</value>
+  </data>
+  <data name="Descending" xml:space="preserve">
+    <value>Descending</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ErroInEditPosterOrginalFile" xml:space="preserve">
+    <value>Can not edit orginal poster file.</value>
+  </data>
+  <data name="ErrorInDeleteArticleAuthor" xml:space="preserve">
+    <value>Error In Delete {0} Author</value>
+  </data>
+  <data name="ErrorInDeleteArticleFromRefereecartabl" xml:space="preserve">
+    <value>Error In Delete {0} From Refereecartabl</value>
+  </data>
+  <data name="ErrorInDeleteArticlePaymentType" xml:space="preserve">
+    <value>Error In Delete {0} Payment Type</value>
+  </data>
+  <data name="ErrorInDeleteArticlePaymentTypeMultiLanguage" xml:space="preserve">
+    <value>Error In Delete {0} Payment Type Multi Language</value>
+  </data>
+  <data name="ErrorInDeleteArticlePaymentTypeThisUseInArticle" xml:space="preserve">
+    <value>Error In Delete {0} PaymentType This Use In {1} Payment</value>
+  </data>
+  <data name="ErrorInDeleteArticleType" xml:space="preserve">
+    <value>Error In Delete {0} Type</value>
+  </data>
+  <data name="ErrorInDeleteArticleTypeBecauseThereareArticleWithThisArticleType" xml:space="preserve">
+    <value>Error In Delete Article Type BecauseThere are Article With This Article Type</value>
+  </data>
+  <data name="ErrorInDeleteBooth" xml:space="preserve">
+    <value>Error In Delete Booth</value>
+  </data>
+  <data name="ErrorInDeleteBoothBecauseThisReserved" xml:space="preserve">
+    <value>Error In Delete Booth Because This Reserved</value>
+  </data>
+  <data name="ErrorInDeleteBoothCategory" xml:space="preserve">
+    <value>Error In Delete Booth Category</value>
+  </data>
+  <data name="ErrorInDeleteBoothcategoryBecauseThereAreBoothWithThisType" xml:space="preserve">
+    <value>Error In Delete Booth category Because There Are Booth With This Type</value>
+  </data>
+  <data name="ErrorInDeleteCongress" xml:space="preserve">
+    <value>Error In Delete Congress</value>
+  </data>
+  <data name="ErrorInDeleteCongressAccount" xml:space="preserve">
+    <value>Error In Delete Congress Account</value>
+  </data>
+  <data name="ErrorInDeleteCongressContainer" xml:space="preserve">
+    <value>Error In Delete Congress Container</value>
+  </data>
+  <data name="ErrorInDeleteCongressContent" xml:space="preserve">
+    <value>Error In Delete Congress Content</value>
+  </data>
+  <data name="ErrorInDeleteCongressDiscountype" xml:space="preserve">
+    <value>Error In Delete Congress Discountype</value>
+  </data>
+  <data name="ErrorInDeleteCongressFAQ" xml:space="preserve">
+    <value>Error In Delete Congress FAQ</value>
+  </data>
+  <data name="ErrorInDeleteCongressFolder" xml:space="preserve">
+    <value>Error In Delete Congress File</value>
+  </data>
+  <data name="ErrorInDeleteCongressGallery" xml:space="preserve">
+    <value>Error In Delete Congress Gallery</value>
+  </data>
+  <data name="ErrorInDeleteCongressHtml" xml:space="preserve">
+    <value>Error In Delete Congress Html</value>
+  </data>
+  <data name="ErrorInDeleteCongressMenu" xml:space="preserve">
+    <value>Error In Delete Congress Menu</value>
+  </data>
+  <data name="ErrorInDeleteCongressNews" xml:space="preserve">
+    <value>Error In Delete Congress News</value>
+  </data>
+  <data name="ErrorInDeleteCongressOwner" xml:space="preserve">
+    <value>Error In Delete Congress Owner</value>
+  </data>
+  <data name="ErrorInDeleteGuest" xml:space="preserve">
+    <value>Error In Delete Guest</value>
+  </data>
+  <data name="ErrorInDeleteHotel" xml:space="preserve">
+    <value>Error In Delete Hotel</value>
+  </data>
+  <data name="ErrorInDeleteHotelBecauseThisReserved" xml:space="preserve">
+    <value>Error In Delete Hotel Because This Reserved</value>
+  </data>
+  <data name="ErrorInDeleteLanguage" xml:space="preserve">
+    <value>Error In Delete Language</value>
+  </data>
+  <data name="ErrorInDeletePivot" xml:space="preserve">
+    <value>Error In Delete Pivot</value>
+  </data>
+  <data name="ErrorInDeleteReferee" xml:space="preserve">
+    <value>Error In Delete Referee</value>
+  </data>
+  <data name="ErrorInDeleteRefereeBecauseHisCartablContainArticle" xml:space="preserve">
+    <value>Error In Delete Referee Because His Cartabl ContainArticle</value>
+  </data>
+  <data name="ErrorInDeleteResume" xml:space="preserve">
+    <value>Error In Delete Resume</value>
+  </data>
+  <data name="ErrorInDeleteSpecialGuest" xml:space="preserve">
+    <value>Error In Delete Special Guest</value>
+  </data>
+  <data name="ErrorInDeleteSupporter" xml:space="preserve">
+    <value>Error In Delete Supporter</value>
+  </data>
+  <data name="ErrorInDeleteSupportType" xml:space="preserve">
+    <value>Error In Delete Support Type</value>
+  </data>
+  <data name="ErrorInDeleteSupportTypeBecuaseThereAreSupportWithThisType" xml:space="preserve">
+    <value>Error In Delete SupportType Becuase There Are Support With This Type</value>
+  </data>
+  <data name="ErrorInDeleteteacher" xml:space="preserve">
+    <value>Error In Delete teacher</value>
+  </data>
+  <data name="ErrorInDeleteUser" xml:space="preserve">
+    <value>Error In Delete User</value>
+  </data>
+  <data name="ErrorInDeleteWorkShop" xml:space="preserve">
+    <value>Error In Delete WorkShop</value>
+  </data>
+  <data name="ErrorInDeleteWorkShopprogramFile" xml:space="preserve">
+    <value>Error In Delete WorkShop ProgramFile</value>
+  </data>
+  <data name="ErrorInDeleteWorkShopTeacher" xml:space="preserve">
+    <value>Error In Delete WorkShop Teacher</value>
+  </data>
+  <data name="ErrorinEditArticle" xml:space="preserve">
+    <value>Error in Edit {0}</value>
+  </data>
+  <data name="ErrorInEditArticleAbstractFile" xml:space="preserve">
+    <value>Error In Edit {0} Abstract File</value>
+  </data>
+  <data name="ErrorInEditArticleAuthor" xml:space="preserve">
+    <value>Error In Edit {0} Author</value>
+  </data>
+  <data name="ErrorInEditArticleCongress" xml:space="preserve">
+    <value>Error In Edit {0} Congress</value>
+  </data>
+  <data name="ErrorInEditArticleOrginalFile" xml:space="preserve">
+    <value>Error In Edit {0} full text File</value>
+  </data>
+  <data name="ErrorInEditArticlePaymentType" xml:space="preserve">
+    <value>Error In Edit {0} Payment Type</value>
+  </data>
+  <data name="ErrorInEditArticlePaymentTypeMultiLanguage" xml:space="preserve">
+    <value>Error In Edit {0} Payment Type MultiLanguage</value>
+  </data>
+  <data name="ErrorInEditBoothMapFile" xml:space="preserve">
+    <value>Error In Edit Booth Map File</value>
+  </data>
+  <data name="ErrorInEditBoothReserv" xml:space="preserve">
+    <value>Error In Edit Booth Reserv</value>
+  </data>
+  <data name="ErrorInEditConfigurationBecauseThereErrorInDeleteSupportType" xml:space="preserve">
+    <value>Error In Edit Configuration Because There Error In Delete Support Type</value>
+  </data>
+  <data name="ErrorInEditConfuguration" xml:space="preserve">
+    <value>Error In Edit Confuguration</value>
+  </data>
+  <data name="ErrorInEditCongress" xml:space="preserve">
+    <value>Error In Edit Congress</value>
+  </data>
+  <data name="ErrorInEditCongressHtml" xml:space="preserve">
+    <value>Error In Edit Congress Html</value>
+  </data>
+  <data name="ErrorInEditFooterFile" xml:space="preserve">
+    <value>Error In Edit Footer File</value>
+  </data>
+  <data name="ErrorInEditHallmapFile" xml:space="preserve">
+    <value>Error In Edit Hall map File</value>
+  </data>
+  <data name="ErrorInEditHeaderFile" xml:space="preserve">
+    <value>Error In Edit Header File</value>
+  </data>
+  <data name="ErrorInEditHotelReserv" xml:space="preserve">
+    <value>Error In Edit Hotel Reserv</value>
+  </data>
+  <data name="ErrorInEditLogoFile" xml:space="preserve">
+    <value>Error In Edit Logo File</value>
+  </data>
+  <data name="ErrorInEditMiniPosterFile" xml:space="preserve">
+    <value>Error In Edit Poster Orginal File</value>
+  </data>
+  <data name="ErrorInEditMultiArticleLanguage" xml:space="preserve">
+    <value>Error In Edit Multi Article Language</value>
+  </data>
+  <data name="ErrorInEditMultilanguage" xml:space="preserve">
+    <value>Error In Edit Multilanguage</value>
+  </data>
+  <data name="ErrorInEditPivot" xml:space="preserve">
+    <value>Error In Edit Pivot</value>
+  </data>
+  <data name="ErrorInEditReferee" xml:space="preserve">
+    <value>Error In Edit Referee</value>
+  </data>
+  <data name="ErrorInEditRefereeCartabl" xml:space="preserve">
+    <value>Error In Edit Referee Cartabl</value>
+  </data>
+  <data name="ErrorInEditReservUserWorkShop" xml:space="preserve">
+    <value>Error In Edit Reserv UserWorkShop</value>
+  </data>
+  <data name="ErrorInEditSpecialGuest" xml:space="preserve">
+    <value>Error In Edit Special Guest</value>
+  </data>
+  <data name="ErrorInEditSupporter" xml:space="preserve">
+    <value>Error In Edit Supporter</value>
+  </data>
+  <data name="ErrorInEditSupporterInConfiguration" xml:space="preserve">
+    <value>Error In Edit Supporter In Configuration</value>
+  </data>
+  <data name="ErrorInEditSupportType" xml:space="preserve">
+    <value>Error In Edit Support Type</value>
+  </data>
+  <data name="ErrorInEditTeacher" xml:space="preserve">
+    <value>Error In Edit Teacher</value>
+  </data>
+  <data name="ErrorInEditUser" xml:space="preserve">
+    <value>Error In Edit User</value>
+  </data>
+  <data name="ErrorInEditWorkShop" xml:space="preserve">
+    <value>Error In Edit WorkShop</value>
+  </data>
+  <data name="ErrorInEditWorkShopAttachFile" xml:space="preserve">
+    <value>Error In Edit WorkShop AttachFile</value>
+  </data>
+  <data name="ErrorInEditWorkShopProgramFile" xml:space="preserve">
+    <value>Error In Edit WorkShop ProgramFile</value>
+  </data>
+  <data name="ErrorInInsertFAQ" xml:space="preserve">
+    <value>Error In Insert FAQ</value>
+  </data>
+  <data name="ErrorInPayArticleAmount" xml:space="preserve">
+    <value>Error In Pay {0} Amount</value>
+  </data>
+  <data name="ErrorInReservBooth" xml:space="preserve">
+    <value>Error In Reserv Booth</value>
+  </data>
+  <data name="ErrorInReservWorkShop" xml:space="preserve">
+    <value>Error In Reserv WorkShop</value>
+  </data>
+  <data name="ErrorInSaveArticle" xml:space="preserve">
+    <value>Error In Save {0}</value>
+  </data>
+  <data name="ErrorInSaveArticleAbstractFile" xml:space="preserve">
+    <value>Error In Save Article AbstractFile</value>
+  </data>
+  <data name="ErrorInSaveArticleAuthor" xml:space="preserve">
+    <value>Error In Save {0} Author</value>
+  </data>
+  <data name="ErrorInSaveArticleFlow" xml:space="preserve">
+    <value>Error In Save Article Flow</value>
+  </data>
+  <data name="ErrorInSaveArticleOrginalFile" xml:space="preserve">
+    <value>Error In Save Article full text File</value>
+  </data>
+  <data name="ErrorInSaveArticlePaymentType" xml:space="preserve">
+    <value>Error In Save Article Payment Type</value>
+  </data>
+  <data name="ErrorInSaveArticlePaymentTypeMultiLanguage" xml:space="preserve">
+    <value>Error In Save Article Payment Type Multi Language</value>
+  </data>
+  <data name="ErrorInSaveBoothOfficer" xml:space="preserve">
+    <value>Error In Save Booth Officer</value>
+  </data>
+  <data name="ErrorInSaveBoothReserv" xml:space="preserve">
+    <value>Error In Save Booth Reserv</value>
+  </data>
+  <data name="ErrorInSaveChipFood" xml:space="preserve">
+    <value>Error In Save ChipFood</value>
+  </data>
+  <data name="ErrorInSaveConfiguartion" xml:space="preserve">
+    <value>Error In Save Configuartion</value>
+  </data>
+  <data name="ErrorInSaveCongress" xml:space="preserve">
+    <value>Error In Save Congress</value>
+  </data>
+  <data name="ErrorInSaveCongressAccount" xml:space="preserve">
+    <value>Error In Save Congress Account</value>
+  </data>
+  <data name="ErrorInSaveCongressContainer" xml:space="preserve">
+    <value>Error In Save Congress Container</value>
+  </data>
+  <data name="ErrorInSaveCongressContent" xml:space="preserve">
+    <value>Error In Save Congress Content</value>
+  </data>
+  <data name="ErrorInSaveCongressDiscountype" xml:space="preserve">
+    <value>Error In Save Congress Discountype</value>
+  </data>
+  <data name="ErrorInSaveCongressFolder" xml:space="preserve">
+    <value>Error In Save Congress File</value>
+  </data>
+  <data name="ErrorInSaveCongressGallery" xml:space="preserve">
+    <value>Error In Save Congress Gallery</value>
+  </data>
+  <data name="ErrorInSaveCongressHtml" xml:space="preserve">
+    <value>Error In Save Congress Html</value>
+  </data>
+  <data name="ErrorInSaveCongressLanguage" xml:space="preserve">
+    <value>Error In Save Congress Language</value>
+  </data>
+  <data name="ErrorInSaveCongressMenu" xml:space="preserve">
+    <value>Error In Save Congress Menu</value>
+  </data>
+  <data name="ErrorInSaveCongressNews" xml:space="preserve">
+    <value>Error In Save Congress News</value>
+  </data>
+  <data name="ErrorInSaveFile" xml:space="preserve">
+    <value>Error In Save File</value>
+  </data>
+  <data name="ErrorInSaveFooterFile" xml:space="preserve">
+    <value>Error In Save Footer File</value>
+  </data>
+  <data name="ErrorInSaveGuest" xml:space="preserve">
+    <value>Error In Save Guest</value>
+  </data>
+  <data name="ErrorInSaveHotel" xml:space="preserve">
+    <value>Error In Save Hotel</value>
+  </data>
+  <data name="ErrorInSaveHotelReserv" xml:space="preserve">
+    <value>Error In Save Hotel Reserv</value>
+  </data>
+  <data name="ErrorInSaveMultiArticleLanguage" xml:space="preserve">
+    <value>Error In Save Multi Article Language</value>
+  </data>
+  <data name="ErrorInSavePivot" xml:space="preserve">
+    <value>Error In Save Pivot</value>
+  </data>
+  <data name="ErrorInSaveReferee" xml:space="preserve">
+    <value>Error In Save Referee</value>
+  </data>
+  <data name="ErrorInSaveResume" xml:space="preserve">
+    <value>Error In Save Resume</value>
+  </data>
+  <data name="ErrorInSaveSpecialGuest" xml:space="preserve">
+    <value>Error In Save Special Guest</value>
+  </data>
+  <data name="ErrorInSaveSupporter" xml:space="preserve">
+    <value>Error In Save Supporter</value>
+  </data>
+  <data name="ErrorInSaveSupporterPartialInConfiguration" xml:space="preserve">
+    <value>Error In Save Supporter Partial In Configuration</value>
+  </data>
+  <data name="ErrorInSaveSupportType" xml:space="preserve">
+    <value>Error In Save Support Type</value>
+  </data>
+  <data name="ErrorInSaveTeacher" xml:space="preserve">
+    <value>Error In Save Teacher</value>
+  </data>
+  <data name="ErrorInSaveUser" xml:space="preserve">
+    <value>Error In Save User</value>
+  </data>
+  <data name="ErrorInSaveWorkShop" xml:space="preserve">
+    <value>Error In Save WorkShop</value>
+  </data>
+  <data name="ErrorInSaveWorkShopTeacher" xml:space="preserve">
+    <value>Error In Save WorkShop Teacher</value>
+  </data>
+  <data name="ErrorInSendArticle" xml:space="preserve">
+    <value>Error In Send {0}</value>
+  </data>
+  <data name="ErrorInUpdateChipFood" xml:space="preserve">
+    <value>Error In Update ChipFood</value>
+  </data>
+  <data name="ErrorInUpdateComments" xml:space="preserve">
+    <value>Error In Update Comments</value>
+  </data>
+  <data name="ErrorInUpdateFile" xml:space="preserve">
+    <value>Error In Update File</value>
+  </data>
+  <data name="ErrorInWorkDailyScheduler" xml:space="preserve">
+    <value>Error In Work Daily Scheduler</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="Finalconfirm" xml:space="preserve">
+    <value>Final confirm</value>
+  </data>
+  <data name="ForeachCertificate" xml:space="preserve">
+    <value>One certification per user</value>
+  </data>
+  <data name="FreeUser" xml:space="preserve">
+    <value>Free User</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>FullName</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Guest</value>
+  </data>
+  <data name="GuestChangeStatusEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User   {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your reserved booth with name {2} changed to state {4}
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="GuestChangeStatusSMS" xml:space="preserve">
+    <value>Dear user {1}, your booth {2} reservation changed to state : {3}</value>
+  </data>
+  <data name="GuestInsertSMS" xml:space="preserve">
+    <value>Dear user {1}, your booth {2} reservation was successfully register.</value>
+  </data>
+  <data name="GuestnsertEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your booth {2} reservation was successfully registered.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="GuestPaymentEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your booth {2} reservation fee was successfully paid.
+&lt;/div&gt;
+&lt;div&gt;
+  For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="GuestPaymentSMS" xml:space="preserve">
+    <value>Dear user {1}, your booth {2} reservation fee was successfully paid.</value>
+  </data>
+  <data name="GuestUpdateEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User  {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your booth {2} reservation was successfully updated.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="GuestUpdateSMS" xml:space="preserve">
+    <value>Dear user {1}, your booth {2} reservation was successfully updated.</value>
+  </data>
+  <data name="Has" xml:space="preserve">
+    <value>Has</value>
+  </data>
+  <data name="HasChair" xml:space="preserve">
+    <value>Has Chair</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>Hotel</value>
+  </data>
+  <data name="HotelCapacityLessThanNumberOfSelectedUser" xml:space="preserve">
+    <value>Hotel Capacity Less Than Number Of Selected User</value>
+  </data>
+  <data name="HotelChangeStatusEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User  {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your reservation in hotel {2} changed to {4} state.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="HotelChangeStatusSMS" xml:space="preserve">
+    <value>Dear user {1}, your reservation in hotel {2} changed to {3} state</value>
+  </data>
+  <data name="HotelInsertEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your reservation in hotel {2} was successfully registered.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;</value>
+  </data>
+  <data name="HotelInsertSMS" xml:space="preserve">
+    <value>Dear user {1}, your reservation in hotel {2} was successfully registered.</value>
+  </data>
+  <data name="HotelName" xml:space="preserve">
+    <value>Name of Hotel</value>
+  </data>
+  <data name="HotelPaymentEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0} 
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your hotel {2} reservation payment was successfuly done.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="HotelPaymentSMS" xml:space="preserve">
+    <value>Dear user {1}, your hotel {2} reservation payment was successfully done.</value>
+  </data>
+  <data name="HotelUpdateEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your hotel {2} reservation was successfully updated.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;</value>
+  </data>
+  <data name="HotelUpdateSMS" xml:space="preserve">
+    <value>Dear user {1}, your hotel {2} reservation was successfully edited.</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="ImageAndTitle" xml:space="preserve">
+    <value>ImageAndTitle</value>
+  </data>
+  <data name="InternalMessage" xml:space="preserve">
+    <value>Internal Message</value>
+  </data>
+  <data name="IsDirector" xml:space="preserve">
+    <value>Director</value>
+  </data>
+  <data name="JSFile" xml:space="preserve">
+    <value>JSFile</value>
+  </data>
+  <data name="JSFile1" xml:space="preserve">
+    <value>JSFile</value>
+  </data>
+  <data name="JSFunction" xml:space="preserve">
+    <value>JSFunction</value>
+  </data>
+  <data name="JSFunction1" xml:space="preserve">
+    <value>JSFunction</value>
+  </data>
+  <data name="KindOfSupport" xml:space="preserve">
+    <value>Kind of Support</value>
+  </data>
+  <data name="Layout" xml:space="preserve">
+    <value>Layout</value>
+  </data>
+  <data name="LName" xml:space="preserve">
+    <value>LName</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="Maximumallowed" xml:space="preserve">
+    <value>Maximum allowed</value>
+  </data>
+  <data name="Mr" xml:space="preserve">
+    <value>Mr.</value>
+  </data>
+  <data name="Mrs" xml:space="preserve">
+    <value>Mrs.</value>
+  </data>
+  <data name="NoHas" xml:space="preserve">
+    <value>NoHas</value>
+  </data>
+  <data name="Nopaymenthasbeenselectedfortheconference" xml:space="preserve">
+    <value>No payment types selected.</value>
+  </data>
+  <data name="NotFoundRefereeForSendArticle" xml:space="preserve">
+    <value>NotFound Referee For Send Article</value>
+  </data>
+  <data name="NotHasChair" xml:space="preserve">
+    <value>Not Has Chair</value>
+  </data>
+  <data name="NumberArticlesReferee" xml:space="preserve">
+    <value>Number of Articles by Referee</value>
+  </data>
+  <data name="NumberBoothsByDivision" xml:space="preserve">
+    <value>Number of booths by division</value>
+  </data>
+  <data name="NumberStandsWithReservationSeparation" xml:space="preserve">
+    <value>Number of stands with reservation separation</value>
+  </data>
+  <data name="OnlyTitle" xml:space="preserve">
+    <value>OnlyTitle</value>
+  </data>
+  <data name="OrginalSended" xml:space="preserve">
+    <value>Full text uploaded</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PasswordRecovery" xml:space="preserve">
+    <value>Password Recovery</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Pay</value>
+  </data>
+  <data name="PayConfirm" xml:space="preserve">
+    <value>Pay Confirm</value>
+  </data>
+  <data name="PayDate" xml:space="preserve">
+    <value>PayDate</value>
+  </data>
+  <data name="PaymentArticlePayment" xml:space="preserve">
+    <value>Article registeration payment</value>
+  </data>
+  <data name="PaymentBoothReserv" xml:space="preserve">
+    <value>Booth reserve payment</value>
+  </data>
+  <data name="PaymentHotelReserv" xml:space="preserve">
+    <value>Hotel reserve payment</value>
+  </data>
+  <data name="PaymentUserRegister" xml:space="preserve">
+    <value>Registeration fee</value>
+  </data>
+  <data name="PaymentWorkShopReserv" xml:space="preserve">
+    <value>Workshop reserve payment</value>
+  </data>
+  <data name="PayWait" xml:space="preserve">
+    <value>Wating for payment</value>
+  </data>
+  <data name="Pleaseenteraminimumorauthorforthearticle" xml:space="preserve">
+    <value>Please enter at least one author for the article</value>
+  </data>
+  <data name="PleaseEnterChipFoodDays" xml:space="preserve">
+    <value>Please Enter ChipFood Days</value>
+  </data>
+  <data name="PleaseEnterYourEmail" xml:space="preserve">
+    <value>Please Enter Email</value>
+  </data>
+  <data name="Please_Enter_YourGender" xml:space="preserve">
+    <value>Please Enter Sex</value>
+  </data>
+  <data name="Please_Enter_YourLastName" xml:space="preserve">
+    <value>Please Enter LastName</value>
+  </data>
+  <data name="Please_Enter_YourMobile" xml:space="preserve">
+    <value>Please Enter Mobile</value>
+  </data>
+  <data name="Please_Enter_YourName" xml:space="preserve">
+    <value>Please Enter Name</value>
+  </data>
+  <data name="PresentConfirm" xml:space="preserve">
+    <value>Presence confirmation</value>
+  </data>
+  <data name="PresentDenial" xml:space="preserve">
+    <value>Presence rejection</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="PrintArticlesAbstract" xml:space="preserve">
+    <value>Print Articles Abstract</value>
+  </data>
+  <data name="Referee" xml:space="preserve">
+    <value>Referee</value>
+  </data>
+  <data name="RefereeAnswered" xml:space="preserve">
+    <value>Referee Answered</value>
+  </data>
+  <data name="RefereeArticle" xml:space="preserve">
+    <value>Referee add Article</value>
+  </data>
+  <data name="RefereeEmailIsRepeat" xml:space="preserve">
+    <value>Referee Email already added</value>
+  </data>
+  <data name="RefereeInformArticleEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear {1}
+&lt;/div&gt;
+&lt;div&gt;
+The article with title {2} in {0} has been assigned to be reviewed and it is available at your account
+&lt;/div&gt;
+&lt;div&gt;
+If you require m
+ore information
+​, please kindly
+contact us
+
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+{4}
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="RefereeInformArticleEmailNetTemplate" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+[%TitleenUS%]
+&lt;/div&gt;
+&lt;div&gt;
+Dear {1}
+&lt;/div&gt;
+&lt;div&gt;
+The article with title {2} in [%TitleenUS%] has been assigned to be reviewed and it is available at your account
+&lt;/div&gt;
+&lt;div&gt;
+If you require m
+ore information
+​, please kindly
+contact us
+
+&lt;/div&gt;
+&lt;/div&gt;
+{0}</value>
+  </data>
+  <data name="RefereeInformArticleSMS" xml:space="preserve">
+    <value>Dear {1} article with code {2} was sent to your cartable.</value>
+  </data>
+  <data name="RefereeInsertEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+  {1} 
+&lt;/div&gt;
+&lt;div&gt;
+ You've been in Congress {0} as Referee
+&lt;/div&gt;
+&lt;div&gt;
+UserName :{4}
+&lt;/div&gt;
+&lt;div&gt;
+ Password :{5}
+&lt;/div&gt;
+&lt;div&gt;
+Login Panel Address :{3}
+&lt;/div&gt;
+&lt;div&gt;
+  Please Change Your Password After Login in  Your Panel
+&lt;/div&gt;
+&lt;div&gt;For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {2}  
+&lt;/div&gt;
+&lt;div&gt;
+    Regards&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="RefereeInsertSMS" xml:space="preserve">
+    <value>{1} You've been in Congress {0} as Referee   UserName:{3},Password : {4} and login Panel Address: {2}</value>
+  </data>
+  <data name="RefereesAnswered" xml:space="preserve">
+    <value>Referees Answered</value>
+  </data>
+  <data name="RefereeUserNameIsRepeat" xml:space="preserve">
+    <value>Referee UserName already added</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RegisterDate" xml:space="preserve">
+    <value>RegisterDate</value>
+  </data>
+  <data name="RegisterRequest" xml:space="preserve">
+    <value>Request registeration</value>
+  </data>
+  <data name="RegistertypeCapacityislessthanthenumberofusersisselected" xml:space="preserve">
+    <value>Register type Capacity is less than the number of users is selected</value>
+  </data>
+  <data name="RptAbstractArticle" xml:space="preserve">
+    <value>Rpt Abstract Article</value>
+  </data>
+  <data name="RptArticle" xml:space="preserve">
+    <value>Artiel List Report </value>
+  </data>
+  <data name="RptArticleCertificate" xml:space="preserve">
+    <value>Artile Certificate Report</value>
+  </data>
+  <data name="RptBoothOfficer" xml:space="preserve">
+    <value>Booth Officer Report</value>
+  </data>
+  <data name="RptChipFood" xml:space="preserve">
+    <value>Chip Food Report</value>
+  </data>
+  <data name="RptCongressCertificate" xml:space="preserve">
+    <value>Congress Certificate Report </value>
+  </data>
+  <data name="RptHotelUser" xml:space="preserve">
+    <value>User Reserv Hotel Report</value>
+  </data>
+  <data name="RptMiniUserCard" xml:space="preserve">
+    <value>Mini User Card Report</value>
+  </data>
+  <data name="RptUser" xml:space="preserve">
+    <value>User List Report</value>
+  </data>
+  <data name="RptUserBooth" xml:space="preserve">
+    <value>User Reserve  booth Report</value>
+  </data>
+  <data name="RptUserCard" xml:space="preserve">
+    <value>User Card </value>
+  </data>
+  <data name="RptWorkShopUser" xml:space="preserve">
+    <value>User Reserve WorkShop Report</value>
+  </data>
+  <data name="SendForAllMan" xml:space="preserve">
+    <value>Send to male members</value>
+  </data>
+  <data name="SendForAllUser" xml:space="preserve">
+    <value>Send to all members</value>
+  </data>
+  <data name="SendForAllUserHaveReserveChair" xml:space="preserve">
+    <value>Send For All User Have Reserve Chair</value>
+  </data>
+  <data name="SendForAllUserHaveSaledChair" xml:space="preserve">
+    <value>Send For All User Have Saled Chair</value>
+  </data>
+  <data name="SendForAllUserInPreRegisterStatus" xml:space="preserve">
+    <value>Send to users with preregisteration state</value>
+  </data>
+  <data name="SendForAllUserPayConfirmAndNotHaveChair" xml:space="preserve">
+    <value>Send For All User Pay Confirm And Not Have Chair</value>
+  </data>
+  <data name="SendForAllWomen" xml:space="preserve">
+    <value>Send to female members</value>
+  </data>
+  <data name="SendForRefrereeHasWaitForAnswerArticle" xml:space="preserve">
+    <value>Send For Refreree Has Wait For Answer Article</value>
+  </data>
+  <data name="SendForRefrereeNotHasWaitForAnswerArticle" xml:space="preserve">
+    <value>Send For Refreree Not Has Wait For Answer Article</value>
+  </data>
+  <data name="SendForUserAbstarctConfirm" xml:space="preserve">
+    <value>Send to users with confirmed abstract</value>
+  </data>
+  <data name="SendForUserAbstarctConfirmAndNotSendOrginal" xml:space="preserve">
+    <value>Send to users with confirmed abstracts who have not sent their article full text</value>
+  </data>
+  <data name="SendForUserArticleDenial" xml:space="preserve">
+    <value>Send to users with rejected articles</value>
+  </data>
+  <data name="SendForUserOrginalConfirm" xml:space="preserve">
+    <value>Send to users with confirmed article full text</value>
+  </data>
+  <data name="SendForUserWhoConfirmInHoma" xml:space="preserve">
+    <value>Send For User Who Confirm In Homa</value>
+  </data>
+  <data name="SendForUserWhoDenialInHoma" xml:space="preserve">
+    <value>Send For User Who Denial In Homa</value>
+  </data>
+  <data name="SendForUserWhoRegisterAndnotPay" xml:space="preserve">
+    <value>Send For User Who Register And not Pay</value>
+  </data>
+  <data name="SendForUserWhoRegisterPayConfirm" xml:space="preserve">
+    <value>Send For User Who Register Pay Confirm</value>
+  </data>
+  <data name="SendForUserWhoRegisterPayDenial" xml:space="preserve">
+    <value>Send For User Who Register Pay Denial</value>
+  </data>
+  <data name="SendForUserWhoReservedHotelButNotPay" xml:space="preserve">
+    <value>Send For User Who Reserved Hotel But Not Payed</value>
+  </data>
+  <data name="SendForUserWhoReservedHotelConfirm" xml:space="preserve">
+    <value>Send For User Who Reserved Hotel Confirm</value>
+  </data>
+  <data name="SendForUserWhoReservedHotelDenial" xml:space="preserve">
+    <value>Send For User Who Reserved Hotel Denial</value>
+  </data>
+  <data name="SendForUserWhoReservedWorkShopButNotPay" xml:space="preserve">
+    <value>Send For User Who Reserved WorkShop But Not Payed</value>
+  </data>
+  <data name="SendForUserWhoReservedWorkShopConfirm" xml:space="preserve">
+    <value>Send For User Who Reserved WorkShop Confirm</value>
+  </data>
+  <data name="SendForUserWhoReservedWorkShopDenial" xml:space="preserve">
+    <value>Send For User Who Reserved WorkSho Denial</value>
+  </data>
+  <data name="SendToMembersOfTheAbstractsWillBeConfirmedAfterCorrection" xml:space="preserve">
+    <value>Send to members of the abstracts will be confirmed after correction</value>
+  </data>
+  <data name="SendToReferee" xml:space="preserve">
+    <value>Send To Referee</value>
+  </data>
+  <data name="SentForUserSendAbstractArticle" xml:space="preserve">
+    <value>Sent For User Upload Abstract Article</value>
+  </data>
+  <data name="SentForUserSendOrginalArticle" xml:space="preserve">
+    <value>Sent For User Upload Article Full Text</value>
+  </data>
+  <data name="SentInformByPivot" xml:space="preserve">
+    <value>Send For all User Who Article Pivot Is {0} </value>
+  </data>
+  <data name="SentInformByType" xml:space="preserve">
+    <value>Send to members who have article type {0}</value>
+  </data>
+  <data name="SentToSpecialReferee" xml:space="preserve">
+    <value>Sent To Special Referee</value>
+  </data>
+  <data name="SMS" xml:space="preserve">
+    <value>SMS</value>
+  </data>
+  <data name="Style" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="Style1" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="ThereIsCongressThisUrl" xml:space="preserve">
+    <value>There Is CongressThis Url</value>
+  </data>
+  <data name="ThisArticleNotHaveDirectorAuthor" xml:space="preserve">
+    <value>Please Enter Director Author</value>
+  </data>
+  <data name="ThisChairReservedBy" xml:space="preserve">
+    <value>This Chair Reserved By {0}</value>
+  </data>
+  <data name="ThisReserveHastTranscactionYouCannotDeleteIt" xml:space="preserve">
+    <value>This Reserve Hast Transcaction You Can not Delete It</value>
+  </data>
+  <data name="ThisTransactionIsEndPleaseStartNewPayment" xml:space="preserve">
+    <value>This Transaction Is End Please Start New Payment</value>
+  </data>
+  <data name="TitleArticle" xml:space="preserve">
+    <value>TitleArticle</value>
+  </data>
+  <data name="UnValid_Enter_Email" xml:space="preserve">
+    <value>UnValid Enter Email</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="UserCard" xml:space="preserve">
+    <value>User Card</value>
+  </data>
+  <data name="UserChangeStatusEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your registration in {0} has changed to status {3}.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {2}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="UserChangeStatusSMS" xml:space="preserve">
+    <value>Dear user {1} Your registration in {0} has changed to status {2}</value>
+  </data>
+  <data name="UserCode" xml:space="preserve">
+    <value>User Code</value>
+  </data>
+  <data name="UserForgatPasswordMailContent" xml:space="preserve">
+    <value>&lt;div style='width: 500px; border:solid #96171a 1px; font-family: tahoma; font-size:9pt;'&gt;&lt;div style='width: 100%; direction: rtl;  border-top:solid #96171a 3px;text-align: right;'&gt;&lt;p style='padding: 4px;'&gt;  Hi {0}&lt;/p&gt;&lt;p align='justify'style='padding: 4px;'&gt;You have sent us a request in order to change your password.
+In order to complete password recovery process click the link below:  {2}  &lt;/p&gt;   &lt;p align='left'style='padding: 4px;'&gt; &lt;a href='{1}'&gt;{1}&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="UserInsertEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+   Your information in {0} has been successfully registered.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {2}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="UserInsertSMS" xml:space="preserve">
+    <value>Dear user {1} Your registration in {0} has been successfully done.</value>
+  </data>
+  <data name="UserLayout" xml:space="preserve">
+    <value>UserLayout</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="UserNameIsRepeate" xml:space="preserve">
+    <value>UserName Is Repeate</value>
+  </data>
+  <data name="UserNameNotRegisterInCongress" xml:space="preserve">
+    <value>Your email is not registered on the Congress</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>User Not Found</value>
+  </data>
+  <data name="UserPaymentEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your registeration payment in {0} has been successfully done.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {2}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="UserPaymentSMS" xml:space="preserve">
+    <value>Dear user {1} Your registration payment in {0} has been successfully done.</value>
+  </data>
+  <data name="UserPreRegisterStatus" xml:space="preserve">
+    <value>PreRegister</value>
+  </data>
+  <data name="UserRegister" xml:space="preserve">
+    <value>User Register</value>
+  </data>
+  <data name="UserRegisterConfirmPresentInHomaStatus" xml:space="preserve">
+    <value>Presence Confirmation</value>
+  </data>
+  <data name="UserRegisterDenialPresentInHomaStatus" xml:space="preserve">
+    <value>Presence Denial</value>
+  </data>
+  <data name="UserRegisterPayConfirmStatus" xml:space="preserve">
+    <value>Payment Confirmation</value>
+  </data>
+  <data name="UserRegisterPayDenialStatus" xml:space="preserve">
+    <value>Payment Denial</value>
+  </data>
+  <data name="UserRegisterPayStatus" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="UserRegisterStatus" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="UsersName" xml:space="preserve">
+    <value>User's Name</value>
+  </data>
+  <data name="UsersNotFound" xml:space="preserve">
+    <value>UsersNotFound</value>
+  </data>
+  <data name="UserSubscribeMailContent" xml:space="preserve">
+    <value>&lt;div style='width: 500px; border:solid #96171a 1px; font-family: tahoma; font-size:9pt;'&gt;&lt;div style='width: 100%; direction: rtl;  border-top:solid #96171a 3px;text-align: right;'&gt;&lt;p style='padding: 4px;'&gt;   Dear {0}  &lt;/p&gt;&lt;p align='justify'style='padding: 4px;'&gt;Thank you for registering in {2}  Please click the link below to continue.&lt;/p&gt;&lt;p align='left'style='padding: 4px;'&gt;&lt;a href='{1}'&gt;{1}&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="UserUpdateEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your information in {0} has been successfully registered.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {2} 
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="UserUpdateSMS" xml:space="preserve">
+    <value>Dear user {1} Your profile information in {0} has been successfully registered.</value>
+  </data>
+  <data name="WaitForAnswer" xml:space="preserve">
+    <value>Wait For Answer</value>
+  </data>
+  <data name="WaitForRefereeOpinion" xml:space="preserve">
+    <value>Wait For Referee Opinion</value>
+  </data>
+  <data name="WaitForScientificTeacher" xml:space="preserve">
+    <value>Wait For Scientific Teacher</value>
+  </data>
+  <data name="WaitforSpecialRefereeOpinion" xml:space="preserve">
+    <value>Wait for Special Referee Opinion</value>
+  </data>
+  <data name="Withpercentage" xml:space="preserve">
+    <value>With the percentage of participation</value>
+  </data>
+  <data name="Workshop" xml:space="preserve">
+    <value>Workshop</value>
+  </data>
+  <data name="WorkShopCapacityLessThanNumberOfSelectedUser" xml:space="preserve">
+    <value>WorkShop Capacity Less Than Number Of SelectedUser</value>
+  </data>
+  <data name="WorkShopChangeStatusEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Workshop {2} resevation in {0} has changed to status {4}.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us.
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="WorkShopChangeStatusSMS" xml:space="preserve">
+    <value>Dear user {1} your reservation for {2} workshop in {0} has changed to status {3}.</value>
+  </data>
+  <data name="WorkShopInsertEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Workshop reservation with title {2} in {0} has been successfully done.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;</value>
+  </data>
+  <data name="WorkShopInsertSMS" xml:space="preserve">
+    <value>Dear user {1} your reservation for {2} workshop in {0} has been successfully done.</value>
+  </data>
+  <data name="WorkshopName" xml:space="preserve">
+    <value>Name of Workshop</value>
+  </data>
+  <data name="WorkShopPaymentEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear user {1}
+&lt;/div&gt;
+&lt;div&gt;
+Your {2} workshop reservation payment in {0} has been successfully done.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="WorkShopPaymentSMS" xml:space="preserve">
+    <value>Dear user {1} Your payment for {2} workshop in {0} has been successfully done.</value>
+  </data>
+  <data name="WorkShopUpdateEmail" xml:space="preserve">
+    <value>&lt;div style='float: left;direction: ltr;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+Dear User {1}
+&lt;/div&gt;
+&lt;div&gt;
+Workshop reservation with title {2} in {0} has been successfully updated.
+&lt;/div&gt;
+&lt;div&gt;
+For more information contact us please.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+Regards.
+&lt;/div&gt;</value>
+  </data>
+  <data name="WorkShopUpdateSMS" xml:space="preserve">
+    <value>Dear user {1} Your {2} workshop reservation in {0} has been edited successfully. </value>
+  </data>
+  <data name="YouCanNotAddNewCongress" xml:space="preserve">
+    <value>You exceed limitations in holding conferences.</value>
+  </data>
+  <data name="YouhavealreadyregisteredCongress" xml:space="preserve">
+    <value>You have already registered Congress</value>
+  </data>
+  <data name="YouReservedThisBooth" xml:space="preserve">
+    <value>You Reserved This Booth</value>
+  </data>
+</root>

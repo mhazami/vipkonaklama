@@ -1,0 +1,44 @@
+﻿<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        function postRefId() {
+
+            var form = document.createElement("form");
+
+            var hiddenAmount = document.createElement("input");
+            var hiddenPaymentId = document.createElement("input");
+            var hiddenauthority = document.createElement("input");
+
+
+            hiddenAmount.setAttribute("name", "amount");
+            hiddenAmount.setAttribute("Id", "amount");
+            hiddenAmount.setAttribute("value", '@ViewBag.amount');
+
+            hiddenPaymentId.setAttribute("name", "paymenURL");
+            hiddenPaymentId.setAttribute("Id", "paymenURL");
+            hiddenPaymentId.setAttribute("value", '@ViewBag.paymentId');
+
+            hiddenauthority.setAttribute("Id", "authority");
+            hiddenauthority.setAttribute("name", "authority");
+            hiddenauthority.setAttribute("value", '@ViewBag.authority');
+
+            form.appendChild(hiddenAmount);
+            form.appendChild(hiddenPaymentId);
+            form.appendChild(hiddenauthority);
+            form.setAttribute("method", "POST");
+            form.setAttribute("action", "https://www.zarinpal.com/pg/StartPay/" + '@ViewBag.authority');
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+            postRefId();
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+@using Radyn.Web.Mvc;
+@using Radyn.WebApp.Areas.Common.Component
+@model Radyn.Payment.DataStructure.WebDesignDiscountType
+@{
+    ViewBag.Title = @Resources.Common.Create + " " + @Resources.Payment.DiscountType;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+
+@section PageTitle
+{
+    @Resources.Payment.DiscountType @Resources.Common.New
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+   
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Payment/WebDesignDiscountType/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Payment/WebDesignDiscountType/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+    <input type="hidden" name="Id" value="@ViewBag.Id" />
+}
+@Html.ValidationSummary(true)
+<div class="radynForm">
+    <div class="item-row">
+        @{
+            Html.LanguageDropDownList();
+        }
+    </div>
+    @{
+        Html.RenderAction("GetModify", "DiscountType", new { area = "Payment" });
+    }
+
+    <div class="item-row fit">
+        @{
+            Html.RenderAction("GenerateDiscountSection", "WebDesignDiscountType", new { Id = ViewBag.Id, area = "Payment" });
+        }
+    </div>
+</div>

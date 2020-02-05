@@ -1,0 +1,75 @@
+﻿@using Radyn.Web.Mvc.Utility
+@model Radyn.News.DataStructure.NewsContent
+
+<div class="item-row" style="display: none">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsContentOverTitle
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.OverTitle)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsTitle
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.Title1)
+        </div>
+    </div>
+</div>
+<div class="item-row" style="display: none">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsContentTitle2
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.Title2)
+        </div>
+    </div>
+</div>
+<div class="item-row fit">
+    <div class="table-row-cap ">
+        <div class="item">
+            @Resources.News.NewsContentLead
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit  table-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.Lead)
+        </div>
+    </div>
+</div>
+<div class="item-row fit" style="display: none">
+    <div class="table-row-cap ">
+        <div class="item">
+            @Resources.News.NewsContentSutitr
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit  table-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.Sutitr)
+        </div>
+    </div>
+</div>
+<div class="item-row fit">
+    <div class="table-row-cap table-c-double">
+        <div class="item">
+            @Resources.News.NewsContentBody
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit table-c-auto table-fit " style="min-height: 200px;">
+        <div class="item">
+            @{Html.HtmlEncoder(Model.Body);}
+        </div>
+    </div>
+</div>

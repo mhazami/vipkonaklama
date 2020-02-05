@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Radyn.ContentManager.DataStructure.Menu>
+    @{
+        Html.RenderAction("GetMenu", "UIPanel", new { area = "ContentManager", menus = Model, MenuHtml = ViewBag.MenuHtml });
+    }
+
+

@@ -1,0 +1,74 @@
+﻿@using Radyn.FileManager
+@using Radyn.Web.Mvc
+
+@model IEnumerable<Radyn.FileManager.DataStructure.File>
+    <script type="text/javascript">
+        $(function () {
+            $("#DivPathFolder").hide();
+        });
+        function DeleteFile(id) {
+            if (confirm('@Resources.Common.Are_You_Soure_For_Delete')) {
+                $.get("@Url.Content("~/FileManager/RadynEditor/DeleteFile")", { Id: id, date: new Date().getTime() }, function (data) {
+                    if (data != "false") {
+                        GetFiles('@ViewBag.FolderId');
+                    }
+                    ShowRadynMessage();
+                });
+            }
+
+        }
+        function GetPath(id, status) {
+           var path = '';
+            $("#DivPathFolder").show();
+            if (status === 'path') {
+                $("#path").val('@Resources.FileManager.Path');
+                path = 'http://' + '@HttpContext.Current.Request.Url.Authority' + '@Radyn.Web.Mvc.UI.Application.CurrentApplicationPath' + '@FileManagerContants.FileHandlerRoot' + id;
+                $("#pathdownload").val(path);
+            }
+            if (status === 'download') {
+                $("#path").val('@Resources.FileManager.DownloadPath');
+                path = 'http://' + '@HttpContext.Current.Request.Url.Authority' + '@Radyn.Web.Mvc.UI.Application.CurrentApplicationPath' + '@FileManagerContants.FileHandlerRoot' + id + '?dl=true';
+                $("#pathdownload").val(path);
+            }
+
+        }
+        function ClearPath() {
+            $("#DivPathFolder").hide();
+        }
+    </script>
+
+    <div class="radynForm" style="margin-top: 0;width: 100%; padding:0 10px">
+        @{
+            Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+            {
+                columns.Template(file => "<a  style=\"cursor: pointer\"  onclick=\"SelecImageUrl('" + FileManagerContants.FileHandlerRoot + file.Id + "/" + DateTime.Now.Ticks + "')\" >" + Resources.Common.Select + "</a>").Width(40);
+                columns.Template(item => ((item.Extension.ToLower().Contains("png") || item.Extension.ToLower().Contains("jpg") || item.Extension.ToLower().Contains("gif")) ? "<img  src=\"" + @Radyn.FileManager.FileManagerContants.FileHandlerRoot + @item.Id + "/" + DateTime.Now.Ticks + "\" height=\"50\" width=\"50\"/>" : "")).Width(100).Title(@Resources.Common.Photo);
+                columns.Template(file => "<a  style=\"cursor: pointer\"    href='" + FileManagerContants.FileHandlerRoot + file.Id + "/" + DateTime.Now.Ticks + "?dl=true" + "'   >" + file.FileName + "." + file.Extension + "</a>").Title(Resources.FileManager.File).Width(130).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(file => "<a  style=\"cursor: pointer\"  onclick=\"GetPath('" + file.Id + "','download')\" >" + Resources.FileManager.DownloadPath + "</a>" + " | " +
+                                                   "<a  style=\"cursor: pointer\"  onclick=\"GetPath('" + file.Id + "','path')\" >" + Resources.FileManager.Path + "</a>" + " | " +
+                                                   "<a  style=\"cursor: pointer\"  onclick=\"GetFilesModal('" + file.Id + "','" + ViewBag.FolderId + "')\" >" + Resources.Common.Edit + "</a>" + " | " +
+                                                   "<a  style=\"cursor: pointer\"  onclick=\"DeleteFile('" + file.Id + "')\" >" + Resources.Common.Delete + "</a>"
+                              ).Width(250);
+
+            })
+
+            .Sortable(sorting => sorting.Enabled(true))
+            .Filterable(filtering => filtering.Enabled(true))
+            .Pageable(paging => paging.Enabled(true))
+            .Render();
+        }
+
+        <div class="gv-row  gv-footer" style="height: auto;">
+            <div id="DivPathFolder" class="path-folder">
+                <div class="" >
+                    <input type="text" id="path" class="text-path"  readonly="readonly" />
+                    <input type="text" class="input-path" id="pathdownload"  />
+                    <img src="~/App_Themes/icon-delete.png" class="img-path" width="20" height="20" onclick="ClearPath();"  />
+                </div>
+                @*<div class="divpathfolder-content">
+                        <input type="text" id="pathdownload" />
+                        <img src="~/App_Themes/icon-delete.png" width="20" height="20" onclick="ClearPath();" />
+                    </div>*@
+            </div>
+        </div>
+    </div>

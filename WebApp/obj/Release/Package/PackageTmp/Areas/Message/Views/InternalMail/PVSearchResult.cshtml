@@ -1,0 +1,96 @@
+﻿@using Radyn.FileManager
+@using Radyn.Web.Mvc
+@model IEnumerable<Radyn.Message.Tools.ModelView.InternalMailSelectUser>
+                      <script type="text/javascript">
+
+    
+
+    function SelectAll() {
+        if ($("#SellectAllCheckBox").attr("checked") == "checked") {
+            $("[id^='SelectedUser-']").each(function () {
+                $(this).attr("checked", true);
+            });
+        } else {
+            $("[id^='SelectedUser-']").each(function () {
+                $(this).attr("checked", false);
+            });
+        }
+    }
+                      </script>
+
+    @if (Model.Any())
+    {
+
+        <div class="gv-table" style="width: 600px; margin-top: 15px;">
+            <div class="gv-row gv-header">
+                <div style="width: 30px;" class="gv-cell ">
+                    <div class="cell-item">
+                        #
+                    </div>
+                </div>
+                <div style="width: 150px;" class="gv-cell ">
+                    <div class="cell-item">
+                        نام
+                    </div>
+                </div>
+                <div style="width: 100px;" class="gv-cell ">
+                    <div class="cell-item">
+                        عکس
+                    </div>
+                </div>
+                <div style="width: 50px;" class="gv-cell gv-cell-last">
+                    <div class="cell-item">
+                        <input id="SellectAllCheckBox" name="SellectAllCheckBox" type="checkbox" onclick=" SelectAll() " />
+                    </div>
+                </div>
+            </div>
+            <div class="gv-content">
+                @{
+                    int count = 0;
+                    foreach (var internalMailSelectUser in Model)
+                    {
+                        count++;
+                        <div class="gv-row gv-row-style">
+                            <div style="width: 30px; text-align: center" class="gv-cell ">
+                                <div class="cell-item">
+                                    @count.ToString()
+                                </div>
+                            </div>
+                            <div style="width: 150px;" class="gv-cell ">
+                                <div class="cell-item">
+                                    @internalMailSelectUser.Title
+                                </div>
+                            </div>
+                            <div style="width: 100px;" class="gv-cell ">
+                                <div class="cell-item">
+                                    @if (internalMailSelectUser.PhotoId.HasValue)
+                                    {
+                                        Html.RadynFile().Image().ID(internalMailSelectUser.PhotoId.Value).Height(50).Width(50).Render();
+                                    }
+                                </div>
+                            </div>
+                            <div style="width: 50px;" class="gv-cell gv-cell-last">
+                                <div class="cell-item">
+                                    @{Html.Radyn().CheckBox().Checked(internalMailSelectUser.IsSelcted).Name("SelectedUser-" + internalMailSelectUser.Title).ID("SelectedUser-" + internalMailSelectUser.Id).Render();}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="gv-row  gv-footer" style="height: 25px">
+            </div>
+
+        </div>
+
+    }
+    else
+    {
+        if (ViewBag.ShowNoresulyFound)
+        {
+            <div style="font-weight: bold;color: red;font-size: 26px">
+                @Resources.Common.No_results_found
+            </div>
+        }
+
+    }

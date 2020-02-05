@@ -1,0 +1,8 @@
+E:\Online-WorkSpace\vipkonaklama\News\obj\Debug\News.csprojAssemblyReference.cache
+E:\Online-WorkSpace\vipkonaklama\News\obj\Debug\News.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.News.dll.config
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.News.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.News.pdb
+E:\Online-WorkSpace\vipkonaklama\News\obj\Debug\News.csproj.CopyComplete
+E:\Online-WorkSpace\vipkonaklama\News\obj\Debug\Radyn.News.dll
+E:\Online-WorkSpace\vipkonaklama\News\obj\Debug\Radyn.News.pdb

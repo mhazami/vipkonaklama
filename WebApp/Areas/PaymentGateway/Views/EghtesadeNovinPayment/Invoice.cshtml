@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        function postRefId() {
+
+            var form = document.createElement("form");
+
+            var hiddenFieldToken = document.createElement("input");
+            hiddenFieldToken.setAttribute("type", "hidden");
+            hiddenFieldToken.setAttribute("name", "token");
+            hiddenFieldToken.setAttribute("value", "@ViewBag.Token");
+            form.appendChild(hiddenFieldToken);
+
+            var hiddenFieldLang = document.createElement("input");
+            hiddenFieldLang.setAttribute("type", "hidden");
+            hiddenFieldLang.setAttribute("name", "language");
+            hiddenFieldLang.setAttribute("value", "@ViewBag.Lang");
+            form.appendChild(hiddenFieldLang);
+
+            form.setAttribute("method", "POST");
+            form.setAttribute("action", "https://pna.shaparak.ir/CardServices/tokenController");
+            document.body.appendChild(form);
+
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+            postRefId();
+    </script>
+</body>
+</html>
+
+

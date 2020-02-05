@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Radyn.Help.BO.HelpBO" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>BO\HelpBO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.BO.HelpContentBO" Collapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BO\HelpContentBO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.BO.HelpReationCollectionBO" Collapsed="true">
+    <Position X="13.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BO\HelpReationCollectionBO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.BO.HelpRelationBO" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BO\HelpRelationBO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.DA.HelpContentDA" Collapsed="true">
+    <Position X="16.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DA\HelpContentDA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.DA.HelpContentCommandBuilder" Collapsed="true">
+    <Position X="15" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DA\HelpContentDA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.DA.HelpDA" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>DA\HelpDA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.DA.HelpCommandBuilder" Collapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>DA\HelpDA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.DA.HelpReationCollectionDA" Collapsed="true">
+    <Position X="16.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DA\HelpReationCollectionDA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.DA.HelpReationCollectionCommandBuilder" Collapsed="true">
+    <Position X="15" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DA\HelpReationCollectionDA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.DA.HelpRelationDA" Collapsed="true">
+    <Position X="15" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DA\HelpRelationDA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.DA.HelpRelationCommandBuilder" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DA\HelpRelationDA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.DataStructure.Help" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAKAAAAAAACAIAAEABAAAAAAAAAAAAQAAAAAAAAgAA=</HashCode>
+      <FileName>DataStructure\Help.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.DataStructure.HelpContent" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAGoAIAEABAAAAAAAQAgCAAAAAAAABIAgAAAA=</HashCode>
+      <FileName>DataStructure\HelpContent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.DataStructure.HelpReationCollection" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataStructure\HelpReationCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Contracts.DataStructure.Congress.HelpRelation" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAIAAAIAAEAAAAAAAAAAAAAAAAAAAhAAAA=</HashCode>
+      <FileName>DataStructure\HelpRelation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.Facade.HelpContentFacade" Collapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Facade\HelpContentFacade.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Radyn.Help.Facade.HelpFacade" Collapsed="true">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAACAAAAAAAAEAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Facade\HelpFacade.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Radyn.Help.Facade.HelpReationCollectionFacade" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Facade\HelpReationCollectionFacade.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Radyn.Help.Facade.HelpRelationFacade">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Facade\HelpRelationFacade.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Radyn.Help.HelpComponent" Collapsed="true">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAQAAAAAAAAAAAAAAAAAAAARIAAAAABAAA=</HashCode>
+      <FileName>HelpComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.HelpFacade&lt;T&gt;" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAA=</HashCode>
+      <FileName>HelpFacade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.HelpConnectionHandler" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HelpFacade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radyn.Help.Tools.Extentions" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Tools\Extentions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Radyn.Help.Facade.Interface.IHelpContentFacade" Collapsed="true">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Facade\Interface\IHelpContentFacade.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Radyn.Help.Facade.Interface.IHelpFacade" Collapsed="true">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAACAAAAAAAAEAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Facade\Interface\IHelpFacade.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Radyn.Help.Facade.Interface.IHelpReationCollectionFacade" Collapsed="true">
+    <Position X="13.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Facade\Interface\IHelpReationCollectionFacade.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Radyn.Help.Facade.Interface.IHelpRelationFacade" Collapsed="true">
+    <Position X="15" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Facade\Interface\IHelpRelationFacade.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

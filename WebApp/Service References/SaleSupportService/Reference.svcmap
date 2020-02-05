@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5819c94c-ad1c-474d-a4f7-9facd759e005" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://crm.radyn.ir/Services/SaleSupport.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SaleSupport.xsd" MetadataType="Schema" ID="5eb3672a-73f6-4e92-9052-ee6a7e1c8491" SourceId="1" SourceUrl="http://crm.radyn.ir/Services/SaleSupport.svc?xsd=xsd2" />
+    <MetadataFile FileName="SaleSupport.wsdl" MetadataType="Wsdl" ID="68efda36-7c1d-434d-b3b0-bb418ef012b1" SourceId="1" SourceUrl="http://crm.radyn.ir/Services/SaleSupport.svc?wsdl" />
+    <MetadataFile FileName="SaleSupport1.xsd" MetadataType="Schema" ID="286a4186-e895-4f7d-8d1f-956013ff84dc" SourceId="1" SourceUrl="http://crm.radyn.ir/Services/SaleSupport.svc?xsd=xsd0" />
+    <MetadataFile FileName="SaleSupport2.xsd" MetadataType="Schema" ID="0991758f-b7b8-4782-a52a-b9f8004afd6f" SourceId="1" SourceUrl="http://crm.radyn.ir/Services/SaleSupport.svc?xsd=xsd1" />
+    <MetadataFile FileName="SaleSupport.disco" MetadataType="Disco" ID="7c18d92a-95b8-4294-8d05-52e542d59b58" SourceId="1" SourceUrl="http://crm.radyn.ir/Services/SaleSupport.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

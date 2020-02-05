@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FAQModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FAQModelStoreContainer">
+          <EntitySet Name="FAQ" EntityType="FAQModel.Store.FAQ" store:Type="Tables" Schema="FAQ" />
+          <EntitySet Name="FAQContent" EntityType="FAQModel.Store.FAQContent" store:Type="Tables" Schema="FAQ" />
+          <EntitySet Name="SiteFAQ" EntityType="FAQModel.Store.SiteFAQ" store:Type="Tables" Schema="FAQ" />
+          <AssociationSet Name="FK_FAQContent_FAQ" Association="FAQModel.Store.FK_FAQContent_FAQ">
+            <End Role="FAQ" EntitySet="FAQ" />
+            <End Role="FAQContent" EntitySet="FAQContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteFAQ_FAQ" Association="FAQModel.Store.FK_SiteFAQ_FAQ">
+            <End Role="FAQ" EntitySet="FAQ" />
+            <End Role="SiteFAQ" EntitySet="SiteFAQ" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Answer" Type="ntext" Nullable="false" />
+          <Property Name="CreatorId" Type="uniqueidentifier" />
+          <Property Name="CreateDate" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="ViewCount" Type="int" />
+          <Property Name="ThumbnailId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="FAQContent">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" MaxLength="500" />
+          <Property Name="Answer" Type="ntext" />
+          <Property Name="LanguageId" Type="char" Nullable="false" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="SiteFAQ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_FAQContent_FAQ">
+          <End Role="FAQ" Type="FAQModel.Store.FAQ" Multiplicity="1" />
+          <End Role="FAQContent" Type="FAQModel.Store.FAQContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FAQ">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FAQContent">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteFAQ_FAQ">
+          <End Role="FAQ" Type="FAQModel.Store.FAQ" Multiplicity="1" />
+          <End Role="SiteFAQ" Type="FAQModel.Store.SiteFAQ" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="FAQ">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SiteFAQ">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FAQModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FAQEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FAQs" EntityType="FAQModel.FAQ" />
+          <EntitySet Name="SiteFAQs" EntityType="FAQModel.SiteFAQ" />
+          <AssociationSet Name="FK_SiteFAQ_FAQ" Association="FAQModel.FK_SiteFAQ_FAQ">
+            <End Role="FAQ" EntitySet="FAQs" />
+            <End Role="SiteFAQ" EntitySet="SiteFAQs" />
+          </AssociationSet>
+          <EntitySet Name="FAQContents" EntityType="FAQModel.FAQContent" />
+          <AssociationSet Name="FK_FAQContent_FAQ" Association="FAQModel.FK_FAQContent_FAQ">
+            <End Role="FAQ" EntitySet="FAQs" />
+            <End Role="FAQContent" EntitySet="FAQContents" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Question" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Answer" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="CreatorId" />
+          <Property Type="String" Name="CreateDate" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="ViewCount" />
+          <Property Type="Guid" Name="ThumbnailId" />
+          <NavigationProperty Name="SiteFAQ" Relationship="FAQModel.FK_SiteFAQ_FAQ" FromRole="FAQ" ToRole="SiteFAQ" />
+          <NavigationProperty Name="FAQContents" Relationship="FAQModel.FK_FAQContent_FAQ" FromRole="FAQ" ToRole="FAQContent" />
+        </EntityType>
+        <EntityType Name="SiteFAQ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <NavigationProperty Name="FAQ" Relationship="FAQModel.FK_SiteFAQ_FAQ" FromRole="SiteFAQ" ToRole="FAQ" />
+        </EntityType>
+        <Association Name="FK_SiteFAQ_FAQ">
+          <End Type="FAQModel.FAQ" Role="FAQ" Multiplicity="1" />
+          <End Type="FAQModel.SiteFAQ" Role="SiteFAQ" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="FAQ">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SiteFAQ">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FAQContent">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Question" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Answer" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LanguageId" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="FAQ" Relationship="FAQModel.FK_FAQContent_FAQ" FromRole="FAQContent" ToRole="FAQ" />
+        </EntityType>
+        <Association Name="FK_FAQContent_FAQ">
+          <End Type="FAQModel.FAQ" Role="FAQ" Multiplicity="1" />
+          <End Type="FAQModel.FAQContent" Role="FAQContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FAQ">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FAQContent">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FAQModelStoreContainer" CdmEntityContainer="FAQEntities">
+          <EntitySetMapping Name="FAQs">
+            <EntityTypeMapping TypeName="FAQModel.FAQ">
+              <MappingFragment StoreEntitySet="FAQ">
+                <ScalarProperty Name="ThumbnailId" ColumnName="ThumbnailId" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteFAQs">
+            <EntityTypeMapping TypeName="FAQModel.SiteFAQ">
+              <MappingFragment StoreEntitySet="SiteFAQ">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAQContents">
+            <EntityTypeMapping TypeName="FAQModel.FAQContent">
+              <MappingFragment StoreEntitySet="FAQContent">
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="FAQ">
+        <EntityTypeShape EntityType="FAQModel.FAQ" Width="1.5" PointX="0.75" PointY="1" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="FAQModel.SiteFAQ" Width="1.5" PointX="3" PointY="1.5" Height="1.4033821614583335" />
+        <AssociationConnector Association="FAQModel.FK_SiteFAQ_FAQ" >
+          <ConnectorPoint PointX="2.25" PointY="2.2016910807291667" />
+          <ConnectorPoint PointX="3" PointY="2.2016910807291667" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FAQModel.FAQContent" Width="1.5" PointX="7.4537855589081463" PointY="29.373034505812932" />
+        <AssociationConnector Association="FAQModel.FK_FAQContent_FAQ" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

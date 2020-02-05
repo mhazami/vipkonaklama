@@ -1,0 +1,114 @@
+﻿@using Radyn.Web.Mvc
+
+<script type="text/javascript">
+    function GenerateLink() {
+        var text = $("#TextValue").val();
+        var url = $("#Url").val();
+        var imageUrl = document.getElementById("SelectedFileText-" + '@ViewBag.editorId').value;
+        var tooltip = $("#Tooltip").val();
+        var isOpenNewWindow = $("#OpenNewWindow").attr("checked");
+        if (url.toLowerCase().startsWith("https://") == false && url.toLowerCase().startsWith("http://") == false)
+            url = "http://" + url;
+        var returnurl = "<a href=\"" + url + "\"  "+ (isOpenNewWindow=="checked" ? "target='_blank'" : "") + "  " +
+            " title='" + tooltip + "'  >" + (imageUrl != "" ? imageUrl : text) + "</a>";
+        ApppendLink('@ViewBag.editorId', returnurl,text);
+    }
+    function getSelectionText() {
+        var text = "";
+        if (window.getSelection) {
+            text = window.getSelection().toString();
+        } else if (document.selection && document.selection.type != "Control") {
+            {
+                text = document.selection.createRange().text;
+            }
+        }
+        return text;
+    }
+
+    $(document).ready(function() {
+        $("#TextValue").val(getSelectionText());
+    });
+</script>
+@if (ViewBag.editorId != null)
+{
+    <div class="fit">
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.RadynEditor.Text
+                </div>
+            </div>
+            <div class="table-row-item width50percent">
+                <div class="item">
+                    @Html.TextBox("TextValue")
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.RadynEditor.Url
+                </div>
+            </div>
+            <div class="table-row-item width50percent">
+                <div class="item">
+                    @Html.TextBox("Url")
+                </div>
+            </div>
+        </div>
+        <div class="fit item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.RadynEditor.ImageUrl
+                </div>
+            </div>
+            <div class="table-row-item width50percent">
+                <div class="item">
+                    <div style="float: '@Resources.Design.Align'">
+                        @Html.TextBox("SelectedFileText-" + (string)ViewBag.editorId)
+                    </div>
+                    <div style="float: '@Resources.Design.Align'">
+                        <input type="button" style="width: 100px" value="@Resources.RadynEditor.ImageUrl" onclick=" UploadFile('@ViewBag.editorId', '@ViewBag.folderId', false); " />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.RadynEditor.ToolTip
+                </div>
+            </div>
+            <div class="table-row-item width50percent">
+                <div class="item">
+                    @Html.TextBox("Tooltip")
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.RadynEditor.OpenNewWindow
+                </div>
+            </div>
+            <div class="table-row-item width50percent">
+                <div class="item">
+                    <input type="checkbox" name="OpenNewWindow" id="OpenNewWindow" />
+                </div>
+            </div>
+        </div>
+        <div class="fit">
+            <div class="button-div m-btn waves-green i-save">
+                @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "GenerateLink();" }).Render();}
+            </div>
+
+        </div>
+
+    </div>
+}
+else
+{
+    <div style="color: red;font-weight: bold;float: @Resources.Design.Align;">
+        @ViewBag.ErrorMessage
+    </div>
+}

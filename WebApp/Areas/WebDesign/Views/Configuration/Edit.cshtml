@@ -1,0 +1,48 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.WebApp.Areas.Common.Component
+@model Radyn.WebDesign.DataStructure.Configuration
+@{
+    ViewBag.Title = Resources.WebDesign.Configuration;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@section Head{
+
+}
+
+@section PageTitle
+{
+    @Resources.WebDesign.Configuration
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{ Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("Configuration").Area("WebDesign").Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+
+    </div>
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).NavigateUrl(Url.Content("~/Security/User/Menu?oid=" + Radyn.WebApp.AppCode.Constants.Constants.WebDesignOperationId)).Render(); }
+
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("Configuration").Area("WebDesign").Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+
+    </div>
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).NavigateUrl(Url.Content("~/Security/User/Menu?oid=" + Radyn.WebApp.AppCode.Constants.Constants.WebDesignOperationId)).Render(); }
+
+    </div>
+}
+
+@Html.ValidationSummary(true)
+@{
+    Html.RenderAction("GetModify", "Configuration", new { area = "WebDesign", Id = ViewBag.Id });
+}

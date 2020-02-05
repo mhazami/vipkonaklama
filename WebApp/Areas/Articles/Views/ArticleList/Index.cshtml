@@ -1,0 +1,62 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc.Utility
+@model List<Radyn.Article.DataStructure.Article>
+    @{
+        ViewBag.Title = ViewBag.PageTitle;
+        Layout = "~/Views/Shared/User_Layout.cshtml";
+    }
+
+    @section Head{
+
+    }
+    <div class="title-bar">
+        <div class="container">
+            <div class="title-page">
+                <h4>
+                    @ViewBag.PageTitle
+
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="internal-page">
+
+            <div class="internal-page-content article-box-line">
+                @if (Model != null && Model.Any())
+                {
+
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-4 col-sm-6 col-md-6 col-xs-12 article-item">
+                                <div class="article-item-content">
+                                    <a href="/Articles/Article/@item.Title" class="article-item-image">
+                                        <img @(!item.ThumbnailId.HasValue ? "class=default" : "") src="@(item.ThumbnailId.HasValue?Radyn.FileManager.FileManagerContants.FileHandlerRoot + item.ThumbnailId+"/"+DateTime.Now.Ticks:"/Content/Images/no-image.jpg")" />
+
+                                    </a>
+                                    <h3>
+                                        <a href="/Articles/Article/@item.Title">@item.Title.Trancate(60)</a>
+                                    </h3>
+                                    <p>
+                                        @{
+                                            Html.HtmlEncoder(item.Abstract.Trancate(150));
+                                        }
+                                    </p>
+                                    <div class="row-button">
+                                        <div onclick="">
+                                            <a href="/Articles/Article/@item.Title">بیشتر بخوانید</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+
+                }
+            </div>
+
+        </div>
+    </div>
+

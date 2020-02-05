@@ -1,0 +1,8 @@
+E:\Online-WorkSpace\vipkonaklama\Advertisement\obj\Debug\Advertisements.csprojAssemblyReference.cache
+E:\Online-WorkSpace\vipkonaklama\Advertisement\obj\Debug\Advertisements.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Advertisements.dll.config
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Advertisements.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Advertisements.pdb
+E:\Online-WorkSpace\vipkonaklama\Advertisement\obj\Debug\Advertisements.csproj.CopyComplete
+E:\Online-WorkSpace\vipkonaklama\Advertisement\obj\Debug\Radyn.Advertisements.dll
+E:\Online-WorkSpace\vipkonaklama\Advertisement\obj\Debug\Radyn.Advertisements.pdb

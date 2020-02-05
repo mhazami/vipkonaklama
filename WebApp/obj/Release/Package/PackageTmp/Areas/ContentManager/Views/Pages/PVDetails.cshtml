@@ -1,0 +1,64 @@
+﻿@model Radyn.ContentManager.DataStructure.Pages
+
+
+<div class="radynForm">
+    <div id="ConetentContent">
+    </div>
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.HtmlId)
+    @Html.ValidationSummary(true)
+    <div class="fit">
+        <div class="item-row ">
+            <div class="table-row-cap ">
+                <div class="item">
+                    @Resources.ContentManager.Title
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(content => content.Title, new { })
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row ">
+            <div class="table-row-cap ">
+                <div class="item">
+                    @Resources.ContentManager.Url
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Url, new { })
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Enable
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @(Model.Enabled ? Resources.Common.Enable : Resources.Common.Disable)
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row fit">
+            <div class="table-row-cap ">
+                <div class="item">
+                    @Resources.ContentManager.Html
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.HtmlDesgin.Body, new { })
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

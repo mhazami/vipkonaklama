@@ -1,0 +1,39 @@
+﻿@using System.Linq
+@using Radyn.Web.Mvc
+@model System.Collections.Generic.IEnumerable<string>
+<script type="text/javascript">
+    function DeleteFromUrl(url) {
+        var Id = '@ViewBag.formId';
+        $.get("/FormGenerator/Assigment/DeletFormFromUrl", { Id: Id, url: url, date: new Date().getTime() }, function (data) {
+            if (data != "false") {
+                GetFormUrls();
+            }
+            ShowRadynMessage();
+        });
+    }
+</script>
+@{
+    if (Model.Any())
+    {
+        foreach (var item in Model)
+        {
+    <div class="table" id="Divurl-@item">
+        <div>
+            <div class="table-row-cap ">
+                <div class="item">
+                    url
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @item
+                </div>
+            </div>
+        </div>
+        <div class="button-div">
+            @{Html.Radyn().ButtonActionLink().Text(Resources.Common.Delete).OtherAttribute(new { onclick = "DeleteFromUrl('" + item + "')" }).Render();}
+        </div>
+    </div>
+        }
+    }
+}

@@ -1,0 +1,507 @@
+﻿body {
+    direction: rtl;
+}
+
+.ui-top-bar {
+    float: right;
+}
+
+.ui-header {
+    float: right;
+}
+
+.ui-h-menu {
+    float: right;
+}
+
+.ui-top-nav {
+    float: right;
+}
+/*Content*/
+.ui-slide-nav {
+    float: right;
+}
+
+.ui-content-nav {
+    /*float: right;*/
+}
+
+.ui-small-pane {
+    float: right;
+}
+
+.ui-congress-big-pane {
+    float: right;
+    margin-right: 1%;
+}
+/*OperatitonPanel*/
+.d-item {
+    margin-right: 13px;
+    float: right;
+}
+
+.topbar .d-item img {
+    margin: 10px 0;
+}
+
+
+/*END-Content*/
+.ui-footer {
+    float: right;
+}
+
+.radyn-Resources {
+    float: right;
+}
+
+.radyn-Resources-a img {
+    float: right;
+}
+
+.radyn-Resources-a p {
+    float: right;
+    margin-right: 5px;
+}
+
+.ui-pane-box {
+    float: right;
+}
+
+.ui-pane-child-box {
+    float: right;
+    margin-right: 1%;
+}
+/*Ui Default*/
+/*container*/
+.container-hd {
+    float: right;
+    direction: rtl;
+}
+
+.container-header {
+    float: right;
+}
+
+.container-header-item img {
+    float: right;
+}
+
+.container-box {
+    float: right;
+}
+
+.footer-box {
+    float: right;
+}
+
+.header-box {
+    float: right;
+}
+/*Login*/
+.login-content-in {
+    float: right;
+}
+
+
+.user-Icon-in {
+    float: right;
+}
+
+.login-lable-in {
+    float: right;
+    border-style: solid solid solid none;
+}
+
+
+.login-text-in {
+    float: right;
+}
+/*Search*/
+.search {
+    float: left;
+}
+
+    .search INPUT[type='text'] {
+        text-align: right;
+        float: right;
+        margin-right: 3px;
+    }
+
+    .search INPUT[type='button'] {
+        text-align: right;
+        background-position: left center;
+        float: right;
+    }
+
+    .search select {
+        float: right;
+    }
+
+.search-result {
+    float: right;
+}
+
+    .search-result span {
+        float: right;
+        margin-left: 5px;
+    }
+
+    .search-result p {
+        float: left;
+        text-align: left;
+        direction: rtl;
+    }
+/*Artcle*/
+.article-title {
+    float: right;
+}
+
+
+
+.archive-link {
+    float: left;
+}
+
+.ui-top-nav {
+    float: right;
+}
+/*Slider*/
+.SlideShow {
+    float: right;
+}
+
+#slideshow img {
+    left: 0;
+}
+
+#show {
+    float: right;
+}
+
+/*SlideshowMini*/
+.SlideShow-mini {
+    float: right;
+}
+
+#slideshow-mini img {
+    left: 0;
+}
+
+#show-mini {
+    float: right;
+}
+/*Login*/
+
+.login-text {
+    float: right;
+    width: 150px;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+
+.login-input {
+    float: right;
+    margin-right: 5px;
+}
+/*news*/
+.news-box {
+    float: right;
+}
+
+.n-img img {
+    float: right;
+}
+
+.n-title {
+    float: right;
+    margin-right: 2%;
+}
+
+.n-lead {
+    float: right;
+    margin-right: 2%;
+}
+
+    .n-lead a {
+        margin-right: 5px;
+    }
+
+
+.n-more {
+    float: right;
+}
+
+
+
+.date {
+    float: left;
+    text-align: left;
+    direction: rtl;
+}
+
+
+.button-div {
+    float: right;
+}
+/*NEWS-LIST*/
+.news-list {
+    direction: rtl;
+}
+
+.news-list-box {
+    float: right;
+}
+
+    .news-list-box a img {
+        float: right;
+    }
+
+.news-list-title {
+    float: right;
+    margin-right: 1%;
+}
+
+
+.news-list-lead {
+    float: right;
+}
+
+    .news-list-lead span {
+        float: left;
+    }
+
+.vip-guest-child-a {
+    float: right;
+    text-align: right;
+}
+
+    .vip-guest-child-a img {
+        float: right;
+        margin: 0 5px 0 0;
+    }
+
+.vip-guest-child-a-p {
+    float: right;
+    margin-right: 5px;
+}
+
+.vip-guest-a {
+    float: right;
+    text-align: right;
+}
+
+
+    .vip-guest-a img {
+        float: right;
+        margin: 10px 10px 0 0;
+    }
+
+    .vip-guest-a p {
+        float: right;
+        margin-right: 10px;
+    }
+
+.vip-guest-a-p {
+    float: right;
+    direction: rtl;
+}
+
+.innerformcontent {
+    float: right;
+}
+
+.cancel {
+    float: left;
+    margin: 10px 0 0 10px;
+}
+
+/*Panel*/
+/*MENU*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border-width: 0 0 0 1px;
+    border-style: none none none solid;
+}
+/*OLD-CONGRESS*/
+#nextCustomer {
+    float: right;
+    margin-left: 15px;
+}
+
+#prevCustomer {
+    float: right;
+    padding-left: 15px;
+}
+/*V-Menu*/
+.v-menu-item-box {
+    float: right;
+    text-align: right;
+}
+
+.v-menu-item {
+    float: right;
+}
+
+    .v-menu-item:before {
+        padding-left: 3px;
+    }
+/*News-View*/
+.news-content {
+    float: right;
+}
+
+.article-board {
+    direction: rtl;
+    float: right;
+}
+
+
+.article-box-title, .article-box-lead {
+    direction: rtl;
+}
+/*CongressPanel*/
+.userloggedinfo, .userloggedimg, .userloggedimg img,
+.userinfo, .userinfo b, .userinfo small, .userinfo span,
+.userinfo span div {
+    float: right;
+    width: 100%;
+}
+
+.userloggedinfo {
+    margin-right: 2px;
+}
+
+.userloggedimg {
+    border-left: 1px solid #D8D8D8;
+}
+
+.userinfo small {
+    margin-right: 5px;
+}
+
+.userinfo, .userinfo b {
+    direction: rtl;
+}
+/*CongressPanel*/
+/*PUBLIC*/
+.margin-align {
+    margin-right: 1%;
+}
+/*PUBLIC*/
+/*RESSERVATION*/
+.rsline {
+    float: right;
+}
+/*OTHER*/
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+    float: left !important;
+}
+/*INTERNALMAIL*/
+.nav-mail-item span, .nav-mail-item:hover span {
+    float: right;
+    border-style: none solid solid none;
+}
+
+.nav-mailText {
+    float: right;
+    margin-right: 5px;
+}
+/* begin Vertical Menu =====================================================================================*/
+
+/* Some stylesheet reset */
+.cssmenu > ul {
+    direction: rtl;
+}
+
+/* The container */
+.cssmenu > ul {
+    float: right;
+}
+
+    /* The arrow indicating a submenu */
+    .cssmenu > ul .has-sub > a::after {
+        left: 10px;
+        border-right: solid;
+    }
+
+    /* The same arrow, but with a darker color, to create the shadow effect */
+    .cssmenu > ul .has-sub > a::before {
+        left: 10px;
+        border-right: solid;
+    }
+
+    /* Changing the color of the arrow on hover */
+    .cssmenu > ul li > a:hover::after,
+    .cssmenu > ul li:hover > a::after {
+        border-right: solid;
+    }
+
+    .cssmenu > ul li > a:hover::before,
+    .cssmenu > ul li:hover > a::before {
+        border-right: solid;
+    }
+
+    /* THE SUBMENUS */
+    .cssmenu > ul ul {
+        right: 100%;
+        padding-right: 5px;
+    }
+
+/* End Vertical menu =====================================================================================*/
+/* Image Box Style */
+.box {
+    float: right;
+}
+
+    .box img {
+        float: right;
+    }
+
+    .box > span {
+        float: right;
+    }
+
+        .box > span p {
+            float: right;
+        }
+
+
+
+
+
+.align-div {
+    float: right;
+}
+
+.align-div-rc {
+    float: left;
+}
+
+.article-board img {
+    float: right !important;
+}
+
+@media (min-width: 768px) {
+    .nav-align {
+        float: right !important;
+    }
+}
+
+.ui-top-bar > table {
+    float: right;
+    direction: rtl;
+}
+
+
+
+
+
+
+.radyn-Resources.license .radyn-Resources-a {
+    float: right;
+    margin-right: 5px;
+    width: 200px;
+}
+
+.radyn-Resources.license > p {
+    float: left;
+}

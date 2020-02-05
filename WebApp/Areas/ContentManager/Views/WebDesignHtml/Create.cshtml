@@ -1,0 +1,54 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.Utility
+@using Radyn.WebApp.Areas.Common.Component
+@{
+    ViewBag.Title = Resources.Common.Create + " " + Resources.ContentManager.Html;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@section Head{
+    <script type="text/javascript">
+        $("#DivItem").html("");
+        $.get("@Url.Content("~/ContentManager/HtmlDesgin/GetModify")", { date: new Date().getTime() }, function (data) {
+            $("#DivItem").html(data).slideDown("slow");;
+        });
+    </script>
+}
+
+@section PageTitle
+{
+    @Resources.ContentManager.Html @Resources.Common.New
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{ Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebDesignHtml").Area("ContentManager").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebDesignHtml").Area("ContentManager").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{ Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebDesignHtml").Area("ContentManager").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebDesignHtml").Area("ContentManager").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <div class="radynForm">
+        <div class="fit input-row">
+            @{
+                Html.LanguageDropDownList();
+            }
+        </div>
+        <div id="DivItem"></div>
+    </div>
+}

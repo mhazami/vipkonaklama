@@ -1,0 +1,145 @@
+﻿@using Radyn.FormGenerator.DataStructure
+@using Radyn.Web.Mvc
+@model FormAssigment
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#DivLoad").hide();
+        $("#hidefromOpration").hide();
+        HideFromOpration();
+        GetFormUrls();
+
+
+    });
+    function GetOprationMenu() {
+        var operationId = document.getElementById("operationId").value;
+        var formId = document.getElementById("FormId").value;
+        if (operationId != "" && formId != "") {
+            $("#DivLoad").show();
+            $("#SearchResult").html("");
+            $.get('/FormGenerator/Assigment/GetOprationMenu', { formId: formId, oprationId: operationId, date: new Date().getTime() }, function (data) {
+                if (data != "") {
+                    $("#SearchResult").hide();
+                    $("#SearchResult").html(data);
+                    $("#SearchResult").slideDown('normal');
+                } else {
+                    ShowRadynMessage("@Resources.Common.No_results_found");
+                }
+
+            }).complete(function () {
+                $("#DivLoad").hide();
+            });
+        }
+    }
+
+    function GetFormUrls() {
+        var formId = document.getElementById("FormId").value;
+        if (formId != "") {
+            document.getElementById("ManualUrl").value = "";
+            $("#FormUrls").html("");
+            $.get("/FormGenerator/Assigment/GetFormUrls", { Id: formId, date: new Date().getTime() }, function (data) {
+                if (data != "false") {
+                    $("#FormUrls").html(data).slideDown("slow");;
+                }
+                ShowRadynMessage();
+            });
+        }
+    }
+
+    function ShowFromOpration() {
+        $("#FromManualUrl").slideUp();
+        $("#FromOpartionMenu").slideDown();
+        $("#hidefromOpration").show();
+        $("#showfromOpration").hide();
+        GetOprationMenu();
+    }
+    function HideFromOpration() {
+
+        $("#FromManualUrl").slideDown();
+        $("#FromOpartionMenu").slideUp();
+        $("#hidefromOpration").hide();
+        $("#showfromOpration").show();
+        $("#SearchResult").html("");
+    }
+
+</script>
+@using (Html.BeginForm())
+{
+    <div class="radynForm">
+
+        <input type="hidden" value="@ViewBag.formId" id="FormId" name="FormId" />
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    OnlyView
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.DropDownListFor(x => x.Status, (SelectList)ViewBag.Status)
+
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    order
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.EditorFor(x => x.Order)
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="fit" id="showfromOpration">
+            @{Html.Radyn().ImageActionLink().Align(ImageActionLink.Alignment.Center).Text("انتخاب از لیست منو").ImageUrl(Url.Content("~/Content/Images/down.png")).OtherAttribute(new { onclick = "ShowFromOpration();" }).ImagePosition(ImageActionLink.Position.Left).ImageWidth("25").ImageHeight("25").Render();}
+        </div>
+        <div class="fit" id="hidefromOpration">
+            @{Html.Radyn().ImageActionLink().Align(ImageActionLink.Alignment.Center).Text("ثبت دستی").ImageUrl(Url.Content("~/Content/Images/up.png")).OtherAttribute(new { onclick = "HideFromOpration();" }).ImagePosition(ImageActionLink.Position.Left).ImageWidth("25").ImageHeight("25").Render();}
+        </div>
+        <div class="item-row" id="FromManualUrl">
+            <div class="table-row-cap">
+                <div class="item">
+                    Url
+                </div>
+            </div>
+            <div class="table-row-item width80percent">
+                <div class="item">
+                    <input type="text" name="ManualUrl" id="ManualUrl" class="width80percent" />
+                </div>
+            </div>
+        </div>
+        <div id="FromOpartionMenu">
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        Opration
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.DropDownList("operationId", (SelectList)ViewBag.Oprations, new { style = "width: 200px", onchange = "GetOprationMenu()" })
+                    </div>
+                </div>
+            </div>
+            <div class="radynForm">
+                <div class="fit" align="center" id="DivLoad">
+                    <img id="loading2" width="150" src="/Content/Images/Gif/Loading128.gif" alt="" />
+                </div>
+                <div class="fit" id="SearchResult">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="fit" id="FormUrls">
+        </div>
+        <div class="button-div">
+            @{Html.Radyn().ButtonActionLink().ActionName("GetFormAssigment").ControllerName("Assigment").Area("FormGenerator").Callback().CallbackType(ButtonActionLink.CallbackType.post).CallbackReturnFunction("function(data){if(data!='false'){GetOprationMenu();GetFormUrls(); } ShowRadynMessage();}").Serialize().Text(Resources.Common.Save).Render();}
+        </div>
+    </div>
+}

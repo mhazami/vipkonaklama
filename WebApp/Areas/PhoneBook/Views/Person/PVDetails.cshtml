@@ -1,0 +1,143 @@
+﻿@using Radyn.EnterpriseNode.Tools
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp
+@using Radyn.WebApp.AppCode
+@using Radyn.WebApp.AppCode.Security
+@model Radyn.PhoneBook.DataStructure.Person
+@{
+    Html.PrepareModel();
+}
+<div class="radynForm">
+    @if (Model.EnterpriseNode.EnterpriseNodeTypeId == Enums.EnterpriseNodeType.LegalEnterPriseNode)
+    {
+        <div class="fit item-detail">
+            <fieldset>
+                <legend>اطلاعات سازمانی</legend>
+                @{ Html.RadynAction("GenerateLegalInfo", "EnterpriseNode", new { area = "EnterpriseNode", legalEnterpriseNode = Model.EnterpriseNode.LegalEnterpriseNode, pageMode = PageMode.Details }); }
+            </fieldset>
+        </div>
+
+    }
+    else if (Model.EnterpriseNode.EnterpriseNodeTypeId == Enums.EnterpriseNodeType.RealEnterPriseNode)
+    {
+        <div class="fit item-detail">
+            <fieldset>
+                <legend>اطلاعات شخص</legend>
+                @{ Html.RadynAction("GenerateRealInfo", "EnterpriseNode", new { area = "EnterpriseNode", realEnterpriseNode = Model.EnterpriseNode.RealEnterpriseNode, pageMode = PageMode.Details }); }
+            </fieldset>
+        </div>
+
+    }
+    <div class="fit item-detail">
+        <fieldset>
+            <legend>اطلاعات تماس</legend>
+            @{ Html.RadynAction("GetEnterpriseNodeInfo", "EnterpriseNode", new { area = "EnterpriseNode", enterpriseNode = Model.EnterpriseNode, pageMode = PageMode.Details }); }
+        </fieldset>
+    </div>
+    <div class="fit item-detail">
+        <fieldset>
+            <legend>اطلاعات پرسنلی</legend>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.PhoneBook.JobTitle
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.JopTitle)
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.PhoneBook.PersoneliCode
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.PersoneliCode)
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Common.Enable
+                    </div>
+                </div>
+                <div class="table-row-item drp">
+                    <div class="item">
+                        @(Model.Enabled ? Resources.Common.Enable : Resources.Common.Disable)
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @SessionParameters.PhoneBookConfiguration.OfficeName
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.PersonOffice.Title, new { })
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @SessionParameters.PhoneBookConfiguration.DepartmentName
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.PersonDepartment.Title, new { })
+                    </div>
+                </div>
+            </div>
+            <div class="item-row fit">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.PhoneBook.Remark
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.Remark, new { })
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+<div class="fit item-detail">
+    <fieldset>
+        <legend>
+            تلفن های شخص
+        </legend>
+        @{
+            Html.RadynAction("GetIndex", "PersonPhone", new { area = "PhoneBook", personId = Model.Id, status = PageMode.Details });
+        }
+
+    </fieldset>
+</div>
+
+<div class="fit item-detail">
+    <fieldset>
+        <legend>
+            آدرس های شخص
+        </legend>
+
+        @{
+            Html.RadynAction("GetIndex", "PersonAddress", new { area = "PhoneBook", personId = Model.Id, status = PageMode.Details });
+        }
+
+
+
+    </fieldset>
+</div>
+</div>

@@ -1,0 +1,69 @@
+﻿
+
+.r-notify {
+    position: relative;
+    padding: 15px;
+    margin: 15px auto;
+    border-right: 5px solid;
+    width: 50%;
+    border-radius: 1px;
+    min-height: 25px;
+    text-align: center; /*موقت*/
+   
+}
+
+    .r-notify > * {
+        display: inline-block;
+    }
+
+    .r-notify.r-notify-danger {
+        background-color: #F3D7D4;
+        border-right-color: #BD3C2A;
+        color: #BD3C2A;
+    }
+
+
+    .r-notify.r-notify-success {
+        background-color: #D4F5E2;
+        border-right-color: #2FCB73;
+        color: #2FCB73;
+    }
+
+    .r-notify.r-notify-info {
+        background-color: #D6EBF8;
+        border-right-color: #3498DF;
+        color: #3498DF;
+    }
+
+    .r-notify.r-notify-warning {
+        background-color: #FCF4CF;
+        border-right-color: #F4C113;
+        color: #F4C113;
+    }
+
+
+    .r-notify span.close-alert {
+        float: left;
+        width: 3%;
+        font-weight: 900;
+        font-size: 24px;
+        cursor: pointer;
+        margin-top: -5px;
+    }
+
+    .r-notify .div-close-alert {
+        position: absolute;
+        float: left;
+        width: 3%;
+        top: 6px;
+        left: 22px;
+    }
+    .r-notify.r-notify-medium {
+        width: 60%
+    }
+     .r-notify.r-notify-big {
+        width: 90%
+    }
+     .r-notify.small {
+        width: 30%
+    }

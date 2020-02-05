@@ -1,0 +1,8 @@
+﻿@model Radyn.FormGenerator.ControlFactory.Validator.EmailValidator
+@Html.ValidationSummary(true)
+
+<div>
+    @{
+        Html.RenderAction("GetValidatorControl", "ValidatorControls", new { Id = ViewBag.Id, jsonvalue = ViewBag.jsonvalue });
+    }
+</div>

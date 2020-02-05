@@ -1,0 +1,8 @@
+﻿@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.Areas.ContentManager.Tools
+@model System.Collections.Generic.IEnumerable<Radyn.ContentManager.DataStructure.Menu>
+
+@{
+    Html.HtmlEncoder(Model.GenerateMenuHorizontalHtml());
+}
+

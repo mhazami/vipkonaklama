@@ -1,0 +1,1883 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AbstractSended" xml:space="preserve">
+    <value>ارسال چکیده توسط کاربر</value>
+  </data>
+  <data name="AbtractConfirm" xml:space="preserve">
+    <value>تایید چکیده</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>آدرس</value>
+  </data>
+  <data name="AfterFinalState" xml:space="preserve">
+    <value>پس از اعلام نتایج داوری</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>همه</value>
+  </data>
+  <data name="AllsingleCertificate" xml:space="preserve">
+    <value>برای همه کاربران یک گواهی</value>
+  </data>
+  <data name="Article" xml:space="preserve">
+    <value>مقالات </value>
+  </data>
+  <data name="ArticleChangeStatusEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   مقاله شما با عنوان {2} به وضعیت {4} تغییر یافت
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="ArticleChangeStatusSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} مقاله شما   با کد {2}  در {0} به وضعیت {3} تغییر یافت</value>
+  </data>
+  <data name="ArticleCode" xml:space="preserve">
+    <value>کد مقاله</value>
+  </data>
+  <data name="ArticleInsertEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   مقاله شما با عنوان {2} با موفقیت ثبت شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="ArticleInsertSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} مقاله شما با کد {2} در {0} با موفقیت ثبت شد</value>
+  </data>
+  <data name="ArticlePaymentEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+    هزینه مقاله شما با عنوان {2} در {0} با موفقیت پرداخت شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="ArticlePaymentSMS" xml:space="preserve">
+    <value>کاربر گرامی  {1} هزینه مقاله شما  با کد {2} در {0} با موفقیت پرداخت شد</value>
+  </data>
+  <data name="ArticleSended" xml:space="preserve">
+    <value>ارسال {0} توسط کاربر</value>
+  </data>
+  <data name="ArticleStatus" xml:space="preserve">
+    <value>وضعیت مقاله</value>
+  </data>
+  <data name="ArticleTitle" xml:space="preserve">
+    <value>عنوان مقاله</value>
+  </data>
+  <data name="ArticleUpdateEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+    مقاله  شما با عنوان {2} در {0} با موفقیت ویرایش شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="ArticleUpdateSMS" xml:space="preserve">
+    <value>کاربر گرامی  {1} مقاله شما  با کد {2}  در {0} با موفقیت ویرایش شد</value>
+  </data>
+  <data name="Ascending" xml:space="preserve">
+    <value>صعودی</value>
+  </data>
+  <data name="BeforSendArticle" xml:space="preserve">
+    <value>پیش از ارسال {0} </value>
+  </data>
+  <data name="booth" xml:space="preserve">
+    <value>غرفه</value>
+  </data>
+  <data name="BoothChangeStatusEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+  {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   رزرو غرفه شما با کد  {2} شما در {0} به وضعیت {4} تغییر یافت 
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="BoothChangeStatusSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} رزرو غرفه {2} شما در {0} به وضعیت {3} تغییر یافت</value>
+  </data>
+  <data name="BoothCode" xml:space="preserve">
+    <value>کد غرفه</value>
+  </data>
+  <data name="BoothInsertEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+  {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+ رزرو غرفه شما با کد {2} در {0} با موفقیت ثبت شد 
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;</value>
+  </data>
+  <data name="BoothInsertSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} رزرو غرفه{2} شما در {0} با موفقیت ثبت شد</value>
+  </data>
+  <data name="BoothOfficerCard" xml:space="preserve">
+    <value>مسئول غرفه کد  {0}</value>
+  </data>
+  <data name="BoothOfficerCountismorethantheallowednumber" xml:space="preserve">
+    <value>تعداد غرفه داران بیشتر از تعداد مجاز است</value>
+  </data>
+  <data name="BoothPaymentEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0} 
+&lt;/div&gt;
+&lt;div&gt;
+  {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   هزینه رزرو غرفه شما با کد {2} در {0} با موفقیت پرداخت شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="BoothPaymentSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} هزینه رزرو غرفه {2} شما در {0} با موفقیت پرداخت شد</value>
+  </data>
+  <data name="BoothUpdateEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+ رزرو غرفه شما  با کد{2} در {0} با موفقیت بروز رسانی شد 
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;</value>
+  </data>
+  <data name="BoothUpdateSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} رزرو غرفه {2} شما در {0} با موفقیت ویرایش شد</value>
+  </data>
+  <data name="Both" xml:space="preserve">
+    <value>هر دو</value>
+  </data>
+  <data name="Capacityisnotenough" xml:space="preserve">
+    <value>ظرفیت کافی نیست</value>
+  </data>
+  <data name="ChartArticleByDay" xml:space="preserve">
+    <value>تعداد {0}  بر اساس روز</value>
+  </data>
+  <data name="ChartArticleByMoth" xml:space="preserve">
+    <value>تعداد مقالات  بر اساس ماه</value>
+  </data>
+  <data name="ChartArticleByPivot" xml:space="preserve">
+    <value>تعداد مقالات  بر اساس محور </value>
+  </data>
+  <data name="ChartArticleByStatus" xml:space="preserve">
+    <value>تعداد مقالات  بر اساس وضعیت</value>
+  </data>
+  <data name="ChartArticleByType" xml:space="preserve">
+    <value>تعداد مقالات  بر اساس نوع مقاله</value>
+  </data>
+  <data name="ChartCash" xml:space="preserve">
+    <value>گزارش مالی</value>
+  </data>
+  <data name="ChartCashByDay" xml:space="preserve">
+    <value>گزارش مالی در ماه</value>
+  </data>
+  <data name="ChartCashBymoth" xml:space="preserve">
+    <value>گزارش مالی در سال</value>
+  </data>
+  <data name="ChartHotelByStatus" xml:space="preserve">
+    <value>تعداد اسکان به تفکیک وضعیت</value>
+  </data>
+  <data name="ChartHotelUser" xml:space="preserve">
+    <value>تعداد اسکان به تفکیک رزرو</value>
+  </data>
+  <data name="ChartPivotCategory" xml:space="preserve">
+    <value>تعداد مقالات بر اساس گروه محور</value>
+  </data>
+  <data name="ChartUserRegisterByDay" xml:space="preserve">
+    <value>تعداد ثبت نام بر اساس روز</value>
+  </data>
+  <data name="ChartUserRegisterByMoth" xml:space="preserve">
+    <value>تعداد ثبت نام بر اساس ماه</value>
+  </data>
+  <data name="ChartUserRegisterByRegisterType" xml:space="preserve">
+    <value>تعداد ثبت نام بر اساس نوع ثبت نام</value>
+  </data>
+  <data name="ChartUserRegisterByStatus" xml:space="preserve">
+    <value>تعداد ثبت نام بر اساس وضعیت ثبت نام</value>
+  </data>
+  <data name="ChartViewsNumberByDay" xml:space="preserve">
+    <value>گزارش تعداد بازدید براساس روز</value>
+  </data>
+  <data name="ChartViewsNumberByMonth" xml:space="preserve">
+    <value>گزارش تعداد بازدید براساس ماه</value>
+  </data>
+  <data name="ChartViewsNumberByYear" xml:space="preserve">
+    <value>گزارش تعداد بازدید براساس سال</value>
+  </data>
+  <data name="ChartWorkShopByStatus" xml:space="preserve">
+    <value>تعداد کارگاه به تفکیک وضعیت</value>
+  </data>
+  <data name="ChartWorkShopUser" xml:space="preserve">
+    <value>تعداد کارگاه به تفکیک رزرو</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>تایید نهایی</value>
+  </data>
+  <data name="ConfirmandEdit" xml:space="preserve">
+    <value>تایید با اصلاح</value>
+  </data>
+  <data name="ConFirmReferee" xml:space="preserve">
+    <value>تایید داور</value>
+  </data>
+  <data name="CongressAddress" xml:space="preserve">
+    <value>آدرس سامانه</value>
+  </data>
+  <data name="Congresshasnotdonesetting" xml:space="preserve">
+    <value>تنظیمات انجام نشده است</value>
+  </data>
+  <data name="CongressRefereeLayout" xml:space="preserve">
+    <value>CongressRefereeLayout</value>
+  </data>
+  <data name="CongressTitle" xml:space="preserve">
+    <value>عنوان </value>
+  </data>
+  <data name="CongressUserLayout" xml:space="preserve">
+    <value>CongressUserLayout</value>
+  </data>
+  <data name="CssFile" xml:space="preserve">
+    <value>CssFile</value>
+  </data>
+  <data name="CssFile1" xml:space="preserve">
+    <value>CssFile</value>
+  </data>
+  <data name="DateOfLastFlowChanges" xml:space="preserve">
+    <value>تاریخ آخرین تغییر</value>
+  </data>
+  <data name="DateOfOkAbstract" xml:space="preserve">
+    <value>تاریخ تایید چکیده</value>
+  </data>
+  <data name="DateOfOkArticle" xml:space="preserve">
+    <value>تاریخ تایید اصل</value>
+  </data>
+  <data name="DateOfSendingAbstract" xml:space="preserve">
+    <value>تاریخ ارسال چکیده</value>
+  </data>
+  <data name="DateOfSendingArticle" xml:space="preserve">
+    <value>تاریخ ارسال مقاله</value>
+  </data>
+  <data name="Denial" xml:space="preserve">
+    <value>عدم تایید نهایی</value>
+  </data>
+  <data name="DenialAbstarct" xml:space="preserve">
+    <value>رد چکیده</value>
+  </data>
+  <data name="DenialPay" xml:space="preserve">
+    <value>رد  پرداخت</value>
+  </data>
+  <data name="Descending" xml:space="preserve">
+    <value>نزولی</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>ایمیل</value>
+  </data>
+  <data name="ErroInEditPosterOrginalFile" xml:space="preserve">
+    <value>خطایی در ویرایش فایل پوستر اصلی وجود دارد</value>
+  </data>
+  <data name="ErrorInDelereBooth" xml:space="preserve">
+    <value>خطایی در حذف غرفه وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteArticleAuthor" xml:space="preserve">
+    <value>خطایی در حذف نویسنده مقاله وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteArticleFromRefereecartabl" xml:space="preserve">
+    <value>خطایی در حذف {0} از کارتابل داور وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteArticlePaymentType" xml:space="preserve">
+    <value>خطایی در حذف نوع پرداخت {0}  وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteArticlePaymentTypeMultiLanguage" xml:space="preserve">
+    <value>خطایی در حذف چند زبانگی نوع پرداخت مقالات  وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteArticlePaymentTypeThisUseInArticle" xml:space="preserve">
+    <value>این نوع پرداخت {0}  برای پرداخت {1}  استفاده شده است و قابل حذف نمیباشد</value>
+  </data>
+  <data name="ErrorInDeleteArticleType" xml:space="preserve">
+    <value>خطایی در حذف نوع مقاله وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteArticleTypeBecauseThereareArticleWithThisArticleType" xml:space="preserve">
+    <value>این نوع مقاله دارای مقاله است و قابل حذف نیست</value>
+  </data>
+  <data name="ErrorInDeleteBoothBecauseThisReserved" xml:space="preserve">
+    <value>این غرفه قابل حذف نیست زیرا رزرو شده است</value>
+  </data>
+  <data name="ErrorInDeleteBoothCategory" xml:space="preserve">
+    <value>خطایی در حذف  نوع غرفه وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteBoothcategoryBecauseThereAreBoothWithThisType" xml:space="preserve">
+    <value>این نوع غرفه قابل حذف نیست زیرا داری غرفه است</value>
+  </data>
+  <data name="ErrorInDeleteCongress" xml:space="preserve">
+    <value>خطایی در  حذف رخ اده است</value>
+  </data>
+  <data name="ErrorInDeleteCongressAccount" xml:space="preserve">
+    <value>خطایی در حذف شماره حساب وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteCongressContainer" xml:space="preserve">
+    <value>خطایی در حذف قالب وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteCongressContent" xml:space="preserve">
+    <value>خطایی در حذف محتوای وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteCongressDiscountype" xml:space="preserve">
+    <value>خطایی در حذف نوع تخفیف وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteCongressFAQ" xml:space="preserve">
+    <value>خطایی در حذف FAQ وجود دارد </value>
+  </data>
+  <data name="ErrorInDeleteCongressFolder" xml:space="preserve">
+    <value>خطایی در حذف پوشه فایل وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteCongressGallery" xml:space="preserve">
+    <value>خطایی در حذف گالری وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteCongressHtml" xml:space="preserve">
+    <value>خطایی در حذف Html وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteCongressMenu" xml:space="preserve">
+    <value>خطایی در حذف منوی وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteCongressNews" xml:space="preserve">
+    <value>خطایی در حذف اخبار وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteCongressOwner" xml:space="preserve">
+    <value>خطایی در حذف صاحب وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteGuest" xml:space="preserve">
+    <value>خطایی در حذف میهمان ویژه وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteHotel" xml:space="preserve">
+    <value>خطایی در حذف هتل وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteHotelBecauseThisReserved" xml:space="preserve">
+    <value>این هتل قابل حذف نیست زیرا رزرو شده است</value>
+  </data>
+  <data name="ErrorInDeleteLanguage" xml:space="preserve">
+    <value>خطایی در حذف زبان وجود دارد</value>
+  </data>
+  <data name="ErrorInDeletePivot" xml:space="preserve">
+    <value>خطایی در حذف محور وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteReferee" xml:space="preserve">
+    <value>خطایی در حذف داور رخ اده است</value>
+  </data>
+  <data name="ErrorInDeleteRefereeBecauseHisCartablContainArticle" xml:space="preserve">
+    <value>در کارتایل این داور مقاله وجود دارد آن را نمیتوانید حذف کنید</value>
+  </data>
+  <data name="ErrorInDeleteResume" xml:space="preserve">
+    <value>خطایی در حذف رزرومه وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteSpecialGuest" xml:space="preserve">
+    <value>خطایی در حذف میهمان ویژه وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteSupporter" xml:space="preserve">
+    <value>خطایی در حذف حامی وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteSupportType" xml:space="preserve">
+    <value>خطایی در حذف نوع حامی وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteSupportTypeBecuaseThereAreSupportWithThisType" xml:space="preserve">
+    <value>این نوع حمایت قابل حذف نیست زیرا دارای حامی است</value>
+  </data>
+  <data name="ErrorInDeleteteacher" xml:space="preserve">
+    <value>خطایی در حذف استاد وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteUser" xml:space="preserve">
+    <value>خطایی در حذف کاربر وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteWorkShop" xml:space="preserve">
+    <value>خطایی در حذف کارگاه وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteWorkShopprogramFile" xml:space="preserve">
+    <value>خطایی در حذف فایل برنامه کارگاه وجود دارد</value>
+  </data>
+  <data name="ErrorInDeleteWorkShopTeacher" xml:space="preserve">
+    <value>خطایی در حذف استاد کارگاه وجود دارد</value>
+  </data>
+  <data name="ErrorinEditArticle" xml:space="preserve">
+    <value>خطایی در ویرایش {0} وجود دارد</value>
+  </data>
+  <data name="ErrorInEditArticleAbstractFile" xml:space="preserve">
+    <value>خطایی در ویرایش فایل چکیده مقاله وجود دارد</value>
+  </data>
+  <data name="ErrorInEditArticleAuthor" xml:space="preserve">
+    <value>خطایی در ویرایش نویسندگان {0} وجود دارد</value>
+  </data>
+  <data name="ErrorInEditArticleCongress" xml:space="preserve">
+    <value>خطایی در ویرایش {0} وجود دارد</value>
+  </data>
+  <data name="ErrorInEditArticleOrginalFile" xml:space="preserve">
+    <value>خطایی در ویرایش فایل اصل {0} وجود دارد</value>
+  </data>
+  <data name="ErrorInEditArticlePaymentType" xml:space="preserve">
+    <value>خطایی در ویرایش نوع پرداخت مقالات  وجود دارد</value>
+  </data>
+  <data name="ErrorInEditArticlePaymentTypeMultiLanguage" xml:space="preserve">
+    <value>خطایی در ویرایش چند زبانگی نوع پرداخت مقالات  وجود دارد</value>
+  </data>
+  <data name="ErrorInEditBoothMapFile" xml:space="preserve">
+    <value>خطایی در ویرایش فایل نقشه غرفه ها وجود دارد</value>
+  </data>
+  <data name="ErrorInEditBoothReserv" xml:space="preserve">
+    <value>خطایی در ویرایش رزرو غرفه وجود دارد</value>
+  </data>
+  <data name="ErrorInEditConfigurationBecauseThereErrorInDeleteSupportType" xml:space="preserve">
+    <value>این نوع حمایت قابل حذف نیست زیرا در قسمت تنظیمات  استفاده شده است</value>
+  </data>
+  <data name="ErrorInEditConfuguration" xml:space="preserve">
+    <value>خطایی در ویرایش تنظیمات وجود دارد</value>
+  </data>
+  <data name="ErrorInEditCongress" xml:space="preserve">
+    <value>خطایی در ویرایش وجود دارد</value>
+  </data>
+  <data name="ErrorInEditCongressHtml" xml:space="preserve">
+    <value>خطایی در ویرایشHtml وجود دارد</value>
+  </data>
+  <data name="ErrorInEditFooterFile" xml:space="preserve">
+    <value>خطایی در ویرایش فایل فوتر وجود دارد</value>
+  </data>
+  <data name="ErrorInEditHallmapFile" xml:space="preserve">
+    <value>خطایی در ویرایش فایل نقشه سالن ها وجود دارد</value>
+  </data>
+  <data name="ErrorInEditHeaderFile" xml:space="preserve">
+    <value>خطایی در ویرایش فایل هدر صفحه وجود دارد</value>
+  </data>
+  <data name="ErrorInEditHotelReserv" xml:space="preserve">
+    <value>خطایی در ویرایش رزرو اسکان کاربر وجود دارد</value>
+  </data>
+  <data name="ErrorInEditLogoFile" xml:space="preserve">
+    <value>خطایی در ویرایش فایل لوگو وجود دارد</value>
+  </data>
+  <data name="ErrorInEditMiniPosterFile" xml:space="preserve">
+    <value>خطایی در ویرایش فایل پوستر کوچک وجود دارد</value>
+  </data>
+  <data name="ErrorInEditMultiArticleLanguage" xml:space="preserve">
+    <value>خطایی در ویرایش چند زبانگی وجود دارد</value>
+  </data>
+  <data name="ErrorInEditMultilanguage" xml:space="preserve">
+    <value>خطایی در ویرایش چند زبانگی وجود دارد</value>
+  </data>
+  <data name="ErrorInEditPivot" xml:space="preserve">
+    <value>خطایی در ویرایش محور وجود دارد</value>
+  </data>
+  <data name="ErrorInEditReferee" xml:space="preserve">
+    <value>خطایی در ویرایش داور وجود دارد</value>
+  </data>
+  <data name="ErrorInEditRefereeCartabl" xml:space="preserve">
+    <value>خطایی در ویرایش کارتابل داور وجود دارد</value>
+  </data>
+  <data name="ErrorInEditReservUserWorkShop" xml:space="preserve">
+    <value>خطایی در ویرایش رزرو کارگاه کاربر وجود دارد</value>
+  </data>
+  <data name="ErrorInEditSpecialGuest" xml:space="preserve">
+    <value>خطایی در ویرایش میهمان ویژه وجود دارد</value>
+  </data>
+  <data name="ErrorInEditSupporter" xml:space="preserve">
+    <value>خطایی در ویرایش حامی وجود دارد</value>
+  </data>
+  <data name="ErrorInEditSupporterInConfiguration" xml:space="preserve">
+    <value>خطایی در ویرایش  تنظیمات حامیان وجود دارد</value>
+  </data>
+  <data name="ErrorInEditSupportType" xml:space="preserve">
+    <value>خطایی در ویرایش نوع حامی وجود دارد</value>
+  </data>
+  <data name="ErrorInEditTeacher" xml:space="preserve">
+    <value>خطایی در ویرایش استاد وجود دارد</value>
+  </data>
+  <data name="ErrorInEditUser" xml:space="preserve">
+    <value>خطایی در ویرایش کاربر وجود دارد</value>
+  </data>
+  <data name="ErrorInEditWorkShop" xml:space="preserve">
+    <value>خطایی در ویرایش کارگاه وجود دارد</value>
+  </data>
+  <data name="ErrorInEditWorkShopAttachFile" xml:space="preserve">
+    <value>خطایی در ویرایش فایل پیوست کارگاه وجود دارد</value>
+  </data>
+  <data name="ErrorInEditWorkShopProgramFile" xml:space="preserve">
+    <value>خطایی در ویرایش برنامه کارگاه وجود دارد</value>
+  </data>
+  <data name="ErrorInInsertFAQ" xml:space="preserve">
+    <value>خطایی در ذخیره FAQ وجود دارد</value>
+  </data>
+  <data name="ErrorInPayArticleAmount" xml:space="preserve">
+    <value>خطایی در پرداخت هزینه {0} وجود دارد</value>
+  </data>
+  <data name="ErrorInReservBooth" xml:space="preserve">
+    <value>خطایی در ذخیره رزرو غرفه وجود دارد</value>
+  </data>
+  <data name="ErrorInReservWorkShop" xml:space="preserve">
+    <value>خطایی در ثبت رزرو کارگاه وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveArticle" xml:space="preserve">
+    <value>خطایی در ذخیره {0} وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveArticleAbstractFile" xml:space="preserve">
+    <value>خطایی در ذخیره فایل چکیده وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveArticleAuthor" xml:space="preserve">
+    <value>خطایی در ذخیره نویسندگان {0} وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveArticleFlow" xml:space="preserve">
+    <value>خطایی در ذخیره فلو وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveArticleOrginalFile" xml:space="preserve">
+    <value>خطایی در ذخیره فایل اصل وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveArticlePaymentType" xml:space="preserve">
+    <value>خطایی در ذخیره نوع پرداخت مقالات  وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveArticlePaymentTypeMultiLanguage" xml:space="preserve">
+    <value>خطایی در ذخیره چند زبانگی نوع پرداخت مقالات  وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveBoothOfficer" xml:space="preserve">
+    <value>خطایی در ذخیره مسئول غرفه وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveBoothReserv" xml:space="preserve">
+    <value>خطایی در ذخیره رزرو غرفه وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveChipFood" xml:space="preserve">
+    <value>خطایی در ذخیره ژتون غذا وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveConfiguartion" xml:space="preserve">
+    <value>خطایی در ذخیره تنظیمات وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveCongress" xml:space="preserve">
+    <value>خطایی در ذخیره وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveCongressAccount" xml:space="preserve">
+    <value>خطایی در ذخیره شماره حساب وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveCongressContainer" xml:space="preserve">
+    <value>خطایی در ذخیره قالب وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveCongressContent" xml:space="preserve">
+    <value>خطایی در ذخیره محتوای وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveCongressDiscountype" xml:space="preserve">
+    <value>خطایی در ذخیره نوع تخفیف وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveCongressFolder" xml:space="preserve">
+    <value>خطایی در ذخیره پوشه فایل وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveCongressGallery" xml:space="preserve">
+    <value>خطایی در ذخیره گالری وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveCongressHtml" xml:space="preserve">
+    <value>خطایی در ذخیره Html وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveCongressLanguage" xml:space="preserve">
+    <value>خطایی در ذخیره زبان وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveCongressMenu" xml:space="preserve">
+    <value>خطایی در ذخیره منوی وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveCongressNews" xml:space="preserve">
+    <value>خطایی در ذخیره اخبار وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveFile" xml:space="preserve">
+    <value>خطایی در ذخیره فایل وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveFooterFile" xml:space="preserve">
+    <value>خطایی در ذخیره فایل فوتر صفحه وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveGuest" xml:space="preserve">
+    <value>خطایی در ذخیره میهمان ویژه وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveHotel" xml:space="preserve">
+    <value>خطایی در ذخیره هتل وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveHotelReserv" xml:space="preserve">
+    <value>خطایی در ذخیره اسکان کاربر وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveMultiArticleLanguage" xml:space="preserve">
+    <value>خطایی در ذخیره چند زبانگی وجود دارد</value>
+  </data>
+  <data name="ErrorInSavePivot" xml:space="preserve">
+    <value>خطایی در ذخیره محور وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveReferee" xml:space="preserve">
+    <value>خطایی در ذخیره داور وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveResume" xml:space="preserve">
+    <value>خطایی در ذخیره رزرومه وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveSpecialGuest" xml:space="preserve">
+    <value>خطایی در ذخیره میهمان ویژه وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveSupporter" xml:space="preserve">
+    <value>خطایی در ذخیره حامی وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveSupporterPartialInConfiguration" xml:space="preserve">
+    <value>خطایی در ذخیره پارشیال تنظیمات وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveSupportType" xml:space="preserve">
+    <value>خطایی در ذخیره نوع حمایت  وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveTeacher" xml:space="preserve">
+    <value>خطایی در ذخیره استاد وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveUser" xml:space="preserve">
+    <value>خطایی در ذخیره کاربر وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveWorkShop" xml:space="preserve">
+    <value>خطایی در ذخیره کارگاه وجود دارد</value>
+  </data>
+  <data name="ErrorInSaveWorkShopTeacher" xml:space="preserve">
+    <value>خطایی در ذخیره استاد کارگاه وجود دارد</value>
+  </data>
+  <data name="ErrorInSendArticle" xml:space="preserve">
+    <value>خطایی در ارسال {0} وجود دارد</value>
+  </data>
+  <data name="ErrorInUpdateChipFood" xml:space="preserve">
+    <value>خطایی در ویرایش ژتون غذا وجود دارد</value>
+  </data>
+  <data name="ErrorInUpdateComments" xml:space="preserve">
+    <value>خطا در تایید نظرات کاربران</value>
+  </data>
+  <data name="ErrorInUpdateFile" xml:space="preserve">
+    <value>خطایی در ویرایش فایل وجود دارد</value>
+  </data>
+  <data name="ErrorInWorkDailyScheduler" xml:space="preserve">
+    <value>خطایی در انجام عملیات روزانه وجود دارد</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>زن</value>
+  </data>
+  <data name="Finalconfirm" xml:space="preserve">
+    <value>تایید نهایی</value>
+  </data>
+  <data name="ForeachCertificate" xml:space="preserve">
+    <value>برای هر کاربر یک گواهی</value>
+  </data>
+  <data name="FreeUser" xml:space="preserve">
+    <value>شرکت کننده آزاد</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>نام کامل</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>مهمان</value>
+  </data>
+  <data name="GuestChangeStatusEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} مهمان گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   غرفه  رزرو شده شما با عنوان {2} به وضعیت {4} تغییر یافت
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="GuestChangeStatusSMS" xml:space="preserve">
+    <value>مهمان گرامی {1} رزرو غرفه {2} شما در {0} با  به وضعیت {3} تغییر یافت </value>
+  </data>
+  <data name="GuestInsertSMS" xml:space="preserve">
+    <value>کاربر {1} رزرو غرفه {2} شما در {0} با موفقیت ثبت شد</value>
+  </data>
+  <data name="GuestnsertEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} مهمان گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   رزرو غرفه {2} شما در {0} با موفقیت ثبت شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="GuestPaymentEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} مهمان گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+    هزینه رزرو غرفه {2} شما در {0} با موفقیت پرداخت شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="GuestPaymentSMS" xml:space="preserve">
+    <value>مهمان گرامی {1} هزینه رزرو غرفه {2} شما در {0} با موفقیت پرداخت شد</value>
+  </data>
+  <data name="GuestUpdateEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} مهمان گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   کاربر {1} رزرو غرفه {2} شما در {0} با موفقیت بروز رسانی شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="GuestUpdateSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} رزرو غرفه {2} شما در {0} با موفقیت ویرایش شد</value>
+  </data>
+  <data name="Has" xml:space="preserve">
+    <value>دارد</value>
+  </data>
+  <data name="HasChair" xml:space="preserve">
+    <value>صندلی دارد</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>هتل</value>
+  </data>
+  <data name="HotelCapacityLessThanNumberOfSelectedUser" xml:space="preserve">
+    <value>ظرفیت هتل کمتر از تعداد کاربران انتخاب شده است</value>
+  </data>
+  <data name="HotelChangeStatusEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   رزرواسکان شما با عنوان {2} به وضعیت {4} تغییر یافت
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="HotelChangeStatusSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} رزرو اسکان {2} شما در {0} به وضعیت {3} تغییر یافت</value>
+  </data>
+  <data name="HotelInsertEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+  رزرو اسکان شما با عنوان {2} در {0} با موفقیت ثبت شد 
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;</value>
+  </data>
+  <data name="HotelInsertSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} رزرو اسکان {2} شما در {0} با موفقیت ثبت شد</value>
+  </data>
+  <data name="HotelName" xml:space="preserve">
+    <value>نام هتل</value>
+  </data>
+  <data name="HotelPaymentEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0} 
+&lt;/div&gt;
+&lt;div&gt;
+  {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   هزینه رزرو هتل شما با عنوان {2} در {0} با موفقیت پرداخت شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="HotelPaymentSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} هزینه رزرو هتل {2} شما در {0} با موفقیت پرداخت شد</value>
+  </data>
+  <data name="HotelUpdateEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ کاربر گرامی {1}
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+  رزرو اسکان  شما  با عنوان {2} در {0} با موفقیت بروز رسانی شد 
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;</value>
+  </data>
+  <data name="HotelUpdateSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} رزرو اسکان {2} شما در {0} با موفقیت ویرایش شد</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>عکس</value>
+  </data>
+  <data name="ImageAndTitle" xml:space="preserve">
+    <value>عنوان و عکس</value>
+  </data>
+  <data name="InternalMessage" xml:space="preserve">
+    <value>پیام داخلی</value>
+  </data>
+  <data name="IsDirector" xml:space="preserve">
+    <value>مسوول</value>
+  </data>
+  <data name="JSFile" xml:space="preserve">
+    <value>JSFile</value>
+  </data>
+  <data name="JSFile1" xml:space="preserve">
+    <value>JSFile</value>
+  </data>
+  <data name="JSFunction" xml:space="preserve">
+    <value>JSFunction</value>
+  </data>
+  <data name="JSFunction1" xml:space="preserve">
+    <value>JSFunction</value>
+  </data>
+  <data name="KindOfSupport" xml:space="preserve">
+    <value>تعداد حامیان نوع حمایت</value>
+  </data>
+  <data name="Layout" xml:space="preserve">
+    <value>Layout</value>
+  </data>
+  <data name="LName" xml:space="preserve">
+    <value>نام خانوادگی</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>مرد</value>
+  </data>
+  <data name="Maximumallowed" xml:space="preserve">
+    <value>تعداد مجاز</value>
+  </data>
+  <data name="Mr" xml:space="preserve">
+    <value>آقا</value>
+  </data>
+  <data name="Mrs" xml:space="preserve">
+    <value>خانم</value>
+  </data>
+  <data name="NoHas" xml:space="preserve">
+    <value>ندارد</value>
+  </data>
+  <data name="Nopaymenthasbeenselectedfortheconference" xml:space="preserve">
+    <value>هیچ نوع پرداختی انتخاب نشده است</value>
+  </data>
+  <data name="NotFoundRefereeForSendArticle" xml:space="preserve">
+    <value>داوری جهت ارسال خودکار به وجود ندارد</value>
+  </data>
+  <data name="NotHasChair" xml:space="preserve">
+    <value>صندلی ندارد</value>
+  </data>
+  <data name="NumberArticlesReferee" xml:space="preserve">
+    <value>تعداد مقالات کارتابل هر داور</value>
+  </data>
+  <data name="NumberBoothsByDivision" xml:space="preserve">
+    <value>تعداد غرفه ها با تفکیک وضعیت</value>
+  </data>
+  <data name="NumberStandsWithReservationSeparation" xml:space="preserve">
+    <value>تعداد غرفه ها با تفکیک رزرو</value>
+  </data>
+  <data name="OnlyTitle" xml:space="preserve">
+    <value>فقط عنوان</value>
+  </data>
+  <data name="OrginalSended" xml:space="preserve">
+    <value>ارسال اصل مقاله توسط کاربر</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>رمز عبور</value>
+  </data>
+  <data name="PasswordRecovery" xml:space="preserve">
+    <value>بازیابی رمز عبور</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>پرداخت</value>
+  </data>
+  <data name="PayConfirm" xml:space="preserve">
+    <value>تایید پرداخت</value>
+  </data>
+  <data name="PayDate" xml:space="preserve">
+    <value>تاریخ پرداخت</value>
+  </data>
+  <data name="PaymentArticlePayment" xml:space="preserve">
+    <value>پرداخت هزینه ثبت {0}</value>
+  </data>
+  <data name="PaymentBoothReserv" xml:space="preserve">
+    <value>پرداخت  هزینه رزرو غرفه</value>
+  </data>
+  <data name="PaymentHotelReserv" xml:space="preserve">
+    <value>پرداخت هزینه رزرو هتل</value>
+  </data>
+  <data name="PaymentUserRegister" xml:space="preserve">
+    <value>پرداخت هزینه ثبت نام</value>
+  </data>
+  <data name="PaymentWorkShopReserv" xml:space="preserve">
+    <value>پرداخت هزینه رزرو کارگاه</value>
+  </data>
+  <data name="PayWait" xml:space="preserve">
+    <value>منتظر پرداخت</value>
+  </data>
+  <data name="Pleaseenteraminimumorauthorforthe article" xml:space="preserve">
+    <value>لطفا حداقل یک نویسنده برای مقاله وارد کنید</value>
+  </data>
+  <data name="PleaseEnterChipFoodDays" xml:space="preserve">
+    <value>لطفا روز های ژتون را انتخاب کنید</value>
+  </data>
+  <data name="PleaseEnterYourEmail" xml:space="preserve">
+    <value>لطفا ایمیل را وارد کنید</value>
+  </data>
+  <data name="Please_Enter_YourGender" xml:space="preserve">
+    <value>لطفا جنسیت را انتخاب کنید</value>
+  </data>
+  <data name="Please_Enter_YourLastName" xml:space="preserve">
+    <value>لطفا نام خانوادگی را وارد کنید</value>
+  </data>
+  <data name="Please_Enter_YourMobile" xml:space="preserve">
+    <value>لطفا شماره همراه را وارد کنید</value>
+  </data>
+  <data name="Please_Enter_YourName" xml:space="preserve">
+    <value>لطفا نام را وارد کنید</value>
+  </data>
+  <data name="PresentConfirm" xml:space="preserve">
+    <value>تایید حضور در کارگاه</value>
+  </data>
+  <data name="PresentDenial" xml:space="preserve">
+    <value>رد حضور در کارگاه</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>چاپ</value>
+  </data>
+  <data name="PrintArticlesAbstract" xml:space="preserve">
+    <value>چاپ خلاصه مقالات  </value>
+  </data>
+  <data name="Referee" xml:space="preserve">
+    <value>داور</value>
+  </data>
+  <data name="RefereeAnswered" xml:space="preserve">
+    <value>پاسخ داده شده توسط داور</value>
+  </data>
+  <data name="RefereeArticle" xml:space="preserve">
+    <value>ارسال مقاله به کارتابل داور</value>
+  </data>
+  <data name="RefereeEmailIsRepeat" xml:space="preserve">
+    <value>داوری با این ایمیل قبلا ثبت شده است</value>
+  </data>
+  <data name="RefereeInformArticleEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+{0}  داور گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+    مقاله با عنوان {2} در {0} جهت داوری به کارتابل شما ارسال شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+{4}
+&lt;/div&gt;
+
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="RefereeInformArticleEmailNetTemplate" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+[%TitlefaIR%]
+&lt;/div&gt;
+&lt;div&gt;
+ {1} داور گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+    مقاله با عنوان {2} در [%TitlefaIR%] جهت داوری به کارتابل شما ارسال شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;
+{0}</value>
+  </data>
+  <data name="RefereeInformArticleSMS" xml:space="preserve">
+    <value>داور گرامی  {1} مقاله با کد {2} در {0}  جهت داوری به کارتابل شما ارسال شد</value>
+  </data>
+  <data name="RefereeInsertEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+  {1} 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+  شما در {0} به عنوان داور  انتخاب شده اید 
+&lt;/div&gt;
+&lt;div&gt;
+نام کاربری :{4}
+&lt;/div&gt;
+&lt;div&gt;
+ رمز عبور:{5}
+&lt;/div&gt;
+&lt;div&gt;
+آدرس پنل داوری :{3}
+&lt;/div&gt;
+&lt;div&gt;
+    لطفا پس از ورود به سیستم رمز عبور خود را تغییر دهید
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {2}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="RefereeInsertSMS" xml:space="preserve">
+    <value>   {4} شما  در {0} به عنوان دارو انتخاب شده اید  نام کاربری شما {2} , رمز عبور {3}  و آدرس پنل داوری {1}</value>
+  </data>
+  <data name="RefereesAnswered" xml:space="preserve">
+    <value>اعلام نتیجه داوران</value>
+  </data>
+  <data name="RefereeUserNameIsRepeat" xml:space="preserve">
+    <value>داوری با این نام کاربری قبلا ثبت شده است</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>ثبت نام</value>
+  </data>
+  <data name="RegisterDate" xml:space="preserve">
+    <value>تاریخ ثبت نام</value>
+  </data>
+  <data name="RegisterRequest" xml:space="preserve">
+    <value>ثبت درخواست</value>
+  </data>
+  <data name="RegistertypeCapacityislessthanthenumberofusersisselected" xml:space="preserve">
+    <value>ظرفیت نوع ثبت نام کمتر از تعداد کاربران انتخاب شده است</value>
+  </data>
+  <data name="RptAbstractArticle" xml:space="preserve">
+    <value>گزارش خلاصه مقالات </value>
+  </data>
+  <data name="RptArticle" xml:space="preserve">
+    <value>گزارش مقالات </value>
+  </data>
+  <data name="RptArticleCertificate" xml:space="preserve">
+    <value>گزارش گواهی مقالات </value>
+  </data>
+  <data name="RptBoothOfficer" xml:space="preserve">
+    <value>گزارش مسئولین غرفه ها</value>
+  </data>
+  <data name="RptChipFood" xml:space="preserve">
+    <value>گزارش ژتون غذا</value>
+  </data>
+  <data name="RptCongressCertificate" xml:space="preserve">
+    <value>گزارش گواهی</value>
+  </data>
+  <data name="RptHotelUser" xml:space="preserve">
+    <value>گزارش رزرو هتل</value>
+  </data>
+  <data name="RptMiniUserCard" xml:space="preserve">
+    <value>گزارش کارت گردنی</value>
+  </data>
+  <data name="RptUser" xml:space="preserve">
+    <value>گزارش کاربران</value>
+  </data>
+  <data name="RptUserBooth" xml:space="preserve">
+    <value>گزارش رزرو غرفه</value>
+  </data>
+  <data name="RptUserCard" xml:space="preserve">
+    <value>کارت شرکت کننده</value>
+  </data>
+  <data name="RptWorkShopUser" xml:space="preserve">
+    <value>گزارش رزرو کارگاه</value>
+  </data>
+  <data name="SendForAllMan" xml:space="preserve">
+    <value>ارسال به اعضای مرد</value>
+  </data>
+  <data name="SendForAllUser" xml:space="preserve">
+    <value>ارسال به تمام اعضا</value>
+  </data>
+  <data name="SendForAllUserHaveReserveChair" xml:space="preserve">
+    <value>ارسال پیام به کسانی که صندلی آنان در وضعیت رزرو شده است</value>
+  </data>
+  <data name="SendForAllUserHaveSaledChair" xml:space="preserve">
+    <value>ارسال پیام به  کسانی که صندلی آنان در وضعیت فروخته شده است</value>
+  </data>
+  <data name="SendForAllUserInPreRegisterStatus" xml:space="preserve">
+    <value>ارسال برای کاربران که در وضعیت پیش ثبت نام قرار دارند</value>
+  </data>
+  <data name="SendForAllUserPayConfirmAndNotHaveChair" xml:space="preserve">
+    <value>ارسال پیام به کاربرانی که پرداخت آنان تایید شده ولی هنوز صندلی رزرو نکرده اند</value>
+  </data>
+  <data name="SendForAllWomen" xml:space="preserve">
+    <value>ارسال به اعضای خانم</value>
+  </data>
+  <data name="SendForRefrereeHasWaitForAnswerArticle" xml:space="preserve">
+    <value>ارسال به داورانی که مقاله داوری نشده در کارتابل دارند</value>
+  </data>
+  <data name="SendForRefrereeNotHasWaitForAnswerArticle" xml:space="preserve">
+    <value>ارسال به داورانی که همه مقالات  موجود در کارتابلشان را داوری کرده اند</value>
+  </data>
+  <data name="SendForUserAbstarctConfirm" xml:space="preserve">
+    <value>ارسال به اعضایی که چکیده مقاله آن ها تایید شده است</value>
+  </data>
+  <data name="SendForUserAbstarctConfirmAndNotSendOrginal" xml:space="preserve">
+    <value>ارسال به اعضایی که چکیده آن ها تایید شده ولی اصل مقاله را ارسال نکرده اند</value>
+  </data>
+  <data name="SendForUserArticleDenial" xml:space="preserve">
+    <value>ارسال به اعضایی که مقاله آن ها رد شده است</value>
+  </data>
+  <data name="SendForUserOrginalConfirm" xml:space="preserve">
+    <value>ارسال به اعضایی که اصل مقاله آن ها تایید شده است</value>
+  </data>
+  <data name="SendForUserWhoConfirmInHoma" xml:space="preserve">
+    <value>ارسال به اعضایی که حضور آن ها تایید شده</value>
+  </data>
+  <data name="SendForUserWhoDenialInHoma" xml:space="preserve">
+    <value>ارسال به اعضایی که حضور آن ها تایید نشده است</value>
+  </data>
+  <data name="SendForUserWhoRegisterAndnotPay" xml:space="preserve">
+    <value>ارسال به اعضایی که پرداخت ثبت نام را انجام نداده اند</value>
+  </data>
+  <data name="SendForUserWhoRegisterPayConfirm" xml:space="preserve">
+    <value>ارسال به اعضایی که پرداخت ثبت نام آن ها تایید شده</value>
+  </data>
+  <data name="SendForUserWhoRegisterPayDenial" xml:space="preserve">
+    <value>ارسال به اعضایی که پرداخت ثبت نام آن ها تایید نشده است</value>
+  </data>
+  <data name="SendForUserWhoReservedHotelButNotPay" xml:space="preserve">
+    <value>ارسال به اعضایی که اسکان رزرو کرده اند اما پرداخت نکرده اند</value>
+  </data>
+  <data name="SendForUserWhoReservedHotelConfirm" xml:space="preserve">
+    <value>ارسال به اعضایی که رزرو اسکان آن ها تایید شده</value>
+  </data>
+  <data name="SendForUserWhoReservedHotelDenial" xml:space="preserve">
+    <value>ارسال به اعضایی که رزرو اسکان آن ها رد شده</value>
+  </data>
+  <data name="SendForUserWhoReservedWorkShopButNotPay" xml:space="preserve">
+    <value>ارسال به اعضایی که کارگاه رزرو کرده اند اما پرداخت نکرده اند</value>
+  </data>
+  <data name="SendForUserWhoReservedWorkShopConfirm" xml:space="preserve">
+    <value>ارسال به اعضایی که رزرو کارگاه آن ها تایید شده</value>
+  </data>
+  <data name="SendForUserWhoReservedWorkShopDenial" xml:space="preserve">
+    <value>ارسال به اعضایی که رزرو کارگاه آن ها رد شده</value>
+  </data>
+  <data name="SendToMembersOfTheAbstractsWillBeConfirmedAfterCorrection" xml:space="preserve">
+    <value>ارسال به اعضایی که چکیده آنها پس از اصلاح تایید می شود</value>
+  </data>
+  <data name="SendToReferee" xml:space="preserve">
+    <value>ارسال شده به داور</value>
+  </data>
+  <data name="SentForUserSendAbstractArticle" xml:space="preserve">
+    <value>ارسال به اعضایی که چکیده مقاله ارسال کرده اند</value>
+  </data>
+  <data name="SentForUserSendOrginalArticle" xml:space="preserve">
+    <value>ارسال به اعضایی که اصل مقاله ارسال کرده اند</value>
+  </data>
+  <data name="SentInformByPivot" xml:space="preserve">
+    <value>ارسال به اعضایی که محور {1}  {0} میباشد</value>
+  </data>
+  <data name="SentInformByType" xml:space="preserve">
+    <value>ارسال به اعضایی که نوع پذیرش مقاله {0} دارند</value>
+  </data>
+  <data name="SentToSpecialReferee" xml:space="preserve">
+    <value>ارسال به دبیر تخصصی</value>
+  </data>
+  <data name="SMS" xml:space="preserve">
+    <value>پیامک</value>
+  </data>
+  <data name="Style" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="Style1" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="ThereIsCongressThisUrl" xml:space="preserve">
+    <value>وب سایتی  در این آدرس وجود دارد</value>
+  </data>
+  <data name="ThisArticleNotHaveDirectorAuthor" xml:space="preserve">
+    <value>لطفا یک نویسنده مسئول وارد کنید</value>
+  </data>
+  <data name="ThisChairReservedBy" xml:space="preserve">
+    <value>{0} این صندلی رزرو شده است توسط </value>
+  </data>
+  <data name="ThisReserveHastTranscactionYouCannotDeleteIt" xml:space="preserve">
+    <value>برای این رزرو تراکنش مالی ثبت شده است شما نیتوانید آن را حذف کنید</value>
+  </data>
+  <data name="ThisTransactionIsEndPleaseStartNewPayment" xml:space="preserve">
+    <value>عملیات پرداخت این تراکنش به اتمام رسیده است لطفا تراکنش جدید را ثبت  نمایید</value>
+  </data>
+  <data name="TitleArticle" xml:space="preserve">
+    <value>عنوان مقاله</value>
+  </data>
+  <data name="UnValid_Enter_Email" xml:space="preserve">
+    <value>ایمیل وارد شده معتبر نمیباشد</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>کاربران</value>
+  </data>
+  <data name="UserCard" xml:space="preserve">
+    <value>کارت</value>
+  </data>
+  <data name="UserChangeStatusEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+  ثبت نام شما در {0} به وضعیت {3} تغییر یافت
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {2}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="UserChangeStatusSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} ثبت نام شما در {0} به وضعیت {2} تغییر یافت</value>
+  </data>
+  <data name="UserCode" xml:space="preserve">
+    <value>کد کاربری</value>
+  </data>
+  <data name="UserForgatPasswordMailContent" xml:space="preserve">
+    <value>&lt;div style='width: 500px; border:solid #96171a 1px; font-family: tahoma; font-size:9pt;'&gt;&lt;div style='width: 100%; direction: rtl;  border-top:solid #96171a 3px;text-align: right;'&gt;&lt;p style='padding: 4px;'&gt;  با سلام خدمت {0}&lt;/p&gt;&lt;p align='justify'style='padding: 4px;'&gt;درخواستی مبنی بر اینکه رمز عبور خود را فراموش کرده اید دریافت نموده ایم جهت تکمیل مراحل بازیابی رمز عبور خود بر روی لینک زیر کلیک کنید  {2}  &lt;/p&gt;   &lt;p align='left'style='padding: 4px;'&gt; &lt;a href='{1}'&gt;{1}&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="UserInsertEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+  {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   اطلاعات شما در {0} با موفقیت ثبت شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {2}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="UserInsertSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} ثبت نام شما  در {0} با موفقیت ثبت شد </value>
+  </data>
+  <data name="UserLayout" xml:space="preserve">
+    <value>UserLayout</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>نام کاربری</value>
+  </data>
+  <data name="UserNameIsRepeate" xml:space="preserve">
+    <value>این کاربر قبلا در سیستم ثبت شده است </value>
+  </data>
+  <data name="UserNameNotRegisterInCongress" xml:space="preserve">
+    <value>ایمیل شما در سامانه ثبت نشده است</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>کاربری با این مشخصات یافت نشد</value>
+  </data>
+  <data name="UserPaymentEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+  {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+پرداخت هزینه ثبت نام شما در {0} با موفقیت ثبت شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {2}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="UserPaymentSMS" xml:space="preserve">
+    <value>کاربر گرامی {1}  هزینه ثبت نام شما در {0} با موفقیت ثبت شد</value>
+  </data>
+  <data name="UserPreRegisterStatus" xml:space="preserve">
+    <value>پیش ثبت نام</value>
+  </data>
+  <data name="UserRegister" xml:space="preserve">
+    <value>ثبت نام کاربر</value>
+  </data>
+  <data name="UserRegisterConfirmPresentInHomaStatus" xml:space="preserve">
+    <value>تایید حضور</value>
+  </data>
+  <data name="UserRegisterDenialPresentInHomaStatus" xml:space="preserve">
+    <value>رد حضور</value>
+  </data>
+  <data name="UserRegisterPayConfirmStatus" xml:space="preserve">
+    <value>تایید پرداخت</value>
+  </data>
+  <data name="UserRegisterPayDenialStatus" xml:space="preserve">
+    <value>عدم تایید پرداخت</value>
+  </data>
+  <data name="UserRegisterPayStatus" xml:space="preserve">
+    <value>پرداخت</value>
+  </data>
+  <data name="UserRegisterStatus" xml:space="preserve">
+    <value>ثبت نام</value>
+  </data>
+  <data name="UsersName" xml:space="preserve">
+    <value>نام کاربر</value>
+  </data>
+  <data name="UsersNotFound" xml:space="preserve">
+    <value>کاربری جهت رزرو انتخاب نشده است</value>
+  </data>
+  <data name="UserSubscribeMailContent" xml:space="preserve">
+    <value>&lt;div style='width: 500px; border:solid #96171a 1px; font-family: tahoma; font-size:9pt;'&gt;&lt;div style='width: 100%; direction: rtl;  border-top:solid #96171a 3px;text-align: right;'&gt;&lt;p style='padding: 4px;'&gt;   با سلام و احترام  {0}  &lt;/p&gt;&lt;p align='justify'style='padding: 4px;'&gt;با تشکر از ثبت نام شما     در {2}  لطفا برای تکمیل مراحل ثبت نام خود بر روی لینک زیر کلیک نمایید.&lt;/p&gt;   &lt;p align='left'style='padding: 4px;'&gt;&lt;a href='{1}'&gt;{1}&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="UserUpdateEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   اطلاعات ثبت نام  شما در {0} با موفقیت ثبت شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {2} 
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="UserUpdateSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} اطلاعات ثبت نام شما در {0} با موفقیت ثبت شد</value>
+  </data>
+  <data name="WaitForAnswer" xml:space="preserve">
+    <value>منتظر پاسخ</value>
+  </data>
+  <data name="WaitForRefereeOpinion" xml:space="preserve">
+    <value>منتظر نظر داور</value>
+  </data>
+  <data name="WaitForScientificTeacher" xml:space="preserve">
+    <value>منتظر تایید دبیر علمی</value>
+  </data>
+  <data name="WaitforSpecialRefereeOpinion" xml:space="preserve">
+    <value>منتظر نظر دبیر تخصصی</value>
+  </data>
+  <data name="Withpercentage" xml:space="preserve">
+    <value>با درصد مشارکت</value>
+  </data>
+  <data name="Workshop" xml:space="preserve">
+    <value>کارگاه</value>
+  </data>
+  <data name="WorkShopCapacityLessThanNumberOfSelectedUser" xml:space="preserve">
+    <value>ظرفیت کارگاه کمتر از تعداد کاربران انتخاب شده است</value>
+  </data>
+  <data name="WorkShopChangeStatusEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+  {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   رزرو کارگاه {2} شما در {0} به وضعیت {4} تغییر یافت 
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3} 
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="WorkShopChangeStatusSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} رزرو کارگاه {2} شما در {0} به وضعیت {3} تغییر یافت</value>
+  </data>
+  <data name="WorkShopInsertEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+  {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+ رزرو کارگاه  شما با عنوان {2} در {0} با موفقیت به ثبت شد 
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;</value>
+  </data>
+  <data name="WorkShopInsertSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} رزرو کارگاه {2} شما در {0} با موفقیت ثبت شد</value>
+  </data>
+  <data name="WorkshopName" xml:space="preserve">
+    <value>نام کارگاه</value>
+  </data>
+  <data name="WorkShopPaymentEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0} 
+&lt;/div&gt;
+&lt;div&gt;
+  {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+   هزینه رزرو کارگاه  شما با عنوان {2} در {0} با موفقیت پرداخت شد
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="WorkShopPaymentSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} هزینه رزرو کارگاه {2} شما در {0} با موفقیت پرداخت شد</value>
+  </data>
+  <data name="WorkShopUpdateEmail" xml:space="preserve">
+    <value>&lt;div style='float:right;direction: rtl;'&gt;
+&lt;div&gt;
+  {0}
+&lt;/div&gt;
+&lt;div&gt;
+ {1} کاربر گرامی 
+&lt;/div&gt;
+&lt;div&gt;
+   با سلام و احترام
+&lt;/div&gt;
+&lt;div&gt;
+ رزرو کارگاه  شما  با عنوان {2} در {0} با موفقیت بروز رسانی شد 
+&lt;/div&gt;
+&lt;div&gt;
+    برای کسب اطلاعات بیشتر در صورت نیاز با ما تماس حاصل نمایید.
+&lt;/div&gt;
+&lt;div&gt;
+    {3}  
+&lt;/div&gt;
+&lt;div&gt;
+    با تشکر
+&lt;/div&gt;</value>
+  </data>
+  <data name="WorkShopUpdateSMS" xml:space="preserve">
+    <value>کاربر گرامی {1} رزرو کارگاه {2} شما در {0} با موفقیت ویرایش شد</value>
+  </data>
+  <data name="YouCanNotAddNewCongress" xml:space="preserve">
+    <value>شما بیش از حد مجاز  برگزار می کنید</value>
+  </data>
+  <data name="YouhavealreadyregisteredCongress" xml:space="preserve">
+    <value>شما قبلا ثبت نام کرده اید</value>
+  </data>
+  <data name="YouReservedThisBooth" xml:space="preserve">
+    <value>شما قبلا این غرفه را رزرو کرده اید</value>
+  </data>
+</root>

@@ -1,0 +1,104 @@
+﻿@using Radyn.Web.Mvc
+@model IEnumerable<Radyn.Common.DataStructure.CountryIPRange>
+<script type="text/javascript">
+
+    function DeleteIp(rowid) {
+        $.get("/Common/Country/DeleteIp", { rowIp: rowid, id: new Date().getTime() }, function (data) {
+            if (data == "true") {
+                $("#" + rowid).slideUp();
+            }
+            IpList();
+            ShowRadynMessage();
+        });
+
+    }
+    function GetIP(rowid) {
+        $("#DivIP").html("");
+        $("#DivList").slideUp();
+        $.get("/Common/Country/GetIp", { rowIp: rowid, date: new Date().getTime() }, function (data) {
+            $("#DivIP").html(data);
+            $("#DivIP").slideDown();
+        });
+        ShowRadynMessage();
+    }
+</script>
+@if (ViewBag.hiddenEdit == false)
+{
+<div class="button-div m-btn waves-blue i-add">
+    @{Html.Radyn().ImageActionLink().Text(@Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").ImageHeight("20").OtherAttribute(new { onclick = "GetIP();" }).Render(); }
+</div>
+    <div id="DivIP"></div>
+}
+@if (Model.Any())
+{
+    <div id="DivList">
+        <div class="gv-table fit" style="margin-top: 15px;">
+            <div class="gv-row gv-header">
+                <div style="width: 30px;" class="gv-cell ">
+                    <div class="cell-item">
+                        #
+                    </div>
+                </div>
+                <div class="gv-cell width24percent">
+                    <div class="cell-item">
+                        @Resources.CommonComponent.StartRange
+                    </div>
+                </div>
+                <div class="gv-cell width24percent">
+                    <div class="cell-item">
+                        @Resources.CommonComponent.EndRange
+                    </div>
+                </div>
+                @if (ViewBag.hiddenEdit == false)
+                {
+                    <div class="gv-cell gv-cell-last width18percent">
+                        <div class="cell-item">
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="gv-content">
+                @{
+                int count = 0;
+                foreach (var countryIpRange in Model)
+                {
+                    count++;
+                    var i = count % 2;
+                    <div class="@(i == 0 ? "gv-row gv-row-style" : "gv-row gv-row-style gv-row-style-alt")" >
+                        <div style="width: 30px; text-align: center" class="gv-cell ">
+                            <div class="cell-item">
+                                @count.ToString()
+                            </div>
+                        </div>
+                        <div class="gv-cell width24percent">
+                            <div class="cell-item">
+                                @countryIpRange.StartRange
+                            </div>
+                        </div>
+                        <div class="gv-cell width24percent">
+                            <div class="cell-item">
+                                @countryIpRange.EndRange
+                            </div>
+                        </div>
+                        @if (ViewBag.hiddenEdit == false)
+                        {
+                            <div class="gv-cell gv-cell-last width18percent">
+                                <div class="cell-item">
+                                    <img onclick=" GetIP('@countryIpRange.Id') " style="cursor: pointer" src="@Url.Content("~/Content/Images/edit.png")" alt="@Resources.Common.Edit"/>
+                                    <img onclick=" DeleteIp('@countryIpRange.Id') " style="cursor: pointer" src="@Url.Content("~/Content/Images/Delete-Close.png")" alt="@Resources.Common.Delete "/>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                }
+            </div>
+            <div class="gv-row  gv-footer" style="height: 25px">
+            </div>
+
+        </div>
+    </div>
+}
+

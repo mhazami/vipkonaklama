@@ -1,0 +1,155 @@
+﻿@using Radyn.FileManager
+@using Radyn.News.DataStructure
+@model News
+
+    <script type="text/javascript">
+        function changeCulture() {
+            var culid = document.getElementById("LanguageId").value;
+            $.get("/News/NewsContent/ChangeCulture", { state: "Details", newsid: '@Model.Id', langid: culid, date: new Date().getTime() }, function (data) {
+                $("#NewsContent").html(data);
+
+            });
+        }
+        $.get("/News/NewsContent/Modify", { state: "Details", newsid: '@Model.Id', date: new Date().getTime() }, function (data) {
+            $("#NewsContent").html(data);
+
+      });
+
+
+
+    </script>
+
+@Html.ValidationSummary(true)
+<div class="radynForm">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsSaveDate
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.SaveDate)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPublishDate
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.PublishDate)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPublishTime
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.PublishTime)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsInterviewerId
+
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.InterviewerId)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsCreatorId
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.CreatorId)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsEditorId
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.EditorId)
+            </div>
+        </div>
+    </div>
+    <div class="item-row" style="display: none" >
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsNewsCategoryId
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.NewsCategory.Title)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsEnabled
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.Enabled ? Resources.Common.Enable : Resources.Common.Disable)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                کامنت
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.GetComment ? Resources.Common.Enable : Resources.Common.Disable)
+            </div>
+        </div>
+    </div>
+     <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.News.NewsThumbnailId
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+
+                @if (Model.ThumbnailId.HasValue)
+                {
+                    Html.RadynFile().Image().ID(Model.ThumbnailId.Value).DeleteButtonVisible("ThumbnailId").Height(98).Width(146).Download().Render();
+
+                }
+            </div>
+        </div>
+    </div>
+    <div id="NewsContent">
+    </div>
+    <div id="NewsProperty">
+    </div>
+</div>
+

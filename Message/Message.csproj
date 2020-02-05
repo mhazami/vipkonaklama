@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D2DFC1BF-8CE6-4684-8EF0-3C3D2D6112F2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.Message</RootNamespace>
+    <AssemblyName>Radyn.Message</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\MailAttachmentBO.cs" />
+    <Compile Include="BO\MailBoxBO.cs" />
+    <Compile Include="BO\MailInfoBO.cs" />
+    <Compile Include="BO\SentMailAttachmentBO.cs" />
+    <Compile Include="BO\SentMailBO.cs" />
+    <Compile Include="DataStructure\MailBox.cs" />
+    <Compile Include="InternalMessageComponenet.cs" />
+    <Compile Include="DataStructure\MailAttachment.cs" />
+    <Compile Include="DataStructure\MailInfo.cs" />
+    <Compile Include="DA\MailAttachmentDA.cs" />
+    <Compile Include="DA\MailBoxDA.cs" />
+    <Compile Include="DA\MailInfoDA.cs" />
+    <Compile Include="Facade\Interface\IMailAttachmentFacade.cs" />
+    <Compile Include="Facade\Interface\IMailBoxFacade.cs" />
+    <Compile Include="Facade\Interface\IMailInfoFacade.cs" />
+    <Compile Include="Facade\MailAttachmentFacade.cs" />
+    <Compile Include="Facade\MailBoxFacade.cs" />
+    <Compile Include="Facade\MailInfoFacade.cs" />
+    <Compile Include="Facade\SentSMSFacade.cs" />
+    <Compile Include="Facade\Interface\ISentSMSFacade.cs" />
+    <Compile Include="MessageBaseFacade.cs" />
+    <Compile Include="Resources\Message.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Message.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Enums.cs" />
+    <Compile Include="Tools\Extentions.cs" />
+    <Compile Include="Tools\MailSetting.cs" />
+    <Compile Include="DataStructure\SentMailAttachment.cs" />
+    <Compile Include="DataStructure\SentMail.cs" />
+    <Compile Include="DA\SentMailAttachmentDA.cs" />
+    <Compile Include="DA\SentMailDA.cs" />
+    <Compile Include="Facade\Interface\ISentMailAttachmentFacade.cs" />
+    <Compile Include="Facade\Interface\ISentMailFacade.cs" />
+    <Compile Include="Facade\SentMailAttachmentFacade.cs" />
+    <Compile Include="Facade\SentMailFacade.cs" />
+    <Compile Include="MessageComponenet.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\RadynSMSService.cs" />
+    <Compile Include="Tools\MessageServiceBody.cs" />
+    <Compile Include="Tools\ModelView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Message.fa-IR.resx" />
+    <EmbeddedResource Include="Resources\Message.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Message.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnterpriseNode\EnterpriseNode.csproj">
+      <Project>{46953CE7-5185-464D-9DB4-3BCB91BD04A6}</Project>
+      <Name>EnterpriseNode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileManager\FileManager.csproj">
+      <Project>{189d7172-b237-4afa-a5aa-105aa7693637}</Project>
+      <Name>FileManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

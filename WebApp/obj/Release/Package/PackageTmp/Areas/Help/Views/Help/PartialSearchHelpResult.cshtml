@@ -1,0 +1,45 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc.Utility
+@model IEnumerable<Radyn.Help.DataStructure.Help>
+
+<script  type="text/javascript">
+   function CheRelation(id,text) {
+       $.get("/Help/Help/ChekRealtion", { realtionid: id, id: new Date().getTime() }, function(data) {
+           if (data != "false") {
+               showModalReturn(id,text);
+           }
+           else {
+               ShowRadynMessage("@Resources.Help.This_Realtion_is_Repeat");
+           }
+       });
+   }
+
+</script>
+<table >
+    <tr>
+        <th class="EditFiled">
+            #
+        </th>
+        <th class="EditFiled">
+            @Resources.Help.HelpDefaultTitle
+        </th>
+        <th class="EditFiled">
+            @Resources.Help.HelpDefaultConent
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="EditFiled" style="text-align:center;cursor:pointer" onclick="CheRelation('@item.Id','@item.DefaultTitle');">
+                @((Model.ToList().IndexOf(item)+1).ToString().ConvertNumLa2Fa())
+            </td>
+            <td class="EditFiled" style="text-align:center;cursor:pointer" onclick="CheRelation('@item.Id','@item.DefaultTitle');">
+                @item.DefaultTitle
+            </td>
+            <td class="EditFiled" style="text-align:center;cursor:pointer" onclick="CheRelation('@item.Id','@item.DefaultTitle');">
+                @{Html.HtmlEncoder(item.DefaultConent);
+                }
+            </td>
+        </tr>
+    }
+</table>

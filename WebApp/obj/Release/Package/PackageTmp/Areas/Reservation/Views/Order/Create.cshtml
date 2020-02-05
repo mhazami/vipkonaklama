@@ -1,0 +1,225 @@
+@using Radyn.Web.Mvc;
+@using Radyn.WebApp.AppCode.Base
+@model Order
+@{
+    ViewBag.Title = Resources.Common.Create;
+    Layout = "_Layout";
+}
+@section Head{}
+@section PageTitle{@Resources.Common.Create}
+@section PageAction {
+    <div class="button-div">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.SaveAndNewLanguage).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "FormSubmitAction('" + FormSubmitAction.SaveAndNewLanguage + "'); " }).Render();}
+    </div>
+    <div class="button-div">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.SaveAndNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "FormSubmitAction('" + FormSubmitAction.SaveAndNew + "'); " }).Render();}
+    </div>
+    <div class="button-div">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Order/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.SaveAndNewLanguage).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "FormSubmitAction('" + FormSubmitAction.SaveAndNewLanguage + "'); " }).Render();}
+    </div>
+    <div class="button-div">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.SaveAndNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "FormSubmitAction('" + FormSubmitAction.SaveAndNew + "'); " }).Render();}
+    </div>
+    <div class="button-div">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Order/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@if (Model != null)
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="fit">
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.Room
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.DropDownListFor(model => model.RoomId, (SelectList)ViewBag.Room, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.RoomType
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.DropDownListFor(model => model.RoomTypeId, (SelectList)ViewBag.RoomType, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.ReserveType
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.DropDownListFor(model => model.ReserveTypeId, (SelectList)ViewBag.ReserveType, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.Customer
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.DropDownListFor(model => model.CustomerId, (SelectList)ViewBag.Customer)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.OrderUserId
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.DropDownListFor(model => model.UserId, (SelectList)ViewBag.User
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.OrderPersonCount
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.EditorFor(model => model.PersonCount)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.OrderDayCount
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.EditorFor(model => model.DayCount)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.OrderHourCount
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.EditorFor(model => model.HourCount)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.OrderTotalPrice
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.EditorFor(model => model.TotalPrice)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.OrderPaymentStatus
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.EditorFor(model => model.PaymentStatus)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.OrderOrderDate
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.Radyn().PersianDateTimePickerFor(Model, model => model.OrderDate)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.OrderEntryDate
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.Radyn().PersianDateTimePickerFor(Model, model => model.EntryDate)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.OrderExitDate
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.Radyn().PersianDateTimePickerFor(Model, model => model.ExitDate)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.OrderEntryTime
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.EditorFor(model => model.EntryTime)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.OrderExitTime
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.EditorFor(model => model.ExitTime)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

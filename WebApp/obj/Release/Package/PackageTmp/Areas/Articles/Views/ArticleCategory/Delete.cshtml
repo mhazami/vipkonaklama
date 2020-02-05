@@ -1,0 +1,34 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@{
+    ViewBag.Title = "حذف ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.DeleteMessage
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-red i-delete">
+        @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("ArticleCategory").Area("Articles").Text(@Resources.Common.Yes).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-green i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("ArticleCategory").Area("Articles").Text(@Resources.Common.No).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-red i-delete">
+        @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("ArticleCategory").Area("Articles").Text(@Resources.Common.Yes).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-green i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("ArticleCategory").Area("Articles").Text(@Resources.Common.No).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    Html.RenderAction("GetDetail", "ArticleCategory", new { area = "Articles", Id = ViewBag.Id });
+
+}

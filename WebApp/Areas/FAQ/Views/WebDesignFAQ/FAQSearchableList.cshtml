@@ -1,0 +1,292 @@
+﻿@using Radyn.FAQ.Tools
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.AppCode.Security
+@model List<Radyn.FAQ.DataStructure.FAQ>
+<style>
+    .faq-search {
+        width: 100%;
+        height: 40px;
+        float: left;
+        background: #e2e2e2;
+        background: -moz-linear-gradient(top, #e2e2e2 0%, #d1d1d1 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, #e2e2e2), color-stop(100%, #d1d1d1));
+        background: -webkit-linear-gradient(top, #e2e2e2 0%, #d1d1d1 100%);
+        background: -o-linear-gradient(top, #e2e2e2 0%, #d1d1d1 100%);
+        background: -ms-linear-gradient(top, #e2e2e2 0%, #d1d1d1 100%);
+        background: linear-gradient(to bottom, #e2e2e2 0%, #d1d1d1 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#d1d1d1', GradientType=0 );
+        -webkit-box-shadow: 1px 1px 0px 0 #eeeeee inset, -1px -1px 0px 0 #eeeeee inset;
+        -moz-box-shadow: 1px 1px 0px 0 #eeeeee inset, -1px -1px 0px 0 #eeeeee inset;
+        box-shadow: 1px 1px 0px 0 #eeeeee inset, -1px -1px 0px 0 #eeeeee inset;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border: 1px solid #ADADAD;
+    }
+
+        .faq-search input[type="text"] {
+            width: 40%;
+            float: left;
+            margin: 6px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border: 1px solid #ADADAD;
+            padding: 3px;
+        }
+
+    #faqnav {
+        float: right;
+        width: 100%;
+        text-align: right;
+        margin: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    #faqnav li {
+        float: right;
+        width: 100%;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+    }
+
+        #faqnav li a {
+            display: block;
+            text-decoration: none;
+            color: #000000;
+            height: 20px;
+            font-size: 10pt;
+            min-height: 35px;
+        }
+
+        #faqnav li a {
+            background: #ededed;
+            background: -moz-linear-gradient(top, #ededed 0%, #dfdfdf 100%);
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, #ededed), color-stop(100%, #dfdfdf));
+            background: -webkit-linear-gradient(top, #ededed 0%, #dfdfdf 100%);
+            background: -o-linear-gradient(top, #ededed 0%, #dfdfdf 100%);
+            background: -ms-linear-gradient(top, #ededed 0%, #dfdfdf 100%);
+            background: linear-gradient(to bottom, #ededed 0%, #dfdfdf 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#dfdfdf', GradientType=0 );
+            -webkit-box-shadow: 1px 1px 0px 0 #eeeeee inset, -1px -1px 0px 0 #eeeeee inset;
+            -moz-box-shadow: 1px 1px 0px 0 #eeeeee inset, -1px -1px 0px 0 #eeeeee inset;
+            box-shadow: 1px 1px 0px 0 #eeeeee inset, -1px -1px 0px 0 #eeeeee inset;
+            min-height: 35px;
+            border: solid 1px #BABABA;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+        }
+
+            #faqnav li a p {
+                margin: 3px 5px;
+            }
+
+            #faqnav li a span {
+                width: 35px;
+                height: 100%;
+                float: right;
+                background: #c2c2c2;
+                background: -moz-linear-gradient(top, #c2c2c2 0%, #a6a6a6 100%);
+                background: -webkit-gradient(left top, left bottom, color-stop(0%, #c2c2c2), color-stop(100%, #a6a6a6));
+                background: -webkit-linear-gradient(top, #c2c2c2 0%, #a6a6a6 100%);
+                background: -o-linear-gradient(top, #c2c2c2 0%, #a6a6a6 100%);
+                background: -ms-linear-gradient(top, #c2c2c2 0%, #a6a6a6 100%);
+                background: linear-gradient(to bottom, #c2c2c2 0%, #a6a6a6 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2c2c2', endColorstr='#a6a6a6', GradientType=0 );
+                border-radius: 0px 5px 5px 0px;
+                -moz-border-radius: 0px 5px 5px 0px;
+                -webkit-border-radius: 0px 5px 5px 0px;
+                border-left: solid 1px #BABABA;
+                -webkit-box-shadow: 1px 1px 0px 0 #eeeeee inset, -1px -1px 0px 0 #eeeeee inset;
+                -moz-box-shadow: 1px 1px 0px 0 #eeeeee inset, -1px -1px 0px 0 #eeeeee inset;
+                box-shadow: 1px 1px 0px 0 #eeeeee inset, -1px -1px 0px 0 #eeeeee inset;
+                text-align: center;
+            }
+
+                #faqnav li a span img, #faqnav li div span img {
+                    width: 26px;
+                    height: 22px;
+                    margin-top: 20%;
+                }
+
+            #faqnav li a.active {
+                background: #f2d9b7;
+                background: -moz-linear-gradient(top, #f2d9b7 0%, #e1ae6b 100%);
+                background: -webkit-gradient(left top, left bottom, color-stop(0%, #f2d9b7), color-stop(100%, #e1ae6b));
+                background: -webkit-linear-gradient(top, #f2d9b7 0%, #e1ae6b 100%);
+                background: -o-linear-gradient(top, #f2d9b7 0%, #e1ae6b 100%);
+                background: -ms-linear-gradient(top, #f2d9b7 0%, #e1ae6b 100%);
+                background: linear-gradient(to bottom, #f2d9b7 0%, #e1ae6b 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2d9b7', endColorstr='#e1ae6b', GradientType=0 );
+                -webkit-box-shadow: 1px 1px 0px 0 #E0bA5B inset, -1px -1px 0px 0 #E0bA5B inset;
+                -moz-box-shadow: 1px 1px 0px 0 #E0bA5B inset, -1px -1px 0px 0 #E0bA5B inset;
+                box-shadow: 1px 1px 0px 0 #E0bA5B inset, -1px -1px 0px 0 #E0bA5B inset;
+                color: #fff;
+                min-height: 35px;
+                border: solid 1px #B46401;
+                border-radius: 5px 5px 0px 0px;
+                -moz-border-radius: 5px 5px 0px 0px;
+                -webkit-border-radius: 5px 5px 0px 0px;
+            }
+
+                #faqnav li a.active span {
+                    width: 35px;
+                    height: 100%;
+                    float: right;
+                    background: #f9a941;
+                    background: -moz-linear-gradient(top, #f9a941 0%, #dc8307 100%);
+                    background: -webkit-gradient(left top, left bottom, color-stop(0%, #f9a941), color-stop(100%, #dc8307));
+                    background: -webkit-linear-gradient(top, #f9a941 0%, #dc8307 100%);
+                    background: -o-linear-gradient(top, #f9a941 0%, #dc8307 100%);
+                    background: -ms-linear-gradient(top, #f9a941 0%, #dc8307 100%);
+                    background: linear-gradient(to bottom, #f9a941 0%, #dc8307 100%);
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9a941', endColorstr='#dc8307', GradientType=0 );
+                    border-radius: 0px 5px 0px 0px;
+                    -moz-border-radius: 0px 5px 0px 0px;
+                    -webkit-border-radius: 0px 5px 0px 0px;
+                    border-left: solid 1px #B46401;
+                    -webkit-box-shadow: 1px 1px 0px 0 #E0bA5B inset, -1px -1px 0px 0 #E0bA5B inset;
+                    -moz-box-shadow: 1px 1px 0px 0 #E0bA5B inset, -1px -1px 0px 0 #E0bA5B inset;
+                    box-shadow: 1px 1px 0px 0 #E0bA5B inset, -1px -1px 0px 0 #E0bA5B inset;
+                }
+
+        #faqnav li div {
+            display: none;
+            background: #c5dff9;
+            background: -moz-linear-gradient(top, #c5dff9 0%, #e9f2fb 100%);
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, #c5dff9), color-stop(100%, #e9f2fb));
+            background: -webkit-linear-gradient(top, #c5dff9 0%, #e9f2fb 100%);
+            background: -o-linear-gradient(top, #c5dff9 0%, #e9f2fb 100%);
+            background: -ms-linear-gradient(top, #c5dff9 0%, #e9f2fb 100%);
+            background: linear-gradient(to bottom, #c5dff9 0%, #e9f2fb 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5dff9', endColorstr='#e9f2fb', GradientType=0 );
+            border-radius: 0px 0px 5px 5px;
+            -moz-border-radius: 0px 0px 5px 5px;
+            -webkit-border-radius: 0px 0px 5px 5px;
+            border: 1px solid #4B88C4;
+            float: right;
+            width: 99.7%;
+        }
+
+            #faqnav li div span {
+                width: 35px;
+                float: right;
+                background: #66a9eb;
+                background: -moz-linear-gradient(top, #66a9eb 0%, #4b84bc 100%);
+                background: -webkit-gradient(left top, left bottom, color-stop(0%, #66a9eb), color-stop(100%, #4b84bc));
+                background: -webkit-linear-gradient(top, #66a9eb 0%, #4b84bc 100%);
+                background: -o-linear-gradient(top, #66a9eb 0%, #4b84bc 100%);
+                background: -ms-linear-gradient(top, #66a9eb 0%, #4b84bc 100%);
+                background: linear-gradient(to bottom, #66a9eb 0%, #4b84bc 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66a9eb', endColorstr='#4b84bc', GradientType=0 );
+                border-radius: 0px 0px 5px 0px;
+                -moz-border-radius: 0px 0px 5px 0px;
+                -webkit-border-radius: 0px 0px 5px 0px;
+                border-left: solid 1px #4B88C4;
+                -webkit-box-shadow: 1px 1px 0px 0 #87B5E3 inset, -1px -1px 0px 0 #87B5E3 inset;
+                -moz-box-shadow: 1px 1px 0px 0 #87B5E3 inset, -1px -1px 0px 0 #87B5E3 inset;
+                box-shadow: 1px 1px 0px 0 #87B5E3 inset, -1px -1px 0px 0 #87B5E3 inset;
+                text-align: center;
+            }
+</style>
+<script>
+    $(document).ready(function () {
+        var flag = document.getElementById("showHideState");
+        $('#faqnav > li > a').click(function () {
+            if (flag.value == "0") {
+                if ($(this).attr('class') != 'active') {
+                    $('#faqnav li div').slideUp();
+                    $(this).next().slideToggle();
+                    $('#faqnav li a').removeClass('active');
+                    $(this).addClass('active');
+                }
+            }
+            else if (flag.value == "1") {
+                if ($(this).attr('class') != 'active') {
+                    $('#faqnav li a').removeClass('active');
+                    $(this).addClass('active');
+                }
+            }
+            //$("#faqnav > li > a + div[name='answer']>span").css("height", $("#faqnav > li > a + div[name='answer']").clientHeight);
+        });
+
+
+
+    });
+
+    function filter() {
+        var val = document.getElementById("txt").value;
+        var list = document.getElementsByTagName("li");
+        for (var i = 0; i < list.length; i++) {
+            var itm = list[i];
+            if ($(itm).attr("id") == "question") {
+                var valid = true;
+                var strs = val.split(' ');
+                for (var j = 0; j < strs.length; j++) {
+                    if ($(itm).text().toLowerCase().indexOf(strs[j].toLowerCase()) >= 0) {
+                        continue;
+                    }
+                    valid = false;
+                    break;
+                }
+                itm.style.display = valid ? 'inline' : 'none';
+            }
+        }
+    }
+</script>
+<div>
+    <input id="showHideState" type="hidden" value="0" />
+    <div class="faq-search">
+        <div style="float: @Resources.Design.Align; margin-top: 10px; margin-@Resources.Design.Align: 10px;">
+            @Resources.FAQ.SearchKeyword
+        </div>
+        <input type="text" id="txt" onkeyup="filter();" />
+    </div>
+    <ul id="faqnav">
+        <input id="showHideState" type="hidden" value="1" />
+        @{
+            var counter = 0;
+            foreach (var siteFaq in Model)
+            {
+                counter++;
+               
+            <li id="question">
+                <a href="javascript:;">
+                    <span>
+                        <img align="absmiddle" src="/Content/Images/faq-question.png" />
+                    </span>
+                    <p>
+                        @counter - 
+                                    @{ Html.HtmlEncoder(siteFaq.Content(SessionParameters.Culture).Question.Trim()); }
+                    </p>
+                </a>
+                <div name="answer">
+                    <span>
+                        <img align="absmiddle" src="/Content/Images/faq-answer.png" />
+                    </span>
+                    <p>
+                        @{ Html.HtmlEncoder(siteFaq.Content(SessionParameters.Culture).Answer.Trim()); }
+                        psda 
+                        <br />
+                        psda 
+                        <br />
+                        psda 
+                        <br />
+                        psda 
+                        <br />
+                    </p>
+                </div>
+            </li>
+            }
+        }
+    </ul>
+</div>
+
+
+
+

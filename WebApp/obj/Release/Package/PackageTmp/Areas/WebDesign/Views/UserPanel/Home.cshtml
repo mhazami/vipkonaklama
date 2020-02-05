@@ -1,0 +1,108 @@
+﻿@using Radyn.WebApp.AppCode.Security
+@using Radyn.WebApp.Areas.EnterpriseNode.ExtentionTools
+@using Radyn.WebApp.Areas.WebDesign.Tools
+@{
+    ViewBag.Title = (SessionParameters.WebDesignUser != null ? SessionParameters.WebDesignUser.EnterpriseNode.EnterpriseNodeTitle() : "");
+    Layout = "~/Areas/WebDesign/Views/Shared/WebDesignUserLayout.cshtml";
+}
+@section Head{
+
+
+}
+@section PageTitle
+{
+
+}
+<script>
+    $(document)
+        .ready(function () {
+
+            setTimeout(function () {
+                $(".bounce-bottom").addClass("slide-out-bottom");
+            }, 3000);
+
+        });
+</script>
+<div style="text-align: center">
+    <div class="flip-button bounce-bottom">
+        <div>
+            @SessionParameters.WebDesignUser.EnterpriseNode.EnterpriseNodeTitle() خوش آمدید
+        </div>
+    </div>
+    <div class="flip-button-fix">
+        <div class=" c-btn-warning">
+            <a href="/home/index" class="text">
+                صفحه اصلی
+                <i class="fas fa-long-arrow-alt-left"></i>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<div class="user-panel-view">
+    <div class="">
+        <div class="user-home-items">
+
+
+            @if (SessionParameters.WebDesignUser != null)
+            {
+                <a href="@Url.Content("~/WebDesign/UserPanel/EditInfoUser")" class="items-content-user ">
+                    <div class="d-item-bg">
+                        <i class="fas fa-user-edit"></i>
+                        <p>
+                            @Resources.WebDesign.UserEditProfile
+                        </p>
+                    </div>
+                </a>
+                <a href="@Url.Content("~/WebDesign/UserPanel/ChangePassword")" class="items-content-user ">
+                    <div class="d-item-bg">
+                        <i class="fas fa-unlock-alt"></i>
+                        <p>
+                            @Resources.WebDesign.ChangePassword
+                        </p>
+                    </div>
+                </a>
+                if (SessionParameters.CurrentWebSite.Configuration.HasFinancialOperation)
+                {
+                    <a href="@Url.Content("~/WebDesign/UserPanel/UserTemps")" class="items-content-user " data-hint="(@ViewBag.tempcount)">
+                        <div class="d-item-bg">
+                            <i class="fas fa-shopping-cart"></i>
+                            <p>
+                                @Resources.Payment.PaymentsBasket (@AppExtention.GetUserTempCount(SessionParameters.WebDesignUser.Id))
+                            </p>
+                        </div>
+                    </a>
+                }
+
+                <a href="@Url.Content("~/WebDesign/UserPanel/Logout")" class="items-content-user ">
+                    <div class="d-item-bg">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <p>
+                            @Resources.Security.Logout
+                        </p>
+                    </div>
+                </a>
+                if (ViewBag.FormList != null)
+                {
+                    foreach (var VARIABLE in (List<KeyValuePair<string, string>>)ViewBag.FormList)
+                    {
+                        <a href="@Url.Content("~/WebDesign/UserPanel/UserForm?formId=" + VARIABLE.Key)" class="items-content-user">
+                            <div class="d-item-bg">
+                                <i class="fas fa-file-alt"></i>
+                                <p>
+                                    @VARIABLE.Value
+                                </p>
+                            </div>
+                        </a>
+                    }
+                }
+
+            }
+
+
+
+        </div>
+    </div>
+</div>
+</div>

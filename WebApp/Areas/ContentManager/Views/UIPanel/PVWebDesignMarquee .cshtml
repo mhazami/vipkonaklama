@@ -1,0 +1,52 @@
+﻿<style type="text/css">
+    #scroller {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        line-height: 30px;
+        position: relative;
+    }
+
+        #scroller li {
+            float: left;
+            height: 30px;
+            padding: 0 0 0 10px;
+            list-style-position: inside;
+        }
+
+    #scrollerWrapper {
+        height: 30px;
+        overflow: hidden;
+        border: 1px #333 solid;
+        background: #F2F2F2;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var speed = 5;
+        var items, scroller = $('#scroller');
+        var width = 0;
+        scroller.children().each(function () {
+            width += $(this).outerWidth(true);
+        });
+        scroller.css('width', width);
+        scroll();
+        function scroll() {
+            items = scroller.children();
+            var scrollWidth = items.eq(0).outerWidth();
+            scroller.animate({ 'left': 0 - scrollWidth }, scrollWidth * 100 / speed, 'linear', changeFirst);
+        }
+        function changeFirst() {
+            scroller.append(items.eq(0).remove()).css('left', 0);
+            scroll();
+        }
+    });
+</script>
+<div id="scrollerWrapper">
+    <ul id="scroller">
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+        <li>Maecenas sollicitudin, ante id ultrices consectetur, ipsum nisl varius ipsum, sit amet congue eros nulla vitae urna.</li>
+        <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </li>
+    </ul>
+</div>

@@ -1,0 +1,97 @@
+.themedefault .nivoSlider {
+    position: relative;
+    background: #fff url(loading.gif) no-repeat 50% 50%;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
+    box-shadow: 0px 1px 5px 0px #4a4a4a;
+}
+
+    .themedefault .nivoSlider img {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        display: none;
+    }
+
+    .themedefault .nivoSlider a {
+        border: 0;
+        display: block;
+    }
+
+.themedefault .nivo-controlNav {
+    text-align: center;
+    padding: 20px 0;
+}
+
+    .themedefault .nivo-controlNav a {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        background: url(bullets.png) no-repeat;
+        text-indent: -9999px;
+        border: 0;
+        margin: 0 2px;
+    }
+
+        .themedefault .nivo-controlNav a.active {
+            background-position: 0 -22px;
+        }
+
+.themedefault .nivo-directionNav a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url(arrows.png) no-repeat;
+    text-indent: -9999px;
+    border: 0;
+    opacity:0;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+}
+
+.themedefault:hover .nivo-directionNav a {
+    opacity: 1;
+}
+
+.themedefault a.nivo-nextNav {
+    background-position: -30px 0;
+    right: 15px;
+}
+
+.themedefault a.nivo-prevNav {
+    left: 15px;
+}
+
+.themedefault .nivo-caption {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+    .themedefault .nivo-caption a {
+        color: #fff;
+        border-bottom: 1px dotted #fff;
+    }
+
+        .themedefault .nivo-caption a:hover {
+            color: #fff;
+        }
+
+.themedefault .nivo-controlNav.nivo-thumbs-enabled {
+    width: 100%;
+}
+
+    .themedefault .nivo-controlNav.nivo-thumbs-enabled a {
+        width: auto;
+        height: auto;
+        background: none;
+        margin-bottom: 5px;
+    }
+
+    .themedefault .nivo-controlNav.nivo-thumbs-enabled img {
+        display: block;
+        width: 120px;
+        height: auto;
+    }
+

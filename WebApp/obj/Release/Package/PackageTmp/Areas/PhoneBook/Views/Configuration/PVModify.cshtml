@@ -1,0 +1,48 @@
+﻿@model Radyn.PhoneBook.DataStructure.Configuration
+
+
+
+<div class="accordion-setting slides-open">
+    
+    <div class="fit item-row ">
+        <div class="table-row-roller cursor-pointer" onclick="slide('Basic-Settings');">
+            <div class="item">
+                @Resources.WebDesign.BaseSetting
+                <span class="arrow toButton Basic-Settings"></span>
+            </div>
+        </div>
+        <div class="fit advanceSetting" id="Basic-Settings">
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.PhoneBook.OfficeName
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.TextBoxFor(model => model.OfficeName, new { })
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.PhoneBook.DepartmentName
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.TextBoxFor(model => model.DepartmentName, new { })
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+   
+
+
+
+</div>

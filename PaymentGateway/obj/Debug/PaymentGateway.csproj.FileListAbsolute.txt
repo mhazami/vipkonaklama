@@ -1,0 +1,8 @@
+E:\Online-WorkSpace\vipkonaklama\PaymentGateway\obj\Debug\PaymentGateway.csprojAssemblyReference.cache
+E:\Online-WorkSpace\vipkonaklama\PaymentGateway\obj\Debug\PaymentGateway.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.PaymentGateway.dll.config
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.PaymentGateway.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.PaymentGateway.pdb
+E:\Online-WorkSpace\vipkonaklama\PaymentGateway\obj\Debug\PaymentGateway.csproj.CopyComplete
+E:\Online-WorkSpace\vipkonaklama\PaymentGateway\obj\Debug\Radyn.PaymentGateway.dll
+E:\Online-WorkSpace\vipkonaklama\PaymentGateway\obj\Debug\Radyn.PaymentGateway.pdb

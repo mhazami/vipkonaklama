@@ -1,0 +1,82 @@
+﻿@using Radyn.Article.DataStructure
+@using Radyn.Web.Mvc;
+@using Radyn.Utility
+@using Radyn.WebApp
+@using Radyn.WebApp.Areas.Common.Component
+@model Article
+@{
+    ViewBag.Title = @Resources.Common.Edit + " " + @Resources.Article.ArticleName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head{
+    <script>
+        function changeCulture() {
+            var langId = document.getElementById("LanguageId").value;
+            $("#DivItem").html("");
+            $.get("@Url.Content("~/Articles/Articles/GetModify")", { Id: '@ViewBag.Id', status:'@PageMode.Edit', culture: langId, date: new Date().getTime() }, function (data) {
+                $("#DivItem").html(data).slideDown("slow");
+
+            });
+        }
+        function EditArticle() {
+            $.post("@Url.Content("~/Articles/Articles/Edit")",
+                $('form[action^="@Url.Content("~/Articles/Articles/Edit")"]').serialize(),
+                function(data) {
+                    if (data!="false") {
+                        window.location = "/Articles/Articles/Index";
+                    }
+                });
+            ShowRadynMessage();
+        }
+
+        $(document).ready(function () {
+            changeCulture();
+        });
+    </script>
+}
+@section PageTitle
+{
+    @Resources.Common.Edit @Resources.Article.ArticleName
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{Html.Radyn().ImageActionLink().ImageUrl(Url.Content("~/Content/Images/Save.png")).Text(Resources.Common.Save).ImageWidth("15").OtherAttribute(new { onclick = "EditArticle()" }).Render(); }
+    </div>
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{
+            Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Articles").Area("Articles").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();
+        }
+
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{Html.Radyn().ImageActionLink().ImageUrl(Url.Content("~/Content/Images/Save.png")).Text(Resources.Common.Save).ImageWidth("15").OtherAttribute(new { onclick = "EditArticle()" }).Render(); }
+    </div>
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{
+            Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Articles").Area("Articles").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();
+        }
+
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <div class="radynForm">
+        <div class="item-row fit">
+            @{
+                Html.LanguageDropDownList("changeCulture();");
+            }
+        </div>
+        <div id="DivItem">
+        </div>
+    </div>
+
+}

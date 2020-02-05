@@ -1,0 +1,57 @@
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.AppCode
+@using Radyn.WebApp.Areas.Common.Component
+
+@model Radyn.WebDesign.DataStructure.WebSite
+
+<div class="radynForm">
+    <div class="table">
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.WebDesign.Title
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @{
+                        Html.LanguageContentTextBoxFor(Model, x => x.Title);
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.WebDesign.InstallPath
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.EditorFor(model => model.InstallPath)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Enable
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+                    @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @{
+        Html.RadynAction("GetIndex", "WebSiteAlias", new { area = "WebDesign", WebSiteId = Model.Id, status = this.Html.GetPageMode() });
+    }
+
+</div>
+
+

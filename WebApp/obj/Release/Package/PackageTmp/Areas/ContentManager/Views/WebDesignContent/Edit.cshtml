@@ -1,0 +1,52 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.Utility
+@model Radyn.ContentManager.DataStructure.Content
+@{
+    ViewBag.Title = Resources.Common.Edit;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@section Head{
+
+}
+@section PageTitle
+{
+    @Resources.Common.Edit
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{ Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("WebDesignContent").Area("ContentManager").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebDesignContent").Area("ContentManager").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{ Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("WebDesignContent").Area("ContentManager").Text(Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+    </div>
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("WebDesignContent").Area("ContentManager").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    Html.RenderAction("GetModify", "Content", new { area = "ContentManager", Id = ViewBag.Id, menuurl = "/ContentManager/WebDesignMenu/LookUpMenu" });
+}
+
+
+
+
+
+    
+
+
+
+

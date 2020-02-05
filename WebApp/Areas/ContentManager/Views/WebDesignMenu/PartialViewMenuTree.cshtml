@@ -1,0 +1,55 @@
+﻿@using Radyn.Web.Mvc;
+
+@model System.Collections.Generic.IEnumerable<Radyn.ContentManager.DataStructure.Menu>
+    <script type="text/javascript">
+
+        function SetValues(id, text) {
+            document.getElementById('TxtSelectedItemid').value = id;
+            document.getElementById('TxtSelectedItemtext').value = text;
+
+        }
+
+        $(function () {
+            $('#MenuTree').on('changed.jstree', function (e, data) {
+                if (data.selected.length > 0) {
+                    SetValues(data.node.li_attr.id, data.node.li_attr.title);
+                }
+            });
+        });
+    </script>
+    <table border='0' cellpadding='0' cellspacing='2' style="width: 400px; float: right">
+
+        <tr>
+            <input type="hidden" id="TxtSelectedItemid" name="TxtSelectedItemid" />
+            <input type="hidden" id="TxtSelectedItemtext" name="TxtSelectedItemtext" />
+            <input type="hidden" value="@Request.QueryString["chekforcontenet"]" id="chekcontent" />
+            <td style="width: 150px; text-align: right; " id="id3">
+                <h3 style="margin-right: 10px;">
+                    @Resources.Common.List @Resources.Security.MenuName
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td style="direction: rtl">
+                @{
+                    Html.Radyn().TreeView<Radyn.ContentManager.DataStructure.Menu>().ShowLines(true).Name("MenuTree")
+                        .BindTo(Model,
+                            map => map
+                            .Id(x => x.Id)
+                            .Parent(x => x.ParentId)
+                            .Text(menu => string.IsNullOrEmpty(menu.Text) ? " " : menu.Text)
+                            .Icon(menu => menu.IsVertical ? Url.Content("~/Content/Images/vertical.png") : Url.Content("~/Content/Images/horizontal.png"))
+                            .ListItemAttribute(x => x
+                            .Add("title", folder => folder.Text)
+                            .Add("align", folder => "right").Add("class", folder => "jstree-rtl ")
+                            )
+                        ).Render();
+                }
+
+                @{ Html.Radyn().ContextMenu().Selector("div").AddItem("انتخاب", "onclick:function selectmenu() {selectitem(document.getElementById('TxtSelectedItemid').value,document.getElementById('TxtSelectedItemtext').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'")
+                   .AddItem("ایجاد", "onclick:function selectmenu() {ModifyMenuItem('Create',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'")
+                   .AddItem("ویرایش", "onclick:function selectmenu() {ModifyMenuItem('Edit',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'")
+                   .AddItem("حذف", "onclick:function selectmenu() {ModifyMenuItem('Delete',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'").Render(); }
+            </td>
+        </tr>
+    </table>

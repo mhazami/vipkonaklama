@@ -1,0 +1,39 @@
+﻿@using Radyn.Framework
+@using Radyn.Web.Mvc
+
+@model List<Radyn.Payment.DataStructure.DiscountTypeAutoCode>
+<script type="text/javascript">
+    function Delete(Id) {
+        if (confirm('@Resources.Common.Are_You_Soure_For_Delete')) {
+            $.get("/payment/DiscountType/DeleteAutoCode", { Id: Id, date: new Date().getTime() }, function (data) {
+                if (data != "false") {
+                    ShowRadynMessage();
+                    GetModelAuotoCode();
+                }
+            });
+        }
+    }
+</script>
+@if (Model.Any())
+{
+
+    Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:50%;margin: 0 auto" }).Columns(columns =>
+    {
+        columns.Template(discountType => Model.IndexOf(discountType)+1).Title(@Resources.Common.GridRow).Width(50).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(discountType => discountType.Code).Title(@Resources.Payment.Code).Width(300).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(discountType => discountType.Used ? Resources.Common.Yes : Resources.Common.No).Title(@Resources.Payment.Used).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(autoCode => (autoCode.State == ObjectState.New ? "" : " <img alt='" + @Resources.Common.Delete + "' style='cursor: pointer' width = '20px;' height = '20px;' src='/Content/Images/Delete-Close.png'    onclick=\"Delete('" + autoCode.Id + "');\" />")).Title(Resources.Common.Delete).HeaderHtmlAttributes(new { style = "text-align:center" });
+
+        columns.Template(discountType => " <input type=\"hidden\" value=\"" + discountType.Id + "\" name=\"AutoCodeModelId\" id=\"AutoCodeModelId\"/>" +
+                        "<input type=\"hidden\" value=\"" + discountType.Code + "\" name=\"AutoCode-" + discountType.Id + "\" id=\"AutoCode-" + discountType.Id + "\"/> " +
+                        "<input type=\"hidden\" value=\"" + discountType.Used + "\" name=\"Used-" + discountType.Id + "\" id=\"Used-" + discountType.Id + "\"/> " +
+                        "<input type=\"hidden\" value=\"" + discountType.DiscountTypeId + "\" name=\"DiscountTypeId-" + discountType.Id + "\" id=\"DiscountTypeId-" + discountType.Id + "\"/>").Width(0);
+
+    })
+
+ .Sortable(sorting => sorting.Enabled(true))
+ .Pageable(paging => paging.Enabled(false))
+ .Filterable(filtering => filtering.Enabled(true))
+ //.Footer(true)
+ .Render();
+}

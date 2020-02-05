@@ -1,0 +1,24 @@
+﻿<script type="text/javascript">
+   
+    function Serach() {
+                window.location="/News/News/Search?q=" + document.getElementById("TxtContent").value;
+    }
+</script>
+<table border="0" cellpadding="2" cellspacing="2" width="400" style='padding: 4px 4px 4px 4px;direction:@Resources.Common.Direction ;text-align:@Resources.Common.Aligment;'>
+    <tr>
+        <td>
+            <table>
+                <tr>
+
+                    <td class="EditFiled">
+                        @Html.TextBox("TxtContent", " ", new { Style = "width:350px;" })
+                    </td>
+                    <td>
+                        <input id="BtnSearch"   type="button" value="@Resources.Common.Search"  onclick="Serach();"/>
+                    </td>
+                    </tr>
+            </table>
+        </td>
+    </tr>
+   
+</table>

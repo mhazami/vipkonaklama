@@ -1,0 +1,14 @@
+﻿@using Radyn.FormGenerator.Tools
+@using Radyn.WebApp.Areas.FormGenerator.Tools
+@model Radyn.FormGenerator.DataStructure.FormEvaluation
+@{
+    if (Model != null)
+    {
+
+        Html.FormEvaluation(Model, FormState.DataEntryMode, (bool)ViewBag.Withoutahp, (bool)ViewBag.newGenerate);
+    }
+
+}
+
+
+

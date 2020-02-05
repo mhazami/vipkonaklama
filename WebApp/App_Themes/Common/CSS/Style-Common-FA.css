@@ -1,0 +1,44 @@
+﻿.innerhtml {
+    float: left !important;
+}
+
+.innerhtml-menu, .aside-page {
+    left: auto;
+    right: 0
+}
+
+.aside-control {
+    left: -25px;
+    right: auto;
+}
+
+.design_layout .close-nav {
+    transform: translateX(100%);
+}
+
+.design_layout .aside-control svg {
+    transform: rotate(180deg);
+}
+
+.design_layout .close-nav .aside-control svg {
+    transform: rotate(360deg);
+}
+
+body, * {
+    direction: rtl !important;
+}
+
+.innerhtml .fgitem ul {
+    border-radius: 0 0 5px 0;
+    padding: 2px 5px 0 0;
+    right: auto;
+    left: 0;
+}
+
+.fgitem, .fgitem ul, .fgitem ul li {
+    float: left !important;
+}
+
+.horizontal-row, .horizontal-row * {
+    direction: ltr !important
+}

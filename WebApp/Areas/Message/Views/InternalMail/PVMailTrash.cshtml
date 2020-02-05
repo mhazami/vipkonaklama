@@ -1,0 +1,22 @@
+﻿@using Radyn.Web.Mvc
+
+@model IEnumerable<Radyn.Message.DataStructure.MailBox>
+
+<div >
+    @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+        {
+            columns.Template(mailBox => "<a style='cursor: pointer;'  onclick=\"GetMailView('" + mailBox.Id + "');\"  > " + mailBox.MailInfo.Subject + "</a> ").Title(Resources.Message.Subject).HeaderHtmlAttributes(new { style = "text-align:center" }).Width(200);
+            columns.Template(sms =>sms.FromEnterpriseNode!=null? sms.FromEnterpriseNode.DescriptionField:"").Title(@Resources.Message.From).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(sms => sms.MailInfo.ToNames).Title(@Resources.Message.To).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(sms => sms.MailInfo.EmailDateTime).Title(@Resources.Message.Date).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(user => "<input type='checkbox' class='checkboxGroups' onclick=\"AddToUnDeleteMessage();\"  alt='" + Resources.Common.Select + "' style='cursor: pointer' value='" + user.Id + "'  id='CheckSelect-" + user.Id + "' name='CheckSelect-" + user.Id + "' />").Title("<input type='checkbox' class='checkboxGroups'  onclick='SelectAllForUnDelete();' style='cursor: pointer'   id='CheckSelectAll' name='CheckSelectAll' />").Width(60).HeaderHtmlAttributes(new { style = "text-align:center;height:30px" });
+        })
+
+            .Sortable(sorting => sorting.Enabled(true))
+            .Pageable(paging => paging.Enabled(false))
+            .Filterable(filtering => filtering.Enabled(true))
+            //.Footer(true)
+            .Render();}
+
+</div>
+                      

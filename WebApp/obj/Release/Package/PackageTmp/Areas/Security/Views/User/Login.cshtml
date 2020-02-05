@@ -1,0 +1,84 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.WebApp.AppCode.Security
+@{
+    ViewBag.Title = Resources.Common.LogIn + " " + Resources.Common.Administrator;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+
+@section Head{
+<link href="~/App_Themes/Reservation/css/login-style.css" rel="stylesheet" />
+}
+
+<div class="container-hd">
+
+    <div class="container-box">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div align="center">
+                <span color="red">@ViewBag.Message</span>
+            </div>
+
+            <div class="login-container-bg">
+                <div class="login-container">
+                    <div class="login-header">
+                        <p>Yönetici Girişi</p>
+                    </div>
+                    <div class="login-main">
+                        <span class="login-avatar">
+                            <img src="/Content/Images/avatar-001.jpg" />
+                        </span>
+                        <div class="login-data-row">
+                            <div class="login-data-row-item">
+                                <label>
+                                    @Resources.Security.UserUsername
+                                    <small>*</small>
+                                </label>
+                                <input name="username" id="usernamelabel" type="text" placeholder="@Resources.Security.UserUsername" />
+                                @{ Html.Radyn().Validator().ID("username").GroupName("g1").Render(); }
+                            </div>
+                        </div>
+                       
+                        <div class="login-data-row">
+                            <div class="login-data-row-item">
+                                <label>
+                                    @Resources.Security.UserPassword
+                                    <small>*</small>
+                                </label>
+                                <input name="password" id="passwordlabel" type="password" placeholder="      @Resources.Security.UserPassword" />
+                                @{ Html.Radyn().Validator().ID("password").GroupName("g1").Render(); }
+                            </div>
+                        </div>
+                        @if (SessionParameters.HasLoginPasswordError)
+                        {
+                            <div class="login-data-row  input-row">
+                                <div class="login-data-row-item">
+                                    <div>
+                                        <label>
+
+                                        </label>
+                                        <div class="captcha-control">
+                                            @{ Html.Radyn().Captcha().Render(); }
+                                        </div>
+                                        <input type="text" name="captch" placeholder="  Güvenlik Kodu " />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+
+                    </div>
+                    <div class="login-data-row full-width">
+                        <div class="login-data-row-item">
+                            @{ Html.Radyn().ButtonActionLink().Submit().ValidationGroup("g1").ID("button-yellow").Text("Giriş").Render(); }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<br />
+@Html.ValidationSummary(true)

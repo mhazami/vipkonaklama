@@ -1,0 +1,22 @@
+﻿@using Radyn.Web.Mvc
+@model List<byte>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Payment.PayType
+        </div>
+    </div>
+    <div class="table-row-item  drp table-fit">
+        <div class="item">
+            @{
+                foreach (var item in (IEnumerable<KeyValuePair<byte,String>>)ViewBag.PayTypes)
+                {
+                Html.Radyn().CheckBox().ID("PaymentTypeId-" + item.Key).Value(item.Key.ToString()).Checked(Model != null && Model.Contains(item.Key)).Text(item.Value).Name("PaymentTypeId").Render();
+
+                    }
+            }
+        </div>
+    </div>
+</div>
+
+

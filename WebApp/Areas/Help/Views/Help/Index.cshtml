@@ -1,0 +1,58 @@
+﻿@using Radyn.Help.DataStructure
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Help>
+    @{
+        ViewBag.Title = @Resources.Common.List + " " + @Resources.Help.HelpName;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.Help.HelpName
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Help").Area("Help").Text(@Resources.Help.HelpName + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Help").Area("Help").Text(@Resources.Help.HelpName + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+        <div class="radynForm">
+
+    @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+          {
+              columns.Template(help => help.DefaultTitle).Title(Resources.Help.HelpDefaultTitle).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(help => help.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(Resources.Common.Status).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+              columns.Template(resource =>
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Help/HelpMenus/Index?helpId=" + resource.Id) + "'>" +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.MenuList + "' src='" + Url.Content("~/Content/Images/reserve-list.png") + "' />" + "</a> | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Help/HelpContent/Index?helpId=" + resource.Id) + "'>" +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.MenuList + "' src='" + Url.Content("~/Content/Images/reserve-list.png") + "' />" + "</a> | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Help/CreateHelpRelation/Index?helpId=" + resource.Id) + "'>" +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.MenuList + "' src='" + Url.Content("~/Content/Images/reserve-list.png") + "' />" + "</a> | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Help/Help/Details?Id=" + resource.Id) + "'>" +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Help/Help/Edit?Id=" + resource.Id) + "'> " +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Help/Help/Delete?Id=" + resource.Id) + "'>" +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+
+
+            
+          })
+
+        .Sortable(sorting => sorting.Enabled(true))
+        .Pageable(paging => paging.Enabled(true))
+        .Filterable(filtering => filtering.Enabled(true))
+        //.Footer(true)
+        .Render();}
+
+        </div>

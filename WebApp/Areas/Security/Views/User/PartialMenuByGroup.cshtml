@@ -1,0 +1,34 @@
+﻿@using Radyn.FileManager
+@model IEnumerable<Radyn.Security.DataStructure.Menu>
+    <div class="fit">
+        <div class="d-item-box">
+            @if (Model != null)
+            {
+                foreach (var menu in Model)
+                {
+                    <a href="@Url.Content("~" + menu.Url)" class="d-item d-item-menu hint--top" >
+                        <div class="d-item-bg">
+                            @if (menu.ImageId.HasValue)
+                            {
+                                <div class="r-item-box">
+                                    @{ Html.RadynFile().Image().ID(menu.ImageId.Value).Render(); }
+                                    <span dir="rtl">
+                                        @menu.Title
+                                    </span>
+                                </div>
+                                        }
+                                        else
+                                        {
+                                            <img src="/App_Themes/RadynBase/Images/default-Img.png" />
+                                            <span dir="rtl">
+                                                @menu.Title
+                                            </span>
+                                        }
+                        </div>
+                    </a>
+                                            }
+                                        }
+
+
+        </div>
+    </div>

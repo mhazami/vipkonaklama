@@ -1,0 +1,174 @@
+﻿@using Radyn.FormGenerator.DataStructure
+@using Radyn.Web.Mvc
+@using Radyn.WebApp.Areas.FormGenerator.Tools
+@using Radyn.WebApp.Areas.WebDesign.Tools
+@model Radyn.Security.Tools.ContactUSModel
+@{
+    ViewBag.Title = Resources.Common.ContactUs;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+
+@section Head{
+<script>
+        function SendRequestContact() {
+            $.post("@Url.Content("~/ContactUs")",
+                $('form[action^="@Url.Content("~/ContactUs")"]').serialize(),
+                function(data) {
+                    if (data!="false") {
+                    }
+                });
+            ShowRadynMessage();
+        }
+</script>
+}
+
+
+<div class="main-page contactUs">
+    <div class="internal-page-head">
+        <div class="text-header">
+            <div>
+                <h3>@Resources.Common.ContactUs</h3>
+            </div>
+        </div>
+    </div>
+    <div class="internal-page-content">
+        <div class="row step-row">
+            <div class="col-lg-4 col-sm-4 col-xs-12 step-action">
+                <span>
+                    <img src="/App_Themes/Xbines/Images/icon_04.png" />
+                </span>
+                <h2>
+                    تلفن :
+                </h2>
+                <p>
+                    021-28423607
+                </p>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-xs-12 step-action second">
+                <span>
+                    <img src="/App_Themes/Xbines/Images/icon_05.png" />
+                </span>
+                <h2>
+                    ایمیل :
+
+                </h2>
+                <p>
+                    info@visaniknam.com 
+                </p>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-xs-12 step-action">
+                <span>
+                    <img src="/App_Themes/Xbines/Images/icon_06.png" />
+                </span>
+                <h2>
+                    موقعیت :
+                </h2>
+                <p>
+                    خیابان وليعصر - اول خیابان مطهري  - بعد از خیابان سربداران - پلاك ٤٤٨ جنب داروخانه
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 form-box">
+                <h2 class="big-title">در تماس باشید</h2>
+               
+
+            @using (Html.BeginForm())
+            {
+
+                @Html.AntiForgeryToken()
+                <div class="login-data-row">
+                    <label>
+                        نام
+                        <small>*</small>
+                    </label>
+                    <input type="text" id="Name" name="Name" placeholder="نام"/>
+                </div>
+                <div class="login-data-row">
+                    <label>
+                        ایمیل
+                        <small>*</small>
+                    </label>
+                    <input type="Email" name="Email" placeholder="ایمیل "/>
+                </div>
+                Html.FormGenerator(AppExtention.WebSiteMoudelName + "-/home/ContactUs", new FormStructure().GetType().Name);
+                <div class="login-data-row full-width">
+                    <label>
+                        پیام شما
+                    </label>
+                    <textarea id="Description" name="Description" placeholder="پیام شما"></textarea>
+                </div>
+                <div class="login-data-row">
+                    <div class="login-data-row-item">
+                        <div>
+                            <label>
+                                کد امنیتی
+                            </label>
+                            <div class="captcha-control">
+                                @{ Html.Radyn().Captcha().Render(); }
+                            </div>
+                            <input type="text" name="captch" placeholder="@Resources.WebDesign.Captcha" />
+                        </div>
+                    </div>
+                </div>
+               
+
+               
+               
+                <div class="login-data-row-item">
+                    <input type="button" onclick="SendRequestContact()" value="@Resources.CommonComponent.Send" />
+                    
+                </div>
+            }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="mapouter">
+            <div class="gmap_canvas">
+                <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=%D8%B1%D8%B3%D9%BE%DB%8C%D9%86%D8%A7%20%D8%B1%D8%A7%D8%AF%DB%8C%D9%86&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net"></a>
+            </div>
+            <style>
+                .mapouter {
+                    position: relative;
+                    text-align: right;
+                    height: 500px;
+                    width: 100%;
+                }
+
+                    .mapouter iframe {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                .gmap_canvas {
+                    overflow: hidden;
+                    background: none !important;
+                    height: 500px;
+                    width: 100%;
+                }
+            </style>
+        </div>
+
+    </div>
+    <div class="banner-box" customid="banner" dec="بنر" style="background-image:url('/App_Themes/Xbines/Images/slider_bg_01.jpg')">
+        <div class="text-banner col-lg-7 col-sm-6 col-xs-12">
+            <p>
+                ما یک شرکت مشاوره بهتر برای هر کسب و کار هستیم.
+            </p>
+        </div>
+        <div class="banner-white-box col-lg-5  col-sm-6 col-xs-12" style="background-image:url('/App_Themes/Xbines/Images/bg_map_02.png')">
+            <a href="#" class="view-detail">
+                <svg class="svg-inline--fa fa-arrow-right fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg><!-- <i class="fas fa-arrow-right"></i> -->
+                <span>
+                    شروع کنید
+                </span>
+
+            </a>
+
+        </div>
+    </div>
+</div>

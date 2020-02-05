@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3B7185A9-70D1-4CBE-9835-88944BF9384C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.Common</RootNamespace>
+    <AssemblyName>Radyn.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.FileManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.FileManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\BankBO.cs" />
+    <Compile Include="BO\CityBO.cs" />
+    <Compile Include="BO\CountryBO.cs" />
+    <Compile Include="BO\CountryIPRangeBO.cs" />
+    <Compile Include="BO\CurrencyBO.cs" />
+    <Compile Include="BO\LanguageBO.cs" />
+    <Compile Include="BO\LanguageContentBO.cs" />
+    <Compile Include="BO\ProvinceBO.cs" />
+    <Compile Include="BO\UnitBO.cs" />
+    <Compile Include="BO\WebDesignLanguageBO.cs" />
+    <Compile Include="CommonComponent.cs" />
+    <Compile Include="Component\GetCultureContent.cs" />
+    <Compile Include="Component\LanguageSetting.cs" />
+    <Compile Include="Constants\CultureInfo.cs" />
+    <Compile Include="CommonBaseFacade.cs" />
+    <Compile Include="DataStructure\Bank.cs" />
+    <Compile Include="DataStructure\City.cs" />
+    <Compile Include="DataStructure\Country.cs" />
+    <Compile Include="DataStructure\CountryIPRange.cs" />
+    <Compile Include="DataStructure\Currency.cs" />
+    <Compile Include="DataStructure\Language.cs" />
+    <Compile Include="DataStructure\Province.cs" />
+    <Compile Include="DataStructure\Unit.cs" />
+    <Compile Include="DataStructure\WebDesignLanguage.cs" />
+    <Compile Include="DA\BankDA.cs" />
+    <Compile Include="DA\CityDA.cs" />
+    <Compile Include="DA\CountryDA.cs" />
+    <Compile Include="DA\CountryIPRangeDA.cs" />
+    <Compile Include="DA\CurrencyDA.cs" />
+    <Compile Include="DA\LanguageContentDA.cs" />
+    <Compile Include="DA\LanguageDA.cs" />
+    <Compile Include="DA\ProvinceDA.cs" />
+    <Compile Include="DA\UnitDA.cs" />
+    <Compile Include="DA\WebDesignLanguageDA.cs" />
+    <Compile Include="Facade\CountryFacade.cs" />
+    <Compile Include="Facade\CountryIPRangeFacade.cs" />
+    <Compile Include="Facade\Interface\ICountryFacade.cs" />
+    <Compile Include="Facade\Interface\ICountryIPRangeFacade.cs" />
+    <Compile Include="Facade\Interface\IProvinceFacade.cs" />
+    <Compile Include="Facade\Interface\IWebDesignLanguageFacade.cs" />
+    <Compile Include="Facade\ProvinceFacade.cs" />
+    <Compile Include="Facade\WebDesignLanguageFacade.cs" />
+    <Compile Include="Resources\Common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Common.fa-IR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.fa-IR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Constants\OperationId.cs" />
+    <Compile Include="Definition\Enums.cs" />
+    <Compile Include="Definition\ObjectState.cs" />
+    <Compile Include="Facade\BankFacade.cs" />
+    <Compile Include="Facade\CityFacade.cs" />
+    <Compile Include="Facade\CurrencyFacade.cs" />
+    <Compile Include="Facade\Interface\IBankFacade.cs" />
+    <Compile Include="Facade\Interface\ICityFacade.cs" />
+    <Compile Include="Facade\Interface\ICurrencyFacade.cs" />
+    <Compile Include="Facade\Interface\ILanguageContentFacade.cs" />
+    <Compile Include="Facade\Interface\ILanguageFacade.cs" />
+    <Compile Include="Facade\Interface\IUnitFacade.cs" />
+    <Compile Include="Facade\LanguageContentFacade.cs" />
+    <Compile Include="Facade\LanguageFacade.cs" />
+    <Compile Include="Facade\UnitFacade.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Properties\DataSources\Radyn.Common.Model.LanguageEntities.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Common.fa-IR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.fa-IR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Common.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ResourceManager\Moudles\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

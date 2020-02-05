@@ -1,0 +1,49 @@
+@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.Areas.WebDesign.Tools
+@using Radyn.WebDesign.Definition
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+@section Head{
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <base target="_self" />
+    @{Html.Radyn().Theme("LookUpBase").Render();}
+    @{Html.Radyn().Theme("Common").Render();}
+    <!-- Start----Runtime-->
+    @{Html.HtmlEncoder(AppExtention.GetWebSiteResources(Enums.UseLayout.LookUpLayout)); }
+    <!-- END----Runtime-->
+    @RenderSection("Head")
+
+
+}
+<style>
+    .change-size, .close-modal {
+        position: absolute !important;
+        left: 56px;
+        width: auto !important;
+        margin: 0 !important;
+        top: 10px !important;
+        font-size: 23px !important;
+    }
+    .close-modal {
+        left: 23px;
+    }
+</style>
+
+    <div class="c-widget-head">
+        <div class="page-action-title">
+            @RenderSection("PageAction", false)
+        </div>
+    </div>
+    <div class="c-widget-content c-widget-lookup">
+        @RenderBody()
+    </div>
+    <div class="c-widget-footer">
+        <div class="page-action-title">
+            @RenderSection("PageActionDown", false)
+        </div>
+    </div>
+

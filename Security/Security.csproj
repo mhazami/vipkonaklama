@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{35AEA767-A451-4BCD-A8F5-E0E412686279}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.Security</RootNamespace>
+    <AssemblyName>Radyn.Security</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.EnterpriseNode, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Radyn.FileManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.FileManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\ActionBO.cs" />
+    <Compile Include="BO\GroupBO.cs" />
+    <Compile Include="BO\GroupRoleBO.cs" />
+    <Compile Include="BO\MenuBO.cs" />
+    <Compile Include="BO\MenuGroupBO.cs" />
+    <Compile Include="BO\OperationBO.cs" />
+    <Compile Include="BO\OperationMenuBO.cs" />
+    <Compile Include="BO\RoleActionBO.cs" />
+    <Compile Include="BO\RoleBO.cs" />
+    <Compile Include="BO\RoleMenuBO.cs" />
+    <Compile Include="BO\RoleOperationBO.cs" />
+    <Compile Include="BO\TrackerBO.cs" />
+    <Compile Include="BO\UserActionBO.cs" />
+    <Compile Include="BO\UserBO.cs" />
+    <Compile Include="BO\UserGroupBO.cs" />
+    <Compile Include="BO\UserMenuBO.cs" />
+    <Compile Include="BO\UserOperationBO.cs" />
+    <Compile Include="BO\UserRoleBO.cs" />
+    <Compile Include="DataStructure\Action.cs" />
+    <Compile Include="DataStructure\Group.cs" />
+    <Compile Include="DataStructure\GroupRole.cs" />
+    <Compile Include="DataStructure\Menu.cs" />
+    <Compile Include="DataStructure\MenuGroup.cs" />
+    <Compile Include="DataStructure\Operation.cs" />
+    <Compile Include="DataStructure\OperationMenu.cs" />
+    <Compile Include="DataStructure\Role.cs" />
+    <Compile Include="DataStructure\RoleAction.cs" />
+    <Compile Include="DataStructure\RoleMenu.cs" />
+    <Compile Include="DataStructure\RoleOperation.cs" />
+    <Compile Include="DataStructure\User.cs" />
+    <Compile Include="DataStructure\UserAction.cs" />
+    <Compile Include="DataStructure\UserGroup.cs" />
+    <Compile Include="DataStructure\UserMenu.cs" />
+    <Compile Include="DataStructure\UserOperation.cs" />
+    <Compile Include="DataStructure\UserRole.cs" />
+    <Compile Include="DA\ActionDA.cs" />
+    <Compile Include="DA\GroupDA.cs" />
+    <Compile Include="DA\GroupRoleDA.cs" />
+    <Compile Include="DA\MenuDA.cs" />
+    <Compile Include="DA\MenuGroupDA.cs" />
+    <Compile Include="DA\OperationDA.cs" />
+    <Compile Include="DA\OperationMenuDA.cs" />
+    <Compile Include="DA\RoleActionDA.cs" />
+    <Compile Include="DA\RoleDA.cs" />
+    <Compile Include="DA\RoleMenuDA.cs" />
+    <Compile Include="DA\RoleOperationDA.cs" />
+    <Compile Include="DA\TrackerDA.cs" />
+    <Compile Include="DA\UserActionDA.cs" />
+    <Compile Include="DA\UserDA.cs" />
+    <Compile Include="DA\UserGroupDA.cs" />
+    <Compile Include="DA\UserMenuDA.cs" />
+    <Compile Include="DA\UserOperationDA.cs" />
+    <Compile Include="DA\UserRoleDA.cs" />
+    <Compile Include="Facade\ActionFacade.cs" />
+    <Compile Include="Facade\GroupFacade.cs" />
+    <Compile Include="Facade\GroupRoleFacade.cs" />
+    <Compile Include="Facade\Interface\IGroupFacade.cs" />
+    <Compile Include="Facade\Interface\IActionFacade.cs" />
+    <Compile Include="Facade\Interface\IGroupRoleFacade.cs" />
+    <Compile Include="Facade\Interface\IMenuGroupFacade.cs" />
+    <Compile Include="Facade\Interface\IOperationFacade.cs" />
+    <Compile Include="Facade\Interface\IMenuFacade.cs" />
+    <Compile Include="Facade\Interface\IOperationMenuFacade.cs" />
+    <Compile Include="Facade\Interface\IRoleActionFacade.cs" />
+    <Compile Include="Facade\Interface\IRoleFacade.cs" />
+    <Compile Include="Facade\Interface\IRoleMenuFacade.cs" />
+    <Compile Include="Facade\Interface\IRoleOperationFacade.cs" />
+    <Compile Include="Facade\Interface\ITrackerFacade.cs" />
+    <Compile Include="Facade\Interface\IUserActionFacade.cs" />
+    <Compile Include="Facade\Interface\IUserFacade.cs" />
+    <Compile Include="Facade\Interface\IUserGroupFacade.cs" />
+    <Compile Include="Facade\Interface\IUserMenuFacade.cs" />
+    <Compile Include="Facade\Interface\IUserOperationFacade.cs" />
+    <Compile Include="Facade\Interface\IUserRoleFacade.cs" />
+    <Compile Include="Facade\MenuFacade.cs" />
+    <Compile Include="Facade\MenuGroupFacade.cs" />
+    <Compile Include="Facade\OperationFacade.cs" />
+    <Compile Include="Facade\OperationMenuFacade.cs" />
+    <Compile Include="Facade\RoleActionFacade.cs" />
+    <Compile Include="Facade\RoleFacade.cs" />
+    <Compile Include="Facade\RoleMenuFacade.cs" />
+    <Compile Include="Facade\RoleOperationFacade.cs" />
+    <Compile Include="Facade\TrackerFacade.cs" />
+    <Compile Include="Facade\UserActionFacade.cs" />
+    <Compile Include="Facade\UserFacade.cs" />
+    <Compile Include="Facade\UserGroupFacade.cs" />
+    <Compile Include="Facade\UserMenuFacade.cs" />
+    <Compile Include="Facade\UserOperationFacade.cs" />
+    <Compile Include="Facade\UserRoleFacade.cs" />
+    <Compile Include="SecurityBaseFacade.cs" />
+    <Compile Include="Tools\ModelView.cs" />
+    <Compile Include="Tools\Userinfo.cs" />
+    <Compile Include="SecurityComponent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

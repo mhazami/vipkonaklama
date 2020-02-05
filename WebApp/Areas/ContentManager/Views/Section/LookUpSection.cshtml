@@ -1,0 +1,43 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+@section Head
+{
+    <script type="text/javascript">
+        function ModifySectionItem(state, id) {
+            if (id == "") id = '@Guid.NewGuid()';
+            if (state != "" & id != "") {
+                if (ShowModal("/ContentManager/Section/PartialViewModifySection?state=" + state + "&id=" + id));
+                GetAllSection();
+            };
+            ShowRadynMessage();
+        }
+
+        function selectitem(id, text) {
+            if (id != "" & text != "") {
+                showModalReturn(id, text);
+            } else {
+                ShowRadynMessage("آیتمی انتخاب نشده است");
+            }
+        }
+        function GetAllSection() {
+            $.get("/ContentManager/Section/GetSectionTree", { date: new Date().getTime() }, function (data) {
+                if (data != "") {
+                    $("#outputPanel").hide();
+                    $("#outputPanel").html(data);
+                    $("#outputPanel").slideDown();
+                }
+                ShowRadynMessage();
+            });
+        }
+        $(document).ready(
+            function () {
+                GetAllSection();
+            }
+        );
+    </script>
+}
+<input type="hidden" id="txtContenet" />
+<div style="height: 500px; overflow-y: auto;" id="outputPanel">
+</div>

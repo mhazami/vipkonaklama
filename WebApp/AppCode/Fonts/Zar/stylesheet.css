@@ -1,0 +1,9 @@
+﻿@font-face {
+    font-family: Zar;
+    src: url('Far_Zar.eot') format('embedded-opentype'),
+         url('Far_Zar.svg') format('svg'),
+         url('Far_Zar.otf') format('opentype'),
+         url('Far_Zar.ttf') format('truetype'),
+         url('Far_Zar.woff') format('woff');
+    font-weight: normal;
+}

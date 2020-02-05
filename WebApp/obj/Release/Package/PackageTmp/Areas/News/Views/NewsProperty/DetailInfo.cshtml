@@ -1,0 +1,145 @@
+﻿@using Radyn.FileManager
+@model Radyn.News.DataStructure.NewsProperty
+@if (Model.News.ThumbnailId.HasValue)
+{
+    <div class="item-row">
+
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsThumbnailId
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @{
+                    Html.RadynFile().Image().ID(Model.News.ThumbnailId.Value).Height(70).Width(100).Render();
+                }
+            </div>
+        </div>
+
+
+    </div>
+
+}
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsPropertyIsSelection
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @(Model.IsSelection ? @Resources.Common.Yes : @Resources.Common.No)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsPropertyIsGeneralView
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @(Model.IsGeneralView ? @Resources.Common.Yes : @Resources.Common.No)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsPropertyIsNewsGroupSelection
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @(Model.IsNewsGroupSelection ? @Resources.Common.Yes : @Resources.Common.No)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsPropertyOrder
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.Order)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsPropertyNewsGroupOrder
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.NewsGroupOrder)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsPropertyHasContentPic
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @(Model.HasContentPic ? @Resources.Common.Yes : @Resources.Common.No)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsPropertyIsImageReport
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @(Model.IsImageReport ? @Resources.Common.Yes : @Resources.Common.No)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsPropertyHasAttachment
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @(Model.HasAttachment ? @Resources.Common.Has : @Resources.Common.NotHas)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsPropertyIsMovieNews
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @(Model.IsMovieNews ? @Resources.Common.Yes : @Resources.Common.No)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsPropertyIsSoundNews
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @(Model.IsSoundNews ? @Resources.Common.Yes : @Resources.Common.No)
+        </div>
+    </div>
+</div>
+
+

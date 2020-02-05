@@ -1,0 +1,27 @@
+@using Radyn.Web.Mvc;
+
+@model System.Collections.Generic.IEnumerable<Radyn.ContentManager.DataStructure.Menu>
+
+@{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto;text-align: center" }).Columns(columns =>
+    {
+        columns.Template(menu => menu.Text).Title(Resources.Security.MenuTitle).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(menu => menu.ParentId.HasValue ? menu.ParentMenu.Text : "").Title(Resources.Security.MenuParentId).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(menu => menu.Order).Title(Resources.Security.MenuOrder).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(menu => menu.IsVertical ? Resources.ContentManager.Vertical: Resources.ContentManager.Horizontal).Title(Resources.ContentManager.Direction).Width(50).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(menu => menu.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(Resources.Common.Enable).Width(50).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(menu => menu.Link).Title(Resources.ContentManager.Link).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(content =>
+          "<a style='cursor: pointer;'  href='" + Url.Content("~/ContentManager/WebDesignMenu/Details?Id=" + content.Id) + "'>" +
+          " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+          "<a style='cursor: pointer;'  href='" + Url.Content("~/ContentManager/WebDesignMenu/Edit?Id=" + content.Id) + "'> " +
+          " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+          "<a style='cursor: pointer;'  href='" + Url.Content("~/ContentManager/WebDesignMenu/Delete?Id=" + content.Id) + "'>" +
+          " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Encode(false);
+
+    })
+
+  .Sortable(sorting => sorting.Enabled(true))
+  .Pageable(paging => paging.Enabled(true))
+  .Filterable(filtering => filtering.Enabled(true))
+  //.Footer(true)
+  .Render();}

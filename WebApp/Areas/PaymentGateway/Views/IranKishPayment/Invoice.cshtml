@@ -1,0 +1,43 @@
+﻿<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        function postRefId() {
+
+            var form = document.createElement("form");
+
+            var hiddenFieldMerchantId = document.createElement("input");
+            var hiddenFieldAmount = document.createElement("input");
+            var hiddenFieldRevertUrl = document.createElement("input");
+            var hiddenFieldPaymentId = document.createElement("input");
+
+            hiddenFieldMerchantId.setAttribute("name", "merchantId");
+            hiddenFieldMerchantId.setAttribute("Id", "merchantId");
+            hiddenFieldMerchantId.setAttribute("value", '@ViewBag.merchantId');
+
+            hiddenFieldAmount.setAttribute("name", "token");
+            hiddenFieldAmount.setAttribute("Id", "token");
+            hiddenFieldAmount.setAttribute("value", '@ViewBag.token');
+
+            form.appendChild(hiddenFieldAmount);
+            form.appendChild(hiddenFieldMerchantId);
+            form.appendChild(hiddenFieldRevertUrl);
+            form.appendChild(hiddenFieldPaymentId);
+            form.setAttribute("method", "POST");
+            form.setAttribute("action", "https://ikc.shaparak.ir/TPayment/Payment/index");
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+            postRefId();
+    </script>
+</body>
+</html>
+
+

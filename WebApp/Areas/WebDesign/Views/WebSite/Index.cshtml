@@ -1,0 +1,55 @@
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.WebDesign.DataStructure.WebSite>
+
+    @{
+        ViewBag.Title = Resources.Common.List + " " + Resources.WebDesign.WebSite;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
+    @section Head{}
+
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.WebDesign.WebSite
+
+
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i> <i class="fas fa-plus"></i>
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebSite").Area("WebDesign").Text(Resources.Common.Create).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("WebSite").Area("WebDesign").Text(Resources.Common.Create).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    <div class="radynForm">
+        @{
+            Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+            {
+                columns.Template(web => web.Title).Title(Resources.WebDesign.Title).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(web => web.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(Resources.Common.Enable).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(homa => string.IsNullOrEmpty(homa.InstallPath) ? "" : StringUtils.Decrypt(homa.InstallPath)).Title(Resources.WebDesign.InstallPath).Width(200).HeaderHtmlAttributes(new { style = "text-align:center" });
+
+                columns.Template(resource =>
+                "<a style='cursor: pointer;'  href='" + Url.Content("~/WebDesign/WebSite/Details?Id=" + resource.Id) + "'>" +
+                " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                "<a style='cursor: pointer;'  href='" + Url.Content("~/WebDesign/WebSite/Edit?Id=" + resource.Id) + "'> " +
+                " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                "<a style='cursor: pointer;'  href='" + Url.Content("~/WebDesign/WebSite/Delete?Id=" + resource.Id) + "'> " +
+                " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a>").Width(300).Filterable(false).Encode(false);
+            })
+             .Sortable(sorting => sorting.Enabled(true))
+      .Pageable(paging => paging.Enabled(true))
+      .Filterable(filtering => filtering.Enabled(true))
+
+      .Render();}
+        
+
+    </div>

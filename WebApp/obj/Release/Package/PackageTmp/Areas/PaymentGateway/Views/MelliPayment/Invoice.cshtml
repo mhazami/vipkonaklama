@@ -1,0 +1,29 @@
+﻿@using Radyn.Web.Mvc.Utility
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function postRefId() {
+            var form = document.getElementById("paymentUTLfrm");
+            form.submit();
+
+        }
+
+    </script>
+</head>
+<body>
+   
+    
+    @{
+
+        Html.HtmlEncoder((string)this.ViewBag.Data);
+
+    }
+<script type="text/javascript">
+        postRefId();
+    </script>
+
+</body>
+</html>
+
+

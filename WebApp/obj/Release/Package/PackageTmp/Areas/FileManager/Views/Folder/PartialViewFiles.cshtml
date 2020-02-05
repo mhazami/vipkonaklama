@@ -1,0 +1,48 @@
+﻿@using Radyn.FileManager
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+
+@model IEnumerable<Radyn.FileManager.DataStructure.File>
+<script type="text/javascript">
+   
+    function DeleteFile(id) {
+        if (confirm('@Resources.Common.Are_You_Soure_For_Delete')) {
+            $.get("/FileManager/Folder/DeleteFile", { Id: id, date: new Date().getTime() }, function (data) {
+                if (data != "false") {
+                    GetFiles('@ViewBag.FolderId');
+                }
+                ShowRadynMessage();
+            });
+        }
+
+    }
+
+    function SelectImage(Id) {
+
+        var atr = '@FileManagerContants.FileHandlerRoot' + Id;
+        showModalReturn(atr, atr);
+
+    }
+</script>
+
+<div class="fit">
+    @{
+        Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new {style = "width:98%;margin: 0 auto"}).Columns(columns =>
+        {
+            columns.Template(file => "<a  style=\"cursor: pointer\"    href='" + FileManagerContants.FileHandlerRoot  + file.Id + "/" + DateTime.Now.Ticks + "?dl=true" + "'   >" + file.FileName + "." + file.Extension + "</a>").Title(Resources.FileManager.File).Width(80).HeaderHtmlAttributes(new {style = "text-align:center"});
+            columns.Template(file => FileManagerContants.FileHandlerRoot +  file.Id+ "/" + DateTime.Now.Ticks).Title(Resources.FileManager.Path).Width(100).HeaderHtmlAttributes(new {style = "text-align:center"});
+            columns.Template(file => FileManagerContants.FileHandlerRoot +  file.Id+"/" + DateTime.Now.Ticks + "?dl=true").Title(Resources.FileManager.DownloadPath).Width(100).HeaderHtmlAttributes(new {style = "text-align:center"});
+            columns.Template(file => file.SaveDate.ShamsiDate()).Title(Resources.FileManager.SavaDate).Width(80).HeaderHtmlAttributes(new {style = "text-align:center"});
+            columns.Template(file => "<a  style=\"cursor: pointer\"  onclick=\"GetFilesModal('" + file.Id + "','" + ViewBag.FolderId + "')\" >" + Resources.Common.Edit + "</a>").Width(40);
+            columns.Template(file => "<a  style=\"cursor: pointer\"  onclick=\"DeleteFile('" + file.Id + "')\" >" + Resources.Common.Delete + "</a>").Width(40);
+            columns.Template(file => "<a  style=\"cursor: pointer\"  onclick=\"SelectImage('" + file.Id + "')\" >" + Resources.Common.Select + "</a>").Width(40).Visible((bool) ViewBag.AllowSelect);
+
+        })
+
+            .Sortable(sorting => sorting.Enabled(true))
+            .Pageable(paging => paging.Enabled(true))
+            .Filterable(filtering => filtering.Enabled(true))
+            //.Footer(true)
+            .Render();
+    }
+</div>

@@ -1,0 +1,93 @@
+﻿<script type="text/javascript">
+    function ModifyItem(state, id) {
+        if (state == "Create" & id == "") id = '@Guid.NewGuid()';
+        if (state != "" & id != "") {
+            GetFolderModal(state, id);
+        };
+        ShowRadynMessage();
+    }
+
+  
+    function GetFolderModal(state, Id) {
+        ShowModal("/FileManager/RadynEditor/GetFolder", { state: state, id: Id });
+       
+    }
+    function GetFiles(id) {
+        if (id != "") {
+
+            $("#FileoutputPanel").html("");
+            $.get("/FileManager/RadynEditor/GetFiles", { Id: id, date: new Date().getTime() }, function (data) {
+                if (data != "") {
+                    $("#FileoutputPanel").html(data);
+                    $("#FileoutputPanel").slideDown();
+                   
+                }
+                ShowRadynMessage();
+            });
+        }
+
+
+    }
+    function AddFile(Id) {
+        if (Id != "") {
+            GetFilesModal(null,Id);
+        }
+    }
+
+    
+    function GetFilesModal(Id,folderId) {
+       ShowModal("/FileManager/RadynEditor/LookUPFileModify", { fileId: Id, id: folderId });
+       
+    }
+    
+    function FolderTree() {
+        var folderId = document.getElementById("ParentEdiorfolderId").value;
+        if (folderId != "") {
+           $("#FolderoutputPanel").html("");
+            $.get("/FileManager/RadynEditor/EditorFolderTree", { folderId: folderId, date: new Date().getTime() }, function (data) {
+                if (data != "") {
+                    $("#FolderoutputPanel").html(data);
+                    $("#FolderoutputPanel").slideDown();
+                   
+                }
+                ShowRadynMessage();
+            });
+        }
+
+    }
+
+    function SelecImageUrl(url) {
+        
+        var retunimage = document.getElementById("returnimage").value;
+        if (retunimage == "True") {
+            var imageurl="<img style='width: 100px;' src='"+url+"'>";
+            showModalReturn(imageurl, imageurl);
+        }
+        else {
+            showModalReturn(url, url);
+        }
+    }
+
+    $(document).ready(function () {
+        FolderTree();
+    });
+</script>
+
+<style>
+
+</style>
+
+<div class="fit t-rtl">
+    <input type="hidden" value="@ViewBag.folderId" id="ParentEdiorfolderId" name="ParentEdiorfolderId" />
+    <input type="hidden" value="@ViewBag.returnimage.ToString()" id="returnimage" name="returnimage" />
+    <div>
+        <div class="page-align width18percent" id="FolderoutputPanel" style="background-color: #F2F3F4; border: solid 1px #D8D8D8; margin: 0 3px 0 0">
+        </div>
+        <div class="page-align width80percent" id="FileoutputPanel">
+        </div>
+    </div>
+
+</div>
+
+<div id="DivShowFolderModal"></div>
+<div id="DivFilesShowModal"></div>

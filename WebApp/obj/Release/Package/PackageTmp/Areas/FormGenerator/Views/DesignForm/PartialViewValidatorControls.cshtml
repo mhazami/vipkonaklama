@@ -1,0 +1,69 @@
+﻿@using Radyn.Web.Mvc;
+@model string
+<script type="text/javascript">
+    function SaveAndClose() {
+       
+        showModalReturn(document.getElementById("jsonvalue").value, document.getElementById("jsonvalue").value);
+    }
+    function PostData() {
+        $.post("@Url.Content("~/FormGenerator/DesignForm/GetVaidatorControlPanel")", $('form[action^="@Url.Content("~/FormGenerator/DesignForm/GetVaidatorControlPanel")"]').serialize(), function (data) {
+            if (data.Result != false) {
+                ShowRadynMessage();
+                GetValidatorListView(data.Value, '@ViewBag.formId');
+            }
+        });
+        ShowRadynMessage();
+    }
+    $(window).unload(function () {
+        if (event.clientY < 0)
+            alert("Bye now!");
+    });
+
+    $(document).ready(function () {
+        GenerateValidatorControl('@ViewBag.Id', '@ViewBag.controltype', '@ViewBag.jsonvalue');
+
+    });
+        function GenerateValidatorControl(id, typefrom, jsonvalue) {
+            var type;
+            if (typefrom) {
+                type = typefrom;
+                document.getElementById("ValidatorTypeId").value = typefrom;
+            }
+            else type = document.getElementById("ValidatorTypeId").value;
+            if (type != "") {
+                $.get("@Url.Content("~/FormGenerator/ValidatorControls/GenerateValidatorControl")", { controltype: type, Id: id, jsonvalue: jsonvalue, date: new Date().getTime() }, function (data) {
+                    if (data != "") {
+                        $("#DivValidatorControl").html(data);
+                    }
+
+                });
+            }
+        }
+</script>
+@using (Html.BeginForm())
+{
+    <input type="hidden" id="jsonvalue" name="jsonvalue" value="@ViewBag.jsonvalue"/>
+    <input type="hidden" id="formId" name="formId" value="@ViewBag.formId"/>
+    <div class="fit item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.FormGenerator.Type
+            </div>
+        </div>
+        <div class="table-row-item table-fit ">
+            <div class="item">
+                @Html.DropDownList("ValidatorTypeId", (SelectList)ViewBag.ValidatorTypes, new { onchange = "GenerateValidatorControl();", style = "width: 200px" })
+            </div>
+        </div>
+    </div>
+    <div  class="fit" id="DivValidatorControl"></div>
+    <div class=" table-row-roller">
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().Text(@Resources.Common.AddToList).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "PostData();" }).ImageWidth("15").ImageHeight("20").Render();}
+        </div>
+        <div class="button-div m-btn waves-green i-save">
+            @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "SaveAndClose()" }).Render();}
+        </div>
+
+    </div>
+}

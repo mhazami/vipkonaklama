@@ -1,0 +1,50 @@
+﻿@using Radyn.Security.DataStructure
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Group>
+    @{
+        ViewBag.Title = @Resources.Common.List + " " + @Resources.Security.OperationName;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.Security.OperationName
+
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("AddGroup", new { userId = Request.QueryString["userId"] }).ControllerName("UserGroups").Area("Security").Text(@Resources.Security.GroupName + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+        </div>
+        <div class="button-div m-btn waves-red i-return">
+            @{Html.Radyn().ImageActionLink().ActionName("Index", new { userId = Request.QueryString["userId"] }).ControllerName("User").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+        </div>
+
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("AddGroup", new { userId = Request.QueryString["userId"] }).ControllerName("UserGroups").Area("Security").Text(@Resources.Security.GroupName + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+        </div>
+        <div class="button-div m-btn waves-red i-return">
+            @{Html.Radyn().ImageActionLink().ActionName("Index", new { userId = Request.QueryString["userId"] }).ControllerName("User").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+        </div>
+    }
+    <div class="radynForm">
+        @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+              {
+                  columns.Template(group => group.Name).Title(@Resources.Security.GroupName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(operation => "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/UserGroups/RemoveGroup?GroupId=" + operation.Id + "&userId=" + Request.QueryString["userId"] + "") + "'>" + @Resources.Common.Delete + "</a>").Width(300);
+              })
+
+              .Sortable(sorting => sorting.Enabled(true))
+              .Pageable(paging => paging.Enabled(true))
+              .Filterable(filtering => filtering.Enabled(true))
+              .Footer(false).Render();}
+    </div>

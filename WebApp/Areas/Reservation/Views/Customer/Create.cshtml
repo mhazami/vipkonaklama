@@ -1,0 +1,82 @@
+@using Radyn.Web.Mvc;
+@model Customer
+@{
+    ViewBag.Title = Resources.Common.Create;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle{@Resources.Common.Create}
+@section PageAction {
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Customer/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Customer/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@if (Model != null)
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.FirstName
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.EditorFor(model => model.FirstName)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.LastName
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.EditorFor(model => model.LastName)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.PhoneNumber
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.EditorFor(model => model.PhoneNumber)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.Nationality
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DropDownListFor(model => model.CountryId, (SelectList)ViewBag.Country, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

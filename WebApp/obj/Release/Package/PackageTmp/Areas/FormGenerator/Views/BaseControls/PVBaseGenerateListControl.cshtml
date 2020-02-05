@@ -1,0 +1,102 @@
+﻿@model Radyn.FormGenerator.ControlFactory.Base.ListControl
+@Html.ValidationSummary(true)
+<script type="text/javascript">
+    function GetItemList() {
+        var value = $("#TextItems-"+'@ViewBag.Id').val();
+        ShowModalWithReturnValue("/FormGenerator/DesignForm/LookupListItemDesign?value=" + value + "&multiselect=" + '@Model.IsMultiSelect', "TextItems-" + '@ViewBag.Id', "TextItems-" + '@ViewBag.Id');
+        GetListItemCount();
+    }
+
+    $(document).ready(function () {
+        GetListItemCount();
+
+    });
+    function EvaluationListControlItem() {
+        ShowModal("/FormGenerator/Evaluation/LookupEvaluationListControl?Id=" + '@ViewBag.Id' + "&formId=" + '@ViewBag.formId');
+    }
+    function GetListItemCount() {
+        var value = $("#TextItems-" + '@ViewBag.Id').val();
+        $.get("/FormGenerator/DesignForm/GetListItemCount", { value: value, date: new Date().getTime() }, function (data) {
+            if (data.Added) {
+                $("#ImgGetListItems").attr('src', '/Areas/FormGenerator/Content/Images/item-list.png');
+                $("#DivLisItemCount").html("(" + data.CountItem + ")");
+            } else {
+                $("#ImgGetListItems").attr('src', '/Areas/FormGenerator/Content/Images/item-list-empty.png');
+                $("#DivLisItemCount").html("(" + data.CountItem + ")");
+
+            }
+        });
+    }
+</script>
+<div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.FormGenerator.Items
+
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div style="float: right;margin-top: 13px;">
+                <input id="TextItems-@ViewBag.Id" name="TextItems-@ViewBag.Id" type="hidden" value="@ViewBag.Items" />
+                <img onclick="GetItemList()" id="ImgGetListItems" style="float: right; cursor: pointer" />
+                <div style="float: right; font-weight: bold" id="DivLisItemCount"></div>
+            </div>
+            <div style="float: right">
+                <div class="button-div m-btn waves-blue i-weight">
+                    <div align="left">
+                        <table cellpadding="0" border="0">
+                            <tbody>
+
+                            <tr>
+                                <td><a onclick="EvaluationListControlItem()">
+                                </a></td>
+                                <td>
+                                    <a onclick="EvaluationListControlItem()" id="GetEvaluationListControl">وزن</a>
+                                </td>
+                            </tr>
+                            </tbody></table>
+                    </div>
+                    
+                    
+
+                   
+                    @* <input type="button" value="وزن "/> *@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.FormGenerator.Title
+            </div>
+        </div>
+        <div class="table-row-item  table-fit">
+            <div class="item">
+                @Html.EditorFor(model => model.Caption)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.FormGenerator.AllowPrint
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.AllowPrint, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.AllowPrint, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+
+    <div>
+        @{
+            Html.RenderAction("BaseGenerateControl", new { Id = Model.Id, formId = ViewBag.formId, culture = ViewBag.culture });
+        }
+    </div>
+
+</div>
+

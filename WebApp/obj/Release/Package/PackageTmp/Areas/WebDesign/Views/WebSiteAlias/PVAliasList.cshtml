@@ -1,0 +1,35 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.WebApp
+@using Radyn.WebApp.AppCode
+
+@model List<Radyn.WebDesign.DataStructure.WebSiteAlias>
+   
+
+
+<div class="fit">
+    @{Html.Radyn().Grid(Model).Name("GriWebSiteAliasList").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+        {
+            columns.Template(WebSiteAlias => WebSiteAlias.Url).Title(@Resources.WebDesign.InstallPath).Width(300).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(resource => (this.Html.GetPageMode("GetIndex") != PageMode.Details?(
+
+
+                "<a style='cursor: pointer;'  onclick=\"GetAlias('" + resource.Id + "','" + PageMode.Edit + "');\" > " +
+                " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a>  |" +
+                "<a style='cursor: pointer;'  onclick=\"DeleteAlias('" + resource.Id + "');\"  >" +
+                " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a>  "):"")).Width(300).Filterable(false);
+
+        })
+            .Sortable(sorting => sorting.Enabled(true))
+            .Pageable(paging => paging.Enabled(true))
+            .Filterable(filtering => filtering.Enabled(true))
+            //.Footer(true)
+            .Render();}
+
+</div>
+
+
+
+
+
+
+

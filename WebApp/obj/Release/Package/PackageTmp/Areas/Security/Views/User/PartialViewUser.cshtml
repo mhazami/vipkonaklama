@@ -1,0 +1,32 @@
+﻿@model Radyn.Security.DataStructure.User
+@using (Html.BeginForm())
+{
+    <table cellpadding="0" cellspacing="0" align="center"  style="text-align:@Resources.Common.Aligment;padding: 2px 2px 2px 2px;">
+           
+            <tr>
+                <td colspan="3">
+                    @Html.ValidationSummary(true)
+                    <table border="0" cellpadding="2" cellspacing="2" width="400"  style=' padding: 4px 4px 4px 4px;direction:@Resources.Common.Direction ;text-align:@Resources.Common.Aligment;'>
+                        <tr>
+                            <td class="EditRow">
+                                @Resources.Security.UserUsername
+                            </td>
+                            <td class="EditFiled">
+                                @Html.EditorFor(model => model.Username)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="EditRow">
+                                @Resources.Security.UserPassword
+                            </td>
+                            <td class="EditFiled">
+                                @Html.PasswordFor(model => model.Password)
+                            </td>
+                        </tr>
+                     
+                    </table>
+                </td>
+            </tr>
+        
+    </table>
+}

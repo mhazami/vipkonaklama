@@ -1,0 +1,91 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.WebApp.AppCode.Security
+@{
+    ViewBag.Title = Resources.WebDesign.Register;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+@section Head
+{
+    <script type="text/javascript">
+        function sendMail(email) {
+            $.get("@Url.Content("/WebDesign/UserPanel/SendConfirmLink")", { mail: email, date: new Date().getTime() }, function (data) { ShowRadynMessage(); });
+        }
+
+    </script>
+}
+<div class="container-hd users-page">
+    @if (SessionParameters.CurrentWebSite.Configuration.RegisterEmailConfirm)
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="container-box">
+                <div class="login-container-bg">
+                    <div class="login-container subscribe">
+                        <div class="login-header">
+                            <p>@Resources.WebDesign.Register</p>
+                        </div>
+                        <div class="login-main">
+                            <span class="login-avatar">
+                                <img src="/Content/Images/avatar-001.jpg" />
+                            </span>
+                            <div class="login-data-row input-effects">
+                                <div class="login-data-row-item">
+                                    <input type="text" name="name" placeholder="@Resources.WebDesign.Name" onclick="if (this.value == ' @Resources.WebDesign.Name') this.value = '';" onblur="if (this.value.trim() == '') this.value = ' @Resources.WebDesign.Name';" />
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="login-data-row input-effects">
+                                <div class="login-data-row-item">
+                                    <input type="text" name="lastname" placeholder="@Resources.EnterPriseNode.LastName" onclick="if (this.value == ' @Resources.EnterPriseNode.LastName') this.value = '';" onblur="if (this.value.trim() == '') this.value = ' @Resources.EnterPriseNode.LastName';" />
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="login-data-row input-effects">
+                                <div class="login-data-row-item">
+                                    <input type="text" name="mail" id="mail" placeholder="@Resources.WebDesign.Email" onclick="if (this.value == ' @Resources.WebDesign.Email') this.value = '';" onblur="if (this.value.trim() == '') this.value = ' @Resources.WebDesign.Email';" />
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="login-data-row input-effects">
+                                <div class="login-data-row-item">
+                                    <div style="margin-@Resources.Design.InvertAlign: 1%;">
+                                        <div class="captcha-box">
+                                            @{ Html.Radyn().Captcha().Render(); }
+                                        </div>
+                                        <input type="text" name="captch" placeholder="@Resources.WebDesign.Captcha" onclick="if (this.value == '@Resources.WebDesign.Captcha') this.value = '';"
+                                               onblur="if (this.value.trim() == '') this.value = '@Resources.WebDesign.Captcha';" />
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="login-data-row">
+                                <div class="login-data-row-item">
+                                    <div class="m-btn waves-yellow">
+                                        <input type="submit" value="@Resources.WebDesign.Register" id="btnSave" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="login-data-row">
+                                <div class="login-data-row-item">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        }
+    }
+    else
+    {
+        Html.RenderAction("CompleteWithOutEmail", "UserPanel", new { area = "WebDesign" });
+    }
+</div>
+
+
+
+
+

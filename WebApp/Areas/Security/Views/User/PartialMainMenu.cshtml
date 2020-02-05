@@ -1,0 +1,131 @@
+﻿@using Radyn.FileManager
+@model IEnumerable<Radyn.Security.DataStructure.Operation>
+    <script type="text/javascript">
+        function Expand(operationid) {
+            $.get("@Url.Content("~/Security/User/GetOperationMenu")", { operationId: operationid, id: new Date().getTime() }, function (data) {
+                if (data != "") {
+                    $("#nav-" + operationid).hide();
+                    $("#nav-" + operationid).html(data);
+                    $("#nav-" + operationid).hide();
+                    $("#nav-" + operationid).slideDown(800);
+                }
+                else {
+                    ShowRadynMessage();
+                }
+            });
+        }
+
+        /*sedghi      */
+//        $(document).load(function () {
+//           
+//          
+//        });
+        $(document).ready(function () {
+           
+            $("[id^='operation-'] > li > a").click(function () {
+                var id = $(this).parent().parent().attr("id").replace("operation-", "");
+                if ($('#nav-' + id).is(":hidden")) {
+                    Expand(id);
+                } else {
+                    $('#nav-' + id).slideUp(700);
+                }
+            });
+        });
+        /*sedghi      */
+    </script>
+
+    <style>
+        body {
+        }
+
+       
+
+        .header, h3 {
+            font-size: 13px !important;
+            font-family: Verdana !important;
+        }
+
+            .header table {
+                border-spacing: 0px !important;
+                border-collapse: inherit !important;
+            }
+
+        h3 {
+            font-weight: bold !important;
+        }
+
+        .child-pane, .child-pane a:hover, .child-pane a:focus, .child-pane a {
+            color: #fff !important;
+            outline: none !important;
+            text-decoration: none !important;
+            font-size: 11px !important;
+            font-family: Verdana !important;
+            font-weight: 500;
+        }
+
+        .child-pane {
+            font-weight: 500;
+        }
+
+        .radynbar-menu, .radynbar-menu a, .radynbar-menu a:hover, .radynbar-menu a:focus {
+            color: #3f4d66;
+            font-weight: 500;
+            text-decoration: none;
+        }
+    </style>
+
+    <div class="head-items-nav logonav">
+        <ul class="list-nav">
+            <li>
+                <a>
+                    <div class="img-nav">
+                        <img src="~/App_Themes/Xbines/Images/logo-CmsSoft.png" />
+                    </div>
+                    <span>@Resources.Common.Conferencingsoft</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="r-collapse head-navigation-menu ">
+        <ul class="menu-fix-child">
+            <li>
+                <input type="button" class="icon-nav icon-close" name="name" />
+                <span class="icon-nav">&#10095;</span>
+            </li>
+        </ul>
+    </div>
+    @foreach (var operation in Model)
+    {
+        <ul id='operation-@operation.Id' class="list-nav main-nav">
+            <li>
+                <a href="#">
+                    <div class="img-nav">
+
+                        @if (operation.LogoId.HasValue)
+                        {
+                            Html.RadynFile().Image().ID(operation.LogoId.Value).Render();
+                        }
+                        else
+                        {
+                            <img />
+                        }
+                    </div>
+                    <span>@operation.Title</span>
+
+                </a>
+
+
+
+            </li>
+            <li id="nav-@operation.Id" style="display: none">
+            </li>
+        </ul>
+        if (!operation.Expand) { continue; }
+        <script type="text/javascript">
+            Expand('@operation.Id');
+        </script>
+        <script>
+
+        </script>
+    }

@@ -1,0 +1,67 @@
+﻿using Radyn.Payment;
+using Radyn.PaymentGateway;
+using Radyn.PaymentGateway.Tools;
+using Radyn.Utility;
+using Radyn.WebApp.AppCode.Base;
+using System;
+using System.Web.Mvc;
+
+namespace Radyn.WebApp.Areas.PaymentGateway.Controllers
+{
+    public class SamanPaymentController : WebDesignBaseController
+    {
+
+        public ActionResult CallBack(Guid Id, FormCollection collection)
+        {
+
+            var melliCallBackPayRequest = PaymentComponenets.Instance.TransactionFacade.Get(Id);
+            if (melliCallBackPayRequest == null) return null;
+            try
+            {
+               
+                melliCallBackPayRequest = PaymentGatewayComponenets.Instance.SamanFacade.SamanCallBackPayRequest(Id, collection["ResNum"], collection["State"], collection["RefNum"], collection["TraceNo"]);
+                var message = melliCallBackPayRequest.Status == null
+                  ? Resources.Payment.Thereisanerrorinthetransaction
+                  : ((SamanEnums.Status)melliCallBackPayRequest.Status).GetDescription();
+                return RedirectToAction("GetUrl", "SamanPayment",
+                                    new { message = message, ResCode = melliCallBackPayRequest.Status, Url = melliCallBackPayRequest.LocalUrl, refId = melliCallBackPayRequest.RefId });
+
+            }
+            catch (Exception exception)
+            {
+                return RedirectToAction("GetUrl", "SamanPayment",
+                    new { message =  exception.Message, ResCode = melliCallBackPayRequest.Status, Url = melliCallBackPayRequest.LocalUrl, refId = melliCallBackPayRequest.RefId });
+            }
+        }
+
+
+        public ActionResult Invoice(Guid Id)
+        {
+
+            var transaction = PaymentComponenets.Instance.TransactionFacade.Get(Id);
+            if (transaction == null) return null;
+            var value = !string.IsNullOrEmpty(transaction.AdditionalData) ? StringUtils.Decrypt(transaction.AdditionalData) : "";
+            var data = value.Split('#');
+            ViewBag.MID = data[1];
+            ViewBag.Amount = (int)transaction.Amount;
+            ViewBag.RedirectURL = data[5];
+            ViewBag.ResNum = data[3];
+            return View();
+        }
+
+
+        public ActionResult GetUrl(string message, string ResCode, string Url, string refId)
+        {
+            this.ViewBag.resCode = ResCode;
+            this.ViewBag.message = message;
+            this.ViewBag.url = Url;
+            this.ViewBag.refId = refId;
+            return View();
+
+        }
+
+
+
+
+    }
+}

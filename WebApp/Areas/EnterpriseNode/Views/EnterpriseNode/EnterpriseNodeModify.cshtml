@@ -1,0 +1,263 @@
+﻿@model Radyn.EnterpriseNode.DataStructure.EnterpriseNode
+@using Radyn.FileManager
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.Areas.EnterpriseNode.Component
+
+<input type="hidden" id="type" value="@ViewBag.Type" />
+<input type="hidden" id="state" value="@ViewBag.State"/>
+<div class="item-row" id="tr-type">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.EnterpriseNodeTypeTitle
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.DropDownListFor(model => model.EnterpriseNodeTypeId, (SelectList)ViewBag.EnterPriseNodeType, new { onchange = "Show(this)" })
+        </div>
+    </div>
+</div>
+<div id="Info">
+</div>
+
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.PrefixTitle
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.DropDownListFor(model => model.PrefixTitleId, (SelectList)ViewBag.PrefixTitleList,"")
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.Province
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.DropDownListFor(model => model.ProvinceId, (SelectList) ViewBag.ProvinceList, "", new {})
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.City
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            <select id="CityId" name="CityId"></select>
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.Email
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.Tel
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.Tel)
+            @Html.ValidationMessageFor(model => model.Tel)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.Cellphone
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.Cellphone)
+            @Html.ValidationMessageFor(model => model.Cellphone)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.WebSite
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.Website)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.Address
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+    </div>
+</div>
+@if ((bool)ViewBag.ShowParent)
+{
+    <div class="item-row fit">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.EnterPriseNode.EnterPriseNodeParent
+            </div>
+        </div>
+        <div class="table-row-item table-fit ">
+            <div class="item">
+                @{ Html.SearchEnterpriseNode(Model, model => model.EnterpriseNodeParentId, (string)ViewBag.Type); }
+            </div>
+        </div>
+    </div>
+}
+@if ((bool)ViewBag.ShowPicture)
+{
+  
+
+    <div class="item-row file-upload">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Picture
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @if (Model != null)
+                {
+                    if (Model.PictureId.HasValue)
+                    {
+                        Html.RadynFile().Image().ID(Model.PictureId.Value).DeleteButtonVisible("PictureId").Height(98).Width(146).Render();
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="item-row file-upload">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.EnterPriseNode.Picture
+                <span>
+                    @Resources.EnterPriseNode.MaxFileLength (200KB)
+                </span>
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+               
+                @{
+                    Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager",  fileName = "Image" });
+
+                }
+               
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ChangeProvinceId();
+        $('#ProvinceId').on('change', function () {
+            ChangeProvinceId();
+        })
+        var type = document.getElementById("type");
+        switch (type.value) {
+            case "l":
+                {
+                    document.getElementById("EnterpriseNodeTypeId").selectedIndex = 1;
+                    $("#tr-type").css("display", "none");
+                }
+
+
+                break;
+            case "r":
+                {
+                    document.getElementById("EnterpriseNodeTypeId").selectedIndex = 0;
+                    $("#tr-type").css("display", "none");
+                }
+
+
+                break;
+            case "n":
+            default:
+                break;
+        }
+        switch ($("#state").val()) {
+
+            case "Edit":
+                $("#tr-type").css("display", "none");
+            case "Details":
+                $("#tr-type").css("display", "none");
+            case "Delete":
+                $("#tr-type").css("display", "none");
+                break;
+            default:
+                break;
+        }
+        Show(document.getElementById("EnterpriseNodeTypeId"));
+    });
+
+
+    function Show(drp) {
+
+        if (drp.selectedIndex == 0) {
+            $.get("@Url.Content("~/EnterpriseNode/EnterpriseNode/GenerateRealInfo")", { state: $("#state").val(), id: '@Model.Id', r: new Date().getTime(), name: '@Request.QueryString["name"]', family: '@Request.QueryString["family"]', Gender: '@Request.QueryString["Gender"]' }, function (data) {
+                $("#Info").html(data.toString()).hide();
+                $("#Info").fadeIn('slow');
+            });
+        } else if (drp.selectedIndex == 1) {
+            $.get("@Url.Content("~/EnterpriseNode/EnterpriseNode/GenerateLegalInfo")", { state: $("#state").val(), id: '@Model.Id', r: new Date().getTime(), title: '@Request.QueryString["title"]' }, function (data) {
+                $("#Info").html(data.toString()).hide();
+                $("#Info").fadeIn('slow');
+            });
+        }
+    return;
+    }
+
+   
+    function ChangeProvinceId() {
+        $('#CityId').html('');
+        var id = $("#ProvinceId").val();
+        if (id != undefined && id!="") {
+            RadynGet('/Common/City/GetByProvinceId',
+                { ProvinceId: id },
+                function(data) {
+                    $('#CityId').append($('<option>').attr('value', ""));
+                    for (var i = 0; i < data.length; i++) {
+                        var op = $('<option>').attr('value', data[i].Id).text(data[i].Name);
+                        if ('@Model.CityId' == data[i].Id)
+                            op.attr("selected", "selected");
+                        $('#CityId').append(op);
+                    }
+                });
+        }
+
+    }
+</script>

@@ -1,0 +1,131 @@
+﻿
+
+<section class="banner">
+    @*stars*@
+
+    <div class="swiper-content">
+        <div class="slider-logo">
+            <img src="~/App_Themes/Reservation/img/icons/bed-logo.png" alt="Image">
+        </div>
+        <h3 data-animation="animated fadeInUp">LÜKS LAPİ</h3>
+        <h1 data-animation="animated fadeInUp">HOTEL <span>VIP INN</span></h1>
+        <a href="#" data-animation="animated fadeInUp" class="slider-btn btn-or mar-right-10"><i class="fa fa-book"></i>Odalarımızı Keşfedin</a>
+        <a href="#test" data-animation="animated fadeInUp" class="slider-btn btn-wt scroll-smooth"><i class="fa fa-book"></i>Hemen Rezervasyon Yaptırın</a>
+    </div>
+
+    @*end*@
+    <div class="slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide" style="background-image:url(/App_Themes/Reservation/img/slider/slider4.jpg)">
+
+                </div>
+                <div class="swiper-slide" style="background-image:url(/App_Themes/Reservation/img/slider/slider2.jpg)">
+
+                </div>
+                <div class="swiper-slide" style="background-image:url(/App_Themes/Reservation/img/slider/slider3.jpg)">
+
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+    <div class="under-banner">
+        <span>Odanızı Şimdi Ayırtın</span>
+    </div>
+    <div class="banner-roomtype" id="test">
+        <div class="roomtype-row">
+            <div class="roomtype-item">
+                <img src="~/App_Themes/Reservation/img/room1.jpg" />
+                <div>
+                    <span>
+                        1+0 Oda
+                        (2 Kişilik)
+                    </span>
+                    <a href="#test" class="scroll-smooth">
+                        <span onclick="showCalender(this);" data-val="3" class="btn-select">Rezervasyon Yap</span>
+                    </a>
+                </div>
+            </div>
+            <div class="roomtype-item">
+                <img src="~/App_Themes/Reservation/img/room1.jpg" />
+                <div>
+                    <span>
+                        1+1 Oda (4 Kişilik)
+                    </span>
+                    <a href="#test" class="scroll-smooth">
+                        <span onclick="showCalender(this);" data-val="2" class="btn-select">Rezervasyon Yap</span>
+                    </a>
+                </div>
+            </div>
+            <div class="roomtype-item">
+                <img src="~/App_Themes/Reservation/img/room1.jpg" />
+                <div>
+                    <span>
+                        1+2 Oda (6 Kişilik)
+                    </span>
+                    <a href="#test" class="scroll-smooth">
+                        <span onclick="showCalender(this);" data-val="4" class="btn-select">Rezervasyon Yap</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<form action="/VIP/ReservationBanner" method="post">
+    <div class="banner-form rh">
+        <div class="container">
+            <span class="close-form"><i class="fa fa-close"></i></span>
+            <div class="form-content">
+                <div class="table-item">
+                    <div class="form-group">
+                        <div class="date-range-inner-wrapper">
+                            <input id="date-range2" name="EntryDate" class="form-control" value="Giriş">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-item">
+                    <div class="form-group form-icon">
+                        <div class="date-range-inner-wrapper">
+                            <input id="date-range3" name="ExitDate" class="form-control" value="Çikiş">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-item">
+                    <div class="form-group form-icon">
+                        <select name="ReserveTypeId">
+                            <option value="0">Kısa (10:00 - 22:00)</option>
+                            <option value="1">Gece (22:00 - 10:00)</option>
+                            <option value="2">24 Saat</option>
+
+                        </select>
+                    </div>
+                </div>
+                @Html.Hidden("RoomTypeId")
+                <div class="table-item">
+                    <div class="form-btn">
+                        <input class="btn btn-orange" type="submit" value="Rezervasıyon" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</form>
+@Html.Raw(TempData["Error"])
+
+
+

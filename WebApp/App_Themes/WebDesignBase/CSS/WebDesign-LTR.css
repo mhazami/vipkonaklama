@@ -1,0 +1,635 @@
+﻿body, .button INPUT[type='button'],
+.button INPUT[type='submit'],
+.button INPUT[id='button-yellow'],
+input[type=text], select, textarea, input[type=password] {
+    font-family: Vazir !important;
+}
+@import url('../../../AppCode/Fonts/Yekan/stylesheet.css');
+body {
+    direction: ltr;
+    font-family: Vazir !important;
+}
+
+.ui-top-bar {
+    float: left;
+}
+
+.ui-header {
+    float: left;
+}
+
+.ui-h-menu {
+    float: left;
+}
+
+.ui-top-nav {
+    float: left;
+}
+/*Content*/
+.ui-slide-nav {
+    float: left;
+}
+
+.ui-content-nav {
+    float: left;
+}
+
+.ui-small-pane {
+    float: left;
+}
+
+.ui-congress-big-pane {
+    float: left;
+    margin-left: 1%;
+}
+/*OperatitonPanel*/
+.d-item {
+    margin-left: 13px;
+    float: left;
+}
+
+    .d-item img {
+     left: 15px;
+        right: auto;
+    }
+
+.topbar .d-item img {
+    margin: 7px 0px;
+}
+/*END-Content*/
+.ui-footer {
+    float: left;
+}
+
+.radyn-Resources {
+    float: left;
+}
+
+.radyn-Resources-a img {
+    float: left;
+}
+
+.radyn-Resources-a p {
+    float: left;
+    margin-left: 5px;
+}
+
+.ui-pane-box {
+    float: left;
+}
+
+.ui-pane-child-box {
+    float: left;
+    margin-left: 1%;
+}
+/*Ui Default*/
+/*container*/
+.container-hd {
+    float: left;
+    direction: ltr;
+}
+
+.container-header {
+    float: left;
+}
+
+.container-header-item img {
+    float: left;
+}
+
+.container-box {
+    float: left;
+}
+
+.footer-box {
+    float: left;
+}
+
+.header-box {
+    float: left;
+}
+/*Login*/
+.login-content-in {
+    float: left;
+}
+
+.user-Icon-in {
+    float: left;
+}
+
+.login-lable-in {
+    float: left;
+    border-style: solid none solid solid;
+}
+
+.login-content-in input[type="text"], .login-content-in input[type="password"] {
+    float: left;
+}
+
+.login-text-in {
+    float: left;
+}
+/*Search*/
+.search {
+    float: right;
+}
+
+    .search INPUT[type='text'] {
+        text-align: left;
+        float: left;
+    }
+
+    .search INPUT[type='button'] {
+        text-align: left;
+        background-position: right center;
+        float: right;
+    }
+
+    .search select {
+        float: left;
+    }
+
+.search-result {
+    float: left;
+}
+
+    .search-result span {
+        float: left;
+        margin-right: 5px;
+    }
+
+    .search-result p {
+        float: right;
+        text-align: right;
+        direction: ltr;
+    }
+/*Artcle*/
+.article-title {
+    float: left;
+}
+
+.archive-link {
+    float: right;
+}
+
+
+
+.ui-top-nav {
+    float: left;
+}
+/*Slider*/
+.SlideShow {
+    float: left;
+}
+
+#slideshow img {
+    left: 0;
+}
+
+#show {
+    float: left;
+}
+
+
+/*SlideshowMini*/
+.SlideShow-mini {
+    float: left;
+}
+
+#slideshow-mini img {
+    left: 0;
+}
+
+#show-mini {
+    float: left;
+}
+/*Login*/
+.login-text {
+    float: left;
+    margin-left: 3px;
+}
+
+.login-input {
+    float: left;
+    margin-left: 5px;
+}
+/*news*/
+.news-box {
+    float: left;
+}
+
+.n-img img {
+    float: left;
+}
+
+.n-title {
+    float: left;
+    margin-left: 2%;
+}
+
+.n-lead {
+    float: left;
+    margin-left: 2%;
+}
+
+    .n-lead a {
+        margin-left: 5px;
+    }
+
+.n-more {
+    float: left;
+}
+
+.date {
+    float: right;
+    text-align: right;
+    direction: ltr;
+}
+
+
+
+.button {
+    float: right;
+}
+
+    .button INPUT[type='button'], .button INPUT[type='submit'] {
+        font-family: Vazir;
+    }
+
+
+.button-div {
+    float: left;
+}
+/*NEWS-LIST*/
+.news-list {
+    direction: ltr;
+}
+
+.news-list-box {
+    float: left;
+}
+
+    .news-list-box a img {
+        float: left;
+    }
+
+.news-list-title {
+    float: left;
+    margin-left: 1%;
+}
+
+
+.news-list-lead {
+    float: left;
+    margin: 10px 12px;
+}
+
+    .news-list-lead span {
+        float: right;
+    }
+
+
+
+.vip-guest-child-a {
+    float: left;
+    text-align: left;
+}
+
+    .vip-guest-child-a img {
+        float: left;
+        margin: 0 5px 0 0;
+    }
+
+.vip-guest-child-a-p {
+    float: left;
+    text-align: left!important;
+    margin-left: 5px;
+}
+.my-navbar-right li {
+    float: left!important;
+}
+.vip-guest-a {
+    float: left;
+    text-align: left;
+}
+
+
+    .vip-guest-a img {
+        float: left;
+        margin: 10px 10px 0 0;
+    }
+
+    .vip-guest-a p {
+        float: left;
+        margin-left: 10px;
+    }
+
+.vip-guest-a-p {
+    float: left;
+    margin: 10px 1%;
+    direction: ltr;
+}
+
+.innerformcontent {
+    float: left;
+}
+
+.cancel {
+    float: right;
+    margin: 10px 10px 0 0;
+}
+
+
+/*Panel*/
+/*MENU*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border-style: none solid none none;
+    border-width: 0 1px 0 0;
+}
+
+#nextCustomer {
+    float: left;
+    margin-left: 15px;
+}
+
+#prevCustomer {
+    float: left;
+    padding-left: 15px;
+}
+/*V-Menu*/
+.v-menu-item-box {
+    float: left;
+    text-align: left;
+}
+
+
+.v-menu-item {
+    float: left;
+}
+
+
+    .v-menu-item:before {
+        padding-right: 3px;
+    }
+/*News-View*/
+.news-content {
+    float: left;
+}
+
+.article-board {
+    direction: ltr;
+    float: left;
+}
+
+.article-box-title, .article-box-lead {
+    direction: ltr;
+}
+/*CongressPanel*/
+.userloggedinfo, .userloggedimg, .userloggedimg img,
+.userinfo, .userinfo b, .userinfo small, .userinfo span,
+.userinfo span div {
+    float: left;
+}
+
+.userloggedinfo {
+    margin-left: 2px;
+}
+
+.userloggedimg {
+    border-right: 1px solid #D8D8D8;
+}
+
+.userinfo small {
+    margin-left: 5px;
+}
+
+.userinfo, .userinfo b {
+    direction: ltr;
+}
+/*CongressPanel*/
+
+/*PUBLIC*/
+.margin-align {
+    margin-left: 1%;
+}
+/*PUBLIC*/
+/*RESSERVATION*/
+.rsline {
+    float: left;
+}
+/*INTERNALMAIL*/
+.nav-mail-item span, .nav-mail-item:hover span {
+    float: left;
+    border-style: none none solid solid;
+}
+
+.nav-mailText {
+    float: left;
+    margin-right: 5px;
+}
+/* begin Vertical Menu =====================================================================================*/
+
+/* Some stylesheet reset */
+.cssmenu > ul {
+    direction: ltr;
+}
+
+/* The container */
+.cssmenu > ul {
+    float: left;
+}
+
+    /* The arrow indicating a submenu */
+    .cssmenu > ul .has-sub > a::after {
+        right: 10px;
+        border-left: solid;
+    }
+
+    /* The same arrow, but with a darker color, to create the shadow effect */
+    .cssmenu > ul .has-sub > a::before {
+        right: 10px;
+        border-left: solid;
+    }
+
+    /* Changing the color of the arrow on hover */
+    .cssmenu > ul li > a:hover::after,
+    .cssmenu > ul li:hover > a::after {
+        border-left: solid;
+    }
+
+    .cssmenu > ul li > a:hover::before,
+    .cssmenu > ul li:hover > a::before {
+        border-left: solid;
+    }
+
+    /* THE SUBMENUS */
+    .cssmenu > ul ul {
+        left: 100%;
+        padding-left: 5px;
+    }
+
+/* End Vertical menu =====================================================================================*/
+/* Image Box Style */
+.box, .box img, .box > span, .box > span p {
+    float: left;
+}
+
+
+
+/*Homa-Advanced*/
+.align-div {
+    float: left !important;
+}
+
+.align-div-rc {
+    float: right;
+}
+
+
+.article-board img {
+    float: left !important;
+}
+
+@media (min-width: 768px) {
+    .nav-align {
+        float: left !important;
+    }
+}
+
+.article-text {
+    direction: ltr !important;
+}
+
+.ui-top-bar > table {
+    float: left;
+    direction: ltr;
+}
+/*En*/
+.widget, .full-info-widget, .news-content {
+    background-color: #fff;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+    z-index: 1;
+    direction: ltr;
+}
+
+.widget-content {
+    display: grid;
+}
+
+.dropdown-menu {
+    text-align: left;
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+}
+
+.arrow-top, .arrow-down {
+    float: right;
+}
+/*En*/
+.widget-title > ul {
+    direction: ltr;
+    text-align: left;
+}
+
+.news-box .date {
+    text-align: right;
+}
+
+.archive-link {
+    text-align: right;
+}
+
+.vip-guest-child-a-p {
+    text-align: left;
+}
+
+.widget-content .news-box {
+    width: 100%;
+}
+
+.widget-content .n-lead, .widget-content .n-more, .widget-content .n-title {
+    float: none;
+}
+
+
+.header-nav-item-group {
+    float: right !important;
+    font-family: Vazir;
+}
+
+@media (max-width: 1025px) {
+    .header-nav-item {
+        margin: 28px !important;
+        margin-right: 0;
+    }
+
+    .header-nav-item-group {
+        margin-top: 23px !important;
+        margin-bottom: 25px;
+        margin-left: 3%;
+    }
+}
+
+@media (max-width: 900px) {
+    .header-nav-item-group {
+        float: left !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-nav-item-group {
+        width: 100%;
+        margin-left: 6%;
+    }
+
+        .header-nav-item-group li {
+            margin: 0;
+        }
+}
+
+.header-nav-item {
+    margin: 27px;
+    margin-left: 0;
+}
+
+.Homa-Advanced .my-custom-nav {
+    padding: 0
+}
+.my-custom-nav {
+    padding: 0 8.4%;
+}
+
+.my-nav {
+    padding: 2px 7.4%;
+}
+.header-nav-item {
+    margin: 30px 15px!important;
+}
+.collapse.navbar-collapse {
+    padding-right: 5px
+}
+.Homa-Advanced .vip-guest-child-a {
+    float: none;
+}
+.radyn-Resources.license .radyn-Resources-a {
+    float: left;
+    margin-left: 5px;
+}
+
+.radyn-Resources.license > p {
+    float: right;
+}
+
+.radyn-Resources.license a p, .radyn-Resources.license a img {
+    float: left;
+}
+
+.widget-title > ul {
+    text-align: left!important;
+}
+
+.menu-language .navbar-header.navbar-right.logo {
+    float: left !important;
+}

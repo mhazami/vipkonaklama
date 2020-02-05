@@ -1,0 +1,76 @@
+﻿@using System.Web.Mvc.Html
+@using Radyn.WebApp.Areas.ContentManager.Componenet
+@model Radyn.FormGenerator.DataStructure.FormStructure
+<script type="text/javascript">
+    function GetDesign() {
+        ShowModalFullScreen("/FormGenerator/DesignForm/LookupFormDesign?formId=" + '@Model.Id');
+    }
+
+</script>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.FormGenerator.Name
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+
+            @Html.EditorFor(model => model.Name)
+        </div>
+    </div>
+</div>
+<div class="item-row" id="HasContainertr">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.ContentManager.Container
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.DropDownListFor(content => content.ContainerId, (SelectList)TempData["Containers"], "")
+        </div>
+    </div>
+</div>
+<div class="fit item-row" id="IsMenutr">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Security.Menu
+        </div>
+    </div>
+    <div class="table-row-item select-row tree-col">
+        <div class="item">
+            @{
+                Html.SearchParentInMenuTree(Model, model => model.MenuId, (string)ViewBag.MenuUrl);
+            }
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Common.Enable
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.RadioButtonFor(model => model.Enable, true)@Resources.Common.Enable
+            @Html.RadioButtonFor(model => model.Enable, false)@Resources.Common.Disable
+        </div>
+    </div>
+</div>
+<div class="item-row fit">
+    @if (Model != null && Model.Id != Guid.Empty)
+    {
+        <div class="fit">
+            <div class="button-div m-btn waves-yellow">
+                <i class="fas fa-paint-brush"></i>
+                <a name="FormDesign" onclick="GetDesign()">
+                    @Resources.FormGenerator.Formdesign
+                </a>
+            </div>
+        </div>
+    }
+
+
+</div>

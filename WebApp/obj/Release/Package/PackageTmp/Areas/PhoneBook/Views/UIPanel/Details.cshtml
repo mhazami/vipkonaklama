@@ -1,0 +1,290 @@
+﻿@using Radyn.EnterpriseNode.Tools
+@using Radyn.FileManager
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp
+@using Radyn.WebApp.AppCode.Security
+@model Radyn.PhoneBook.DataStructure.Person
+<div class="users-page full-size detail-edit">
+    <div class="table">
+        @if (Model.EnterpriseNode.EnterpriseNodeTypeId == Enums.EnterpriseNodeType.LegalEnterPriseNode)
+        {
+
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.EnterPriseNode.Title
+
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Model.EnterpriseNode.LegalEnterpriseNode.Title&nbsp;
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.EnterPriseNode.RegisterNo
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Model.EnterpriseNode.LegalEnterpriseNode.RegisterNo
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.EnterPriseNode.NationalId
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Model.EnterpriseNode.LegalEnterpriseNode.NationalId&nbsp;
+                    </div>
+                </div>
+            </div>
+
+        }
+        @if (Model.EnterpriseNode.EnterpriseNodeTypeId == Enums.EnterpriseNodeType.RealEnterPriseNode)
+        {
+            if (Model.EnterpriseNode.PictureId.HasValue)
+            {
+                <div class=" item-row ">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.EnterPriseNode.Picture
+                        </div>
+                    </div>
+                    <div class="table-row-item table-c-fit">
+                        <div class="item">
+                            @{
+                                Html.RadynFile().Image().ID(Model.EnterpriseNode.PictureId.Value).Height(98).Width(146).Render();
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.EnterPriseNode.FirstName
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Model.EnterpriseNode.RealEnterpriseNode.FirstName&nbsp;
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.EnterPriseNode.LastName
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Model.EnterpriseNode.RealEnterpriseNode.LastName&nbsp;
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.EnterPriseNode.IDNumber
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Model.EnterpriseNode.RealEnterpriseNode.IDNumber&nbsp;
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.EnterPriseNode.NationalCode
+
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Model.EnterpriseNode.RealEnterpriseNode.NationalCode&nbsp;
+
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.PhoneBook.PersoneliCode
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.PersoneliCode)&nbsp;
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.PhoneBook.City
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.EnterpriseNode.City.Title)&nbsp;
+                    </div>
+                </div>
+            </div>
+        }
+       
+
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.Email
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Model.EnterpriseNode.Email&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.Tel
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Model.EnterpriseNode.Tel&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.Cellphone
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Model.EnterpriseNode.Cellphone&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap ">
+                <div class="item">
+                    @Resources.EnterPriseNode.WebSite
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Model.EnterpriseNode.Website&nbsp;
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.PhoneBook.JobTitle
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.JopTitle)&nbsp;
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Enable
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @(Model.Enabled ? Resources.Common.Enable : Resources.Common.Disable)&nbsp;
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.PhoneBook.Remark
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Remark, new { })&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @SessionParameters.PhoneBookConfiguration.OfficeName
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.PersonOffice.Title, new { })&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @SessionParameters.PhoneBookConfiguration.DepartmentName
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.PersonDepartment.Title, new { })&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="fit item-detail">
+    <fieldset>
+        <legend>
+            تلفن های شخص
+        </legend>
+        @{
+            Html.RadynAction("GetIndex", "PersonPhone", new { area = "PhoneBook", personId = Model.Id, status = PageMode.Details });
+        }
+
+    </fieldset>
+</div>
+
+<div class="fit item-detail">
+    <fieldset>
+        <legend>
+            آدرس های شخص
+        </legend>
+
+        @{
+            Html.RadynAction("GetIndex", "PersonAddress", new { area = "PhoneBook", personId = Model.Id, status = PageMode.Details });
+        }
+
+
+
+    </fieldset>
+</div>
+
+
+</div>

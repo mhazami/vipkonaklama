@@ -1,0 +1,14 @@
+﻿@model Radyn.FormGenerator.ControlFactory.Controls.DropDownList
+
+<div class="fit">
+    @{
+        Html.RenderAction("GenerateValidator", "ValidatorControls", new { Id = Model.Id, formId = ViewBag.formId, culture = ViewBag.culture });
+    }
+</div>
+<div>
+    <div>
+        @{
+            Html.RenderAction("BaseGenerateListControl", "BaseControls", new { Id = Model.Id, formId = ViewBag.formId, culture = ViewBag.culture });
+        }
+    </div>
+</div>

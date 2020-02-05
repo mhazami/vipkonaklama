@@ -1,0 +1,30 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.WebApp
+@using Radyn.WebApp.AppCode
+@model IEnumerable<Radyn.PhoneBook.DataStructure.PersonPhone>
+
+<div class="fit">
+    @{Html.Radyn().Grid(Model).Name("GridPhoneList").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+        {
+            columns.Template(addressType => addressType.PhoneType.Title).Title(Resources.PhoneBook.PhoneType).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(addressType => addressType.TelNumber).Title(Resources.PhoneBook.TelNumber).Width(350).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(resource => (this.Html.GetPageMode("GetIndex") != PageMode.Details?(
+  
+
+                "<a style='cursor: pointer;'  onclick=\"GetPhonePanel('" + resource.Id + "','" + PageMode.Edit + "');\" > " +
+                " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a>  |" +
+                "<a style='cursor: pointer;'  onclick=\"DeletePhone('" + resource.Id + "');\"  >" +
+                " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a>  "):"")).Width(300).Filterable(false);
+
+        })
+            .Sortable(sorting => sorting.Enabled(true))
+            .Pageable(paging => paging.Enabled(true))
+            .Filterable(filtering => filtering.Enabled(true))
+            //.Footer(true)
+            .Render();}
+
+</div>
+
+
+
+

@@ -1,0 +1,12 @@
+E:\Online-WorkSpace\vipkonaklama\Message\obj\Debug\Message.csprojAssemblyReference.cache
+E:\Online-WorkSpace\vipkonaklama\Message\obj\Debug\Radyn.Message.Resources.Message.resources
+E:\Online-WorkSpace\vipkonaklama\Message\obj\Debug\Radyn.Message.Resources.Message.fa-IR.resources
+E:\Online-WorkSpace\vipkonaklama\Message\obj\Debug\Message.csproj.GenerateResource.cache
+E:\Online-WorkSpace\vipkonaklama\Message\obj\Debug\Message.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Message.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Message.pdb
+E:\Online-WorkSpace\vipkonaklama\lib\fa-IR\Radyn.Message.resources.dll
+E:\Online-WorkSpace\vipkonaklama\Message\obj\Debug\fa-IR\Radyn.Message.resources.dll
+E:\Online-WorkSpace\vipkonaklama\Message\obj\Debug\Message.csproj.CopyComplete
+E:\Online-WorkSpace\vipkonaklama\Message\obj\Debug\Radyn.Message.dll
+E:\Online-WorkSpace\vipkonaklama\Message\obj\Debug\Radyn.Message.pdb

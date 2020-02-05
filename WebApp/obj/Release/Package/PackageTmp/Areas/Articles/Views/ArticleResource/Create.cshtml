@@ -1,0 +1,48 @@
+﻿@using Radyn.Web.Mvc;
+
+@model Radyn.Article.DataStructure.ArticleResource
+@{
+    ViewBag.Title = "منابع جدید";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#DivItem").html("");
+            $.get("@Url.Content("~/Articles/ArticleResource/GetModify")", { date: new Date().getTime() }, function (data) {
+                $("#DivItem").html(data).slideDown("slow");
+
+            });
+        });
+    </script>
+}
+@section PageTitle{@Resources.Common.Create}
+@section PageAction {
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").Render();}
+    </div>
+
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Articles/ArticleResource/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div m-btn waves-green">
+        <i class="fas fa-save"></i>
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").Render();}
+    </div>
+
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Articles/ArticleResource/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <div id="DivItem"></div>
+
+}
+

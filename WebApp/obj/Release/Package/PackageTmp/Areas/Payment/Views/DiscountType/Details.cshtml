@@ -1,0 +1,34 @@
+@using Radyn.Web.Mvc;
+@model Radyn.Payment.DataStructure.DiscountType
+
+
+@{
+    ViewBag.Title = @Resources.Common.Detail + " " + @Resources.Payment.DiscountType;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.Detail @Resources.Payment.DiscountType
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+}
+<div class="radynForm">
+    @{
+        Html.RenderAction("GetDetails", "DiscountType", new { area = "Payment", Id = ViewBag.Id });
+    }
+</div>

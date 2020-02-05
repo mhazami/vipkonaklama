@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{88186C77-0BD8-4068-B6A7-03914BA9B864}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.ContentManager</RootNamespace>
+    <AssemblyName>Radyn.ContentManager</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.FileManager">
+      <HintPath>..\lib\Radyn.FileManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\ContainerBO.cs" />
+    <Compile Include="BO\ContentBO.cs" />
+    <Compile Include="BO\ContentContentBO.cs" />
+    <Compile Include="BO\DefaultHtmlDesginBO.cs" />
+    <Compile Include="BO\MenuHtmlBO.cs" />
+    <Compile Include="BO\HtmlDesginBO.cs" />
+    <Compile Include="BO\MenuBO.cs" />
+    <Compile Include="BO\PagesBO.cs" />
+    <Compile Include="BO\PartialLoadBO.cs" />
+    <Compile Include="BO\PartialsBO.cs" />
+    <Compile Include="BO\RolePartialsBO.cs" />
+    <Compile Include="BO\SectionBO.cs" />
+    <Compile Include="BO\UserPartialsBO.cs" />
+    <Compile Include="BO\WebDesignContainerBO.cs" />
+    <Compile Include="BO\WebDesignContentBO.cs" />
+    <Compile Include="BO\WebDesignHtmlBO.cs" />
+    <Compile Include="BO\WebDesignMenuBO.cs" />
+    <Compile Include="BO\WebDesignMenuHtmlBO.cs" />
+    <Compile Include="BO\WebDesignPagesBO.cs" />
+    <Compile Include="ContentManagerComponent.cs" />
+    <Compile Include="DataStructure\Container.cs" />
+    <Compile Include="DataStructure\Content.cs" />
+    <Compile Include="DataStructure\ContentContent.cs" />
+    <Compile Include="DataStructure\DefaultHtmlDesgin.cs" />
+    <Compile Include="DataStructure\MenuHtml.cs" />
+    <Compile Include="DataStructure\HtmlDesgin.cs" />
+    <Compile Include="DataStructure\Menu.cs" />
+    <Compile Include="DataStructure\Pages.cs" />
+    <Compile Include="DataStructure\PartialLoad.cs" />
+    <Compile Include="DataStructure\Partials.cs" />
+    <Compile Include="DataStructure\RolePartials.cs" />
+    <Compile Include="DataStructure\Section.cs" />
+    <Compile Include="DataStructure\UserPartials.cs" />
+    <Compile Include="DataStructure\WebDesignContainer.cs" />
+    <Compile Include="DataStructure\WebDesignContent.cs" />
+    <Compile Include="DataStructure\WebDesignHtml.cs" />
+    <Compile Include="DataStructure\WebDesignMenu.cs" />
+    <Compile Include="DataStructure\WebDesignMenuHtml.cs" />
+    <Compile Include="DataStructure\WebDesignPages.cs" />
+    <Compile Include="DA\ContainerDA.cs" />
+    <Compile Include="DA\ContentContentDA.cs" />
+    <Compile Include="DA\ContentDA.cs" />
+    <Compile Include="DA\DefaultHtmlDesginDA.cs" />
+    <Compile Include="DA\MenuHtmlDA.cs" />
+    <Compile Include="DA\HtmlDesginDA.cs" />
+    <Compile Include="DA\MenuDA.cs" />
+    <Compile Include="DA\PagesDA.cs" />
+    <Compile Include="DA\PartialLoadDA.cs" />
+    <Compile Include="DA\PartialsDA.cs" />
+    <Compile Include="DA\RolePartialsDA.cs" />
+    <Compile Include="DA\SectionDA.cs" />
+    <Compile Include="DA\UserPartialsDA.cs" />
+    <Compile Include="ContentManagerBaseFacade.cs" />
+    <Compile Include="DA\WebDesignContainerDA.cs" />
+    <Compile Include="DA\WebDesignContentDA.cs" />
+    <Compile Include="DA\WebDesignHtmlDA.cs" />
+    <Compile Include="DA\WebDesignMenuDA.cs" />
+    <Compile Include="DA\WebDesignMenuHtmlDA.cs" />
+    <Compile Include="DA\WebDesignPagesDA.cs" />
+    <Compile Include="Facade\ContainerFacade.cs" />
+    <Compile Include="Facade\ContentContentFacade.cs" />
+    <Compile Include="Facade\ContentFacade.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Facade\DefaultHtmlDesginFacade.cs" />
+    <Compile Include="Facade\Interface\IDefaultHtmlDesginFacade.cs" />
+    <Compile Include="Facade\Interface\IPagesFacade.cs" />
+    <Compile Include="Facade\Interface\IWebDesignContainerFacade.cs" />
+    <Compile Include="Facade\Interface\IWebDesignContentFacade.cs" />
+    <Compile Include="Facade\Interface\IWebDesignHtmlFacade.cs" />
+    <Compile Include="Facade\Interface\IWebDesignMenuFacade.cs" />
+    <Compile Include="Facade\Interface\IWebDesignMenuHtmlFacade.cs" />
+    <Compile Include="Facade\Interface\IWebDesignPagesFacade.cs" />
+    <Compile Include="Facade\MenuHtmlFacade.cs" />
+    <Compile Include="Facade\HtmlDesginFacade.cs" />
+    <Compile Include="Facade\Interface\IContainerFacade.cs" />
+    <Compile Include="Facade\Interface\IContentContentFacade.cs" />
+    <Compile Include="Facade\Interface\IContentFacade.cs" />
+    <Compile Include="Facade\Interface\IMenuHtmlFacade.cs" />
+    <Compile Include="Facade\Interface\IHtmlDesginFacade.cs" />
+    <Compile Include="Facade\Interface\IMenuFacade.cs" />
+    <Compile Include="Facade\Interface\IPartialLoadFacade.cs" />
+    <Compile Include="Facade\Interface\IPartialsFacade.cs" />
+    <Compile Include="Facade\Interface\IRolePartialsFacade.cs" />
+    <Compile Include="Facade\Interface\ISectionFacade.cs" />
+    <Compile Include="Facade\Interface\IUserPartialsFacade.cs" />
+    <Compile Include="Facade\MenuFacade.cs" />
+    <Compile Include="Facade\PagesFacade.cs" />
+    <Compile Include="Facade\PartialLoadFacade.cs" />
+    <Compile Include="Facade\PartialsFacade.cs" />
+    <Compile Include="Facade\RolePartialsFacade.cs" />
+    <Compile Include="Facade\SectionFacade.cs" />
+    <Compile Include="Definition\Enums.cs" />
+    <Compile Include="Facade\WebDesignContainerFacade.cs" />
+    <Compile Include="Facade\WebDesignContentFacade.cs" />
+    <Compile Include="Facade\WebDesignHtmlFacade.cs" />
+    <Compile Include="Facade\WebDesignMenuFacade.cs" />
+    <Compile Include="Facade\WebDesignMenuHtmlFacade.cs" />
+    <Compile Include="Facade\WebDesignPagesFacade.cs" />
+    <Compile Include="Tools\Extentions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Facade\UserPartialsFacade.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Security\Security.csproj">
+      <Project>{35AEA767-A451-4BCD-A8F5-E0E412686279}</Project>
+      <Name>Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

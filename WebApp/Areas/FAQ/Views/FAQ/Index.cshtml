@@ -1,0 +1,80 @@
+﻿@using Radyn.FAQ.DataStructure
+@using Radyn.FAQ.Tools
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+@using Radyn.WebApp.AppCode.Security
+
+@model IEnumerable<FAQ>
+    @{
+        ViewBag.Title = Resources.FAQ.FAQList;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.FAQ.FAQList
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("FAQ").Area("FAQ").Text(@Resources.FAQ.NewFAQ).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+        <div class="button-div m-btn waves-red i-return">
+            @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("CongressFAQ").Area("Congress").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+
+    @using (Html.BeginForm())
+    {
+        <div class="radynForm">
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.FAQ.Question
+
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.TextBox("txtvalue", (string)ViewBag.value)
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-align" style="margin-top: 10px;">
+                @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("FAQ").Area("FAQ").Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/search_button.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("24").ImageHeight("24").Render();}
+            </div>
+        </div>
+
+
+        <div class="fit">
+            <div class="radynForm">
+                @{
+                    Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                    {
+                        columns.Template(fag => "<img alt='" + fag.Question + "' style='display:" + (fag.ThumbnailId.HasValue ? "inline" : "none") + "' src='" + Radyn.FileManager.FileManagerContants.FileHandlerRoot + "" + fag.ThumbnailId + "' height='50' width='80'/>").Title(@Resources.FAQ.Thumbnail);
+                        columns.Template(faq => faq.Content(SessionParameters.Culture).Question).Title(Resources.FAQ.Question.Trancate(50)).Width(350).HeaderHtmlAttributes(new { style = "text-align:center" });
+                        columns.Template(faq => faq.Content(SessionParameters.Culture).Answer).Title(Resources.FAQ.Answer.Trancate(50)).Width(400).HeaderHtmlAttributes(new { style = "text-align:center" });
+                        columns.Template(categories =>
+                            "<a style='cursor: pointer;'  href='" + Url.Content("~/FAQ/FAQ/Details?Id=" + categories.Id) + "'>" +
+                            " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                            "<a style='cursor: pointer;'  href='" + Url.Content("~/FAQ/FAQ/Edit?Id=" + categories.Id) + "'> " +
+                            " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                            "<a style='cursor: pointer;'  href='" + Url.Content("~/FAQ/FAQ/Delete?Id=" + categories.Id) + "'>" +
+                            " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+                    })
+
+                        .Sortable(sorting => sorting.Enabled(true))
+                        .Pageable(paging => paging.Enabled(true))
+                        .Filterable(filtering => filtering.Enabled(true))
+                        //.Footer(true)
+                        .Render();
+                }
+            </div>
+        </div>
+
+    }
+
+

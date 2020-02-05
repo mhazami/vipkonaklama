@@ -1,0 +1,24 @@
+﻿@model List<dynamic>
+<link rel="stylesheet" media="screen" type="text/css" href="@Url.Content("/Areas/Gallery/Presentation/css/layout.css")"  />
+<link rel="stylesheet" media="screen" type="text/css" href="@Url.Content("/Areas/Gallery/Presentation/css/spacegallery.css")" />
+<link rel="stylesheet" media="screen" type="text/css" href="@Url.Content("/Areas/Gallery/Presentation/css/custom.css")" />
+<script type="text/javascript" src="@Url.Content("/Areas/Gallery/Presentation/js/eye.js")"></script>
+<script type="text/javascript" src="@Url.Content("/Areas/Gallery/Presentation/js/utils.js")"></script>
+<script type="text/javascript" src="@Url.Content("/Areas/Gallery/Presentation/js/spacegallery.js")"></script>
+<script type="text/javascript" src="@Url.Content("/Areas/Gallery/Presentation/js/layout.js")"></script>
+@if (Model.Count > 0)
+{
+    <div id="myGallery" class="spacegallery">
+    @foreach (var Photo in Model)
+    {
+        <img src="@Radyn.FileManager.FileManagerContants.FileHandlerRoot@Photo.PicFile" width="600" height="350" alt="@Photo.Title" />
+        <a class="loading" href="#"></a>
+    }
+</div>
+}
+@**@
+@*<script>*@
+@*    var modelCount = '@Model.Count';*@
+@*    if(modelCount>0)*@
+@*    $('#myGallery').spacegallery({ loadingClass: 'loading', duration: 100 });*@
+@*</script>*@

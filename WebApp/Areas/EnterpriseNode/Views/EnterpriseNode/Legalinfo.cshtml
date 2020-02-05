@@ -1,0 +1,74 @@
+﻿@using Radyn.Web.Mvc
+@model Radyn.EnterpriseNode.DataStructure.LegalEnterpriseNode
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.Title
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.Title)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.CreateDate
+        </div>
+    </div>
+    <div class="table-row-item ">
+        <div class="item date-picker">
+            @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.CreateDate).Render();}
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.EconomicCode
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.EconomicCode)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.NationalId
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.NationalId)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.RegisterNo
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.RegisterNo)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.ActivityDescription
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.ActivityDescription)
+        </div>
+    </div>
+</div>

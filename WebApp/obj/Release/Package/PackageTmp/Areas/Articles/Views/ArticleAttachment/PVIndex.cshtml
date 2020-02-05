@@ -1,0 +1,52 @@
+﻿@using Radyn.WebApp
+@using Radyn.WebApp.AppCode
+<script>
+    $(function() {
+        GetArticleAttachmentList();
+        GetArticleAttachmentModify('@Guid.NewGuid()','@PageMode.Create');
+        
+    });
+
+    function GetArticleAttachmentList() {
+        getPartial("@Url.Content("~/Articles/ArticleAttachment/GetIndex")", { articleId: '@ViewBag.articleId' }, 'div-ArticleAttachmentGrid');
+      
+    }
+
+    function GetArticleAttachmentModify(FileId,status) {
+        getPartialWithFormTag("@Url.Content("~/Articles/ArticleAttachment/GetArticleAttachmentModify")", { articleId: '@ViewBag.articleId', FileId: FileId, status: status },'div-ArticleAttachmentData');
+
+    }
+    function DeleteArticleAttachment(FileId) {
+
+        RadynGet("@Url.Content("~/Articles/ArticleAttachment/DeleteAttachment")",
+            { articleId: '@ViewBag.articleId', fileId: FileId, behavior:'@this.Html.GetModifyBehavior()'},
+            function(data2) {
+                if (data2 != "false")
+                    GetArticleAttachmentList();
+                    
+            });
+
+
+
+
+    }
+  
+    
+
+
+   
+
+
+</script>
+<div class="fit item-detail">
+    <fieldset>
+        <legend>
+           پیوست های مقاله
+        </legend>
+    @if (this.Html.GetControllerStatus() != PageMode.Details)
+    {
+        <div id="div-ArticleAttachmentData"></div>
+    }
+        <div id="div-ArticleAttachmentGrid"></div>
+    </fieldset>
+</div>

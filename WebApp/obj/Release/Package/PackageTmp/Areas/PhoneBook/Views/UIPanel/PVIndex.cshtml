@@ -1,0 +1,94 @@
+﻿@using Radyn.PhoneBook.DataStructure
+@model IEnumerable<Radyn.PhoneBook.Tools.ModelView.PersonSearch>
+    <script>
+        function LookupDatail(id) {
+            ShowPostBackLoader();
+            ShowModal('/PhoneBook/UIPanel/Details', { Id: id });
+        }
+    </script>
+    @if (Model != null)
+    {
+        if (Model.Any())
+        {
+            <table class="table table-hover table-mc table-bordered table-condensed">
+                <thead id="header">
+                    <tr>
+                        <td class="EditRow">
+                            عکس
+                        </td>
+                        <td class="EditRow">
+                            نام
+                        </td>
+                        <td class="EditRow">
+                            سمت سازمانی
+                        </td>
+                        <td class="EditRow">
+                            داخلی
+                        </td>
+                        @foreach (var item in (List<PhoneType>)ViewBag.PhoneType)
+                        {
+                            <td class="EditRow">
+                                @item.Title
+                            </td>
+                        }
+                        <td class="EditRow">
+                            @Resources.Common.Detail
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (var person in Model)
+                    {
+
+
+                        <tr name="Result">
+                            <td class="gridRow">
+                              @if (person.PictureId.HasValue && person.PictureId != Guid.Empty)
+                              {
+                                  <img width='50' align='absmiddle' atr='@person.Name' src='@Radyn.FileManager.FileManagerContants.FileHandlerRoot@person.PictureId' height='50' width='80' />
+                              }
+                              else
+                              {
+                                  <img width='18' align='absmiddle' src='/App_Themes/RadynBase/Images/fpo_avatar.png' />
+                              } 
+
+                            </td>
+                            <td class="gridRow">
+                                @person.Name
+                            </td>
+                            <td class="gridRow">
+                                @person.JopTitle
+                            </td>
+                            <td class="gridRow">
+                                @person.Tel
+                            </td>
+                            @foreach (var item in person.PersonPhoneSearches)
+                            {
+                                <td class="gridRow">
+                                    @item
+                                </td>
+                            }
+                            <td class="gridRow">
+                                <a onclick="LookupDatail('@person.Id');">  <i class='far fa-info-circle'></i></a>
+                              
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="r-notify r-notify-danger r-notify-big">
+                نتیجه ای یافت نشد
+            </div>
+        }
+
+    }
+
+
+
+

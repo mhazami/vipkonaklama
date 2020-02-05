@@ -1,0 +1,45 @@
+@using Radyn.Web.Mvc;
+@using Radyn.WebApp.Areas.Common.Component
+@model Radyn.Payment.DataStructure.DiscountType
+
+@{
+    ViewBag.Title = @Resources.Common.Create + " " + @Resources.Payment.DiscountType;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+
+@section PageTitle
+{
+    @Resources.Payment.DiscountType @Resources.Common.New
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.Create).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").ImageHeight("20").Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.Create).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").ImageHeight("20").Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@Html.ValidationSummary(true)
+<div class="radynForm">
+    <div class="item-row">
+        @{
+            Html.LanguageDropDownList();
+        }
+    </div>
+    @{
+        Html.RenderAction("GetModify", "DiscountType", new { area = "Payment" });
+    }
+</div>
+

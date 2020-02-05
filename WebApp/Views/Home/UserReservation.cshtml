@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "UserReservation";
+    Layout = "~/Views/Shared/_ReservationLayout.cshtml";
+}
+@section Head{
+    <script>
+        $(function () {
+            $.get('/Home/RoomType', {}, function (data) {
+                $('#pv').html('');
+                $('#pv').html(data);
+            })
+        });
+        function getOrder(id) {
+            $.get('/Home/Order', { roomtypeId: id }, function (data) {
+                $('#pv').html('');
+                $('#pv').html(data);
+            })
+        }
+
+    </script>
+}
+<main>
+    <header>
+        <div class="main-head"></div>
+       
+    </header>
+    <section id="pv"></section>
+</main>
+
+
+
+

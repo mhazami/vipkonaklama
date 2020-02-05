@@ -1,0 +1,868 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="4">
+      <Model Ref="2" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+        <Alias>Model</Alias>
+        <BusinessObjects isList="true" count="1">
+          <Account Ref="3" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+            <Alias>Account</Alias>
+            <BusinessObjects isList="true" count="1">
+              <Bank Ref="4" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+                <Alias>Bank</Alias>
+                <BusinessObjects isList="true" count="0" />
+                <Category />
+                <Columns isList="true" count="7">
+                  <value>Id,System.Int32</value>
+                  <value>Title,System.String</value>
+                  <value>Enabled,System.Boolean</value>
+                  <value>DescriptionField,System.String</value>
+                  <value>State,Radyn.Framework.ObjectState</value>
+                  <value>EnableTrack,System.Boolean</value>
+                  <value>RootId,System.String</value>
+                </Columns>
+                <Dictionary isRef="1" />
+                <Guid>f8bef9746d514086a33c6eeb2f59c4b2</Guid>
+                <Name>Bank</Name>
+              </Bank>
+            </BusinessObjects>
+            <Category />
+            <Columns isList="true" count="9">
+              <value>Id,System.Int16</value>
+              <value>BankId,System.Int32</value>
+              <value>AccountNo,System.String</value>
+              <value>IsExternal,System.Boolean</value>
+              <value>Fulltitle,System.String</value>
+              <value>DescriptionField,System.String</value>
+              <value>State,Radyn.Framework.ObjectState</value>
+              <value>EnableTrack,System.Boolean</value>
+              <value>RootId,System.String</value>
+            </Columns>
+            <Dictionary isRef="1" />
+            <Guid>3fc6f48e253141eb82aba44312e71a0f</Guid>
+            <Name>Account</Name>
+          </Account>
+        </BusinessObjects>
+        <Category />
+        <Columns isList="true" count="36">
+          <value>Id,System.Guid</value>
+          <value>RefId,System.String</value>
+          <value>InvoiceId,System.Int64</value>
+          <value>SaleTrackingId,System.Nullable`1[System.Int64]</value>
+          <value>SaleReferenceId,System.Nullable`1[System.Int64]</value>
+          <value>CurrencyType,System.Byte</value>
+          <value>PayTypeId,System.Byte</value>
+          <value>PayDate,System.DateTime</value>
+          <value>Amount,System.Decimal</value>
+          <value>Description,System.String</value>
+          <value>Status,System.Nullable`1[System.Int32]</value>
+          <value>LastSentDate,System.Nullable`1[System.DateTime]</value>
+          <value>LastReceiveDate,System.Nullable`1[System.DateTime]</value>
+          <value>PayerId,System.Nullable`1[System.Guid]</value>
+          <value>PayerTitle,System.String</value>
+          <value>DocNo,System.String</value>
+          <value>Done,System.Boolean</value>
+          <value>OnlineBankId,System.Nullable`1[System.Byte]</value>
+          <value>AccountId,System.Nullable`1[System.Int16]</value>
+          <value>CallBackUrl,System.String</value>
+          <value>AdditionalData,System.String</value>
+          <value>DocScan,System.Nullable`1[System.Guid]</value>
+          <value>PersianDate,System.String</value>
+          <value>PayerName,System.String</value>
+          <value>LocalUrl,System.String</value>
+          <value>PreDone,System.Boolean</value>
+          <value>PayTypeDescription,System.String</value>
+          <value>CurrencytypeDescription,System.String</value>
+          <value>IsTemp,System.Boolean</value>
+          <value>OnlinebankName,System.String</value>
+          <value>DocScanFile,System.Byte[]</value>
+          <value>OnlinePayMessage,System.String</value>
+          <value>DescriptionField,System.String</value>
+          <value>State,Radyn.Framework.ObjectState</value>
+          <value>EnableTrack,System.Boolean</value>
+          <value>RootId,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Guid>f9a089db74684c0ebc02cd2fb92e6599</Guid>
+        <Name>Model</Name>
+      </Model>
+      <Doc Ref="5" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+        <Alias>Doc</Alias>
+        <BusinessObjects isList="true" count="0" />
+        <Category />
+        <Columns isList="true" count="1">
+          <value>Data,System.Byte</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Guid>0d975295b680458fa350e5656feda588</Guid>
+        <Name>Doc</Name>
+      </Doc>
+      <Discount Ref="6" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+        <Alias>Discount</Alias>
+        <BusinessObjects isList="true" count="1">
+          <DiscountType Ref="7" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+            <Alias>DiscountType</Alias>
+            <BusinessObjects isList="true" count="0" />
+            <Category />
+            <Columns isList="true" count="21">
+              <value>Id,System.Guid</value>
+              <value>Enabled,System.Boolean</value>
+              <value>IsPercent,System.Boolean</value>
+              <value>Title,System.String</value>
+              <value>Remark,System.String</value>
+              <value>ForceAttach,System.Boolean</value>
+              <value>IsExternal,System.Boolean</value>
+              <value>StartDate,System.String</value>
+              <value>EndDate,System.String</value>
+              <value>Code,System.String</value>
+              <value>Capacity,System.Nullable`1[System.Int16]</value>
+              <value>RemainCapacity,System.Nullable`1[System.Int16]</value>
+              <value>IsAutoCode,System.Boolean</value>
+              <value>ForceCode,System.Boolean</value>
+              <value>CurrencyType,System.String</value>
+              <value>ValidValue,System.String</value>
+              <value>UserCode,System.String</value>
+              <value>DescriptionField,System.String</value>
+              <value>State,Radyn.Framework.ObjectState</value>
+              <value>EnableTrack,System.Boolean</value>
+              <value>RootId,System.String</value>
+            </Columns>
+            <Dictionary isRef="1" />
+            <Guid>44e0324069004e8284818f8e502fa581</Guid>
+            <Name>DiscountType</Name>
+          </DiscountType>
+        </BusinessObjects>
+        <Category />
+        <Columns isList="true" count="8">
+          <value>TransactionId,System.Guid</value>
+          <value>DiscountTypeId,System.Guid</value>
+          <value>AttachId,System.Nullable`1[System.Guid]</value>
+          <value>Date,System.DateTime</value>
+          <value>DescriptionField,System.String</value>
+          <value>State,Radyn.Framework.ObjectState</value>
+          <value>EnableTrack,System.Boolean</value>
+          <value>RootId,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Guid>000a4765abfb47109ddea69c74ce1006</Guid>
+        <Name>Discount</Name>
+      </Discount>
+      <DocScan Ref="8" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+        <Alias>DocScan</Alias>
+        <BusinessObjects isList="true" count="0" />
+        <Category />
+        <Columns isList="true" count="6">
+          <value>Length,System.Int32</value>
+          <value>LongLength,System.Int64</value>
+          <value>Rank,System.Int32</value>
+          <value>IsReadOnly,System.Boolean</value>
+          <value>IsFixedSize,System.Boolean</value>
+          <value>IsSynchronized,System.Boolean</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Guid>918cd9858fad4cab93dcd530048f5490</Guid>
+        <Name>DocScan</Name>
+      </DocScan>
+    </BusinessObjects>
+    <Databases isList="true" count="0" />
+    <DataSources isList="true" count="0" />
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="9" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <DataBand1 Ref="10" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid>b2f07a7d327c47a09f0a8b5dd40e567e</BusinessObjectGuid>
+          <ClientRectangle>0,0.4,19,15.2</ClientRectangle>
+          <Components isList="true" count="28">
+            <Text1 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>16.6,0,2.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Tahoma,9.75,Regular,Point,False,0</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:پرداخت کننده</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+            <Text2 Ref="12" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>13.2,0,3.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Tahoma,9.75,Regular,Point,False,0</Font>
+              <Guid>f6acadf7a6284a5a925688da9f644b56</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.PayerName}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+            <Text5 Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.6,0.8,2.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>841e45394ea94c09a3c70d7a6a275a7a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:روش پرداخت</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text5>
+            <Text6 Ref="14" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.4,0.8,3.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Tahoma,9.75,Regular,Point,False,0</Font>
+              <Guid>3afc9867a25142b592cd28866fe2fec6</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.PayTypeDescription}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text6>
+            <Text11 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>17.2,1.6,1.8,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>5e1a5e8f6de749d19311f6f3c74d5c50</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:نام بانک</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text11>
+            <Text12 Ref="16" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>13.6,1.6,3.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>d82d00e3e861455ab3ede0413fc29eec</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.Account.Bank.Title}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text12>
+            <Panel1 Ref="17" type="Stimulsoft.Report.Components.StiPanel" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.6,3.6,18.4,2.2</ClientRectangle>
+              <Components isList="true" count="1">
+                <Table1 Ref="18" type="Stimulsoft.Report.Components.Table.StiTable" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <BusinessObjectGuid>000a4765abfb47109ddea69c74ce1006</BusinessObjectGuid>
+                  <ClientRectangle>0,0.4,18.4,1.6</ClientRectangle>
+                  <ColumnCount>4</ColumnCount>
+                  <Components isList="true" count="8">
+                    <Table1_Cell1 Ref="19" type="Stimulsoft.Report.Components.Table.StiTableCell" isKey="true">
+                      <Border>All;[75:172:198];1;Solid;False;4;[75:172:198]</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>0,0,4.6,0.8</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>B Nazanin,8.25,Regular,Point,False,178</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <ID>0</ID>
+                      <JoinCells isList="true" count="0" />
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Table1_Cell1</Name>
+                      <Page isRef="9" />
+                      <Parent isRef="18" />
+                      <Restrictions>AllowMove, AllowSelect, AllowChange</Restrictions>
+                      <Text>کد تخفیف</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Table1_Cell1>
+                    <Table1_Cell2 Ref="20" type="Stimulsoft.Report.Components.Table.StiTableCell" isKey="true">
+                      <Border>All;[75:172:198];1;Solid;False;4;[75:172:198]</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>4.6,0,4.8,0.8</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>B Nazanin,8.25,Regular,Point,False,178</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <ID>27</ID>
+                      <JoinCells isList="true" count="0" />
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Table1_Cell2</Name>
+                      <Page isRef="9" />
+                      <Parent isRef="18" />
+                      <Restrictions>AllowMove, AllowSelect, AllowChange</Restrictions>
+                      <Text>مقدار تخفیف</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Table1_Cell2>
+                    <Table1_Cell3 Ref="21" type="Stimulsoft.Report.Components.Table.StiTableCell" isKey="true">
+                      <Border>All;[75:172:198];1;Solid;False;4;[75:172:198]</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>9.4,0,7.8,0.8</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>B Nazanin,8.25,Regular,Point,False,178</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <ID>1</ID>
+                      <JoinCells isList="true" count="0" />
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Table1_Cell3</Name>
+                      <Page isRef="9" />
+                      <Parent isRef="18" />
+                      <Restrictions>AllowMove, AllowSelect, AllowChange</Restrictions>
+                      <Text>نوع تخفیف</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Table1_Cell3>
+                    <Table1_Cell4 Ref="22" type="Stimulsoft.Report.Components.Table.StiTableCell" isKey="true">
+                      <Border>All;[75:172:198];1;Solid;False;4;[75:172:198]</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>17.2,0,1.2,0.8</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>B Nazanin,8.25,Regular,Point,False,178</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <ID>25</ID>
+                      <JoinCells isList="true" count="0" />
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Table1_Cell4</Name>
+                      <Page isRef="9" />
+                      <Parent isRef="18" />
+                      <Restrictions>AllowMove, AllowSelect, AllowChange</Restrictions>
+                      <Text>ردیف</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Table1_Cell4>
+                    <Table1_Cell5 Ref="23" type="Stimulsoft.Report.Components.Table.StiTableCell" isKey="true">
+                      <Border>All;[75:172:198];1;Solid;False;4;[75:172:198]</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>0,0.8,4.6,0.8</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>B Nazanin,8.25,Regular,Point,False,178</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <ID>5</ID>
+                      <JoinCells isList="true" count="0" />
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Table1_Cell5</Name>
+                      <Page isRef="9" />
+                      <Parent isRef="18" />
+                      <Restrictions>AllowMove, AllowSelect, AllowChange</Restrictions>
+                      <Text>{Discount.DiscountType.Code}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>DataColumn</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Table1_Cell5>
+                    <Table1_Cell6 Ref="24" type="Stimulsoft.Report.Components.Table.StiTableCell" isKey="true">
+                      <Border>All;[75:172:198];1;Solid;False;4;[75:172:198]</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>4.6,0.8,4.8,0.8</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>B Nazanin,8.25,Regular,Point,False,178</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <ID>28</ID>
+                      <JoinCells isList="true" count="0" />
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Table1_Cell6</Name>
+                      <Page isRef="9" />
+                      <Parent isRef="18" />
+                      <Restrictions>AllowMove, AllowSelect, AllowChange</Restrictions>
+                      <Text>{IIF(Discount.DiscountType.IsPercent,Discount.DiscountType.ValidValue+"%",Discount.DiscountType.ValidValue+" "+Model.CurrencytypeDescription)}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Table1_Cell6>
+                    <Table1_Cell7 Ref="25" type="Stimulsoft.Report.Components.Table.StiTableCell" isKey="true">
+                      <Border>All;[75:172:198];1;Solid;False;4;[75:172:198]</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>9.4,0.8,7.8,0.8</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>B Nazanin,8.25,Regular,Point,False,178</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <ID>6</ID>
+                      <JoinCells isList="true" count="0" />
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Table1_Cell7</Name>
+                      <Page isRef="9" />
+                      <Parent isRef="18" />
+                      <Restrictions>AllowMove, AllowSelect, AllowChange</Restrictions>
+                      <Text>{Discount.DiscountType.Title}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Table1_Cell7>
+                    <Table1_Cell8 Ref="26" type="Stimulsoft.Report.Components.Table.StiTableCell" isKey="true">
+                      <Border>All;[75:172:198];1;Solid;False;4;[75:172:198]</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>17.2,0.8,1.2,0.8</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>B Nazanin,8.25,Regular,Point,False,178</Font>
+                      <HorAlignment>Center</HorAlignment>
+                      <ID>26</ID>
+                      <JoinCells isList="true" count="0" />
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Table1_Cell8</Name>
+                      <Page isRef="9" />
+                      <Parent isRef="18" />
+                      <Restrictions>AllowMove, AllowSelect, AllowChange</Restrictions>
+                      <Text>{Line}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                      <VertAlignment>Center</VertAlignment>
+                    </Table1_Cell8>
+                  </Components>
+                  <Conditions isList="true" count="0" />
+                  <DataSourceName isNull="true" />
+                  <Filters isList="true" count="0" />
+                  <HeaderRowsCount>1</HeaderRowsCount>
+                  <MinHeight>0.4</MinHeight>
+                  <Name>Table1</Name>
+                  <NumberID>29</NumberID>
+                  <Page isRef="9" />
+                  <Parent isRef="17" />
+                  <RowCount>2</RowCount>
+                  <Sort isList="true" count="0" />
+                  <TableStyle>Style16</TableStyle>
+                </Table1>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Name>Panel1</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+            </Panel1>
+            <Text7 Ref="27" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15.4,0.8,1.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Tahoma,9.75,Regular,Point,False,0</Font>
+              <Guid>64a26e78ca2047349eceec455dac2c9b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.PayDate}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat type="TimeFormat" isKey="true">
+                <StringFormat>HH:mm</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text7>
+            <Text8 Ref="30" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>16.6,0.8,2.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>ebadcd5427e643179f63de7827c94860</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:تاریخ پرداخت</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text8>
+            <Text3 Ref="31" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>13.2,0.8,2.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>98cf8344dc794c40864979872afcab34</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.PersianDate}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text3>
+            <Text9 Ref="32" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>16.8,2.6,2.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>a275a0a068dd421698568ac54b36c26b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:تخفیفات</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text9>
+            <Text10 Ref="33" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.6,0,2.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Tahoma,9.75,Regular,Point,False,0</Font>
+              <Guid>89fdd8df2d1b461998c5bc7d53118d2d</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:شماره فیش</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text10>
+            <Text13 Ref="34" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.4,0,3.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Tahoma,9.75,Regular,Point,False,0</Font>
+              <Guid>9c7ed5712aa34095ad1b2e4f513904fc</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.DocNo}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text13>
+            <Text14 Ref="35" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>10.8,1.6,2.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>0188b46d94024ddbb4b81e29a0e1741d</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:توضیحات</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text14>
+            <Text15 Ref="36" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,0.8,4.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>bff2b7df445445639283003e6a7b074d</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.Account.AccountNo}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text15>
+            <Text16 Ref="37" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>10.4,0.8,2.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>8cc4ed0c3e35412693cd937ae67161e0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:شماره حساب</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text16>
+            <Text18 Ref="38" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>10.4,0,2.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Tahoma,9.75,Regular,Point,False,0</Font>
+              <Guid>46808303f4bc4b3791919e9d5e21726f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:مبلغ</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text18>
+            <Text19 Ref="39" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,0,4.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Tahoma,9.75,Regular,Point,False,0</Font>
+              <Guid>592339838cb24f02a7ec4a25adbeac0d</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.Amount}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="40" type="CustomFormat" isKey="true">
+                <StringFormat>###,###,###</StringFormat>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text19>
+            <Text4 Ref="41" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.4,1.6,10.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>c4c554e933bd4db688e53625b57b3b3f</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.Description}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text4>
+            <Text17 Ref="42" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>16.8,6,2.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>11c12b0dcb5d4db89f0bdcaf46f20dbd</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:فیش پرداختی</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text17>
+            <Panel2 Ref="43" type="Stimulsoft.Report.Components.StiPanel" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.6,7,18,8</ClientRectangle>
+              <Components isList="true" count="1">
+                <Image1 Ref="44" type="Image" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0.2,0.2,17.6,7.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <DataColumn>Model.DocScanFile</DataColumn>
+                  <Name>Image1</Name>
+                  <Page isRef="9" />
+                  <Parent isRef="43" />
+                  <Stretch>True</Stretch>
+                </Image1>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Name>Panel2</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+            </Panel2>
+            <Text20 Ref="45" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>16.6,0,2.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>a661ceb1fb514c89a4d0e58ee10a746b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:پرداخت کننده</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text20>
+            <Text21 Ref="46" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>13.2,0,3.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>9d8cbf71f52241fba1baae9cc4ed80e3</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.PayerName}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text21>
+            <Text22 Ref="47" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.4,0.8,3.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>1e33c71a08864d65878d9d0816e8000a</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.PayTypeDescription}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text22>
+            <Text23 Ref="48" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.6,0,2.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>8e9240e9f63541d6a31007fbb147fe28</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:شماره فیش</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+            <Text24 Ref="49" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.4,0,3.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>30456f9c00f24dfb8a739384fa0cf062</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.DocNo}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text24>
+            <Text25 Ref="50" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>10.4,0,2.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>cf67c4e118d84ef69791db485654b321</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>:مبلغ</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text25>
+            <Text26 Ref="51" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,0,4.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>B Nazanin,9.75,Regular,Point,False,178</Font>
+              <Guid>91e62bf6fade43e7ba3e3e59271f2d48</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{Model.Amount}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="52" type="CustomFormat" isKey="true">
+                <StringFormat>###,###,###</StringFormat>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text26>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataSourceName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>fc1c3fbbeb51417685808fb55a30dba4</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <PaperSize>A4</PaperSize>
+      <Report isRef="0" />
+      <RightToLeft>True</RightToLeft>
+      <Watermark Ref="53" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="54" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+    <value>Radyn.Framework.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>6/27/2018 10:43:20 AM</ReportChanged>
+  <ReportCreated>10/9/2012 1:25:41 PM</ReportCreated>
+  <ReportFile>E:\WorkSpace(M-Azami)\Congress\WebApp\Areas\Payment\Reports\RptTransactionDocumentResult.mrt</ReportFile>
+  <ReportGuid>f6ac19f2b5de4260bd1c2f11927e1917</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2013.1.1505</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

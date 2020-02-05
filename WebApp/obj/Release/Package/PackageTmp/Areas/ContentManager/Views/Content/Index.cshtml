@@ -1,0 +1,49 @@
+﻿@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.ContentManager.DataStructure.Content>
+    @{
+        ViewBag.Title = @Resources.Common.List + " " + @Resources.ContentManager.Content;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.ContentManager.Content
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Content").Area("ContentManager").Text(@Resources.ContentManager.Content + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render(); }
+        </div>
+
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Content").Area("ContentManager").Text(@Resources.ContentManager.Content + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render(); }
+        </div>
+    }
+    <div class="radynForm">
+        @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%; margin: 1% auto;text-align: center" }).Columns(columns =>
+              {
+                  columns.Template(content => content.PageName).Title(@Resources.ContentManager.PageName).Width(200).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(content => content.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(@Resources.Common.Enable).Width(50).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(content => content.StartDate).Title(@Resources.ContentManager.StartDate).Width(70).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(content => content.ExpireDate).Title(@Resources.ContentManager.ExpireDate).Width(70).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(content => content.Link).Title(@Resources.ContentManager.Link).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(content =>
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/ContentManager/Content/Details?Id=" + content.Id) + "'>" +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/ContentManager/Content/Edit?Id=" + content.Id) + "'> " +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/ContentManager/Content/Delete?Id=" + content.Id) + "'>" +
+                  " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+              })
+
+              .Sortable(sorting => sorting.Enabled(true))
+              .Pageable(paging => paging.Enabled(true))
+              .Filterable(filtering => filtering.Enabled(true))
+              //.Footer(true)
+              .Render();}
+    </div>

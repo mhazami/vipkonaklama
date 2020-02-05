@@ -1,0 +1,41 @@
+@using Radyn.Web.Mvc;
+@model Radyn.Payment.DataStructure.DiscountType
+
+
+@{
+    ViewBag.Title = @Resources.Common.Delete + " " + @Resources.Payment.DiscountType;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.DeleteMessage
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-red i-delete">
+        @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.Yes).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").Render();}
+
+    </div>
+    <div class="button-div m-btn waves-green i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.No).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+}
+@section PageActionDown{
+    <div class="button-div m-btn waves-red i-delete">
+        @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.Yes).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").Render();}
+
+    </div>
+    <div class="button-div m-btn waves-green i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.No).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+}
+<div class="radynForm">
+    @{
+        Html.RenderAction("GetDetails", "DiscountType", new { area = "Payment", Id = ViewBag.Id });
+    }
+</div>
+

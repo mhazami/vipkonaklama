@@ -1,0 +1,82 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.EnterpriseNode.Tools
+@model IEnumerable<Radyn.PhoneBook.DataStructure.Person>
+    @{
+        ViewBag.Title = Resources.Common.List + " " + Resources.PhoneBook.Person;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{
+        <script>
+            function SearchUser() {
+                ShowPostBackLoader();
+                $("#DivResultSearchUser").html("");
+                $.post("@Url.Content("~/PhoneBook/Person/GetIndex")", { txtsearch: $("#txtSearch").val() }, function (data) {
+                    if (data != "false") {
+                        $("#DivResultSearchUser").html(data).hide();
+                        $("#DivResultSearchUser").slideDown();
+
+                    }
+                    ShowRadynMessage();
+                }).complete(function () {
+                    HidePostBackLoader();
+
+                });
+            }
+
+            $(function () {
+                $('#txtSerachPerson').focus();
+                SearchUser();
+            })
+        </script>
+
+    }
+
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.PhoneBook.Person
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Person").Area("PhoneBook").Text(@Resources.PhoneBook.Person + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Person").Area("PhoneBook").Text(@Resources.PhoneBook.Person + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+
+
+    <div class="radynForm">
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.WebDesign.User
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.TextBox("txtSearch")
+
+                </div>
+            </div>
+
+        </div>
+        <div class="item-row fit ">
+            <div class="button-div m-btn waves-blue i-search" id="BtnSearch">
+                @{Html.Radyn().ImageActionLink().Align(ImageActionLink.Alignment.Right).Text(@Resources.Common.Search).ImageUrl(Url.Content("~/Content/Images/search_button.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "SearchUser();" }).Render(); }
+            </div>
+
+        </div>
+
+
+
+
+    <div class="fit" id="DivResultSearchUser">
+    </div>
+
+    </div>
+
+

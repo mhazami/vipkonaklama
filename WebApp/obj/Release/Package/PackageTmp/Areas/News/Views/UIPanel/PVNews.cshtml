@@ -1,0 +1,64 @@
+﻿@using Radyn.FileManager
+@using Radyn.Utility
+@using Radyn.WebApp.AppCode.Security
+@model IEnumerable<Radyn.News.DataStructure.News>
+
+    @{
+        var num = 0;
+    }
+
+    @{
+        <div class="container-box">
+
+
+            @foreach (var variable in Model)
+            {
+                if (string.IsNullOrWhiteSpace(@variable.NewsContent.Title1))
+                {
+                    continue;
+                }
+
+                <div class="news-box">
+                    <div style="position: relative">
+                        <a class="n-img" href="@Url.Content("~/News/UIPanel/NewsView?id=" + variable.Id)">
+                            @if (variable.ThumbnailId.HasValue)
+                            {
+                                Html.RadynFile().Image().ID((Guid)variable.ThumbnailId).Render();
+                            }
+                            else
+                            {
+
+                                <img src="~/Content/Images/img-news.jpg" />
+                            }
+                        </a>
+                        <div class="news-box-content">
+                            <a class="n-title" href="@Url.Content("~/News/UIPanel/NewsView?id=" + variable.Id)">
+                                @variable.NewsContent.Title1
+                            </a>
+                            <div class="n-lead">
+                                @variable.NewsContent.Lead
+                                <a href="@Url.Content("~/News/UIPanel/NewsView?id=" + variable.Id)">Continue</a>
+                            </div>
+                            <div class="n-more">
+                                <div class="date">
+                                    @if (variable.PublishDate != null && !string.IsNullOrEmpty(variable.PublishDate.Trim()))
+                                    {
+                                        @variable.PublishDate.GetCultureDate(SessionParameters.Culture)
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                num++;
+            }
+            @if (num > 0)
+            {
+                <div class="archive-link">
+                    <a href="@Url.Content("~/News/UIPanel/NewsList")">ArchiveNews</a>
+                </div>
+            }
+        </div>
+    }

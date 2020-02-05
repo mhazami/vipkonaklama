@@ -1,0 +1,38 @@
+﻿@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Article.DataStructure.ArticleCategory>
+@{
+    ViewBag.Title = "لیست دسته بندی";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle {لیست دسته بندی مقالات }
+@section PageAction {
+    <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Articles/ArticleCategory/Create")).Text("دسته بندی جدید").Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render(); }
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Articles/ArticleCategory/Create")).Text("دسته بندی جدید").Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render(); }
+    </div>
+}
+<div class="radynForm">
+    
+    @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+      {
+          columns.Template(country => country.Title).Title(Resources.CommonComponent.Name).Width(300).HeaderHtmlAttributes(new { style = "text-align:center" });
+          columns.Template(article => article.Enable?"فعال":"غیر فعال").Title("وضعیت").Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+          columns.Template(article => article.Order).Title("ترتیب").Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+          columns.Template(country => "<a style='cursor: pointer;'  href=" + Url.Content("~/Articles/ArticleCategory/Details") + "?Id=" + country.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | " +
+                                      "<a style='cursor: pointer;'  href=" + Url.Content("~/Articles/ArticleCategory/Edit") + "?Id=" + country.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | " +
+                                      "<a style='cursor: pointer;'  href=" + Url.Content("~/Articles/ArticleCategory/Delete") + "?Id=" + country.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(300);
+      })
+
+          .Sortable(sorting => sorting.Enabled(true))
+          .Pageable(paging => paging.Enabled(true))
+          .Filterable(filtering => filtering.Enabled(true))
+          //.Footer(true)
+          .Render();}
+
+</div>

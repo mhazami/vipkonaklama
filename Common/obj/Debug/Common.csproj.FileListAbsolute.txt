@@ -1,0 +1,13 @@
+E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\Common.csprojAssemblyReference.cache
+E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\Radyn.Common.Resources.Common.resources
+E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\Radyn.Common.Resources.Common.fa-IR.resources
+E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\Common.csproj.GenerateResource.cache
+E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Common.dll.config
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Common.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Common.pdb
+E:\Online-WorkSpace\vipkonaklama\lib\fa-IR\Radyn.Common.resources.dll
+E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\fa-IR\Radyn.Common.resources.dll
+E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\Common.csproj.CopyComplete
+E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\Radyn.Common.dll
+E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\Radyn.Common.pdb

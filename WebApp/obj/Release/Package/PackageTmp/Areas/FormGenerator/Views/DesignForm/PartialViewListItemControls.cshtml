@@ -1,0 +1,86 @@
+﻿@using Radyn.Web.Mvc;
+@model Radyn.FormGenerator.ControlFactory.Base.ListItem
+<script type="text/javascript">
+    function SaveAndClose() {
+    showModalReturn(document.getElementById("jsonvalue").value, document.getElementById("jsonvalue").value);
+    }
+    function PostData() {
+        var listItemvalue = document.getElementById("Value").value;
+        var listItemtext = document.getElementById("Text").value;
+        if (listItemvalue != "" && listItemtext != "") {
+            $.post("@Url.Content("~/FormGenerator/DesignForm/GetListItemControlPanel")", $('form[action^="@Url.Content("~/FormGenerator/DesignForm/GetListItemControlPanel")"]').serialize(), function (data) {
+                if (data.Result != false) {
+                    ShowRadynMessage();
+                    GetListItemView(data.Value);
+                }
+            });
+            ShowRadynMessage();
+        }
+    }
+</script>
+@using (Html.BeginForm())
+{
+    <input type="hidden" id="jsonvalue" name="jsonvalue" value="@ViewBag.jsonvalue" />
+    <input type="hidden" id="multiselect" name="multiselect" value="@ViewBag.multiselect" />
+
+
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.FormGenerator.Value
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Value)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.FormGenerator.Text
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Text)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Enable
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.Enable, true)@Resources.Common.Enable
+                @Html.RadioButtonFor(model => model.Enable, false)@Resources.Common.Disable
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Select
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.Selected, true)@Resources.Common.Enable
+                @Html.RadioButtonFor(model => model.Selected, false)@Resources.Common.Disable
+            </div>
+        </div>
+    </div>
+    <div class=" table-row-roller">
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().Text(@Resources.Common.AddToList).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/add.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "PostData();" }).ImageWidth("15").ImageHeight("20").Render();}
+        </div>
+        <div class="button-div m-btn waves-green i-save">
+            @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "SaveAndClose()" }).Render();}
+        </div>
+
+    </div>
+}

@@ -1,0 +1,36 @@
+﻿@using Radyn.Web.Mvc
+@model IEnumerable<Radyn.News.DataStructure.NewsComment>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head
+{}
+@section PageTitle
+{
+    @Resources.Comment.News
+}
+
+                      <div class="radynForm">
+                          <div class="fit">
+                              @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                                      {
+                                          columns.Template(news => news.News.NewsContent.Title1).Title(@Resources.News.Title).Width(200).HeaderHtmlAttributes(new { style = "text-align:center" });
+                                          columns.Template(news => news.Comment.SenderName).Title(@Resources.Comment.SenderName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                                          columns.Template(resource =>
+                                              "<a style='cursor: pointer;'  href='" + Url.Content("~/Comments/neCommentsws/Details?Id=" + resource.CommentId) + "'>" +
+                                              " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                                              "<a style='cursor: pointer;'  href='" + Url.Content("~/Comments/Comments/Delete?Id=" + resource.CommentId) + "'>" +
+                                              " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+
+                                      })
+
+                                            .Sortable(sorting => sorting.Enabled(true))
+                                            .Pageable(paging => paging.Enabled(true))
+                                            .Filterable(filtering => filtering.Enabled(true))
+                                            //.Footer(true)
+                                            .Render();}
+                          </div>
+                      </div>

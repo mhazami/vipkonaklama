@@ -1,0 +1,86 @@
+﻿@using Radyn.Web.Mvc
+
+@model Radyn.Message.DataStructure.SentMail
+@{
+    ViewBag.Title = Resources.Message.Email;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@using (Html.BeginForm())
+{
+    <table border="0" cellpadding="0" cellspacing="0" width="800" dir="@Resources.Common.Direction" align="center">
+        <tr>
+            <td>
+                To:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.To)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                CC:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.CC)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bcc:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Bcc)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Subject:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Subject)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Body:
+            </td>
+            <td>
+                @{Html.Radyn().Editor().ID("Body").TextAlign(Resources.Design.Align).Style("height:200px;").Render();}
+              
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Use Template:
+            </td>
+            <td>
+                <input name="Usetemplate" type="checkbox" value="true" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Attachments:
+            </td>
+            <td>
+                @{
+                    Html.RenderAction("FileUploader", "FileUpload", new { area = "FileManager", fileName = "upFile" });
+
+                }
+                
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="height: 25px;">
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <input id="Send" type="submit" value="Send" />
+                <input id="Clear" type="button" value="Clear" />
+            </td>
+        </tr>
+    </table>
+}

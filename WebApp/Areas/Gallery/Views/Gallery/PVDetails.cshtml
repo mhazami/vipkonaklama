@@ -1,0 +1,76 @@
+﻿@using Radyn.FileManager
+@using Radyn.Gallery.DataStructure
+
+@model Gallery
+<div class="radynForm detail-page">
+    <div id="GalleryContent">
+    </div>
+   
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Gallery1.Title
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit table-fit">
+            <div class="item">
+                @Model.Title
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Gallery1.State
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.Enabled ? Resources.Common.Enable : Resources.Common.Disable)
+            </div>
+        </div>
+    </div>
+    <div class="item-row" >
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Gallery1.Order
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(x=>x.Order)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Gallery1.CreateDate
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.CreateDate)
+            </div>
+        </div>
+    </div>
+    <div class="item-row" style="display: @(Model.Thumbnail != null ? "inline-block" : "none")">
+        <div class="table-row-cap table-c-fit">
+            <div class="item">
+                @Resources.Gallery1._Photo
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit table-c-fit">
+            <div class="item">
+                <div id="Img">
+                    @if (Model.Thumbnail.HasValue)
+                    {
+                        <img src="@FileManagerContants.FileHandlerRoot@Model.Thumbnail" style="cursor: pointer" onclick="window.open('@(FileManagerContants.FileHandlerRoot + Model.Thumbnail + "?dl=true")')" width="70" height="50" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+

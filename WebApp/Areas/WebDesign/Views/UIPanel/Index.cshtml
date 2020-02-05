@@ -1,0 +1,44 @@
+﻿@using Radyn.WebDesign.Definition
+@model Radyn.WebDesign.DataStructure.WebSite
+@{Layout = null;}
+<!DOCTYPE html>
+<html>
+<head>
+    @if (Model != null)
+    {
+        <title>@Model.Title</title>
+    }
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    @{
+        if (Model != null && Model.Configuration != null && Model.Configuration.FavIcon != null)
+        {
+            <link rel="icon" type="image/png" href="@Radyn.FileManager.FileManagerContants.FileHandlerRoot@Model.Configuration.FavIcon" />
+        }
+        else
+        {
+            <link rel="icon" type="image/png" href="/Content/Images/homa-icon.png" />
+        }
+    }
+</head>
+<body>
+    @if (Model != null && Model.Status == Enums.WebSiteStatus.NoProblem)
+    {
+        Html.RenderAction("GetIndex", "UIPanel", new { area = "WebDesign" });
+    }
+    else
+    {
+        Html.RenderAction("GetError", "WebSite", new { area = "WebDesign" });
+    }
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,186 @@
+﻿@using Radyn.Web.Mvc;
+
+@model Radyn.Framework.Tracker
+@{
+    ViewBag.Title = Resources.Security.Log;
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+
+@section Head{
+
+    <script>
+    function PostLogForm() {
+        $.post('/Security/Log/GetIndex',
+            $('form[action^="/Security/Log/Index"]').serialize(), function (data2) {
+                if (data2 != "false") {
+                    $('#div-log-grid').html('');
+                    $('#div-log-grid').html(data2);
+                }
+            });
+        ShowRadynMessage();
+            }
+    function GetLogPrint() {
+        $.post("@Url.Content("~/Security/Log/GetPrint")",
+            $('form[action^="/Security/Log/Index"]').serialize(), function (data) {
+                if (data !== "false") {
+                    window.open('@Url.Content("~/RptViewer.aspx")');
+                }
+            });
+        ShowRadynMessage();
+            }
+            $(function () {
+                PostLogForm();
+            })
+    </script>
+}
+
+
+@section PageAction
+{
+
+    <div class="button-div m-btn waves-blue i-search" id="BtnSearch">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Search).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Search-Icon.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "PrintCardList()" }).Render(); }
+    </div>
+    <div class="button-div m-btn waves-blue i-print" id="BtnReport">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.PrintList).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/printer.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "PrintCardList()" }).Render(); }
+    </div>
+
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-blue i-search" id="BtnSearch1">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Search).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Search-Icon.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "PrintCardList()" }).Render(); }
+    </div>
+    <div class="button-div m-btn waves-blue i-print" id="BtnReport1">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.PrintList).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/printer.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "PrintCardList()" }).Render(); }
+    </div>
+}
+@using (Html.BeginForm())
+{
+
+
+    <div class="radynForm">
+        @Html.HiddenFor(model => model.RootId)
+        @Html.Hidden("Title", (string)ViewBag.Title)
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.Title
+
+                </div>
+
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBoxFor(model => model.FieldDesc)
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.Operation
+
+                </div>
+
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DropDownList("trackOperation", (SelectList)ViewBag.Operationlist, "")
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.IPAddress
+
+                </div>
+
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.TextBoxFor(model => model.IpAddress)
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.User
+                </div>
+
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @if (ViewBag.UserNames != null)
+                    {
+                        @Html.DropDownListFor(model => model.UserName, (SelectList)ViewBag.UserNames, "")
+
+                    }
+                    else
+                    {
+                        @Html.TextBoxFor(model => model.UserName)
+
+                    }
+                </div>
+            </div>
+        </div>
+
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.FromDate
+                </div>
+
+            </div>
+            <div class="table-row-item">
+                <div class="item date-picker">
+                    @{ Html.Radyn().PersianDateTimePicker().Name("FromDate").Render(); }
+                </div>
+            </div>
+        </div>
+
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.ToDate
+                </div>
+
+            </div>
+            <div class="table-row-item">
+                <div class="item date-picker">
+                    @{ Html.Radyn().PersianDateTimePicker().Name("ToDate").Render(); }
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.Value
+                </div>
+
+            </div>
+            <div class="table-row-item">
+                <div class="item date-picker">
+                    @Html.TextArea("FromTo")
+                </div>
+            </div>
+        </div>
+
+
+       
+
+    </div>
+    <div id="div-log-grid"></div>
+}
+

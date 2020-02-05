@@ -1,0 +1,32 @@
+﻿@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Article.DataStructure.ArticleResource>
+@{
+    ViewBag.Title = "لیست دسته بندی";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle {لیست منابع }
+@section PageAction {
+    <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Articles/ArticleResource/Create")).Text(Resources.CommonComponent.CountryNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render(); }
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Articles/ArticleResource/Create")).Text(Resources.CommonComponent.CountryNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render(); }
+    </div>
+}
+@{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+    {
+        columns.Template(country => country.Title).Title(Resources.CommonComponent.Name).Width(300).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(country => "<a style='cursor: pointer;'  href=" + Url.Content("~/Articles/ArticleResource/Details") + "?Id=" + country.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | " +
+                                    "<a style='cursor: pointer;'  href=" + Url.Content("~/Articles/ArticleResource/Edit") + "?Id=" + country.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | " +
+                                    "<a style='cursor: pointer;'  href=" + Url.Content("~/Articles/ArticleResource/Delete") + "?Id=" + country.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(300).Encode(false);
+    })
+
+  .Sortable(sorting => sorting.Enabled(true))
+  .Pageable(paging => paging.Enabled(true))
+  .Filterable(filtering => filtering.Enabled(true))
+  //.Footer(true)
+  .Render();}

@@ -1,0 +1,28 @@
+﻿@model Radyn.Payment.DataStructure.Account
+<div class="radynForm">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Payment.Bank
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Model.Bank.Title
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Payment.AccountNumber
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.AccountNo)
+            </div>
+        </div>
+    </div>
+</div>
+

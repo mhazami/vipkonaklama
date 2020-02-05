@@ -1,0 +1,104 @@
+﻿@using Radyn.FileManager
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+@using Radyn.WebDesign.Definition
+
+@model Radyn.WebDesign.DataStructure.Resource
+<div class="radynForm">
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.WebDesign.Title
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit ">
+            <div class="item">
+                @Html.DisplayFor(x => x.Title)
+
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.WebDesign.Type
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(((Enums.ResourceType)Model.Type).GetDescription())
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                Text
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Text)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.WebDesign.Order
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Order)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Enable
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.Enabled ? @Resources.Common.Enable : @Resources.Common.Disable)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.WebDesign.File
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @if (!string.IsNullOrEmpty(Model.FileId))
+                {
+                    Html.RadynFile().Image().ID(Model.FileId.ToGuid()).DeleteButtonVisible("FileId").Height(98).Width(146).Download().Render();
+
+                }
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit" dir="@Resources.Design.Direction">
+        <div class="table-row-item table-c-fit">
+            @foreach (var item in (IEnumerable<KeyValuePair<byte, string>>)ViewBag.UseLayouts)
+            {
+                <div>
+                    <div class="table-row-cap">
+                        <div class="item">
+                            <div style="float: right">
+                                @{Html.Radyn().CheckBox().Enabled(false).ID("SelectType-" + item.Key).Text(item.Value).Name("SelectType-" + item.Key).Value(item.Key.ToString()).Checked(string.IsNullOrEmpty(Model.UseLayoutId) ? false : Model.UseLayoutId.Split(',').Contains(item.Key.ToString())).Render(); }
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

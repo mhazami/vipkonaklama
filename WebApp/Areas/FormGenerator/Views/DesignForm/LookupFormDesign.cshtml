@@ -1,0 +1,139 @@
+﻿@using Radyn.WebApp.Areas.FormGenerator.Tools
+@model Radyn.FormGenerator.DataStructure.FormStructure
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+@section Head
+{
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#DivView").css("height", screen.height);
+            $("#DivView").droppable({
+                drop: function (event, ui) {
+                    var Id = $(ui.draggable).clone().attr("Id");
+                    GenerateNewControl(Id);
+                }
+            });
+           
+            $("[nname*='Frm-']").each(function () {
+                debugger;
+                $(this).draggable({ helper: 'clone',drag: function() {
+                    var value = document.getElementById("DragedItem").value;
+                    $("#Order-" + value).html('<span>محل قرار گیری کنترل جدید</span>');
+                    }
+                });
+               
+            });
+            GetFormView();
+        });
+
+        function GenerateNewControl(type) {
+            if (type != "") {
+                var LangId = document.getElementById("LangId").value;
+                $.get("@Url.Content("~/FormGenerator/DesignForm/GenrateNewControl")", { formId: '@Model.Id', culture: LangId, controltype: type, order: document.getElementById("DragedItem").value }, function (data) {
+
+                    if (data.Result == true) {
+                        GetFormView();
+                        LookUpEdit(data.Id, type);
+                    }
+
+                });
+            }
+
+        }
+        function LookUpEdit(id, type) {
+            
+            var LangId = document.getElementById("LangId").value;
+            ShowModal("@Url.Content("~/FormGenerator/DesignForm/LookUpControlPanel?formId=")" + '@Model.Id' + "&Id=" + id + "&culture=" + LangId + "&controltype=" + type);
+            GetFormView();
+        }
+
+        function GetFormView() {
+            $("#DivView").html("");
+            var LangId = document.getElementById("LangId").value;
+            $.get("@Url.Content("~/FormGenerator/DesignForm/GeneratFormHtml")", { formId: '@Model.Id', culture: LangId }, function (data) {
+                if (data != "false") {
+                    $("#DivView").html(data).slideDown("slow");;
+                }
+
+            });
+        }
+
+    </script>
+}
+@section PageAction
+{
+    <p>
+        @Model.Name
+    </p>
+}
+<input type="hidden" value="@Model.Id" name="formId" id="formId" />
+<input type="hidden" id="DragedItem" name="DragedItem" />
+<table class="fit">
+    <tr>
+        <td>
+            <div class="fit">
+                <div class="item-row">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.Common.Language
+                        </div>
+                    </div>
+                    <div class="table-row-item">
+                        <div class="item">
+                            @Html.DropDownList("LangId", (SelectList)ViewBag.Cultures, new { onchange = "GetFormView();" })
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="rt-separator " style="width:2px "></td>
+    </tr>
+    <tr class="item-row fit">
+        <td style="float: right; width: 100%;">
+            <div class="fit">
+                <table class="fit" style="direction: @Resources.Design.Direction">
+                    <tr>
+                        <td class="width10percent" valign="top">
+                            <div id="DivControlList" style="position: fixed">
+                                @foreach (var keyValuePair in (List<KeyValuePair<string, String>>)ViewBag.Types)
+                                {
+                                    <div id="@keyValuePair.Key" style="cursor: pointer" nname="Frm-@keyValuePair.Key">
+                                        <div style="float: right">
+                                            <img src="@Generator.GetControlImageUrl(keyValuePair.Key)" />
+                                        </div>
+                                        &nbsp;
+                                        <div style="float: right; margin-right: 3px">
+                                            @keyValuePair.Value
+                                        </div>
+                                    </div>
+
+
+                                    <br />
+                                }
+
+                            </div>
+                        </td>
+                        <td class="rt-separator vertical-line" style="width: 1%"></td>
+                        <td class="width50percent" valign="top">
+                            <div id="DivView" style="overflow: scroll;">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+
+
+

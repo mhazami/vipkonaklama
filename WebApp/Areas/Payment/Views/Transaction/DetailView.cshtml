@@ -1,0 +1,130 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@using Radyn.Web.Mvc.Utility
+@model Radyn.Payment.DataStructure.Temp
+
+@{
+    ViewBag.Title = @Resources.Common.Create + " " + @Resources.Payment.Pay;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+
+}
+@section Head{
+
+}
+<div class="container" style="padding:40px 0">
+
+
+   
+    <div class="button-div m-btn waves-red i-return ">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).NavigateUrl(Url.Content("~" + Model.CallBackUrl)).Render();}
+    </div>
+
+    <div class="button-div m-btn waves-green i-accept">
+        @{
+            if (Model.Amount == 0)
+            {
+                Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Payment/Transaction/CallBackToRef?Id=" + Model.Id)).Text(Resources.Payment.Confirm).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("/Areas/Payment/Content/Images/continue.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("25").ImageHeight("25").Render();
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(Model.PaymentUrl))
+                {
+                    Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Payment/Transaction/View?Id=" + Model.Id)).Text(Resources.Payment.Confirm).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("/Areas/Payment/Content/Images/continue.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("25").ImageHeight("25").Render();
+                }
+                else
+                {
+                    Html.Radyn().ImageActionLink().Text(Resources.Payment.Confirm).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("/Areas/Payment/Content/Images/continue.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("25").ImageHeight("25").NavigateUrl(Url.Content("~" + Model.PaymentUrl + Model.Id)).Render();
+                }
+
+            }
+        }
+    </div>
+
+    <div class="fit">
+        <div class="radynForm user-form">
+            <div class="item-input">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.PayerTitle
+                    </div>
+                </div>
+                <div class="table-row-item readonly">
+                    <div class="item ">
+                        @Html.DisplayFor(model => model.PayerTitle, new { })
+                    </div>
+                </div>
+            </div>
+            <div class="item-input">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.TrackYourOrderNum
+                    </div>
+                </div>
+                <div class="table-row-item readonly">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.TrackYourOrderNum)
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-input">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Common.Total @Resources.Payment.Amount
+                    </div>
+                </div>
+                <div class="table-row-item readonly">
+                    <div class="item">
+                        @Model.Amount.ToString("n0") @(((Radyn.Common.Definition.Enums.CurrencyType)Model.CurrencyType).GetDescriptionInLocalization())
+
+                    </div>
+                </div>
+            </div>
+            <div class="item-input fit">
+                <div class="table-row-cap table-c-fit">
+                    <div class="item">
+                        @Resources.Payment.Description
+                    </div>
+                </div>
+                <div class="table-row-item table-fit table-c-fit readonly">
+                    <div class="item">
+                        @{
+                            Html.HtmlEncoder(Model.Description);
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            @{
+                Html.RenderAction("GetTempDiscount", "Transaction", new { area = "Payment", Id = Model.Id });
+            }
+        </div>
+    </div>
+
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).NavigateUrl(Url.Content("~" + Model.CallBackUrl)).Render();}
+    </div>
+
+    <div class="button-div m-btn waves-green i-accept">
+        @{
+            if (Model.Amount == 0)
+            {
+                Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Payment/Transaction/CallBackToRef?Id=" + Model.Id)).Text(Resources.Payment.Confirm).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("/Areas/Payment/Content/Images/continue.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("25").ImageHeight("25").Render();
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(Model.PaymentUrl))
+                {
+                    Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Payment/Transaction/View?Id=" + Model.Id)).Text(Resources.Payment.Confirm).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("/Areas/Payment/Content/Images/continue.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("25").ImageHeight("25").Render();
+                }
+                else
+                {
+                    Html.Radyn().ImageActionLink().Text(Resources.Payment.Confirm).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("/Areas/Payment/Content/Images/continue.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("25").ImageHeight("25").NavigateUrl(Url.Content("~" + Model.PaymentUrl + Model.Id)).Render();
+                }
+
+            }
+        }
+    </div>
+   
+</div>

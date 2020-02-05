@@ -1,0 +1,107 @@
+﻿@using Radyn.FileManager
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model List<Radyn.Payment.DataStructure.TempDiscount>
+@if (Model.Any())
+{
+    <div class="fit">
+        <div id="DivDiscount">
+            <div class="gv-table grid-control-user col-6" style="width: 650px; margin-top: 15px;">
+                <div class="gv-row gv-header">
+                    <div style="width: 30px;" class="gv-cell">
+                        <div class="cell-item">
+                            #
+                        </div>
+                    </div>
+                    <div style="width: 60px;" class="gv-cell ">
+                        <div class="cell-item">
+                            @Resources.Common.Select
+                        </div>
+                    </div>
+                    <div style="width: 120px;" class="gv-cell ">
+                        <div class="cell-item">
+                            @Resources.Payment.DiscountType
+                        </div>
+                    </div>
+                    <div style="width: 100px;" class="gv-cell ">
+                        <div class="cell-item">
+                            @Resources.Payment.DiscountValue
+                        </div>
+                    </div>
+                    <div style="width: 100px;" class="gv-cell ">
+                        <div class="cell-item">
+                            @Resources.Payment.Code
+                        </div>
+                    </div>
+                    <div style="width: 234px;" class="gv-cell gv-cell-last">
+                        <div class="cell-item">
+                            @Resources.Payment.AttachFile
+                        </div>
+                    </div>
+
+                </div>
+                <div class="gv-content">
+                    @{
+    int count = 0;
+    foreach (var discountType in Model)
+    {
+        count++;
+                        <div class="gv-row gv-row-style" title="@discountType.DiscountType.Remark">
+                            <div style="width: 30px;" class="gv-cell">
+                                <div class="cell-item">
+                                    @count.ToString()
+                                </div>
+                            </div>
+                            <div style="width: 60px;" class="gv-cell">
+                                <div class="cell-item">
+                                    @{Html.Radyn().CheckBox().ID("CheckSelectDiscount").Value(discountType.DiscountType.Id.ToString()).Name("CheckSelectDiscount").Render();}
+                                </div>
+                            </div>
+                            <div style="width: 120px;" class="gv-cell ">
+                                <div class="cell-item">
+                                    @discountType.DiscountType.Title
+                                </div>
+                            </div>
+                            <div style="width: 100px;" class="gv-cell ">
+                                <div class="cell-item">
+                                     @(discountType.DiscountType.IsPercent ? discountType.DiscountType.ValidValue + "%" : discountType.DiscountType.ValidValue.ToDecimal().ToString("n0") + " " + discountType.DiscountType.CurrencyType.ToEnum<Radyn.Common.Definition.Enums.CurrencyType>().GetDescriptionInLocalization())
+                                </div>
+                            </div>
+                            <div style="width: 100px;" class="gv-cell ">
+                                <div class="cell-item">
+                                    @if (!string.IsNullOrEmpty(discountType.DiscountType.Code) || discountType.DiscountType.IsAutoCode)
+                                    {
+                                        <input type="text" id="UserCode-@discountType.DiscountType.Id" name="UserCode-@discountType.DiscountType.Id"/>
+                                    }
+                                </div>
+                            </div>
+                            <div style="width: 234px;" class="gv-cell gv-cell-last">
+                                <div class="cell-item">
+                                    @if (discountType.DiscountType.ForceAttach)
+                                    {
+
+                                        Html.RenderAction("FileUploaderWithCustomUrl", "FileUpload", new { area = "FileManager",  fileName = discountType.DiscountType.Id , saveurl = "/Payment/DiscountType/UploadDicountFile?Id=" + discountType.DiscountType.Id, removeurl = "/Payment/DiscountType/RemoveDicountFile?Id=" + discountType.DiscountType.Id });
+
+
+                                      
+
+                                    }
+                                    @if (discountType.AttachId.HasValue)
+                                    {
+                                        Html.RadynFile().Image().ID(discountType.AttachId.Value).Download().Render();
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+    }
+                    }
+                </div>
+                <div class="gv-row  gv-footer" style="height: 25px">
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

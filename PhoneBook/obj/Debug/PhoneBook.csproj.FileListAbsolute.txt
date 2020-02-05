@@ -1,0 +1,7 @@
+E:\Online-WorkSpace\vipkonaklama\PhoneBook\obj\Debug\PhoneBook.csprojAssemblyReference.cache
+E:\Online-WorkSpace\vipkonaklama\PhoneBook\obj\Debug\PhoneBook.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.PhoneBook.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.PhoneBook.pdb
+E:\Online-WorkSpace\vipkonaklama\PhoneBook\obj\Debug\PhoneBook.csproj.CopyComplete
+E:\Online-WorkSpace\vipkonaklama\PhoneBook\obj\Debug\Radyn.PhoneBook.dll
+E:\Online-WorkSpace\vipkonaklama\PhoneBook\obj\Debug\Radyn.PhoneBook.pdb

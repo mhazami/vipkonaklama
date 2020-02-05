@@ -1,0 +1,72 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.WebApp.AppCode.Security
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width" name="viewport">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-36259791-5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-36259791-5');
+    </script>
+    @{
+        if (SessionParameters.CurrentWebSite != null && SessionParameters.CurrentWebSite.Configuration != null && SessionParameters.CurrentWebSite.Configuration.FavIcon != null)
+        {
+            <link rel="icon" type="image/png" href="@Radyn.FileManager.FileManagerContants.FileHandlerRoot@SessionParameters.CurrentWebSite.Configuration.FavIcon" />
+        }
+
+    }
+
+
+    @{Html.Radyn().Theme("RadynBase").Render(); }
+
+    <link href="@Url.Content("/App_Themes/RadynBase/CSS/" + Resources.Design.RadynDirection)" rel="stylesheet" />
+    <script>
+        function RefreshCaptcha() {
+            document.getElementById('captcha').src = '@Url.Content("~/RadynMVCControls/Captcha/")' + new Date().getTime();
+        }
+
+        $(document).ready(function () {
+            $("form").attr("enctype", "multipart/form-data");
+            $('input[type="submit"]').click(function () {
+                ShowPostBackLoader();
+            });
+            ShowRadynMessage();
+            HidePostBackLoader();
+
+        });
+    </script>
+
+    <script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2LBPGN');</script>
+    @RenderSection("Head", false)
+</head>
+<body>
+    <div class="loading-box" style="display: none">
+        <div class="loading"></div>
+    </div>
+    <div id="DivMasterMainBody">
+        @RenderBody()
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2LBPGN"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+
+    </div>
+
+    <div id="radynMessage"></div>
+
+    <div id="ModalForm"></div>
+</body>
+</html>

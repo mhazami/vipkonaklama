@@ -1,0 +1,51 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model System.Collections.Generic.IEnumerable<Radyn.Security.Tools.UserInfo>
+    @{
+        ViewBag.Title = @Resources.Common.List + " " + @Resources.Security.UserName;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.Security.UserName
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("User").Area("Security").Text(Resources.Security.UserName + " " + Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("User").Area("Security").Text(Resources.Security.UserName + " " + Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    <div class="radynForm">
+        @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+              {
+                  columns.Template(userinfo => userinfo.EnterPriseNode.PictureId.HasValue ? "<img src='" + Radyn.FileManager.FileManagerContants.FileHandlerRoot + "" + userinfo.EnterPriseNode.PictureId + "' height='50' width='50'/>" : "").Title(@Resources.Gallery1.Thumbnail).Width(100);
+                  columns.Template(userinfo => userinfo.User.Username).Title(Resources.Security.UserUsername).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(userinfo => userinfo.EnterPriseNode.RealEnterpriseNode.FirstName).Title(Resources.EnterPriseNode.FirstName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(userinfo => userinfo.EnterPriseNode.RealEnterpriseNode.LastName).Title(Resources.EnterPriseNode.LastName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(userinfo =>
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/UserRoles/Index?UserId=" + userinfo.Id + "") + "'>" + Resources.Security.UserRole + "</a>" + " | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/UserOperations/Index?UserId=" + userinfo.Id + "") + "'>" + Resources.Security.OperationName + "</a>" + " | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/UserGroups/Index?UserId=" + userinfo.Id + "") + "'>" + Resources.Security.GroupName + "</a>" + " | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/UserActions/Index?UserId=" + userinfo.Id + "") + "'>" + Resources.Security.ActionName + "</a>" + " | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/UserMenu/Index?UserId=" + userinfo.Id + "") + "'>" + Resources.Security.MenuName + "</a>" + " | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/User/Details?Id=" + userinfo.Id + "") + "'>" + Resources.Common.Detail + "</a>" + " | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/User/Edit?Id=" + userinfo.Id + "") + "'>" + Resources.Common.Edit + "</a>" + " | " +
+                  "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/User/Delete?Id=" + userinfo.Id + "") + "'>" + Resources.Common.Delete + "</a>"
+                  ).Width(300).Encode(false);
+              })
+
+          .Pageable(paging => paging.Enabled(true))
+          .Filterable(filtering => filtering.Enabled(true))
+          //.Footer(true)
+          .Render();}
+
+    </div>

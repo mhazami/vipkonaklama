@@ -1,0 +1,23 @@
+﻿@using Radyn.Message.Tools
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+
+@model IEnumerable<SMS>
+@{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+    {
+        columns.Template(sms => sms.Text.Trancate(50)).Title(@Resources.Message.Text).Width(300).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(sms => sms.Number).Title(@Resources.Message.Number).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(sms => ((Enums.DeliveredType)sms.Delivered).GetDescription()).Title(@Resources.Message.Status).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(sms => sms.SMSCount).Title(@Resources.Message.SMSCount).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(sms => sms.SMSAmount).Title(@Resources.Message.Amount).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(sms => sms.Date.ShamsiDate()).Title(@Resources.Message.Date).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(sms => sms.Date.GetTime()).Title(@Resources.Message.Time).Width(80).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(sms => " <a  style='cursor: pointer'    onclick=\"ResendSms(" + "'" + sms.Id + "'" + ");\" >" + @Resources.Message.Resend + "</a>").Title(@Resources.Message.Resend).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+    })
+
+  .Sortable(sorting => sorting.Enabled(true))
+  .Pageable(paging => paging.Enabled(true))
+  .Filterable(filtering => filtering.Enabled(true))
+  //.Footer(true)
+  .Render();}
+

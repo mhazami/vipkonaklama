@@ -1,0 +1,38 @@
+﻿@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp
+@model Radyn.Security.DataStructure.User
+<div class="radynForm">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Security.UserUsername
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Username)
+            </div>
+        </div>
+
+    </div>
+    <div id="div-PersonRealData">
+        @if (Model.EnterpriseNode.RealEnterpriseNode != null)
+        {
+            <div class="fit item-detail">
+                <fieldset>
+                    <legend>اطلاعات شخص</legend>
+                    @{ Html.RadynAction("GenerateRealInfo", "EnterpriseNode", new { area = "EnterpriseNode", realEnterpriseNode = Model.EnterpriseNode.RealEnterpriseNode, pageMode = PageMode.Details }); }
+                </fieldset>
+            </div>
+
+
+        }
+    </div>
+    <div class="fit item-detail">
+        <fieldset>
+            <legend>اطلاعات تماس</legend>
+            @{ Html.RadynAction("GetEnterpriseNodeInfo", "EnterpriseNode", new { area = "EnterpriseNode", enterpriseNode = Model.EnterpriseNode, pageMode = PageMode.Details }); }
+        </fieldset>
+    </div>
+
+</div>

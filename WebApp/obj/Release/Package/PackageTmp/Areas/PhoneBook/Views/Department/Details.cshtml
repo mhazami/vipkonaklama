@@ -1,0 +1,57 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.WebApp.AppCode.Security
+@model Radyn.PhoneBook.DataStructure.Department
+@{
+    ViewBag.Title = @Resources.Common.Detail + " " + @SessionParameters.PhoneBookConfiguration.DepartmentName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.Detail @SessionParameters.PhoneBookConfiguration.DepartmentName
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Department").Area("PhoneBook").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Department").Area("PhoneBook").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="fit">
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.PhoneBook.Title
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.Title)
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.PhoneBook.Office
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.Office.Title, new { })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

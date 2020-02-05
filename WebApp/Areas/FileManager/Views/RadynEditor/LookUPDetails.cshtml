@@ -1,0 +1,69 @@
+﻿@using Radyn.Web.Mvc
+@model Radyn.FileManager.DataStructure.Folder
+<script type="text/javascript">
+    function ModifyFolder() {
+        $.post("@Url.Content("~/FileManager/RadynEditor/ModifyFolder")", $('form[action^="~/FileManager/RadynEditor/GetFolder"]').serialize(), function (data) {
+            if (data != "") {
+                FolderTree();
+                ShowRadynMessage();
+            }
+            ShowRadynMessage();
+        });
+    }
+</script>
+
+
+
+<input value="@ViewBag.id" type="hidden" name="FolderId" id="FolderId" />
+<input value="@ViewBag.state" type="hidden" name="FolderState" id="FolderState" />
+<div class="item-row fit">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.ContentManager.Title
+        </div>
+    </div>
+    <div class="table-row-item table-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.Title)
+        </div>
+    </div>
+</div>
+<div class="item-row fit">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.FileManager.ParentFolder
+        </div>
+    </div>
+    <div class="table-row-item table-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.ParentFolder.Title)
+        </div>
+    </div>
+</div>
+@if (ViewBag.state == "Delete")
+{
+<div class="button-div m-btn waves-red i-delete">
+    @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Delete).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Callback().CallbackType(ImageActionLink.CallbackType.Script).CallbackReturnFunction("ModifyFolder();").ImageWidth("15").ImageHeight("20").Render();}
+</div>
+}
+
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Close_thisModal();" }).Render();}
+    </div>
+<script type="text/javascript">
+    $(function () {
+        $('#SponserRotator_ul').jcarousel({
+            auto: 3000,
+            vertical: false,
+            wrap: 'circular',
+            easing: 'swing',
+            pauseOnMouseOver: true,
+            animation: 1000,
+            scroll: 1
+            , ltr: true
+        });
+    });
+</script>
+
+
+

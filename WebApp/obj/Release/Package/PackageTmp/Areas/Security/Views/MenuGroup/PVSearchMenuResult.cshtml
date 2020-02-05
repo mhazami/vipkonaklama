@@ -1,0 +1,134 @@
+﻿@using Radyn.Utility
+@model IEnumerable<Radyn.Security.DataStructure.Menu>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#DivLoad").hide();
+        SelectMulti();
+    });
+    function SelectMulti() {
+        var resultId = '';
+        $("[id^='CheckSelect-']").each(function () {
+            if ($(this).attr("checked") == "checked") {
+                if (resultId.length > 0) {
+                    resultId += ",";
+                }
+                resultId += $(this).attr("mid");
+            }
+        });
+        document.getElementById("IdList").value = resultId;
+    }
+    function SelectAll() {
+        if ($('#CheckSelectAll').attr("checked") == "checked") {
+            $("[id^='CheckSelect-']").each(function () {
+                $(this).attr("checked", "checked");
+            });
+        } else {
+            $("[id^='CheckSelect-']").each(function () {
+                $(this).removeAttr("checked");
+            });
+        }
+        SelectMulti();
+    }
+</script>
+@if (Model.Any())
+{
+    <div>
+        <input type="hidden" id="IdList" name="IdList" />
+        <div class="gv-table" style="width: 700px; margin-top: 15px;">
+            <div class="gv-row gv-header">
+                <div style="width: 30px;" class="gv-cell ">
+                    <div class="cell-item">
+                        #
+                    </div>
+                </div>
+                <div style="width: 30px; text-align: center" class="gv-cell ">
+                    <div class="cell-item">
+                        <input type="checkbox"   name="CheckSelectAll" onclick=" SelectAll(); " id="CheckSelectAll" />
+
+                    </div>
+                </div>
+                
+                <div style="width: 150px;" class="gv-cell">
+                    <div class="cell-item">
+                        @Resources.Security.MenuTitle
+                    </div>
+                </div>
+                <div style="width: 300px;" class="gv-cell  ">
+                    <div class="cell-item">
+                        @Resources.Security.MenuUrl
+
+                    </div>
+                </div>
+               
+                <div style="width: 80px;" class="gv-cell">
+                    <div class="cell-item">
+                        @Resources.Security.MenuDisplay
+                    </div>
+                </div>
+                <div style="width: 50px;" class="gv-cell gv-cell-last ">
+                    <div class="cell-item">
+                        @Resources.Common.Enable
+                    </div>
+                </div>
+            </div>
+            <div class="gv-content">
+                @{
+
+    int count = 0;
+    foreach (var item in Model)
+    {
+        count++;
+
+                    <div class="gv-row gv-row-style" title="@item.Url" style="cursor: pointer" >
+                        <div style="width: 30px; text-align: center" class="gv-cell ">
+                            <div class="cell-item">
+                                @count.ToString()
+                            </div>
+                        </div>
+                        <div style="width: 30px; text-align: center" class="gv-cell ">
+                            <div class="cell-item">
+                                <input  type="checkbox" @((ViewBag.GroupId!=null&& (int)ViewBag.GroupId==item.MenuGroupId)?"checked='checked'":"") mid="@item.Id" name="CheckSelect-@item.Id" onclick=" SelectMulti(); " id="CheckSelect-@item.Id" />
+                            </div>
+                        </div>
+                      
+                        <div style="width: 150px;" class="gv-cell">
+                            <div class="cell-item">
+                                @item.Title
+                            </div>
+                        </div>
+
+                        <div style="width: 300px;" class="gv-cell">
+                            <div class="cell-item">
+                                @item.Url.Trancate(30)
+                            </div>
+                        </div>
+                       
+
+                        <div style="width: 80px;" class="gv-cell">
+                            <div class="cell-item">
+                                @(item.Display ? Resources.Common.Yes : Resources.Common.No)
+                            </div>
+                        </div>
+                        <div style="width: 50px;" class="gv-cell gv-cell-last ">
+                            <div class="cell-item">
+                                @(item.Enabled ? Resources.Common.Yes : Resources.Common.No)
+                            </div>
+                        </div>
+                    </div>
+
+    }
+                }
+            </div>
+            <div class="gv-row  gv-footer" style="height: 25px">
+            </div>
+
+        </div>
+    </div>
+}
+else
+{
+    <div class="fit" style="color: red">
+        @Resources.Common.No_results_found
+    </div>
+
+}

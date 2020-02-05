@@ -1,0 +1,62 @@
+﻿@using Radyn.FormGenerator.Tools
+@using Radyn.Web.Mvc
+
+@{
+    ViewBag.Title = "UserForm";
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+@section Head{
+    <script>
+        function LoadForm() {
+            var id = $("#DrpForms").val();
+            $.get('/WebDesign/WebDesign/GetUserFormInfo', { id: id, refId: '@ViewBag.UserId', formState:'@FormState.DetailsMode', date: new Date().getTime() }, function (data) {
+                    $("#DivItem").html("");
+                    $("#DivItem").html(data);
+
+                });
+        }
+        $(document).ready(function () {
+                LoadForm();
+            });
+
+
+    </script>
+}
+
+
+
+
+@section PageAction
+{
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Text(@Resources.Common.Return).OtherAttribute(new { onclick = "Close_thisModal()" }).Render(); }
+
+
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Text(@Resources.Common.Return).OtherAttribute(new { onclick = "Close_thisModal()" }).Render(); }
+
+
+    </div>
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div>
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.WebDesign.UserForm
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.DropDownList("DrpForms", (SelectList)ViewBag.FormList,new {onchange= "LoadForm()" })
+            </div>
+        </div>
+    </div>
+    <div class="fit" id="DivItem"></div>
+
+}

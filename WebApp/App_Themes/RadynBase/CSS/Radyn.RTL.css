@@ -1,0 +1,407 @@
+﻿@import url('../../../AppCode/Fonts/Yekan/stylesheet.css');
+
+.table-row-cap, .table-row-item, .table-row-point, .table-row-roller, .table-row-empty .content {
+    direction: rtl; /* در فایل های ایمپورت شده مشکل ایجاد میکند*/
+}
+
+.content {
+    direction: rtl;
+}
+
+
+.radynbar {
+    float: right;
+    text-align: right;
+}
+
+    .radynbar h3 {
+        float: right;
+    }
+
+    .radynbar select {
+        float: left;
+        text-align: right;
+    }
+
+    .radynbar img.congbimg {
+        float: right;
+    }
+
+.content, .header, .v-line, .big-pane, .navbar,
+.child-pane, .navbar button, .navbar-item,
+.navbar-item-img, .navbar-item-p, ul.top-level,
+ul.sub-level li, .footer, .page-caption span,
+.page-caption p, .innerRL, .inner-lookup,
+.c-widget, .c-widget-content, .c-widget-head span,
+.c-widget-head p, .c-widget-footer span {
+    float: right;
+}
+
+.radynbar-menu {
+    float: left;
+    margin-left: 20px;
+}
+
+
+.topbar {
+    float: left;
+}
+
+.c-widget-head span, .c-widget-footer span {
+    background-position: 40px 95px;
+}
+
+.child-pane {
+    right: 0;
+}
+
+.navbar button, .navbar-item-img, .navbar-item-p {
+    margin-right: 15px;
+}
+/*MENU*/
+.nav-operation, #nav {
+    float: right;
+    direction: rtl;
+}
+
+.nav-operation-item img, .nav-operation-item:hover img,
+.nav-Gmenu-item img, .nav-Gmenu-item:hover img {
+    float: right;
+    /*border-style: none solid solid none;*/
+}
+
+.nav-operationText {
+    float: right;
+    margin-right: 5px;
+}
+
+li:hover .sub-level {
+    right: 75px;
+}
+/*VERTICAL-MENU*/
+#sidebar-wrapper {
+    float: right;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    /*border-left: solid 1px #d8d8d8;*/
+}
+
+#page-content-wrapper {
+    float: right;
+    margin-right: 50PX;
+}
+
+
+#Menu li[name="submenuItem"] img {
+    padding: 0 5px;
+}
+
+/*VERTICAL-MENU*/
+/*CONTAINER*/
+.page-caption, .c-widget .c-widget-head, .c-widget-footer {
+    padding: 0;
+    float: right;
+}
+
+.c-widget .c-widget-head, ul.sub-level li span {
+    padding: 0 2% 0 0;
+}
+
+.c-widget .c-widget-head {
+    padding: 0;
+}
+/*END-Container*/
+/*FOOTER*/
+.radyn-Resources {
+    float: right;
+}
+
+    .radyn-Resources img {
+        float: right;
+    }
+
+    .radyn-Resources a p {
+        float: right;
+        margin-right: 5px;
+    }
+/*END-FOOTER*/
+
+/*OperatitonPanel*/
+.d-item {
+    /*margin-right: 13px;*/
+    float: right;
+    margin: 0 -1px;
+}
+
+    .d-item img {
+      right: 20px
+    }
+
+.d-item-menu span {
+    float: left;
+}
+/*-------------Form-------------*/
+/*--DataEntryForm--*/
+.radynForm, .table-half {
+    direction: rtl;
+    text-align: right;
+    float: right;
+}
+
+.table-row-cap, .table-row-item, .table-row-point, .table-row-roller, .table-row-empty {
+    float: right;
+    margin-right: .5%;
+    text-align: right;
+    direction: rtl;
+}
+
+.table-row-roller {
+    margin-right: 7px;
+}
+
+.button-div {
+    float: right;
+    margin-right: 10px;
+}
+
+/*--END-DataEntryForm--*/
+/*--GridView--*/
+/*.gv-table {
+    direction: rtl;
+}
+
+.gv-row {
+    float: right;
+}
+
+.gv-cell {
+    float: right;
+    border-width: 0 0 0 1px;
+    border-style: none none none solid;
+    border-color: #A4ABB2;
+}
+
+.gv-cell-last {
+    border: none;
+}
+
+.paginate_buttons {
+    border-width: 0 1px 1px 0;
+    border-style: none solid solid none;
+}
+
+.table_info {
+    border-width: 0 0 1px 1px;
+    border-style: none none solid solid;
+    text-align: left;
+}
+
+.paginate_buttons, .table_info {
+    float: right;
+}
+
+    .paginate_buttons ul li {
+        margin-right: -1px;
+    }
+
+    .paginate_buttons ul, .paginate_buttons ul li {
+        float: right;
+    }
+
+.gv-icon {
+    float: right;
+}
+
+.gv-status {
+    border-left-style: solid;
+    border-left-width: 1px;
+    float: right;
+}
+
+.gv-pager {
+    float: right;
+}
+
+.gv-link {
+    float: right;
+}
+
+.gv-numeric {
+    float: right;
+}
+
+.gv-arrow-first {
+    background-position: -48px -192px;
+}
+
+    .gv-arrow-first:hover {
+        background-position: -48px -224px;
+    }
+
+.gv-arrow-last {
+    background-position: 0 -192px;
+}
+
+    .gv-arrow-last:hover {
+        background-position: 0 -224px;
+    }
+
+.gv-arrow-prev {
+    background-position: -32px -192px;
+}
+
+    .gv-arrow-prev:hover {
+        background-position: -32px -224px;
+    }
+
+.gv-arrow-next {
+    background-position: -16px -208px;
+}
+
+    .gv-arrow-next:hover {
+        background-position: -16px -224px;
+    }
+    .grid-guid,.grid-guid-title,.grid-guid ul,.grid-guid ul li  {
+    float: right;
+}
+.grid-guid {
+    direction: rtl;
+    text-align: right;
+}*/
+/*--END-GridView--*/
+.page-align {
+    float: right !important;
+    border: none;
+}
+.search-align {
+    float: right
+}
+
+.page-invertalign {
+    float: left;
+}
+
+.fit {
+    float: right;
+}
+
+.top-menu-icon {
+    float: right;
+    margin: 0 8px;
+}
+
+.page-action-title {
+    float: right;
+}
+/*--------------END-Form---------------*/
+/*  L  O  G  I  N  */
+
+.login-container, .login-header, .login-data-row,
+.login-data-row-item, .login-data-row-item input,
+.login-data-row, .login-main, .login-avatar {
+    float: right;
+}
+
+    .login-data-row-item input {
+        text-align: right;
+    }
+
+    .login-data-row-item p {
+        direction: rtl;
+        float: right;
+    }
+
+/* E  N  D -- L  O  G  I  N  */
+.ContexMenu {
+    text-align: right;
+}
+/*Form Generator*/
+.fgitem {
+    left: 6px
+}
+
+    .fgitem, .fgitem ul, .fgitem ul li {
+        float: right;
+    }
+
+/*INTERNALMAIL*/
+.nav-mail-item span, .nav-mail-item:hover span {
+    float: right;
+    border-style: none solid solid none;
+}
+
+.nav-mailText {
+    float: right;
+    margin-right: 5px;
+}
+/*EDITOR*/
+.editortype {
+    float: right;
+}
+
+    .editortype:first-child {
+        border-radius: 0px 3px 3px 0px;
+        -moz-border-radius: 0px 3px 3px 0px;
+        -webkit-border-radius: 0px 3px 3px 0px;
+    }
+
+    .editortype:last-child {
+        border-radius: 3px 0px 0px 3px;
+        -moz-border-radius: 3px 0px 0px 3px;
+        -webkit-border-radius: 3px 0px 0px 3px;
+    }
+
+    .editortype p {
+        float: right;
+        margin-right: 2px;
+    }
+
+    .editortype img {
+        float: right;
+    }
+
+.text-align {
+    text-align: right;
+}
+/*ToggleArrow*/
+.arrow {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    float: right;
+    cursor: pointer;
+    margin: 0 3px;
+}
+/*JQueryUI*/
+.ui-widget {
+    font-family: Vazir;
+    font-size: 11px;
+}
+
+.width-datepicker .item > div {
+    text-align: left;
+}
+
+.width-datepicker img {
+    margin: 3px;
+    vertical-align: middle;
+}
+
+.navigation-menu {
+    right: 0;
+}
+
+#page-content-wrapper {
+    float: left !important;
+}
+
+@media (max-width: 768px) {
+    .radynbar-menu {
+        float: left;
+        margin-left: 0;
+    }
+}.position-item {
+    float: left
+}

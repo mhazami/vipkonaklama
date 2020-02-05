@@ -1,0 +1,79 @@
+﻿@model Radyn.Security.DataStructure.User
+@using Radyn.FileManager
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp
+
+<input type="hidden" value="@Model.Id" name="Id" id="Id" />
+@Html.ValidationSummary(true)
+<div class="radynForm">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Security.UserUsername
+
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Username)
+
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Security.UserPassword
+
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.PasswordFor(model => model.Password)
+
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                تکرار رمز
+
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.Password("RepeatPassword")
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="div-PersonRealData">
+        @if (Model.EnterpriseNode.RealEnterpriseNode != null)
+        {
+            <div class="fit item-detail">
+                <fieldset>
+                    <legend>اطلاعات شخص</legend>
+                    @{ Html.RadynAction("GenerateRealInfo", "EnterpriseNode", new { area = "EnterpriseNode", realEnterpriseNode = Model.EnterpriseNode.RealEnterpriseNode, pageMode = PageMode.Edit }); }
+                </fieldset>
+            </div>
+
+
+        }
+    </div>
+    <div class="fit item-detail">
+        <fieldset>
+            <legend>اطلاعات تماس</legend>
+            @{ Html.RadynAction("GetEnterpriseNodeInfo", "EnterpriseNode", new { area = "EnterpriseNode", enterpriseNode = Model.EnterpriseNode, pageMode = PageMode.Edit }); }
+        </fieldset>
+    </div>
+
+  
+
+
+
+</div>

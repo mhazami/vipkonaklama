@@ -1,0 +1,74 @@
+﻿@using Radyn.FileManager
+@using Radyn.News.Tools
+@using Radyn.Utility
+@using Radyn.WebApp.AppCode.Security
+@model IEnumerable<Radyn.News.DataStructure.News>
+<div class="content-item-header">
+
+    @{
+        var outstring = (!string.IsNullOrEmpty(ViewBag.Category)) ? @ViewBag.Category : @Resources.News.NewsNews;
+        <div class="content-item-header-caption">
+            @outstring
+        </div>
+    }
+
+
+</div>
+<div class="content-item-board">
+    <div class="SlideShow-news">
+        <div id="main-News">
+            <div id="slideshow-News" style="margin: auto; margin-top: 0px">
+                @foreach (var news in Model)
+                {
+
+                    <div class="NewsItem">
+                        @{
+                    var data = @news.GetNewsContent(SessionParameters.Culture).Title1;
+                    var link = data ?? " ";
+                            <a href="/News/News/NewsView/@news.Id/@link.FixUrlCatchall()">
+
+                                @if (news.ThumbnailId.HasValue)
+                                {
+                                    Html.RadynFile().Image().ID(news.ThumbnailId.Value).Height(100).Width(150).Render();
+                                }
+                            </a>
+                        }
+                        <p class="NewsItem-caption">
+                            @{
+                                var data2 = @news.GetNewsContent(SessionParameters.Culture).Title1;
+                                var link2 = data2 ?? " ";
+                                <a href="/News/News/NewsView/@news.Id/@link2.FixUrlCatchall()">
+                                    @news.GetNewsContent(SessionParameters.Culture).Title1
+                                </a>
+                            }
+                        </p>
+                        <div class="NewsItem-text">
+                            @news.GetNewsContent(SessionParameters.Culture).Lead
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div style="margin: auto; width: 400px; height: 20px;">
+                <a href="#" style="float: right; width: 20px"><span id="prev">
+                    <img src="/App_Themes/IR-Themes/Images/Right.png" />
+                </span></a>
+                <ul id="nav" style="float: right; width: auto">
+                </ul>
+                <a href="#" style="float: right; width: 20px;"><span id="next">
+                    <img src="/App_Themes/IR-Themes/Images/Left.png" /></span> </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

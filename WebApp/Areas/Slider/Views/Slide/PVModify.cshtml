@@ -1,0 +1,97 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc
+@using Radyn.WebApp.Areas.Common.Component
+@model Radyn.Slider.DataStructure.Slide
+<script type="text/javascript">
+
+    function GetSlideShow() {
+        $("#ShowSlideItems").html("");
+        var value = document.getElementById("EffectType").value;
+        var slidItemTimeOut = document.getElementById("SlidItemTimeOut").value;
+        ShowModal("@Url.Content("~/Slider/Slide/ShowSliderItems")",
+            { Id: '@Model.Id', effecttype: value, timeout: slidItemTimeOut, date: new Date().getTime() });
+
+
+    }
+
+</script>
+<div id="ShowSlideItems">
+</div>
+<div id="GalleryContent">
+</div>
+<div class="fit item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Slider.Title
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            <div style="float: right">
+                @{
+                    Html.LanguageContentTextBoxFor(Model, m => m.Title);
+                }
+            </div>
+            <div class="m-btn waves-blue icon-btn i-brush " style="    margin: 0 5px;">
+                
+                @{Html.Radyn().ImageActionLink().Align(Resources.Design.Align.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/form-view.png")).ImagePosition(Resources.Design.Align.ToEnum<ImageActionLink.Position>()).OtherAttribute(new {@style = "font-size:13px; float:left;", onclick = "GetSlideShow();"}).Render(); }
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Slider.EffectType
+        </div>
+    </div>
+    <div class="table-row-item ">
+        <div class="item">
+            @Html.DropDownListFor(model => model.EffectType, (SelectList)ViewBag.effecttypeEnums, new { onchange = "GetSlideShow();" })
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Slider.SlidItemTimeOut
+        </div>
+    </div>
+    <div class="table-row-item ">
+        <div class="item has-btn-fix">
+            @Html.TextBoxFor(model => model.SlidItemTimeOut, new { onkeyup = "GetSlideShow();" })
+            <span>
+                @Resources.Slider.Second
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Slider.SlideHeight
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.TextBoxFor(model => model.HeightSlide)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Common.Enable
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.RadioButtonFor(m => m.Enabled, true) @Resources.Gallery1.Active
+            @Html.RadioButtonFor(m => m.Enabled, false) @Resources.Gallery1.DeActive
+        </div>
+    </div>
+</div>
+
+

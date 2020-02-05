@@ -1,0 +1,33 @@
+﻿@using Radyn.FormGenerator.Tools
+@model IEnumerable<UIControl>
+@using (Html.BeginForm())
+{
+    <div style="float: right; width: 400px;">
+        @foreach (var control in Model)
+        {
+            <div style="float: right; width: 200px;">
+                @control.Caption :
+            </div>
+            <div style="float: right; width: 200px;">
+                @{var controlType = control.Type.ToEnum<ControlType>();
+                  switch (controlType)
+                  {
+                      case ControlType.TextBox:
+                    <input type="text" name="@control.Name" id="@control.Name"/>
+                          break;
+                      case ControlType.DropDownList:
+                    <select name="@control.Name" id="@control.Name"/>
+                          break;
+                      case ControlType.CheckBox:
+                    <input type="checkbox" name="@control.Name" id="@control.Name"/>
+                    <label for="@control.Name">@control.Caption</label>
+                          break;
+
+                  }
+                }
+            </div>
+        }
+        <input type="submit" value="جستجو" />
+    </div>
+}
+

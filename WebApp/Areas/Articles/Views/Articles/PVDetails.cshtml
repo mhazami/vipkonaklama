@@ -1,0 +1,128 @@
+﻿@using Radyn.Article.DataStructure
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp
+@model Article
+<div class="table">
+    <div >
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Article.ArticleTitle
+            </div>
+        </div>
+        <div class="table-row-item table-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Title, new { style = "height: 100px" })
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Article.ArticleCategoryName
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @(Model.ArticleCategory != null ? Model.ArticleCategory.Title : "")
+            </div>
+        </div>
+    </div>
+    <div class="fit">
+        <div class="table-row-cap table-c-fit">
+            <div class="item">
+                @Resources.Article.ArticleAbstract
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit table-fit">
+            <div class="item">
+                @{Html.HtmlEncoder(Model.Abstract);}
+            </div>
+        </div>
+    </div>
+    <div class="fit">
+        <div class="table-row-cap table-c-double">
+            <div class="item">
+                @Resources.Article.ArticleText
+            </div>
+        </div>
+        <div class="table-row-item table-c-double table-fit">
+            <div class="item">
+                @{Html.HtmlEncoder(Model.Text);}
+            </div>
+        </div>
+    </div>
+    <div class="fit">
+        <div class="table-row-cap " >
+            <div class="item">
+                کلمات کلیدی
+            </div>
+        </div>
+        <div class="table-row-item table-fit">
+            <div class="item">
+                @Html.DisplayFor(x => x.Keyword)
+            </div>
+        </div>
+    </div>
+   
+    @Html.ValidationSummary(true)
+    <div>
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Article.ArticlePublishDate
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.DisplayFor(model => model.PublishDate)
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Article.Status
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @(Model.Enable ? Resources.Article.Enabel : Resources.Article.Disabel)
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="table-row-cap">
+            <div class="item">
+                ترتیب نمایش
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.DisplayFor(model => model.Order, new { })
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="table-row-cap table-c-fit">
+            <div class="item">
+                @Resources.Article.ArticleThumbnailId
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @if (Model.ThumbnailId.HasValue)
+                {
+
+                    Html.RadynAction("FileUploaderViewMode", "FileUpload", new { area = "FileManager", filePropName = "ThumbnailId", fileid = Model.ThumbnailId, fileName = "File" });
+
+
+                }
+            </div>
+        </div>
+    </div>
+    <div id="div-ItemProperty" style="float: right;width: 100%">
+        @{
+            Html.RadynAction("Index", "ArticleAttachment", new { area = "Articles", articleId = Model.Id, Status = PageMode.Details });
+        }
+    </div>
+
+</div>

@@ -1,0 +1,13 @@
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.FileManager.dll.config
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.FileManager.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.FileManager.pdb
+E:\Online-WorkSpace\vipkonaklama\lib\fa-IR\Radyn.FileManager.resources.dll
+E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Release\Radyn.FileManager.Resources.FileManager.resources
+E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Release\Radyn.FileManager.Resources.FileManager.fa-IR.resources
+E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Release\FileManager.csproj.GenerateResource.cache
+E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Release\FileManager.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Release\fa-IR\Radyn.FileManager.resources.dll
+E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Release\FileManager.csproj.CopyComplete
+E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Release\Radyn.FileManager.dll
+E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Release\Radyn.FileManager.pdb
+E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Release\FileManager.csprojAssemblyReference.cache

@@ -1,0 +1,85 @@
+﻿@using Radyn.Web.Mvc
+@model Radyn.FAQ.DataStructure.FAQContent
+<script type="text/javascript">
+    var htmlSourcePopup;
+    function showHtml(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var editor = $('#Html').data('tEditor');
+        var html = editor.value();
+        if (!htmlSourcePopup) {
+            htmlSourcePopup = $('<div class="html-view">' + '<div class="textarea t-state-default"><textarea></textarea></div>'
+                + '<div class="t-button-wrapper">' + '<button id="htmlCancel" class="t-button t-state-default">Cancel</button>'
+                + '<button id="htmlUpdate" class="t-button t-state-default">Update</button>' + '</div>' + '</div>')
+                .css('display', 'none').tWindow({
+                    title: 'View Generated HTML',
+                    modal: true,
+                    resizable: false,
+                    draggable: true,
+                    width: 700,
+                    onLoad: function () {
+                        var $popup = $(this);
+                        $popup.find('.textarea').css('width', function () {
+                            return 700 - (this.offsetWidth - $(this).width());
+                        })
+                            .focus().end().find('#htmlCancel')
+                            .click(function () { htmlSourcePopup.close(); }).end()
+                            .find('#htmlUpdate')
+                            .click(function () {
+                                var value = $popup.find('textarea').val(); editor.value(value); htmlSourcePopup.close();
+                            });
+                    },
+                    onClose: function () { editor.focus(); }, effects: $.telerik.fx.toggle.defaults()
+                }).data('tWindow');
+        } $(htmlSourcePopup.element).find('textarea').text(html); htmlSourcePopup.center().open();
+    }
+
+    $(document).ready(function () {
+        $('.t-html').click(showHtml);
+    });
+
+</script>
+@{Html.Radyn().Theme("RadynEditor").Render(); }
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.News.NewsContentLanguageId
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.DropDownListFor(model => model.LanguageId, (SelectList)ViewBag.Lanuages, new { onchange = "changeCulture();" })
+        </div>
+    </div>
+</div>
+<div class="item-row fit">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.FAQ.Question
+        </div>
+    </div>
+    <div class="table-row-item table-c-auto">
+        <div class="item">
+            @Html.TextAreaFor(model => model.Question, new { style = "width:98%;height: 150px;" })
+        </div>
+    </div>
+</div>
+<div class="item-row fit">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.FAQ.Answer
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @if (Model != null)
+            {
+                
+                     Html.Radyn().EditorbootstrapFor(Model, i => i.Answer).Render();
+                 
+                
+
+            }
+        </div>
+    </div>
+</div>

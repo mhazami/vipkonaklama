@@ -1,0 +1,111 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head
+{
+      
+   
+    <script type="text/javascript">
+
+        function ModifyItem(state, id) {
+            if (state == "Create" & id == "") id = '@Guid.NewGuid()';
+            if (state != "" & id != "") {
+                GetFolderModal(state, id);
+
+            }
+
+            ShowRadynMessage();
+        }
+      
+        function GetFolderModal(state, Id) {
+            ShowModal("/FileManager/WebDesignFolder/GetFolder", { state: state, id: Id });
+           
+        }
+
+
+        function GetFiles(id) {
+            if (id != "") {
+                $("#FileoutputPanel").html("");
+                $.get("@Url.Content("~/FileManager/WebDesignFolder/GetFiles")", { Id: id, date: new Date().getTime() }, function (data) {
+                    if (data != "") {
+                        $("#FileoutputPanel").html(data);
+                        $("#FileoutputPanel").slideDown();
+                       
+                    }
+                    ShowRadynMessage();
+                });
+            }
+
+        }
+
+        function AddFile(Id) {
+            if (Id != "") {
+                GetFilesModal(null,Id);
+            }
+        }
+        function GetFirstFiles() {
+            $("#FileoutputPanel").html("");
+            $.get("@Url.Content("~/FileManager/WebDesignFolder/GetFirstFiles")", { date: new Date().getTime() }, function (data) {
+                if (data != "") {
+                    $("#FileoutputPanel").html(data);
+                    $("#FileoutputPanel").slideDown();
+
+                }
+                ShowRadynMessage();
+            });
+
+        }
+        function FolderTree() {
+            $("#FolderoutputPanel").html("");
+            $.get("@Url.Content("~/FileManager/WebDesignFolder/FolderTree")", { date: new Date().getTime() }, function(data) {
+                if (data != "") {
+                    $("#FolderoutputPanel").html(data);
+                    $("#FolderoutputPanel").slideDown();
+                    
+                }
+                ShowRadynMessage();
+            });
+        }
+        
+        function GetFilesModal(Id, folderId) {
+            ShowModal("@Url.Content("~/FileManager/WebDesignFolder/LookUPFileModify")", { fileId: Id, id: folderId });
+           
+        }
+        $(document).ready(
+            function() {
+                FolderTree();
+                GetFirstFiles();
+            }
+        );
+    </script>
+    <style>
+        #outputPanel, #FileoutputPanel {
+            min-height: 400px;
+        }
+    </style>
+
+}
+@section PageTitle
+{
+    @Resources.FileManager.FileManagement
+}
+@section PageAction
+{
+
+}
+@section PageActionDown
+{
+
+}
+
+<div class="fit t-rtl file-manager ">
+    <div class="radynForm">
+        <div class="page-align width24percent" id="FolderoutputPanel" style="background-color: #F2F3F4; border: solid 1px #D8D8D8; margin: 0 9px 0 0">
+        </div>
+        <div class="page-align width73percent" id="FileoutputPanel" style="margin-right: 10px;">
+        </div>
+    </div>
+</div>
+<div id="DivShowFolderModal"></div>
+<div id="DivFilesShowModal"></div>

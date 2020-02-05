@@ -1,0 +1,13 @@
+﻿@using Radyn.Web.Mvc.Utility
+@{
+    ViewBag.Title ="عدم دسترسی";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+<div class="access-box">
+    <img src="~/Content/Images/access.png" />
+    <p >
+        @{Html.HtmlEncoder(Resources.Security.AccessDeny);}
+    </p>
+  
+</div>

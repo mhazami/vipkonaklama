@@ -1,0 +1,55 @@
+﻿@using Radyn.Web.Mvc;
+@model Radyn.Payment.DataStructure.Temp
+<script type="text/javascript">
+    $(document).ready(function () {
+       GetList();
+
+    });
+    function GetTemp(tempId) {
+        var userId = document.getElementById("C-UserId").value;
+        var callbackurl = document.getElementById("C-callbackurl").value;
+        var postdataUrl = document.getElementById("C-postdataUrl").value;
+        if (userId != "") {
+            $("#DivList").slideUp();
+            ShowPostBackLoader();
+            $("#DivNewUserTemp").html("");
+            $.get("@Url.Content("~/Payment/UserTransaction/GetUserTemp")", { tempId: tempId, userId: userId, callbackurl: callbackurl, postdataUrl: postdataUrl, date: new Date().getTime() }, function (data) {
+                $("#DivNewUserTemp").html(data).slideDown("slow");;
+            }).complete(function () {
+                HidePostBackLoader();
+            });
+        }
+    }
+    function GetList() {
+        var userId = document.getElementById("C-UserId").value;
+        var value = document.getElementById("C-Value").value;
+        if (userId != "") {
+            $("#DivNewUserTemp").slideUp();
+            ShowPostBackLoader();
+            $("#DivList").html("");
+            $.get("@Url.Content("~/Payment/UserTransaction/GetUserTransactionList")", { userId: userId, value: value, date: new Date().getTime() }, function (data) {
+                $("#DivList").html(data).slideDown("slow");;
+                }).complete(function () {
+                HidePostBackLoader();
+            });
+        }
+    }
+</script>
+
+
+<input type="hidden" name="C-Value" id="C-Value" value="@ViewBag.value" />
+<input type="hidden" name="C-UserId" id="C-UserId" value="@ViewBag.userId" />
+<input type="hidden" name="C-callbackurl" id="C-callbackurl" value="@ViewBag.callbackurl" />
+<input type="hidden" name="C-postdataUrl" id="C-postdataUrl" value="@ViewBag.postdataUrl" />
+<div class="row-btn-user">
+
+    <div class="button-div m-btn waves-yellow i-add ">
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Payment.Pay + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "GetTemp();" }).Render();}
+    </div>
+</div>
+<div class="fit" id="DivNewUserTemp">
+</div>
+<div class="radynForm">
+    <div class="fit" id="DivList">
+    </div>
+</div>

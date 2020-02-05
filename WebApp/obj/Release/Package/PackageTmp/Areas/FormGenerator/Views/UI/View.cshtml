@@ -1,0 +1,22 @@
+﻿@using System.Web.Mvc.Html
+@using Radyn.FormGenerator.DataStructure
+@using Radyn.WebApp.Areas.FormGenerator.Tools
+@model Radyn.FormGenerator.DataStructure.FormStructure
+@{
+    ViewBag.Title = Model!=null? Model.Name:string.Empty;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+@section Head{
+  
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    if (Model != null)
+    {
+        Html.FormSaveDataGenerator(Model.Id, new FormStructure().GetType().Name);
+    }
+   
+
+
+}

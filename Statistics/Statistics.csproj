@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F00E74E6-AE53-4DA6-9DEC-D0B05A0E7D33}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.Statistics</RootNamespace>
+    <AssemblyName>Radyn.Statistics</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.FileManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.FileManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\AccountsBO.cs" />
+    <Compile Include="BO\BrowserBO.cs" />
+    <Compile Include="BO\CountryBO.cs" />
+    <Compile Include="BO\IPRengBO.cs" />
+    <Compile Include="BO\LogBO.cs" />
+    <Compile Include="BO\LogItemsBO.cs" />
+    <Compile Include="BO\OSBO.cs" />
+    <Compile Include="BO\SearchEngineBO.cs" />
+    <Compile Include="BO\WebSiteBO.cs" />
+    <Compile Include="DataStructure\Accounts.cs" />
+    <Compile Include="DataStructure\Browser.cs" />
+    <Compile Include="DataStructure\Country.cs" />
+    <Compile Include="DataStructure\IPReng.cs" />
+    <Compile Include="DataStructure\Log.cs" />
+    <Compile Include="DataStructure\LogItems.cs" />
+    <Compile Include="DataStructure\OS.cs" />
+    <Compile Include="DataStructure\SearchEngine.cs" />
+    <Compile Include="DataStructure\WebSite.cs" />
+    <Compile Include="DA\AccountsDA.cs" />
+    <Compile Include="DA\BrowserDA.cs" />
+    <Compile Include="DA\CountryDA.cs" />
+    <Compile Include="DA\IPRengDA.cs" />
+    <Compile Include="DA\LogDA.cs" />
+    <Compile Include="DA\LogItemsDA.cs" />
+    <Compile Include="DA\OSDA.cs" />
+    <Compile Include="DA\SearchEngineDA.cs" />
+    <Compile Include="DA\WebSiteDA.cs" />
+    <Compile Include="Facade\AccountsFacade.cs" />
+    <Compile Include="Facade\BrowserFacade.cs" />
+    <Compile Include="Facade\CountryFacade.cs" />
+    <Compile Include="Facade\Interface\IAccountsFacade.cs" />
+    <Compile Include="Facade\Interface\IBrowserFacade.cs" />
+    <Compile Include="Facade\Interface\ICountryFacade.cs" />
+    <Compile Include="Facade\Interface\IIPRengFacade.cs" />
+    <Compile Include="Facade\Interface\ILogFacade.cs" />
+    <Compile Include="Facade\Interface\ILogItemsFacade.cs" />
+    <Compile Include="Facade\Interface\IOSFacade.cs" />
+    <Compile Include="Facade\Interface\ISearchEngineFacade.cs" />
+    <Compile Include="Facade\Interface\IWebSiteFacade.cs" />
+    <Compile Include="Facade\IPRengFacade.cs" />
+    <Compile Include="Facade\LogFacade.cs" />
+    <Compile Include="Facade\LogItemsFacade.cs" />
+    <Compile Include="Facade\OSFacade.cs" />
+    <Compile Include="Facade\SearchEngineFacade.cs" />
+    <Compile Include="Facade\WebSiteFacade.cs" />
+    <Compile Include="StatisticsBaseFacade.cs" />
+    <Compile Include="Tools\ModelView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatisticComponents.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnterpriseNode\EnterpriseNode.csproj">
+      <Project>{46953CE7-5185-464D-9DB4-3BCB91BD04A6}</Project>
+      <Name>EnterpriseNode</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

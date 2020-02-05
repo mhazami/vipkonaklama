@@ -1,0 +1,75 @@
+﻿@using Radyn.FormGenerator.ControlFactory.Base
+@model List<object>
+<script type="text/javascript">
+    function visible(item) {
+        $("div[name='menu']").css('display', 'none');
+        $("#" + item.id + " > div").css('display', 'inline');
+    }
+    function HideMenu(item) {
+        $("#" + item.id + " > div[name='menu']").css('display', 'none');
+    }
+   
+    function DeleteLisItemControl(Id) {
+        if (confirm('@Resources.Common.Are_You_Soure_For_Delete')) {
+            $.get("@Url.Content("~/FormGenerator/DesignForm/DeleteVaidatorControl")", { jsonvalue: '@ViewBag.jsonvalue', Id: Id, date: new Date().getTime() }, function (data) {
+                if (data.Result != false) {
+                    GetValidatorListView(data.Value, '@ViewBag.formId','@ViewBag.allItems');
+
+
+                }
+            });
+        }
+
+    }
+   
+</script>
+<style>
+    .row-editor {
+        position:relative
+    }
+</style>
+<div>
+
+
+    @foreach (ValidatorControl item in Model)
+    {
+        <div class="fit row-editor"  id="row-@item.Id"  onmouseover="visible(this);" onmouseout="HideMenu(this);">
+            <div class="table-row-item width50percent">
+                <div class="item">
+                    @item.ErrorMessage
+                </div>
+            </div>
+            <div class="table-row-item width24percent">
+                <div class="item">
+                    @item.Group
+
+                </div>
+            </div>
+            <div class="table-row-item width18percent ">
+                <div class="item">
+                    @(item.Enable ? Resources.Common.Enable : Resources.Common.Disable)
+
+                </div>
+            </div>
+            
+            <div class="fgitem width50percent" name="menu">
+                <ul>
+                    <li class="hint--top" data-hint="@Resources.Common.Edit">
+                        <a href="#" onclick=" GenerateValidatorControl('@item.Id','@item.GetType().Name','@ViewBag.jsonvalue')">
+                            <img align="absmiddle" src="@Url.Content("~/Content/Images/edit-white.png")" />
+                        </a>
+                    </li>
+                    <li class="hint--top" data-hint="@Resources.Common.Delete">
+                        <a href="#" onclick=" DeleteLisItemControl('@item.Id')">
+                            <img align="absmiddle" src="@Url.Content("~/Content/Images/Delete-Close-white.png")" />
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+            
+    }
+   
+</div>
+

@@ -1,0 +1,43 @@
+﻿@model Radyn.Common.DataStructure.City
+@Html.ValidationSummary(true)
+
+<div class="radynForm">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.CommonComponent.CityName
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Title)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Enable
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.Enable, true)@Resources.Common.Enable
+                @Html.RadioButtonFor(model => model.Enable, false)@Resources.Common.Disable
+            </div>
+        </div>
+    </div>
+     <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.CommonComponent.Province
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DropDownListFor(model => model.ProvinceId, (SelectList)ViewBag.Provincelist)
+                </div>
+            </div>
+        </div>
+</div>
+

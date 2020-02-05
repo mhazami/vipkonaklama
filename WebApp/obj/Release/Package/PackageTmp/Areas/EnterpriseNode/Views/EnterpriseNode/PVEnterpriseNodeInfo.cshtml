@@ -1,0 +1,175 @@
+﻿@using Radyn.FileManager
+@using Radyn.Web.Mvc.Utility
+@model Radyn.EnterpriseNode.DataStructure.EnterpriseNode
+
+<script>
+    $(function () {
+        ChangeProvinceId();
+        $('#ProvinceId').on('change', function () {
+            ChangeProvinceId();
+        })
+    })
+    function ChangeProvinceId() {
+        $('#CityId').html('');
+        var id = $("#ProvinceId").val();
+        if (id != undefined && id!="") {
+            RadynGet('/Common/City/GetByProvinceId',
+                { ProvinceId: id },
+                function(data) {
+                    $('#CityId').append($('<option>').attr('value', ""));
+                    for (var i = 0; i < data.length; i++) {
+                        var op = $('<option>').attr('value', data[i].Id).text(data[i].Name);
+                        if ('@Model.CityId' == data[i].Id)
+                            op.attr("selected", "selected");
+                        $('#CityId').append(op);
+                    }
+                });
+        }
+
+    }
+   
+</script>
+
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Province
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.DropDownListFor(model => model.ProvinceId, (SelectList) ViewBag.ProvinceList, "", new {})
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.City
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                <select id="CityId" name="CityId"></select>
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Email
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Tel
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Tel)
+                @Html.ValidationMessageFor(model => model.Tel)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Fax
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Fax)
+                @Html.ValidationMessageFor(model => model.Fax)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Cellphone
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Cellphone)
+                @Html.ValidationMessageFor(model => model.Cellphone)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.WebSite
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Website)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Address
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Address)
+                @Html.ValidationMessageFor(model => model.Address)
+            </div>
+        </div>
+    </div>
+
+
+    <div class="item-row file-upload">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Picture
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @if (Model != null)
+                {
+                    if (Model.PictureId.HasValue)
+                    {
+                        Html.RadynFile().Image().ID(Model.PictureId.Value).DeleteButtonVisible("PictureId").Height(98).Width(146).Render();
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="item-row file-upload">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.EnterPriseNode.Picture
+                <span>
+                    @Resources.EnterPriseNode.MaxFileLength (200KB)
+                </span>
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+               
+                @{
+                    Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager",  fileName = "Image" });
+
+                }
+               
+            </div>
+        </div>
+    </div>

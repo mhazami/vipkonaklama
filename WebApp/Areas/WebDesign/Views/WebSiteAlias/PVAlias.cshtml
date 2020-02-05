@@ -1,0 +1,40 @@
+﻿@using Radyn.Web.Mvc;
+@model Radyn.WebDesign.DataStructure.WebSiteAlias
+
+<script type="text/javascript">
+    function PostWebSiteAlias() {
+
+        $.post("@Url.Content("~/WebDesign/WebSiteAlias/GetAlias")", $('form[action^="@Url.Content("~/WebDesign/WebSiteAlias/GetAlias")"]').serialize(), function (data) {
+            if (data != "false") {
+                $("#DivAlias").html("");
+                GetAliasList();
+                ShowRadynMessage();
+
+            }
+        });
+        ShowRadynMessage();
+
+    }
+</script>
+@Html.HiddenFor(x => x.WebSiteId)
+<div class="fit">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.WebDesign.InstallPath
+        </div>
+    </div>
+    <div class="table-row-item table-fit">
+        <div class="item">
+            @Html.TextBoxFor(model => model.Url)
+              
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="button-div m-btn waves-green i-save">
+            @{ Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "PostWebSiteAlias();" }).Render(); }
+        </div>
+    </div>
+
+
+
+</div>

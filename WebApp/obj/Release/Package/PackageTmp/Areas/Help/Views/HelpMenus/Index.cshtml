@@ -1,0 +1,68 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@model IEnumerable<Radyn.Security.DataStructure.Menu>
+@{
+    ViewBag.Title = @Resources.Common.List + " " + @Resources.Security.MenuName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            GetMenuList();
+
+        });
+
+        function GetMenuList() {
+            
+            $("#DivLoadindex").show();
+            $("#IndexResult").html("");
+            $.get('/Security/OperationMenus/GetHelpMenu', { helpId: '@ViewBag.helpId', date: new Date().getTime() }, function (data) {
+                if (data != "") {
+                    $("#IndexResult").hide();
+                    $("#IndexResult").html(data);
+                    $("#IndexResult").slideDown('normal');
+                } else {
+                    ShowRadynMessage("@Resources.Common.No_results_found");
+                }
+
+            }).complete(function () {
+                $("#DivLoadindex").hide();
+            });
+        }
+    </script>
+}
+@section PageTitle
+{
+    @Resources.Common.List @Resources.Security.MenuName
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-blue i-add">
+        @{Html.Radyn().ImageActionLink().ActionName("AddMenu", new { helpId = ViewBag.helpId }).ControllerName("HelpMenus").Area("Help").Text(@Resources.Security.MenuName + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Help").Area("Help").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render();}
+
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-blue i-add">
+        @{Html.Radyn().ImageActionLink().ActionName("AddMenu", new { helpId = ViewBag.helpId }).ControllerName("Help").Area("Help").Text(@Resources.Security.MenuName + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Help").Area("Help").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render();}
+
+    </div>
+}
+<div class="fit" align="center" id="DivLoadindex">
+    <img id="loadingIndex" width="150" src="/Content/Images/Gif/Loading128.gif" alt="" />
+</div>
+<div class="fit" id="IndexResult">
+</div>
+

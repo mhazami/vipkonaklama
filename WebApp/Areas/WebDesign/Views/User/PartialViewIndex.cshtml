@@ -1,0 +1,83 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc
+@using Radyn.WebDesign.Definition
+
+@model IEnumerable<dynamic>
+    <script type="text/javascript">
+        function LookUpForm(id, state) {
+            if (id != "") {
+                    switch (state) {
+                    case "Edit":
+                            ShowModal("@Url.Content("~/WebDesign/User/Edit?Id=")" + id);
+                        break;
+                    case "Details":
+                        ShowModal("@Url.Content("~/WebDesign/User/Details?Id=")" + id);
+                        break;
+                    case "Delete":
+                            ShowModal("@Url.Content("~/WebDesign/User/Delete?Id=")" + id);
+                        break;
+                    case "Forms":
+                            ShowModal("@Url.Content("~/WebDesign/ManagmentPanel/LookUpUserForm?userId=")" + id);
+                        break;
+
+                    }
+
+                }
+
+
+
+        }
+
+      
+        function Paymentorder(Id) {
+            if (Id != "") {
+                ShowModal("@Url.Content("~/Payment/UserTransaction/LookUPUserTransaction?Id=")" + Id + "&callbackurl=/WebDesign/UserPanel/UserTemps&postdataUrl=/WebDesign/UserPanel/AddUserTemp");
+            }
+        }
+
+        function loginas(Id) {
+            if (confirm("@Resources.WebDesign.AreYouSureLoginUserPanel")) {
+                window.open("/WebDesign/ManagmentPanel/LoginAsUser?Id=" + Id);
+            }
+        }
+
+       
+    </script>
+
+
+    <div class="fit">
+        @if (Model.Any())
+        {
+
+
+            Html.Radyn().Grid(Model).Name("RadynGrid").Columns(columns =>
+            {
+                columns.Template(user => user.FirstNameAndLastName).Title(Resources.WebDesign.Name).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(user => user.Username).Title(Resources.WebDesign.UserName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(user => (bool)ViewBag.enableedit ? Html.DropDownList("Status-" + (Guid)user.Id, new SelectList(ViewBag.SearchstatusList, "Key", "Value", (byte)user.Status), new { }) + "<input type=\"hidden\" name=\"ModelId\" id=\"ModelId\" value=\"" + (Guid)user.Id + "\" />" + "<input type=\"hidden\" name=\"oldstatus-" + (Guid)user.Id + "\" id=\"oldstatus-" + (Guid)user.Id + "\" value=\"" + user.Status + "\" />" : ((string)user.Status.ToString()).ToEnum<Enums.UserStatus>().GetDescriptionInLocalization()).Title(Resources.WebDesign.Status).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" }).Encode(false);
+                columns.Template(user => user.RegisterDate).Title(Resources.WebDesign.RegisterDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(user =>
+                    "<a style='cursor: pointer;'  onclick=\"LookUpForm('" + user.Id + "','Details')\"  >" +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                    "<a style='cursor: pointer;'  onclick=\"DeleteUser('" + user.Id + "')\" >" +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> | " +
+                    "<a style='cursor: pointer;'  onclick=\"LookUpForm('" + user.Id + "','Edit')\" > " +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a>| " +
+                    "<img width='18' align='absmiddle' title='" + Resources.Security.Login + "'   onclick=\"loginas('" + user.Id + "')\"  style=\"cursor: pointer\"  src='" +
+                    Url.Content("/Areas/WebDesign/Content/Images/Loginas.png") + "' /> | <img  style='cursor: pointer;vertical-align:middle;' width = '18px;' height = '18px;'  src=\"/Areas/WebDesign/Content/Images/payment-details.png"
+                    + "\"  title='" + @Resources.Payment.Paymentorder + "'   onclick=\"Paymentorder('" + user.Id + "');\"  />").Width(320).Encode(false);
+
+
+
+            })
+        .Pageable(x => x.Enabled(true))
+        .Searchable(x => x.Enabled(false))
+        .Filterable(x => x.Enabled(true))
+        .Sortable(x => x.Enabled(true))
+        .Render();
+
+
+        }
+
+    </div>
+

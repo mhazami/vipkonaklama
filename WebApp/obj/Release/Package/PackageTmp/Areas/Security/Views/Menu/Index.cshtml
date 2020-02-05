@@ -1,0 +1,79 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Security.DataStructure.Menu>
+    @{
+        ViewBag.Title = @Resources.Common.List + " " + @Resources.Security.MenuName;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.Security.MenuName
+
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Menu").Area("Security").Text(@Resources.Security.MenuName + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+        </div>
+
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Menu").Area("Security").Text(@Resources.Security.MenuName + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+        </div>
+    }
+
+    @using (Html.BeginForm())
+    {
+        <div class="radynForm">
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                   
+                    </div>
+                </div>
+                <div class="table-row-item select-row two-col">
+                        <input type="text" name="txtSearch" value="@ViewBag.txtSearch"  />
+                        <div class="m-btn waves-blue i-search icon-btn ">
+                            <span>
+                                <input type="submit" name="name" value="" />
+                            </span>
+                       
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="radynForm">
+            <div class="fit">
+                @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                      {
+                          columns.Template(menu => menu.Title).Title(@Resources.Security.MenuTitle).Width(200).HeaderHtmlAttributes(new { style = "text-align:center" });
+                          columns.Template(menu => menu.Url).Title(@Resources.Security.MenuUrl).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                          columns.Template(menu => menu.ParentId.HasValue && menu.ParentMenu != null ? menu.ParentMenu.Title : "").Title(@Resources.Security.MenuParentId).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                          columns.Template(resource =>
+                              "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/Menu/Details?Id=" + resource.Id) + "'>" +
+                              " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                              "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/Menu/Edit?Id=" + resource.Id) + "'> " +
+                              " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                              "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/Menu/Delete?Id=" + resource.Id) + "'>" +
+                              " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+
+                      })
+
+                            .Sortable(sorting => sorting.Enabled(true))
+                            .Pageable(paging => paging.Enabled(true))
+                            .Filterable(filtering => filtering.Enabled(true))
+                            //.Footer(true)
+                            .Render();}
+            </div>
+        </div>
+    }
+

@@ -1,0 +1,21 @@
+﻿@model Radyn.Message.DataStructure.MailInfo
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#DivLoadItem").html("");
+        $.get("/Message/InternalMail/GetModify", { userId: '@ViewBag.UserId', date: new Date().getTime() }, function (data) {
+            $("#DivLoadItem").html(data).slideDown("slow");;
+        });
+    });
+
+    
+    
+</script>
+
+    <div id="divfix">
+        <div id="DivLoadItem">
+        </div>
+       
+        
+    </div>
+
+

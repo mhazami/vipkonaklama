@@ -1,0 +1,206 @@
+﻿@using Radyn.FileManager
+@using Radyn.Payment.Tools
+@using Radyn.Utility
+@using Radyn.Web.Mvc.Utility
+@model Radyn.Payment.DataStructure.Transaction
+
+@if (Model != null)
+{
+    <div class="radynForm users-page full-size detail">
+
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.PayerTitle
+                </div>
+            </div>
+            <div class="table-row-item readonly">
+                <div class="item">
+                    @Html.DisplayFor(model => model.PayerName, new { style = "width:250px" })
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.TrackYourOrderNum
+                </div>
+            </div>
+            <div class="table-row-item readonly">
+                <div class="item">
+                    @Html.DisplayFor(model => model.TrackYourOrderNum)
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.PayType
+                </div>
+            </div>
+            <div class="table-row-item readonly">
+                <div class="item">
+                    @(((Enums.PayType)Model.PayTypeId).GetDescriptionInLocalization())
+                </div>
+            </div>
+        </div>
+        @if (Model.PayTypeId == (byte)Enums.PayType.Documnet)
+        {
+            <div class="item-input">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.DocScan
+                    </div>
+                </div>
+                <div class="table-row-item readonly">
+                    <div class="item">
+                        @if (Model.DocScan != null)
+                        {
+                            <img src="/Areas/Payment/Content/Images/go-bottom.png" height="20" width="20" style="cursor: pointer" onclick="window.open('@(FileManagerContants.FileHandlerRoot + Model.DocScan + "?dl=true")')" />
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="item-input">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.DocumentNumber
+                    </div>
+                </div>
+                <div class="table-row-item readonly">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.DocNo, new { style = "width:250px" })
+                    </div>
+                </div>
+            </div>
+            <div class="item-input">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.AccountNumber
+                    </div>
+                </div>
+                <div class="table-row-item readonly">
+                    <div class="item">
+                        @Html.DisplayFor(model => model.Account.AccountNo, new { style = "width:250px" })
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="item-input">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.TransactionCode
+                    </div>
+                </div>
+                <div class="table-row-item readonly">
+                    <div class="item">
+                        @Model.RefId
+                    </div>
+                </div>
+            </div>
+            <div class="item-input">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.TransactionResult
+                    </div>
+                </div>
+                <div class="table-row-item readonly">
+                    <div class="item">
+                        @ViewBag.Message
+                    </div>
+                </div>
+            </div>
+            if (Model.SaleReferenceId != null)
+            {
+                <div class="item-input">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.Payment.SaleRefrence
+                        </div>
+                    </div>
+                    <div class="table-row-item readonly">
+                        <div class="item">
+                            @Model.SaleReferenceId
+                        </div>
+                    </div>
+                </div>
+            }
+            if (Model.SaleTrackingId != null)
+            {
+                <div class="item-input">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.Payment.SaleTracking
+                        </div>
+                    </div>
+                    <div class="table-row-item readonly">
+                        <div class="item">
+                            @Model.SaleTrackingId
+                        </div>
+                    </div>
+                </div>
+            }
+            if (Model.OnlineBankId.HasValue)
+            {
+                <div class="item-input">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.Payment.Bank
+                        </div>
+                    </div>
+                    <div class="table-row-item readonly">
+                        <div class="item">
+                            @(Model.OnlineBankId.ToString().ToEnum<Radyn.PaymentGateway.Tools.Enums.Bank>().GetDescription())
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Payment.PayDate
+                </div>
+            </div>
+            <div class="table-row-item readonly">
+                <div class="item">
+                    @Html.DisplayFor(transaction => transaction.PersianDate)
+                </div>
+            </div>
+        </div>
+        <div class="item-input">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Total @Resources.Payment.Amount
+                </div>
+            </div>
+            <div class="table-row-item readonly">
+                <div class="item">
+                    @Model.Amount.ToString("n0") @(((Radyn.Common.Definition.Enums.CurrencyType)Model.CurrencyType).GetDescriptionInLocalization())
+                </div>
+            </div>
+        </div>
+        <div class="fit item-input">
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.Payment.Description
+                </div>
+            </div>
+            <div class="table-row-item readonly table-fit table-c-fit">
+                <div class="item">
+                    @{
+                        Html.HtmlEncoder(Model.Description);
+                    }
+                </div>
+            </div>
+        </div>
+        
+        
+        @{
+            Html.RenderAction("GetTransactionDiscount", "Transaction", new { area = "Payment", Id = Model.Id });
+        }
+
+    </div>
+            }

@@ -1,0 +1,47 @@
+﻿@using Radyn.Web.Mvc;
+@model Radyn.Payment.DataStructure.Transaction
+@{
+    ViewBag.Title = @Resources.Common.Create + " " + @Resources.Payment.Account;
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+      
+    function Print() {
+        $.get("@Url.Content("~/Payment/Transaction/PrintTransaction")", { Id: '@ViewBag.Id', date: new Date().getTime() }, function (data) {
+            if (data != "false") {
+                window.open('@Url.Content("~/RptViewer.aspx")');
+
+            }
+        });
+    }
+</script>
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-blue">
+        <i class="fas fa-print"></i>
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Print).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("/Content/Images/printer.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Print();" }).Render();}
+    </div>
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Close).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Close_thisModal();" }).Render();}
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-blue">
+        <i class="fas fa-print"></i>
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Print).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("/Content/Images/printer.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Print();" }).Render();}
+    </div>
+    <div class="button-div m-btn waves-red">
+        <i class="fas fa-undo-alt"></i>
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Close).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Close_thisModal();" }).Render();}
+    </div>
+
+}
+
+@{
+    Html.RenderAction("GetTransactionDetails", "Transaction", new { area = "Payment", Id = ViewBag.Id });
+}

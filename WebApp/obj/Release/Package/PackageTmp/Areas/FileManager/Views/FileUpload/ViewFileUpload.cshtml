@@ -1,0 +1,23 @@
+﻿@using Radyn.FileManager
+@*<script src='/Scripts/jquery-1.7.2.min.js'></script>*@
+
+
+<div class="my_select-group_box">
+
+   
+    <div id="DivImages-@ViewBag.FileName" class="divImages">
+        @if (ViewBag.Fileid != null && ViewBag.Fileid != Guid.Empty)
+        {
+            if (ViewBag.IsImage)
+            {
+                Html.RadynFile().Image().ID((Guid)ViewBag.Fileid).Style("cursor: pointer").OtherAttribute(new { onclick = "window.open('" + FileManagerContants.FileHandlerRoot + ViewBag.Fileid + "?dl=true" + "');" }).Render();
+            }
+            else
+            {
+                Html.RadynFile().Image().ID((Guid)ViewBag.Fileid).Download().Render();
+            }
+
+
+        }
+    </div>
+</div>

@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdvertisementCount" xml:space="preserve">
+    <value>Advertisement Count</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>Section</value>
+    <comment>AdvertisementSection</comment>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+    <comment>AdvertisementType</comment>
+  </data>
+  <data name="SectionPositionKeyWord" xml:space="preserve">
+    <value>Class</value>
+    <comment>TariffDefinition</comment>
+  </data>
+  <data name="SectionKeyWord" xml:space="preserve">
+    <value>Section  KeyWord</value>
+    <comment>AdvertisementSection</comment>
+  </data>
+  <data name="ClickCount" xml:space="preserve">
+    <value>Click Count</value>
+    <comment>TariffDefinition</comment>
+  </data>
+  <data name="ComponentTitle" xml:space="preserve">
+    <value>Advertisement System</value>
+  </data>
+  <data name="KeyWord" xml:space="preserve">
+    <value>Key Word</value>
+    <comment>AdvertisementSection</comment>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Position</value>
+    <comment>AdvertisementSectionPosition</comment>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+    <comment>TariffDefinition</comment>
+  </data>
+  <data name="ShowCount" xml:space="preserve">
+    <value>Show Count</value>
+    <comment>TariffDefinition</comment>
+  </data>
+  <data name="ShowTime" xml:space="preserve">
+    <value>Show Time</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="ViewCount" xml:space="preserve">
+    <value>View Count</value>
+    <comment>TariffDefinition</comment>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Height</value>
+    <comment>Size</comment>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>Width</value>
+    <comment>Size</comment>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Tariff" xml:space="preserve">
+    <value>Tariff</value>
+    <comment>TariffClass</comment>
+  </data>
+  <data name="PerClick" xml:space="preserve">
+    <value>Per Click</value>
+    <comment>TariffClass</comment>
+  </data>
+  <data name="PerDay" xml:space="preserve">
+    <value>Per Day</value>
+    <comment>TariffClass</comment>
+  </data>
+  <data name="PerVisit" xml:space="preserve">
+    <value>Per Visit</value>
+    <comment>TariffClass</comment>
+  </data>
+  <data name="DayCount" xml:space="preserve">
+    <value>Day Count</value>
+    <comment>Tariff</comment>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+    <comment>Tariff</comment>
+  </data>
+  <data name="VisitCount" xml:space="preserve">
+    <value>Visit Count</value>
+    <comment>Tariff</comment>
+  </data>
+  <data name="TariffClass" xml:space="preserve">
+    <value>Tariff Class</value>
+  </data>
+  <data name="AdvertisementClickCount" xml:space="preserve">
+    <value>ClickCount</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="AdvertisementEnable" xml:space="preserve">
+    <value>Enable</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="AdvertisementFileId" xml:space="preserve">
+    <value>Advertisement File</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="AdvertisementFromDate" xml:space="preserve">
+    <value>View FromDate</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="AdvertisementHeight" xml:space="preserve">
+    <value>Height</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="AdvertisementNavigateUrl" xml:space="preserve">
+    <value>NavigateUrl</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="AdvertisementPositionId" xml:space="preserve">
+    <value>Position</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="AdvertisementText" xml:space="preserve">
+    <value>Text</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="AdvertisementToDate" xml:space="preserve">
+    <value>View ToDate</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="AdvertisementTypeId" xml:space="preserve">
+    <value>Advertisement Type</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="AdvertisementVisitCount" xml:space="preserve">
+    <value>VisitCount</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="Advertisementwidth" xml:space="preserve">
+    <value>Width</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="AdsShowCount" xml:space="preserve">
+    <value>Show Count</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="Orientation" xml:space="preserve">
+    <value>Orientation</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="TimeOut" xml:space="preserve">
+    <value>Time Out</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="Horizontal" xml:space="preserve">
+    <value>Horizontal</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="Vertical" xml:space="preserve">
+    <value>Vertical</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="Advertisements" xml:space="preserve">
+    <value>Advertisements</value>
+    <comment>Advertisement</comment>
+  </data>
+  <data name="SectionPosition" xml:space="preserve">
+    <value>SectionPosition</value>
+    <comment>SectionPosition</comment>
+  </data>
+</root>

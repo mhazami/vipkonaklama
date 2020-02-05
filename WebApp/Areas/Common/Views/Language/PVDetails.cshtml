@@ -1,0 +1,79 @@
+﻿@using Radyn.FileManager
+@model Radyn.Common.DataStructure.Language
+<div class="radynForm">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.CommonComponent.Id
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Id)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.CommonComponent.LanguageDisplayName
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.DisplayName)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.CommonComponent.LanguageEnabled
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.Enabled ? @Resources.Common.Enable : @Resources.Common.Disable)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.CommonComponent.LanguageEnabled
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.ShowLogo ? @Resources.Common.Yes : @Resources.Common.No)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.Common.IsDefult
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.IsDefault ? @Resources.Common.Yes : @Resources.Common.No)
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.CommonComponent.LanguageLogoId
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @{Html.RadynFile().Image().ID(Model.LogoId).Width(50).Height(50).Render();}
+
+            </div>
+        </div>
+    </div>
+
+</div>
+

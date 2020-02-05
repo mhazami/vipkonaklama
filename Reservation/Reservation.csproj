@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FE0CEE75-9984-46E7-8C6F-5D9F677FC9AA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.Reservation</RootNamespace>
+    <AssemblyName>Radyn.Reservation</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn.Framework">
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\CustomerBO.cs" />
+    <Compile Include="BO\OrderBO.cs" />
+    <Compile Include="BO\ReservePriceBO.cs" />
+    <Compile Include="BO\RoomBO.cs" />
+    <Compile Include="BO\RoomTypeBO.cs" />
+    <Compile Include="DataStructure\Customer.cs" />
+    <Compile Include="DataStructure\ReservePrice.cs" />
+    <Compile Include="DataStructure\Order.cs" />
+    <Compile Include="DataStructure\Room.cs" />
+    <Compile Include="DataStructure\RoomType.cs" />
+    <Compile Include="DA\CustomerDA.cs" />
+    <Compile Include="DA\OrderDA.cs" />
+    <Compile Include="DA\ReservePriceDA.cs" />
+    <Compile Include="DA\RoomDA.cs" />
+    <Compile Include="DA\RoomTypeDA.cs" />
+    <Compile Include="Facade\CustomerFacade.cs" />
+    <Compile Include="Facade\Interface\ICustomerFacade.cs" />
+    <Compile Include="Facade\Interface\IOrderFacade.cs" />
+    <Compile Include="Facade\Interface\IReservePriceFacade.cs" />
+    <Compile Include="Facade\Interface\IRoomTypeFacade.cs" />
+    <Compile Include="Facade\Interface\IRoomFacade.cs" />
+    <Compile Include="Facade\OrderFacade.cs" />
+    <Compile Include="Facade\ReservePriceFacade.cs" />
+    <Compile Include="Facade\RoomFacade.cs" />
+    <Compile Include="Facade\RoomTypeFacade.cs" />
+    <Compile Include="ReservationBaseFacade.cs" />
+    <Compile Include="ReservationComponent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Reservation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reservation.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Enum.cs" />
+    <Compile Include="Tools\Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Reservation.fa-IR.resx" />
+    <EmbeddedResource Include="Resources\Reservation.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Reservation.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reservation.tr-TR.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{3b7185a9-70d1-4cbe-9835-88944bf9384c}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseNode\EnterpriseNode.csproj">
+      <Project>{46953ce7-5185-464d-9db4-3bcb91bd04a6}</Project>
+      <Name>EnterpriseNode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileManager\FileManager.csproj">
+      <Project>{189d7172-b237-4afa-a5aa-105aa7693637}</Project>
+      <Name>FileManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security\Security.csproj">
+      <Project>{35aea767-a451-4bcd-a8f5-e0e412686279}</Project>
+      <Name>Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

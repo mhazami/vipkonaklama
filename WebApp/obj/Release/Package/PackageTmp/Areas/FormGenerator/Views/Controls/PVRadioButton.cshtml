@@ -1,0 +1,20 @@
+﻿@model Radyn.FormGenerator.ControlFactory.Controls.RadioButton
+@Html.ValidationSummary(true)
+<div class="item-row fit">
+    <div class="table-row-cap">
+        <div class="item">
+              @Resources.FormGenerator.Group
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(x => x.GroupName)
+        </div>
+    </div>
+</div>
+<div>
+    @{
+        Html.RenderAction("BaseGenerateBoolControl", "BaseControls", new { Id = Model.Id, formId = ViewBag.formId, culture = ViewBag.culture });
+    }
+</div>
+

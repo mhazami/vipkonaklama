@@ -1,0 +1,59 @@
+﻿@using Radyn.FileManager
+@using Radyn.Utility
+@model Radyn.ContentManager.DataStructure.DefaultHtmlDesgin
+<div class="radynForm">
+    <div class="item-row ">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Title
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayTextFor(x => x.Title)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Enable
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.Enabled ? @Resources.Common.Enable : @Resources.Common.Disable)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                تصویر
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @if (!string.IsNullOrEmpty(Model.Image))
+                {
+                    Html.RadynFile().Image().ID(Model.Image.ToGuid()).DeleteButtonVisible("Image").Render();
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="item-row fit">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.ContentManager.Html
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit" style="height: 500px;">
+            <div class="item">
+                @Html.DisplayFor(x => x.Body)
+
+            </div>
+        </div>
+    </div>
+</div>
+

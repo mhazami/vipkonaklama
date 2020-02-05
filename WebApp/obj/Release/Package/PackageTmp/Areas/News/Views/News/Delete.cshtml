@@ -1,0 +1,14 @@
+﻿@using Radyn.News.DataStructure
+@model News
+@{
+    ViewBag.Title = @Resources.Common.Delete + " " + @Resources.News.NewsNews;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+  
+   
+}
+@using (Html.BeginForm())
+{
+    Html.RenderAction("GetDetails", "News", new {area = "News", Id = ViewBag.Id});
+}

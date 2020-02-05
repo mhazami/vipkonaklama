@@ -1,0 +1,60 @@
+﻿@using Radyn.Web.Mvc;
+@model KeyValuePair<string, string>
+    @{
+        ViewBag.Title = "";
+        Layout = "~/Views/Shared/LookUpLayout.cshtml";
+    }
+
+    @section Head
+ {
+
+        <script type="text/javascript">
+            function PostData() {
+                $.post("/FormGenerator/Evaluation/SetEvaluation", $('form[action^="/FormGenerator/Evaluation/LookupEvaluation"]').serialize(), function (data) {
+                    for (var item in data) {
+                        $("#" + "Weight-" + data[item].controlId).html(data[item].value);
+                    }
+                    ShowRadynMessage();
+                });
+                ShowRadynMessage();
+            }
+
+        </script>
+    }
+    @section PageAction
+    {}
+
+
+    @using (Html.BeginForm())
+    {
+
+        <input type="hidden" value="@ViewBag.Langid" name="LanguageId" id="LanguageId" />
+        <input type="hidden" value="@ViewBag.FromScale" name="FromScale" id="FromScale" />
+        <div class="MasterInnerContent">
+            <div class="MasterInnerContentHeader">
+                @Model.Value:
+            </div>
+            <div class="MasterInnerContentMain">
+                <div class="forms">
+                   
+                        @{short index = 0;}
+
+                        @{
+                            Html.RenderAction("GetEvaluationDesign", "Evaluation", new { area = "FormGenerator", Id = Model.Key, fromScale = ViewBag.FromScale, culture= ViewBag.Langid });
+                        }
+
+                    
+                    <div class="fbfitper">
+                        <div class="form-button">
+                            @{Html.Radyn().ButtonActionLink().Text("بستن فرم").OtherAttribute(new { onclick = "Close_thisModal()" }).Render();}
+                        </div>
+
+                        <div class="form-button">
+                            @{Html.Radyn().ButtonActionLink().Text("محاسبه و ذخیره").OtherAttribute(new { onclick = "PostData();" }).Render();}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }

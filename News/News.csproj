@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{03F3C529-60B9-4266-9B14-3052DA14A312}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.News</RootNamespace>
+    <AssemblyName>Radyn.News</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Gallery, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.Gallery.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\NewsAttachedFileBO.cs" />
+    <Compile Include="BO\NewsAttributeBO.cs" />
+    <Compile Include="BO\NewsBO.cs" />
+    <Compile Include="BO\NewsCategoryBO.cs" />
+    <Compile Include="BO\NewsCommentBO.cs" />
+    <Compile Include="BO\NewsContentBO.cs" />
+    <Compile Include="BO\NewsContentTypeBO.cs" />
+    <Compile Include="BO\NewsDailyVisitBO.cs" />
+    <Compile Include="BO\NewsPropertyBO.cs" />
+    <Compile Include="BO\NewsPublishTypeBO.cs" />
+    <Compile Include="BO\PublishTypeBO.cs" />
+    <Compile Include="BO\RelatedNewsBO.cs" />
+    <Compile Include="BO\RelatedNewsGroupBO.cs" />
+    <Compile Include="BO\WebDesignNewsBO.cs" />
+    <Compile Include="DataStructure\NewsComment.cs" />
+    <Compile Include="DataStructure\WebDesignNews.cs" />
+    <Compile Include="DA\NewsCommentDA.cs" />
+    <Compile Include="DA\WebDesignNewsDA.cs" />
+    <Compile Include="Facade\Interface\INewsCommentFacade.cs" />
+    <Compile Include="Facade\Interface\IWebDesignNewsFacade.cs" />
+    <Compile Include="Facade\NewsCommentFacade.cs" />
+    <Compile Include="Facade\WebDesignNewsFacade.cs" />
+    <Compile Include="NewsBaseFacade.cs" />
+    <Compile Include="DataStructure\News.cs" />
+    <Compile Include="DataStructure\NewsAttachedFile.cs" />
+    <Compile Include="DataStructure\NewsAttribute.cs" />
+    <Compile Include="DataStructure\NewsCategory.cs" />
+    <Compile Include="DataStructure\NewsContent.cs" />
+    <Compile Include="DataStructure\NewsContentType.cs" />
+    <Compile Include="DataStructure\NewsDailyVisit.cs" />
+    <Compile Include="DataStructure\NewsProperty.cs" />
+    <Compile Include="DataStructure\NewsPublishType.cs" />
+    <Compile Include="DataStructure\PublishType.cs" />
+    <Compile Include="DataStructure\RelatedNews.cs" />
+    <Compile Include="DataStructure\RelatedNewsGroup.cs" />
+    <Compile Include="DA\NewsAttachedFileDA.cs" />
+    <Compile Include="DA\NewsAttributeDA.cs" />
+    <Compile Include="DA\NewsCategoryDA.cs" />
+    <Compile Include="DA\NewsContentDA.cs" />
+    <Compile Include="DA\NewsContentTypeDA.cs" />
+    <Compile Include="DA\NewsDA.cs" />
+    <Compile Include="DA\NewsDailyVisitDA.cs" />
+    <Compile Include="DA\NewsPropertyDA.cs" />
+    <Compile Include="DA\NewsPublishTypeDA.cs" />
+    <Compile Include="DA\PublishTypeDA.cs" />
+    <Compile Include="DA\RelatedNewsDA.cs" />
+    <Compile Include="DA\RelatedNewsGroupDA.cs" />
+    <Compile Include="Facade\Interface\INewsAttachedFileFacade.cs" />
+    <Compile Include="Facade\Interface\INewsAttributeFacade.cs" />
+    <Compile Include="Facade\Interface\INewsCategoryFacade.cs" />
+    <Compile Include="Facade\Interface\INewsContentFacade.cs" />
+    <Compile Include="Facade\Interface\INewsContentTypeFacade.cs" />
+    <Compile Include="Facade\Interface\INewsDailyVisitFacade.cs" />
+    <Compile Include="Facade\Interface\INewsFacade.cs" />
+    <Compile Include="Facade\Interface\INewsPropertyFacade.cs" />
+    <Compile Include="Facade\Interface\INewsPublishTypeFacade.cs" />
+    <Compile Include="Facade\Interface\IPublishTypeFacade.cs" />
+    <Compile Include="Facade\Interface\IRelatedNewsFacade.cs" />
+    <Compile Include="Facade\Interface\IRelatedNewsGroupFacade.cs" />
+    <Compile Include="Facade\NewsAttachedFileFacade.cs" />
+    <Compile Include="Facade\NewsAttributeFacade.cs" />
+    <Compile Include="Facade\NewsCategoryFacade.cs" />
+    <Compile Include="Facade\NewsContentFacade.cs" />
+    <Compile Include="Facade\NewsContentTypeFacade.cs" />
+    <Compile Include="Facade\NewsDailyVisitFacade.cs" />
+    <Compile Include="Facade\NewsFacade.cs" />
+    <Compile Include="Facade\NewsPropertyFacade.cs" />
+    <Compile Include="Facade\NewsPublishTypeFacade.cs" />
+    <Compile Include="Facade\PublishTypeFacade.cs" />
+    <Compile Include="Facade\RelatedNewsFacade.cs" />
+    <Compile Include="Facade\RelatedNewsGroupFacade.cs" />
+    <Compile Include="NewsComponent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Extentions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Comment\Comments.csproj">
+      <Project>{7bd38c1c-392d-4ce7-b631-2f29ddea6d3e}</Project>
+      <Name>Comments</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{3B7185A9-70D1-4CBE-9835-88944BF9384C}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseNode\EnterpriseNode.csproj">
+      <Project>{46953CE7-5185-464D-9DB4-3BCB91BD04A6}</Project>
+      <Name>EnterpriseNode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileManager\FileManager.csproj">
+      <Project>{189D7172-B237-4AFA-A5AA-105AA7693637}</Project>
+      <Name>FileManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security\Security.csproj">
+      <Project>{35AEA767-A451-4BCD-A8F5-E0E412686279}</Project>
+      <Name>Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

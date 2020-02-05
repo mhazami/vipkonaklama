@@ -1,0 +1,87 @@
+﻿@using Radyn.Payment.DataStructure
+@using Radyn.Web.Mvc;
+@model IEnumerable<DiscountTypeSection>
+
+    <script type="text/javascript">
+        function GetItems(value) {
+            if ($("#" + "DiscountTypeId-" + value).attr("checked") == "checked")
+                $("#" + "DivSection-" + value).slideDown();
+            else
+                $("#" + "DivSection-" + value).slideUp();
+        }
+        function showdetails(item) {
+            $("#" + "DivDiscounType-" + item).html("");
+            $.get("@Url.Content("~/Payment/DiscountType/GenerateDiscountTyepDetail")", { Id: item, date: new Date().getTime() }, function (data) {
+                if (data != "false") {
+                    $("#" + "showdetail-" + item).hide();
+                    $("#" + "hidedetail-" + item).show();
+                    $("#" + "DivDiscounType-" + item).html(data).slideDown("slow");;
+                }
+                ShowRadynMessage();
+            });
+
+        }
+        function hidedetails(item) {
+            $("#" + "DivDiscounType-" + item).slideUp();
+            $("#" + "hidedetail-" + item).hide();
+            $("#" + "showdetail-" + item).show();
+        }
+        $(document).ready(function () {
+            $("[id^='DiscountTypeId-']").each(function () {
+                GetItems($(this).attr("DId"));
+            });
+            $("[id^='hidedetail-']").each(function () {
+                $(this).hide();
+            });
+        });
+
+    </script>
+
+    @Html.ValidationSummary(true)
+    <div>
+
+        @{
+            <div class="item-row fit">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Payment.DiscountType
+                    </div>
+                </div>
+                <div class="table-row-item table-fit drp">
+                    <div class="item">
+                        @foreach (var type in (IEnumerable<DiscountType>)ViewBag.Dicounttype)
+                        {
+                            Html.Radyn().CheckBox().ID("DiscountTypeId-" + type.Id).Value(type.Id.ToString()).Text("<a style=\"cursor: pointer\"  id=\"showdetail-" + type.Id + "\" onclick=\"showdetails('" + type.Id + "')\">" + type.Title + "</a><a style=\"cursor: pointer\" id=\"hidedetail-" + type.Id + "\" onclick=\"hidedetails('" + type.Id + "')\">" + type.Title + "</a>").Checked(Model.Any(section => section.DiscountTypeId == type.Id)).Name("DiscountTypeId").OtherAttribute(new { DId = type.Id, onclick = "GetItems('" + type.Id + "');" }).Render();
+                            <div id="DivDiscounType-@type.Id"></div>
+                            <div id="DivSection-@type.Id">
+                                <div class="table-row-point">
+                                    <div class="item">
+                                        @Resources.WebDesign.DiscountUsage
+                                    </div>
+                                </div>
+                                <div class="table-row-item fit">
+                                    <div class="item">
+
+                                        @foreach (var statu in (List<KeyValuePair<byte, string>>)ViewBag.EnumsSource)
+                                        {
+
+                                            <div class="width33percent page-align">
+                                                @{Html.Radyn().CheckBox().ID("Section-" + statu.Key + type.Id).Value(statu.Key.ToString()).Checked(Model.Any(section => section.DiscountTypeId == type.Id && section.Section == statu.Key)).Text(statu.Value).Name("Section-" + type.Id).Render(); }
+                                            </div>
+
+
+                                                    }
+                                    </div>
+                                </div>
+                            </div>
+                                                    }
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    </div>
+
+
+

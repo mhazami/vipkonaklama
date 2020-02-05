@@ -1,0 +1,98 @@
+﻿@using Radyn.WebApp
+@using Radyn.WebApp.AppCode
+@model Radyn.ContentManager.DataStructure.Pages
+
+<script>
+    function changeDefaulthtml() {
+        var defaultMessage = $("#DefaultHtmlId").val();
+        if (defaultMessage != "") {
+            var value = $("#DefaultHtmlId option:selected").val();
+            $("#" +"HtmlDesgin_Body").val(value);
+
+        } else {
+            $("#" +"HtmlDesgin_Body").val("");
+        }
+
+
+    }
+</script>
+<div class="radynForm">
+    <div id="ConetentContent">
+    </div>
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.HtmlId)
+    @Html.ValidationSummary(true)
+    <div class="fit">
+        <div class="item-row">
+            <div class="table-row-cap ">
+                <div class="item">
+                    @Resources.ContentManager.Title
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.TextBoxFor(content => content.Title, new { })
+                </div>
+            </div>
+        </div>
+        @if (Html.GetPageMode() != PageMode.Create)
+        {
+            <div class="item-row ">
+                <div class="table-row-cap ">
+                    <div class="item">
+                        @Resources.ContentManager.Url
+                    </div>
+                </div>
+                <div class="table-row-item table-c-fit  ">
+                    <div class="item ">
+                        @Html.DisplayFor(model => model.Url, new { })
+                    </div>
+                </div>
+            </div>
+        }
+       
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Enable
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+                    @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap  ">
+                <div class="item">
+                   html پیش فرض
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DropDownList("DefaultHtmlId", (SelectList)ViewBag.DefaultHtmls, "",new {onchange= "changeDefaulthtml()" })
+
+
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap" >
+                <div class="item">
+                    @Resources.ContentManager.Html
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.TextAreaFor(x => x.HtmlDesgin.Body, new { style = "height:500px;" })
+                </div>
+            </div>
+        </div>
+        
+
+
+    </div>
+</div>

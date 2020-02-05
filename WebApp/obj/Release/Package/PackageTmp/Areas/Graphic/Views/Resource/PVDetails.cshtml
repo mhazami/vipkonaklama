@@ -1,0 +1,72 @@
+﻿@using System.Web.Mvc.Html
+@using Radyn.FileManager
+@using Radyn.Graphic.Definition
+@using Radyn.Utility
+
+@model Radyn.Graphic.DataStructure.Resource 
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Common.Language
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.LanuageId)
+        </div>
+    </div>
+</div>
+<div></div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Graphic.Type
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @(((Enums.ResourceType)Model.Type).GetDescriptionInLocalization())
+        </div>
+    </div>
+</div>
+
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Graphic.Text
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.Text)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Graphic.Order
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @Html.DisplayFor(model => model.Order)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap table-c-fit">
+        <div class="item">
+            @Resources.Graphic.File
+        </div>
+    </div>
+    <div class="table-row-item table-c-fit">
+        <div class="item">
+            @if (Model.FileId.HasValue)
+            {
+                Html.RadynFile().Image().ID(Model.FileId.Value).DeleteButtonVisible("FileId").Height(98).Width(146).Download().Render();
+
+            }
+        </div>
+    </div>
+</div>

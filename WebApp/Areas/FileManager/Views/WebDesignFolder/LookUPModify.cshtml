@@ -1,0 +1,43 @@
+﻿@using Radyn.Web.Mvc
+@model  Radyn.FileManager.DataStructure.Folder
+
+<script type="text/javascript">
+    function ModifyFolder() {
+        RadynPostThisForm("@Url.Content("~/FileManager/WebDesignFolder/ModifyFolder")", function (data) {
+            if (data != "") {
+                FolderTree();
+            }
+            ShowRadynMessage();
+        });
+    }
+</script>
+<div class="radynForm content-form-modal not-drag">
+
+    <input value="@ViewBag.id" type="hidden" name="FolderId" id="FolderId" />
+    <input value="@ViewBag.state" type="hidden" name="FolderState" id="FolderState" />
+    <div class="fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Title
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.TextBoxFor(model => model.Title)
+            </div>
+        </div>
+    </div>
+
+    <div class="fit">
+        <div class="button-div m-btn waves-green">
+            <i class="fas fa-save"></i>
+            @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "ModifyFolder();" }).Render(); }
+        </div>
+        <div class="button-div m-btn waves-red">
+            <i class="fas fa-undo-alt"></i>
+            @{Html.Radyn().ImageActionLink().Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = " Close_thisModal();" }).Render(); }
+        </div>
+
+    </div>
+
+</div>

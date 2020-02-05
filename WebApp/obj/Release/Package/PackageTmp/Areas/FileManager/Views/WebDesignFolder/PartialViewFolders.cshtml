@@ -1,0 +1,68 @@
+﻿@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.FileManager.DataStructure.Folder>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#MenuTree')
+            // listen for event
+            .on('changed.jstree',
+                function(e, data) {
+                    if (data.selected.length > 0) {
+
+                        document.getElementById('TxtSelectedItemid').value = data.node.li_attr.id;
+                        document.getElementById('TxtSelectedItemtext').value = data.node.li_attr.title;
+                        GetFiles(data.node.id);
+                    } else {
+                        document.getElementById('TxtSelectedItemid').value = "";
+                        document.getElementById('TxtSelectedItemtext').value = "";
+                    }
+                });
+    });
+</script>
+
+
+<input type="hidden" id="TxtSelectedItemid" name="TxtSelectedItemid"/>
+<input type="hidden" id="TxtSelectedItemtext" name="TxtSelectedItemtext"/>
+<input type="hidden" value="@Request.QueryString["chekforcontenet"]" id="chekcontent"/>
+
+<div class="fit">
+    <div style="width: 100%; float: right; background: #3f4d66; padding: 8px 13px; height: 37px; color: #fff; font-size: 14px;">
+        <div class="item">
+            @Resources.FileManager.FileManagement
+        </div>
+    </div>
+    <div class="fit">
+
+        @{
+            Html.Radyn().TreeView<Radyn.FileManager.DataStructure.Folder>().ShowLines(true).Name("MenuTree")
+                .BindTo(Model,
+                    map => map
+                        .Id(folder => folder.Id)
+                        .Parent(folder => folder.ParentFolderId)
+                        .Text(folder => (string.IsNullOrEmpty(folder.Title) == false) ? folder.Title : "")
+                        .Icon(folder => "~/Areas/FileManager/Content/Images/FolderClose.png")
+                        .ListItemAttribute(x => x
+                            .Add("title", folder => folder.Title)
+                            .Add("align", folder => "right")
+                        )
+                ).Render();
+        }
+
+
+        @if (Model.Any())
+        {
+            Html.Radyn().ContextMenu().Selector("div")
+                .AddItem(Resources.FileManager.NewFile, "onclick:function selectmenu() {AddFile(document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'")
+                .AddItem(Resources.FileManager.NewFolder, "onclick:function selectmenu() {ModifyItem('Create',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'")
+                .AddItem(Resources.FileManager.EditFolder, "onclick:function selectmenu() {ModifyItem('Edit',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'")
+                .AddItem(Resources.FileManager.DeleteFolder, "onclick:function selectmenu() {ModifyItem('Delete',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'").Render();
+        }
+        else
+        {
+            Html.Radyn().ContextMenu().Selector("div")
+                .AddItem("پوشه جدید", "onclick:function selectmenu() {ModifyItem('Create',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'").Render();
+        }
+
+    </div>
+</div>

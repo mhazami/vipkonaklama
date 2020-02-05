@@ -1,0 +1,123 @@
+﻿.gv-table {
+    direction: rtl;
+}
+
+.gv-row {
+    float: right;
+}
+
+.gv-cell {
+    float: right;
+    border-width: 0 0 0 1px;
+    border-style: none none none solid;
+    border-color: #A4ABB2;
+}
+
+.gv-cell-last {
+    border: none;
+}
+
+.paginate_buttons {
+    border-width: 0 1px 1px 0;
+    border-style: none solid solid none;
+    margin-right: .55%;
+}
+
+.table_info {
+    border-width: 0 0 1px 1px;
+    border-style: none none solid solid;
+    text-align: left;
+}
+
+.paginate_buttons, .table_info {
+    float: right;
+}
+
+    .paginate_buttons ul li {
+        margin-right: -1px;
+    }
+
+    .paginate_buttons ul, .paginate_buttons ul li {
+        float: right;
+    }
+
+.gv-icon {
+    float: right;
+}
+
+.gv-status {
+    border-left-style: solid;
+    border-left-width: 1px;
+    float: right;
+}
+
+.gv-pager {
+    float: right;
+}
+
+.gv-link {
+    float: right;
+}
+
+.gv-numeric {
+    float: right;
+}
+
+.gv-arrow-first {
+    background-position: -48px -192px;
+}
+
+    .gv-arrow-first:hover {
+        background-position: -48px -224px;
+    }
+
+.gv-arrow-last {
+    background-position: 0 -192px;
+}
+
+    .gv-arrow-last:hover {
+        background-position: 0 -224px;
+    }
+
+.gv-arrow-prev {
+    background-position: -32px -192px;
+}
+
+    .gv-arrow-prev:hover {
+        background-position: -32px -224px;
+    }
+
+.gv-arrow-next {
+    background-position: -16px -208px;
+}
+
+    .gv-arrow-next:hover {
+        background-position: -16px -224px;
+    }
+
+.grid-guid, .grid-guid-title, .grid-guid ul, .grid-guid ul li {
+    float: right;
+}
+
+.grid-guid {
+    direction: rtl;
+    text-align: right;
+}
+/*--END-GridView--*/
+/*FILTER*/
+
+
+.fa.fa-filter {
+    float: right;
+    margin-right: -43px;
+}
+
+
+.dropdown-menu {
+    float: right;
+    text-align: right;
+}
+
+.filter_textbox.form-control {
+    padding-right: 5%;
+}

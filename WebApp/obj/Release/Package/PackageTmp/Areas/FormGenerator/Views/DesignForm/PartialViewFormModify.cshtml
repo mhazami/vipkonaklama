@@ -1,0 +1,100 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.Utility
+@using Control = Radyn.FormGenerator.ControlFactory.Base.Control
+@model Dictionary<Object,string>
+    <script type="text/javascript">
+        function visible(item) {
+            $("div[name='menu']").css('display', 'none');
+            $("#" + item.id + " > div").css('display', 'inline');
+        }
+        function HideMenu(item) {
+            $("#" + item.id + " > div[name='menu']").css('display', 'none');
+            $("[Id^='Order-']").each(function () {
+                $(this).html("");
+
+            });
+
+        }
+        function DeleteControl(id) {
+            if (confirm('@Resources.Common.Are_You_Soure_For_Delete')) {
+                $.get("@Url.Content("~/FormGenerator/DesignForm/DeleteControl")", { formId: '@ViewBag.formId', Id: id, culture: '@ViewBag.culture', date: new Date().getTime() }, function (data) {
+                    if (data != "false") {
+                        GetFormView();
+                    }
+                });
+            }
+        }
+
+        function SwapControl(id, type) {
+            $.get("@Url.Content("~/FormGenerator/DesignForm/SwapControl")", { formId: '@ViewBag.formId', Id: id, type: type, culture: '@ViewBag.culture', date: new Date().getTime() }, function (data) {
+                if (data != "false") {
+                    GetFormView();
+                }
+            });
+        }
+
+        function GetOrder(id) {
+            var object = document.getElementById(id + "Customorder").value;
+            if (object == "") {
+                alert('@Resources.FormGenerator.PleaseEnterOrderNumber');
+            }
+            $.get("@Url.Content("~/FormGenerator/DesignForm/CustomeSwap")", { formId: '@ViewBag.formId', Id: id, getorder: object, culture: '@ViewBag.culture', date: new Date().getTime() }, function (data) {
+                if (data != "false") {
+                    GetFormView();
+                }
+            });
+        }
+        function GetDragedItem(order) {
+            document.getElementById("DragedItem").value = order;
+
+        }
+    </script>
+
+    <div>
+
+
+        @foreach (var item in Model)
+        {
+            var control = (Control)item.Key;
+            <div class="fit row-editor"  id="row-@control.Id" onmouseover="visible(this);GetDragedItem('@control.Order');" onmouseout="HideMenu(this);">
+                <div class="drag-content">
+                    @{
+                        Html.HtmlEncoder(item.Value);
+                    }
+                </div>
+                <div type="hidden" id="Order-@control.Order"></div>
+                <div class="fgitem width80percent" name="menu">
+                    <ul>
+                        <li class="hint--top" data-hint="@Resources.Common.Edit">
+                            <a href="#" onclick="LookUpEdit('@control.Id','@item.Key.GetType().Name')">
+                                <img align="absmiddle" src="@Url.Content("~/Content/Images/edit-white.png")" />
+                            </a>
+                        </li>
+                        <li class="hint--top" data-hint="@Resources.Common.Delete">
+                            <a href="#" onclick="DeleteControl('@control.Id')">
+                                <img align="absmiddle" src="@Url.Content("~/Content/Images/Delete-Close-white.png")" />
+                            </a>
+                        </li>
+                        <li class="hint--top" data-hint="@Resources.FormGenerator.Down">
+                            <a href="#" onclick="SwapControl('@control.Id','Down')">
+                                <img align="absmiddle" src="@Url.Content("~/Content/Images/down-arrow-white.png")" />
+                            </a>
+                        </li>
+                        <li class="hint--top" data-hint="@Resources.FormGenerator.Up">
+                            <a href="#" onclick="SwapControl('@control.Id','Up')">
+                                <img align="absmiddle" src="@Url.Content("~/Content/Images/up-arrow-white.png")" />
+
+                            </a>
+                        </li>
+                        <li class="hint--top" data-hint="@Resources.FormGenerator.Up">
+                            @Html.TextBox(control.Id + "Customorder")
+                        </li>
+                        <li class="hint--top" data-hint="@Resources.FormGenerator.Up" style="margin-right: 5px">
+                            @{Html.Radyn().ButtonActionLink().Text(Resources.FormGenerator.GotoOrder).OtherAttribute(new { onclick = "GetOrder('" + control.Id + "')" }).Render();}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+                        }
+    </div>

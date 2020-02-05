@@ -1,0 +1,39 @@
+@using Radyn.Web.Mvc;
+@using Radyn.WebApp.Areas.ContentManager.Componenet
+
+@model Radyn.ContentManager.DataStructure.Menu
+@{
+    ViewBag.Title = @Resources.Common.Create + " " + @Resources.Security.MenuName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head
+{
+
+}
+@section PageTitle
+{
+    @Resources.Common.Edit @Resources.Security.MenuName
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("Menu").Area("ContentManager").Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").ImageHeight("20").Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Menu").Area("ContentManager").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("Menu").Area("ContentManager").Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").ImageHeight("20").Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Menu").Area("ContentManager").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    Html.RenderAction("GetModify", "Menu", new { area = "ContentManager", Id = ViewBag.Id });
+}

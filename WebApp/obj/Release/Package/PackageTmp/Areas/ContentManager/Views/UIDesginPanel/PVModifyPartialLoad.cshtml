@@ -1,0 +1,46 @@
+﻿@using Radyn.Web.Mvc
+@model Radyn.ContentManager.DataStructure.PartialLoad
+<script type="text/javascript">
+    function ModifyPartialLoad() {
+
+        RadynPostForm("/ContentManager/UIDesginPanel/ModifyPartialLoad","/ContentManager/UIDesginPanel/GetModifyPartialLoad", function (data) {
+            if (data != "") {
+
+
+            }
+            ShowRadynMessage();
+        });
+    }
+</script>
+@Html.HiddenFor(x => x.PartialId)
+@Html.HiddenFor(x => x.HtmlDesginId)
+@Html.HiddenFor(x => x.CustomId)
+
+<div class="radynForm control-box">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.HasContainer
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.HasContainer, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.HasContainer, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="button-div m-btn waves-green i-save">
+            @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Callback().CallbackType(ImageActionLink.CallbackType.Script).CallbackReturnFunction("ModifyPartialLoad();").Render();}
+        </div>
+        <div class="button-div m-btn waves-red i-return">
+            @{Html.Radyn().ImageActionLink().Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Close_thisModal();" }).Render();}
+        </div>
+    </div>
+
+</div>
+
+
+
+

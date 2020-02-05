@@ -1,0 +1,43 @@
+﻿@using Radyn.Web.Mvc;
+@model Radyn.Common.DataStructure.CountryIPRange
+@using (Html.BeginForm())
+{
+    <input type="hidden" value="@Model.Id" name="IpId" id="IpId"/>
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.CommonComponent.StartRange
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    مثال :001.001.001.001
+                    @Html.EditorFor(model => model.StartRange)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.CommonComponent.EndRange
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    مثال:223.256.256.256
+                    @Html.EditorFor(model => model.EndRange)
+                </div>
+            </div>
+        </div>
+        <div class="button-div m-btn waves-green i-save">
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Common/Country/GetIp")).Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Callback().CallbackType(ImageActionLink.CallbackType.post).CallbackReturnFunction("function(data){if(data!='false'){IpList();}ShowRadynMessage();}").Serialize("/Common/Country/GetIp", false).ImageWidth("15").ImageHeight("20").Render(); }
+        </div>
+        <div class="button-div m-btn waves-red i-return">
+            @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Cancel).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").ImageHeight("20").OtherAttribute(new { onclick = "IpList();" }).Render(); }
+        </div>
+    </div>
+
+
+
+}

@@ -1,0 +1,84 @@
+@using Radyn.ContentManager.DataStructure
+@using Radyn.FileManager
+@model Menu
+@Html.ValidationSummary(true)
+<div class="radynForm">
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Title
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit table-fit">
+            <div class="item">
+                @Html.DisplayFor(x => x.Text)
+
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Link
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit table-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Link)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Security.MenuParentId
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.ParentMenu.Text)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Enable
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.Enabled ? @Resources.Common.Enable : @Resources.Common.Disable)
+            </div>
+        </div>
+    </div>
+   
+    <div class="item-row">
+        <div class="table-row-cap table-c-fit">
+            <div class="item">
+                @Resources.ContentManager.ImageUrl
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit table-c-fit">
+            <div class="item">
+                @if (Model.ImageUrl.HasValue)
+                {
+                    Html.RadynFile().Image().ID(Model.ImageUrl.Value).Height(70).Width(100).Render();
+                }
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Security.MenuOrder
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Order)
+            </div>
+        </div>
+    </div>
+</div>
+

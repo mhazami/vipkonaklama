@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{98A5A7A3-8E49-4E85-A619-6685F4E6569F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.Advertisements</RootNamespace>
+    <AssemblyName>Radyn.Advertisements</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdvetisementQueue\AdvertisementQueue.cs" />
+    <Compile Include="AdvertisementsComponent.cs" />
+    <Compile Include="AdvertisementsBaseFacade.cs" />
+    <Compile Include="BO\AttributeBO.cs" />
+    <Compile Include="BO\AdvertisementBO.cs" />
+    <Compile Include="BO\HistoryBO.cs" />
+    <Compile Include="BO\SectionBO.cs" />
+    <Compile Include="BO\SectionPositionBO.cs" />
+    <Compile Include="BO\AdvertisementTypeBO.cs" />
+    <Compile Include="BO\CustomerAdvertisementBO.cs" />
+    <Compile Include="BO\PositionBO.cs" />
+    <Compile Include="BO\TariffBO.cs" />
+    <Compile Include="BO\TariffClassBO.cs" />
+    <Compile Include="BO\TariffClassHistoryBO.cs" />
+    <Compile Include="BO\TariffDefinitionClassBO.cs" />
+    <Compile Include="DataStructure\Advertisement.cs" />
+    <Compile Include="DataStructure\Attribute.cs" />
+    <Compile Include="DataStructure\History.cs" />
+    <Compile Include="DataStructure\Section.cs" />
+    <Compile Include="DataStructure\SectionPosition.cs" />
+    <Compile Include="DataStructure\AdvertisementType.cs" />
+    <Compile Include="DataStructure\CustomerAdvertisement.cs" />
+    <Compile Include="DataStructure\Position.cs" />
+    <Compile Include="DataStructure\Tariff.cs" />
+    <Compile Include="DataStructure\TariffClass.cs" />
+    <Compile Include="DataStructure\TariffClassHistory.cs" />
+    <Compile Include="DataStructure\TariffDefinitionClass.cs" />
+    <Compile Include="DA\AttributeDA.cs" />
+    <Compile Include="DA\AdvertisementDA.cs" />
+    <Compile Include="DA\HistoryDA.cs" />
+    <Compile Include="DA\SectionDA.cs" />
+    <Compile Include="DA\SectionPositionDA.cs" />
+    <Compile Include="DA\AdvertisementTypeDA.cs" />
+    <Compile Include="DA\CustomerAdvertisementDA.cs" />
+    <Compile Include="DA\PositionDA.cs" />
+    <Compile Include="DA\TariffClassDA.cs" />
+    <Compile Include="DA\TariffClassHistoryDA.cs" />
+    <Compile Include="DA\TariffDA.cs" />
+    <Compile Include="DA\TariffDefinitionClassDA.cs" />
+    <Compile Include="Facade\AttributeFacade.cs" />
+    <Compile Include="Facade\AdvertisementFacade.cs" />
+    <Compile Include="Facade\HistoryFacade.cs" />
+    <Compile Include="Facade\SectionFacade.cs" />
+    <Compile Include="Facade\SectionPositionFacade.cs" />
+    <Compile Include="Facade\AdvertisementTypeFacade.cs" />
+    <Compile Include="Facade\CustomerAdvertisementFacade.cs" />
+    <Compile Include="Facade\Interface\IAttributeFacade.cs" />
+    <Compile Include="Facade\Interface\IAdvertisementFacade.cs" />
+    <Compile Include="Facade\Interface\IHistoryFacade.cs" />
+    <Compile Include="Facade\Interface\ISectionFacade.cs" />
+    <Compile Include="Facade\Interface\ISectionPositionFacade.cs" />
+    <Compile Include="Facade\Interface\IAdvertisementTypeFacade.cs" />
+    <Compile Include="Facade\Interface\ICustomerAdvertisementFacade.cs" />
+    <Compile Include="Facade\Interface\IPositionFacade.cs" />
+    <Compile Include="Facade\Interface\ITariffClassFacade.cs" />
+    <Compile Include="Facade\Interface\ITariffClassHistoryFacade.cs" />
+    <Compile Include="Facade\Interface\ITariffDefinitionClassFacade.cs" />
+    <Compile Include="Facade\Interface\ITariffFacade.cs" />
+    <Compile Include="Facade\PositionFacade.cs" />
+    <Compile Include="Facade\TariffClassFacade.cs" />
+    <Compile Include="Facade\TariffClassHistoryFacade.cs" />
+    <Compile Include="Facade\TariffDefinitionClassFacade.cs" />
+    <Compile Include="Facade\TariffFacade.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Properties\DataSources\Radyn.Advertisements.Model.AdvertisementsEntities.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnterpriseNode\EnterpriseNode.csproj">
+      <Project>{46953CE7-5185-464D-9DB4-3BCB91BD04A6}</Project>
+      <Name>EnterpriseNode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileManager\FileManager.csproj">
+      <Project>{189d7172-b237-4afa-a5aa-105aa7693637}</Project>
+      <Name>FileManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

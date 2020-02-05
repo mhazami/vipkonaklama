@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = @Resources.Common.List;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetForms();
+        });
+        function GetDesign() {
+            var formId = document.getElementById("FormId").value;
+            ShowModal("/FormGenerator/DesignForm/LookupFormDesign?formId=" + formId);
+            GetViewForm();
+        }
+        function GetViewForm() {
+            var formId =document.getElementById("FormId").value;
+            $("#Form").html("");
+            $.get("/FormGenerator/UI/GeneratFormHtml", { Id: formId, date: new Date().getTime() }, function (data) {
+                $("#Form").html(data).slideDown("slow");;
+            });
+        }
+        function GetAssigmentForm() {
+            var formId = document.getElementById("FormId").value;
+            $("#Form").html("");
+            $.get("/FormGenerator/Assigment/GetFormAssigment", { formId: formId, date: new Date().getTime() }, function (data) {
+                $("#Form").html(data).slideDown("slow");;
+            });
+        }
+        function GetModifyForm(value) {
+            var formId =value==true?null: document.getElementById("FormId").value;
+            $("#Form").html("");
+            $.get("/FormGenerator/FormStructure/GetFormStructure", { Id: formId, date: new Date().getTime() }, function(data) {
+                $("#Form").html(data).slideDown("slow");;
+            });
+        }
+        function GetForms() {
+            $("#FormId").html("");
+            $.getJSON("/FormGenerator/Assigment/GetForms", { date: new Date().getTime() }, function (data) {
+                for (var item in data) {
+                    $("#FormId").append("<option text='" + data[item].Title + "' value='" + data[item].Id + "' >" + data[item].Title + "</option>");
+                }
+            }).complete(function () {
+                GetViewForm();
+            });
+        }
+    </script>
+}
+<div class="table" >
+    <div>
+        <div class="table-row-cap width10percent ">
+            <div class="item">
+                فرم
+            </div>
+        </div>
+        <div class="table-row-item width24percent ">
+            <div class="item">
+                
+                <select id="FormId" name="FormId" style="width: 150px" onchange="GetViewForm()"></select>
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="table-row-item width75percent ">
+            <div class="item page-align ">
+                <input type="button" id="DesigneMode" value="DesginForm" name="DesigneMode" onclick="GetDesign()" />
+            </div>
+            <div class="item page-align">
+                <input type="button" value="NewForm" id="NewForm" name="NewForm" onclick="GetModifyForm(true)" />
+            </div>
+            <div class="item page-align">
+                <input type="button" value="EditForm" id="EditForm" name="EditForm" onclick="GetModifyForm(false)" />
+            </div>
+             <div class="item page-align">
+                <input type="button" value="AssigmentForm" id="AssigmentForm" name="AssigmentForm" onclick="GetAssigmentForm();" />
+            </div>
+        </div>
+    </div>
+    <div id="Form"></div>
+</div>

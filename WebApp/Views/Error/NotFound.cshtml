@@ -1,0 +1,55 @@
+﻿@using Radyn.Web.Mvc
+@{Layout = null;}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    @{Html.Radyn().Theme("RadynBase").Render(); }
+    @{Html.Radyn().Theme("Common").Render(); }
+    <title>صفحه مورد نظر شما یافت نشد</title>
+    <style>
+        body {
+            background-color: #51D8DD;
+            width: 100%;
+            height: 100%;
+            float: right;
+            position: relative;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="error-box error-page">
+    <div class="cloud-m"></div>
+    <div class="cloud-s-late"></div>
+    <div class="cloud-s"></div>
+    <div class="cloud-l-late"></div>
+    <div class="cloud-s"></div>
+    <div class="cloud-l"></div>
+    <div class="cloud-m-fast-second"></div>
+    <div class="cloud-m-late"></div>
+    <div class="cloud-s"></div>
+    <div class="cloud-l bottom"></div>
+    <div class="cloud-m bottom"></div> <div class="cloud-s-late"></div>
+    <div class="error-page-content">
+        <h3>
+            404
+        </h3>
+        <p>
+            صفحه مورد نظر شما
+
+        </p>
+        <span>
+            یافت نشد
+        </span>
+        <a href="/">بازگشت به صفحه اصلی</a>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+

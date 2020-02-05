@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F138651-DDA4-4453-BB8C-E998DBC90C4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Radyn.FormGenerator</RootNamespace>
+    <AssemblyName>Radyn.FormGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Radyn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.ContentManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.ContentManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.FileManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Radyn.FileManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="Radyn.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TParty\Radyn.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\FormAssigmentBO.cs" />
+    <Compile Include="BO\FormDataBO.cs" />
+    <Compile Include="BO\FormEvaluationBO.cs" />
+    <Compile Include="BO\FormStructureBO.cs" />
+    <Compile Include="BO\FormStructureDesgineBO.cs" />
+    <Compile Include="BO\GeneratorBO.cs" />
+    <Compile Include="BO\WebDesignFormsBO.cs" />
+    <Compile Include="BO\WebDesignUserFormsBO.cs" />
+    <Compile Include="ControlFactory\Base\GridRow.cs" />
+    <Compile Include="ControlFactory\Base\TabularControl.cs" />
+    <Compile Include="ControlFactory\Controls\Grid.cs" />
+    <Compile Include="ControlFactory\Validator\CompareValidator.cs" />
+    <Compile Include="ControlFactory\Validator\EmailValidator.cs" />
+    <Compile Include="ControlFactory\Validator\RengValidator.cs" />
+    <Compile Include="ControlFactory\Validator\RequiredFieldValidator.cs" />
+    <Compile Include="ControlFactory\Base\ValidatorControl.cs" />
+    <Compile Include="ControlFactory\Controls\DateTimePicker.cs" />
+    <Compile Include="ControlFactory\Controls\FileUploader.cs" />
+    <Compile Include="DAL\FormAssigmentDA.cs" />
+    <Compile Include="DAL\FormDataDA.cs" />
+    <Compile Include="DAL\FormEvaluationDA.cs" />
+    <Compile Include="DAL\FormStructureDA.cs" />
+    <Compile Include="ControlFactory\Base\BoolControl.cs" />
+    <Compile Include="ControlFactory\Base\Control.cs" />
+    <Compile Include="DAL\WebDesignFormsDA.cs" />
+    <Compile Include="DAL\WebDesignUserFormsDA.cs" />
+    <Compile Include="DataStructure\FormAssigment.cs" />
+    <Compile Include="DataStructure\FormEvaluation.cs" />
+    <Compile Include="DataStructure\WebDesignForms.cs" />
+    <Compile Include="DataStructure\WebDesignUserForms.cs" />
+    <Compile Include="Facade\FormEvaluationFacade.cs" />
+    <Compile Include="Facade\FormStructureDesgineFacade.cs" />
+    <Compile Include="Facade\GeneratorFacade.cs" />
+    <Compile Include="Facade\FormAssigmentFacade.cs" />
+    <Compile Include="Facade\Interface\IFormEvaluationFacade.cs" />
+    <Compile Include="Facade\Interface\IFormStructureDesgineFacade.cs" />
+    <Compile Include="Facade\Interface\IGeneratorFacade.cs" />
+    <Compile Include="Facade\Interface\IFormAssigmentFacade.cs" />
+    <Compile Include="Facade\Interface\IWebDesignFormsFacade.cs" />
+    <Compile Include="Facade\Interface\IWebDesignUserFormsFacade.cs" />
+    <Compile Include="Facade\WebDesignFormsFacade.cs" />
+    <Compile Include="Facade\WebDesignUserFormsFacade.cs" />
+    <Compile Include="ModelView\Control.cs" />
+    <Compile Include="ModelView\FormDataReport.cs" />
+    <Compile Include="Resources\FormGenerator.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormGenerator.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Enums.cs" />
+    <Compile Include="Tools\Extentions.cs" />
+    <Compile Include="ControlFactory\Controls\CheckBox.cs" />
+    <Compile Include="ControlFactory\Controls\CheckBoxList.cs" />
+    <Compile Include="ControlFactory\Controls\DropDownList.cs" />
+    <Compile Include="ControlFactory\Controls\Label.cs" />
+    <Compile Include="ControlFactory\Base\ListControl.cs" />
+    <Compile Include="ControlFactory\Base\ListItem.cs" />
+    <Compile Include="ControlFactory\Base\TextControl.cs" />
+    <Compile Include="ControlFactory\Controls\RadioButton.cs" />
+    <Compile Include="ControlFactory\Controls\RadioButtonList.cs" />
+    <Compile Include="ControlFactory\Controls\TextBox.cs" />
+    <Compile Include="DataStructure\FormData.cs" />
+    <Compile Include="DataStructure\FormStructure.cs" />
+    <Compile Include="Facade\FormDataFacade.cs" />
+    <Compile Include="Facade\FormStructureFacade.cs" />
+    <Compile Include="Facade\Interface\IFormDataFacade.cs" />
+    <Compile Include="Facade\Interface\IFormStructureFacade.cs" />
+    <Compile Include="FormGeneratorComponent.cs" />
+    <Compile Include="FormGeneratorBaseFacade.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\FormGenerator.fa-IR.resx" />
+    <EmbeddedResource Include="Resources\FormGenerator.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormGenerator.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Security\Security.csproj">
+      <Project>{35AEA767-A451-4BCD-A8F5-E0E412686279}</Project>
+      <Name>Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

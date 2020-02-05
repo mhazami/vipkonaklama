@@ -1,0 +1,37 @@
+﻿@using Radyn.Web.Mvc
+@model Radyn.Payment.DataStructure.Transaction
+@{
+    ViewBag.Title = @Resources.Payment.TransactionResult;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head
+{
+    <script type="text/javascript">
+        function Print() {
+            $.get("@Url.Content("~/Payment/Transaction/PrintTransaction")", { Id: '@ViewBag.Id', date: new Date().getTime() }, function (data) {
+                if (data != "false") {
+                    window.open('@Url.Content("~/RptViewer.aspx")');
+
+                }
+            });
+        }
+    </script>
+}
+@Html.ValidationSummary(true)
+<div style="font-size: 20px; margin: 20px 0;  color: @(ViewBag.Result ? "green" : "red"); font-weight: bold; text-align: center" class="fit">
+    <img src='@(ViewBag.Result?"/Areas/Payment/Content/Images/success-icon.png":"/Areas/Payment/Content/Images/failed-icon.png")' width="100" height="100"/>
+    <span>@ViewBag.MasterMessage</span>
+</div>
+@{
+    Html.RenderAction("GetTransactionDetails", "Transaction", new { area = "Payment", Id = ViewBag.Id });
+}
+
+<div class="c-widget-footer">
+    <div class="button-div m-btn waves-blue i-print">
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Print).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("/Content/Images/printer.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Print();" }).Render();}
+    </div>
+    <div class="button-div m-btn waves-yellow i-continue ">
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Payment.Continue).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("/Areas/Payment/Content/Images/continue.png")).ImagePosition(ImageActionLink.Position.Right).NavigateUrl(Url.Content("~" + (string)ViewBag.Callbackurl)).Render();}
+    </div>
+</div>
+

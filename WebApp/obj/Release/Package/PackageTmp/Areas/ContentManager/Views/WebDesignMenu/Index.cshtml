@@ -1,0 +1,80 @@
+@using Radyn.Web.Mvc;
+
+@using Radyn.Web.Mvc;
+
+@model System.Collections.Generic.IEnumerable<Radyn.ContentManager.DataStructure.Menu>
+    @{
+        ViewBag.Title = Resources.ContentManager.MenuList;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{
+
+    }
+    @section PageTitle
+{
+        @Resources.ContentManager.MenuList
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/ContentManager/WebDesignMenu/Create")).Text(Resources.ContentManager.NewMenu).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render(); }
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/ContentManager/WebDesignMenu/Create")).Text(Resources.ContentManager.NewMenu).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render(); }
+
+        </div>
+    }
+    <div id="ManuDive">
+    </div>
+    <div class="radynForm">
+        <div class="grid-guid">
+            <div class="grid-guid-title">
+                @Resources.Common.Help
+            </div>
+            <ul>
+                <li>
+                    <img src="/Content/Images/details.png">
+                    @Resources.Common.Detail
+                </li>
+                <li>
+                    <img src="/Content/Images/Delete-Close.png">
+                    @Resources.Common.Delete
+                </li>
+                <li>
+                    <img src="/Content/Images/edit.png">
+                    @Resources.Common.Edit
+                </li>
+            </ul>
+        </div>
+        <div id="DivePVSearchMenuvv" class="fit">
+
+
+            @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto;text-align: center" }).Columns(columns =>
+                {
+                    columns.Template(menu => menu.Text).Title(Resources.Security.MenuTitle).Width(150).HeaderHtmlAttributes(new { style = "text-align:center" }).Width(300);
+                    columns.Template(menu => menu.ParentId.HasValue ? menu.ParentMenu.Text : "").Title(Resources.Security.MenuParentId).Width(200).HeaderHtmlAttributes(new { style = "text-align:center" }).Width(200);
+                    columns.Template(menu => menu.Order).Title(Resources.Security.MenuOrder).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(menu => menu.Link).Title(Resources.ContentManager.Link).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" }).Width(400);
+                    columns.Template(menu => menu.IsVertical ? Resources.ContentManager.Vertical : Resources.ContentManager.Horizontal).Title(Resources.ContentManager.Direction).Width(150).HeaderHtmlAttributes(new { style = "text-align:center" }).Filterable(false);
+                    columns.Template(menu => menu.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(Resources.Common.Enable).Width(150).HeaderHtmlAttributes(new { style = "text-align:center" }).Filterable(false);
+                    columns.Template(content =>
+                    "<a style='cursor: pointer;'  href='" + Url.Content("~/ContentManager/WebDesignMenu/Details?Id=" + content.Id) + "'>" +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                    "<a style='cursor: pointer;'  href='" + Url.Content("~/ContentManager/WebDesignMenu/Edit?Id=" + content.Id) + "'> " +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                    "<a style='cursor: pointer;'  href='" + Url.Content("~/ContentManager/WebDesignMenu/Delete?Id=" + content.Id) + "'>" +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Filterable(false).Width(200).Encode(false);
+
+                })
+        //
+        .Sortable(sorting => sorting.Enabled(true))
+        .Pageable(paging => paging.Enabled(true))
+        .Filterable(filtering => filtering.Enabled(true))
+        .Footer(false).Render();}
+        </div>
+
+
+    </div>

@@ -1,0 +1,128 @@
+﻿@using Radyn.Security.DataStructure
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@using Radyn.Web.Mvc.Utility
+
+@model MenuGroup
+@{
+    ViewBag.Title = @Resources.Common.Create;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+        function ChangeOpeartion() {
+
+            var val=$("#OperationId option:selected").val();
+            if (val == "")return;
+
+            ShowPostBackLoader();
+            $("#DivOperationMenu").html("");
+            $.get("@Url.Content("~/Security/MenuGroup/GetOperationMenu")", { operationId: val, date: new Date().getTime() }, function (data) {
+                if (data != "false") {
+                    $("#DivOperationMenu").html(data).slideDown("slow");;
+
+                }
+                ShowRadynMessage();
+            }).complete(function() {
+                HidePostBackLoader();
+
+
+            });
+        }
+
+
+    </script>
+}
+@section PageTitle
+{
+    @Resources.Security.MenuGroup @Resources.Common.New
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("MenuGroup").Area("Security").Text(@Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("MenuGroup").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("MenuGroup").Area("Security").Text(@Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("MenuGroup").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.Name
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.EditorFor(model => model.Name)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.Operation
+                </div>
+            </div>
+            <div class="table-row-item select-row two-col">
+                    @Html.DropDownListFor(model => model.OperationId, (SelectList)ViewBag.Operations)
+                    <div class="m-btn waves-blue i-hand-pointer icon-btn ">
+                        <span>
+                            <a onclick="ChangeOpeartion();"></a>
+                        </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Enable
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+                    @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.Security.OprationIcon
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @{
+                        Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", fileName = "MenuGroupIcon" });
+
+                    }
+
+                </div>
+            </div>
+        </div>
+        <div id="DivOperationMenu">
+
+        </div>
+
+    </div>
+}

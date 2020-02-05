@@ -1,0 +1,83 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.Areas.WebDesign.Tools
+@using Radyn.WebDesign.Definition
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+@section Head{
+
+    @{ Html.Radyn().Theme("WebDesignBase").Render(); }
+    @{Html.Radyn().Theme("Common").Render();}
+    <!-- Start----Runtime-->
+    @{Html.HtmlEncoder(AppExtention.GetWebSiteResources(Enums.UseLayout.UserLayout)); }
+    <!-- END----Runtime-->
+    <script>
+
+
+        jQuery(function () {
+
+            $("ul.sf-menu li").addClass("ui-state-default");
+
+            $("ul.sf-menu li").hover(function () { $(this).addClass('ui-state-hover'); },
+                function () { $(this).removeClass('ui-state-hover'); });
+
+        });
+
+
+    </script>
+
+
+    @RenderSection("Head", false)
+}
+
+<div class="ui-sheet ui-design user-layout">
+    <div class="ui-top-bar">
+        <div>
+
+        </div>
+    </div>
+    <div class="ui-header">
+        @{
+            Html.RenderAction("GetWebDesignHeader", "UIPanel", new { area = "ContentManager" });
+        }
+    </div>
+    <div class="ui-h-menu">
+        @{
+            Html.RenderAction("GetWebDesignMenu", "UIPanel", new { area = "ContentManager" });
+        }
+    </div>
+    <div class="ui-content-nav">
+        <div class="row">
+            <div class="main-page">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @*<div class="ui-footer">
+        @{
+            Html.RenderAction("GetWebDesignFooter", "UIPanel", new { area = "ContentManager" });
+        }
+
+    </div>*@
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

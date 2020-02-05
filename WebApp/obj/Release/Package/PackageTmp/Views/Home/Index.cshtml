@@ -1,0 +1,42 @@
+﻿@using Radyn.WebDesign.Definition
+@{Layout = null;}
+@model Radyn.WebDesign.DataStructure.WebSite
+<!DOCTYPE html>
+<html>
+<head>
+    @if (Model != null)
+    {
+        <title>@Model.Title</title>
+    }
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width" name="viewport">
+    @{
+        if (Model != null && Model.Configuration != null && Model.Configuration.FavIcon != null)
+        {
+            <link rel="icon" type="image/png" href="@Radyn.FileManager.FileManagerContants.FileHandlerRoot@Model.Configuration.FavIcon" />
+        }
+       
+    }
+
+</head>
+<body>
+@if (Model != null && Model.Configuration != null && Model.Status == Enums.WebSiteStatus.NoProblem)
+{
+    if (Model.Configuration.IntroPageId.HasValue && Model.Configuration.IntroPageId > 0)
+    {
+        Html.RenderAction("ViewPartial", "Content", new { area = "ContentManager", id = Model.Configuration.IntroPageId });
+    }
+    else
+    {
+        Html.RenderAction("GetIndex", "UIPanel", new { area = "WebDesign" });
+
+    }
+
+}
+else
+{
+    Html.RenderAction("GetError", "WebSite", new { area = "WebDesign" });
+}
+</body>
+</html>
+

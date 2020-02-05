@@ -1,0 +1,153 @@
+﻿@using Radyn.FileManager
+@*<script src='/Scripts/jquery-1.7.2.min.js'></script>*@
+<style>
+    .my_select-group_box {
+        width: 100%;
+        border-radius: 2px;
+        /* margin: 2px 0; */
+    }
+
+
+
+    .gv-content .my_select-group_box {
+        width: 100%
+    }
+
+        .gv-content .my_select-group_box form {
+            float: none;
+        }
+
+    .divImages {
+        float: left;
+        padding: 0;
+        position: relative;
+        text-align: left;
+        width: calc(100% - 66px);
+        overflow: visible !important;
+    }
+
+    .my_select-group_box form {
+        float: right;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 4px 13px;
+        margin-bottom: 0;
+        color: #fff !important;
+        font-size: 13px;
+        font-weight: normal;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    /* .btn-info { */
+    /*     background-color: #d4d4d4; */
+    /* } */
+
+
+    .trash-icon {
+        color: #d81b60;
+        transition: all .3s ease;
+        margin-right: 0;
+        font-size: 14px;
+        width: 1em !important;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Delete-UserImage").addClass("btn  btn-danger");
+        $("#Delete-UserImage").attr("value", "@Resources.Common.Delete");
+    });
+    function readURL(input, fileName) {
+
+        $("#DivImages-" + fileName).append("<div id='" + input.name + "'><label>" + input.name + "</label><a  style=\"cursor:pointer\" onclick=\"RemoveFile('" + fileName + "', '" + input.name + "')\" ><i class='fa fa-trash fa-1x trash-icon'></i></a></div>");
+
+    }
+
+    function PostForm(input, key) {
+        ShowPostBackLoader();
+        $("#DivImages-" + key).html("");
+        var data = new FormData();
+        data.append("Key", key);
+        for (var i = 0; i < input.files.length; i++) {
+            var filename = input.files[i].name;
+            data.append(filename, input.files[i]);
+        }
+        var value = $("#Multi-" + key).val();
+        var SaveUrl = $("#SaveUrl-" + key).val();
+        $.ajax({
+            type: "POST",
+            url: SaveUrl != "" ? SaveUrl : ("@Url.Content("~/FileManager/FileUpload/UploadFile?Multi=")" + value),
+            dataType: 'json',
+            data: data,
+            enctype: 'multipart/form-data',
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (data === true) {
+                    for (var i = 0; i < input.files.length; i++) {
+                        readURL(input.files[i], key);
+                    }
+                    HidePostBackLoader();
+                }
+            },
+            error: function () {
+                HidePostBackLoader();
+            }
+        });
+    }
+
+    function RemoveFile(fileName, divId) {
+        var value = $("#Multi-" + fileName).val();
+        var removeUrl = $("#RemoveUrl-" + fileName).val();
+        var selectfilename = (value == "True" ? divId : null);
+        $.get(removeUrl != "" ? removeUrl : "@Url.Content("~" + "/FileManager/FileUpload/RemoveFile")", { fileName: fileName, selectfilename: selectfilename, date: new Date().getTime() }, function (data) {
+            if (data === "true") {
+                var element = document.getElementById(divId);
+                element.remove();
+            }
+        });
+
+    }
+</script>
+<div class="my_select-group_box">
+
+
+    @using (Html.BeginForm("UploadFile", "FileUpload", FormMethod.Post))
+    {
+        <input type="hidden" name="Key" value="@ViewBag.FileName" />
+        <input type="hidden" id="Multi-@ViewBag.FileName" name="Multi-@ViewBag.FileName" value="@ViewBag.multiselect.ToString()" />
+        <input type="hidden" id="SaveUrl-@ViewBag.FileName" name="SaveUrl-@ViewBag.FileName" value="@ViewBag.saveurl" />
+        <input type="hidden" id="RemoveUrl-@ViewBag.FileName" name="RemoveUrl-@ViewBag.FileName" value="@ViewBag.removeurl" />
+        <input type="file" @(ViewBag.multiselect ? " multiple='multiple'" : "" ) name="file" id="file-@ViewBag.FileName" onchange="PostForm(this, '@ViewBag.FileName')" style="display: none" />
+
+        <a href="#" onclick="document.getElementById('file-@ViewBag.FileName').click();" class="btn btn-info">
+            @Resources.UploadLocalization.Select
+        </a>
+
+    }
+    <div id="DivImages-@ViewBag.FileName" class="divImages" style="overflow: auto;">
+        @if (ViewBag.Fileid != null && ViewBag.Fileid != Guid.Empty && ViewBag.filePropName != null)
+        {
+            if (ViewBag.IsImage)
+            {
+
+                Html.RadynFile().Image().ID((Guid)ViewBag.Fileid).DeleteButtonVisible((string)ViewBag.filePropName).Style("cursor: pointer").OtherAttribute(new { onclick = "window.open('" + FileManagerContants.FileHandlerRoot + ViewBag.Fileid + "?dl=true" + "');" }).Width(50).Height(50).Render();
+            }
+            else
+            {
+
+                Html.RadynFile().Image().ID((Guid)ViewBag.Fileid).DeleteButtonVisible((string)ViewBag.filePropName).Download().Render();
+
+            }
+        }
+    </div>
+</div>

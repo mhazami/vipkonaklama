@@ -1,0 +1,41 @@
+﻿@model Radyn.ContentManager.DataStructure.HtmlDesgin
+<div class="radynForm">
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Title
+            </div>
+        </div>
+        <div class="table-row-item table-fit">
+            <div class="item">
+                @Html.DisplayTextFor(x=>x.Title)
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Enable
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.Enabled ? @Resources.Common.Enable : @Resources.Common.Disable)
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap " >
+            <div class="item">
+                @Resources.ContentManager.Html
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit" style="height: 500px;">
+            <div class="item">
+                @Html.DisplayFor(x => x.Body)
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,7 @@
+﻿@model Radyn.FormGenerator.ControlFactory.Controls.Label
+@Html.ValidationSummary(true)
+    <div>
+        @{
+            Html.RenderAction("BaseGenerateTextControl", "BaseControls", new { Id = Model.Id, formId = ViewBag.formId });
+        }
+    </div>

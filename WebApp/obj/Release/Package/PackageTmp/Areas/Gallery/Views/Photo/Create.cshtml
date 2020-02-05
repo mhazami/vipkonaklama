@@ -1,0 +1,75 @@
+﻿@using Radyn.Gallery.DataStructure
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.Areas.Common.Component
+
+@model Photo
+@{
+    ViewBag.Title = Resources.Gallery1._Photo + " " + Resources.Common.New;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Gallery1._Photo @Resources.Common.New
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Create", new { GId = Request.QueryString["GId"] }).ControllerName("Photo").Area("Gallery").Text(@Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index", new { GId = Request.QueryString["GId"], externalurl = ViewBag.externalurl }).ControllerName("Photo").Area("Gallery").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Create", new { GId = Request.QueryString["GId"] }).ControllerName("Photo").Area("Gallery").Text(@Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index", new { GId = Request.QueryString["GId"], externalurl = ViewBag.externalurl }).ControllerName("Photo").Area("Gallery").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+<div>
+    @ViewBag.Message
+</div>
+@using (Html.BeginForm())
+{
+
+    <div class="radynForm">
+        <div class="fit item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Gallery1.Title
+                </div>
+            </div>
+            <div class="table-row-item table-fit">
+                <div class="item">
+                    @{
+                        Html.LanguageContentTextBoxFor(Model, m => m.Title);
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.Gallery1._Photo
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit" style="height:auto">
+                <div class="item">
+                    @{
+                        Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", fileName = "Image" });
+
+                    }
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}

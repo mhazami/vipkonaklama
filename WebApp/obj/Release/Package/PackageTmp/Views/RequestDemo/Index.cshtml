@@ -1,0 +1,96 @@
+﻿@using Radyn.FormGenerator.DataStructure
+@using Radyn.Web.Mvc
+@using Radyn.WebApp.Areas.FormGenerator.Tools
+@using Radyn.WebApp.Areas.WebDesign.Tools
+@model Radyn.Security.Tools.ContactUSModel
+@{
+    ViewBag.Title = "درخواست سرویس";
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+@section Head{
+    <script>
+        function SendRequestDemo() {
+            $.post("@Url.Content("~/RequestDemo")",
+                $('form[action^="@Url.Content("~/RequestDemo")"]').serialize(),
+                function(data) {
+                    if (data!="false") {
+                    }
+                });
+            ShowRadynMessage();
+        }
+    </script>
+
+}
+
+
+
+<div class="internal-page">
+    <div class="internal-page-head">
+        <div class="text-header">
+            <div>
+                <h3>   فرم درخواست دمو</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="internal-page-content">
+
+
+
+            <div class="row contactUs">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="contact-us-form form-box ">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+
+                            <p class="content-box">       لطفا جهت تسهیل ارتباط با شما موارد ستاره دار را وارد کنید</p>
+                            <div class="login-data-row">
+                                <label>
+                                    نام و نام خانوادگي
+                                    <small>*</small>
+                                </label>
+                                @Html.TextBoxFor(model => model.Name, new { placeholder = @Resources.WebDesign.Name + "*" })
+                            </div>
+                            
+                           
+                            <div class="login-data-row">
+                                <label>
+                                    شماره تلفن
+                                    <small>*</small>
+                                </label>
+                                @Html.TextBoxFor(model => model.Tel, new { placeholder = @Resources.WebDesign.TelNum + "*" })
+                            </div>
+                            
+                            Html.FormGenerator(AppExtention.WebSiteMoudelName + "-/home/RequestDemo", new FormStructure().GetType().Name);
+                            <div class="login-data-row">
+                                <div class="login-data-row-item">
+                                    <div>
+                                        <label>
+                                            کد امنیتی
+                                        </label>
+                                        <div class="captcha-control">
+                                            @{ Html.Radyn().Captcha().Render(); }
+                                        </div>
+                                        <input type="text" name="captch" placeholder="@Resources.WebDesign.Captcha" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" login-data-row-item">
+                                <input type="button" onclick="SendRequestDemo()" value="@Resources.CommonComponent.Send" />
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-2 hidden-sm hidden-xs"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+

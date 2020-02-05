@@ -1,0 +1,61 @@
+﻿@using Radyn.FileManager
+@model IEnumerable<Radyn.Security.DataStructure.Operation>
+    @{
+        ViewBag.Title = Resources.Common.Home;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{
+        <script>
+            $(document)
+                .ready(function () {
+                    $(".innerRL").removeClass();
+                    $(".page-caption").removeClass();
+                    //                $(".c-widget").removeClass();
+                    $(".c-widget-head").removeClass();
+                    $(".c-widget-content").removeClass();
+                    $(".c-widget-footer").removeClass();
+
+                });
+
+        </script>
+        <style>
+            .c-widget {
+                width: 100%;
+                padding: 5px 20px;
+                border: none;
+            }
+        </style>
+    }
+    @section PageTitle
+{
+
+    }
+    @section PageAction
+{
+    }
+    @section PageActionDown
+{
+    }
+    <div>
+        @foreach (var operation in Model)
+        {
+
+
+
+
+            <a href="@Url.Content("~/Security/User/Menu?oid=" + operation.Id)" class="d-item-menu d-item-menu-main d-item hint--top">
+                <div class="d-item-bg" id="Div-@operation.Id">
+                    @if (operation.LogoId.HasValue)
+                    {
+                        Html.RadynFile().Image().ID(operation.LogoId.Value).Render();
+                        <span> @operation.Title</span>
+                    }
+                    else
+                    {
+                        <img src="/App_Themes/RadynBase/Images/default-Img.png" />
+                        <span> @operation.Title</span>
+                    }
+                </div>
+            </a>
+        }
+    </div>

@@ -1,0 +1,41 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Payment.DataStructure.Transaction>
+   
+    <script type="text/javascript">
+        function GetDetails(Id) {
+            if (Id != "") {
+                ShowModal("@Url.Content("~/Payment/Transaction/LookUPTransactionDetails?Id=")" + Id);
+            }
+        }
+        function PayTransaction(Id) {
+            $.get("@Url.Content("~/Payment/UserTransaction/PayTemp")", { Id: Id, date: new Date().getTime() }, function (data) {
+                window.location = data.Url;
+            });
+        }
+    </script>
+
+                      <div class="fit internal-grid">
+
+                        
+                          @{
+                              Html.Radyn().Grid(Model).Name("Grid2").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                              {
+                                  columns.Template(transactionModel => (transactionModel.IsTemp && !(bool)ViewBag.fromAdmin) ? " <input type='checkbox' name='CheckSelect' id='CheckSelect' value='" + transactionModel.Id + "'" : "").Title(Resources.Common.Select).Width(50).HeaderHtmlAttributes(new { style = " text-align:center" });
+                                  columns.Template(transactionModel => transactionModel.Description.Trancate(70)).Title(Resources.Payment.Description).Width(150).HeaderHtmlAttributes(new { style = "text-align:center" });
+                                  columns.Template(transactionModel => transactionModel.Amount.ToString("n0") + (((Radyn.Common.Definition.Enums.CurrencyType)transactionModel.CurrencyType).GetDescriptionInLocalization())).Title(Resources.Payment.Amount).Width(80).HeaderHtmlAttributes(new { style = "text-align:center" });
+                                  columns.Template(transactionModel => transactionModel.PayDate.ShamsiDate() + "-" + transactionModel.PayDate.GetTime()).Title(Resources.Common.Date).Width(80).HeaderHtmlAttributes(new { style = "text-align:center" });
+                                  columns.Template(transactionModel => transactionModel.IsTemp ? ((bool)ViewBag.fromAdmin ?
+                                  "<img onclick=\"GetTemp('" + transactionModel.Id + "')\" style='cursor: pointer' src='" + Url.Content("~/Content/Images/edit.png") + "' alt='" + Resources.Common.Edit + "' height='20' width='20' />"
+                                  : " <img onclick=\"PayTransaction('" + transactionModel.Id + "')\" style='cursor: pointer' src='" + Url.Content("/Areas/Payment/Content/Images/pay.png") + "' alt='" + Resources.Payment.Pay + "' height='20' width='20' />")
+                                  : " <img onclick=\"GetDetails('" + transactionModel.Id + "')\" style='cursor: pointer' src='" + Url.Content("~/Content/Images/payment-details.png") + "' alt='" + Resources.Common.Detail + Resources.Payment.Pay + " height='20' width='20' />").Title(Resources.Payment.TrackYourOrderNum).Width(80).HeaderHtmlAttributes(new { style = "text-align:center" }).Filterable(false);
+                              })
+                              //                          
+                              .Sortable(sorting => sorting.Enabled(true))
+                              .Pageable(paging => paging.Enabled(true))
+                              //.Filterable(filtering => filtering.Enabled(true))
+                              //                          .Footer(true)
+                              .Render();
+                          }
+                      </div>

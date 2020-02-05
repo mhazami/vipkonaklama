@@ -1,0 +1,86 @@
+﻿@using Radyn.Web.Mvc.Utility
+
+@model Radyn.Common.DataStructure.Language
+<div class="radynForm">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.CommonComponent.Id
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Id)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.CommonComponent.LanguageDisplayName
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.DisplayName)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.CommonComponent.LanguageEnabled
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+                @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.CommonComponent.ShowLogoLanuage
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.ShowLogo, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.ShowLogo, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+   
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.Common.IsDefult
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.IsDefault, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.IsDefault, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.CommonComponent.LanguageLogoId
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+               
+                @{
+                    Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "LogoId", fileid = Model.LogoId, showimage = true, fileName = "Image" });
+                }
+              
+            </div>
+        </div>
+    </div>
+    </div>
+

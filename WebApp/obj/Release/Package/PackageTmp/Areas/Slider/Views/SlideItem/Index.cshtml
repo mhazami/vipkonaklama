@@ -1,0 +1,101 @@
+﻿@using Radyn.FileManager
+@using Radyn.Slider.DataStructure
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.UI
+
+@model IEnumerable<Radyn.Slider.DataStructure.SlideItem>
+    @{
+        ViewBag.Title = Resources.Common.List + " " + Resources.Slider.SlideItem;
+
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @ViewBag.Message
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create", new { SlideId = Request.QueryString["slideId"], externalurl = ViewBag.externalurl }).ControllerName("SlideItem").Area("Slider").Text(Resources.Slider.SlideItem + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+        <div class="button-div m-btn waves-red i-return">
+            @if (string.IsNullOrEmpty(ViewBag.externalurl))
+            {
+                Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Slide").Area("Slider").Text(Resources.Common.List + " " + Resources.Slider.Slider1).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();
+            }
+            else
+            {
+                Html.Radyn().ImageActionLink().Text(Resources.Common.List + " " + Resources.Slider.Slider1).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).NavigateUrl(Url.Content("~/" + (string)ViewBag.externalurl)).Render();
+            }
+        </div>
+    }
+
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue">
+            <i class="fas fa-plus"></i>
+            @{Html.Radyn().ImageActionLink().ActionName("Create", new
+                {
+                    SlideId = Request.QueryString["slideId"],
+                    externalurl = ViewBag.externalurl
+                }).ControllerName("SlideItem").Area("Slider").Text(Resources.Slider.SlideItem + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+        </div>
+        <div class="button-div m-btn waves-red i-return">
+            @if (string.IsNullOrEmpty(ViewBag.externalurl))
+            {
+                Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Slide").Area("Slider").Text(Resources.Common.List + " " + Resources.Slider.Slider1).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();
+            }
+            else
+            {
+                Html.Radyn().ImageActionLink().Text(Resources.Common.List + " " + Resources.Slider.Slider1).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).NavigateUrl(Url.Content("~/" + (string)ViewBag.externalurl)).Render();
+            }
+
+        </div>
+    }
+
+    @using (Html.BeginForm())
+    {
+        <div class="radynForm">
+            <div class="fit">
+                @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                            {
+                                columns.Template(slideItem => slideItem.Title).Title(@Resources.Slider.Title).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                                columns.Template(slide => slide.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(@Resources.Common.Enable).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                                columns.Template(slideItem => slideItem.NavigateUrl).Title(@Resources.Slider.NavigateUrl).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                                columns.Template(slideItem => slideItem.Order).Title(@Resources.Slider.Order).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                                columns.Template(resource =>
+                                    "<a style='cursor: pointer;'  href='" + Url.Content("~/Slider/SlideItem/Details?Id=" + resource.Id + "&SlideId=" + resource.SlideId + "&externalurl=" + ViewBag.externalurl) + "'>" +
+                                    " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                                    "<a style='cursor: pointer;'  href='" + Url.Content("~/Slider/SlideItem/Edit?Id=" + resource.Id + "&SlideId=" + resource.SlideId + "&externalurl=" + ViewBag.externalurl) + "'> " +
+                                    " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                                    "<a style='cursor: pointer;'  href='" + Url.Content("~/Slider/SlideItem/Delete?Id=" + resource.Id + "&SlideId=" + resource.SlideId + "&externalurl=" + ViewBag.externalurl) + "'>" +
+                                    " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+                            })
+                                  //
+                                  .Sortable(sorting => sorting.Enabled(true))
+                                  .Pageable(paging => paging.Enabled(true))
+                                  .Filterable(filtering => filtering.Enabled(true))
+                                  .Footer(false).Render();}
+
+            </div>
+            <div class="fit slide-image">
+                @{
+                    if (ViewBag.Slide != null && Model != null)
+                    {
+                        Html.Radyn().SlideShow().ID("slideshow5").SliderComponentType().CycleTimeOut(((Slide)ViewBag.Slide).SlidItemTimeOut * 1000).CycleDelay(4).CycleSync(true).CycleFxType(!string.IsNullOrEmpty(((Slide)ViewBag.Slide).EffectType) ? ((Slide)ViewBag.Slide).EffectType.ToEnum<SlideShow.CycleFXType>() : SlideShow.CycleFXType.blindX)
+                            .Slides(list => list.AddRange(Model.Select(slideItem => string.IsNullOrEmpty(slideItem.NavigateUrl) ? "<img src=\"" + FileManagerContants.FileHandlerRoot + slideItem.ImageId + " \"  width=\"100%\"  height=\"300px\"  alt=\" " + slideItem.Title + " \"    />" : "<img src=\"" + FileManagerContants.FileHandlerRoot + slideItem.ImageId + " \" height=\"300px\"  width=\"100%\" alt=\" " + slideItem.Title + " \"   onclick=\"window.open('http://" + slideItem.NavigateUrl + "')\"  />"))).Render();
+                    }
+                }
+
+
+
+
+            </div>
+        </div>
+
+    }
+

@@ -1,0 +1,247 @@
+﻿@using Radyn.Message.Tools
+
+<script type="text/javascript">
+    function GetMailModify(Id) {
+        $("#divSearchload").show();
+        $("#SectionPanel").html("");
+        $.get("/Message/InternalMail/GetModify", { userId: '@ViewBag.UserId', Id: Id, date: new Date().getTime() }, function (data) {
+            $("#SectionPanel").html(data).slideDown("slow");;
+
+        }).complete(function () {
+            $("#divSearchload").hide();
+        });
+    }
+    function GetMailView(Id, allowreply) {
+        $("#divSearchload").show();
+        $("#SectionPanel").html("");
+        $.get("/Message/InternalMail/ViewEmail", { userId: '@ViewBag.UserId', Id: Id, allowreply: allowreply, date: new Date().getTime() }, function (data) {
+            $("#SectionPanel").html(data).slideDown("slow");;
+
+        }).complete(function () {
+            $("#divSearchload").hide();
+        });
+    }
+    function UnDeleteMessage() {
+        var value = $("#SelectedforUnDelete").val();
+        $.get("/Message/InternalMail/UnDelete", { Id: value, date: new Date().getTime() }, function (data) {
+            if (data != 'false') {
+                GetSection('@Enums.MailSection.Trash');
+            }
+
+        });
+    }
+
+    function DeleteMessage() {
+        var value = $("#SelectedforDelete").val();
+        $.get("/Message/InternalMail/GroupDelete", { Id: value, date: new Date().getTime() }, function (data) {
+            if (data != 'false') {
+                GetSection('@Enums.MailSection.Trash');
+            }
+
+        });
+    }
+    function DeleteDraftMessage() {
+        var value = $("#SelectedforDeleteDraft").val();
+        $.get("/Message/InternalMail/DeleteDraft", { Id: value, date: new Date().getTime() }, function (data) {
+            if (data != 'false') {
+                GetSection('@Enums.MailSection.Draft');
+            }
+
+        });
+    }
+    function GetSection(type) {
+        $("#divSearchload").show();
+        $("#SectionPanel").html("");
+        $.get("/Message/InternalMail/GetMailPartial", { value: type, userId: '@ViewBag.UserId', date: new Date().getTime() }, function (data) {
+            $("#SectionPanel").html(data).slideDown("slow");;
+
+        }).complete(function () {
+            $("#divSearchload").hide();
+            VisibleDeleteButtons();
+        });;
+    }
+    $(document).ready(function () {
+        $("#divSearchload").hide();
+        VisibleDeleteButtons();
+        GetSection('@Enums.MailSection.Inbox');
+
+
+    });
+
+    function VisibleDeleteButtons() {
+        $.get("/Message/InternalMail/GetSectionCount", { userId: '@ViewBag.UserId', date: new Date().getTime() }, function (data) {
+            if (data.Value != "") {
+                $("#btnInbox").val(" Inbox " + "(" + data.Value + ")");
+            }
+        });
+        $("#SelectedforDelete").val("");
+        $("#SelectedforDeleteDraft").val("");
+        $("#SelectedforUnDelete").val("");
+        $("#BtnDelete").hide();
+        $("#BtnUnDelete").hide();
+        $("#BtnDeleteDraft").hide();
+    }
+    function SelectAllForDelete() {
+        if ($("#CheckSelectAll").attr("checked") == "checked") {
+            $("[id^='CheckSelect']").each(function () {
+                $(this).attr("checked", true);
+            });
+        } else {
+            $("[id^='CheckSelect']").each(function () {
+                $(this).attr("checked", false);
+            });
+        }
+        AddToDeleteMessage();
+    }
+    function SelectAllForUnDelete() {
+        if ($("#CheckSelectAll").attr("checked") == "checked") {
+            $("[id^='CheckSelect']").each(function () {
+                $(this).attr("checked", true);
+            });
+        } else {
+            $("[id^='CheckSelect']").each(function () {
+                $(this).attr("checked", false);
+            });
+        }
+        AddToUnDeleteMessage();
+    }
+    function SelectAllForDeleteDraft() {
+        if ($("#CheckSelectAll").attr("checked") == "checked") {
+            $("[id^='CheckSelect']").each(function () {
+                $(this).attr("checked", true);
+            });
+        } else {
+            $("[id^='CheckSelect']").each(function () {
+                $(this).attr("checked", false);
+            });
+        }
+        AddToDeleteDraftMessage();
+    }
+    function AddToDeleteMessage() {
+        var value = "";
+        $("#SelectedforDelete").val("");
+        $("[id^='CheckSelect']").each(function () {
+            if ($(this).attr("checked") == "checked") {
+                if (value != "")
+                    value += ",";
+                value += $(this).val();
+            }
+
+        });
+        $("#SelectedforDelete").val(value);
+        if ($("#SelectedforDelete").val() != "")
+            $("#BtnDelete").show();
+        else $("#BtnDelete").hide();
+
+    }
+    function AddToUnDeleteMessage() {
+        var value = "";
+        $("#SelectedforUnDelete").val("");
+        $("[id^='CheckSelect']").each(function () {
+            if ($(this).attr("checked") == "checked") {
+                if (value != "")
+                    value += ",";
+                value += $(this).val();
+            }
+
+        });
+        $("#SelectedforUnDelete").val(value);
+        if ($("#SelectedforUnDelete").val() != "")
+            $("#BtnUnDelete").show();
+        else $("#BtnUnDelete").hide();
+
+
+    }
+    function AddToDeleteDraftMessage() {
+        var value = "";
+        $("#SelectedforDeleteDraft").val("");
+        $("[id^='CheckSelect']").each(function () {
+            if ($(this).attr("checked") == "checked") {
+                if (value != "")
+                    value += ",";
+                value += $(this).val();
+            }
+
+        });
+        $("#SelectedforDeleteDraft").val(value);
+        if ($("#SelectedforDeleteDraft").val() != "")
+            $("#BtnDeleteDraft").show();
+        else $("#BtnDeleteDraft").hide();
+    }
+</script>
+<style>
+    .radynForm {
+        display: inline-block;
+        float: none
+    }
+</style>
+<input type="hidden" id="SelectedforDelete" name="SelectedforDelete" />
+<input type="hidden" id="SelectedforUnDelete" name="SelectedforUnDelete" />
+<input type="hidden" id="SelectedforDeleteDraft" name="SelectedforDeleteDraft" />
+
+<div class="container" style="padding: 40px 0;">
+    <div class="child-pane message-pane ">
+        <div id="ButtonPanel">
+            <div class="nav-mail">
+                <div class="nav-mail-item" id="BtnInbox">
+                    <span></span>
+                    <div class="nav-mailText ">
+                        <a class="c-btn-info" id="Inbox" onclick="GetSection('@Enums.MailSection.Inbox')">@Resources.Message.Inbox (@(ViewBag.ReadCount))</a>
+
+                    </div>
+                </div>
+                @*<div class="nav-mail-item" id="BtnDraft">
+                        <span></span>
+                        <div class="nav-mailText">
+                            <a id="Draft" onclick="GetSection('@Enums.MailSection.Draft')">Draft</a>
+                        </div>
+                    </div>*@
+                @*<div class="nav-mail-item" id="BtnOutbox">
+                        <span></span>
+                        <div class="nav-mailText">
+                            <a id="OutBox" onclick="GetSection('@Enums.MailSection.OutBox')">@Resources.Message.OutBox</a>
+                        </div>
+                    </div>*@
+                <div class="nav-mail-item" id="BtnTrash">
+                    <span></span>
+                    <div class="nav-mailText ">
+                        <a class="c-btn-dark" id="Trash" onclick="GetSection('@Enums.MailSection.Trash')">@Resources.Message.Trash</a>
+                    </div>
+                </div>
+                <div class="nav-mail-item" id="BtnDelete">
+                    <span></span>
+                    <div class="nav-mailText ">
+                        <a class="c-btn-danger" id="Delete" onclick="DeleteMessage()">@Resources.Common.Delete</a>
+                    </div>
+                </div>
+                <div class="nav-mail-item" id="BtnUnDelete">
+                    <span></span>
+                    <div class="nav-mailText ">
+                        <a class="c-btn-light" id="UnDelete" onclick="UnDeleteMessage()">@Resources.Message.UnDelete</a>
+                    </div>
+                </div>
+                <div class="nav-mail-item" id="BtnDeleteDraft">
+                    <span></span>
+                    <div class="nav-mailText ">
+                        <a class="c-btn-secondary" id="DeleteDraft" onclick="DeleteDraftMessage()">@Resources.Common.Delete</a>
+                    </div>
+                </div>
+            </div>
+            @*            <div>*@
+            @*                <input type="button" style="width: 100px" onclick="GetSection('@Enums.MailSection.Compose')" value="Compose" />*@
+            @*            </div>*@
+        </div>
+        @*            <div>*@
+        @*                <input type="button" style="width: 100px" onclick="GetSection('@Enums.MailSection.Compose')" value="Compose" />*@
+        @*            </div>*@
+    </div>
+    <div class="big-pane fit-pane  content-search">
+        <div class="fit" id="divSearchload">
+            <img id="loading" src="@Url.Content("~/Content/Images/Gif/loading2.gif")" alt="" />
+        </div>
+        <div class="page-align overflow-visible" id="SectionPanel">
+        </div>
+    </div>
+
+
+</div>

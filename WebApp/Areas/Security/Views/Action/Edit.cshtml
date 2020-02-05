@@ -1,0 +1,57 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@model Radyn.Security.DataStructure.Action
+@{
+    ViewBag.Title = @Resources.Common.Edit + " " + @Resources.Security.ActionName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@using (Html.BeginForm())
+{
+
+    <table cellpadding="0" cellspacing="0" align="center" style="text-align:@Resources.Common.Aligment;border: solid 1px grey;padding: 2px 2px 2px 2px;">
+        <tr>
+            <td class="DEheader">
+                @Resources.Security.MenuName @Resources.Common.New
+            </td>
+            <td>
+                <div class="button-div m-btn waves-green i-save">
+                    @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("Action").Area("Security").Text(@Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Width("14").Height("14").Render();}
+                </div>
+            </td>
+            <td>
+                <div class="button-div m-btn waves-red i-return">
+                    @{Html.Radyn().ImageActionLink().ActionName("Index", new { menuId = Request.QueryString["menuId"] }).ControllerName("Action").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(Resources.Common.Aligment.ToEnum<ImageActionLink.Position>()).Render();}
+                </div>
+            </td>
+        <tr>
+            <td colspan="3">
+                @Html.ValidationSummary(true)
+                <table border="0" cellpadding="2" cellspacing="2" width="400" style='padding: 4px 4px 4px 4px;direction:@Resources.Common.Direction ;text-align:@Resources.Common.Aligment;'>
+                    <tr>
+                        <td class="EditRow">
+                            @Resources.Security.ActionName
+                        </td>
+                        <td class="EditFiled">
+                            @Html.EditorFor(model => model.Name)
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="DEheader"></td>
+            <td>
+                <div class="button-div m-btn waves-green i-save">
+                    @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("Action").Area("Security").Text(@Resources.Common.Save).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Width("14").Height("14").Render();}
+                </div>
+            </td>
+            <td>
+                <div class="button-div m-btn waves-red i-return">
+                    @{Html.Radyn().ImageActionLink().ActionName("Index", new { menuId = Request.QueryString["menuId"] }).ControllerName("Action").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(Resources.Common.Aligment.ToEnum<ImageActionLink.Position>()).Render();}
+                </div>
+            </td>
+        </tr>
+    </table>
+}

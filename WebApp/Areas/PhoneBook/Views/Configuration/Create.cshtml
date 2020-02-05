@@ -1,0 +1,69 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.WebApp.Areas.Common.Component
+@model Radyn.PhoneBook.DataStructure.Configuration
+@{
+    ViewBag.Title = Resources.WebDesign.Configuration;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@section Head{
+    <script type="text/javascript">
+        $(document)
+            .ready(function () {
+                changeCultureMultiLanguage();
+
+            });
+        function changeCultureMultiLanguage() {
+            var culid = document.getElementById("LanguageId").value;
+            $.get("@Url.Content("~/PhoneBook/Configuration/GetModify")", {  culture: culid, date: new Date().getTime() }, function (data) {
+                $("#GetMultiLanguage").html(data);
+            });
+        }
+
+
+    </script>
+}
+
+@section PageTitle
+{
+    @Resources.WebDesign.Configuration
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).NavigateUrl(Url.Content("~/Security/User/Menu?oid=" + Radyn.WebApp.AppCode.Constants.Constants.PhoneBookOperationId)).Render(); }
+
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render(); }
+
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).NavigateUrl(Url.Content("~/Security/User/Menu?oid=" + Radyn.WebApp.AppCode.Constants.Constants.PhoneBookOperationId)).Render(); }
+
+    </div>
+}
+
+@Html.ValidationSummary(true)
+<div class="fit" align="center" id="divConfigurationload">
+</div>
+<div class="radynForm">
+
+
+
+    @{
+        Html.LanguageDropDownList("changeCultureMultiLanguage();");
+    }
+    <div id="GetMultiLanguage"></div>
+
+</div>
+
+

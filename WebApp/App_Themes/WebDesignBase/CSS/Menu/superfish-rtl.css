@@ -1,0 +1,42 @@
+/*** ESSENTIAL STYLES ***/
+.sf-menu li {
+    float: right;
+}
+
+    .sf-menu li:hover ul,
+    .sf-menu li.sfHover ul {
+        right: 0;
+        left: auto;
+    }
+
+ul.sf-menu li li:hover ul,
+ul.sf-menu li li.sfHover ul {
+    right: 100%;
+    left: auto;
+}
+
+/*** DEMO SKIN ***/
+.sf-menu {
+    float: right;
+}
+
+    .sf-menu a {
+        border-left: none;
+    }
+
+        /*** arrows **/
+        .sf-menu a.sf-with-ul {
+            padding-left: 2.25em;
+            padding-right: 1em;
+        }
+
+.sf-sub-indicator {
+    right: auto;
+    left: .75em;
+    background-image: url('/Areas/WebDesign/Content/Images/arrows-ffffff-rtl.png');
+}
+
+.sf-shadow ul {
+    padding: 0;
+    background-position: left bottom;
+}

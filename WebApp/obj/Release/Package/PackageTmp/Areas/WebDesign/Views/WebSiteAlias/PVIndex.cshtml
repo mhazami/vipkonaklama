@@ -1,0 +1,51 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.WebApp
+<script type="text/javascript">
+    function DeleteAlias(rowid) {
+        if (confirm('@Resources.Common.Are_You_Soure_For_Delete')) {
+            $.get("/WebDesign/WebSiteAlias/DeleteAlias", { aliasId: rowid, id: new Date().getTime() }, function (data) {
+                if (data == "true") {
+                    $("#" + rowid).slideUp();
+                }
+                GetAliasList();
+                ShowRadynMessage();
+
+            });
+        }
+
+    }
+    function GetAlias(aliasId, status) {
+        getPartialWithFormTag("/WebDesign/WebSiteAlias/GetAlias", { aliasId: aliasId, WebSiteId: '@ViewBag.WebSiteId', status: status, date: new Date().getTime() }, "DivAlias");
+       
+    }
+
+    $(function () {
+
+        GetAliasList();
+
+    });
+    function GetAliasList() {
+        getPartial("/WebDesign/WebSiteAlias/GetAliasList", {WebSiteId:'@ViewBag.WebSiteId', date: new Date().getTime() },"DivWebDesignAlias");
+       
+    }
+</script>
+
+<div class="fit item-detail">
+    <fieldset>
+        <legend>
+           مسیر های مجازی
+        </legend>
+        <div id="DivWebDesignAlias" style="width: 100%">
+        </div>
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().Text("مسیر جدید").Align(ImageActionLink.Alignment.Right).OtherAttribute(new { onclick = "GetAlias(null,'" + @PageMode.Create + "');" }).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+        <div id="DivAlias" style="width: 100%">
+        </div>
+
+    </fieldset>
+</div>
+
+
+
+

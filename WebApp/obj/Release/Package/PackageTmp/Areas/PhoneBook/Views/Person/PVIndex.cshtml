@@ -1,0 +1,31 @@
+﻿@using Radyn.Web.Mvc
+@model IEnumerable<Radyn.PhoneBook.Tools.ModelView.PersonSearch>
+
+@{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+    {
+        columns.Template(user => (user.PictureId.HasValue && user.PictureId != Guid.Empty ? "<img width='50' align='absmiddle' atr='" + user.Name + "' src='" + Radyn.FileManager.FileManagerContants.FileHandlerRoot + "" + user.PictureId + "' height='50' width='80'/>" : "<img width='18' align='absmiddle' src='/App_Themes/RadynBase/Images/fpo_avatar.png'/>")).Width(50).Title(Resources.Security.Image);
+        columns.Template(addressType => addressType.Name).Title(Resources.EnterPriseNode.Title).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(addressType => addressType.JopTitle).Title(Resources.PhoneBook.JobTitle).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(addressType => addressType.PersoneliCode).Title(Resources.PhoneBook.PersoneliCode).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(addressType => addressType.Tel).Title(Resources.PhoneBook.TelNumber).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(addressType => addressType.OfficeName).Title(Resources.PhoneBook.Office).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(addressType => addressType.DepartmentName).Title(Resources.PhoneBook.Deparment).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+        columns.Template(addressType => addressType.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(Resources.Common.Enable).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+
+        columns.Template(resource =>
+            "<a style='cursor: pointer;'  href='" + Url.Content("~/PhoneBook/Person/Details?Id=" + resource.Id) + "'>" +
+            " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+            "<a style='cursor: pointer;'  href='" + Url.Content("~/PhoneBook/Person/Edit?Id=" + resource.Id) + "'> " +
+            " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a>  |" +
+            "<a style='cursor: pointer;'  href='" + Url.Content("~/PhoneBook/Person/Delete?Id=" + resource.Id) + "'>" +
+            " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a>  ").Width(300).Filterable(false).Encode(false);
+
+       
+
+    })
+
+        .Sortable(sorting => sorting.Enabled(true))
+        .Pageable(paging => paging.Enabled(true))
+        .Filterable(filtering => filtering.Enabled(true))
+        //.Footer(true)
+        .Render();}

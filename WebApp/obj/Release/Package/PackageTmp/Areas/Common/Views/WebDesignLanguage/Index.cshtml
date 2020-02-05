@@ -1,0 +1,74 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Common.DataStructure.Language>
+    @{
+        ViewBag.Title = Resources.WebDesign.Language;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
+    @section Head{
+    }
+    @section PageTitle
+{
+        @Resources.WebDesign.Language
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Common/Language/Create")).Text(Resources.WebDesign.Language).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render(); }
+        </div>
+
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue"> <i class="fas fa-plus"></i>
+            @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Common/Language/Create")).Text(Resources.WebDesign.Language).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render(); }
+        </div>
+    }
+    <div class="radynForm">
+        <div class="grid-guid">
+            <div class="grid-guid-title">
+                @Resources.Common.Help
+            </div>
+            <ul>
+                <li>
+                    <img src="/Content/Images/details.png">
+                    @Resources.Common.Detail
+                </li>
+                <li>
+                    <img src="/Content/Images/Delete-Close.png">
+                    @Resources.Common.Delete
+                </li>
+                <li>
+                    <img src="/Content/Images/edit.png">
+                    @Resources.Common.Edit
+                </li>
+            </ul>
+        </div>
+        <div class="fit">
+            @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                  {
+                      columns.Template(language => "<img alt='" + language.DisplayName + "' style= 'display: 'inline'' src='" + Radyn.FileManager.FileManagerContants.FileHandlerRoot + " " + language.LogoId + "' height='50' width='80' />").Title(@Resources.CommonComponent.LanguageLogoId).Width(40);
+                      columns.Template(language => language.Id).Title(@Resources.CommonComponent.Id).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                      columns.Template(language => language.DisplayName).Title(@Resources.CommonComponent.LanguageDisplayName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                      columns.Template(language => language.Enabled ? @Resources.CommonComponent.LanguageEnabled : @Resources.CommonComponent.LanguageDiabled).Title(@Resources.CommonComponent.LanguageStatus);
+                      columns.Template(language => language.ShowLogo ? @Resources.Common.Yes : @Resources.Common.No).Title(@Resources.CommonComponent.ShowLogoLanuage);
+                      columns.Template(language => language.IsDefault ? @Resources.Common.Yes : @Resources.Common.No).Title(@Resources.Common.IsDefult);
+                      columns.Template(language =>
+                        "<a style='cursor: pointer;'  href='" + Url.Content("~/Common/Language/Details?Id=" + language.Id) + "'>" +
+                        " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                        "<a style='cursor: pointer;'  href='" + Url.Content("~/Common/Language/Edit?Id=" + language.Id) + "'> " +
+                        " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                        "<a style='cursor: pointer;'  href='" + Url.Content("~/Common/Language/Delete?Id=" + language.Id) + "'>" +
+                        " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+                  })
+//
+.Sortable(sorting => sorting.Enabled(true))
+.Pageable(paging => paging.Enabled(true))
+.Filterable(filtering => filtering.Enabled(true))
+//.Footer(true)
+.Render();}
+        </div>
+    </div>

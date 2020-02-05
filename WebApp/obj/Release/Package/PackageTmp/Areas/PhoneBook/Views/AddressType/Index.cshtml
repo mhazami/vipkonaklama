@@ -1,0 +1,49 @@
+@using Radyn.Web.Mvc;
+@model IEnumerable<Radyn.PhoneBook.DataStructure.AddressType>
+    @{
+        ViewBag.Title = @Resources.Common.List + " " + @Resources.PhoneBook.AddressType;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.PhoneBook.AddressType
+    }
+    @section PageAction
+    {
+
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("AddressType").Area("PhoneBook").Text(@Resources.PhoneBook.AddressType + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("AddressType").Area("PhoneBook").Text(@Resources.PhoneBook.AddressType + " " + @Resources.Common.New).Align(ImageActionLink.Alignment.Right).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    <div class="radynForm">
+
+        @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                        {
+                            columns.Template(addressType => addressType.Title).Title(Resources.PhoneBook.Title).Width(350).HeaderHtmlAttributes(new { style = "text-align:center" });
+
+                            columns.Template(resource =>
+                                "<a style='cursor: pointer;'  href='" + Url.Content("~/PhoneBook/AddressType/Details?Id=" + resource.Id) + "'>" +
+                                " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                                "<a style='cursor: pointer;'  href='" + Url.Content("~/PhoneBook/AddressType/Edit?Id=" + resource.Id) + "'> " +
+                                " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a>  |" +
+                                "<a style='cursor: pointer;'  href='" + Url.Content("~/PhoneBook/AddressType/Delete?Id=" + resource.Id) + "'>" +
+                                " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a>  ").Width(300).Filterable(false).Encode(false);
+
+                        })
+
+                      .Sortable(sorting => sorting.Enabled(true))
+                      .Pageable(paging => paging.Enabled(true))
+                      .Filterable(filtering => filtering.Enabled(true))
+                      //.Footer(true)
+                      .Render();}
+
+
+
+    </div>

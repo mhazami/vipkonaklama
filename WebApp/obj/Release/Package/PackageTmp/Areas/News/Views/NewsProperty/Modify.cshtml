@@ -1,0 +1,201 @@
+﻿@using Radyn.FileManager
+@using Radyn.Web.Mvc.Utility
+
+@model Radyn.News.DataStructure.NewsProperty
+<div class="fit">
+    <div class="item-row">
+        @if (Model.News!=null&&Model.News.ThumbnailId.HasValue)
+        {
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.News.NewsThumbnailId
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @{
+            Html.RadynFile().Image().ID(Model.News.ThumbnailId.Value).Height(70).Width(100).Render();
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPropertyNewsContentTypeId
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.DropDownListFor(model => model.NewsContentTypeId, (SelectList)ViewBag.NewsContentType)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPropertyIsSelection
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.IsSelection, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.IsSelection, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPropertyIsGeneralView
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.IsGeneralView, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.IsGeneralView, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPropertyIsNewsGroupSelection
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.IsNewsGroupSelection, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.IsNewsGroupSelection, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPropertyOrder
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Order)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPropertyNewsGroupOrder
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.NewsGroupOrder)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPropertyHasContentPic
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.HasContentPic, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.HasContentPic, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPropertyIsImageReport
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.IsImageReport, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.IsImageReport, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPropertyIsSoundNews
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.IsSoundNews, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.IsSoundNews, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPropertyIsMovieNews
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.IsMovieNews, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.IsMovieNews, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsPropertyHasAttachment
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.HasAttachment, true, new { onclick = "HideAttachment('yes');" })@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.HasAttachment, false, new { onclick = "showAttachment('yes');" })@Resources.Common.No
+            </div>
+        </div>
+    </div>
+    <div id="AttachmentPanel" style="display: none;">
+        <div class="table-row-cap table-c-fit ">
+            <div class="item">
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @{
+                    Html.RadynAction("MultiFileUploader", "FileUpload", new { area = "FileManager", fileName = "NewPhoto" });
+
+                }
+             
+                @if (Model != null && ViewBag.Files != null)
+                {
+                    foreach (var variable in (IEnumerable<Radyn.FileManager.DataStructure.File>) ViewBag.Files)
+                    {
+                        <a href="@(FileManagerContants.FileHandlerRoot + variable.Id + "?dl=true")">@variable.FullName</a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    if ('@Model.HasAttachment' == 'True') {
+        HideAttachment();
+    }
+    $("#Order").width(20);
+    $("#NewsGroupOrder").width(20);
+    $("#NewsContentTypeId").width(120);
+
+    function showAttachment() {
+        $("#AttachmentPanel").fadeOut('slow');
+    }
+    function HideAttachment() {
+        $("#AttachmentPanel").fadeIn('slow');
+    }
+</script>

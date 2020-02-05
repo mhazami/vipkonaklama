@@ -1,0 +1,110 @@
+﻿@using Radyn.Web.Mvc
+@model Radyn.EnterpriseNode.DataStructure.RealEnterpriseNode
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.FirstName
+
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.FirstName)
+
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.LastName
+
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.LastName)
+
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.Gender
+
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.RadioButtonFor(m => m.Gender, true) @Resources.EnterPriseNode.Male
+            @Html.RadioButtonFor(m => m.Gender, false)@Resources.EnterPriseNode.Female
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.FatherName
+
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.FatherName)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.NationalCode
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.TextBox("NationalCode", Model.NationalCode != null ? Model.NationalCode.Trim() : "")
+        </div>
+
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.ForeignCode
+
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.ForeignCode)
+
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.EnterPriseNode.IDNumber
+
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.IDNumber)
+
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap ">
+        <div class="item">
+            @Resources.EnterPriseNode.BirthDate
+        </div>
+    </div>
+    <div class="table-row-item ">
+        <div class="item date-picker">
+            @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.BirthDate).Render();}
+        </div>
+    </div>
+</div>

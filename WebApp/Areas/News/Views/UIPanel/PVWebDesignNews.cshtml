@@ -1,0 +1,4 @@
+﻿@model IEnumerable<Radyn.News.DataStructure.News>
+@{
+    Html.RenderAction("GetNews", "UIPanel",new {area="News", newses =Model});
+}

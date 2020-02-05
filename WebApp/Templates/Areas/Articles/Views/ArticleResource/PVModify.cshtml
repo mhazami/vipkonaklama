@@ -1,0 +1,76 @@
+﻿@using Radyn.WebApp.Areas.Common.Component
+@model Radyn.Article.DataStructure.ArticleResource
+<div class="table">
+    <div>
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Article.ArticleCategoryTitle
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @{Html.LanguageContentTextBoxFor(Model, m => m.Title); }
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Article.ArticleResourceWebAddress
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.WebAddress)
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Article.ArticleResourcePublishDate
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.PublishDateResource)
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Article.ArticleResourcePublisher
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Publisher)
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Article.ArticleResourceLanguage
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Language)
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Article.ArticleResourceAuther
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Auther)
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+﻿@using Radyn.FileManager
+@model List<Radyn.Gallery.DataStructure.Gallery>
+    @{
+        ViewBag.Title = Resources.Gallery1.Galleryname;
+        Layout = "~/Views/Shared/User_Layout.cshtml";
+    }
+    @section Head{
+        <script type="text/javascript">
+            function GetItems(id) {
+                $.get("/Gallery/Photo/GalleryPhotos", { galleyId: id, date: new Date().getTime() }, function (data) {
+                    if (data != "") {
+                        window.location = '/Gallery/Photo/GalleryPhotos?galleyId=' + id;
+                    }
+                    ShowRadynMessage();
+                });
+
+            }
+
+        </script>
+    }
+    <div class="internal-page-head">
+        <div class="text-header">
+            <div>
+                <h3>  @Resources.Gallery1.Galleryname</h3>
+            </div>
+        </div>
+    </div>
+    <div class="internal-page-content galley-form">
+
+
+        @{short index = 0;
+            <div class="row">
+                @for (int r = -1; r < (Model.Count() - 1) / 4; r++)
+                {
+
+                    for (int c = 0; c < 4; c++)
+                    {
+                        if (index < Model.Count)
+                        {
+                            <div class="col-lg-4 col-sm-6 col-md-4 col-xs-12 ">
+
+                                <div style="text-align: center; vertical-align: top;cursor: pointer" onclick="GetItems('@Model[index].Id');">
+                                    @{
+                                        <div class="image-category-gallery">
+                                            <div style="cursor:pointer" class="title-category-gallery" onclick="GetItems('@Model[index].Id')">
+                                                @Model[index].Title
+                                            </div>
+                                            <a class="btn-category-gallery" onclick="GetItems('@Model[index].Id')">
+                                                <i class="fas fa-long-arrow-left"></i>
+                                            </a>
+                                            @if (Model[index].Thumbnail.HasValue)
+                                            {
+                                                Html.RadynFile().Image().ID(Model[index].Thumbnail.Value).Alt(Model[index].Title).Render();
+
+
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        index++;
+                    }
+
+                }
+            </div>
+        }
+
+
+
+    </div>

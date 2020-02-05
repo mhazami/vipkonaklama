@@ -1,0 +1,62 @@
+﻿@using Radyn.Web.Mvc;
+@using Radyn.WebApp
+@model Radyn.PhoneBook.DataStructure.PersonAddress
+<script type="text/javascript">
+    function PostAddressData() {
+        $.post("/PhoneBook/PersonAddress/AddAddress", $('form[action^="/PhoneBook/PersonAddress/AddAddress"]').serialize(), function (data) {
+            if (data != "false") {
+                $("#divPersonAddress").html("");
+                GetAddressList();
+            }
+            ShowRadynMessage();
+        });
+    }
+</script>
+@Html.HiddenFor(x => x.PersonId)
+<div class="fit">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.PhoneBook.AddressType
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.DropDownListFor(model => model.AddressTypeId, (SelectList)ViewBag.AddressType, new { })
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                پیش فرض است؟
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.IsDefault, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.IsDefault, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.PhoneBook.Address
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.TextAreaFor(model => model.Address, new { height = "100px" })
+            </div>
+        </div>
+    </div>
+
+    <div class="item-row fit">
+        <div class="button-div m-btn waves-green i-save">
+            @{ Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "PostAddressData();" }).Render(); }
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,33 @@
+﻿<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        function postRefId() {
+
+            var form = document.createElement("form");
+
+            var hiddenFieldToken = document.createElement("input");
+
+            hiddenFieldToken.setAttribute("name", "TOKEN");
+            hiddenFieldToken.setAttribute("Id", "token");
+            hiddenFieldToken.setAttribute("value", '@ViewBag.Token');
+
+            form.appendChild(hiddenFieldToken);
+            form.setAttribute("method", "POST");
+            form.setAttribute("action", "https://mabna.shaparak.ir");
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+            postRefId();
+    </script>
+</body>
+</html>
+
+

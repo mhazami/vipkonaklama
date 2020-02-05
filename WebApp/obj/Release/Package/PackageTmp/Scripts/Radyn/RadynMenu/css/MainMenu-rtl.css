@@ -1,0 +1,26 @@
+﻿
+.content-item {
+    float: right;
+}
+
+.custom-ui-menu img {
+    left: 0;
+    float: left;
+}
+
+.custom-ui-main img {
+    right: 0;
+    float: right;
+}
+
+.content-item {
+    float: right;
+}
+
+    .content-item span {
+        text-align: right;
+    }
+
+.value-content {
+    margin-right: 10px;
+}

@@ -1,0 +1,78 @@
+﻿@using Radyn.FileManager
+@using Radyn.News.Tools
+@using Radyn.Web.Mvc.Utility
+@using Radyn.WebApp.AppCode.Security
+@model Radyn.News.DataStructure.News
+@{
+    ViewBag.Title = Model.GetNewsContent(SessionParameters.Culture).Title1;
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+
+@section Head{
+
+}
+
+<div class="news-content ">
+
+    <div class="internal-page-content news-view">
+        <div class="news-content-text col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            @if (Model.ThumbnailId.HasValue)
+            {
+                Html.RadynFile().Image().ID(Model.ThumbnailId.Value).Height(100).Width(200).OtherAttribute(new { style = "float:right; margin-left:10px;", @class = "image-news-view" }).Render();
+            }
+            <div class="article-box" style="border: none;">
+                <div class="article-box-head">
+                    @Model.GetNewsContent(SessionParameters.Culture).Title1
+                </div>
+                <div class="article-box-lead">
+                    @Model.GetNewsContent(SessionParameters.Culture).Lead
+                </div>
+
+
+                <div class="article-box-lead">
+                    @Model.GetNewsContent(SessionParameters.Culture).Sutitr
+                </div>
+
+            </div>
+            <div class="article-text">
+                @{ Html.HtmlEncoder(Model.GetNewsContent(SessionParameters.Culture).Body); }
+            </div>
+
+            <div class="line" style="background-image: url('/App_Themes/Xbines/Images/line-green.png')">
+            </div>
+            @if (Model.GetComment && SessionParameters.CurrentWebSite.Configuration.EnableNewsComment)
+            {
+                <div class="comments-area">
+                    <h3>لطفا نظر خود را اعلام کنید</h3>
+
+                    @{Html.RadynAction("ShowNewsComment", "NewsComment", new { area = "News", newsId = Model.Id });}
+                </div>
+            }
+            
+        </div>
+        <div class="aside-news col-lg-3 col-sm-4 col-md-4 col-xs-12">
+            <div class="aside-news-item">
+                <div class="aside-news-item-head">
+                    <h3>
+                        برچسب های محبوب
+                    </h3>
+                </div>
+                <div class="aside-news-item-content">
+                    <span>
+                        اکانت
+                    </span>
+                    <span>
+                        خیریه
+                    </span>
+                    <span>
+                        بیمه
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    
+</div>

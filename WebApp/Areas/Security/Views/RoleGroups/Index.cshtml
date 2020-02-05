@@ -1,0 +1,47 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Security.DataStructure.Role>
+    @{
+        ViewBag.Title = @Resources.Security.GroupName + " " + @Resources.Security.RoleName;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.Security.RoleName
+
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-red i-return">
+            @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Group").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create", new { groupId = Request.QueryString["groupId"] }).ControllerName("RoleGroups").Area("Security").Text(@Resources.Security.RoleName + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render();}
+        </div>
+
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-red i-return">
+            @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Group").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create", new { groupId = Request.QueryString["groupId"] }).ControllerName("RoleGroups").Area("Security").Text(@Resources.Security.RoleName + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render();}
+        </div>
+    }
+    <div class="radynForm">
+        @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+              {
+                  columns.Template(role => role.Name).Title(@Resources.Security.RoleName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(role => role.IsAdmin ? Resources.Common.Yes : Resources.Common.No).Title(@Resources.Security.RoleIsAdmin).Width(60).HeaderHtmlAttributes(new { style = "text-align:center" });
+                  columns.Template(role => "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/RoleGroups/RemoveGroup?groupId=" + Request.QueryString["groupId"] + "&roleId=" + role.Id + "") + "'>" + @Resources.Common.Delete + "</a>").Width(300);
+              })
+
+              .Sortable(sorting => sorting.Enabled(true))
+              .Pageable(paging => paging.Enabled(true))
+              .Filterable(filtering => filtering.Enabled(true))
+              //.Footer(true)
+              .Render();}
+    </div>

@@ -1,0 +1,62 @@
+﻿@model Radyn.FormGenerator.ControlFactory.Controls.FileUploader
+@Html.ValidationSummary(true)
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.FormGenerator.Title
+        </div>
+    </div>
+    <div class="table-row-item">
+        <div class="item">
+            @Html.EditorFor(model => model.Caption)
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.FormGenerator.IsImage
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.RadioButtonFor(model => model.IsImage, true)@Resources.Common.Yes
+            @Html.RadioButtonFor(model => model.IsImage, false)@Resources.Common.No
+        </div>
+    </div>
+</div>
+<div class="item-row">
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.FormGenerator.MaxSize
+        </div>
+    </div>
+    <div class="table-row-item ">
+        <div class="item">
+            @Html.TextBoxFor(model => model.MaxSize)KB
+        </div>
+    </div>
+</div>
+ <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.FormGenerator.AllowPrint
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(model => model.AllowPrint, true)@Resources.Common.Yes
+                @Html.RadioButtonFor(model => model.AllowPrint, false)@Resources.Common.No
+            </div>
+        </div>
+    </div>
+<div class="fit">
+    @{
+        Html.RenderAction("GenerateValidator", "ValidatorControls", new { Id = Model.Id, formId = ViewBag.formId, culture = ViewBag.culture });
+    }
+</div>
+<div class="fit">
+    @{
+        Html.RenderAction("BaseGenerateControl", "BaseControls", new { Id = Model.Id, formId = ViewBag.formId, culture = ViewBag.culture });
+    }
+</div>

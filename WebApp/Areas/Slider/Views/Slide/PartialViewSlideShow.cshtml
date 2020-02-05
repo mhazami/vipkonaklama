@@ -1,0 +1,21 @@
+﻿@using Radyn.FileManager
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+@using Radyn.Web.Mvc.UI
+@model Radyn.Slider.DataStructure.Slide
+<div class="fit">
+    @{
+
+
+
+        if (Model != null)
+        {
+           
+            Html.Radyn().SlideShow().ID((string)ViewBag.Id).SliderComponentType().CycleTimeOut(((int)ViewBag.Timeout) * 1000).CycleDelay(4).CycleSync(true).CycleFxType(((string)ViewBag.effecttype).ToEnum<SlideShow.CycleFXType>())
+                .Slides(list => list.AddRange(Model.SlideItems.Select(slideItem => string.IsNullOrEmpty(slideItem.NavigateUrl) ? "<img src=\"" + FileManagerContants.FileHandlerRoot + slideItem.ImageId + " \"  width=\"100%\"   height=\"300px\" alt=\" " + slideItem.Title + " \"    />" : "<img src=\"" + FileManagerContants.FileHandlerRoot + slideItem.ImageId + " \"  width=\"100%\" alt=\" " + slideItem.Title + " \"   onclick=\"window.open('http://" + slideItem.NavigateUrl + "')\"  />"))).Render();
+        }
+        <div class="button-div m-btn waves-red i-return">
+            @{Html.Radyn().ImageActionLink().Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "Close_thisModal();" }).Render(); }
+        </div>
+    }
+</div>

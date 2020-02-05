@@ -1,0 +1,47 @@
+﻿@using Radyn.FileManager
+@model List<Radyn.Article.DataStructure.ArticleCategory>
+@{
+    ViewBag.Title = "لیست گروه مقالات";
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+
+@section Head{
+
+}
+
+<div class="internal-page-head">
+
+
+    <div class="text-header">
+        <div>
+
+            <h3>دسته ها</h3>
+        </div>
+
+    </div>
+</div>
+<div class="internal-page-content ">
+    
+    @if (Model != null && Model.Any())
+    {
+        foreach (var articleCategory in Model)
+        {
+            <a href="/Articles/ArticleList/@articleCategory.Title" class="category-item-list col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <img src="@(articleCategory.FileId.HasValue ? FileManagerContants.FileHandlerRoot + articleCategory.FileId : "/App_Themes/Xbines/Images/no-image.jpg")"/>
+                <span href="/Articles/ArticleList/@articleCategory.Title">@articleCategory.Title</span>
+            </a>
+        }
+
+    }
+</div>
+
+
+
+
+
+
+
+
+
+
+

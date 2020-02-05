@@ -1,0 +1,52 @@
+@using Radyn.Web.Mvc;
+@model IEnumerable<Room>
+@{
+    ViewBag.Title = Resources.Reservation.RoomList;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle {@Resources.Reservation.RoomList }
+@section PageAction {
+    <div class="button-div m-btn i-save">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Room/Create")).Text(Resources.Reservation.RoomNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div m-btn i-save">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Room/Create")).Text(Resources.Reservation.RoomNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+    </div>
+}
+<div class="radynForm">
+    <div class="grid-guid">
+        <div class="grid-guid-title">
+            @Resources.Common.Help
+        </div>
+        <ul>
+            <li>
+                <img src="/Content/Images/details.png">
+                @Resources.Common.Detail
+            </li>
+            <li>
+                <img src="/Content/Images/Delete-Close.png">
+                @Resources.Common.Delete
+            </li>
+            <li>
+                <img src="/Content/Images/edit.png">
+                @Resources.Common.Edit
+            </li>
+        </ul>
+        <div class="fit">
+            @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width: 98%; margin: 0auto" }).Columns(columns =>
+                {
+                    columns.Template(room => room.Title).Title(Resources.Reservation.Title).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(room => room.Idle?Resources.Common.Yes: Resources.Common.No).Title(Resources.Reservation.Idle).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(room => room.RoomType.Title).Title(Resources.Reservation.RoomType).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(room => "<a style='cursor: pointer;' href=" + Url.Content("~/Reservation/room/Details") + "?Id=" + room.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/room/Edit") + "?Id=" + room.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/room/Delete") + "?Id=" + room.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(300).Encode(false);
+                })
+                            .Sortable(sorting => sorting.Enabled(true))
+                            .Pageable(paging => paging.Enabled(true))
+                            .Filterable(filtering => filtering.Enabled(true))
+                            .Render();}
+        </div>
+    </div>
+</div>

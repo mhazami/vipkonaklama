@@ -1,0 +1,75 @@
+﻿
+@using Radyn.WebApp.AppCode;
+@using Radyn.Web.Mvc.Utility;
+<div id="Div@(ViewBag.FormId)">
+    <script>
+        $(document).ready(function() {
+            $("#@ViewBag.FormId").modal("show");
+            $("#@ViewBag.FormId").on("hidden.bs.modal",
+                function () {
+                    $("#Div@(ViewBag.FormId)").remove();
+                    modal_close();
+                });
+            modalControl();
+        });
+       
+        function modalControl() {
+            $('.modal-content').resizable({});
+            $('.modal-drag').draggable({
+                cancel:".content_rc_item_content  label ,.c-widget-lookup, .not-drag ,.form-generator, .fitper , .form-control, .select-language , .form-group.my_form-group , .content_rc_item_content .my_form-group_box, .content_rc_item_content table"
+            });
+            $(".rdn-modal-content").on('resize',
+                function() {
+                    $('.ui-resizable').addClass('resized');
+                });
+            $(".change-size").click(function() {$("#@ViewBag.FormId").toggleClass('full-screen-modal');});
+            $('.close-modal').click(function() {$("#@ViewBag.FormId").removeClass('full-screen-modal');});
+        }
+
+       
+
+        function modal_close() {
+            var countModal = $(".custom-modal.in").length;
+            if (countModal < 1) {
+                $("body").removeClass("main-modal-open");
+                $("body").removeClass("modal-open");
+            }
+        }
+
+
+    </script>
+    <div class="modal  custom-modal  fade @((bool)ViewBag.FullScreen? "full-screen-modal" : "")" id="@ViewBag.FormId" role="dialog">
+        <div class="modal-dialog modal-lg ">
+            <div class="modal-drag">
+                <div class="modal-content rdn-modal-content">
+                    <a class="close-modal" onclick="Close_thisModal()" data-dismiss="modal" aria-hidden="true"><i class="fas fa-times"></i></a>
+                    <a class="change-size"><i class="fas fa-compress"></i></a>
+                    <div class="modal-body">
+                        @{
+
+                            Html.WriteFormId();
+                            Html.WriteReturnValuesHideId();
+                        }
+                        @if (ViewBag.addformtag == true)
+                        {
+                            <form action="@ViewBag.Viewurl" method="post">
+                                @Html.AntiForgeryToken()
+                                @{
+
+                                    Html.PrepareModel();
+                                    this.Html.WriteFormUrl();
+                                    Html.HtmlEncoder((string)ViewBag.Html);
+                                }
+                            </form>
+                        }
+                        else
+                        {
+                            Html.HtmlEncoder((string)ViewBag.Html);
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

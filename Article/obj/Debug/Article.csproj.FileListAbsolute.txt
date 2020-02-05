@@ -1,0 +1,7 @@
+E:\Online-WorkSpace\vipkonaklama\Article\obj\Debug\Article.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\Article\obj\Debug\Article.csprojAssemblyReference.cache
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Article.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Article.pdb
+E:\Online-WorkSpace\vipkonaklama\Article\obj\Debug\Article.csproj.CopyComplete
+E:\Online-WorkSpace\vipkonaklama\Article\obj\Debug\Radyn.Article.dll
+E:\Online-WorkSpace\vipkonaklama\Article\obj\Debug\Radyn.Article.pdb

@@ -1,0 +1,31 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc
+@model IEnumerable<Radyn.Security.DataStructure.Menu>
+
+
+
+    <div class="radynForm">
+        @{
+            Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+            {
+                columns.Template(menu => (menu.ParentMenu != null ? menu.ParentMenu.Title : "")).Title(Resources.Security.MenuParentId).Width(350).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(menu => menu.Title).Title(Resources.Security.MenuTitle).Width(350).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(menu => (menu.Enabled ? Resources.Common.Enable : Resources.Common.Disable)).Title(Resources.Common.Enable).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(menu => (menu.Display ? Resources.Common.Enable : Resources.Common.Disable)).Title(Resources.Security.MenuDisplay).Width(350).HeaderHtmlAttributes(new { style = "text-align:center" });
+                columns.Template(menu => menu.Url.Trancate(30)).Title(Resources.Security.MenuUrl).Width(350).HeaderHtmlAttributes(new { style = "text-align:center" });
+
+                columns.Template(resource =>
+                    "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/UserMenu/RemoveMenu?UserId=" + ViewBag.userId) + "&&menuId=" + resource.Id + "'>" +
+                    " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false);
+            })
+
+                .Sortable(sorting => sorting.Enabled(true))
+                .Pageable(paging => paging.Enabled(true))
+                .Filterable(filtering => filtering.Enabled(true))
+                .Render();
+        }
+    </div>
+
+
+
+

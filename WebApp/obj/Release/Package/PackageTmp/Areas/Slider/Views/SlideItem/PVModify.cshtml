@@ -1,0 +1,107 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@using Radyn.Web.Mvc.Utility
+
+@model Radyn.Slider.DataStructure.SlideItem
+@if (Model != null)
+{
+<div>
+    <div id="GalleryContent">
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Slider.Title
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(x => x.Title)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Enable
+            </div>
+        </div>
+        <div class="table-row-item drp">
+            <div class="item">
+                @Html.RadioButtonFor(m => m.Enabled, true)   @Resources.Gallery1.Active
+                @Html.RadioButtonFor(m => m.Enabled, false)  @Resources.Gallery1.DeActive
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Slider.NavigateUrl
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.TextBoxFor(x => x.NavigateUrl, new { })
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Slider.Order
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.TextBoxFor(x => x.Order, new { })
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Slider.StartDate
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item date-picker">
+                @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.StartDate).Render();}
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Slider.ExpireDate
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item date-picker">
+                @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.FinishDate).Render();}
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap table-c-fit">
+            <div class="item">
+                @Resources.Slider.Photo
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+
+                @{
+                    Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "ImageId", showimage = true, fileid = Model.ImageId.ToGuid(), fileName = "ImageId" });
+
+                }
+
+
+                @if (Model == null || string.IsNullOrEmpty(Model.ImageId))
+                {
+                    <input type="hidden" id="ImageId" name="ImageId" value="" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+                        }

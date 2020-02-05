@@ -1,0 +1,81 @@
+﻿@using Radyn.FileManager
+@using Radyn.Utility
+@model Radyn.ContentManager.DataStructure.Partials
+<div class="radynForm">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Title
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Title)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Enable
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.Enabled ? @Resources.Common.Enable : @Resources.Common.Disable)
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Url
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit table-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Url)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Operation
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.Operation != null ? Model.Operation.Title : "")
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.ContentManager.Container
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.Container != null ? Model.Container.Title : "")
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+              تصویر پیش فرض
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @if (!string.IsNullOrEmpty(Model.Image))
+                {
+                    Html.RadynFile().Image().ID(Model.Image.ToGuid()).DeleteButtonVisible("Image").Render();
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

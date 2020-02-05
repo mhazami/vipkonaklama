@@ -1,0 +1,70 @@
+﻿@using Radyn.News.DataStructure
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@using Radyn.WebApp.Areas.Common.Component
+@model NewsCategory
+@{
+    ViewBag.Title = Resources.News.NewsCategoryTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.Detail @Resources.News.NewsCategoryTitle
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("NewsCategory").Area("News").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render();}
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("NewsCategory").Area("News").Text(Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render();}
+    </div>
+
+}
+@Html.ValidationSummary(true)
+<div class="radynForm">
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.Title
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit table-fit">
+            <div class="item">
+                @{
+                    Html.LanguageContentDisplayFor(Model, m => m.Title);
+                }
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsCategoryParentCategoryId
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.ParentNewsCategory.Title)
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.News.NewsCategoryEnabled
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.Enabled ? Resources.Common.Enable : Resources.Common.Disable)
+            </div>
+        </div>
+    </div>
+</div>

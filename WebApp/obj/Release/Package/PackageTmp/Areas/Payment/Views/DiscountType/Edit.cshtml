@@ -1,0 +1,59 @@
+@using Radyn.Web.Mvc;
+@using Radyn.WebApp.Areas.Common.Component
+@model Radyn.Payment.DataStructure.DiscountType
+
+
+
+@{
+    ViewBag.Title = @Resources.Common.Edit + " " + @Resources.Payment.DiscountType;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+        function changeCulture() {
+            var langId = document.getElementById("LanguageId").value;
+            $("#DivItem").html("");
+            $.get("@Url.Content("~/Payment/DiscountType/GetModify")", { Id: '@ViewBag.Id', culture: langId, date: new Date().getTime() }, function (data) {
+                $("#DivItem").html(data).slideDown("slow");;
+            });
+        }
+
+        $(document).ready(function () {
+            changeCulture();
+        });
+    </script>
+}
+@section PageTitle
+{
+    @Resources.Common.Edit @Resources.Payment.DiscountType
+
+}
+@section PageAction
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().ActionName("Edit").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().ImageWidth("15").Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("DiscountType").Area("Payment").Text(@Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@Html.ValidationSummary(true)
+<div class="radynForm">
+    <div class="fit">
+        @{
+            Html.LanguageDropDownList("changeCulture()");
+        }
+    </div>
+    <div id="DivItem"></div>
+</div>
+
+

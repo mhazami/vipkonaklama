@@ -1,0 +1,110 @@
+@using Radyn.FileManager
+@using Radyn.Security.DataStructure
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+@model Operation
+@{
+    ViewBag.Title = @Resources.Common.Delete + " " + @Resources.Security.OperationName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle
+{
+    @Resources.Common.DeleteMessage
+
+}
+@section PageAction
+{
+<div class="button-div m-btn waves-red i-check">
+    @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("Operation").Area("Security").Text(@Resources.Common.Yes).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+
+</div>
+    <div class="button-div m-btn waves-green i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Operation").Area("Security").Text(@Resources.Common.No).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+
+}
+@section PageActionDown
+{
+    <div class="button-div m-btn waves-red i-check">
+        @{Html.Radyn().ImageActionLink().ActionName("Delete").ControllerName("Operation").Area("Security").Text(@Resources.Common.Yes).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+
+    </div>
+    <div class="button-div m-btn waves-green i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Operation").Area("Security").Text(@Resources.Common.No).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+
+    </div>
+
+}
+
+@using (Html.BeginForm())
+{
+    <div class="radynForm">
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.OperationTitle
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Title)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.MenuOrder
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Order)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Security.OperationEnabled
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit drp">
+                <div class="item">
+                    @(Model.Enabled ? @Resources.Common.Enable : @Resources.Common.Disable)
+
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Status
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit drp">
+                <div class="item">
+                    @(Model.Expand ? @Resources.Common.Open : @Resources.Common.Close)
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.Security.OprationIcon
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit table-c-fit">
+                <div class="item">
+                    @if (Model.LogoId.HasValue)
+                    {
+                        Html.RadynFile().Image().ID(Model.LogoId.Value).Height(50).Width(50).Render();
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,12 @@
+﻿@model List<Radyn.News.DataStructure.News>
+    @{
+        ViewBag.Title = Resources.Common.NewsList;
+        Layout = "~/Views/Shared/User_Layout.cshtml";
+    }
+    @section Head{
+       
+    }
+    
+@{
+    Html.RenderAction("GetNewsList", "UIPanel",new {area="News", newses =Model});
+}

@@ -1,0 +1,119 @@
+﻿/*--GridView--*/
+.gv-table {
+    direction: ltr;
+}
+
+.gv-row {
+    float: left;
+}
+
+.gv-cell {
+    float: left;
+    border-width: 0 1px 0 0;
+    border-style: none solid none none;
+    border-color: #A4ABB2;
+}
+
+.gv-cell-last {
+    border: none;
+}
+
+.radyn_grid-footer {
+    border-width: 0 0 1px 1px;
+    border-style: none none solid solid;
+}
+
+.table_info {
+    border-width: 0 1px 0 1px;
+    border-style: none solid none solid;
+    text-align: right;
+}
+
+.paginate_buttons, .table_info {
+    float: left;
+}
+
+    .paginate_buttons ul li {
+        float: left;
+    }
+
+.gv-icon {
+    float: left;
+}
+
+.gv-status {
+    border-right-style: solid;
+    border-right-width: 1px;
+    float: left;
+}
+
+.gv-pager {
+    float: left;
+}
+
+.gv-link {
+    float: left;
+}
+
+.gv-numeric {
+    float: left;
+}
+
+.gv-arrow-first {
+    background-position: -48px -192px;
+}
+
+    .gv-arrow-first:hover {
+        background-position: -48px -224px;
+    }
+
+.gv-arrow-last {
+    background-position: 0 -192px;
+}
+
+    .gv-arrow-last:hover {
+        background-position: 0 -224px;
+    }
+
+.gv-arrow-prev {
+    background-position: -32px -192px;
+}
+
+    .gv-arrow-prev:hover {
+        background-position: -32px -224px;
+    }
+
+.gv-arrow-next {
+    background-position: -16px -208px;
+}
+
+    .gv-arrow-next:hover {
+        background-position: -16px -224px;
+    }
+
+.grid-guid, .grid-guid-title, .grid-guid ul, .grid-guid ul li {
+    float: left;
+}
+
+.grid-guid {
+    direction: ltr;
+    text-align: left;
+}
+/*--END-GridView--*/
+/*FILTER*/
+
+
+.fa.fa-filter {
+    float: left;
+    margin-left: -43px;
+}
+
+
+.dropdown-menu {
+    float: left;
+    text-align: left;
+}
+
+.filter_textbox.form-control {
+    padding-left: 5%;
+}

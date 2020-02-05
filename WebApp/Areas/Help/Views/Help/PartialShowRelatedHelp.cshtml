@@ -1,0 +1,54 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc.Utility
+@model IEnumerable<Radyn.Help.DataStructure.Help>
+<script type="text/javascript">
+    function DeleteHelp(helpId) {
+
+        $.get("/Help/Help/DeleteHelpRelation", { helpId: helpId, id: new Date().getTime() }, function (data) {
+            if (data == "true") {
+                $("#" + helpId).slideUp();
+                ShowRelatedHelp();
+            }
+
+            ShowRadynMessage();
+
+        });
+
+
+    }
+</script>
+<table>
+    <tr>
+        <th class="EditFiled">
+            #
+            <input type="hidden"  value="@ViewBag.SourceHelp" name="SourceHelp"/>
+        </th>
+        <th class="EditFiled">
+            @Resources.Help.HelpDefaultTitle
+        </th>
+        <th class="EditFiled">
+            @Resources.Help.HelpDefaultConent
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item != null)
+        {
+        <tr id="@item.Id,@ViewBag.SourceHelp">
+            <td class="EditFiled" style="text-align: center; cursor: pointer">
+                @((Model.ToList().IndexOf(item) + 1).ToString().ConvertNumLa2Fa())
+            </td>
+            <td class="EditFiled" style="text-align: center; cursor: pointer">
+                @item.DefaultTitle
+            </td>
+            <td class="EditFiled" style="text-align: center; cursor: pointer">
+                @{Html.HtmlEncoder(item.DefaultConent);
+                }
+            </td>
+            <td class="EditFiled">
+                <img src="/Content/Images/Delete-Close.png" alt=" @Resources.Common.Delete" onclick="if(confirm('@Resources.Common.Are_You_Soure_For_Delete'))DeleteHelp('@item.Id,@ViewBag.SourceHelp');"  style="cursor: pointer;"/>
+            </td>
+        </tr>
+        }
+    }
+</table>

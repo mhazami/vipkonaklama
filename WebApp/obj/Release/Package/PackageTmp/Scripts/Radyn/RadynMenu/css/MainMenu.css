@@ -1,0 +1,121 @@
+﻿
+@font-face {
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../../../../AppCode/Fonts/Verdana/eot/Verdana-Bold-FD.eot'), url('../../../../AppCode/Fonts/Verdana/woff2/Verdana-Bold-FD.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('../../../../AppCode/Fonts/Verdana/woff/Verdana-Bold-FD.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../../../AppCode/Fonts/Verdana/ttf/Verdana-Bold-FD.ttf') format('truetype');
+}
+
+
+@font-face {
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: 500;
+    src: url('../../../../AppCode/Fonts/Verdana/eot/Verdana-Medium-FD.eot');
+    src: url('../../../../AppCode/Fonts/Verdana/eot/Verdana-Medium-FD.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('../../../../AppCode/Fonts/Verdana/woff2/Verdana-Medium-FD.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('../../../../AppCode/Fonts/Verdana/woff/Verdana-Medium-FD.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../../../AppCode/Fonts/Verdana/ttf/Verdana-Medium-FD.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: 300;
+    src: url('../../../../AppCode/Fonts/Verdana/eot/Verdana-Light-FD.eot');
+    src: url('../../../../AppCode/Fonts/Verdana/eot/Verdana-Light-FD.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('../../../../AppCode/Fonts/Verdana/woff2/Verdana-Light-FD.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('../../../../AppCode/Fonts/Verdana/woff/Verdana-Light-FD.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../../../AppCode/Fonts/Verdana/ttf/Verdana-Light-FD.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: 200;
+    src: url('../../../../AppCode/Fonts/Verdana/eot/Verdana-Thin-FD.eot');
+    src: url('../../../../AppCode/Fonts/Verdana/eot/Verdana-Thin-FD.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('../../../../AppCode/Fonts/Verdana/woff2/Verdana-Thin-FD.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('../../../../AppCode/Fonts/Verdana/woff/Verdana-Thin-FD.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../../../AppCode/Fonts/Verdana/ttf/Verdana-Thin-FD.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../../../../AppCode/Fonts/Verdana/eot/Verdana-FD.eot');
+    src: url('../../../../AppCode/Fonts/Verdana/eot/Verdana-FD.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('../../../../AppCode/Fonts/Verdana/woff2/Verdana-FD.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('../../../../AppCode/Fonts/Verdana/woff/Verdana-FD.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../../../AppCode/Fonts/Verdana/ttf/Verdana-FD.ttf') format('truetype');
+}
+
+
+.content-item {
+    border: none !important;
+    width: 100%;
+}
+
+
+.custom-ui-menu img, .custom-ui-main img {
+    border: none;
+    width: 21px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    text-indent: -99999px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+.item-list .custom-ui-main > img {
+    border-left: 1px solid #c8c8c8;
+    border-right: 1px solid #c8c8c8;
+}
+.custom-ui-menu img, .custom-ui-menu img {
+    background: transparent;
+}
+
+.value-content a, .value-content-main a {
+    font-size: 12px;
+    font-family: Verdana;
+    padding: 10px !important;
+    color: #737373;
+}
+
+.value-content-main a {
+    margin-right: 40px !important;
+}
+
+
+
+    .ui-menu-item:active {
+        background-color: #F6F6F6;
+    }
+
+
+.custom-ui-menu {
+    text-align: right;
+}
+
+.custom-ui-main img {
+}
+
+.item-list {
+    text-align: right;
+}
+
+.content-item {
+    width: 200px;
+    padding: 0;
+}
+.ui-menu-item {
+    padding: 0 !important;
+        border-bottom: 1px solid #c8c8c8;
+}

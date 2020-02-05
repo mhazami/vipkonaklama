@@ -1,0 +1,57 @@
+﻿@using Radyn.FileManager
+@using Radyn.News.Tools
+@using Radyn.Utility
+@using Radyn.WebApp.AppCode.Security
+@model IEnumerable<Radyn.News.DataStructure.News>
+<div class="container-hd">
+    @{
+        <div class="container-header">
+            <div class="container-header-item">
+                <img src="/Content/Images/news.png" />
+                @Resources.News.NewNews
+            </div>
+        </div>
+       
+        <div class="container-box">
+
+            @foreach (var variable in Model)
+            {
+                <div class="news-box">
+                    <a class="n-img" href="/News/News/NewsView?Id=@variable.Id">
+                        @if (variable.ThumbnailId.HasValue)
+                        {
+                            Html.RadynFile().Image().ID((Guid)variable.ThumbnailId).Render();
+                        }
+                    </a>
+                    <a class="n-title" href="/News/News/NewsView?Id=@variable.Id" >
+                        @variable.GetNewsContent(SessionParameters.Culture).Title1
+                    </a>
+                    <div class="n-lead">
+                        @variable.GetNewsContent(SessionParameters.Culture).Lead
+                        <a href="/News/News/NewsView?Id=@variable.Id" >@Resources.News.Continue</a>
+                    </div>
+                    <div class="n-more">
+
+                        <div class="date">
+                            @if (variable.PublishDate!=null&&!string.IsNullOrEmpty(variable.PublishDate.Trim()))
+                            {
+                                @variable.PublishDate.GetCultureDate(SessionParameters.Culture)
+
+                            }
+                        </div>
+                    </div>
+
+
+                </div>
+            }
+            <div class="archive-link">
+                <a href="/News/News/NewsList">@Resources.News.NewsArchive</a>
+            </div>
+        </div>
+
+
+    }
+
+
+
+</div>

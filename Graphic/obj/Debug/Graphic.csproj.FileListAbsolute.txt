@@ -1,0 +1,12 @@
+E:\Online-WorkSpace\vipkonaklama\Graphic\obj\Debug\Graphic.csprojAssemblyReference.cache
+E:\Online-WorkSpace\vipkonaklama\Graphic\obj\Debug\Radyn.Graphic.Resources.Graphic.resources
+E:\Online-WorkSpace\vipkonaklama\Graphic\obj\Debug\Radyn.Graphic.Resources.Graphic.fa-IR.resources
+E:\Online-WorkSpace\vipkonaklama\Graphic\obj\Debug\Graphic.csproj.GenerateResource.cache
+E:\Online-WorkSpace\vipkonaklama\Graphic\obj\Debug\Graphic.csproj.CoreCompileInputs.cache
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Graphic.dll
+E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Graphic.pdb
+E:\Online-WorkSpace\vipkonaklama\lib\fa-IR\Radyn.Graphic.resources.dll
+E:\Online-WorkSpace\vipkonaklama\Graphic\obj\Debug\fa-IR\Radyn.Graphic.resources.dll
+E:\Online-WorkSpace\vipkonaklama\Graphic\obj\Debug\Graphic.csproj.CopyComplete
+E:\Online-WorkSpace\vipkonaklama\Graphic\obj\Debug\Radyn.Graphic.dll
+E:\Online-WorkSpace\vipkonaklama\Graphic\obj\Debug\Radyn.Graphic.pdb

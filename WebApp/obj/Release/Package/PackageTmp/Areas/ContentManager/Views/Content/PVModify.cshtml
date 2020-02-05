@@ -1,0 +1,221 @@
+@using Radyn.Web.Mvc;
+@using Radyn.WebApp.Areas.ContentManager.Componenet;
+@model Radyn.ContentManager.DataStructure.Content
+
+<style>
+ 
+</style>
+<script type="text/javascript">
+
+    $('select option:first-child').attr("selected", "selected");
+
+
+    function changeCulture() {
+        var culid = document.getElementById("LanguageId").value;
+        $.get("/ContentManager/ContentContent/ChangeCulture", { contentId: '@Model.Id', langid: culid, date: new Date().getTime() }, function (data) {
+            $("#ConetentContent").html(data);
+
+        });
+    };
+
+
+  
+    function ContentContent() {
+        $.get("/ContentManager/ContentContent/Modify", { contentId: '@Model.Id', state: "Modify", date: new Date().getTime() }, function (data) {
+            $("#ConetentContent").html(data);
+
+        });
+    }
+
+    function fillFields() {
+
+        var title = $("#Title").val();
+        $("#Subject").val(title);
+        $("#PageName").val(title);
+    }
+
+
+
+    $(document).ready(function () {
+        ChangeHasMenu('@Model.IsMenu');
+        ChangeContainer('@Model.HasContainer');
+        ContentContent();
+
+       
+
+
+
+    });
+
+    function ChangeContainer(value) {
+        if (value != "") {
+            if (value == "True") {
+                $("#HasContainertr").fadeIn();
+
+
+            } else if (value == "False") {
+
+                $("#HasContainertr").fadeOut();
+            }
+
+
+        } else {
+            $("#HasContainertr").fadeOut();
+
+        }
+    }
+
+    function ChangeHasMenu(value) {
+        if (value != "") {
+            if (value == "True") {
+                $("#IsMenutr").fadeIn();
+
+
+            } else if (value == "False") {
+
+                $("#IsMenutr").fadeOut();
+            }
+
+
+        } else {
+            $("#IsMenutr").fadeOut();
+
+        }
+    }
+
+
+</script>
+
+<div class="radynForm">
+    <div id="ConetentContent">
+    </div>
+    @Html.ValidationSummary(true)
+
+        <div class="item-row full_width">
+            <div class="table-row-cap ">
+                <div class="item">
+                    @Resources.ContentManager.UserScript
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.TextAreaFor(content => content.UserScript, new { style = "height:98px; direction:ltr; font-family:Consolas,Menlo,Monaco,Tahoma;" })
+                </div>
+            </div>
+        </div>
+        <div class="fit">
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.ContentManager.PageName
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.EditorFor(model => model.PageName)
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.ContentManager.KeyWord
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.EditorFor(model => model.Keyword)
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.ContentManager.StartDate
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item date-picker">
+                        @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.StartDate).Render(); }
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.ContentManager.ExpireDate
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item date-picker">
+                        @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.ExpireDate).Render(); }
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Common.Enable
+                    </div>
+                </div>
+                <div class="table-row-item drp">
+                    <div class="item">
+                        @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+                        @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
+                    </div>
+                </div>
+            </div>
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.ContentManager.HasContainer
+                    </div>
+                </div>
+                <div class="table-row-item drp">
+                    <div class="item">
+                        @Html.RadioButtonFor(model => model.HasContainer, true, new { onclick = "ChangeContainer('True')" })@Resources.Common.Yes
+                        @Html.RadioButtonFor(model => model.HasContainer, false, new { onclick = "ChangeContainer('False')" })@Resources.Common.No
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-row">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.ContentManager.ISMenu
+                    </div>
+                </div>
+                <div class="table-row-item drp">
+                    <div class="item">
+                        @Html.RadioButtonFor(model => model.IsMenu, true, new { onclick = "ChangeHasMenu('True')" })@Resources.Common.Yes
+                        @Html.RadioButtonFor(model => model.IsMenu, false, new { onclick = "ChangeHasMenu('False')" })@Resources.Common.No
+                    </div>
+                </div>
+            </div>
+            <div class="item-row" id="HasContainertr">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.ContentManager.Container
+                    </div>
+                </div>
+                <div class="table-row-item">
+                    <div class="item">
+                        @Html.DropDownListFor(model => model.ContainerId, (SelectList)TempData["Containers"], "")
+                    </div>
+                </div>
+            </div>
+            <div class="item-row fit" id="IsMenutr">
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.ContentManager.ListOfMenus
+                    </div>
+                </div>
+                <div class="table-row-item table-fit">
+                    <div class="item">
+                        @{ Html.SearchParentInMenuTree(Model, model => model.MenuId, (string)ViewBag.url);}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</div>

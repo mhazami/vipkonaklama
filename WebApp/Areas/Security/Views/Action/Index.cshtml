@@ -1,0 +1,39 @@
+﻿@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Security.DataStructure.Action>
+    @{
+        ViewBag.Title = @Resources.Common.Index + " " + @Resources.Security.ActionName;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Menu").Area("Security").Text(@Resources.Common.Return).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render();}
+    </div>
+
+    <div class="button-div m-btn waves-blue i-add">
+        @{Html.Radyn().ImageActionLink().ActionName("Create").RouteValue(new { menuId = Request.QueryString["menuId"] }).ControllerName("Action").Area("Security").Text(@Resources.Common.Create).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageHeight("20").ImageWidth("20").Render();}
+    </div>
+
+    @{
+        Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:900px;" }).Columns(columns =>
+        {
+            columns.Template(action => action.Menu.Title).Title(@Resources.Security.ActionMenuId).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(action => action.Name).Title(@Resources.Security.ActionName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(resource =>
+                "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/Menu/Details?Id=" + resource.Id + "&menuId=" + resource.MenuId) + "'>" +
+                " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/Menu/Edit?Id=" + resource.Id + "&menuId=" + resource.MenuId) + "'> " +
+                " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                "<a style='cursor: pointer;'  href='" + Url.Content("~/Security/Menu/Delete?Id=" + resource.Id + "&menuId=" + resource.MenuId) + "'>" +
+                " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+
+        })
+
+    .Sortable(sorting => sorting.Enabled(true))
+    .Pageable(paging => paging.Enabled(true))
+    .Filterable(filtering => filtering.Enabled(true))
+    //.Footer(true)
+    .Render();
+    }

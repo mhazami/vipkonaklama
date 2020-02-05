@@ -1,0 +1,30 @@
+﻿@model Radyn.ContentManager.DataStructure.HtmlDesgin
+@Html.ValidationSummary(true)
+<div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.Common.Title
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                    @Html.TextBoxFor(model => model.Title)
+                    
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap" >
+            <div class="item">
+                @Resources.ContentManager.Html
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.TextAreaFor(x => x.Body, new { style = "height:500px;" })
+            </div>
+        </div>
+    </div>
+
+</div>

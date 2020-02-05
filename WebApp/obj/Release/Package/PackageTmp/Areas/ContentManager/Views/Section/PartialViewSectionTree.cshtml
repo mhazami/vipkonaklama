@@ -1,0 +1,24 @@
+﻿@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.ContentManager.DataStructure.Section>
+    <table border='0' cellpadding='0' cellspacing='2'>
+        <tr>
+            <input type="hidden" id="TxtSelectedItemid" name="TxtSelectedItemid" />
+            <input type="hidden" id="TxtSelectedItemtext" name="TxtSelectedItemtext" />
+            <td style='width: 150px;'>
+                <h3>
+                    @Resources.Common.List @Resources.ContentManager.Section
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                
+
+                @{ Html.Radyn().ContextMenu().Selector("div").AddItem("انتخاب", "onclick:function selectSection() {selectitem(document.getElementById('TxtSelectedItemid').value,document.getElementById('TxtSelectedItemtext').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'")
+                       .AddItem("ایجاد", "onclick:function selectSection() {ModifySectionItem('Create',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'")
+                       .AddItem("ویرایش", "onclick:function selectSection() {ModifySectionItem('Edit',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'")
+                       .AddItem("حذف", "onclick:function selectSection() {ModifySectionItem('Delete',document.getElementById('TxtSelectedItemid').value);},className:'ContexMenu',hoverClassName:'HoverContexMenu'").Render(); }
+            </td>
+        </tr>
+    </table>

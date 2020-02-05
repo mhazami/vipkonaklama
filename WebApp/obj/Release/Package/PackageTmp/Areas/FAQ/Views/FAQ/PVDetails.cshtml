@@ -1,0 +1,50 @@
+﻿@using Radyn.FileManager
+@model  Radyn.FAQ.DataStructure.FAQ
+<script type="text/javascript">
+    $(document).ready(function () {
+        FAQContent();
+    });
+    function FAQContent() {
+        $("#ItemContent").html("");
+        $.get("@Url.Content("~/FAQ/FAQContent/Modify")", { state: "Details", faqId: '@Model.Id', date: new Date().getTime() }, function (data) {
+            $("#ItemContent").html(data).slideDown("slow");;
+        });
+    }
+</script>
+@Html.ValidationSummary(true)
+<div class="radynForm">
+    <div id="ItemContent">
+    </div>
+    <div class="fit item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.FAQ.CreateDate
+            </div>
+        </div>
+        <div class="table-row-item ">
+            <div class="item">
+                @Html.DisplayFor(model => model.CreateDate)
+            </div>
+        </div>
+    </div>
+    @if (Model != null && Model.ThumbnailId.HasValue)
+    {
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.FAQ.Thumbnail
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @{
+                        Html.RadynFile().Image().ID(Model.ThumbnailId.Value).Width(150).Height(100).Render();
+                    }
+
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+

@@ -1,0 +1,101 @@
+@using Radyn.Web.Mvc;
+@using Radyn.WebApp.AppCode.Base
+@model RoomType
+@{
+    ViewBag.Title = Resources.Common.Create;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle{@Resources.Common.Create}
+@section PageAction {
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/RoomType/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div m-btn waves-green i-save">
+        @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
+    </div>
+
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/RoomType/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@if (Model != null)
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.RoomTypeTitle
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.EditorFor(model => model.Title)
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.RoomTypeEnable
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.RadioButtonFor(model => model.Enable, true)@Resources.Common.Enable
+                    @Html.RadioButtonFor(model => model.Enable, false)@Resources.Common.Disable
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.RoomTypePersonCapacity
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.EditorFor(model => model.PersonCapacity)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.ContentManager.Description
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.EditorFor(model => model.Description)
+                </div>
+            </div>
+        </div>
+
+        <div class="fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.Picture
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+
+                    @{
+                        Html.RadynAction("FileUploader", "FileUpload", new { area = "FileManager", filePropName = "PicId", fileid = Model.PicId, showimage = true, fileName = "Image" });
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

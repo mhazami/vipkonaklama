@@ -1,0 +1,26 @@
+﻿@using Radyn.Web.Mvc
+@model Radyn.Article.DataStructure.ArticleComment
+
+
+
+@using (Html.BeginForm())
+{
+
+
+    <div class="radynForm">
+
+        @Html.HiddenFor(model => model.ArticleId)
+
+        @{Html.RenderAction("Modify", "Comments", new { area = "Comments" });}
+
+    </div>
+    <div class="button-row">
+        <div class="button-div m-btn waves-blue i-send">
+            @{Html.Radyn().ImageActionLink().Text(Resources.Comment.Send).Align(ImageActionLink.Alignment.Left).Submit().Render(); }
+        </div>
+
+    </div>
+}
+
+
+

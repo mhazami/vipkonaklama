@@ -1,0 +1,201 @@
+﻿@using Radyn.EnterpriseNode.Tools
+@using Radyn.FileManager
+@model Radyn.EnterpriseNode.DataStructure.EnterpriseNode
+<div class="users-page full-size detail-edit">
+    <input type="hidden" id="state" value="@ViewBag.State" />
+    <input type="hidden" id="type" value="@ViewBag.Type" />
+    <div id="Info">
+    </div>
+    @if (Model.PictureId.HasValue)
+    {
+        <div class=" item-row ">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.EnterPriseNode.Picture
+                </div>
+            </div>
+            <div class="table-row-item table-c-fit">
+                <div class="item">
+                    @{
+                        Html.RadynFile().Image().ID(Model.PictureId.Value).Height(98).Width(146).Render();
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    }
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Province
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.Province.Title, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.City
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Html.DisplayFor(model => model.City.Title, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="item-row" id="tr-type">
+        <div class="table-row-cap">
+            <div class="item">
+                @Html.HiddenFor(model => model.EnterpriseNodeTypeId)
+                @Resources.EnterPriseNode.EnterpriseNodeTypeTitle
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Model.EnterpriseNodeType.Title&nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.PrefixTitle
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.PrefixTitleId.HasValue ? Model.PrefixTitle.Title : "")&nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Email
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Model.Email&nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Tel
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Model.Tel&nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Cellphone
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Model.Cellphone&nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="item-row">
+        <div class="table-row-cap ">
+            <div class="item">
+                @Resources.EnterPriseNode.WebSite
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @Model.Website&nbsp;
+            </div>
+        </div>
+    </div>
+
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.EnterPriseNodeParent
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit">
+            <div class="item">
+                @(Model.EnterpriseNodeParentId == null ? "" : Model.ParentEnterpriseNode.Title())&nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="item-row fit">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.EnterPriseNode.Address
+            </div>
+        </div>
+        <div class="table-row-item table-c-fit table-fit">
+            <div class="item">
+                @Model.Address&nbsp;
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        switch ($("#type").val()) {
+            case "l":
+                $("#tr-type").css("display", "none");
+                document.getElementById("EnterpriseNodeTypeId").selectedIndex = 1;
+                break;
+            case "r":
+                $("#tr-type").css("display", "none");
+                document.getElementById("EnterpriseNodeTypeId").selectedIndex = 0;
+                break;
+            case "n":
+            default:
+                break;
+        }
+        switch ($("#state").val()) {
+
+            case "Edit":
+            case "Details":
+            case "Delete":
+                $("#EnterpriseNodeTypeId").attr("disabled", "disabled");
+                break;
+            default:
+                break;
+        }
+        firstDrp = document.getElementById('EnterpriseNodeTypeId');
+        Show(firstDrp);
+
+    });
+    function Show(drp) {
+        if (drp.value == 1) {
+            $.get("@Url.Content("~/EnterpriseNode/EnterpriseNode/GenerateRealInfoDetails")", { state: $("#state").val(), id: '@Model.Id', r: new Date().getTime() }, function (data) {
+                $("#Info").html(data.toString());
+                $("#Content").hide();
+                eval("$('#Content')." + "@Resources.Design.Effects_FadeIn" + "('" + "@Resources.Design.EffectSpeed_Slow" + "');");
+            });
+        } else if (drp.value == 2) {
+
+            $.get("@Url.Content("~/EnterpriseNode/EnterpriseNode/GenerateLegalInfoDetails")", { state: $("#state").val(), id: '@Model.Id', r: new Date().getTime() }, function (data) {
+                $("#Info").html(data.toString());
+                $("#Content").hide();
+                eval("$('#Content')." + "@Resources.Design.Effects_FadeIn" + "('" + "@Resources.Design.EffectSpeed_Slow" + "');");
+            });
+        }
+    return;
+}
+
+
+    </script>
+
+
+</div>

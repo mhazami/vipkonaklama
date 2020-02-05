@@ -1,0 +1,95 @@
+﻿@using Radyn.Gallery.DataStructure
+@using Radyn.Gallery.Tools
+@using Radyn.Utility
+@using Radyn.Web.Mvc
+
+@model IEnumerable<Gallery>
+    @{
+        ViewBag.Title = Resources.Gallery1.SubGalleries;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @ViewBag.Message
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Gallery").Area("Gallery").Text(Resources.Gallery1.Galleryname + " " + Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+        <div class="button-div m-btn waves-purple i-list">
+            @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Gallery").Area("Gallery").Text(Resources.Gallery1.Galleryname + " " + Resources.Common.List).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Gallery").Area("Gallery").Text(Resources.Gallery1.Galleryname + " " + Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+        <div class="button-div m-btn waves-purple i-list">
+            @{Html.Radyn().ImageActionLink().ActionName("Index").ControllerName("Gallery").Area("Gallery").Text(Resources.Gallery1.Galleryname + " " + Resources.Common.List).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    @using (Html.BeginForm())
+    {
+        <div class="radynForm">
+            <div class="fit">
+                <div class="item-row ">
+                    <div class="table-row-cap">
+                        <div class="item">
+                            @Resources.Gallery1.SubGalleries
+                        </div>
+                    </div>
+                    <div class="table-row-item select-row tree-col">
+                        <div class="item">
+                            @Html.DropDownList("Gallerys", (SelectList) ViewBag.ParentGallery, "")
+                            <div class="m-btn waves-blue i-search icon-btn">
+                                @{Html.Radyn().ImageActionLink().ImageUrl(Url.Content("~/Content/Images/search_button.png")).Submit().ImageWidth("35").ImageHeight("25").Render();}
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+
+        
+            <div class="item-row fit">
+                @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new {style = "width:98%;margin: 0 auto"}).Columns(columns =>
+                  {
+                      columns.Template(gallery => gallery.Title).Title(@Resources.Gallery1.Title).Width(100).HeaderHtmlAttributes(new {style = "text-align:center"});
+                      columns.Template(gallery => gallery.CreateDate).Title(@Resources.Gallery1.CreateDate).Width(100).HeaderHtmlAttributes(new {style = "text-align:center"});
+                      columns.Template(gallery => gallery.Enabled ? Resources.Common.Enable : Resources.Common.Disable).Title(@Resources.Gallery1.State).Width(100).HeaderHtmlAttributes(new {style = "text-align:center"});
+                      columns.Template(gallery => gallery.Order).Title(@Resources.Gallery1.Order).Width(100).HeaderHtmlAttributes(new {style = "text-align:center"});
+                      columns.Template(gallery => gallery.ParentGallery.HasValue ? gallery.Parent.Title : "").Title(@Resources.Gallery1.ParentGalley).Width(100).HeaderHtmlAttributes(new {style = "text-align:center"});
+                      columns.Template(gallery => "<img atr='" + gallery.Title + "' src='" + Radyn.FileManager.FileManagerContants.FileHandlerRoot + "" + gallery.Thumbnail + "' height='50' width='80'/>").Title(@Resources.Gallery1.Thumbnail).Width(100);
+                      columns.Template(gallery1 =>
+                          "<a style='cursor: pointer;'  href='" + Url.Content("~/Gallery/Gallery/Details?Id=" + gallery1.Id) + "'>" +
+                          " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                          "<a style='cursor: pointer;'  href='" + Url.Content("~/Gallery/Gallery/Edit?Id=" + gallery1.Id) + "'> " +
+                          " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                          "<a style='cursor: pointer;'  href='" + Url.Content("~/Gallery/Gallery/Delete?Id=" + gallery1.Id) + "'>" +
+                          " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a>  " +
+                          (gallery1.HasChild() ? (" | <a style='cursor: pointer;'  href='" + Url.Content("~/Gallery/Gallery/Index?parentId=" + gallery1.Id) + "'>" +
+                                                  " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> ") : "")).Width(300).Filterable(false).Encode(false);
+
+
+                  })
+
+                      .Sortable(sorting => sorting.Enabled(true))
+                      .Pageable(paging => paging.Enabled(true))
+                      .Filterable(filtering => filtering.Enabled(true))
+                      //.Footer(true)
+                      .Render();
+                }
+            </div>
+        </div>
+
+    }

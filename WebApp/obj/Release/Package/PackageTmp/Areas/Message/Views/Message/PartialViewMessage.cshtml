@@ -1,0 +1,201 @@
+﻿@using Radyn.Web.Mvc
+@using Radyn.WebApp.AppCode.Security
+
+@model Radyn.Message.Tools.ModelView.MessageModel
+@{Html.Radyn().Theme("RadynEditor").Render(); }
+<script type="text/javascript">
+    function VisibleItems(value) {
+        if (value == "Email" || value == "Internal") {
+            if ($("#SendEmail").attr("checked") == "checked" || $("#SendIntrenalMessage").attr("checked") == "checked") {
+                $("#DivEmailTitle").fadeIn("slow");
+                $("#DivEmailBody").fadeIn("slow");
+
+            } else {
+                $("#DivEmailTitle").fadeOut("slow");
+                $("#DivEmailBody").fadeOut("slow");
+            }
+
+        } else {
+            if ($("#SendSMS").attr("checked") == "checked") {
+                $("#DivSMSBody").fadeIn("slow");
+
+            } else {
+                $("#DivSMSBody").fadeOut("slow");
+            }
+        }
+    }
+    function addSMSCounter(textarea) {
+        if (typeof (textarea) == 'string') {
+            textarea = document.getElementById(textarea);
+            if (!textarea) {
+                return false;
+            }
+        }
+        var counterDiv = document.createElement('div');
+        counterDiv.innerHTML = '@Resources.Message.Charactersremaining:';
+        var counterSpan = document.createElement('span');
+        counterSpan.innerHTML = '160(1)';
+        counterDiv.appendChild(counterSpan);
+
+        if (textarea.nextSibling) {
+            textarea.parentNode.insertBefore(counterDiv, textarea.nextSibling);
+        } else textarea.parentNode.appendChild(counterDiv);
+        $(textarea).bind('keyup keypress click', function() {
+            checkSMSLength(textarea, counterSpan);
+        });
+        checkSMSLength(textarea, counterSpan);
+    }
+    function checkSMSLength(textarea, counterSpan) {
+        var text = textarea.value;
+        var ucs2 = text.search(/[^\x00-\x7D]/) != -1;
+        unitLength = ucs2 ? 70 : 160;
+        if (text.length > unitLength) {
+            if (ucs2) {
+                unitLength = unitLength - 3;
+
+            } else {
+                unitLength = unitLength - 7;
+            }
+        }
+
+        var count = Math.max(Math.ceil(text.length / unitLength), 1);
+        counterSpan.innerHTML = (unitLength * count - text.length) + '(' + count + ' @Resources.Message.SMS)(' + text.length + ' @Resources.Message.Character)';
+    }
+    function md_programmer_sms_counter(id) {
+        if ($("#" + id).attr("counter") != 'no') {
+            addSMSCounter(id);
+        }
+    }
+    var htmlSourcePopup;
+    function showHtml(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var editor = $('#EmailBody').data('tEditor');
+        var html = editor.value();
+        if (!htmlSourcePopup) {
+            htmlSourcePopup = $('<div class="html-view">' + '<div class="textarea t-state-default"><textarea></textarea></div>'
+                + '<div class="t-button-wrapper">' + '<button id="htmlCancel" class="t-button t-state-default">Cancel</button>'
+                + '<button id="htmlUpdate" class="t-button t-state-default">Update</button>' + '</div>' + '</div>')
+                .css('display', 'none').tWindow({
+                    title: 'View Generated HTML',
+                    modal: true,
+                    resizable: false,
+                    draggable: true,
+                    width: 700,
+                    onLoad: function () {
+                        var $popup = $(this);
+                        $popup.find('.textarea').css('width', function () {
+                            return 700 - (this.offsetWidth - $(this).width());
+                        })
+                            .focus().end().find('#htmlCancel')
+                            .click(function () { htmlSourcePopup.close(); }).end()
+                            .find('#htmlUpdate')
+                            .click(function () {
+                                var value = $popup.find('textarea').val(); editor.value(value); htmlSourcePopup.close();
+                            });
+                    },
+                    onClose: function () { editor.focus(); }, effects: $.telerik.fx.toggle.defaults()
+                }).data('tWindow');
+        } $(htmlSourcePopup.element).find('textarea').text(html); htmlSourcePopup.center().open();
+    }
+
+    $(document).ready(function () {
+       $("#DivEmailTitle").hide();
+        $("#DivEmailBody").hide();
+        $("#DivSMSBody").hide();
+        md_programmer_sms_counter('SMSBody');
+        $('.t-html').click(showHtml);
+
+        $('#EmailBody').summernote({
+            lang: '@SessionParameters.Culture',
+            focus: true,
+            height: 250,
+            disablelink: true,
+            elementname: 'EmailBody',
+            disableselectimage: true,
+            codemirror: {
+                theme: 'united'
+            }
+        });
+
+    });
+
+</script>
+<style type="text/css">
+
+    .t-editor .t-html {
+        background-image: url('@Url.Content("~/Content/Images/insert-html-icon.png") ');
+    }
+    .html-view .t-button-wrapper {
+        padding: .5em 0;
+    }
+    #htmlCancel {
+        float: right;
+    }
+    .textarea {
+        border-width: 1px;            border-style: solid;
+    }
+    .textarea textarea {
+        margin: 0;             padding: 0;             border: 0;             font: normal 12px Consolas,Courier New,monospace;             width: 100%;             height: 300px;
+    }
+</style>
+<div>
+    <div>
+        <div class="item-row fit" id="DivEmailTitle">
+            <div class="table-row-cap ">
+                <div class="item">
+                    @Resources.Message.EmailTitle
+                </div>
+            </div>
+            <div class="table-row-item table-fit ">
+                <div class="item ">
+                    @Html.TextAreaFor(user => user.EmailTitle, new { })
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit" id="DivEmailBody">
+            <div class="table-row-cap" style="height: 256px;">
+                <div class="item">
+                    @Resources.Message.EmailBody
+                </div>
+            </div>
+            <div class="table-row-item table-c-auto table-fit">
+                <div class="item" style="height: 350px">
+                    @*@{Html.Radyn().Editor().ID("EmailBody").TextAlign(Resources.Design.Align).Render();}*@
+
+                    @Html.TextAreaFor(model => model.EmailBody, new { style = "height:180px;" })
+                </div>
+
+            </div>
+        </div>
+
+        <div class=" item-row fit" id="DivSMSBody">
+            <div class="table-row-cap table-c-fit">
+                <div class="item">
+                    @Resources.Message.SMSBody
+                </div>
+            </div>
+            <div class="table-row-item table-fit">
+                <div class="item">
+                    @Html.TextAreaFor(user => user.SMSBody, new { style = "min-height: 90px" })
+                </div>
+            </div>
+        </div>
+        <div class="item-row fit">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Message.InFromType
+                </div>
+            </div>
+            <div class="table-row-item table-fit ">
+                <div class="item">
+                    <div class="page-align drp" style="width: 40%">
+                        @Resources.Message.Email @Html.CheckBoxFor(x => x.SendEmail, new { onclick = "VisibleItems('Email')" })
+                        @Resources.Message.SMS  @Html.CheckBoxFor(x => x.SendSMS, new { onclick = "VisibleItems('SMS')" })
+                        @Resources.Message.InternalMail  @Html.CheckBoxFor(x => x.SendIntrenalMessage, new { onclick = "VisibleItems('Internal')" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

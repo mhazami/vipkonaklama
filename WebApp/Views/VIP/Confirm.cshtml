@@ -1,0 +1,156 @@
+﻿@model Radyn.Reservation.DataStructure.Order
+@{
+    ViewBag.Title = "Confirm";
+    Layout = "~/Views/Shared/_ReservationLayout.cshtml";
+}
+
+<section class="breadcrumb-outer">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>REZERVASYON</h2>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">ANA SAYFA</a></li>
+                    <li class="breadcrumb-item" aria-current="page">KONTROL ET</li>
+                    <li class="breadcrumb-item" aria-current="page">Ödeme</li>
+                    <li class="breadcrumb-item active" aria-current="page">Onayla</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container">
+        <div class="reservation-links text-center">
+            <h2 class="mar-bottom-60 text-capitalize">REZERVASYON YAP</h2>
+            <div class="reservation-links-content">
+                <div class="res-item">
+                    <a href="#" class="active"><i class="fa fa-check"></i></a>
+                    <p>Rezervasyon Talep Et</p>
+                </div>
+                <div class="res-item">
+                    <a href="#" class="active"><i class="fa fa-check"></i></a>
+                    <p>Rezervasyon tamamlandı</p>
+                </div>
+
+                <div class="res-item">
+                    <a href="#" class="active"><i class="fa fa-check"></i></a>
+                    <p>Ödeme</p>
+                </div>
+                <div class="res-item">
+                    <a href="#" class="active"><i class="fa fa-check"></i></a>
+                    <p>Onayla</p>
+                </div>
+            </div>
+        </div>
+        <div class="success-notify">
+            <div class="success-icon">
+                <i class="fa fa-check"></i>
+            </div>
+            <div class="success-content">
+                <h4 class="white mar-bottom-5">Ödeme Onaylandı</h4>
+                <p class="white mar-0">Teşekkür ederiz, ödemeniz başarılı oldu ve rezervasyonunuz onaylandı. @Model.Customer.Email adresine bir onay e-postası gönderildi.</p>
+            </div>
+            <div class="cancel-icon">
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
+        <div class="confirmation booking-content mar-top-60">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="confirmation-content">
+                        <div class="other-details detail-table mar-top-50">
+                            <h4 class="mar-bottom-30">Order Details</h4>
+                            <table class="table">
+                                <tr>
+                                    <td>Booking id:</td>
+                                    <td>@Model.OrderId</td>
+                                </tr>
+                                <tr>
+                                    <td>Isim:</td>
+                                    <td>@Model.Customer.FirstName</td>
+                                </tr>
+                                <tr>
+                                    <td>Soyisim :</td>
+                                    <td>@Model.Customer.LastName</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Country:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>E-Postal:</td>
+                                    <td>@Model.Customer.Email</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone</td>
+                                    <td>@Model.Customer.PhoneNumber</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="payment mar-top-50">
+                            <h4 class="mar-bottom-30">Ödeme</h4>
+                            <div class="payment-desc">
+                                <p>Nakit ödeme</p>
+                            </div>
+                        </div>
+                        @*<div class="payment mar-top-50">
+                                <h4 class="mar-bottom-30">View Booking Details</h4>
+                                <div class="payment-desc">
+                                    <p>https://www.hotelhotux.com.np/bookingdetails/saurav</p>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="detail-sidebar">
+                        <div class="sidebar-reservation">
+                            <h4 class="text-capitalize">Sizin rezervasyonunuz</h4>
+                            <div class="reservation-detail">
+                                <div class="rd-top">
+                                    <div class="rd-box">
+                                        <label>Giriş</label>
+                                        <p class="bold">@Model.EntryDate.Day</p>
+                                        <p>@Model.EntryDate.MonthName(Radyn.WebApp.AppCode.Security.SessionParameters.Culture), @Model.EntryDate.Year<br>@Model.EntryDate.DayOfWeekName(Radyn.WebApp.AppCode.Security.SessionParameters.Culture)</p>
+                                    </div>
+                                    <div class="rd-box">
+                                        <label>Çikiş</label>
+                                        <p class="bold">@Model.ExitDate.Day</p>
+                                        <p>@Model.ExitDate.MonthName(Radyn.WebApp.AppCode.Security.SessionParameters.Culture), @Model.ExitDate.Year<br>@Model.ExitDate.DayOfWeekName(Radyn.WebApp.AppCode.Security.SessionParameters.Culture)</p>
+                                    </div>
+                                </div>
+                                <div class="rd-top">
+                                    <div class="rd-box">
+                                        <p class="bold">@Model.RoomType.PersonCapacity</p>
+                                        <p>Kişı</p>
+                                    </div>
+                                    <div class="rd-box">
+                                        <p class="bold">@(new Radyn.Reservation.Tools.Utility().GetDaysCount(Model.EntryDate, Model.ExitDate))</p>
+                                        <p>Gece</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="reservation-table table">
+                                <tbody></tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>Toplam</td>
+                                        <td>@Model.TotalPrice</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="sidebar-support">
+                            <h4 class="text-capitalize">Yardım ve Destek</h4>
+                            <p>Destek veya konsol gibi sorunlar için lütfen iletişime geçin</p>
+                            <p><i class="fa fa-phone"></i>  0534 526 69 90</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

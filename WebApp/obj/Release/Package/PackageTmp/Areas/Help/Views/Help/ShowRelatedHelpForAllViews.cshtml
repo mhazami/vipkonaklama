@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title =@Resources.Help.HelpName;
+    Layout = "~/Views/Shared/LookUpLayout.cshtml";
+}
+@section Head{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetItem('@Request.QueryString["HelpId"]');
+            GetItemList('@Request.QueryString["HelpId"]');
+           });
+       
+        function GetItem(helpid) {
+            $.get("/Help/Help/ShowHelp", { helpId: helpid, id: new Date().getTime() }, function (data) {
+               if(data!="") {
+                    $("#HelpContentid").html(data);
+                    $("#HelpContentid").slideDown();
+                }
+                ShowRadynMessage();
+            });
+        }
+        function GetItemList(helpid) {
+            $.get("/Help/Help/GetRealtedHelp", { helpId: helpid, id: new Date().getTime() }, function (data) {
+               if(data!="") {
+                    $("#RelatedHelpList").html(data);
+                    $("#RelatedHelpList").slideDown();
+                     $("#ShowRelatedHelp").hide();
+                    $("#HidenRelatedHelp").show(); 
+               }
+                ShowRadynMessage();
+            });
+        }
+       
+    
+    </script>
+}
+@using (Html.BeginForm())
+{
+    <table border="0" cellpadding="2"  cellspacing="2" width="100%" dir="@Resources.Common.Direction" style="text-align: @Resources.Common.Aligment; font-family:Tahoma">
+        <tr>
+            <div id="HelpContentid" style="background-color: rgb(211, 211, 103); font-weight: bold;
+                cursor: pointer; display: none;">
+                <img src="/Content/Images/accountInfo.png" style="vertical-align: middle;" />
+                @Resources.Help.HelpId
+            </div>
+        </tr>
+
+        <tr>
+            <div id="RelatedHelpList" style="background-color: rgb(211, 211, 103); font-weight: bold;
+                cursor: pointer; display: none;">
+                <img src="/Content/Images/accountInfo.png" style="vertical-align: middle;" />
+                @Resources.Help.HelpConent
+            </div>
+        </tr>
+    </table>
+      
+}
