@@ -47,6 +47,10 @@
 /* ========================================= */
 /*          Navbar CSS        */
 /* ======================================== */
+.form-reservation {
+    height: 50px;
+}
+
 .under-banner {
     display: none;
 }
@@ -1555,7 +1559,8 @@ section.banner.banner-style-1 .swiper-content {
     }
 
     .banner-form {
-        top: 0px;
+        top: -326px !important;
+        height: 394px !important;
     }
 }
 
@@ -1567,7 +1572,8 @@ section.banner.banner-style-1 .swiper-content {
     }
 
     .banner-form {
-        top: -15px !important;
+        top: -325px !important;
+        height: 392px !important;
     }
 
     .banner-roomtype .roomtype-item {
@@ -1581,6 +1587,13 @@ section.banner.banner-style-1 .swiper-content {
 
     div.roomtype-item > :first-child {
         font-size: 12px !important;
+    }
+
+    section.about-us {
+        padding: 89px 0 100px;
+        position: relative;
+        background: #fff;
+        top: -30px !important;
     }
 }
 
@@ -2095,8 +2108,10 @@ form style 1
 @media (max-width: 768px) {
     .banner-form {
         position: relative;
-        transform: translateY(75px);
-        background: rgba(30, 30, 30, 0.9098039215686274);
+        /*transform: translateY(75px);*/
+        background: rgba(30, 30, 30, 0.809804);
+        top: -596px;
+        height: 623px;
     }
 
     .form-content {
@@ -2127,6 +2142,14 @@ form style 1
 @media (max-width: 567px) {
     .banner-form.form-style-1.form-style-4 .form-content .table-item:last-child {
         width: 100%;
+    }
+
+    .banner-form {
+        position: relative;
+        /*transform: translateY(75px);*/
+        background: rgba(30, 30, 30, 0.809804);
+        top: -231px;
+        height: auto;
     }
 }
 
@@ -3087,7 +3110,6 @@ section.reviews {
     .swiper-content, .slider {
         display: none;
     }
-
 
     .header_menu .navbar.navbar-default {
         background: #1f1d26;
@@ -5603,6 +5625,10 @@ section.menu.lunch {
     color: #293f96 !important;
 }
 
+.box-link {
+    display: block;
+}
+
 .booking-content input, .booking-content textarea, .booking-content select {
     border-radius: 0px;
     background: #f8f9fb;
@@ -5756,6 +5782,10 @@ section.menu.lunch {
     .reservation-links-content {
         width: 100%;
     }
+
+    .box-link {
+        display: none;
+    }
 }
 
 @media (max-width: 639px) {
@@ -5766,13 +5796,20 @@ section.menu.lunch {
 
 @media (max-width: 567px) {
     .reservation-links-content {
-        display: inline-block;
+        display: flex;
     }
 
     .res-item {
         width: 100%;
         margin-bottom: 15px;
     }
+
+        .res-item p {
+            font-size: 10px;
+            line-height: 1.5;
+            color: #666;
+            margin-bottom: 15px;
+        }
 
         .res-item a {
             margin-bottom: 15px;
@@ -5831,6 +5868,14 @@ section.menu.lunch {
     .success-content {
         width: 100%;
         padding: 0;
+    }
+
+    .footer-top {
+        padding: 20px 0 40px;
+    }
+
+    .footer-logo {
+        padding-bottom: 50px;
     }
 }
 
@@ -8587,7 +8632,6 @@ section.events .meta span {
 
 @media (max-width: 768px) {
 
-
     .banner-roomtype .roomtype-row {
         height: auto;
         display: inline-block
@@ -8616,7 +8660,8 @@ section.events .meta span {
         width: 33%;
         float: left;
         object-fit: cover;
-        display: block !important
+        display: block !important;
+        max-height: 150px;
     }
 
     .banner-roomtype {
@@ -8628,7 +8673,6 @@ section.events .meta span {
         background: #fe4e37;
         float: left;
         margin: 0 6px;
-        padding: 6px 8px !important;
         box-shadow: none;
         border-radius: 3px;
     }

@@ -27,7 +27,8 @@ namespace Radyn.WebApp.Controllers
         public ActionResult ReservationBanner()
         {
             FillDrp();
-            return PartialView("ReservationBanner");
+            var roomtype = ReservationComponent.Instance.RoomTypeFacade.OrderBy(x => x.Order, x => x.Enable);
+            return PartialView("ReservationBanner", roomtype);
         }
 
         [HttpPost]
@@ -150,7 +151,7 @@ namespace Radyn.WebApp.Controllers
         }
 
         public ActionResult Confirm(Guid? orderId)
-        {            
+        {
             var order = ReservationComponent.Instance.OrderFacade.Get(orderId);
             if (order == null)
                 return Redirect("/");

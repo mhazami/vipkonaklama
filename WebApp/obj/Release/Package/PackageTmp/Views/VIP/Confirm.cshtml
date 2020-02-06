@@ -74,7 +74,7 @@
                                     <td>Soyisim :</td>
                                     <td>@Model.Customer.LastName</td>
                                 </tr>
-                              
+
                                 <tr>
                                     <td>Country:</td>
                                     <td></td>
@@ -89,19 +89,19 @@
                                 </tr>
                             </table>
                         </div>
-                       
+
                         <div class="payment mar-top-50">
-                            <h4 class="mar-bottom-30">Payment</h4>
+                            <h4 class="mar-bottom-30">Ödeme</h4>
                             <div class="payment-desc">
-                                <p>Payment is done via Paypal</p>
+                                <p>Nakit ödeme</p>
                             </div>
                         </div>
-                        <div class="payment mar-top-50">
-                            <h4 class="mar-bottom-30">View Booking Details</h4>
-                            <div class="payment-desc">
-                                <p>https://www.hotelhotux.com.np/bookingdetails/saurav</p>
-                            </div>
-                        </div>
+                        @*<div class="payment mar-top-50">
+                                <h4 class="mar-bottom-30">View Booking Details</h4>
+                                <div class="payment-desc">
+                                    <p>https://www.hotelhotux.com.np/bookingdetails/saurav</p>
+                                </div>
+                            </div>*@
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -113,12 +113,12 @@
                                     <div class="rd-box">
                                         <label>Giriş</label>
                                         <p class="bold">@Model.EntryDate.Day</p>
-                                        <p>@Model.EntryDate.Month, @Model.EntryDate.Year<br>@Model.EntryDate.DayOfWeek</p>
+                                        <p>@Model.EntryDate.MonthName(Radyn.WebApp.AppCode.Security.SessionParameters.Culture), @Model.EntryDate.Year<br>@Model.EntryDate.DayOfWeekName(Radyn.WebApp.AppCode.Security.SessionParameters.Culture)</p>
                                     </div>
                                     <div class="rd-box">
                                         <label>Çikiş</label>
                                         <p class="bold">@Model.ExitDate.Day</p>
-                                        <p>@Model.ExitDate.Month, @Model.ExitDate.Year<br>@Model.ExitDate.DayOfWeek</p>
+                                        <p>@Model.ExitDate.MonthName(Radyn.WebApp.AppCode.Security.SessionParameters.Culture), @Model.ExitDate.Year<br>@Model.ExitDate.DayOfWeekName(Radyn.WebApp.AppCode.Security.SessionParameters.Culture)</p>
                                     </div>
                                 </div>
                                 <div class="rd-top">
@@ -127,16 +127,13 @@
                                         <p>Kişı</p>
                                     </div>
                                     <div class="rd-box">
-                                        <p class="bold">@(DateTime.Compare(Model.ExitDate, Model.EntryDate)+1)</p>
+                                        <p class="bold">@(new Radyn.Reservation.Tools.Utility().GetDaysCount(Model.EntryDate, Model.ExitDate))</p>
                                         <p>Gece</p>
                                     </div>
                                 </div>
                             </div>
                             <table class="reservation-table table">
-                                <tbody>
-                                 
-                                   
-                                </tbody>
+                                <tbody></tbody>
                                 <tfoot>
                                     <tr>
                                         <td>Toplam</td>
@@ -146,8 +143,8 @@
                             </table>
                         </div>
                         <div class="sidebar-support">
-                            <h4 class="text-capitalize">Help and Support</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut arnare</p>
+                            <h4 class="text-capitalize">Yardım ve Destek</h4>
+                            <p>Destek veya konsol gibi sorunlar için lütfen iletişime geçin</p>
                             <p><i class="fa fa-phone"></i>  0534 526 69 90</p>
                         </div>
                     </div>

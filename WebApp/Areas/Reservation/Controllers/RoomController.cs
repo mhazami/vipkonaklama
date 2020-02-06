@@ -117,5 +117,21 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 return View(room);
             }
         }
+
+        public JsonResult GetRoomsByType(byte roomType, short? roomId)
+        {
+            IEnumerable<Room> list;
+            if (roomId.HasValue)
+                list = ReservationComponent.Instance.RoomFacade.Where(x => (x.Idle && x.RoomTypeId == roomType) || x.Id == roomId);
+            else
+                list = ReservationComponent.Instance.RoomFacade.Where(x => x.Idle && x.RoomTypeId == roomType);
+            var results = new List<object>();
+            foreach (var element in list)
+            {
+                results.Add(new { id = element.Id, title = element.Title });
+            }
+            return Json(results, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

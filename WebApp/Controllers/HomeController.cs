@@ -1,4 +1,5 @@
-﻿using Radyn.Reservation;
+﻿using Radyn.Article;
+using Radyn.Reservation;
 using Radyn.Reservation.DataStructure;
 using Radyn.Web.Mvc.UI.Message;
 using Radyn.WebApp.AppCode.Base;
@@ -21,20 +22,20 @@ namespace Radyn.WebApp.Controllers
         }
 
         [WebDesignHost]
-        
-        public ActionResult Index(string culture)
+
+        public ActionResult Index(string id)
         {
-            if (!string.IsNullOrEmpty(culture))
+            try
             {
-                SessionParameters.Culture = culture;
-                return RedirectToAction("Index");
+                if (string.IsNullOrEmpty(id)) return View();
+                var articleCategory = ArticleComponent.Instance.ArticleFacade.FirstOrDefault(x => x.Title == id);
+                return View(articleCategory);
             }
-            if (SessionParameters.CurrentWebSite != null &&
-                SessionParameters.CurrentWebSite.Status == Enums.WebSiteStatus.NoProblem &&
-                SessionParameters.CurrentWebSite.Configuration.IntroPageUrl != null &&
-                !string.IsNullOrEmpty(SessionParameters.CurrentWebSite.Configuration.IntroPageUrl.Trim()))
-                return Redirect(SessionParameters.CurrentWebSite.Configuration.IntroPageUrl);
-            return View(SessionParameters.CurrentWebSite);
+            catch (Exception ex)
+            {
+                ShowExceptionMessage(ex);
+                return View();
+            }
         }
 
 

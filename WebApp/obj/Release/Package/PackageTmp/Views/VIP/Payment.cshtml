@@ -60,7 +60,7 @@
                                         {
                                             <div class="col-md-6">
                                                 <div class="form-group radio-group">
-                                                    <input name="PaymentType" @(item.Key == (Radyn.Reservation.Enum.PaymentType.Credit).ToString() ? "checked":"") value="@item.Key" type="radio">@item.Value @*Kredi Kartı ile*@
+                                                    <input name="PaymentType" @(item.Key == (Radyn.Reservation.Enum.PaymentType.Cash).ToString() ? "checked":"") value="@item.Key" type="radio">@item.Value @*Kredi Kartı ile*@
                                                 </div>
                                             </div>
                                         }

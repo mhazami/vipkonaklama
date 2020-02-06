@@ -23,9 +23,18 @@ namespace Radyn.Reservation.BO
         protected override void CheckConstraint(IConnectionHandler connectionHandler, Order item)
         {
             base.CheckConstraint(connectionHandler, item);
+            RoomBO roomBo = new RoomBO();
+            var oldOrder = this.Get(connectionHandler, item.Id);
+
+            if (oldOrder.RoomId.HasValue && oldOrder.RoomId.Value != item.RoomId)
+            {
+                Room oldRoom = roomBo.Get(connectionHandler, oldOrder.RoomId);
+                oldRoom.Idle = true;
+                roomBo.Update(connectionHandler, oldRoom);
+            }
+
             if (item.RoomId != null)
             {
-                RoomBO roomBo = new RoomBO();
                 Room room = roomBo.Get(connectionHandler, item.RoomId);
                 room.Idle = false;
                 roomBo.Update(connectionHandler, room);

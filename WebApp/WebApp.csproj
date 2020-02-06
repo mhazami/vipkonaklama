@@ -1051,6 +1051,12 @@
     <Content Include="App_Themes\Reservation\img\slider\slider2.jpg" />
     <Content Include="App_Themes\Reservation\img\slider\slider3.jpg" />
     <Content Include="App_Themes\Reservation\img\slider\slider4.jpg" />
+    <Content Include="App_Themes\Reservation\img\socials\facebook.png" />
+    <Content Include="App_Themes\Reservation\img\socials\google-plus.png" />
+    <Content Include="App_Themes\Reservation\img\socials\instagram.png" />
+    <Content Include="App_Themes\Reservation\img\socials\linkin.png" />
+    <Content Include="App_Themes\Reservation\img\socials\twitter.png" />
+    <Content Include="App_Themes\Reservation\img\socials\youtub.png" />
     <Content Include="App_Themes\Reservation\img\tripadvisor.png" />
     <Content Include="App_Themes\Reservation\js\all.min.js" />
     <Content Include="App_Themes\Reservation\js\bootstrap.min.js" />

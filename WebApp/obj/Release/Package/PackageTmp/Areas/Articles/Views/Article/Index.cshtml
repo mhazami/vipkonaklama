@@ -2,7 +2,7 @@
 @using Radyn.WebApp.AppCode.Security
 @model Radyn.Article.DataStructure.Article
 @{
-    ViewBag.Title = Model != null ? Model.Title : "مقاله";
+    ViewBag.Title = Model != null ? Model.Title : Model.Article.ArticlesName;
     Layout = "~/Views/Shared/User_Layout.cshtml";
 }
 
@@ -10,14 +10,8 @@
     <meta name="description" content="@Model.Abstract">
 }
 
-
-
 @if (Model != null)
 {
-
-
-
-
     <div class="news-content ">
 
         <div class="internal-page-content news-view article-view">
@@ -49,7 +43,7 @@
                 <div class="aside-news-item">
                     <div class="aside-news-item-head">
                         <h3>
-                            برچسب ها
+                            @Resources.Article.Keywords
                         </h3>
                     </div>
                     <div class="aside-news-item-content">
@@ -74,7 +68,7 @@
             @if (Model.GetComment && SessionParameters.CurrentWebSite.Configuration.EnableArticleComment)
             {
                 <div class="comments-area">
-                    <h3>لطفا نظر خود را اعلام کنید</h3>
+                    <h3>@Resources.Article.YorumYap</h3>
 
                     @{Html.RadynAction("ShowArticleComment", "ArticleComment", new {area = "Articles", newsId = Model.Id});}
                 </div>

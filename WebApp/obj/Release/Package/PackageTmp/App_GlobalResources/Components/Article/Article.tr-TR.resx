@@ -121,7 +121,7 @@
     <value>Öz</value>
   </data>
   <data name="ArticleCategoryName" xml:space="preserve">
-    <value>Proje Kategorisi</value>
+    <value>Makale Kategorisi</value>
   </data>
   <data name="ArticleCategoryParentId" xml:space="preserve">
     <value>Üst Kategori </value>
@@ -139,7 +139,7 @@
     <value>Dosya Eki Başlığı</value>
   </data>
   <data name="ArticleName" xml:space="preserve">
-    <value>proje</value>
+    <value>Makale</value>
   </data>
   <data name="ArticlePublishDate" xml:space="preserve">
     <value>Yayın tarihi</value>
@@ -172,7 +172,7 @@
     <value>Makale Kaynak Web Adresi</value>
   </data>
   <data name="ArticlesName" xml:space="preserve">
-    <value>Projeler</value>
+    <value>Makaleler</value>
   </data>
   <data name="ArticleText" xml:space="preserve">
     <value>Metin</value>
@@ -208,6 +208,18 @@
     <value>durum</value>
   </data>
   <data name="This_Category_Not_have_Article" xml:space="preserve">
-    <value>Bu Kategoride Proje Yok</value>
+    <value>Bu Kategoride makale Yok</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Yorum</value>
+  </data>
+  <data name="Keywords" xml:space="preserve">
+    <value>Anahtar Kelimeler</value>
+  </data>
+  <data name="ReadeMore" xml:space="preserve">
+    <value>Daha fazlası ...</value>
+  </data>
+  <data name="YorumYap" xml:space="preserve">
+    <value>Lütfen yorum yapın</value>
   </data>
 </root>

@@ -210,4 +210,16 @@
   <data name="Please_Enter_Resource_Title" xml:space="preserve">
     <value>لطفا عنوان منبع را وارد کنید</value>
   </data>
+  <data name="Comment" xml:space="preserve">
+    <value>نظرات کاربران</value>
+  </data>
+  <data name="Keywords" xml:space="preserve">
+    <value>کلمات کلیدی</value>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>بیشتر بخوانید...</value>
+  </data>
+  <data name="YorumYap" xml:space="preserve">
+    <value>لطفا نظر خود را در مورد این مقاله بنویسید</value>
+  </data>
 </root>

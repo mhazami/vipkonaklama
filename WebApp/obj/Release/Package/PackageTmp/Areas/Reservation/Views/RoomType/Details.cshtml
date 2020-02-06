@@ -60,6 +60,30 @@
         <div>
             <div class="table-row-cap">
                 <div class="item">
+                    @Resources.Reservation.DisplayText
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DisplayFor(model => model.DisplayText)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.Order
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Order)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
                     @Resources.ContentManager.Description
                 </div>
             </div>

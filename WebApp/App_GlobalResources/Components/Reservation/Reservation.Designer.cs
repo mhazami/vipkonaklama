@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check-out.
+        /// </summary>
+        internal static string CheckoutHotel {
+            get {
+                return ResourceManager.GetString("CheckoutHotel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer.
         /// </summary>
         internal static string Customer {
@@ -102,6 +111,15 @@ namespace Resources {
         internal static string DayType {
             get {
                 return ResourceManager.GetString("DayType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display text.
+        /// </summary>
+        internal static string DisplayText {
+            get {
+                return ResourceManager.GetString("DisplayText", resourceCulture);
             }
         }
         
@@ -228,6 +246,15 @@ namespace Resources {
         internal static string Nationality {
             get {
                 return ResourceManager.GetString("Nationality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order.
+        /// </summary>
+        internal static string Order {
+            get {
+                return ResourceManager.GetString("Order", resourceCulture);
             }
         }
         

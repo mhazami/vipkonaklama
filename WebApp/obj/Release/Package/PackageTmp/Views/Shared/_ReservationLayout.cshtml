@@ -20,7 +20,7 @@
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-   
+
     <script src="/App_Themes/Reservation/js/jquery-3.3.1.min.js"></script>
 
 </head>
@@ -66,43 +66,55 @@
         </div>
         <!-- Navigation Bar -->
         <div class="header_menu affix-top">
-            <nav class="navbar navbar-default">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="/vip/index">
-                            <img alt="logo" src="~/App_Themes/Reservation/img/logo.png" class="logo-white">
-                            <img alt="logo1" src="~/App_Themes/Reservation/img/logo-black.png" class="logo-black">
-                        </a>
+            <nav class="r-nav navigation-menu side-nav close-nav ">
+                <div class="content-navigation-menu" id="accordian">
+                    <a aria-haspopup="true" class="slicknav_btn slicknav_collapsed" href="#" style="outline: none;"
+                       tabindex="0">
+                        <span class="slicknav_menutxt"></span><span class="slicknav_icon slicknav_no-text">
+                            <span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span>
+                        </span>
+                    </a>
+                    <div class="nav-btn">
+                        <a class="btn btn-orange" href="/Vip/GetCustomerInfo">Şimdi Rezervasyon Yap</a>
                     </div>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav" id="responsive-menu">
-                            <li class="dropdown submenu active">
-                                <a href="/vip/index" role="button" aria-haspopup="true" aria-expanded="false">Ana Sayfa</a>
+                    <!--<a class="mt_cart" href="cart.html"><i class="fa fa-shopping-cart"></i><span-->
+                    <!--class="number-cart">1</span></a>-->
+                    <ul class="list-nav-content">
+                        <li class="active">
+                            <a class="dropdown-btn" href="/vip/index">
 
-                            </li>
+                                <span>Ana Sayfa</span>
+                            </a>
+                        </li>
 
+                        <li>
+                            <a href="#about-us" class="dropdown-btn">
 
-                            <li class="submenu dropdown">
-                                <a href="#about-us" role="button" class="scroll-smooth" aria-haspopup="true" aria-expanded="false">Hakkımızda</a>
-                            </li>
+                                <span>Hakkımızda</span>
+                            </a>
+                         
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-btn">
 
-                            <li class="submenu dropdown">
-                                <a href="#" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-                            </li>
+                                <span>Blog</span>
+                            </a>
 
-                            @*<li class="dropdown submenu">
-                                    <a href="cart.html" class="mt_cart"><i class="fa fa-shopping-cart"></i><span class="number-cart">1</span></a>
-                                </li>*@
-                        </ul>
-                        <div class="nav-btn">
-                            <a href="/Vip/GetCustomerInfo" class="btn btn-orange scroll-smooth">Şimdi Rezervasyon Yap</a>
-                        </div>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-                <div id="slicknav-mobile"></div>
+                        </li>
+
+                    </ul>
+
+                    <a class="navbar-brand" href="/vip/index">
+                        <img alt="logo" src="~/App_Themes/Reservation/img/logo.png" class="logo-white">
+                        <img alt="logo1" src="/App_Themes/Reservation/img/logo-black.png" class="logo-black">
+                    </a>
+
+                </div>
+
             </nav>
+            <a class="navbar-brand-mobile" href="index.html">
+                <img alt="logo" src="/App_Themes/Reservation/img/logo-black.png" class="logo-black">
+            </a>
         </div>
         <!-- Navigation Bar Ends -->
     </header>
@@ -111,331 +123,7 @@
     @RenderBody()
 
 
-    <!-- Banner Ends -->
-    <!-- About Us Start -->
-    <!-- About Us Ends -->
-    <!-- Rooms starts -->
-    @*<section class="rooms">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Explore <span>Rooms</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ex neque, sodales accumsan sapien et, auctor vulputate quam donec vitae consectetur turpis</p>
-                </div>
-                <div class="room-outer">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6 col-xs-6">
-                            <div class="room-item">
-                                <div class="room-image">
-                                    <img src="~/App_Themes/Reservation/img/room1.jpg" alt="image">
-                                </div>
-                                <div class="room-content">
-                                    <div class="room-title">
-                                        <h4>Super Deluxe</h4>
-                                        <p>$1200/Night</p>
-                                        <div class="deal-rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
-                                    </div>
-                                    <div class="room-services mar-bottom-15">
-                                        <ul>
-                                            <li><i class="fa fa-bed" aria-hidden="true"></i> 3 Bedrooms</li>
-                                            <li><i class="fa fa-wifi" aria-hidden="true"></i> Wifi</li>
-                                        </ul>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum orci nulla, fermentum in faucibus a, interdum eu nibh.</p>
-                                    <div class="room-btns mar-top-20">
-                                        <a href="#" class="btn btn-black mar-right-10">VIEW DETAILS</a>
-                                        <a href="#" class="btn btn-orange">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-6">
-                            <div class="room-item">
-                                <div class="room-image">
-                                    <img src="~/App_Themes/Reservation/img/room2.jpg" alt="image">
-                                </div>
-                                <div class="room-content">
-                                    <div class="room-title">
-                                        <h4>Junior Suite</h4>
-                                        <p>$1200/Night</p>
-                                        <div class="deal-rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
-                                    </div>
-                                    <div class="room-services mar-bottom-15">
-                                        <ul>
-                                            <li><i class="fa fa-bed" aria-hidden="true"></i> 3 Bedrooms</li>
-                                            <li><i class="fa fa-wifi" aria-hidden="true"></i> Wifi</li>
-                                        </ul>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum orci nulla, fermentum in faucibus a, interdum eu nibh.</p>
-                                    <div class="room-btns mar-top-20">
-                                        <a href="#" class="btn btn-black mar-right-10">VIEW DETAILS</a>
-                                        <a href="#" class="btn btn-orange">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <div class="room-item">
-                                <div class="room-image">
-                                    <img src="~/App_Themes/Reservation/img/room3.jpg" alt="image">
-                                </div>
-                                <div class="room-content">
-                                    <div class="room-title">
-                                        <h4>Executive Suite</h4>
-                                        <p>$1200/Night</p>
-                                        <div class="deal-rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
-                                    </div>
-                                    <div class="room-services mar-bottom-15">
-                                        <ul>
-                                            <li><i class="fa fa-bed" aria-hidden="true"></i> 3 Bedrooms</li>
-                                            <li><i class="fa fa-wifi" aria-hidden="true"></i> Wifi</li>
-                                        </ul>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum orci nulla, fermentum in faucibus a, interdum eu nibh.</p>
-                                    <div class="room-btns mar-top-20">
-                                        <a href="#" class="btn btn-black mar-right-10">VIEW DETAILS</a>
-                                        <a href="#" class="btn btn-orange">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-btn">
-                    <a href="#" class="btn btn-black mar-right-10">EXPLORE ALL ROOMS <i class="fas fa-angle-double-right"></i></a>
-                </div>
-            </div>
-        </section>*@
-    <!-- Room Ends -->
-    <!-- Call To Action Starts -->
-    @*<section class="call-to-action">
-            <div class="container-fluid">
-                <div class="row display-flex">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="call-content pad-left-30">
-                            <h2 class="white mar-bottom-25">Discover a brand <span>luxurious</span> hotel</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor, eros nec porttitor viverra, felis libero luctus nisi, non volutpat purus felis ut erat ipsum.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor, eros nec porttitor viverra, felis libero luctus nisi, non volutpat purus felis ut erat ipsum.</p>
-                            <a href="#" class="btn btn-orange mar-top-20">READ MORE <i class="fas fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="call-button">
-                            <button type="button" class="play-btn js-video-button" data-video-id="152879427" data-channel="vimeo"><i class="fa fa-play"></i></button>
-                        </div>
-                        <div class="video-figure"></div>
-                    </div>
-                </div>
-            </div>
-        </section>*@
-    <!-- Call To Action Ends -->
-    <!-- Services Starts -->
-    @*<section class="services">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Explore <span>Services</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ex neque, sodales accumsan sapien et, auctor vulputate quam donec vitae consectetur turpis</p>
-                </div>
-                <div class="service-outer">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <div class="service-item">
-                                <div class="service-image">
-                                    <img src="~/App_Themes/Reservation/img/service1.jpg" alt="Image">
-                                </div>
-                                <div class="service-content">
-                                    <h4><a href="service-detail.html">Restaurant</a></h4>
-                                    <p>Breakfast and Dinner</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-6">
-                            <div class="service-item">
-                                <div class="service-image">
-                                    <img src="~/App_Themes/Reservation/img/service2.jpg" alt="Image">
-                                </div>
-                                <div class="service-content">
-                                    <h4><a href="service-detail.html">Massage</a></h4>
-                                    <p>Opens Daily</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-6">
-                            <div class="service-item">
-                                <div class="service-image">
-                                    <img src="~/App_Themes/Reservation/img/service3.jpg" alt="Image">
-                                </div>
-                                <div class="service-content">
-                                    <h4><a href="service-detail.html">Conference Room</a></h4>
-                                    <p>Air Conditioning</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>*@
-    <!-- Services Ends -->
-    <!-- Reviews Starts -->
-    @*<section class="reviews">
-            <div class="container">
-                <div class="section-title title-white">
-                    <h2>Explore <span>Reviews</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ex neque, sodales accumsan sapien et, auctor vulputate quam donec vitae consectetur turpis</p>
-                </div>
-                <div class="review-slider">
-                    <div class="slider-item">
-                        <div class="slider-image">
-                            <img src="~/App_Themes/Reservation/img/review1.jpg" alt="image">
-                        </div>
-                        <div class="slider-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod tortor vitae nisi pharetra egestas. Sed egestas sapien libero.</p>
-                            <h4>Micheal Clordy</h4>
-                            <span>Germany</span>
-                        </div>
-                        <div class="slider-quote">
-                            <img src="~/App_Themes/Reservation/img/icons/quote.png" alt="Image">
-                        </div>
-                    </div>
-                    <div class="slider-item">
-                        <div class="slider-image">
-                            <img src="~/App_Themes/Reservation/img/review2.jpg" alt="image">
-                        </div>
-                        <div class="slider-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod tortor vitae nisi pharetra egestas. Sed egestas sapien libero.</p>
-                            <h4>Ketty Perry</h4>
-                            <span>Australia</span>
-                        </div>
-                        <div class="slider-quote">
-                            <img src="~/App_Themes/Reservation/img/icons/quote.png" alt="Image">
-                        </div>
-                    </div>
-                    <div class="slider-item">
-                        <div class="slider-image">
-                            <img src="~/App_Themes/Reservation/img/review1.jpg" alt="image">
-                        </div>
-                        <div class="slider-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod tortor vitae nisi pharetra egestas. Sed egestas sapien libero.</p>
-                            <h4>Micheal Clordy</h4>
-                            <span>Germany</span>
-                        </div>
-                        <div class="slider-quote">
-                            <img src="~/App_Themes/Reservation/img/icons/quote.png" alt="Image">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>*@
-    <!-- Reviews Ends -->
-    <!-- News Starts -->
-    @*<section class="news">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Latest <span>News</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ex neque, sodales accumsan sapien et, auctor vulputate quam donec vitae consectetur turpis</p>
-                </div>
-                <div class="news-outer">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="news-item">
-                                <div class="news-image">
-                                    <img src="~/App_Themes/Reservation/img/news1.jpg" alt="image">
-                                </div>
-                                <div class="news-content">
-                                    <p class="date mar-bottom-5">16 DECEMBER 2019</p>
-                                    <h4><a href="single-right.html">Why choose Hotux Hotel to travel this summer</a></h4>
-                                    <div class="room-services mar-bottom-10">
-                                        <ul>
-                                            <li><a href="single-right.html"><i class="fa fa-user" aria-hidden="true"></i> By Jack Daniels</a></li>
-                                            <li><a href="single-right.html"><i class="fa fa-comment" aria-hidden="true"></i> 3 comments</a></li>
-                                        </ul>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum orci nulla, fermentum in faucibus a, interdum eu nibh.</p>
-                                    <a href="single-left.html">READ MORE <i class="fas fa-angle-double-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="news-item">
-                                <div class="news-image">
-                                    <img src="~/App_Themes/Reservation/img/news2.jpg" alt="image">
-                                </div>
-                                <div class="news-content">
-                                    <p class="date mar-bottom-5">16 DECEMBER 2019</p>
-                                    <h4><a href="single-right.html">Why choose Hotux Hotel to travel this summer</a></h4>
-                                    <div class="room-services mar-bottom-10">
-                                        <ul>
-                                            <li><a href="single-right.html"><i class="fa fa-user" aria-hidden="true"></i> By Jack Daniels</a></li>
-                                            <li><a href="single-right.html"><i class="fa fa-comment" aria-hidden="true"></i> 3 comments</a></li>
-                                        </ul>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum orci nulla, fermentum in faucibus a, interdum eu nibh.</p>
-                                    <a href="single-left.html">READ MORE <i class="fas fa-angle-double-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <div class="news-item">
-                                <div class="news-image">
-                                    <img src="~/App_Themes/Reservation/img/news3.jpg" alt="image">
-                                </div>
-                                <div class="news-content">
-                                    <p class="date mar-bottom-5">16 DECEMBER 2019</p>
-                                    <h4><a href="single-right.html">Why choose Hotux Hotel to travel this summer</a></h4>
-                                    <div class="room-services mar-bottom-10">
-                                        <ul>
-                                            <li><a href="single-right.html"><i class="fa fa-user" aria-hidden="true"></i> By Jack Daniels</a></li>
-                                            <li><a href="single-right.html"><i class="fa fa-comment" aria-hidden="true"></i> 3 comments</a></li>
-                                        </ul>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum orci nulla, fermentum in faucibus a, interdum eu nibh.</p>
-                                    <a href="single-left.html">READ MORE <i class="fas fa-angle-double-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-btn">
-                    <a href="#" class="btn btn-black mar-right-10">EXPLORE ALL <i class="fas fa-angle-double-right"></i></a>
-                </div>
-            </div>
-        </section>*@
-    <!-- News Ends -->
-    <!-- Newsletter Starts -->
-    @*<section class="newsletter">
-            <div class="container">
-                <div class="section-title title-white">
-                    <h2>Subscribe to our <span>Newsletter</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ex neque, sodales accumsan sapien et, auctor vulputate quam donec vitae consectetur turpis</p>
-                </div>
-                <div class="newsletter-form">
-                    <form>
-                        <input type="email" placeholder="Enter your email">
-                        <a href="#" class="btn btn-orange">SIGN UP</a>
-                    </form>
-                </div>
-            </div>
-        </section>*@
-    <!-- Newsletter Ends -->
-    <!-- Footer Starts -->
-    <footer>
+      <footer>
         <div class="footer-top">
             <div class="container">
                 <div class="footer-logo text-center">
@@ -443,7 +131,7 @@
                 </div>
                 <div class="footer-content">
                     <div class="row">
-                        <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="col-md-3 col-sm-6 col-xs-6">
                             <div class="footer-about">
                                 <h4>Bizi arayın</h4>
                                 <ul>
@@ -462,22 +150,18 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="col-md-3 col-sm-6 col-xs-6 box-link">
                             <div class="quick-links">
                                 <h4>HIZLI LİNKLER</h4>
                                 <ul>
                                     <li><a href="#">Home</a></li>
                                     <li><a href="#">About</a></li>
                                     <li><a href="#">Rooms</a></li>
-                                    @*<li><a href="#">Testimonials</a></li>
-                                        <li><a href="#">Blog</a></li>
-                                        <li><a href="#">Gallery</a></li>
-                                        <li><a href="#">Services</a></li>
-                                        <li><a href="#">Contact</a></li>*@
+
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="col-md-3 col-sm-6 col-xs-6 box-link">
                             <div class="Rooms">
                                 <h4>Odalar</h4>
                                 <ul>
@@ -488,7 +172,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="col-md-3 col-sm-6 col-xs-6">
                             <div class="footer-contact">
                                 <h4>İLETİŞİM BİLGİLERİ</h4>
                                 <ul>
@@ -510,10 +194,36 @@
                         <div class="copyright-content">
                             <p>Copyright 2020. Made with <span>♥</span>. All Rights Reserved. <a href="#">VIP INN</a></p>
                             <ul>
-                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li>
+                                    <a href="#">
+                                        <img src="~/App_Themes/Reservation/img/socials/facebook.png" alt="Vip inn hotel in facebook" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="~/App_Themes/Reservation/img/socials/linkin.png" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="~/App_Themes/Reservation/img/socials/twitter.png" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="~/App_Themes/Reservation/img/socials/instagram.png" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="~/App_Themes/Reservation/img/socials/google-plus.png" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="~/App_Themes/Reservation/img/socials/youtub.png" />
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -548,71 +258,8 @@
 
     <div id="ModalForm"></div>
     <!-- Back to top ends -->
-    @*<div class="modal fade" id="login" role="dialog">
-            <div class="modal-dialog">
-                <div class="login-content">
-                    <div class="login-image">
-                        <img src="~/App_Themes/Reservation/img/logo-black.png" alt="image">
-                    </div>
-                    <h3>Hello!Sign into your account</h3>
-                    <form>
-                        <div class="form-group">
-                            <input type="email" placeholder="Enter email address">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Enter password">
-                        </div>
-                        <div class="form-group form-checkbox">
-                            <input type="checkbox"> Remember Me
-                            <a href="#">Forgot password?</a>
-                        </div>
-                    </form>
-                    <div class="form-btn">
-                        <a href="#" class="btn btn-orange">Giriş</a>
-                        <p>Need an Account?<a href="#"> Create your Hotux account</a></p>
-                    </div>
-                    <ul class="social-links">
-                        <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>*@
-    @*<div class="modal fade" id="register" role="dialog">
-            <div class="modal-dialog">
-                <div class="login-content">
-                    <div class="login-image">
-                        <img src="~/App_Themes/Reservation/img/logo-black.png" alt="image">
-                    </div>
-                    <h3>Awesome! Create a Hotux Account</h3>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Enter username">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Enter email address">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Enter password">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Confirm password">
-                        </div>
-                    </form>
-                    <div class="form-btn">
-                        <a href="#" class="btn btn-orange">SIGN UP</a>
-                    </div>
-                    <ul class="social-links">
-                        <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa-bed fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>*@
+
+
     <script src="/App_Themes/Reservation/js/bootstrap.min.js"></script>
     <script src="/App_Themes/Reservation/js/plugin.js"></script>
     <script src="/App_Themes/Reservation/js/main.js"></script>

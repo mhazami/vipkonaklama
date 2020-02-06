@@ -94,6 +94,32 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 return View(order);
             }
         }
+        [HttpPost]
+        public ActionResult Checkout(FormCollection collection)
+        {
+            var Id = collection["Id"].ToGuid();
+            var order = ReservationComponent.Instance.OrderFacade.Get(Id);
+            try
+            {
+                this.RadynTryUpdateModel(order);
+                order.RoomId = null;
+                if (ReservationComponent.Instance.OrderFacade.Update(order))
+                {
+                    ShowMessage(Resources.Common.UpdateSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
+                    Response.Redirect("~/Reservation/Order/Index");
+                    return null;
+                }
+                ShowMessage(Resources.Common.ErrorInEdit, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
+                Response.Redirect("~/Reservation/Order/Index");
+                return null;
+            }
+            catch (Exception exception)
+            {
+                ShowMessage(Resources.Common.ErrorInEdit + exception.Message, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
+                FillViewBags();
+                return View(order);
+            }
+        }
 
         [RadynAuthorize]
         public ActionResult Delete(Guid Id)

@@ -142,14 +142,16 @@
     </div>
 </section>
 
+
+@*@Html.Action("PVIndex", "ArticleList", new { area = "Articles" })*@
 <script>
     function showCalender(el) {
         $('.banner-form').show('slow');
-        //$('.roomtype-item').each(function () {
-        $(this).removeClass('selected-roomtype');
-    })
-    $(el).parent().addClass('selected-roomtype');
-    $('#RoomTypeId').val($(el).attr('data-val'));
+        $('.roomtype-item').each(function () {
+            $(this).removeClass('selected-roomtype');
+        })
+        $(el).parent().addClass('selected-roomtype');
+        $('#RoomTypeId').val($(el).attr('data-val'));
         //$('section.about-us').css('top', '-70px');
 
     }

@@ -64,6 +64,26 @@ namespace Radyn.Reservation.DataStructure
             set { base.SetPropertyValue("Description", value); }
         }
 
+
+        private string _displayText;
+        [DbType("nvarchar(100)")]
+        [MultiLanguage]
+        [IsNullable]
+        public string DisplayText
+        {
+            get { return _displayText; }
+            set { base.SetPropertyValue("DisplayText", value); }
+        }
+
+
+        private byte _order;
+        [DbType("tinyint")]
+        public byte Order
+        {
+            get { return _order; }
+            set { base.SetPropertyValue("Order", value); }
+        }
+
         [DisableAction(DisableInsert = true, DisableUpdate = true, DiableSelect = true)]
         public override string DescriptionField { get { return this.Title; } }
     }

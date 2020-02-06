@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CheckoutHotel" xml:space="preserve">
+    <value>Check-out</value>
+  </data>
   <data name="Customer" xml:space="preserve">
     <value>Customer</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="DayType" xml:space="preserve">
     <value>Day Type</value>
+  </data>
+  <data name="DisplayText" xml:space="preserve">
+    <value>Display text</value>
   </data>
   <data name="Empty" xml:space="preserve">
     <value>Empty</value>
@@ -173,6 +179,9 @@
   </data>
   <data name="Nationality" xml:space="preserve">
     <value>Nationality</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
   </data>
   <data name="OrderDate" xml:space="preserve">
     <value>Order Date</value>
