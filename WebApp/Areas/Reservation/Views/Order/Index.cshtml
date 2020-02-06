@@ -8,10 +8,11 @@
 }
 @section Head{}
 @section PageTitle {@Resources.Reservation.OrderList }
-<div class="button-div m-btn i-save">
-    @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Order/Create")).Text(Resources.Reservation.OrderNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
-</div>
-
+@section PageAction{
+    <div class="button-div m-btn i-save">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Order/Create")).Text(Resources.Reservation.OrderNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+    </div>
+}
 @section PageActionDown {
     <div class="button-div m-btn i-save">
         @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Order/Create")).Text(Resources.Reservation.OrderNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
@@ -20,26 +21,23 @@
 <div class="radynForm">
 
     @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width: 98%; margin: 0auto" }).Columns(columns =>
-                  {
-                      columns.Template(order => (order.Room != null ? order.Room.Title : "")).Title(Resources.Reservation.Room).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                      columns.Template(order => (order.RoomType != null ? order.RoomType.Title : "")).Title(Resources.Reservation.RoomType).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                //columns.Template(order => (order != null ? order.Customer.FirstName + " " + order.Customer.LastName : "")).Title(Resources.Reservation.Customer).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                //columns.Template(order => (order.User.Username)).Title(Resources.Reservation.User).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                columns.Template(order => order.PersonCount).Title(Resources.Reservation.PersonCount).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                      columns.Template(order => order.DayCount).Title(Resources.Reservation.DayCount).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                      columns.Template(order => order.HourCount).Title(Resources.Reservation.HourCount).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                      columns.Template(order => order.TotalPrice).Title(Resources.Reservation.TotalPrice).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                      columns.Template(order => order.PaymentStatus).Title(Resources.Reservation.PaymentStatus).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                      columns.Template(order => order.OrderDate).Title(Resources.Reservation.OrderDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                      columns.Template(order => order.EntryDate).Title(Resources.Reservation.EntryDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                      columns.Template(order => order.ExitDate).Title(Resources.Reservation.ExitDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                //columns.Template(order => ((order.EntryTime.ToEnum<Radyn.Reservation.Enum.TimeSheet>()).GetDescription())).Title(Resources.Reservation.EntryTime).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                //columns.Template(order => order.ExitTime.ToEnum<Radyn.Reservation.Enum.TimeSheet>().GetDescription()).Title(Resources.Reservation.ExitTime).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                columns.Template(order => "<a style='cursor: pointer;' href=" + Url.Content("~/Reservation/order/Details") + "?Id=" + order.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/order/Edit") + "?Id=" + order.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/order/Delete") + "?Id=" + order.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(300).Encode(false);
-                  })
-                                        .Sortable(sorting => sorting.Enabled(true))
-                                        .Pageable(paging => paging.Enabled(true))
-                                        .Filterable(filtering => filtering.Enabled(true))
-                                        .Render();}
+        {
+            columns.Template(order => (order.Room != null ? order.Room.Title : "")).Title(Resources.Reservation.Room).Width(80).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(order => (order.RoomType != null ? order.RoomType.Title : "")).Title(Resources.Reservation.RoomType).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(order => (order.Customer != null ? order.Customer.FullName : "")).Title(Resources.Reservation.Customer).Width(150).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(order => order.PersonCount).Title(Resources.Reservation.PersonCount).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(order => order.TotalPrice).Title(Resources.Reservation.TotalPrice).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(order => order.PaymentStatus).Title(Resources.Reservation.PaymentStatus).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(order => order.OrderDate.ToShortDateString()).Title(Resources.Reservation.OrderDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(order => order.EntryDate.ToShortDateString()).Title(Resources.Reservation.EntryDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(order => order.ExitDate.ToShortDateString()).Title(Resources.Reservation.ExitDate).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            //columns.Template(order => ((order.EntryTime.ToEnum<Radyn.Reservation.Enum.TimeSheet>()).GetDescription())).Title(Resources.Reservation.EntryTime).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            //columns.Template(order => order.ExitTime.ToEnum<Radyn.Reservation.Enum.TimeSheet>().GetDescription()).Title(Resources.Reservation.ExitTime).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(order => "<a style='cursor: pointer;' href=" + Url.Content("~/Reservation/order/Details") + "?Id=" + order.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/order/Edit") + "?Id=" + order.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/order/Delete") + "?Id=" + order.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(100).Filterable(false).Encode(false);
+        })
+                                          .Sortable(sorting => sorting.Enabled(true))
+                                          .Pageable(paging => paging.Enabled(true))
+                                          .Filterable(filtering => filtering.Enabled(true))
+                                          .Render();}
 
 </div>

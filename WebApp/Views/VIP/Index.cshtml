@@ -144,35 +144,3 @@
 
 
 @*@Html.Action("PVIndex", "ArticleList", new { area = "Articles" })*@
-<script>
-    function showCalender(el) {
-        $('.banner-form').show('slow');
-        $('.roomtype-item').each(function () {
-            $(this).removeClass('selected-roomtype');
-        })
-        $(el).parent().addClass('selected-roomtype');
-        $('#RoomTypeId').val($(el).attr('data-val'));
-        //$('section.about-us').css('top', '-70px');
-
-    }
-
-    function closeErrorBox(el) {
-        $(el).parent().remove();
-    }
-
-    $(function () {
-        $('.close-form').on('click', function () {
-            $(this).parent().parent().hide('show');
-            //$('section.about-us').css('top', '215px');
-        })
-
-
-    })
-    //$(function () {
-    //    if ($('div.banner-form').css('display') == "block") {
-    //        $('section.about-us').css('top', '-70px');
-    //    } else {
-    //        $('section.about-us').css('top', '215px');
-    //    }
-    //})
-</script>

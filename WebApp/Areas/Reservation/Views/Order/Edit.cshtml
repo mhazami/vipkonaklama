@@ -26,12 +26,28 @@
                             $('#RoomId').append(op);
                         }
                     });
+
+                $()
             }
+            setPersonCapacity();
         }
         function checkoutRoom() {
             $.post("/Reservation/Order/Checkout", $('form[action^="/Reservation/order/Edit"]').serialize(), function (data) {
-                alert(data);
+                if (data == "ok") {
+                    ShowRadynMessage('@Resources.Common.UpdateSuccessMessage');
+                    window.location = '/Reservation/Order/Index';
+                }
+                else
+                    ShowRadynMessage(data);
             });
+        }
+
+        function setPersonCapacity() {
+            var id = $("#RoomTypeId").val();
+            $.get('/Reservation/RoomType/GetPersonCapacity', { id: id }, function (data) {
+                $('#PersonCount').val(data.person);
+            });
+
         }
     </script>
 
@@ -41,10 +57,12 @@
     <div class="button-div m-btn waves-green i-save">
         @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
     </div>
-    <div class="button-div m-btn waves-green i-save">
-        <input type="button" onclick="checkoutRoom();" value="@Resources.Reservation.CheckoutHotel" />
-    </div>
-
+    @if (Model.RoomId.HasValue)
+    {
+        <div class="button-div m-btn waves-green i-save">
+            <input type="button" onclick="checkoutRoom();" value="@Resources.Reservation.CheckoutHotel" />
+        </div>
+    }
     <div class="button-div m-btn waves-red i-return">
         @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Order/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
@@ -103,7 +121,7 @@
         <div>
             <div class="table-row-cap">
                 <div class="item">
-                    @Resources.Reservation.Customer
+                    @Resources.Reservation.LastName
                 </div>
             </div>
             <div class="table-row-item ">
@@ -112,19 +130,6 @@
                 </div>
             </div>
         </div>
-
-        @*<div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.User
-                    </div>
-                </div>
-                <div class="table-row-item ">
-                    <div class="item">
-                        @Html.DropDownListFor(model => model.UserId, (SelectList)ViewBag.User, new { @class = "form-control" })
-                    </div>
-                </div>
-            </div>*@
         <div>
             <div class="table-row-cap">
                 <div class="item">
@@ -159,6 +164,23 @@
             <div class="table-row-item ">
                 <div class="item">
                     @Html.EditorFor(model => model.TotalPrice)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.PaymentType
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @{
+                        foreach (KeyValuePair<string, string> item in (List<KeyValuePair<string, string>>)ViewBag.Paymentype)
+                        {
+                            @Html.RadioButtonFor(model => model.PaymentType, item.Key, item.Key == Radyn.Reservation.Enum.PaymentType.Cash.ToString())@item.Value
+                        }
+                    }
                 </div>
             </div>
         </div>
@@ -234,5 +256,18 @@
                 </div>
             </div>
         </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.ReserveType
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DropDownListFor(model => model.ReserveType, (SelectList)ViewBag.ReserveType)
+                </div>
+            </div>
+        </div>
+
     </div>
 }

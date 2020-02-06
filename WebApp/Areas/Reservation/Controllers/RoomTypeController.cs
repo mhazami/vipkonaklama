@@ -1,14 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using Radyn.Reservation;
 using Radyn.Reservation.DataStructure;
 using Radyn.Utility;
 using Radyn.Web.Mvc.UI.Message;
 using Radyn.WebApp.AppCode.Base;
 using Radyn.WebApp.AppCode.Security;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace Radyn.WebApp.Areas.Reservation.Controllers
 {
@@ -126,6 +126,29 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         {
             RadynSession.Remove("UpFilePicId");
             return Content("");
+        }
+
+        public JsonResult GetPersonCapacity(byte id)
+        {
+            var obj = new object();
+            var roomtype = ReservationComponent.Instance.RoomTypeFacade.FirstOrDefault(x => x.Id == id);
+            if (roomtype == null || roomtype.PersonCapacity == null)
+            {
+                obj = new
+                {
+                    person = 0
+                };
+            }
+            else
+            {
+                obj = new
+                {
+                    person = roomtype.PersonCapacity
+                };
+
+            }
+
+            return Json(obj, JsonRequestBehavior.AllowGet);
         }
     }
 }

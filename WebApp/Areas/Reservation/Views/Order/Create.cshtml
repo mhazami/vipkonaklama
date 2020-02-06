@@ -1,11 +1,6 @@
 @using Radyn.Web.Mvc;
-@using Radyn.WebApp.AppCode.Base
 @model Order
 @{
-    /**/
-
-    /**/
-
     ViewBag.Title = Resources.Common.Create;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -16,13 +11,14 @@
         $(document).ready(function(){
             loadRooms();
         });
-        function loadRooms() {
+              function loadRooms() {
             $('#RoomId').html('');
             var id = $("#RoomTypeId").val();
             if (id != undefined && id != "") {
                 RadynGet('/Reservation/Room/GetRoomsByType',
-                    { roomType: id,
-                    roomId:null},
+                    {
+                        roomType: id,
+                        roomId: @(Model.RoomId==null?"null":Model.RoomId.ToString())},
                     function (data) {
                         $('#RoomId').append($('<option>').attr('value', ""));
                         for (var i = 0; i < data.length; i++) {
@@ -32,8 +28,32 @@
                             $('#RoomId').append(op);
                         }
                     });
+
+                $()
             }
+            setPersonCapacity();
         }
+
+
+        function setPersonCapacity() {
+            var id = $("#RoomTypeId").val();
+            $.get('/Reservation/Room/GetRoomsByType', { id: id }, function (data) {
+                $('#PersonCount').val(data.person);
+            });
+
+        }
+        function offerPrice() {
+            var roomtypeId = $("#RoomTypeId").val();
+            var entryDate = $('#EntryDate').val();
+            var exitDate = $('#ExitDate').val();
+            var reserveType = $('#ReserveType').val();
+            $.get('/Reservation/Order/CalculateOfferPrice',
+                { exitDate: exitDate, entryDate: entryDate, reserveType: reserveType, roomtypeId: roomtypeId },
+                function (data) {
+                    $('#TotalPrice').val(data);
+            })
+        }
+
     </script>
 }
 @section PageTitle{@Resources.Common.Create}
@@ -65,119 +85,7 @@
             </div>
             <div class="table-row-item ">
                 <div class="item">
-                    @Html.DropDownListFor(model => model.RoomTypeId, (SelectList)ViewBag.RoomType, new { @class = "form-control", onchange = "loadRooms();" })
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div class="table-row-cap">
-                <div class="item">
-                    @Resources.Reservation.Room
-                </div>
-            </div>
-            <div class="table-row-item ">
-                <div class="item">
-                    @Html.DropDownListFor(model => model.RoomId, (SelectList)ViewBag.Room, new { @class = "form-control" })
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div class="table-row-cap">
-                <div class="item">
-                    @Resources.Reservation.FirstName
-                </div>
-            </div>
-            <div class="table-row-item ">
-                <div class="item">
-                    @Html.TextBoxFor(model => model.Customer.FirstName, new { @class = "form-control" })
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="table-row-cap">
-                <div class="item">
-                    @Resources.Reservation.Customer
-                </div>
-            </div>
-            <div class="table-row-item ">
-                <div class="item">
-                    @Html.TextBoxFor(model => model.Customer.LastName, new { @class = "form-control" })
-                </div>
-            </div>
-        </div>
-
-        @*<div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.User
-                    </div>
-                </div>
-                <div class="table-row-item ">
-                    <div class="item">
-                        @Html.DropDownListFor(model => model.UserId, (SelectList)ViewBag.User, new { @class = "form-control" })
-                    </div>
-                </div>
-            </div>*@
-        <div>
-            <div class="table-row-cap">
-                <div class="item">
-                    @Resources.Reservation.PersonCount
-                </div>
-            </div>
-            <div class="table-row-item ">
-                <div class="item">
-                    @Html.EditorFor(model => model.PersonCount, new { @class = "form-control" })
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div class="table-row-cap">
-                <div class="item">
-                    @Resources.Reservation.HourCount
-                </div>
-            </div>
-            <div class="table-row-item ">
-                <div class="item">
-                    @Html.EditorFor(model => model.HourCount, new { @class = "form-control" })
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="table-row-cap">
-                <div class="item">
-                    @Resources.Reservation.TotalPrice
-                </div>
-            </div>
-            <div class="table-row-item ">
-                <div class="item">
-                    @Html.EditorFor(model => model.TotalPrice)
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="table-row-cap">
-                <div class="item">
-                    @Resources.Reservation.PaymentStatus
-                </div>
-            </div>
-            <div class="table-row-item ">
-                <div class="item">
-                    @Html.EditorFor(model => model.PaymentStatus, new { @class = "form-control" })
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="table-row-cap">
-                <div class="item">
-                    @Resources.Reservation.OrderDate
-                </div>
-            </div>
-            <div class="table-row-item">
-                <div class="item date-picker">
-                    @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.OrderDate).Render();}
+                    @Html.DropDownListFor(model => model.RoomTypeId, (SelectList)ViewBag.RoomType, new { @class = "form-control", onchange = "loadRooms();calTotalPrice();" })
                 </div>
             </div>
         </div>
@@ -226,6 +134,133 @@
             <div class="table-row-item ">
                 <div class="item">
                     @Html.EditorFor(model => model.ExitTime, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.ReserveType
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DropDownListFor(model => model.ReserveType, (SelectList)ViewBag.ReserveType)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.Room
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DropDownListFor(model => model.RoomId, (SelectList)ViewBag.Room, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.FirstName
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.TextBoxFor(model => model.Customer.FirstName, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.LastName
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.TextBoxFor(model => model.Customer.LastName, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.PersonCount
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.EditorFor(model => model.PersonCount, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.HourCount
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.EditorFor(model => model.HourCount, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.TotalPrice
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.EditorFor(model => model.TotalPrice)
+                    <span onclick="offerPrice()" class="btn btn-blue" style="background:#b2f5a1">@Resources.Reservation.Calculate</span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.PaymentType
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @{
+                        foreach (KeyValuePair<string, string> item in (List<KeyValuePair<string, string>>)ViewBag.Paymentype)
+                        {
+                            @Html.RadioButtonFor(model => model.PaymentType, item.Key, item.Key == Radyn.Reservation.Enum.PaymentType.Cash.ToString())@item.Value
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        @*<div>
+                <div class="table-row-cap">
+                    <div class="item">
+                        @Resources.Reservation.PaymentStatus
+                    </div>
+                </div>
+                <div class="table-row-item ">
+                    <div class="item">
+                        @Html.EditorFor(model => model.PaymentStatus, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>*@
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.OrderDate
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item date-picker">
+                    @{Html.Radyn().PersianDateTimePickerFor(Model, model => model.OrderDate).Render();}
                 </div>
             </div>
         </div>

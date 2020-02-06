@@ -1,4 +1,5 @@
 @using Radyn.Web.Mvc;
+@using Radyn.Utility
 @model Order
 @{
     ViewBag.Title = Resources.Common.Delete;
@@ -26,185 +27,176 @@
 {
     @Html.ValidationSummary(true)
     <div class="radynForm">
-        <div class="fit">
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.Room
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.Room.Title)
-                    </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.RoomType
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.RoomType
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.RoomType.Title)
-                    </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Model.RoomType.Title
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.ReserveType
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.ReserveTypeId)
-                    </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.Room
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.Customer
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.Customer.DescriptionField)
-                    </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @(Model.Room != null ? Model.Room.Title : "")
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.User
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.User.DescriptionField)
-                    </div>
+        </div>
+
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.Customer
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.PersonCount
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.PersonCount)
-                    </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @if (Model.Customer != null)
+                    {
+                        @Model.Customer.FullName
+                    }
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.DayCount
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.DayCount)
-                    </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.PersonCount
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.HourCount
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.HourCount)
-                    </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Model.PersonCount
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.TotalPrice
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.TotalPrice)
-                    </div>
+        </div>
+
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.HourCount
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.PaymentStatus
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.PaymentStatus)
-                    </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DisplayFor(model => model.HourCount)
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.OrderDate
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.OrderDate)
-                    </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.TotalPrice
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.EntryDate
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.EntryDate)
-                    </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DisplayFor(model => model.TotalPrice)
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.ExitDate
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.ExitDate)
-                    </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.PaymentType
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.EntryTime
-                    </div>
-                </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.EntryTime)
-                    </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Model.PaymentType.GetDescriptionInLocalization()
                 </div>
             </div>
-            <div>
-                <div class="table-row-cap">
-                    <div class="item">
-                        @Resources.Reservation.ExitTime
-                    </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.PaymentStatus
                 </div>
-                <div class="table-row-item">
-                    <div class="item">
-                        @Html.DisplayFor(model => model.ExitTime)
-                    </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DisplayFor(model => model.PaymentStatus)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.OrderDate
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item date-picker">
+                    @Html.DisplayFor(model => model.OrderDate)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.EntryDate
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item date-picker">
+                    @Html.DisplayFor(model => model.EntryDate)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.ExitDate
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item date-picker">
+                    @Html.DisplayFor(model => model.ExitDate)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.EntryTime
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DisplayFor(model => model.EntryTime)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.ExitTime
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DisplayFor(model => model.ExitTime)
+                </div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.ReserveType
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DisplayFor(model => model.ReserveType)
                 </div>
             </div>
         </div>

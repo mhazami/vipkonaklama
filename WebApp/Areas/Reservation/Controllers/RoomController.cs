@@ -118,14 +118,23 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             }
         }
 
-        public JsonResult GetRoomsByType(byte roomType, short? roomId)
+        public JsonResult GetRoomsByType(byte roomType, short? roomId, string entryDate, string exitDate, string entryTime, string exitTime)
         {
+            var results = new List<object>();
+            if (string.IsNullOrEmpty(entryDate) && string.IsNullOrEmpty(exitDate))
+            {
+                return Json(results, JsonRequestBehavior.AllowGet);
+            }
+            PredicateBuilder<Order> query = new PredicateBuilder<Order>();
+            query.And(x => x.EntryDate.CompareTo(entryDate) >= 1 && x.ExitDate.CompareTo(entryDate) <= 1);
+            query.And(x => x.EntryDate.CompareTo(exitDate) >= 1 && x.ExitDate.CompareTo(exitDate) <= 1);
+
             IEnumerable<Room> list;
             if (roomId.HasValue)
                 list = ReservationComponent.Instance.RoomFacade.Where(x => (x.Idle && x.RoomTypeId == roomType) || x.Id == roomId);
             else
                 list = ReservationComponent.Instance.RoomFacade.Where(x => x.Idle && x.RoomTypeId == roomType);
-            var results = new List<object>();
+
             foreach (var element in list)
             {
                 results.Add(new { id = element.Id, title = element.Title });

@@ -900,6 +900,7 @@
     <Compile Include="Areas\Articles\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Articles\Controllers\ArticleListController.cs" />
     <Compile Include="Areas\Articles\Controllers\CategoryListController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CommonUIController.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -1951,6 +1952,7 @@
     <Folder Include="Models\" />
     <Folder Include="Templates\" />
     <Folder Include="Tools\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\EditorLocalization.resx">

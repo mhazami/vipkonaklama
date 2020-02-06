@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using static Radyn.Reservation.Enum;
 
 namespace Radyn.WebApp.Areas.Reservation.Controllers
 {
@@ -34,22 +35,30 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             ViewBag.RoomType = new SelectList(ReservationComponent.Instance.RoomTypeFacade.GetAll(), "Id", "Title");
             ViewBag.Customer = new SelectList(ReservationComponent.Instance.CustomerFacade.GetAll(), "Id", "Title");
             ViewBag.User = new SelectList(SecurityComponent.Instance.UserFacade.GetAll(), "Id", "Title");
+            ViewBag.ReserveType = new SelectList(EnumUtils.ConvertEnumToIEnumerableInLocalization<ReserveType>(), "Key", "Value");
+            ViewBag.Paymentype = EnumUtils.ConvertEnumToIEnumerableInLocalization<PaymentType>().Select(x => new KeyValuePair<string, string>(x.Key, x.Value)).ToList();
         }
         [RadynAuthorize]
         public ActionResult Create()
         {
             FillViewBags();
-            return View(new Order());
+            return View(new Order
+            {
+                OrderDate = DateTime.Now
+            });
         }
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            var order = new Order();
+            var order = new Order() { Customer = new Customer() };
             try
             {
-                this.RadynTryUpdateModel(order);
-                if (ReservationComponent.Instance.OrderFacade.Insert(order))
+                this.RadynTryUpdateModel(order, collection);
+                this.RadynTryUpdateModel(order.Customer, collection);
+                if (SessionParameters.User != null)
+                    order.UserId = SessionParameters.User.Id;
+                if (ReservationComponent.Instance.OrderFacade.InsertWithCustomer(order))
                 {
                     ShowMessage(Resources.Common.InsertSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
                     return (!string.IsNullOrEmpty(Request.QueryString["AddNew"])) ? this.Redirect("~/Reservation/Order/Create") : this.Redirect("~/Reservation/Order/Index");
@@ -76,10 +85,17 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         public ActionResult Edit(Guid Id, FormCollection collection)
         {
             var order = ReservationComponent.Instance.OrderFacade.Get(Id);
+            if (order.Customer == null)
+            {
+                order.Customer = new Customer();
+            }
             try
             {
                 this.RadynTryUpdateModel(order);
-                if (ReservationComponent.Instance.OrderFacade.Update(order))
+                this.RadynTryUpdateModel(order.Customer, collection);
+                if (SessionParameters.User != null)
+                    order.UserId = SessionParameters.User.Id;
+                if (ReservationComponent.Instance.OrderFacade.UpdateWithCustomer(order))
                 {
                     ShowMessage(Resources.Common.UpdateSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
                     return this.Redirect("~/Reservation/Order/Index");
@@ -103,21 +119,21 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             {
                 this.RadynTryUpdateModel(order);
                 order.RoomId = null;
+                if (SessionParameters.User != null)
+                    order.UserId = SessionParameters.User.Id;
                 if (ReservationComponent.Instance.OrderFacade.Update(order))
                 {
                     ShowMessage(Resources.Common.UpdateSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    Response.Redirect("~/Reservation/Order/Index");
-                    return null;
+                    return Content("ok");
                 }
                 ShowMessage(Resources.Common.ErrorInEdit, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                Response.Redirect("~/Reservation/Order/Index");
-                return null;
+                return Content("ok");
             }
             catch (Exception exception)
             {
                 ShowMessage(Resources.Common.ErrorInEdit + exception.Message, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
                 FillViewBags();
-                return View(order);
+                return Content(exception.Message);
             }
         }
 
@@ -146,6 +162,16 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 ShowMessage(Resources.Common.ErrorInDelete + exception.Message, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
                 return View(order);
             }
+        }
+
+        public string CalculateOfferPrice(DateTime? exitDate,DateTime? entryDate,ReserveType reserveType,byte? roomtypeId)
+        {
+            if (!roomtypeId.HasValue || roomtypeId == 0 || reserveType == ReserveType.None || !entryDate.HasValue || !exitDate.HasValue)
+            {
+                return "0";
+            }
+            var price = ReservationComponent.Instance.OrderFacade.GetTotalPrice(entryDate.Value, exitDate.Value, roomtypeId.Value, reserveType);
+            return price.ToString();
         }
     }
 }

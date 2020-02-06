@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Calculate" xml:space="preserve">
+    <value>محاسبه</value>
+  </data>
   <data name="CheckoutHotel" xml:space="preserve">
     <value>تحویل اتاق</value>
   </data>
@@ -191,6 +194,9 @@
   </data>
   <data name="PaymentStatus" xml:space="preserve">
     <value>وضعیت پرداخت</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>نوع پرداخت</value>
   </data>
   <data name="PerDayPrice" xml:space="preserve">
     <value>هزینه هر روز</value>

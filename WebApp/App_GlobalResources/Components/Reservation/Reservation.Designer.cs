@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calculate.
+        /// </summary>
+        internal static string Calculate {
+            get {
+                return ResourceManager.GetString("Calculate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check-out.
         /// </summary>
         internal static string CheckoutHotel {
@@ -291,6 +300,15 @@ namespace Resources {
         internal static string PaymentStatus {
             get {
                 return ResourceManager.GetString("PaymentStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment Type.
+        /// </summary>
+        internal static string PaymentType {
+            get {
+                return ResourceManager.GetString("PaymentType", resourceCulture);
             }
         }
         

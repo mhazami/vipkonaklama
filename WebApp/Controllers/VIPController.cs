@@ -39,7 +39,7 @@ namespace Radyn.WebApp.Controllers
             try
             {
                 this.RadynTryUpdateModel(order);
-
+                
                 if (ReservationComponent.Instance.OrderFacade.Insert(order))
                 {
                     return Redirect($"/VIP/GetCustomerInfo?orderId={order.Id}");
@@ -87,11 +87,7 @@ namespace Radyn.WebApp.Controllers
                     order = ReservationComponent.Instance.OrderFacade.Get(Id);
                     this.RadynTryUpdateModel(order);
                     if (order.Customer == null) order.Customer = new Customer();
-                    order.Customer.FirstName = collection["FirstName"];
-                    order.Customer.LastName = collection["LastName"];
-                    order.Customer.Email = collection["Email"];
-                    order.Customer.CountryId = collection["CountryId"].ToInt();
-                    order.Customer.PhoneNumber = collection["PhoneNumber"];
+                    this.RadynTryUpdateModel(order.Customer, collection);
                     if (ReservationComponent.Instance.OrderFacade.UpdateWithCustomer(order))
                     {
                         return Redirect($"/VIP/Payment?orderId={order.Id}");
@@ -101,6 +97,7 @@ namespace Radyn.WebApp.Controllers
                 {
                     order = new Order() { Customer = new Customer() };
                     this.RadynTryUpdateModel(order);
+                    this.RadynTryUpdateModel(order.Customer, collection);
                     if (ReservationComponent.Instance.OrderFacade.InsertWithCustomer(order))
                     {
                         return Redirect($"/VIP/Payment?orderId={order.Id}");
