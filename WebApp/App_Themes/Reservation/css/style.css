@@ -1641,7 +1641,7 @@ span.btn-select {
 
 .banner-form {
     position: absolute;
-    top: auto !important;
+    top: 665px !important;
     bottom: 0;
     width: 100%;
     padding: 40px 0;
