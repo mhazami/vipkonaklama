@@ -47,6 +47,11 @@
 /* ========================================= */
 /*          Navbar CSS        */
 /* ======================================== */
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
 @media(max-width: 768px) {
     .form-reservation .form-content {
         position: absolute;
