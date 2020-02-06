@@ -47,8 +47,30 @@
 /* ========================================= */
 /*          Navbar CSS        */
 /* ======================================== */
-.form-reservation {
-    height: 50px;
+@media(max-width: 768px) {
+    .form-reservation .form-content {
+        position: absolute;
+        top: 50%;
+        width: 95%;
+        transform: translateY(-45%);
+    }
+
+    .form-reservation > .banner-form > div {
+        position: absolute;
+        bottom: 10px;
+        top: 0;
+        width: 100%;
+    }
+
+    .form-reservation > .banner-form {
+        position: absolute;
+        bottom: 0;
+        top: 106px !important;
+        width: 100%;
+        z-index: 9;
+        background: rgba(30, 30, 30, 0.809804);
+        border-bottom: 1px solid gainsboro;
+    }
 }
 
 .under-banner {
@@ -1662,9 +1684,10 @@ span.btn-select {
 
 .banner-form {
     position: absolute;
+    top: auto !important;
+    bottom: 0;
     width: 100%;
     padding: 40px 0;
-    border-bottom: 1px solid gainsboro;
     z-index: 1;
 }
 
@@ -2106,13 +2129,6 @@ form style 1
 }
 
 @media (max-width: 768px) {
-    .banner-form {
-        position: relative;
-        /*transform: translateY(75px);*/
-        background: rgba(30, 30, 30, 0.809804);
-        top: -596px;
-        height: 623px;
-    }
 
     .form-content {
         display: block;
@@ -2146,9 +2162,6 @@ form style 1
 
     .banner-form {
         position: relative;
-        /*transform: translateY(75px);*/
-        background: rgba(30, 30, 30, 0.809804);
-        top: -231px;
         height: auto;
     }
 }
@@ -3117,7 +3130,7 @@ section.reviews {
 
     .banner-roomtype {
         position: relative;
-        top: 66px;
+        margin-top: 66px;
         background: #1a062b;
         font-weight: bold;
     }
@@ -3140,9 +3153,10 @@ section.reviews {
         }
 
     .close-form {
-        position: relative;
-        left: 96%;
-        top: -26px;
+        position: absolute;
+        right: 17px;
+        top: 15px;
+        font-size: 28px;
     }
 
     .slider-image {
