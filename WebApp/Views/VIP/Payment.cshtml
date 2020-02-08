@@ -129,5 +129,19 @@
                 $('#paymentform').show('slow');
             }
         })
+        $('input[name="PaymentType"]').each(function () {
+            if ($(this).val() == "Cash") {
+                $('#paymentform').hide('slow');
+            } else if ($(this).val() == "Credit") {
+                $('#paymentform').show('slow');
+            }
+        })
+
     })
+
+
+
+
+
+  
 </script>

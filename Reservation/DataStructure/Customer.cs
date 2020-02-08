@@ -40,6 +40,7 @@ namespace Radyn.Reservation.DataStructure
 
         private string _phoneNumber;
         [DbType("char(11)")]
+        [IsNullable]
         public string PhoneNumber
         {
             get { return _phoneNumber; }
@@ -63,6 +64,13 @@ namespace Radyn.Reservation.DataStructure
         }
         [Assosiation(PropName = "CountryId")]
         public Country Country { get; set; }
+
+
+        [DisableAction(DiableAllAction = true)]
+        public string FullName
+        {
+            get { return this.FirstName + " " + this.LastName; }
+        }
 
         [DisableAction(DisableInsert = true, DisableUpdate = true, DiableSelect = true)]
         public override string DescriptionField { get { return $"{this.FirstName} {this.LastName}"; } }

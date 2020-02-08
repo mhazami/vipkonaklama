@@ -2,19 +2,36 @@
 
     <section class="banner">
         @*stars*@
-
-        <div class="swiper-content">
-            <div class="slider-logo">
-                <img src="~/App_Themes/Reservation/img/icons/bed-logo.png" alt="Image">
-            </div>
-            <h3 data-animation="animated fadeInUp">LÜKS LAPİ</h3>
-            <h1 data-animation="animated fadeInUp">HOTEL <span>VIP INN</span></h1>
-            <a href="#" data-animation="animated fadeInUp" class="slider-btn btn-or mar-right-10"><i class="fa fa-book"></i>Odalarımızı Keşfedin</a>
-            <a href="#test" data-animation="animated fadeInUp" class="slider-btn btn-wt scroll-smooth"><i class="fa fa-book"></i>Hemen Rezervasyon Yaptırın</a>
+        <div class="main-img">
+            <img src="~/App_Themes/Reservation/img/slider/istanbulotelleri.png" alt="istanbul otelleri" />
         </div>
+        <div class="banner-row-box row">
+            <div class="boxed col-md-5 col-xs-12 col-sm-12">
+                Sadece Gece Konaklama
+                <a>Rezervasyon Yap</a>
+            </div>
+            <div class="boxed col-md-5 col-xs-12 col-sm-12">
+                Gün içinde Konaklama
+                <a>Rezervasyon Yap</a>
+            </div>
+            <div class="boxed col-md-5 col-xs-12 col-sm-12 single-box">
+                Günlük Konaklama
+                <a>Rezervasyon Yap</a>
+            </div>
+        </div>
+        @*<div class="swiper-content">
+                <div class="slider-logo">
+                    <img src="~/App_Themes/Reservation/img/icons/bed-logo.png" alt="Image">
+                </div>
+                <h3 data-animation="animated fadeInUp">LÜKS LAPİ</h3>
+                <h1 data-animation="animated fadeInUp">HOTEL <span>VIP INN</span></h1>
+                <a href="#" data-animation="animated fadeInUp" class="slider-btn btn-or mar-right-10"><i class="fa fa-book"></i>Odalarımızı Keşfedin</a>
+                <a href="#test" data-animation="animated fadeInUp" class="slider-btn btn-wt scroll-smooth"><i class="fa fa-book"></i>Hemen Rezervasyon Yaptırın</a>
+            </div>*@
 
         @*end*@
-        <div class="slider">
+
+        @*<div class="slider">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
 
@@ -28,15 +45,15 @@
 
                     </div>
                 </div>
-                <!-- Add Pagination -->
+                Add Pagination
                 <div class="swiper-pagination"></div>
             </div>
             <div class="overlay"></div>
-        </div>
-        <div class="under-banner">
+        </div>*@
+        @*<div class="under-banner">
             <span>Odanızı Şimdi Ayırtın</span>
-        </div>
-        <div class="banner-roomtype" id="test">
+        </div>*@
+        @*<div class="banner-roomtype" id="test">
             <div class="roomtype-row">
                 @{
                     foreach (var item in Model)
@@ -60,7 +77,7 @@
                 }
 
             </div>
-        </div>
+        </div>*@
         <form action="/VIP/ReservationBanner" class="form-reservation" method="post">
             <div class="banner-form rh">
                 <div class="container">
@@ -119,6 +136,7 @@
 
     <script>
         function showCalender(el) {
+            debugger;
             $('.banner-form').show('slow');
             $('.roomtype-item').each(function () {
                 $(this).removeClass('selected-roomtype');

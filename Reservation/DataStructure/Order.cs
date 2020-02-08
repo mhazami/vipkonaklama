@@ -17,6 +17,8 @@ namespace Radyn.Reservation.DataStructure
             get { return _id; }
             set { base.SetPropertyValue("Id", value); }
         }
+
+
         private int _orderId;
         [DbType("int")]
         [Unique(Group = "", IgnoreNull = true)]
@@ -37,10 +39,10 @@ namespace Radyn.Reservation.DataStructure
         public RoomType RoomType { get; set; }
 
 
-        private short? _roomId;
-        [DbType("smallint")]
+        private Guid? _roomId;
+        [DbType("uniqueidentifier")]
         [IsNullable]
-        public short? RoomId
+        public Guid? RoomId
         {
             get { return _roomId; }
             set { base.SetPropertyValue("RoomId", value); }
@@ -189,15 +191,15 @@ namespace Radyn.Reservation.DataStructure
             set { base.SetPropertyValue("PaymentType", value); }
         }
 
-        private ReserveType _reserveType;
-        [DbType("tinyint")]
-        [IsNullable]
-        public ReserveType ReserveType
+        private Guid _reserveTypeId;
+        [DbType("uniqueidentifier")]
+        public Guid ReserveTypeId
         {
-            get { return _reserveType; }
-            set { base.SetPropertyValue("ReserveType", value); }
+            get { return _reserveTypeId; }
+            set { base.SetPropertyValue("ReserveTypeId", value); }
         }
-
+        [Assosiation(PropName = "ReserveTypeId")]
+        public ReserveType ReserveType { get; set; }
 
         [DisableAction(DisableInsert = true, DisableUpdate = true, DiableSelect = true)]
         public override string DescriptionField

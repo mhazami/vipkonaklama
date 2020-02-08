@@ -34,7 +34,7 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             var dayType = Utility.EnumUtils.ConvertEnumToIEnumerableInLocalization<DayType>().Select(x => new KeyValuePair<string, string>(x.Key, x.Value));
             ViewBag.Time = new SelectList(time, "Key", "Value");
             ViewBag.DayType = new SelectList(dayType, "Key", "Value");
-            ViewBag.ReserveType = new SelectList(EnumUtils.ConvertEnumToIEnumerableInLocalization<ReserveType>(), "Key", "Value");
+            ViewBag.ReserveType = new SelectList(ReservationComponent.Instance.ReserveTypeFacade.SelectKeyValuePair(x => x.Id, x => x.Title), "Key", "Value");
             ViewBag.RoomType = new SelectList(ReservationComponent.Instance.RoomTypeFacade.SelectKeyValuePair(x => x.Id, x => x.Title), "Key", "Value");
         }
         [RadynAuthorize]

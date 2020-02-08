@@ -1,7 +1,5 @@
 ﻿using Radyn.Framework;
 using System;
-using Radyn.Reservation.DataStructure;
-
 
 namespace Radyn.Reservation.DataStructure
 {
@@ -14,10 +12,10 @@ namespace Radyn.Reservation.DataStructure
             Idle = false;
         }
 
-        private short _id;
-        [Key(true)]
-        [DbType("smallint")]
-        public short Id
+        private Guid _id;
+        [Key(false)]
+        [DbType("uniqueidentifier")]
+        public Guid Id
         {
             get { return _id; }
             set { base.SetPropertyValue("Id", value); }

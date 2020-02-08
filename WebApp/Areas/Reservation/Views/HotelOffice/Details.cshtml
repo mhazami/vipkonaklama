@@ -1,0 +1,61 @@
+@using Radyn.Web.Mvc;
+@model HotelOffice
+@{
+    ViewBag.Title = Resources.Common.Detail;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle{@Resources.Common.Detail}
+@section PageAction{
+<div class="button-div m-btn waves-red i-return">
+    @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/HotelOffice/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+</div>
+}
+@section PageActionDown {
+
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/HotelOffice/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+    </div>
+}
+@if (Model != null)
+{
+    @Html.ValidationSummary(true)
+    <div class="radynForm">
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.OfficeName
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.HotelName
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @Html.DisplayFor(model => model.Hotel.Name)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Common.Enable
+                </div>
+            </div>
+            <div class="table-row-item">
+                <div class="item">
+                    @(Model.Enabled ? Resources.Common.Enable : Resources.Common.Disable)
+                </div>
+            </div>
+        </div>
+    </div>
+}

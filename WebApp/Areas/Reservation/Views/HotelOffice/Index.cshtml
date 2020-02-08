@@ -1,0 +1,32 @@
+@using Radyn.Web.Mvc;
+@model IEnumerable<HotelOffice>
+@{
+    ViewBag.Title = Resources.Reservation.OfficeList;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle {@Resources.Reservation.OfficeList }
+@section PageAction {
+    <div class="button-div m-btn i-save">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/HotelOffice/Create")).Text(Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div m-btn i-save">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/HotelOffice/Create")).Text(Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+    </div>
+}
+<div class="radynForm">
+
+    @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width: 98%; margin: 0auto" }).Columns(columns =>
+                 {
+                     columns.Template(hotelOffice => hotelOffice.Name).Title(Resources.Reservation.OfficeName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotelOffice => hotelOffice.Hotel.Name).Title(Resources.Reservation.HotelName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotelOffice => (hotelOffice.Enabled ? Resources.Common.Enable : Resources.Common.Disable)).Title(Resources.Common.Enable).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotelOffice => "<a style='cursor: pointer;' href=" + Url.Content("~/Reservation/hotelOffice/Details") + "?Id=" + hotelOffice.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/hotelOffice/Edit") + "?Id=" + hotelOffice.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/hotelOffice/Delete") + "?Id=" + hotelOffice.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(300).Encode(false);
+                 })
+                .Sortable(sorting => sorting.Enabled(true))
+                .Pageable(paging => paging.Enabled(true))
+                .Filterable(filtering => filtering.Enabled(true))
+                .Render();}
+</div>

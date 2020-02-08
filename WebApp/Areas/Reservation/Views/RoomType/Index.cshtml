@@ -19,14 +19,15 @@
 }
 <div class="radynForm">
     @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width: 98%; margin: 0auto" }).Columns(columns =>
-                       {
-                           columns.Template(roomType => roomType.Title).Title(Resources.Reservation.RoomTypeTitle).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                           columns.Template(roomType => (roomType.Enable ? Resources.Common.Yes : Resources.Common.No)).Title(Resources.Reservation.RoomTypeEnable).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                           columns.Template(roomType => roomType.PersonCapacity).Title(Resources.Reservation.RoomTypePersonCapacity).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-                           columns.Template(roomType => "<a style='cursor: pointer;' href=" + Url.Content("~/Reservation/roomType/Details") + "?Id=" + roomType.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/roomType/Edit") + "?Id=" + roomType.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/roomType/Delete") + "?Id=" + roomType.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(300).Encode(false);
-                       })
-                      .Sortable(sorting => sorting.Enabled(true))
-                      .Pageable(paging => paging.Enabled(true))
-                      .Filterable(filtering => filtering.Enabled(true))
-                      .Render();}
+        {
+            columns.Template(roomType => roomType.Title).Title(Resources.Reservation.RoomTypeTitle).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(roomType => roomType.Hotel.Name).Title(Resources.Reservation.HotelName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(roomType => (roomType.Enable ? Resources.Common.Yes : Resources.Common.No)).Title(Resources.Reservation.RoomTypeEnable).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(roomType => roomType.PersonCapacity).Title(Resources.Reservation.RoomTypePersonCapacity).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+            columns.Template(roomType => "<a style='cursor: pointer;' href=" + Url.Content("~/Reservation/roomType/Details") + "?Id=" + roomType.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/roomType/Edit") + "?Id=" + roomType.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/roomType/Delete") + "?Id=" + roomType.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(300).Encode(false);
+        })
+                          .Sortable(sorting => sorting.Enabled(true))
+                          .Pageable(paging => paging.Enabled(true))
+                          .Filterable(filtering => filtering.Enabled(true))
+                          .Render();}
 </div>

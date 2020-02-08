@@ -9,7 +9,7 @@ using File = Radyn.FileManager.DataStructure.File;
 
 namespace Radyn.FileManager.BO
 {
-    internal class FileBO : BusinessBase<File>
+    public class FileBO : BusinessBase<File>
     {
         public override bool Insert(IConnectionHandler connectionHandler, File obj)
         {

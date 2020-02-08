@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,30 +56,55 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BO\CustomerBO.cs" />
+    <Compile Include="BO\HotelBO.cs" />
+    <Compile Include="BO\HotelFloorBO.cs" />
+    <Compile Include="BO\HotelOfficeBO.cs" />
     <Compile Include="BO\OrderBO.cs" />
     <Compile Include="BO\ReservePriceBO.cs" />
+    <Compile Include="BO\ReserveTypeBO.cs" />
     <Compile Include="BO\RoomBO.cs" />
     <Compile Include="BO\RoomTypeBO.cs" />
+    <Compile Include="BO\UserHotelAccessBO.cs" />
     <Compile Include="DataStructure\Customer.cs" />
+    <Compile Include="DataStructure\Hotel.cs" />
+    <Compile Include="DataStructure\HotelFloor.cs" />
+    <Compile Include="DataStructure\HotelOffice.cs" />
     <Compile Include="DataStructure\ReservePrice.cs" />
     <Compile Include="DataStructure\Order.cs" />
+    <Compile Include="DataStructure\ReserveType.cs" />
     <Compile Include="DataStructure\Room.cs" />
     <Compile Include="DataStructure\RoomType.cs" />
+    <Compile Include="DataStructure\UserHotelAccess.cs" />
     <Compile Include="DA\CustomerDA.cs" />
+    <Compile Include="DA\HotelDA.cs" />
+    <Compile Include="DA\HotelFloorDA.cs" />
+    <Compile Include="DA\HotelOfficeDA.cs" />
     <Compile Include="DA\OrderDA.cs" />
     <Compile Include="DA\ReservePriceDA.cs" />
+    <Compile Include="DA\ReserveTypeDA.cs" />
     <Compile Include="DA\RoomDA.cs" />
     <Compile Include="DA\RoomTypeDA.cs" />
+    <Compile Include="DA\UserHotelAccessDA.cs" />
     <Compile Include="Facade\CustomerFacade.cs" />
+    <Compile Include="Facade\HotelFacade.cs" />
+    <Compile Include="Facade\HotelFloorFacade.cs" />
+    <Compile Include="Facade\HotelOfficeFacade.cs" />
     <Compile Include="Facade\Interface\ICustomerFacade.cs" />
+    <Compile Include="Facade\Interface\IHotelFacade.cs" />
+    <Compile Include="Facade\Interface\IHotelFloorFacade.cs" />
+    <Compile Include="Facade\Interface\IHotelOfficeFacade.cs" />
     <Compile Include="Facade\Interface\IOrderFacade.cs" />
     <Compile Include="Facade\Interface\IReservePriceFacade.cs" />
+    <Compile Include="Facade\Interface\IReserveTypeFacade.cs" />
     <Compile Include="Facade\Interface\IRoomTypeFacade.cs" />
     <Compile Include="Facade\Interface\IRoomFacade.cs" />
+    <Compile Include="Facade\Interface\IUserHotelAccessFacade.cs" />
     <Compile Include="Facade\OrderFacade.cs" />
     <Compile Include="Facade\ReservePriceFacade.cs" />
+    <Compile Include="Facade\ReserveTypeFacade.cs" />
     <Compile Include="Facade\RoomFacade.cs" />
     <Compile Include="Facade\RoomTypeFacade.cs" />
+    <Compile Include="Facade\UserHotelAccessFacade.cs" />
     <Compile Include="ReservationBaseFacade.cs" />
     <Compile Include="ReservationComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,6 +136,10 @@
     <ProjectReference Include="..\FileManager\FileManager.csproj">
       <Project>{189d7172-b237-4afa-a5aa-105aa7693637}</Project>
       <Name>FileManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gallery\Gallery.csproj">
+      <Project>{9d4f5fa9-0871-4921-aa00-63fbe92b8d48}</Project>
+      <Name>Gallery</Name>
     </ProjectReference>
     <ProjectReference Include="..\Security\Security.csproj">
       <Project>{35aea767-a451-4bcd-a8f5-e0e412686279}</Project>

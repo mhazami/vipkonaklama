@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Address" xml:space="preserve">
+    <value>adres</value>
+  </data>
   <data name="Calculate" xml:space="preserve">
     <value>Hesaplamak</value>
   </data>
   <data name="CheckoutHotel" xml:space="preserve">
     <value>Otelden çıkış</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Şehir</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>ülke</value>
   </data>
   <data name="Customer" xml:space="preserve">
     <value>Müşteri</value>
@@ -165,8 +174,23 @@
   <data name="FirstName" xml:space="preserve">
     <value>Isim</value>
   </data>
+  <data name="FloorList" xml:space="preserve">
+    <value>Kat Listesi</value>
+  </data>
+  <data name="FloorName" xml:space="preserve">
+    <value>Kat Adı</value>
+  </data>
   <data name="FromHour" xml:space="preserve">
     <value>Başlangıç saati</value>
+  </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>galeri</value>
+  </data>
+  <data name="HotelList" xml:space="preserve">
+    <value>Otel Listesi</value>
+  </data>
+  <data name="HotelName" xml:space="preserve">
+    <value>Otel Adı</value>
   </data>
   <data name="HourCount" xml:space="preserve">
     <value>Saat sayısı</value>
@@ -174,14 +198,26 @@
   <data name="Idle" xml:space="preserve">
     <value>Boş</value>
   </data>
+  <data name="IsDaily" xml:space="preserve">
+    <value>günlük mi?</value>
+  </data>
   <data name="IsEnable" xml:space="preserve">
     <value>Etkin</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Soyisim</value>
   </data>
+  <data name="Location" xml:space="preserve">
+    <value>konum</value>
+  </data>
   <data name="Nationality" xml:space="preserve">
     <value>Milliyet</value>
+  </data>
+  <data name="OfficeList" xml:space="preserve">
+    <value>Ofis Listesi</value>
+  </data>
+  <data name="OfficeName" xml:space="preserve">
+    <value>Ofis Adı</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>Sipariş</value>
@@ -194,6 +230,9 @@
   </data>
   <data name="OrderNew" xml:space="preserve">
     <value>Yeni Rezervasyon</value>
+  </data>
+  <data name="Parish" xml:space="preserve">
+    <value>Mahalle</value>
   </data>
   <data name="PaymentStatus" xml:space="preserve">
     <value>Ödeme durumu</value>
@@ -209,6 +248,12 @@
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Cep telefonu</value>
+  </data>
+  <data name="Picture" xml:space="preserve">
+    <value>Resim</value>
+  </data>
+  <data name="Province" xml:space="preserve">
+    <value>Bölge</value>
   </data>
   <data name="ReserveDate" xml:space="preserve">
     <value>Rezervasyon tarihi</value>

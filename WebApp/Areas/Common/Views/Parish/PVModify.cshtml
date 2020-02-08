@@ -1,0 +1,30 @@
+﻿@model Radyn.Common.DataStructure.Parish
+@Html.ValidationSummary(true)
+
+<div class="radynForm">
+    <div class="item-row">
+        <div class="table-row-cap">
+            <div class="item">
+                @Resources.CommonComponent.Title
+            </div>
+        </div>
+        <div class="table-row-item">
+            <div class="item">
+                @Html.EditorFor(model => model.Name)
+            </div>
+        </div>
+    </div>
+     <div class="item-row">
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.CommonComponent.City
+                </div>
+            </div>
+            <div class="table-row-item ">
+                <div class="item">
+                    @Html.DropDownListFor(model => model.CityId, (SelectList)ViewBag.Citylist)
+                </div>
+            </div>
+        </div>
+</div>
+

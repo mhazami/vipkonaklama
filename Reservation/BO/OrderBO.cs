@@ -24,9 +24,9 @@ namespace Radyn.Reservation.BO
         {
             base.CheckConstraint(connectionHandler, item);
             RoomBO roomBo = new RoomBO();
-            var oldOrder = this.Get(connectionHandler, item.Id);
+            Order oldOrder = Get(connectionHandler, item.Id);
 
-            if (oldOrder.RoomId.HasValue && oldOrder.RoomId.Value != item.RoomId)
+            if (oldOrder != null && oldOrder.RoomId.HasValue && oldOrder.RoomId.Value != item.RoomId)
             {
                 Room oldRoom = roomBo.Get(connectionHandler, oldOrder.RoomId);
                 oldRoom.Idle = true;
@@ -39,33 +39,34 @@ namespace Radyn.Reservation.BO
                 room.Idle = false;
                 roomBo.Update(connectionHandler, room);
             }
-            SetTotalPrice(connectionHandler, item);
+           
         }
 
-        internal void SetTotalPrice(IConnectionHandler connectionHandler, Order item)
-        {
-            item.TotalPrice = GetTotalPrice(connectionHandler, item.EntryDate, item.ExitDate, item.RoomTypeId, item.ReserveType);
-        }
 
-        internal decimal GetTotalPrice(IConnectionHandler connectionHandler, DateTime startdate, DateTime enddate, byte roomtypeId, Enum.ReserveType reserveType)
+
+        internal decimal GetTotalPrice(IConnectionHandler connectionHandler, DateTime startdate, DateTime enddate, byte roomtypeId, Guid reserveType)
         {
 
             Tools.Utility tools = new Tools.Utility();
             int days = tools.GetDaysCount(startdate, enddate);
             if (!startdate.Equals(enddate))
             {
-                reserveType = Enum.ReserveType.Daily;
+                //reserveType = Enum.ReserveType.Daily;
             }
 
             int weekends = tools.GetWeekendCount(startdate, enddate);
             PredicateBuilder<ReservePrice> query = new PredicateBuilder<ReservePrice>();
             query.And(x => x.RoomTypeId == roomtypeId);
-            query.And(x => x.ReserveType == reserveType);
+            //query.And(x => x.ReserveType == reserveType);
             List<ReservePrice> list = new ReservePriceBO().Where(connectionHandler, query.GetExpression());
 
             int normaldays = days == weekends ? 0 : days - weekends;
-            decimal normalPrice = list != null ? list.FirstOrDefault(x => x.DayType == Enum.DayType.Normal).PerDayPrice : 0;
-            decimal weekendPrice = list != null ? list.FirstOrDefault(x => x.DayType == Enum.DayType.Weekend).PerDayPrice : 0;
+            if (startdate.Date.Equals(enddate.Date))
+            {
+                normaldays = 1;
+            }
+            decimal normalPrice = list.Count() != 0 ? list.FirstOrDefault(x => x.DayType == Enum.DayType.Normal).PerDayPrice : 0;
+            decimal weekendPrice = list.Count() != 0 ? list.FirstOrDefault(x => x.DayType == Enum.DayType.Weekend).PerDayPrice : 0;
             decimal totalPrice = (normaldays * normalPrice) + (weekends * weekendPrice);
 
             return totalPrice;
@@ -78,7 +79,7 @@ namespace Radyn.Reservation.BO
                 throw new Exception("Kişisel bilgiler kaydedilirken hata oluştu");
             }
             order.CustomerId = order.Customer.Id;
-            if (!base.Insert(connectionHandler, order))
+            if (!Insert(connectionHandler, order))
             {
                 throw new Exception("Rezervasyon hatası");
             }
@@ -88,10 +89,26 @@ namespace Radyn.Reservation.BO
         internal bool UpdateWithCustomer(IConnectionHandler connectionHandler, Order order)
         {
             //todo:translate
-            if (!new CustomerBO().Insert(connectionHandler, order.Customer))
+            if (order.CustomerId.HasValue)
+            {
+                Customer customer = new CustomerBO().Get(connectionHandler, order.CustomerId);
+                if (customer != null)
+                {
+                    if (!new CustomerBO().Update(connectionHandler, order.Customer))
+                    {
+                        throw new Exception("Kişisel bilgiler kaydedilirken hata oluştu");
+                    }
+                }
+                else if (!new CustomerBO().Insert(connectionHandler, order.Customer))
+                {
+                    throw new Exception("Kişisel bilgiler kaydedilirken hata oluştu");
+                }
+            }
+            else if (!new CustomerBO().Insert(connectionHandler, order.Customer))
             {
                 throw new Exception("Kişisel bilgiler kaydedilirken hata oluştu");
             }
+
             order.CustomerId = order.Customer.Id;
             if (!base.Update(connectionHandler, order))
             {

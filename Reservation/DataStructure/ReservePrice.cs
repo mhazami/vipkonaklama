@@ -75,14 +75,15 @@ namespace Radyn.Reservation.DataStructure
         public RoomType RoomType { get; set; }
 
 
-        private ReserveType _reserveType;
-        [DbType("tinyint")]
-        [IsNullable]
-        public ReserveType ReserveType
+        private Guid _reserveTypeId;
+        [DbType("uniqueidentifier")]
+        public Guid ReserveTypeId
         {
-            get { return _reserveType; }
-            set { base.SetPropertyValue("ReserveType", value); }
+            get { return _reserveTypeId; }
+            set { base.SetPropertyValue("ReserveTypeId", value); }
         }
+        [Assosiation(PropName = "ReserveTypeId")]
+        public ReserveType ReserveType { get; set; }
 
         [DisableAction(DisableInsert = true, DisableUpdate = true, DiableSelect = true)]
         public override string DescriptionField { get { return string.Empty; } }

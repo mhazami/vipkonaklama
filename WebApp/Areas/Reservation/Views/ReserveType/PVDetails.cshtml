@@ -1,0 +1,89 @@
+﻿@model ReserveType
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.Title
+        </div>
+    </div>
+    <div class="table-row-item ">
+        <div class="item">
+            @Html.DisplayFor(model => model.Title, new { })
+        </div>
+    </div>
+</div>
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.HotelName
+        </div>
+    </div>
+    <div class="table-row-item ">
+        <div class="item">
+            @Html.DisplayFor(model => model.Hotel.Name)
+        </div>
+    </div>
+</div>
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.EntryTime
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.DisplayFor(model => model.StartTime)
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.ExitTime
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.DisplayFor(model => model.EndTime)
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.IsDaily
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @(Model.IsDaily ? Resources.Common.Yes : Resources.Common.No)
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.IsEnable
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @(Model.Enable ? Resources.Common.Enable : Resources.Common.Disable)
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.Order
+        </div>
+    </div>
+    <div class="table-row-item ">
+        <div class="item">
+            @Html.DisplayFor(model => model.Order, new { })
+        </div>
+    </div>
+</div>

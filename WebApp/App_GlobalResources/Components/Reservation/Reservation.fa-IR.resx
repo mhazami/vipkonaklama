@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Address" xml:space="preserve">
+    <value>آدرس</value>
+  </data>
   <data name="Calculate" xml:space="preserve">
     <value>محاسبه</value>
   </data>
   <data name="CheckoutHotel" xml:space="preserve">
     <value>تحویل اتاق</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>شهر</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>کشور</value>
   </data>
   <data name="Customer" xml:space="preserve">
     <value>مشتری</value>
@@ -162,8 +171,23 @@
   <data name="FirstName" xml:space="preserve">
     <value>نام</value>
   </data>
+  <data name="FloorList" xml:space="preserve">
+    <value>لیست طبقات</value>
+  </data>
+  <data name="FloorName" xml:space="preserve">
+    <value>طبقه</value>
+  </data>
   <data name="FromHour" xml:space="preserve">
     <value>از ساعت</value>
+  </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>گالری</value>
+  </data>
+  <data name="HotelList" xml:space="preserve">
+    <value>لیست هتل ها</value>
+  </data>
+  <data name="HotelName" xml:space="preserve">
+    <value>نام هتل</value>
   </data>
   <data name="HourCount" xml:space="preserve">
     <value>میزان ساعت حضور</value>
@@ -171,14 +195,26 @@
   <data name="Idle" xml:space="preserve">
     <value>خالی است؟</value>
   </data>
+  <data name="IsDaily" xml:space="preserve">
+    <value>روزانه است؟</value>
+  </data>
   <data name="IsEnable" xml:space="preserve">
     <value>فعال است؟</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>نام خانوادگی</value>
   </data>
+  <data name="Location" xml:space="preserve">
+    <value>موقعیت</value>
+  </data>
   <data name="Nationality" xml:space="preserve">
     <value>ملیت</value>
+  </data>
+  <data name="OfficeList" xml:space="preserve">
+    <value>لیست دفتر</value>
+  </data>
+  <data name="OfficeName" xml:space="preserve">
+    <value>نام دفتر</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>ترتیب</value>
@@ -191,6 +227,9 @@
   </data>
   <data name="OrderNew" xml:space="preserve">
     <value>رزرو جدید</value>
+  </data>
+  <data name="Parish" xml:space="preserve">
+    <value>محله</value>
   </data>
   <data name="PaymentStatus" xml:space="preserve">
     <value>وضعیت پرداخت</value>
@@ -209,6 +248,9 @@
   </data>
   <data name="Picture" xml:space="preserve">
     <value>تصویر</value>
+  </data>
+  <data name="Province" xml:space="preserve">
+    <value>استان</value>
   </data>
   <data name="ReserveDate" xml:space="preserve">
     <value>تاریخ رزرو</value>

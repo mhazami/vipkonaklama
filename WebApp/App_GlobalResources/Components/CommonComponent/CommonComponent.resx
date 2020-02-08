@@ -195,6 +195,9 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Parish" xml:space="preserve">
+    <value>Parish</value>
+  </data>
   <data name="Province" xml:space="preserve">
     <value>Province</value>
   </data>

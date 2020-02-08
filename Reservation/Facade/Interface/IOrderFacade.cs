@@ -9,6 +9,6 @@ namespace Radyn.Reservation.Facade.Interface
         bool UpdateWithCustomer(Order order);
 
         bool InsertWithCustomer(Order order);
-        decimal GetTotalPrice(DateTime startdate, DateTime enddate, byte roomtypeId, Enum.ReserveType reserveType);
+        decimal GetTotalPrice(DateTime startdate, DateTime enddate, byte roomtypeId, Guid reserveType);
     }
 }

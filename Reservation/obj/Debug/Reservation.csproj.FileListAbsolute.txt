@@ -37,3 +37,6 @@ E:\Online-WorkSpace\vipkonaklama\Reservation\obj\Debug\Radyn.Reservation.Resourc
 E:\Online-WorkSpace\vipkonaklama\Reservation\obj\Debug\Reservation.csproj.GenerateResource.cache
 E:\Online-WorkSpace\vipkonaklama\Reservation\obj\Debug\fa-IR\Radyn.Reservation.resources.dll
 E:\Online-WorkSpace\vipkonaklama\Reservation\obj\Debug\tr-TR\Radyn.Reservation.resources.dll
+E:\Online-WorkSpace\vipkonaklama\Reservation\bin\Debug\Radyn.Gallery.dll
+E:\Online-WorkSpace\vipkonaklama\Reservation\bin\Debug\Radyn.Gallery.pdb
+E:\Online-WorkSpace\vipkonaklama\Reservation\bin\Debug\Radyn.Gallery.dll.config

@@ -1,0 +1,38 @@
+@using Radyn.Web.Mvc;
+@model IEnumerable<Hotel>
+@{
+    ViewBag.Title = Resources.Reservation.HotelList;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Head{}
+@section PageTitle {Resources.Reservation.HotelList }
+@section PageAction {
+    <div class="button-div m-btn i-save">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Hotel/Create")).Text(Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+    </div>
+}
+@section PageActionDown {
+    <div class="button-div m-btn i-save">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Hotel/Create")).Text(Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+    </div>
+}
+<div class="radynForm">
+
+    @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width: 98%; margin: 0auto" }).Columns(columns =>
+                 {
+                     columns.Template(hotel => hotel.Name).Title(Resources.Reservation.HotelName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotel => hotel.Country.Name).Title(Resources.Reservation.Country).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotel => hotel.Enabled).Title(Resources.Common.Enable).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotel => hotel.GalleryId).Title(Resources.Reservation.Gallery).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotel => hotel.Address).Title(Resources.Reservation.Address).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotel => hotel.Location).Title(Resources.Reservation.Location).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotel => hotel.Province.Title).Title(Resources.Reservation.Province).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotel => hotel.City.Title).Title(Resources.Reservation.City).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotel => hotel.Parish.Name).Title(Resources.Reservation.Parish).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotel => "<a style='cursor: pointer;' href=" + Url.Content("~/Reservation/hotel/Details") + "?Id=" + hotel.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/hotel/Edit") + "?Id=" + hotel.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/hotel/Delete") + "?Id=" + hotel.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(300).Encode(false);
+                 })
+                .Sortable(sorting => sorting.Enabled(true))
+                .Pageable(paging => paging.Enabled(true))
+                .Filterable(filtering => filtering.Enabled(true))
+                .Render();}
+</div>

@@ -195,6 +195,9 @@
   <data name="Name" xml:space="preserve">
     <value>İsim</value>
   </data>
+  <data name="Parish" xml:space="preserve">
+    <value>Mahalle</value>
+  </data>
   <data name="Province" xml:space="preserve">
     <value>Bölge</value>
   </data>

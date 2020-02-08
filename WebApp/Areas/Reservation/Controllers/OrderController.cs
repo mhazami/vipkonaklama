@@ -35,7 +35,7 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             ViewBag.RoomType = new SelectList(ReservationComponent.Instance.RoomTypeFacade.GetAll(), "Id", "Title");
             ViewBag.Customer = new SelectList(ReservationComponent.Instance.CustomerFacade.GetAll(), "Id", "Title");
             ViewBag.User = new SelectList(SecurityComponent.Instance.UserFacade.GetAll(), "Id", "Title");
-            ViewBag.ReserveType = new SelectList(EnumUtils.ConvertEnumToIEnumerableInLocalization<ReserveType>(), "Key", "Value");
+            ViewBag.ReserveType = new SelectList(ReservationComponent.Instance.ReserveTypeFacade.SelectKeyValuePair(x => x.Id, x => x.Title), "Key", "Value");
             ViewBag.Paymentype = EnumUtils.ConvertEnumToIEnumerableInLocalization<PaymentType>().Select(x => new KeyValuePair<string, string>(x.Key, x.Value)).ToList();
         }
         [RadynAuthorize]
@@ -164,9 +164,9 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             }
         }
 
-        public string CalculateOfferPrice(DateTime? exitDate,DateTime? entryDate,ReserveType reserveType,byte? roomtypeId)
+        public string CalculateOfferPrice(DateTime? exitDate, DateTime? entryDate, Guid reserveType, byte? roomtypeId)
         {
-            if (!roomtypeId.HasValue || roomtypeId == 0 || reserveType == ReserveType.None || !entryDate.HasValue || !exitDate.HasValue)
+            if (!roomtypeId.HasValue || roomtypeId == 0 || reserveType == Guid.Empty || !entryDate.HasValue || !exitDate.HasValue)
             {
                 return "0";
             }

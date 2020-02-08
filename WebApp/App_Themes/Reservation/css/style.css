@@ -4,6 +4,63 @@ html, body {
     overflow-x: hidden !important;
 }
 
+.main-img {
+    height: 100%;
+    width: 100%;
+}
+
+.banner-row-box {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    z-index: 1;
+    top: 190px;
+    text-align: center;
+}
+
+    .banner-row-box > .boxed {
+        background: rgba(30, 30, 30, 0.509804);
+        padding: 50px 0 0 0;
+        margin: 10px;
+        right: 6%;
+        float: right;
+        color: #fff;
+        font-size: 32px;
+        cursor: pointer;
+    }
+
+        .banner-row-box > .boxed > a {
+            display: block;
+            width: 100%;
+            border-top: 1px solid black;
+            position: relative;
+            bottom: 0;
+            background: rgba(30, 30, 30, 0.709804);
+            text-shadow: 5px 5px 10px #0e60a7;
+            font-size: 20px;
+            min-height: 50px;
+            line-height: 50px;
+            animation-name: example;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+
+@keyframes example {
+    from {
+        font-size: 20px;
+        color: #fe4e37;
+    }
+
+    to {
+        font-size: 32px;
+        color: #2856d8;
+    }
+}
+
+.single-box {
+    right: 29% !important;
+}
+
 @media(max-width: 768px) {
     .form-reservation .form-content {
         position: absolute;
@@ -1072,7 +1129,7 @@ header {
 
     .header-content li {
         display: inline-block;
-        color: #fff;
+        color: #3a3a3a;
         padding: 10px 20px;
         border-left: 1px solid #fff3;
         margin: 0;
@@ -1101,7 +1158,7 @@ ul.social-links li {
     }
 
 .header-content li a {
-    color: #fff;
+    color: #343a40;
     font-size: 14px;
     font-weight: normal;
 }
@@ -1117,7 +1174,7 @@ ul.social-links li {
 .header-content select {
     padding: 0;
     background: transparent;
-    color: #fff;
+    color: #343a40;
     border: none;
     height: auto;
 }
@@ -7651,7 +7708,7 @@ section.events .meta span {
             }
 
             .list-nav-content > li a span, .links-item > li a span {
-                color: #ffffff;
+                color: #3a3a3a;
                 margin: 7px;
                 font-weight: 400;
                 font-size: 13px;

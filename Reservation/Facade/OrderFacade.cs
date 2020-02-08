@@ -1,13 +1,12 @@
 ﻿using Radyn.Framework;
 using Radyn.Framework.DbHelper;
-using Radyn.Reservation;
 using Radyn.Reservation.BO;
 using Radyn.Reservation.DataStructure;
 using Radyn.Reservation.Facade.Interface;
 using System;
 using System.Data;
 
-namespace Radyn.News.Facade
+namespace Radyn.Reservation.Facade
 {
     internal sealed class OrderFacade : ReservationBaseFacade<Order>, IOrderFacade
     {
@@ -16,7 +15,7 @@ namespace Radyn.News.Facade
         internal OrderFacade(IConnectionHandler connectionHandler)
             : base(connectionHandler) { }
 
-        public decimal GetTotalPrice(DateTime startdate, DateTime enddate, byte roomtypeId, Reservation.Enum.ReserveType reserveType)
+        public decimal GetTotalPrice(DateTime startdate, DateTime enddate, byte roomtypeId, Guid reserveType)
         {
             return new OrderBO().GetTotalPrice(this.ConnectionHandler, startdate, enddate, roomtypeId, reserveType);
         }

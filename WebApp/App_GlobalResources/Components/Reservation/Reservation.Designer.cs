@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        internal static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calculate.
         /// </summary>
         internal static string Calculate {
@@ -75,6 +84,24 @@ namespace Resources {
         internal static string CheckoutHotel {
             get {
                 return ResourceManager.GetString("CheckoutHotel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        internal static string City {
+            get {
+                return ResourceManager.GetString("City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        internal static string Country {
+            get {
+                return ResourceManager.GetString("Country", resourceCulture);
             }
         }
         
@@ -205,11 +232,56 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Floor List.
+        /// </summary>
+        internal static string FloorList {
+            get {
+                return ResourceManager.GetString("FloorList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Floor Name.
+        /// </summary>
+        internal static string FloorName {
+            get {
+                return ResourceManager.GetString("FloorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FromHour.
         /// </summary>
         internal static string FromHour {
             get {
                 return ResourceManager.GetString("FromHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gallery.
+        /// </summary>
+        internal static string Gallery {
+            get {
+                return ResourceManager.GetString("Gallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hotels List.
+        /// </summary>
+        internal static string HotelList {
+            get {
+                return ResourceManager.GetString("HotelList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hotel Name.
+        /// </summary>
+        internal static string HotelName {
+            get {
+                return ResourceManager.GetString("HotelName", resourceCulture);
             }
         }
         
@@ -232,6 +304,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Is Daily ?.
+        /// </summary>
+        internal static string IsDaily {
+            get {
+                return ResourceManager.GetString("IsDaily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is Active ?.
         /// </summary>
         internal static string IsEnable {
@@ -250,11 +331,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        internal static string Location {
+            get {
+                return ResourceManager.GetString("Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nationality.
         /// </summary>
         internal static string Nationality {
             get {
                 return ResourceManager.GetString("Nationality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Office List.
+        /// </summary>
+        internal static string OfficeList {
+            get {
+                return ResourceManager.GetString("OfficeList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Office Name.
+        /// </summary>
+        internal static string OfficeName {
+            get {
+                return ResourceManager.GetString("OfficeName", resourceCulture);
             }
         }
         
@@ -291,6 +399,15 @@ namespace Resources {
         internal static string OrderNew {
             get {
                 return ResourceManager.GetString("OrderNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parish.
+        /// </summary>
+        internal static string Parish {
+            get {
+                return ResourceManager.GetString("Parish", resourceCulture);
             }
         }
         
@@ -345,6 +462,15 @@ namespace Resources {
         internal static string Picture {
             get {
                 return ResourceManager.GetString("Picture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Province.
+        /// </summary>
+        internal static string Province {
+            get {
+                return ResourceManager.GetString("Province", resourceCulture);
             }
         }
         

@@ -189,6 +189,9 @@
   <data name="Name" xml:space="preserve">
     <value>نام</value>
   </data>
+  <data name="Parish" xml:space="preserve">
+    <value>محله</value>
+  </data>
   <data name="Province" xml:space="preserve">
     <value>استان</value>
   </data>

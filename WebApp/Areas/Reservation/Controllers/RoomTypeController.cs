@@ -31,6 +31,7 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         [RadynAuthorize]
         public ActionResult Create()
         {
+            FillViewBag();
             return View(new RoomType());
         }
 
@@ -59,6 +60,7 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         [RadynAuthorize]
         public ActionResult Edit(byte Id)
         {
+            FillViewBag();
             return View(ReservationComponent.Instance.RoomTypeFacade.Get(Id));
         }
 
@@ -88,6 +90,11 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         public ActionResult Delete(byte Id)
         {
             return View(ReservationComponent.Instance.RoomTypeFacade.Get(Id));
+        }
+
+        private void FillViewBag()
+        {
+            ViewBag.Hotel = new SelectList(ReservationComponent.Instance.HotelFacade.SelectKeyValuePair(x => x.Id, x => x.Name), "Key", "Value");
         }
 
         [HttpPost]

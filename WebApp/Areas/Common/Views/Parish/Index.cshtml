@@ -1,0 +1,46 @@
+@using Radyn.Utility
+@using Radyn.Web.Mvc;
+
+@model IEnumerable<Radyn.Common.DataStructure.Parish>
+    @{
+        ViewBag.Title = @Resources.Common.List + " " + @Resources.CommonComponent.Parish;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section Head{}
+    @section PageTitle
+{
+        @Resources.Common.List @Resources.CommonComponent.Parish
+    }
+    @section PageAction
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Parish").Area("Common").Text(@Resources.CommonComponent.Parish + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    @section PageActionDown
+{
+        <div class="button-div m-btn waves-blue i-add">
+            @{Html.Radyn().ImageActionLink().ActionName("Create").ControllerName("Parish").Area("Common").Text(@Resources.CommonComponent.Parish + " " + @Resources.Common.New).Align(Resources.Common.Aligment.ToEnum<ImageActionLink.Alignment>()).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        </div>
+    }
+    <div class="radynForm">
+        @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width:98%;margin: 0 auto" }).Columns(columns =>
+                {
+                    columns.Template(bank => bank.Name).Title(@Resources.CommonComponent.Title).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(bank => bank.CityId != 0 ? bank.City.Title : "").Title(@Resources.CommonComponent.City).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                    columns.Template(currency =>
+                        "<a style='cursor: pointer;'  href='" + Url.Content("~/Common/Parish/Details?Id=" + currency.Id) + "'>" +
+                        " <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "' src='" + Url.Content("~/Content/Images/details.png") + "' />" + "</a> | " +
+                        "<a style='cursor: pointer;'  href='" + Url.Content("~/Common/Parish/Edit?Id=" + currency.Id) + "'> " +
+                        " <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "' src='" + Url.Content("~/Content/Images/edit.png") + "' />" + "</a> | " +
+                        "<a style='cursor: pointer;'  href='" + Url.Content("~/Common/Parish/Delete?Id=" + currency.Id) + "'>" +
+                        " <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "' src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' />" + "</a> ").Width(300).Filterable(false).Encode(false);
+
+                })
+
+              .Sortable(sorting => sorting.Enabled(true))
+              .Pageable(paging => paging.Enabled(true))
+              .Filterable(filtering => filtering.Enabled(true))
+              .Render();}
+
+    </div>

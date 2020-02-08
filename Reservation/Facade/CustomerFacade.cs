@@ -1,9 +1,8 @@
 ﻿using Radyn.Framework.DbHelper;
-using Radyn.Reservation;
 using Radyn.Reservation.DataStructure;
 using Radyn.Reservation.Facade.Interface;
 
-namespace Radyn.News.Facade
+namespace Radyn.Reservation.Facade
 {
     internal sealed class CustomerFacade : ReservationBaseFacade<Customer>, ICustomerFacade
     {

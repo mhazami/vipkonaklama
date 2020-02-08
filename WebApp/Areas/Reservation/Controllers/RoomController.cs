@@ -22,7 +22,7 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         }
 
         [RadynAuthorize]
-        public ActionResult Details(byte Id)
+        public ActionResult Details(Guid Id)
         {
             return View(ReservationComponent.Instance.RoomFacade.Get(Id));
         }
@@ -62,14 +62,14 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         }
 
         [RadynAuthorize]
-        public ActionResult Edit(byte Id)
+        public ActionResult Edit(Guid Id)
         {
             FillViewBags();
             return View(ReservationComponent.Instance.RoomFacade.Get(Id));
         }
 
         [HttpPost]
-        public ActionResult Edit(byte Id, FormCollection collection)
+        public ActionResult Edit(Guid Id, FormCollection collection)
         {
             var room = ReservationComponent.Instance.RoomFacade.Get(Id);
             try
@@ -92,13 +92,13 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         }
 
         [RadynAuthorize]
-        public ActionResult Delete(byte Id)
+        public ActionResult Delete(Guid Id)
         {
             return View(ReservationComponent.Instance.RoomFacade.Get(Id));
         }
 
         [HttpPost]
-        public ActionResult Delete(byte Id, FormCollection collection)
+        public ActionResult Delete(Guid Id, FormCollection collection)
         {
             var room = ReservationComponent.Instance.RoomFacade.Get(Id);
             try
@@ -118,7 +118,7 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             }
         }
 
-        public JsonResult GetRoomsByType(byte roomType, short? roomId, string entryDate, string exitDate, string entryTime, string exitTime)
+        public JsonResult GetRoomsByType(byte roomType, Guid? roomId, string entryDate, string exitDate, string entryTime, string exitTime)
         {
             var results = new List<object>();
             if (string.IsNullOrEmpty(entryDate) && string.IsNullOrEmpty(exitDate))

@@ -1,0 +1,91 @@
+﻿@model ReserveType
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.Title
+        </div>
+    </div>
+    <div class="table-row-item ">
+        <div class="item">
+            @Html.TextBoxFor(model => model.Title, new { })
+        </div>
+    </div>
+</div>
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.HotelName
+        </div>
+    </div>
+    <div class="table-row-item ">
+        <div class="item">
+            @Html.DropDownListFor(model => model.HotelId, (SelectList)ViewBag.Hotel)
+        </div>
+    </div>
+</div>
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.EntryTime
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.DropDownListFor(model => model.StartTime, (SelectList)ViewBag.Time)
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.ExitTime
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.DropDownListFor(model => model.EndTime, (SelectList)ViewBag.Time)
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.IsDaily
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.RadioButtonFor(model => model.IsDaily, true)@Resources.Common.Yes
+            @Html.RadioButtonFor(model => model.IsDaily, false)@Resources.Common.No
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.IsEnable
+        </div>
+    </div>
+    <div class="table-row-item drp">
+        <div class="item">
+            @Html.RadioButtonFor(model => model.IsDaily, true)@Resources.Common.Enable
+            @Html.RadioButtonFor(model => model.IsDaily, false)@Resources.Common.Disable
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="table-row-cap">
+        <div class="item">
+            @Resources.Reservation.Order
+        </div>
+    </div>
+    <div class="table-row-item ">
+        <div class="item">
+            @Html.EditorFor(model => model.Order, new { })
+        </div>
+    </div>
+</div>

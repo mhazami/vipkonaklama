@@ -1,7 +1,4 @@
-﻿
-
-
-using Radyn.News.Facade;
+﻿using Radyn.Reservation.Facade;
 using Radyn.Reservation.Facade.Interface;
 
 namespace Radyn.Reservation
@@ -56,6 +53,45 @@ namespace Radyn.Reservation
             get
             {
                 return new RoomTypeFacade();
+            }
+        }
+
+        public IReserveTypeFacade ReserveTypeFacade
+        {
+            get
+            {
+                return new ReserveTypeFacade();
+            }
+        }
+
+        public IHotelFacade HotelFacade
+        {
+            get
+            {
+                return new HotelFacade();
+            }
+        }
+
+        public IHotelFloorFacade HotelFloorFacade
+        {
+            get
+            {
+                return new HotelFloorFacade();
+            }
+        }
+
+        public IHotelOfficeFacade HotelOfficeFacade
+        {
+            get
+            {
+                return new HotelOfficeFacade();
+            }
+        }
+        public IUserHotelAccessFacade UserHotelAccessFacade
+        {
+            get
+            {
+                return new UserHotelAccessFacade();
             }
         }
 
