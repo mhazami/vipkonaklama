@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Head{}
-@section PageTitle {Resources.Reservation.HotelList }
+@section PageTitle {@Resources.Reservation.HotelList }
 @section PageAction {
     <div class="button-div m-btn i-save">
         @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Hotel/Create")).Text(Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}

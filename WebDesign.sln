@@ -82,6 +82,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{0B83
 		Scripts\20200201.sql = Scripts\20200201.sql
 		Scripts\20200203.sql = Scripts\20200203.sql
 		Scripts\20200204.sql = Scripts\20200204.sql
+		Scripts\20200205.sql = Scripts\20200205.sql
+		Scripts\20200206.sql = Scripts\20200206.sql
+		Scripts\20200207.sql = Scripts\20200207.sql
 		Scripts\WebDesign13980809.sql = Scripts\WebDesign13980809.sql
 	EndProjectSection
 EndProject

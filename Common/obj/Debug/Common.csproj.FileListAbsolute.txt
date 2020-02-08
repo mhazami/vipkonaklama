@@ -11,16 +11,3 @@ E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\fa-IR\Radyn.Common.resources.d
 E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\Common.csproj.CopyComplete
 E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\Radyn.Common.dll
 E:\Online-WorkSpace\vipkonaklama\Common\obj\Debug\Radyn.Common.pdb
-E:\Repository\vipkonaklama\lib\Radyn.Common.dll.config
-E:\Repository\vipkonaklama\lib\Radyn.Common.dll
-E:\Repository\vipkonaklama\lib\Radyn.Common.pdb
-E:\Repository\vipkonaklama\lib\fa-IR\Radyn.Common.resources.dll
-E:\Repository\vipkonaklama\Common\obj\Debug\Common.csprojAssemblyReference.cache
-E:\Repository\vipkonaklama\Common\obj\Debug\Radyn.Common.Resources.Common.resources
-E:\Repository\vipkonaklama\Common\obj\Debug\Radyn.Common.Resources.Common.fa-IR.resources
-E:\Repository\vipkonaklama\Common\obj\Debug\Common.csproj.GenerateResource.cache
-E:\Repository\vipkonaklama\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
-E:\Repository\vipkonaklama\Common\obj\Debug\fa-IR\Radyn.Common.resources.dll
-E:\Repository\vipkonaklama\Common\obj\Debug\Common.csproj.CopyComplete
-E:\Repository\vipkonaklama\Common\obj\Debug\Radyn.Common.dll
-E:\Repository\vipkonaklama\Common\obj\Debug\Radyn.Common.pdb

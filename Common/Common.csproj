@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BO\BankBO.cs" />
+    <Compile Include="BO\ParishBO.cs" />
     <Compile Include="BO\CityBO.cs" />
     <Compile Include="BO\CountryBO.cs" />
     <Compile Include="BO\CountryIPRangeBO.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Constants\CultureInfo.cs" />
     <Compile Include="CommonBaseFacade.cs" />
     <Compile Include="DataStructure\Bank.cs" />
+    <Compile Include="DataStructure\Parish.cs" />
     <Compile Include="DataStructure\City.cs" />
     <Compile Include="DataStructure\Country.cs" />
     <Compile Include="DataStructure\CountryIPRange.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="DataStructure\Unit.cs" />
     <Compile Include="DataStructure\WebDesignLanguage.cs" />
     <Compile Include="DA\BankDA.cs" />
+    <Compile Include="DA\ParishDA.cs" />
     <Compile Include="DA\CityDA.cs" />
     <Compile Include="DA\CountryDA.cs" />
     <Compile Include="DA\CountryIPRangeDA.cs" />
@@ -97,8 +100,10 @@
     <Compile Include="DA\ProvinceDA.cs" />
     <Compile Include="DA\UnitDA.cs" />
     <Compile Include="DA\WebDesignLanguageDA.cs" />
+    <Compile Include="Facade\ParishFacade.cs" />
     <Compile Include="Facade\CountryFacade.cs" />
     <Compile Include="Facade\CountryIPRangeFacade.cs" />
+    <Compile Include="Facade\Interface\IParishFacade.cs" />
     <Compile Include="Facade\Interface\ICountryFacade.cs" />
     <Compile Include="Facade\Interface\ICountryIPRangeFacade.cs" />
     <Compile Include="Facade\Interface\IProvinceFacade.cs" />

@@ -10,7 +10,7 @@ namespace Radyn.Reservation.DataStructure
         public ReserveType()
         {
             IsDaily = false;
-            Enable = false;
+            Enabled = false;
         }
 
         private Guid _id;
@@ -58,13 +58,13 @@ namespace Radyn.Reservation.DataStructure
             set { base.SetPropertyValue("IsDaily", value); }
         }
 
-        private bool _enable;
+        private bool _enabled;
         [DbType("bit")]
         [IsNullable]
-        public bool Enable
+        public bool Enabled
         {
-            get { return _enable; }
-            set { base.SetPropertyValue("Enable", value); }
+            get { return _enabled; }
+            set { base.SetPropertyValue("Enabled", value); }
         }
 
 

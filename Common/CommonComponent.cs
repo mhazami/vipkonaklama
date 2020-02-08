@@ -67,6 +67,13 @@ namespace Radyn.Common
                 return new CityFacade();
             }
         }
+        public IParishFacade ParishFacade
+        {
+            get
+            {
+                return new ParishFacade();
+            }
+        }
         public IUnitFacade UnitFacade
         {
             get

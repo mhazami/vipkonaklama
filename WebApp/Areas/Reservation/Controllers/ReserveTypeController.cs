@@ -17,7 +17,7 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         // GET: Reservation/ReserveType
         public ActionResult Index()
         {
-            var list = ReservationComponent.Instance.ReserveTypeFacade.OrderBy(x => x.Order, x => x.Enable);
+            var list = ReservationComponent.Instance.ReserveTypeFacade.OrderBy(x => x.Order, x => x.Enabled);
             if (list.Count() == 0) { return RedirectToAction("Create"); }
             return View(list);
         }
