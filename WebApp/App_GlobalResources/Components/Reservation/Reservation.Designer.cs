@@ -662,5 +662,14 @@ namespace Resources {
                 return ResourceManager.GetString("User", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Hotel Access List.
+        /// </summary>
+        internal static string UserHotelAccessList {
+            get {
+                return ResourceManager.GetString("UserHotelAccessList", resourceCulture);
+            }
+        }
     }
 }

@@ -16,10 +16,11 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
     public class OrderController : WebDesignBaseController
     {
         [RadynAuthorize]
-        public ActionResult Index()
+        public ActionResult Index(Guid hotelId)
         {
-            var list = ReservationComponent.Instance.OrderFacade.GetAll();
-            if (list.Count == 0) return this.Redirect("~/Reservation/Order/Create");
+            ViewBag.HotelId = hotelId;
+            var list = ReservationComponent.Instance.OrderFacade.Where(x => x.ReserveType.HotelId == hotelId);
+            if (list.Count == 0) return this.Redirect("~/Reservation/Order/Create?hotelId=" + hotelId);
             return View(list);
         }
 
@@ -29,47 +30,48 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             return View(ReservationComponent.Instance.OrderFacade.Get(Id));
         }
 
-        private void FillViewBags()
+        private void FillViewBags(Guid hotelId)
         {
-            ViewBag.Room = new SelectList(ReservationComponent.Instance.RoomFacade.Where(x => x.Idle), "Id", "Title", "");
-            ViewBag.RoomType = new SelectList(ReservationComponent.Instance.RoomTypeFacade.GetAll(), "Id", "Title");
-            ViewBag.Customer = new SelectList(ReservationComponent.Instance.CustomerFacade.GetAll(), "Id", "Title");
-            ViewBag.User = new SelectList(SecurityComponent.Instance.UserFacade.GetAll(), "Id", "Title");
-            ViewBag.ReserveType = new SelectList(ReservationComponent.Instance.ReserveTypeFacade.SelectKeyValuePair(x => x.Id, x => x.Title), "Key", "Value");
+            ViewBag.Room = new SelectList(ReservationComponent.Instance.RoomFacade.SelectKeyValuePair(x => x.Id, x => x.Title, x => x.Idle && x.HotelFloor.HotelId == hotelId), "Key", "Value", "");
+            ViewBag.RoomType = new SelectList(ReservationComponent.Instance.RoomTypeFacade.SelectKeyValuePair(x => x.Id, x => x.Title, x => x.HotelId == hotelId), "Key", "Value");
+            ViewBag.ReserveType = new SelectList(ReservationComponent.Instance.ReserveTypeFacade.SelectKeyValuePair(x => x.Id, x => x.Title, x => x.HotelId == hotelId), "Key", "Value");
             ViewBag.Paymentype = EnumUtils.ConvertEnumToIEnumerableInLocalization<PaymentType>().Select(x => new KeyValuePair<string, string>(x.Key, x.Value)).ToList();
         }
         [RadynAuthorize]
-        public ActionResult Create()
+        public ActionResult Create(Guid hotelId)
         {
-            FillViewBags();
+            FillViewBags(hotelId);
             return View(new Order
             {
-                OrderDate = DateTime.Now
+                OrderDate = DateTime.Now,
+                ReserveType = new Radyn.Reservation.DataStructure.ReserveType() { HotelId = hotelId },
+                RoomType = new RoomType() { HotelId = hotelId },
             });
         }
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            var order = new Order() { Customer = new Customer() };
+            var order = new Order() { Customer = new Customer(), Room = new Room(), RoomType = new RoomType(), ReserveType = new Radyn.Reservation.DataStructure.ReserveType() };
             try
             {
                 this.RadynTryUpdateModel(order, collection);
                 this.RadynTryUpdateModel(order.Customer, collection);
+                this.RadynTryUpdateModel(order.ReserveType, collection);
                 if (SessionParameters.User != null)
                     order.UserId = SessionParameters.User.Id;
                 if (ReservationComponent.Instance.OrderFacade.InsertWithCustomer(order))
                 {
                     ShowMessage(Resources.Common.InsertSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return (!string.IsNullOrEmpty(Request.QueryString["AddNew"])) ? this.Redirect("~/Reservation/Order/Create") : this.Redirect("~/Reservation/Order/Index");
+                    return this.Redirect("~/Reservation/Order/Index?hotelId=" + order.ReserveType.HotelId);
                 }
                 ShowMessage(Resources.Common.ErrorInInsert, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return this.Redirect("~/Reservation/Order/Index");
+                return View(order);
             }
             catch (Exception exception)
             {
                 ShowMessage(Resources.Common.ErrorInInsert + exception.Message, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                FillViewBags();
+                FillViewBags(order.ReserveType.HotelId);
                 return View(order);
             }
         }
@@ -77,8 +79,9 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         [RadynAuthorize]
         public ActionResult Edit(Guid Id)
         {
-            FillViewBags();
-            return View(ReservationComponent.Instance.OrderFacade.Get(Id));
+            var obj = ReservationComponent.Instance.OrderFacade.Get(Id);
+            FillViewBags(obj.ReserveType.HotelId);
+            return View(obj);
         }
 
         [HttpPost]
@@ -98,15 +101,15 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 if (ReservationComponent.Instance.OrderFacade.UpdateWithCustomer(order))
                 {
                     ShowMessage(Resources.Common.UpdateSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return this.Redirect("~/Reservation/Order/Index");
+                    return this.Redirect("~/Reservation/Order/Index?hotelId=" + order.ReserveType.HotelId);
                 }
                 ShowMessage(Resources.Common.ErrorInEdit, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return this.Redirect("~/Reservation/Order/Index");
+                return View(order);
             }
             catch (Exception exception)
             {
                 ShowMessage(Resources.Common.ErrorInEdit + exception.Message, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                FillViewBags();
+                FillViewBags(order.ReserveType.HotelId);
                 return View(order);
             }
         }
@@ -132,7 +135,7 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             catch (Exception exception)
             {
                 ShowMessage(Resources.Common.ErrorInEdit + exception.Message, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                FillViewBags();
+                FillViewBags(order.ReserveType.HotelId);
                 return Content(exception.Message);
             }
         }
@@ -152,10 +155,10 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 if (ReservationComponent.Instance.OrderFacade.Delete(Id))
                 {
                     ShowMessage(Resources.Common.DeleteSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return this.Redirect("~/Reservation/Order/Index");
+                    return this.Redirect("~/Reservation/Order/Index?hotelId=" + order.ReserveType.HotelId);
                 }
                 ShowMessage(Resources.Common.ErrorInDelete, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return this.Redirect("~/Reservation/Order/Index");
+                return View(order);
             }
             catch (Exception exception)
             {

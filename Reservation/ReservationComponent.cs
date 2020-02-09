@@ -87,6 +87,14 @@ namespace Radyn.Reservation
                 return new HotelOfficeFacade();
             }
         }
+
+        public IOfficeRoomFacade OfficeRoomFacade
+        {
+            get
+            {
+                return new OfficeRoomFacade();
+            }
+        }
         public IUserHotelAccessFacade UserHotelAccessFacade
         {
             get

@@ -318,4 +318,7 @@
   <data name="User" xml:space="preserve">
     <value>User</value>
   </data>
+  <data name="UserHotelAccessList" xml:space="preserve">
+    <value>User Hotel Access List</value>
+  </data>
 </root>

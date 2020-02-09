@@ -9,12 +9,12 @@
 @section PageTitle{@Resources.Common.Detail}
 @section PageAction {
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index?hotelId=" + Model.ReserveType.HotelId)).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @section PageActionDown {
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index?hotelId=" + Model.ReserveType.HotelId)).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @if (Model != null)
@@ -27,7 +27,7 @@
                         @Resources.Reservation.RoomType
                     </div>
                 </div>
-                <div class="table-row-item ">
+                <div class="table-row-item drp">
                     <div class="item">
                         @Html.DisplayFor(model => model.RoomType.Title)
                     </div>
@@ -39,7 +39,7 @@
                         @Resources.Reservation.Title
                     </div>
                 </div>
-                <div class="table-row-item ">
+                <div class="table-row-item drp">
                     <div class="item">
                         @Html.DisplayFor(model => model.Title)
                     </div>
@@ -51,7 +51,7 @@
                         @Resources.Reservation.FromHour
                     </div>
                 </div>
-                <div class="table-row-item ">
+                <div class="table-row-item drp">
                     <div class="item">
                         @Model.FromHour.GetDescriptionInLocalization()
                     </div>
@@ -63,7 +63,7 @@
                         @Resources.Reservation.ToHour
                     </div>
                 </div>
-                <div class="table-row-item ">
+                <div class="table-row-item drp">
                     <div class="item">
                         @Model.ToHour.GetDescriptionInLocalization()
                     </div>
@@ -75,7 +75,7 @@
                         @Resources.Reservation.DayType
                     </div>
                 </div>
-                <div class="table-row-item ">
+                <div class="table-row-item drp">
                     <div class="item">
                         @Model.DayType.GetDescriptionInLocalization()
                     </div>
@@ -87,7 +87,7 @@
                         @Resources.Reservation.PerDayPrice
                     </div>
                 </div>
-                <div class="table-row-item ">
+                <div class="table-row-item drp">
                     <div class="item">
                         @Html.DisplayFor(model => model.PerDayPrice)
                     </div>

@@ -13,7 +13,7 @@
     </div>
 
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index?hotelId=" + Model.ReserveType.HotelId)).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @section PageActionDown {
@@ -22,13 +22,14 @@
     </div>
 
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index?hotelId=" + Model.ReserveType.HotelId)).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @if (Model != null)
 {
     @Html.ValidationSummary(true)
     <div class="radynForm">
+        @Html.HiddenFor(model => model.ReserveType.HotelId)
         <div class="item-row">
             <div class="table-row-cap">
                 <div class="item">
@@ -97,7 +98,7 @@
             </div>
             <div class="table-row-item ">
                 <div class="item">
-                    @Html.DropDownListFor(model => model.ReserveType, (SelectList)ViewBag.ReserveType)
+                    @Html.DropDownListFor(model => model.ReserveTypeId, (SelectList)ViewBag.ReserveType)
                 </div>
             </div>
         </div>

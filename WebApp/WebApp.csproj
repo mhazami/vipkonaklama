@@ -834,6 +834,7 @@
     <Compile Include="Areas\Reservation\Controllers\HotelController.cs" />
     <Compile Include="Areas\Reservation\Controllers\HotelFloorController.cs" />
     <Compile Include="Areas\Reservation\Controllers\HotelOfficeController.cs" />
+    <Compile Include="Areas\Reservation\Controllers\OfficeRoomController.cs" />
     <Compile Include="Areas\Reservation\Controllers\OrderController.cs" />
     <Compile Include="Areas\Reservation\Controllers\ReservePriceController.cs" />
     <Compile Include="Areas\Reservation\Controllers\ReserveTypeController.cs" />
@@ -1330,6 +1331,7 @@
     <Content Include="Content\Images\add.png" />
     <Content Include="Content\Images\Calendar-avas.png" />
     <Content Include="Content\Images\comment-alt.png" />
+    <Content Include="Content\Images\company.png" />
     <Content Include="Content\Images\conference-alert\disable.png" />
     <Content Include="Content\Images\conference-alert\not-found.png" />
     <Content Include="Content\Images\conference-alert\setting.png" />
@@ -1341,14 +1343,17 @@
     <Content Include="Content\Images\go-icon.png" />
     <Content Include="Content\Images\grossbritannien.png" />
     <Content Include="Content\Images\home-bg.png" />
+    <Content Include="Content\Images\hotel.png" />
     <Content Include="Content\Images\img-news.jpg" />
     <Content Include="Content\Images\iran.png" />
+    <Content Include="Content\Images\laptop.png" />
     <Content Include="Content\Images\logs.png" />
     <Content Include="Content\Images\man.png" />
     <Content Include="Content\Images\no-image.jpg" />
     <Content Include="Content\Images\notfound.png" />
     <Content Include="Content\Images\plus.png" />
     <Content Include="Content\Images\power.png" />
+    <Content Include="Content\Images\steps.png" />
     <Content Include="Content\Images\supporter.png" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\Images\worlwide.png" />
@@ -1899,6 +1904,10 @@
     <Content Include="Areas\Reservation\Views\UserHotelAccess\Details.cshtml" />
     <Content Include="Areas\Reservation\Views\UserHotelAccess\Edit.cshtml" />
     <Content Include="Areas\Reservation\Views\UserHotelAccess\Index.cshtml" />
+    <Content Include="Areas\Reservation\Views\OfficeRoom\Index.cshtml" />
+    <Content Include="Areas\Reservation\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Reservation\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Reservation\Views\OfficeRoom\PVIndex.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Service References\SaleSupportService\SaleSupport.disco" />
     <None Include="Service References\SaleSupportService\configuration91.svcinfo" />
@@ -1981,7 +1990,6 @@
     <Folder Include="Areas\Payment\Views\WebDesignUserPanel\" />
     <Folder Include="Areas\PhoneBook\Models\" />
     <Folder Include="Areas\Reservation\Models\" />
-    <Folder Include="Areas\Reservation\Views\Shared\" />
     <Folder Include="Areas\Security\Models\" />
     <Folder Include="Areas\Security\Views\Shared\" />
     <Folder Include="Areas\Slider\Models\" />

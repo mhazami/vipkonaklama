@@ -15,10 +15,11 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
     public class RoomTypeController : WebDesignBaseController
     {
         [RadynAuthorize]
-        public ActionResult Index()
+        public ActionResult Index(Guid hotelId)
         {
-            var list = ReservationComponent.Instance.RoomTypeFacade.GetAll();
-            if (list.Count == 0) return this.Redirect("~/Reservation/RoomType/Create");
+            ViewBag.HotelId = hotelId;
+            var list = ReservationComponent.Instance.RoomTypeFacade.Where(x => x.HotelId == hotelId);
+            if (list.Count == 0) return this.Redirect("~/Reservation/RoomType/Create?hotelId=" + hotelId + "");
             return View(list);
         }
 
@@ -29,10 +30,10 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         }
 
         [RadynAuthorize]
-        public ActionResult Create()
+        public ActionResult Create(Guid hotelId)
         {
-            FillViewBag();
-            return View(new RoomType());
+            var hotel = ReservationComponent.Instance.HotelFacade.Get(hotelId);
+            return View(new RoomType() { HotelId = hotelId, Hotel = hotel });
         }
 
         [HttpPost]
@@ -41,14 +42,21 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             var roomType = new RoomType();
             try
             {
+                HttpPostedFileBase image = null;
+                if (RadynSession["Image"] != null)
+                {
+                    image = (HttpPostedFileBase)RadynSession["Image"];
+                    RadynSession.Remove("Image");
+                    roomType.Picture = image.PraperFile();
+                }
                 this.RadynTryUpdateModel(roomType);
                 if (ReservationComponent.Instance.RoomTypeFacade.Insert(roomType))
                 {
                     ShowMessage(Resources.Common.InsertSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return (!string.IsNullOrEmpty(Request.QueryString["AddNew"])) ? this.Redirect("~/Reservation/RoomType/Create") : this.Redirect("~/Reservation/RoomType/Index");
+                    return this.Redirect("~/Reservation/RoomType/Index?hotelId=" + roomType.HotelId + "");
                 }
                 ShowMessage(Resources.Common.ErrorInInsert, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return this.Redirect("~/Reservation/RoomType/Index");
+                return View(roomType);
             }
             catch (Exception exception)
             {
@@ -60,7 +68,6 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         [RadynAuthorize]
         public ActionResult Edit(byte Id)
         {
-            FillViewBag();
             return View(ReservationComponent.Instance.RoomTypeFacade.Get(Id));
         }
 
@@ -70,14 +77,21 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             var roomType = ReservationComponent.Instance.RoomTypeFacade.Get(Id);
             try
             {
+                HttpPostedFileBase image = null;
+                if (RadynSession["Image"] != null)
+                {
+                    image = (HttpPostedFileBase)RadynSession["Image"];
+                    RadynSession.Remove("Image");
+                    roomType.Picture = image.PraperFile();
+                }
                 this.RadynTryUpdateModel(roomType);
                 if (ReservationComponent.Instance.RoomTypeFacade.Update(roomType))
                 {
                     ShowMessage(Resources.Common.UpdateSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return this.Redirect("~/Reservation/RoomType/Index");
+                    return this.Redirect("~/Reservation/RoomType/Index?hotelId=" + roomType.HotelId + "");
                 }
                 ShowMessage(Resources.Common.ErrorInEdit, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return this.Redirect("~/Reservation/RoomType/Index");
+                return View(roomType);
             }
             catch (Exception exception)
             {
@@ -92,11 +106,6 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             return View(ReservationComponent.Instance.RoomTypeFacade.Get(Id));
         }
 
-        private void FillViewBag()
-        {
-            ViewBag.Hotel = new SelectList(ReservationComponent.Instance.HotelFacade.SelectKeyValuePair(x => x.Id, x => x.Name), "Key", "Value");
-        }
-
         [HttpPost]
         public ActionResult Delete(byte Id, FormCollection collection)
         {
@@ -106,10 +115,10 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 if (ReservationComponent.Instance.RoomTypeFacade.Delete(Id))
                 {
                     ShowMessage(Resources.Common.DeleteSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return this.Redirect("~/Reservation/RoomType/Index");
+                    return this.Redirect("~/Reservation/RoomType/Index?hotelId=" + roomType.HotelId + "");
                 }
                 ShowMessage(Resources.Common.ErrorInDelete, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return this.Redirect("~/Reservation/RoomType/Index");
+                return View(roomType);
             }
             catch (Exception exception)
             {

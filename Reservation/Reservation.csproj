@@ -59,6 +59,7 @@
     <Compile Include="BO\HotelBO.cs" />
     <Compile Include="BO\HotelFloorBO.cs" />
     <Compile Include="BO\HotelOfficeBO.cs" />
+    <Compile Include="BO\OfficeRoomBO.cs" />
     <Compile Include="BO\OrderBO.cs" />
     <Compile Include="BO\ReservePriceBO.cs" />
     <Compile Include="BO\ReserveTypeBO.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="DataStructure\Hotel.cs" />
     <Compile Include="DataStructure\HotelFloor.cs" />
     <Compile Include="DataStructure\HotelOffice.cs" />
+    <Compile Include="DataStructure\OfficeRoom.cs" />
     <Compile Include="DataStructure\ReservePrice.cs" />
     <Compile Include="DataStructure\Order.cs" />
     <Compile Include="DataStructure\ReserveType.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="DA\HotelDA.cs" />
     <Compile Include="DA\HotelFloorDA.cs" />
     <Compile Include="DA\HotelOfficeDA.cs" />
+    <Compile Include="DA\OfficeRoomDA.cs" />
     <Compile Include="DA\OrderDA.cs" />
     <Compile Include="DA\ReservePriceDA.cs" />
     <Compile Include="DA\ReserveTypeDA.cs" />
@@ -93,12 +96,14 @@
     <Compile Include="Facade\Interface\IHotelFacade.cs" />
     <Compile Include="Facade\Interface\IHotelFloorFacade.cs" />
     <Compile Include="Facade\Interface\IHotelOfficeFacade.cs" />
+    <Compile Include="Facade\Interface\IOfficeRoomFacade.cs" />
     <Compile Include="Facade\Interface\IOrderFacade.cs" />
     <Compile Include="Facade\Interface\IReservePriceFacade.cs" />
     <Compile Include="Facade\Interface\IReserveTypeFacade.cs" />
     <Compile Include="Facade\Interface\IRoomTypeFacade.cs" />
     <Compile Include="Facade\Interface\IRoomFacade.cs" />
     <Compile Include="Facade\Interface\IUserHotelAccessFacade.cs" />
+    <Compile Include="Facade\OfficeRoomFacade.cs" />
     <Compile Include="Facade\OrderFacade.cs" />
     <Compile Include="Facade\ReservePriceFacade.cs" />
     <Compile Include="Facade\ReserveTypeFacade.cs" />

@@ -1,0 +1,42 @@
+﻿@using Radyn.Web.Mvc
+
+@model string
+
+@{ Html.Radyn().Theme("RadynJsTree").Render(); }
+<script>
+    function GetTree() {
+        $('#div-tree').html('');
+        RadynGet('/Reservation/OfficeRoom/GetRooms',
+            {},
+            function (data) {
+                $('#div-tree').html('');
+                $('#div-tree').html(data);
+
+            });
+    }
+      $(document).ready(function () {
+        $('#RoleMenuTree').jstree({
+            'plugins': ['search', 'checkbox'],
+            'core': {
+                'data': JSON.parse(@Html.Raw(Json.Encode(Model))),
+                'animation': false,
+                'themes': {
+                    'name': 'proton',
+                    'icons': false,
+                }
+            },
+            'search': {
+                'show_only_matches': true,
+                'show_only_matches_children': true
+            },
+            'checkbox': {
+                'three_state': true
+            },
+        });
+</script>
+<div class="content_rc_item rtl_dir">
+    <div class="content_rc_item_head Dark_Cyan"></div>
+    <div class="content_rc_item_content">
+        <div class="form-group my_form-group fit-box" id="div-tree"></div>
+    </div>
+</div>

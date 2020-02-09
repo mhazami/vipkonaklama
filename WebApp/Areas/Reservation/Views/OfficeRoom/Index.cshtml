@@ -1,0 +1,64 @@
+@using Radyn.Web.Mvc;
+@model string
+@{
+    ViewBag.Title = "Resources.Reservation.OfficeRoomList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head{
+    @{ Html.Radyn().Theme("RadynJsTree").Render(); }
+    <script>
+        $(document).ready(function () {
+            $('#RoomTree').jstree({
+                'plugins': ['search', 'checkbox'],
+                'core': {
+                    'data': JSON.parse(@Html.Raw(Json.Encode(Model))),
+                    'animation': false,
+                    'themes': {
+                        'name': 'proton',
+                        'icons': false,
+                    },
+                    'search': {
+                        'show_only_matches': true,
+                        'show_only_matches_children': true
+                    },
+                    'checkbox': {
+                        'three_state': true
+                    },
+                    'search': {
+                        'show_only_matches': true,
+                        'show_only_matches_children': true
+                    }
+                }
+            });
+            $('#RoomTree').on('changed.jstree',
+                function (e, data) {
+                    var objects = data.instance.get_selected(true);
+                    var leaves = $.grep(objects, function (o) { return data.instance.is_leaf(o) });
+                    var list = "";
+                    $.each(leaves,
+                        function (i, o) {
+                            if (list != "")
+                                list += ",";
+                            if (o.parent != '#')
+                                list += o.parent + ",";
+                            list += o.id;
+
+                        });
+                    $('#MenuList').val(list);
+                });
+        });
+
+    </script>
+}
+@section PageTitle {@Resources.Reservation.RoomList }
+@section PageAction {
+}
+@section PageActionDown {
+}
+@using (Html.BeginForm("GetOperation", "RoleOperation", new { area = "Security" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("MenuList")
+    <div id="RoomTree"></div>
+}

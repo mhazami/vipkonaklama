@@ -1,4 +1,6 @@
 ﻿@model ReserveType
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model=>model.HotelId)
 <div>
     <div class="table-row-cap">
         <div class="item">
@@ -17,9 +19,9 @@
             @Resources.Reservation.HotelName
         </div>
     </div>
-    <div class="table-row-item ">
+    <div class="table-row-item drp">
         <div class="item">
-            @Html.DropDownListFor(model => model.HotelId, (SelectList)ViewBag.Hotel)
+            @Html.DisplayFor(model => model.Hotel.Name)
         </div>
     </div>
 </div>
@@ -29,7 +31,7 @@
             @Resources.Reservation.EntryTime
         </div>
     </div>
-    <div class="table-row-item drp">
+    <div class="table-row-item ">
         <div class="item">
             @Html.DropDownListFor(model => model.StartTime, (SelectList)ViewBag.Time)
         </div>
@@ -42,7 +44,7 @@
             @Resources.Reservation.ExitTime
         </div>
     </div>
-    <div class="table-row-item drp">
+    <div class="table-row-item ">
         <div class="item">
             @Html.DropDownListFor(model => model.EndTime, (SelectList)ViewBag.Time)
         </div>
@@ -71,8 +73,8 @@
     </div>
     <div class="table-row-item drp">
         <div class="item">
-            @Html.RadioButtonFor(model => model.IsDaily, true)@Resources.Common.Enable
-            @Html.RadioButtonFor(model => model.IsDaily, false)@Resources.Common.Disable
+            @Html.RadioButtonFor(model => model.Enabled, true)@Resources.Common.Enable
+            @Html.RadioButtonFor(model => model.Enabled, false)@Resources.Common.Disable
         </div>
     </div>
 </div>

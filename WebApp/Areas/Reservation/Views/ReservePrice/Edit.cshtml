@@ -11,22 +11,18 @@
     <div class="button-div m-btn waves-green i-save">
         @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
     </div>
-    <div class="button-div m-btn waves-green i-save">
-        @{Html.Radyn().ImageActionLink().Text(Resources.Common.SaveAndNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "FormSubmitAction('" + FormSubmitAction.SaveAndNew + "'); " }).Render();}
-    </div>
+
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index?hotelId=" + Model.ReserveType.HotelId)).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @section PageActionDown {
     <div class="button-div m-btn waves-green i-save">
         @{Html.Radyn().ImageActionLink().Text(Resources.Common.Save).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).Submit().Render();}
     </div>
-    <div class="button-div m-btn waves-green i-save">
-        @{Html.Radyn().ImageActionLink().Text(Resources.Common.SaveAndNew).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Save.png")).ImagePosition(ImageActionLink.Position.Right).OtherAttribute(new { onclick = "FormSubmitAction('" + FormSubmitAction.SaveAndNew + "'); " }).Render();}
-    </div>
+
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReservePrice/Index?hotelId=" + Model.ReserveType.HotelId)).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @if (Model != null)

@@ -1,12 +1,13 @@
-﻿@import url('../../../AppCode/Fonts/Titr/stylesheet.css');
+﻿/*@import url('/AppCode/Fonts/Titr/stylesheet.css');*/
 
-@import url('../../../AppCode/Fonts/dastnevis/stylesheet.css');
+@import url('/AppCode/Fonts/dastnevis/stylesheet.css');
 
-@import url('../../../AppCode/Fonts/Zar/stylesheet.css');
+@import url('/AppCode/Fonts/Zar/stylesheet.css');
 
-@import url('../../../AppCode/Fonts/BNazanin/stylesheet.css');
+@import url('/AppCode/Fonts/BNazanin/stylesheet.css');
 
-@import url('../../../AppCode/Fonts/Verdana/stylesheet.css');
+@import url('/AppCode/Fonts/Verdana/stylesheet.css');
+@import url('../../../AppCode/Fonts/Titr/stylesheet.css');
 
 a, a:focus {
     outline: none;

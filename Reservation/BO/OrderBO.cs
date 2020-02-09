@@ -39,7 +39,7 @@ namespace Radyn.Reservation.BO
                 room.Idle = false;
                 roomBo.Update(connectionHandler, room);
             }
-           
+
         }
 
 
@@ -120,14 +120,13 @@ namespace Radyn.Reservation.BO
         private void SetOrderId(IConnectionHandler connectionHandler, Order order)
         {
             Random rnd = new Random(100000);
-            bool isOk = false;
             int id = 0;
-            while (!isOk)
+            while (true)
             {
                 id = rnd.Next();
                 if (id < 99999999 && !Where(connectionHandler, x => x.OrderId == id).Any())
                 {
-                    isOk = true;
+                    break;
                 }
             }
             order.OrderId = id;

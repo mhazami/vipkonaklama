@@ -12,7 +12,7 @@
         @{Html.Radyn().ImageActionLink().Text(Resources.Common.Delete).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Submit().Render();}
     </div>
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/RoomType/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/RoomType/Index?hotelId=" + Model.HotelId + "")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @section PageActionDown {
@@ -20,7 +20,7 @@
         @{Html.Radyn().ImageActionLink().Text(Resources.Common.Delete).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Submit().Render();}
     </div>
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/RoomType/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/RoomType/Index?hotelId=" + Model.HotelId + "")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @if (Model != null)
@@ -34,7 +34,7 @@
                     @Resources.Reservation.RoomTypeTitle
                 </div>
             </div>
-            <div class="table-row-item table-c-fit">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Html.DisplayFor(model => model.Title)
                 </div>
@@ -46,7 +46,7 @@
                     @Resources.Reservation.HotelName
                 </div>
             </div>
-            <div class="table-row-item table-c-fit">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Html.DisplayFor(model => model.Hotel.Name)
                 </div>
@@ -58,7 +58,7 @@
                     @Resources.Reservation.RoomTypeEnable
                 </div>
             </div>
-            <div class="table-row-item table-c-fit">
+            <div class="table-row-item drp">
                 <div class="item">
                     @(Model.Enable ? Resources.Common.Enable : Resources.Common.Disable)
                 </div>
@@ -70,7 +70,7 @@
                     @Resources.Reservation.RoomTypePersonCapacity
                 </div>
             </div>
-            <div class="table-row-item table-c-fit">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Html.DisplayFor(model => model.PersonCapacity)
                 </div>
@@ -82,7 +82,7 @@
                     @Resources.Reservation.DisplayText
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Html.DisplayFor(model => model.DisplayText)
                 </div>
@@ -94,7 +94,7 @@
                     @Resources.Reservation.Order
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Html.DisplayFor(model => model.Order)
                 </div>
@@ -106,7 +106,7 @@
                     @Resources.ContentManager.Description
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Model.Description
                 </div>

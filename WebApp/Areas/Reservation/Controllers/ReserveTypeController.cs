@@ -1,5 +1,6 @@
 ﻿using Radyn.Reservation;
 using Radyn.Reservation.DataStructure;
+using Radyn.Utility;
 using Radyn.Web.Mvc.UI.Message;
 using Radyn.WebApp.AppCode.Base;
 using System;
@@ -15,16 +16,18 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
     public class ReserveTypeController : WebDesignBaseController
     {
         // GET: Reservation/ReserveType
-        public ActionResult Index()
+        public ActionResult Index(Guid hotelId)
         {
-            var list = ReservationComponent.Instance.ReserveTypeFacade.OrderBy(x => x.Order, x => x.Enabled);
-            if (list.Count() == 0) { return RedirectToAction("Create"); }
+            ViewBag.HotelId = hotelId;
+            var list = ReservationComponent.Instance.ReserveTypeFacade.OrderBy(x => x.Order, x => x.HotelId == hotelId);
+            if (list.Count() == 0) { return Redirect("~/Reservation/ReserveType/Create?hotelId=" + hotelId); }
             return View(list);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(Guid hotelId)
         {
-            return View(new ReserveType());
+
+            return View(new ReserveType() { HotelId = hotelId });
         }
 
         [HttpPost]
@@ -35,13 +38,14 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             {
                 this.RadynTryUpdateModel(reserveType, collection);
                 reserveType.CurrentUICultureName = collection["LanguageId"];
+                reserveType = FixModel(reserveType);
                 if (!ReservationComponent.Instance.ReserveTypeFacade.Insert(reserveType))
                 {
-                    ShowMessage(Resources.Common.ErrorInInsert, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return RedirectToAction("Index");
+                    ShowMessage(Resources.Common.ErrorInInsert, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
+                    return View(reserveType);
                 }
-                ShowMessage(Resources.Common.InsertSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return View(reserveType);
+                ShowMessage(Resources.Common.InsertSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
+                return Redirect("~/Reservation/ReserveType/Index?hotelId=" + reserveType.HotelId);
             }
             catch (Exception ex)
             {
@@ -49,11 +53,17 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 return View(reserveType);
             }
         }
-
+        private ReserveType FixModel(ReserveType obj)
+        {
+            obj.StartTime = obj.StartTime.ToEnum<TimeSheet>().GetDescriptionInLocalization();
+            obj.EndTime = obj.EndTime.ToEnum<TimeSheet>().GetDescriptionInLocalization();
+            return obj;
+        }
 
         public ActionResult Edit(Guid id)
         {
-            return View(id);
+            var obj = ReservationComponent.Instance.ReserveTypeFacade.Get(id);
+            return View(obj);
         }
 
         [HttpPost]
@@ -64,28 +74,31 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             try
             {
                 this.RadynTryUpdateModel(reserveType, collection);
+                reserveType = FixModel(reserveType);
                 if (!ReservationComponent.Instance.ReserveTypeFacade.Update(reserveType))
                 {
-                    ShowMessage(Resources.Common.ErrorInEdit, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return RedirectToAction("Index");
+                    ShowMessage(Resources.Common.ErrorInEdit, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
+                    return View(id);
                 }
-                ShowMessage(Resources.Common.UpdateSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return View(id);
+                ShowMessage(Resources.Common.UpdateSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
+                return Redirect("~/Reservation/ReserveType/Index?hotelId=" + reserveType.HotelId);
             }
             catch (Exception ex)
             {
                 ShowMessage(Resources.Common.ErrorInEdit, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
                 return View(id);
+
             }
         }
 
 
         public ActionResult Details(Guid id)
         {
-            return View(id);
+            var obj = ReservationComponent.Instance.ReserveTypeFacade.Get(id);
+            return View(obj);
         }
 
-        public ActionResult GetModify(Guid? id, string culture)
+        public ActionResult GetModify(Guid? id, Guid? hotelId, string culture)
         {
             ReserveType reservetype = null;
             if (id.HasValue && id != Guid.Empty)
@@ -94,13 +107,14 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             }
             else
             {
-                reservetype = new ReserveType();
+                var hotel = ReservationComponent.Instance.HotelFacade.Get(hotelId);
+                reservetype = new ReserveType() { HotelId = hotelId.Value, Hotel = hotel };
             }
             this.FillViewBag();
             return PartialView("PVModify", reservetype);
         }
 
-        public ActionResult GetDetails(Guid id,string culture)
+        public ActionResult GetDetails(Guid id, string culture)
         {
             var reservetype = ReservationComponent.Instance.ReserveTypeFacade.GetLanuageContent(culture, id);
             return PartialView("PVDetails", reservetype);
@@ -108,11 +122,12 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
 
         public ActionResult Delete(Guid id)
         {
-            return View(id);
+            var obj = ReservationComponent.Instance.ReserveTypeFacade.Get(id);
+            return View(obj);
         }
 
         [HttpPost]
-        public ActionResult Delete(Guid id,FormCollection collection)
+        public ActionResult Delete(Guid id, FormCollection collection)
         {
             var culture = collection["LanguageId"];
             ReserveType reserveType = ReservationComponent.Instance.ReserveTypeFacade.GetLanuageContent(culture, id);
@@ -120,11 +135,11 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             {
                 if (!ReservationComponent.Instance.ReserveTypeFacade.Delete(reserveType))
                 {
-                    ShowMessage(Resources.Common.ErrorInDelete, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return RedirectToAction("Index");
+                    ShowMessage(Resources.Common.ErrorInDelete, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
+                    return View(id);
                 }
-                ShowMessage(Resources.Common.DeleteSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return View(id);
+                ShowMessage(Resources.Common.DeleteSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
+                return Redirect("~/Reservation/ReserveType/Index?hotelId=" + reserveType.HotelId);
             }
             catch (Exception ex)
             {

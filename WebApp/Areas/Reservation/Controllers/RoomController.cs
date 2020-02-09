@@ -14,10 +14,12 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
     public class RoomController : WebDesignBaseController
     {
         [RadynAuthorize]
-        public ActionResult Index()
+        public ActionResult Index(Guid floorId)
         {
-            var list = ReservationComponent.Instance.RoomFacade.GetAll();
-            if (list.Count == 0) return this.Redirect("~/Reservation/Room/Create");
+            List<Room> list;
+            list = ReservationComponent.Instance.RoomFacade.Where(x => x.FloorId == floorId);
+            if (list.Count == 0) return RedirectToAction("Create", new { FloorId = floorId });
+            ViewBag.Floor = ReservationComponent.Instance.HotelFloorFacade.Get(floorId);
             return View(list);
         }
 
@@ -27,15 +29,18 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             return View(ReservationComponent.Instance.RoomFacade.Get(Id));
         }
 
-        private void FillViewBags()
+        private void FillViewBags(Guid floorId)
         {
-            ViewBag.RoomType = new SelectList(ReservationComponent.Instance.RoomTypeFacade.SelectKeyValuePair(x => x.Id, x => x.Title), "Key", "Value");
+            var floor = ReservationComponent.Instance.HotelFloorFacade.Get(floorId);
+            ViewBag.RoomType = new SelectList(ReservationComponent.Instance.RoomTypeFacade.SelectKeyValuePair(x => x.Id, x => x.Title, x => x.HotelId == floor.HotelId), "Key", "Value");
         }
         [RadynAuthorize]
-        public ActionResult Create()
+        public ActionResult Create(Guid floorId)
         {
-            FillViewBags();
-            return View(new Room());
+            var floor = ReservationComponent.Instance.HotelFloorFacade.Get(floorId);
+            FillViewBags(floorId);
+            var room = new Room() { FloorId = floorId, HotelFloor = floor };
+            return View(room);
         }
 
         [HttpPost]
@@ -48,15 +53,15 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 if (ReservationComponent.Instance.RoomFacade.Insert(room))
                 {
                     ShowMessage(Resources.Common.InsertSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return (!string.IsNullOrEmpty(Request.QueryString["AddNew"])) ? this.Redirect("~/Reservation/Room/Create") : this.Redirect("~/Reservation/Room/Index");
+                    return  this.Redirect("~/Reservation/Room/Index?floorId=" + room.FloorId);
                 }
                 ShowMessage(Resources.Common.ErrorInInsert, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return this.Redirect("~/Reservation/Room/Index");
+                return this.Redirect("~/Reservation/Room/Index?floorId=" + room.FloorId);
             }
             catch (Exception exception)
             {
                 ShowMessage(Resources.Common.ErrorInInsert + exception.Message, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                FillViewBags();
+                FillViewBags(collection["FloorId"].ToGuid());
                 return View(room);
             }
         }
@@ -64,8 +69,9 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         [RadynAuthorize]
         public ActionResult Edit(Guid Id)
         {
-            FillViewBags();
-            return View(ReservationComponent.Instance.RoomFacade.Get(Id));
+            var item = ReservationComponent.Instance.RoomFacade.Get(Id);
+            FillViewBags(item.FloorId);
+            return View(item);
         }
 
         [HttpPost]
@@ -78,15 +84,15 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 if (ReservationComponent.Instance.RoomFacade.Update(room))
                 {
                     ShowMessage(Resources.Common.UpdateSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return this.Redirect("~/Reservation/Room/Index");
+                    return this.Redirect("~/Reservation/Room/Index?floorId=" + room.FloorId);
                 }
                 ShowMessage(Resources.Common.ErrorInEdit, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return this.Redirect("~/Reservation/Room/Index");
+                return this.Redirect("~/Reservation/Room/Index?floorId=" + room.FloorId);
             }
             catch (Exception exception)
             {
                 ShowMessage(Resources.Common.ErrorInEdit + exception.Message, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                FillViewBags();
+                FillViewBags(collection["FloorId"].ToGuid());
                 return View(room);
             }
         }
@@ -106,10 +112,10 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 if (ReservationComponent.Instance.RoomFacade.Delete(Id))
                 {
                     ShowMessage(Resources.Common.DeleteSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return this.Redirect("~/Reservation/Room/Index");
+                    return this.Redirect("~/Reservation/Room/Index?floorId=" + room.FloorId);
                 }
                 ShowMessage(Resources.Common.ErrorInDelete, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return this.Redirect("~/Reservation/Room/Index");
+                return this.Redirect("~/Reservation/Room/Index?floorId=" + room.FloorId);
             }
             catch (Exception exception)
             {
@@ -128,7 +134,6 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
             PredicateBuilder<Order> query = new PredicateBuilder<Order>();
             query.And(x => x.EntryDate.CompareTo(entryDate) >= 1 && x.ExitDate.CompareTo(entryDate) <= 1);
             query.And(x => x.EntryDate.CompareTo(exitDate) >= 1 && x.ExitDate.CompareTo(exitDate) <= 1);
-
             IEnumerable<Room> list;
             if (roomId.HasValue)
                 list = ReservationComponent.Instance.RoomFacade.Where(x => (x.Idle && x.RoomTypeId == roomType) || x.Id == roomId);

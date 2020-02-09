@@ -162,7 +162,7 @@ namespace Radyn.WebApp.Controllers
         private void FillDrp()
         {
             ViewBag.RoomType = new SelectList(ReservationComponent.Instance.RoomTypeFacade.SelectKeyValuePair(x => x.Id, x => x.Title), "Key", "Value");
-            //ViewBag.ReserveType = new SelectList(ReservationComponent.Instance.ReserveTypeFacade.SelectKeyValuePair(x => x.Id, x => x.Title), "Key", "Value");
+            ViewBag.ReserveType = new SelectList(ReservationComponent.Instance.ReserveTypeFacade.SelectKeyValuePair(x => x.Id, x => x.Title), "Key", "Value");
         }
 
         public JsonResult GetTotalPrice(DateTime? startdate, DateTime? enddate, byte roomtypeId, Guid reserveType)

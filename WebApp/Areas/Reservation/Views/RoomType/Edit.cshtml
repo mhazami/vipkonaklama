@@ -13,7 +13,7 @@
     </div>
 
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/RoomType/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/RoomType/Index?hotelId=" + Model.HotelId + "")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @section PageActionDown {
@@ -22,21 +22,22 @@
     </div>
 
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/RoomType/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/RoomType/Index?hotelId=" + Model.HotelId + "")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @if (Model != null)
 {
     @Html.ValidationSummary(true)
     <div class="radynForm">
-
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.HotelId)
         <div>
             <div class="table-row-cap">
                 <div class="item">
                     @Resources.Reservation.RoomTypeTitle
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item">
                 <div class="item">
                     @Html.EditorFor(model => model.Title)
                 </div>
@@ -48,9 +49,9 @@
                     @Resources.Reservation.HotelName
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
-                    @Html.DropDownListFor(model => model.HotelId, (SelectList)ViewBag.Hotel)
+                    @Html.DisplayFor(model => model.Hotel.Name)
                 </div>
             </div>
         </div>

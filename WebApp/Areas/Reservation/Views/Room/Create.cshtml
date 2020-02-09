@@ -13,7 +13,7 @@
     </div>
 
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Room/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Room/Index?floorId=" + Model.FloorId)).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @section PageActionDown {
@@ -22,13 +22,26 @@
     </div>
 
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Room/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Room/Index?floorId=" + Model.FloorId)).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @if (Model != null)
 {
     @Html.ValidationSummary(true)
     <div class="radynForm">
+        <div>
+            <div class="table-row-cap">
+                <div class="item">
+                    @Resources.Reservation.FloorName
+                </div>
+            </div>
+            <div class="table-row-item drp">
+                <div class="item">
+                    @Html.DisplayFor(x => x.HotelFloor.Name)
+                    @Html.HiddenFor(x => x.FloorId)
+                </div>
+            </div>
+        </div>
 
         <div>
             <div class="table-row-cap">
@@ -45,19 +58,6 @@
         <div>
             <div class="table-row-cap">
                 <div class="item">
-                    @Resources.Reservation.Idle
-                </div>
-            </div>
-            <div class="table-row-item drp">
-                <div class="item">
-                    @Html.RadioButtonFor(model => model.Idle, true)@Resources.Common.Yes
-                    @Html.RadioButtonFor(model => model.Idle, false)@Resources.Common.No
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="table-row-cap">
-                <div class="item">
                     @Resources.Reservation.RoomType
                 </div>
             </div>
@@ -67,6 +67,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 }

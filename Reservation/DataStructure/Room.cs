@@ -50,6 +50,25 @@ namespace Radyn.Reservation.DataStructure
         [Assosiation(PropName = "RoomTypeId")]
         public RoomType RoomType { get; set; }
 
+
+        private Guid _FloorId;
+        [DbType("uniqueidentifier")]
+        public Guid FloorId
+        {
+            get
+            {
+                return this._FloorId;
+            }
+            set
+            {
+                base.SetPropertyValue("FloorId", value);
+                this.HotelFloor = new HotelFloor { Id = value };
+            }
+        }
+        [Assosiation(PropName = "FloorId")]
+        public HotelFloor HotelFloor { get; set; }
+
+
         [DisableAction(DisableInsert = true, DisableUpdate = true, DiableSelect = true)]
         public override string DescriptionField { get { return this.Title; } }
     }

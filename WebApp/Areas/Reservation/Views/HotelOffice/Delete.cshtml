@@ -11,7 +11,7 @@
         @{Html.Radyn().ImageActionLink().Text(Resources.Common.Delete).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Submit().Render();}
     </div>
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/HotelOffice/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/HotelOffice/Index?hotelId=" + Model.HotelId)).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @section PageActionDown {
@@ -19,7 +19,7 @@
         @{Html.Radyn().ImageActionLink().Text(Resources.Common.Delete).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Submit().Render();}
     </div>
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/HotelOffice/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/HotelOffice/Index?hotelId=" + Model.HotelId)).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @if (Model != null)
@@ -32,7 +32,7 @@
                     @Resources.Reservation.OfficeName
                 </div>
             </div>
-            <div class="table-row-item">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Html.DisplayFor(model => model.Name)
                 </div>
@@ -44,7 +44,7 @@
                     @Resources.Reservation.HotelName
                 </div>
             </div>
-            <div class="table-row-item">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Html.DisplayFor(model => model.Hotel.Name)
                 </div>
@@ -56,7 +56,7 @@
                     @Resources.Common.Enable
                 </div>
             </div>
-            <div class="table-row-item">
+            <div class="table-row-item drp">
                 <div class="item">
                     @(Model.Enabled ? Resources.Common.Enable : Resources.Common.Disable)
                 </div>

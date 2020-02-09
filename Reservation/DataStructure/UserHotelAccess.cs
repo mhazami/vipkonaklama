@@ -8,6 +8,15 @@ namespace Radyn.Reservation.DataStructure
     [Schema("Reservation")]
     public sealed class UserHotelAccess : DataStructureBase<UserHotelAccess>
     {
+        private Guid _id;
+        [Key(false)]
+        [DbType("uniqueidentifier")]
+        public Guid Id
+        {
+            get { return _id; }
+            set { base.SetPropertyValue("Id", value); }
+        }
+
         private Guid _userId;
         [DbType("uniqueidentifier")]
         public Guid UserId

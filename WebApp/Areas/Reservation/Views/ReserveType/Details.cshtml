@@ -1,4 +1,6 @@
-﻿@model Guid
+﻿@using Radyn.Web.Mvc
+@using Radyn.Utility
+@model ReserveType
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,7 +14,7 @@
         })
         function getModify(el) {
             $('#DivItem').html('');
-            $.get('/Reservation/ReserveType/GetDetails', { culture: $(el).val(), id: '@Model' }, function (data) {
+            $.get('/Reservation/ReserveType/GetDetails', { culture: $(el).val(), id: '@Model.Id' }, function (data) {
                 $('#DivItem').html(data);
             });
         }
@@ -22,13 +24,13 @@
 @section PageAction {
 
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReserveType/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReserveType/Index?hotelId=" + Model.HotelId + "")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @section PageActionDown {
 
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReserveType/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/ReserveType/Index?hotelId=" + Model.HotelId + "")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 

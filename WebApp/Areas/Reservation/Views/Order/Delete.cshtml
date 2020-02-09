@@ -12,7 +12,7 @@
         @{Html.Radyn().ImageActionLink().Text(Resources.Common.Delete).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Submit().Render();}
     </div>
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Order/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Order/Index?hotelId=" + Model.ReserveType.HotelId)).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @section PageActionDown {
@@ -20,7 +20,7 @@
         @{Html.Radyn().ImageActionLink().Text(Resources.Common.Delete).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Delete-Close.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Submit().Render();}
     </div>
     <div class="button-div m-btn waves-red i-return">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Order/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Order/Index?hotelId=" + Model.ReserveType.HotelId)).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @if (Model != null)
@@ -33,7 +33,7 @@
                     @Resources.Reservation.RoomType
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Model.RoomType.Title
                 </div>
@@ -45,7 +45,7 @@
                     @Resources.Reservation.Room
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @(Model.Room != null ? Model.Room.Title : "")
                 </div>
@@ -58,7 +58,7 @@
                     @Resources.Reservation.Customer
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @if (Model.Customer != null)
                     {
@@ -73,7 +73,7 @@
                     @Resources.Reservation.PersonCount
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Model.PersonCount
                 </div>
@@ -86,7 +86,7 @@
                     @Resources.Reservation.HourCount
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Html.DisplayFor(model => model.HourCount)
                 </div>
@@ -98,7 +98,7 @@
                     @Resources.Reservation.TotalPrice
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Html.DisplayFor(model => model.TotalPrice)
                 </div>
@@ -110,7 +110,7 @@
                     @Resources.Reservation.PaymentType
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Model.PaymentType.GetDescriptionInLocalization()
                 </div>
@@ -122,7 +122,7 @@
                     @Resources.Reservation.PaymentStatus
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Html.DisplayFor(model => model.PaymentStatus)
                 </div>
@@ -134,8 +134,8 @@
                     @Resources.Reservation.OrderDate
                 </div>
             </div>
-            <div class="table-row-item">
-                <div class="item date-picker">
+            <div class="table-row-item drp">
+                <div class="item">
                     @Html.DisplayFor(model => model.OrderDate)
                 </div>
             </div>
@@ -146,8 +146,8 @@
                     @Resources.Reservation.EntryDate
                 </div>
             </div>
-            <div class="table-row-item ">
-                <div class="item date-picker">
+            <div class="table-row-item drp">
+                <div class="item">
                     @Html.DisplayFor(model => model.EntryDate)
                 </div>
             </div>
@@ -158,8 +158,8 @@
                     @Resources.Reservation.ExitDate
                 </div>
             </div>
-            <div class="table-row-item ">
-                <div class="item date-picker">
+            <div class="table-row-item drp">
+                <div class="item">
                     @Html.DisplayFor(model => model.ExitDate)
                 </div>
             </div>
@@ -170,7 +170,7 @@
                     @Resources.Reservation.EntryTime
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Html.DisplayFor(model => model.EntryTime)
                 </div>
@@ -182,7 +182,7 @@
                     @Resources.Reservation.ExitTime
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
                     @Html.DisplayFor(model => model.ExitTime)
                 </div>
@@ -194,9 +194,9 @@
                     @Resources.Reservation.ReserveType
                 </div>
             </div>
-            <div class="table-row-item ">
+            <div class="table-row-item drp">
                 <div class="item">
-                    @Html.DisplayFor(model => model.ReserveType)
+                    @Html.DisplayFor(model => model.ReserveType.Title)
                 </div>
             </div>
         </div>

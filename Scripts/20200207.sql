@@ -174,11 +174,14 @@ GO
 
 Create table [Reservation].UserHotelAccess
 (
+Id UNIQUEIDENTIFIER NOT NULL,
 UserId uniqueidentifier not null,
 HotelId uniqueidentifier not null,
 OfficeId uniqueidentifier null,
 RoomId	uniqueidentifier null
 )
+GO
+ALTER TABLE Reservation.UserHotelAccess ADD CONSTRAINT [PK_UserHotelAccess] PRIMARY KEY CLUSTERED (Id);
 GO
 ALTER TABLE [Reservation].UserHotelAccess
    ADD CONSTRAINT [FK_UserHotelAccess_User] FOREIGN KEY (UserId)
@@ -207,6 +210,7 @@ ALTER TABLE [Reservation].UserHotelAccess add CONSTRAINT [UserHotelAccessUniq] U
 UserId,HotelId ,OfficeId ,RoomId	
 )
 GO
+--Parish Menu
 INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'83f86a44-75dd-41c5-947a-384d1b3cb61d', 0, N'محله ها', N'/Common/Parish/Index',null, 0, 1, 1,  NULL, NULL)
 GO
 INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'83f86a44-75dd-42c5-947a-384d1b3cb61d', 0, N'ایجاد', N'/Common/Parish/Create', N'83f86a44-75dd-41c5-947a-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
@@ -226,4 +230,88 @@ GO
 INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'6bc5434d-e6a1-4545-9211-8e578bd8a03f', N'83f86a44-75dd-44c5-947a-384d1b3cb61d')
 GO
 INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'6bc5434d-e6a1-4545-9211-8e578bd8a03f', N'83f86a44-75dd-45c5-947a-384d1b3cb61d')
+GO
+--Hotel Menu
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, N'Otel', N'/Reservation/Hotel/Index',null, 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'83f86a44-75dd-42c5-9472-384d1b3cb61d', 0, N'ایجاد', N'/Reservation/Hotel/Create', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'83f86a44-75dd-43c5-9473-384d1b3cb61d', 0, N'ویرایش', N'/Reservation/Hotel/Edit', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'83f86a44-75dd-44c5-9474-384d1b3cb61d', 0, N'جزییات', N'/Reservation/Hotel/Details', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'83f86a44-75dd-45c5-9475-384d1b3cb61d', 0, N'حذف', N'/Reservation/Hotel/Delete', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'83f86a44-75dd-41c5-9471-384d1b3cb61d')
+GO																	 
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'83f86a44-75dd-42c5-9472-384d1b3cb61d')
+GO																	 
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'83f86a44-75dd-43c5-9473-384d1b3cb61d')
+GO																	  
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'83f86a44-75dd-44c5-9474-384d1b3cb61d')
+GO																	 
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'83f86a44-75dd-45c5-9475-384d1b3cb61d')
+GO
+--HotelOffice Menu
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, N'Ofis', N'/Reservation/HotelOffice/Index',N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'84f86a44-75dd-42c5-9472-384d1b3cb61d', 0, N'ایجاد', N'/Reservation/HotelOffice/Create', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'85f86a44-75dd-43c5-9473-384d1b3cb61d', 0, N'ویرایش', N'/Reservation/HotelOffice/Edit', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'86f86a44-75dd-44c5-9474-384d1b3cb61d', 0, N'جزییات', N'/Reservation/HotelOffice/Details', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'87f86a44-75dd-45c5-9475-384d1b3cb61d', 0, N'حذف', N'/Reservation/HotelOffice/Delete', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'83f86a44-75dd-41c5-9471-384d1b3cb61d')
+GO																	 
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'84f86a44-75dd-42c5-9472-384d1b3cb61d')
+GO																	 
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'85f86a44-75dd-43c5-9473-384d1b3cb61d')
+GO																	  
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'86f86a44-75dd-44c5-9474-384d1b3cb61d')
+GO																	 
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'87f86a44-75dd-45c5-9475-384d1b3cb61d')
+GO
+--HotelFloor Menu
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'83f86a44-751d-41c5-9471-384d1b3cb61d', 0, N'Otel Katlari', N'/Reservation/HotelFloor/Index',N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'84f86a44-752d-42c5-9472-384d1b3cb61d', 0, N'ایجاد', N'/Reservation/HotelFloor/Create', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'85f86a44-753d-43c5-9473-384d1b3cb61d', 0, N'ویرایش', N'/Reservation/HotelFloor/Edit', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'86f86a44-754d-44c5-9474-384d1b3cb61d', 0, N'جزییات', N'/Reservation/HotelFloor/Details', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'87f86a44-755d-45c5-9475-384d1b3cb61d', 0, N'حذف', N'/Reservation/HotelFloor/Delete', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'83f86a44-751d-41c5-9471-384d1b3cb61d')
+GO																	 
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'84f86a44-752d-42c5-9472-384d1b3cb61d')
+GO																	 
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'85f86a44-753d-43c5-9473-384d1b3cb61d')
+GO																	  
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'86f86a44-754d-44c5-9474-384d1b3cb61d')
+GO																	 
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'87f86a44-755d-45c5-9475-384d1b3cb61d')
+GO
+--UserHotelAccess Menu
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'83f86a44-751d-41c5-9471-384d1b3cb61d', 0, N'Otel Katlari', N'/Reservation/UserHotelAccess/Index',N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'84f86a44-752d-42c5-9472-384d1b3cb62d', 0, N'ایجاد', N'/Reservation/UserHotelAccess/Create', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'85f86a44-753d-43c5-9473-384d1b3cb63d', 0, N'ویرایش', N'/Reservation/UserHotelAccess/Edit', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'86f86a44-754d-44c5-9474-384d1b3cb64d', 0, N'جزییات', N'/Reservation/UserHotelAccess/Details', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[Menu] ([Id], [ApplicationID], [Title], [Url], [ParentId], [Order], [Display], [Enabled],  [ImageId], [MenuGroupId]) VALUES (N'87f86a44-755d-45c5-9475-384d1b3cb65d', 0, N'حذف', N'/Reservation/UserHotelAccess/Delete', N'83f86a44-75dd-41c5-9471-384d1b3cb61d', 0, 1, 1,  NULL, NULL)
+GO
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'83f86a44-751d-41c5-9471-384d1b3cb61d')
+GO																	 
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'84f86a44-752d-42c5-9472-384d1b3cb62d')
+GO																	 
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'85f86a44-753d-43c5-9473-384d1b3cb63d')
+GO																	  
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'86f86a44-754d-44c5-9474-384d1b3cb64d')
+GO																	 
+INSERT [Security].[OperationMenu] ([OperationId], [MenuId]) VALUES (N'8099C2C5-3D3E-4D17-91C5-E7AAB6BB13C1', N'87f86a44-755d-45c5-9475-384d1b3cb65d')
 GO

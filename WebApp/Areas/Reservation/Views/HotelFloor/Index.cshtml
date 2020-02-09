@@ -5,28 +5,34 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Head{}
-@section PageTitle {@Resources.Reservation.FloorList }
+@section PageTitle {@Resources.Reservation.FloorList (@ViewBag.Hotel.Name) }
 @section PageAction {
     <div class="button-div m-btn i-save">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/HotelFloor/Create")).Text(Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/HotelFloor/Create?hotelId=" + Request.QueryString["hotelId"])).Text(Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Hotel/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 @section PageActionDown {
     <div class="button-div m-btn i-save">
-        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/HotelFloor/Create")).Text(Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/HotelFloor/Create?hotelId=" + Request.QueryString["hotelId"])).Text(Resources.Common.New).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/Add.png")).ImagePosition(ImageActionLink.Position.Right).ImageWidth("15").Render();}
+    </div>
+    <div class="button-div m-btn waves-red i-return">
+        @{Html.Radyn().ImageActionLink().NavigateUrl(Url.Content("~/Reservation/Hotel/Index")).Text(Resources.Common.Return).Align(ImageActionLink.Alignment.Left).ImageUrl(Url.Content("~/Content/Images/go-back.png")).ImagePosition(ImageActionLink.Position.Right).Render();}
     </div>
 }
 <div class="radynForm">
 
     @{Html.Radyn().Grid(Model).Name("Grid").HtmlAttributes(new { style = "width: 98%; margin: 0auto" }).Columns(columns =>
-           {
-               columns.Template(hotelFloor => hotelFloor.Name).Title(Resources.Reservation.FloorName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-               columns.Template(hotelFloor => hotelFloor.Hotel.Name).Title(Resources.Reservation.HotelName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-               columns.Template(hotelFloor => (hotelFloor.Enabled ? Resources.Common.Enable : Resources.Common.Disable)).Title(Resources.Common.Enable).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
-               columns.Template(hotelFloor => "<a style='cursor: pointer;' href=" + Url.Content("~/Reservation/hotelFloor/Details") + "?Id=" + hotelFloor.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/hotelFloor/Edit") + "?Id=" + hotelFloor.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/hotelFloor/Delete") + "?Id=" + hotelFloor.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(300).Encode(false);
-           })
-          .Sortable(sorting => sorting.Enabled(true))
-          .Pageable(paging => paging.Enabled(true))
-          .Filterable(filtering => filtering.Enabled(true))
-          .Render();}
+                 {
+                     columns.Template(hotelFloor => hotelFloor.Name).Title(Resources.Reservation.FloorName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotelFloor => hotelFloor.Hotel.Name).Title(Resources.Reservation.HotelName).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotelFloor => (hotelFloor.Enabled ? Resources.Common.Enable : Resources.Common.Disable)).Title(Resources.Common.Enable).Width(100).HeaderHtmlAttributes(new { style = "text-align:center" });
+                     columns.Template(hotelFloor => "<a style='cursor: pointer;' href=" + Url.Content("~/Reservation/hotelFloor/Details") + "?Id=" + hotelFloor.Id + "  > <img width='18' align='absmiddle' title='" + Resources.Common.Detail + "'  src='" + Url.Content("~/Content/Images/details.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/hotelFloor/Edit") + "?Id=" + hotelFloor.Id + " >  <img width='18' align='absmiddle' title='" + Resources.Common.Edit + "'   src='" + Url.Content("~/Content/Images/edit.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/hotelFloor/Delete") + "?Id=" + hotelFloor.Id + " > <img width='18' align='absmiddle' title='" + Resources.Common.Delete + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a> | <a href=" + Url.Content("~/Reservation/Room/Index") + "?floorId=" + hotelFloor.Id + " > <img width='18' align='absmiddle' title='" + Resources.Reservation.RoomList + "'   src='" + Url.Content("~/Content/Images/Delete-Close.png") + "' /></a>").Width(300).Encode(false);
+                 })
+                .Sortable(sorting => sorting.Enabled(true))
+                .Pageable(paging => paging.Enabled(true))
+                .Filterable(filtering => filtering.Enabled(true))
+                .Render();}
 </div>

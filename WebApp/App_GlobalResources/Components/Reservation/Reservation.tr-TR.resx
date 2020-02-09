@@ -253,7 +253,7 @@
     <value>Resim</value>
   </data>
   <data name="Province" xml:space="preserve">
-    <value>Bölge</value>
+    <value>il</value>
   </data>
   <data name="ReserveDate" xml:space="preserve">
     <value>Rezervasyon tarihi</value>

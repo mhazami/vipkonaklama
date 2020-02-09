@@ -14,28 +14,27 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
     public class HotelOfficeController : WebDesignBaseController
     {
         [RadynAuthorize]
-        public ActionResult Index()
+        public ActionResult Index(Guid hotelId)
         {
-            var list = ReservationComponent.Instance.HotelOfficeFacade.GetAll();
-            if (list.Count == 0) return RedirectToAction("Create");
+            ViewBag.HotelId = hotelId;
+            List<HotelOffice> list;
+            list = ReservationComponent.Instance.HotelOfficeFacade.Where(x => x.HotelId == hotelId);
+            if (list.Count == 0) return RedirectToAction("Create", new { hotelId = hotelId });
             return View(list);
         }
-
         [RadynAuthorize]
         public ActionResult Details(Guid Id)
         {
             return View(ReservationComponent.Instance.HotelOfficeFacade.Get(Id));
         }
 
-        private void FillViewBags()
-        {
-            ViewBag.Hotel = new SelectList(ReservationComponent.Instance.HotelFacade.SelectKeyValuePair(x=>x.Id,x=>x.Name), "Key", "Value");
-        }
         [RadynAuthorize]
-        public ActionResult Create()
+        public ActionResult Create(Guid hotelId)
         {
-            FillViewBags();
-            return View(new HotelOffice());
+            var office = new HotelOffice();
+            office.HotelId = hotelId;
+            office.Hotel = ReservationComponent.Instance.HotelFacade.Get(hotelId);
+            return View(office);
         }
 
         [HttpPost]
@@ -48,16 +47,15 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 if (ReservationComponent.Instance.HotelOfficeFacade.Insert(hotelOffice))
                 {
                     ShowMessage(Resources.Common.InsertSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { hotelId = hotelOffice.HotelId });
                 }
                 ShowMessage(Resources.Common.ErrorInInsert, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { hotelId = collection["HotelId"] });
 
             }
             catch (Exception exception)
             {
                 ShowMessage(Resources.Common.ErrorInInsert + exception.Message, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                FillViewBags();
                 return View(hotelOffice);
             }
         }
@@ -65,7 +63,7 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
         [RadynAuthorize]
         public ActionResult Edit(Guid Id)
         {
-            FillViewBags();
+            var hotelOffice = ReservationComponent.Instance.HotelOfficeFacade.Get(Id);
             return View(ReservationComponent.Instance.HotelOfficeFacade.Get(Id));
         }
 
@@ -79,17 +77,16 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 if (ReservationComponent.Instance.HotelOfficeFacade.Update(hotelOffice))
                 {
                     ShowMessage(Resources.Common.UpdateSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { hotelId = hotelOffice.HotelId });
 
                 }
                 ShowMessage(Resources.Common.ErrorInEdit, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { hotelId = collection["HotelId"] });
 
             }
             catch (Exception exception)
             {
                 ShowMessage(Resources.Common.ErrorInEdit + exception.Message, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                FillViewBags();
                 return View(hotelOffice);
             }
         }
@@ -109,12 +106,11 @@ namespace Radyn.WebApp.Areas.Reservation.Controllers
                 if (ReservationComponent.Instance.HotelOfficeFacade.Delete(Id))
                 {
                     ShowMessage(Resources.Common.DeleteSuccessMessage, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Succeed);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { hotelId = hotelOffice.HotelId });
 
                 }
                 ShowMessage(Resources.Common.ErrorInDelete, Resources.Common.MessaageTitle, messageIcon: MessageIcon.Error);
-                return RedirectToAction("Index");
-
+                return RedirectToAction("Index", new { hotelId = hotelOffice.HotelId });
             }
             catch (Exception exception)
             {

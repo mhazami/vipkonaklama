@@ -1,11 +1,14 @@
-﻿@model ReserveType
+﻿@using Radyn.Utility
+@model ReserveType
+
+@Html.HiddenFor(model => model.Id)
 <div>
     <div class="table-row-cap">
         <div class="item">
             @Resources.Reservation.Title
         </div>
     </div>
-    <div class="table-row-item ">
+    <div class="table-row-item drp">
         <div class="item">
             @Html.DisplayFor(model => model.Title, new { })
         </div>
@@ -17,7 +20,7 @@
             @Resources.Reservation.HotelName
         </div>
     </div>
-    <div class="table-row-item ">
+    <div class="table-row-item drp">
         <div class="item">
             @Html.DisplayFor(model => model.Hotel.Name)
         </div>
@@ -70,7 +73,7 @@
     </div>
     <div class="table-row-item drp">
         <div class="item">
-            @(Model.Enable ? Resources.Common.Enable : Resources.Common.Disable)
+            @(Model.Enabled ? Resources.Common.Enable : Resources.Common.Disable)
         </div>
     </div>
 </div>
@@ -81,7 +84,7 @@
             @Resources.Reservation.Order
         </div>
     </div>
-    <div class="table-row-item ">
+    <div class="table-row-item drp">
         <div class="item">
             @Html.DisplayFor(model => model.Order, new { })
         </div>

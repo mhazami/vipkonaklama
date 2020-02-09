@@ -9,7 +9,9 @@ namespace Radyn.Reservation.BO
     {
         public override bool Insert(IConnectionHandler connectionHandler, UserHotelAccess obj)
         {
-            
+            Guid id = obj.Id;
+            BOUtility.GetGuidForId(ref id);
+            obj.Id = id;
             return base.Insert(connectionHandler, obj);
         }
     }

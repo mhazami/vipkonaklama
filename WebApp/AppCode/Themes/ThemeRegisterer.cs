@@ -55,7 +55,11 @@ namespace Radyn.WebApp.AppCode.Themes
                 .AddResource(Application.CurrentApplicationPath + "/Scripts/Radyn/BootstrapEditor/js/summernote.js", ResourceType.JSFile)
                 .AddResource(Application.CurrentApplicationPath + "/Scripts/Radyn/BootstrapEditor/Css/custome.css", ResourceType.CssFile);
 
+            ThemeManager.AddTheme("RadynJsTree", true)
+                .AddResource(Radyn.Web.Mvc.UI.Application.CurrentApplicationPath + "/Scripts/Radyn/JsTree/default/style.min.css", ResourceType.CssFile)
+                .AddResource(Radyn.Web.Mvc.UI.Application.CurrentApplicationPath + "/Scripts/Radyn/JsTree/jstree.min.js", ResourceType.JSFile)
 
+                ;
         }
-    }
+    }                                                     
 }

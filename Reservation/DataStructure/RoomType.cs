@@ -1,4 +1,5 @@
-﻿using Radyn.Framework;
+﻿using Radyn.FileManager.DataStructure;
+using Radyn.Framework;
 using System;
 
 namespace Radyn.Reservation.DataStructure
@@ -54,6 +55,8 @@ namespace Radyn.Reservation.DataStructure
             get { return _picId; }
             set { base.SetPropertyValue("PicId", value); }
         }
+        [Assosiation]
+        public File Picture { get; set; }
 
         private string _description;
         [DbType("nvarchar(300)")]
