@@ -11,16 +11,3 @@ E:\Online-WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\fa-IR\Radyn.Enterprise
 E:\Online-WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\EnterpriseNode.csproj.CopyComplete
 E:\Online-WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\Radyn.EnterpriseNode.dll
 E:\Online-WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\Radyn.EnterpriseNode.pdb
-E:\WorkSpace\vipkonaklama\lib\Radyn.EnterpriseNode.dll.config
-E:\WorkSpace\vipkonaklama\lib\Radyn.EnterpriseNode.dll
-E:\WorkSpace\vipkonaklama\lib\Radyn.EnterpriseNode.pdb
-E:\WorkSpace\vipkonaklama\lib\fa-IR\Radyn.EnterpriseNode.resources.dll
-E:\WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\EnterpriseNode.csprojAssemblyReference.cache
-E:\WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\Radyn.EnterpriseNode.Resources.EnterpriseNode.resources
-E:\WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\Radyn.EnterpriseNode.Resources.EnterpriseNode.fa-IR.resources
-E:\WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\EnterpriseNode.csproj.GenerateResource.cache
-E:\WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\EnterpriseNode.csproj.CoreCompileInputs.cache
-E:\WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\fa-IR\Radyn.EnterpriseNode.resources.dll
-E:\WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\EnterpriseNode.csproj.CopyComplete
-E:\WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\Radyn.EnterpriseNode.dll
-E:\WorkSpace\vipkonaklama\EnterpriseNode\obj\Debug\Radyn.EnterpriseNode.pdb

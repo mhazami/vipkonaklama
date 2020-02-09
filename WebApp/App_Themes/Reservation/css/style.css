@@ -1,128 +1,49 @@
+
 html, body {
     max-width: 100% !important;
     overflow-x: hidden !important;
 }
 
 .main-img {
-    height: 700px;
+    height: 100%;
     width: 100%;
 }
-
-    .main-img > img {
-        width: 100%;
-        object-fit: cover;
-        height: 100%;
-    }
 
 .banner-row-box {
     position: absolute;
     width: 100%;
+    height: 100px;
     z-index: 1;
-    bottom: 0;
+    top: 190px;
     text-align: center;
 }
 
-.boxed h5 {
-    color: #fff;
-    font-size: 33px;
-}
-
-@media(max-width:1500px) {
-    .boxed h5 {
-        font-size: 25px
-    }
-}
-
-.banner-row-box > .boxed {
-    background: rgba(25, 24, 24, 0.78);
-    padding: 20px 0 10px 0;
-    margin: 10px;
-    right: 15%;
-    float: right;
-    color: #fff;
-    font-size: 32px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-@media(max-width: 1200px) {
-    .banner-row-box > .boxed, .single-box {
-        right: 23% !important;
-    }
-}
-
-@media(max-width: 992px) {
-    .banner-row-box > .boxed, .single-box {
-        right: 13% !important;
-    }
-}
-
-@media(max-width: 768px) {
-    .banner-row-box > .boxed, .single-box {
-        right: auto !important;
-        width: 95%;
+    .banner-row-box > .boxed {
+        background: rgba(30, 30, 30, 0.509804);
+        padding: 50px 0 0 0;
+        margin: 10px;
+        right: 6%;
+        float: right;
+        color: #fff;
+        font-size: 32px;
+        cursor: pointer;
     }
 
-    .banner-row-box {
-        margin: 0;
-    }
-}
-
-
-
-
-
-
-
-.brk-btn {
-    position: relative;
-    background: none;
-    color: rgb(254, 78, 55);
-    font-size: 16px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 3px solid rgb(254, 78, 55);
-    padding: 0.5em 1em;
-    border-radius: 50px;
-    margin: 0 0 10px 0;
-    display: inline-block;
-}
-
-    .brk-btn::before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 10%;
-        background: #222;
-        height: 0.3em;
-        right: 20%;
-        top: -0.21em;
-        transform: skewX(-45deg);
-        -webkit-transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
-        transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
-    }
-
-    .brk-btn::after {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 10%;
-        background: #222;
-        height: 0.3em;
-        left: 20%;
-        bottom: -0.25em;
-        transform: skewX(45deg);
-        -webkit-transition: all 0.45 cubic-bezier(0.86, 0, 0.07, 1);
-        transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
-    }
-
-    .brk-btn:hover::before {
-        right: 80%;
-    }
-
-    .brk-btn:hover::after {
-        left: 80%;
-    }
+        .banner-row-box > .boxed > a {
+            display: block;
+            width: 100%;
+            border-top: 1px solid black;
+            position: relative;
+            bottom: 0;
+            background: rgba(30, 30, 30, 0.709804);
+            text-shadow: 5px 5px 10px #0e60a7;
+            font-size: 20px;
+            min-height: 50px;
+            line-height: 50px;
+            animation-name: example;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
 
 @keyframes example {
     from {
@@ -140,7 +61,7 @@ html, body {
     right: 29% !important;
 }
 
-@media (max-width: 768px) {
+@media(max-width: 768px) {
     .form-reservation .form-content {
         position: absolute;
         top: 50%;
@@ -1462,7 +1383,6 @@ a.btn-wt {
     padding-top: 100px;
 }
 
-
 #vid {
     position: absolute;
     top: 50%;
@@ -1713,7 +1633,6 @@ section.banner.banner-style-1 .swiper-content {
     }
 }
 
-
 /* ========================================= */
 
 /*          Banner Form CSS        */
@@ -1844,11 +1763,6 @@ input.btn-orange {
     border-color: #fe4e37;
 }
 
-.form-btn .btn-orange:hover {
-    color: #fe4e37;
-    border-color: #fe4e37;
-}
-
 input.btn {
     padding: 12px 30px 12px;
     border: 1px solid #fff;
@@ -1865,37 +1779,6 @@ input.btn {
 }
 
 
-
-@media(min-width: 768px) {
-
-    .banner-form {
-        top: 87px !important;
-        height: auto;
-        padding: 18px;
-        bottom: auto;
-        background: rgba(25, 24, 24, 0.78);
-        display: block !important;
-    }
-
-    .table-item input, .table-item select {
-        background: transparent;
-        box-shadow: none;
-    }
-
-        .table-item select option {
-            color: #000
-        }
-
-    .close-form {
-        display: none
-    }
-}
-
-@media (min-width: 992px) {
-    .banner-form {
-        top: 130px !important;
-    }
-}
 
 .table-item option {
     color: #fff;
@@ -2260,6 +2143,7 @@ form style 1
 }
 
 @media (max-width: 768px) {
+
     .form-content {
         display: block;
     }
@@ -7490,7 +7374,7 @@ section.events .meta span {
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     .content-navigation-menu .company-logo {
         display: none
     }
@@ -7741,7 +7625,7 @@ section.events .meta span {
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
     .open-nav ~ .container-custom {
         transition: all .5s;
         padding-right: 270px;
@@ -7751,7 +7635,7 @@ section.events .meta span {
 
 /*------------Navbar-----------*/
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
     .icon-upper {
         display: none;
         left: 5px;
@@ -7768,7 +7652,7 @@ section.events .meta span {
     .list-nav-content {
         width: calc(100% - 395px);
         overflow: visible;
-        float: right;
+        float: none;
         display: inline-block;
         margin-top: 8px;
         margin-right: 20px;
@@ -8111,7 +7995,7 @@ section.events .meta span {
     overflow: hidden;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
     .container-nav {
         -webkit-box-shadow: 0px 0px 56px 16px rgba(74, 57, 111, 0.04);
         -moz-box-shadow: 0px 0px 56px 16px rgba(74, 57, 111, 0.04);
@@ -8247,7 +8131,7 @@ section.events .meta span {
     }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1200px) {
     .list-nav-content > li {
         padding: 0 !important
     }
@@ -8419,20 +8303,14 @@ section.events .meta span {
             outline: none;
         }
 
-    .slicknav_btn {
-        width: auto !important;
-        top: 50px;
-        position: fixed;
-    }
+            .navigation-menu a:hover, .dropdown-btn:hover {
+                color: #f1f1f1;
+            }
 
-    .navigation-menu a:hover, .dropdown-btn:hover {
-        color: #f1f1f1;
-    }
-
-    .navigation-menu.open-nav .list-nav-content li a {
-        width: 100%;
-        display: flex;
-    }
+        .navigation-menu.open-nav .list-nav-content li a {
+            width: 100%;
+            display: flex;
+        }
 
     .dropdown-li > li:hover > a span, .dropdown-li > li:hover > a .img-nav svg, .dropdown-li > li:hover > a ~ .icon-upper, .list-nav-content > li:hover > a ~ svg, .list-nav-content > li > a * {
         color: #ffffff !important;
@@ -8637,7 +8515,7 @@ section.events .meta span {
 }
 
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     .list-nav-content {
         margin-right: 0;
         width: 100%;
@@ -8668,7 +8546,6 @@ section.events .meta span {
 }
 
 /*MenuStyle*/
-
 .nav-btn {
     display: inline-block;
     position: relative;
@@ -8736,6 +8613,7 @@ section.events .meta span {
 }
 
 @media (max-width: 730px) {
+
     .navbar-brand-mobile {
         display: block;
     }
@@ -8770,7 +8648,7 @@ section.events .meta span {
     font-weight: 500;
 }
 
-@media (min-width: 768px) {
+@media(min-width:768px) {
     .roomtype-item p {
         text-align: center;
         padding: 7px 10px;
@@ -8781,6 +8659,7 @@ section.events .meta span {
 }
 
 @media (max-width: 768px) {
+
     .banner-roomtype .roomtype-row {
         height: auto;
         display: inline-block

@@ -6,11 +6,3 @@ E:\Online-WorkSpace\vipkonaklama\lib\Radyn.Security.pdb
 E:\Online-WorkSpace\vipkonaklama\Security\obj\Debug\Security.csproj.CopyComplete
 E:\Online-WorkSpace\vipkonaklama\Security\obj\Debug\Radyn.Security.dll
 E:\Online-WorkSpace\vipkonaklama\Security\obj\Debug\Radyn.Security.pdb
-E:\WorkSpace\vipkonaklama\lib\Radyn.Security.dll.config
-E:\WorkSpace\vipkonaklama\lib\Radyn.Security.dll
-E:\WorkSpace\vipkonaklama\lib\Radyn.Security.pdb
-E:\WorkSpace\vipkonaklama\Security\obj\Debug\Security.csprojAssemblyReference.cache
-E:\WorkSpace\vipkonaklama\Security\obj\Debug\Security.csproj.CoreCompileInputs.cache
-E:\WorkSpace\vipkonaklama\Security\obj\Debug\Security.csproj.CopyComplete
-E:\WorkSpace\vipkonaklama\Security\obj\Debug\Radyn.Security.dll
-E:\WorkSpace\vipkonaklama\Security\obj\Debug\Radyn.Security.pdb
