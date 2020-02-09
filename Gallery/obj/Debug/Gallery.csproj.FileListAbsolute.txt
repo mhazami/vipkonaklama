@@ -6,3 +6,11 @@ E:\Online-WorkSpace\vipkonaklama\Gallery\obj\Debug\Gallery.csproj.CopyComplete
 E:\Online-WorkSpace\vipkonaklama\Gallery\obj\Debug\Radyn.Gallery.dll
 E:\Online-WorkSpace\vipkonaklama\Gallery\obj\Debug\Radyn.Gallery.pdb
 E:\Online-WorkSpace\vipkonaklama\Gallery\obj\Debug\Gallery.csprojAssemblyReference.cache
+E:\WorkSpace\vipkonaklama\lib\Radyn.Gallery.dll.config
+E:\WorkSpace\vipkonaklama\lib\Radyn.Gallery.dll
+E:\WorkSpace\vipkonaklama\lib\Radyn.Gallery.pdb
+E:\WorkSpace\vipkonaklama\Gallery\obj\Debug\Gallery.csprojAssemblyReference.cache
+E:\WorkSpace\vipkonaklama\Gallery\obj\Debug\Gallery.csproj.CoreCompileInputs.cache
+E:\WorkSpace\vipkonaklama\Gallery\obj\Debug\Gallery.csproj.CopyComplete
+E:\WorkSpace\vipkonaklama\Gallery\obj\Debug\Radyn.Gallery.dll
+E:\WorkSpace\vipkonaklama\Gallery\obj\Debug\Radyn.Gallery.pdb

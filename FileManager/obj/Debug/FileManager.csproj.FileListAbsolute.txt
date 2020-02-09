@@ -11,3 +11,16 @@ E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Debug\fa-IR\Radyn.FileManager.r
 E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Debug\FileManager.csproj.CopyComplete
 E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Debug\Radyn.FileManager.dll
 E:\Online-WorkSpace\vipkonaklama\FileManager\obj\Debug\Radyn.FileManager.pdb
+E:\WorkSpace\vipkonaklama\lib\Radyn.FileManager.dll.config
+E:\WorkSpace\vipkonaklama\lib\Radyn.FileManager.dll
+E:\WorkSpace\vipkonaklama\lib\Radyn.FileManager.pdb
+E:\WorkSpace\vipkonaklama\lib\fa-IR\Radyn.FileManager.resources.dll
+E:\WorkSpace\vipkonaklama\FileManager\obj\Debug\FileManager.csprojAssemblyReference.cache
+E:\WorkSpace\vipkonaklama\FileManager\obj\Debug\Radyn.FileManager.Resources.FileManager.resources
+E:\WorkSpace\vipkonaklama\FileManager\obj\Debug\Radyn.FileManager.Resources.FileManager.fa-IR.resources
+E:\WorkSpace\vipkonaklama\FileManager\obj\Debug\FileManager.csproj.GenerateResource.cache
+E:\WorkSpace\vipkonaklama\FileManager\obj\Debug\FileManager.csproj.CoreCompileInputs.cache
+E:\WorkSpace\vipkonaklama\FileManager\obj\Debug\fa-IR\Radyn.FileManager.resources.dll
+E:\WorkSpace\vipkonaklama\FileManager\obj\Debug\FileManager.csproj.CopyComplete
+E:\WorkSpace\vipkonaklama\FileManager\obj\Debug\Radyn.FileManager.dll
+E:\WorkSpace\vipkonaklama\FileManager\obj\Debug\Radyn.FileManager.pdb
